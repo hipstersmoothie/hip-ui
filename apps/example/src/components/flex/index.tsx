@@ -115,6 +115,7 @@ export const Flex = ({
 }: FlexProps) => {
   return (
     <div
+      {...props}
       {...stylex.props(
         inline ? styles.inline : styles.base,
         direction === "row" && styles.row,
@@ -142,7 +143,6 @@ export const Flex = ({
 
         style
       )}
-      {...props}
     />
   );
 };

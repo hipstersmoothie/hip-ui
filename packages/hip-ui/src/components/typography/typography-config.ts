@@ -2,7 +2,7 @@ import { ComponentConfig } from "../../types";
 
 export const typographyConfig: ComponentConfig = {
   name: "typography",
-  filepath: "./typography.tsx",
+  filepath: "./index.tsx",
   hipDependencies: [
     "../theme/breakpoints.stylex.tsx",
     "../theme/colors.stylex.tsx",

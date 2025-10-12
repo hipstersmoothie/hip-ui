@@ -77,7 +77,7 @@ const buttonStyle = stylex.create({
     lineHeight: lineHeight["xs"],
     paddingLeft: {
       default: spacing["3"],
-      ":has(svg)": spacing["2.5"],
+      ":has(svg+*)": spacing["2.5"],
     },
     paddingRight: spacing["3"],
   },
@@ -86,7 +86,7 @@ const buttonStyle = stylex.create({
     height: spacing["10"],
     paddingLeft: {
       default: spacing["4"],
-      ":has(svg)": spacing["3"],
+      ":has(svg+*)": spacing["3"],
     },
     paddingRight: spacing["4"],
   },

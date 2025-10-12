@@ -1,7 +1,7 @@
 import { ComponentConfig } from "../../types";
 
-export const tooltipConfig: ComponentConfig = {
-  name: "tooltip",
+export const iconButtonConfig: ComponentConfig = {
+  name: "icon-button",
   filepath: "./index.tsx",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
@@ -11,6 +11,9 @@ export const tooltipConfig: ComponentConfig = {
     "../theme/typography.stylex.tsx",
     "../theme/breakpoints.stylex.tsx",
     "../theme/shadow.stylex.tsx",
+    // TODOD
+    // "button"
+    // "tooltip"
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",

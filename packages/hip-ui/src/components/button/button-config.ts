@@ -2,7 +2,7 @@ import { ComponentConfig } from "../../types";
 
 export const buttonConfig: ComponentConfig = {
   name: "button",
-  filepath: "./button.tsx",
+  filepath: "./index.tsx",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
     "../theme/colors.stylex.tsx",

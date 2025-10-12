@@ -4,7 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { Tooltip } from "../components/tooltip";
-import { Plus } from "lucide-react";
+import { Clock, Plus } from "lucide-react";
 import {
   Blockquote,
   Body,
@@ -19,6 +19,7 @@ import {
 } from "./typography";
 import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
+import { IconButton } from "./icon-button";
 
 const styles = stylex.create({
   container: {
@@ -59,6 +60,9 @@ function Buttons() {
     <Flex direction="column" gap="4">
       <Flex gap="2">
         <Button size="sm">Primary</Button>
+        <IconButton size="sm" label="Primary">
+          <Clock />
+        </IconButton>
         <Button size="sm">
           <Plus />
           Primary
@@ -66,25 +70,49 @@ function Buttons() {
         <Button variant="secondary" size="sm">
           Secondary
         </Button>
+        <IconButton size="sm" variant="secondary" label="Secondary">
+          <Clock />
+        </IconButton>
         <Button variant="tertiary" size="sm">
           Tertiary
         </Button>
+        <IconButton size="sm" variant="tertiary" label="Tertiary">
+          <Clock />
+        </IconButton>
         <Button variant="outline" size="sm">
           Outline
         </Button>
+        <IconButton size="sm" variant="outline" label="Outline">
+          <Clock />
+        </IconButton>
       </Flex>
       <Flex gap="2">
         <Button>Primary</Button>
+        <IconButton label="Primary">
+          <Clock />
+        </IconButton>
         <Button>
           <Plus />
           Primary
         </Button>
         <Button variant="secondary">Secondary</Button>
+        <IconButton variant="secondary" label="Secondary">
+          <Clock />
+        </IconButton>
         <Button variant="tertiary">Tertiary</Button>
+        <IconButton variant="tertiary" label="Tertiary">
+          <Clock />
+        </IconButton>
         <Button variant="outline">Outline</Button>
+        <IconButton variant="outline" label="Outline">
+          <Clock />
+        </IconButton>
       </Flex>
       <Flex gap="2">
         <Button size="lg">Primary</Button>
+        <IconButton size="lg" label="Primary">
+          <Clock />
+        </IconButton>
         <Button size="lg">
           <Plus />
           Primary
@@ -92,12 +120,21 @@ function Buttons() {
         <Button variant="secondary" size="lg">
           Secondary
         </Button>
+        <IconButton size="lg" variant="secondary" label="Secondary">
+          <Clock />
+        </IconButton>
         <Button variant="tertiary" size="lg">
           Tertiary
         </Button>
+        <IconButton size="lg" variant="tertiary" label="Tertiary">
+          <Clock />
+        </IconButton>
         <Button variant="outline" size="lg">
           Outline
         </Button>
+        <IconButton size="lg" variant="outline" label="Outline">
+          <Clock />
+        </IconButton>
       </Flex>
     </Flex>
   );
@@ -106,7 +143,7 @@ function Buttons() {
 function Tooltips() {
   return (
     <Flex direction="column" gap="4" align="start">
-      <Tooltip text="Tooltip">
+      <Tooltip text="Tooltip" isOpen placement="bottom">
         <Button>Hover me</Button>
       </Tooltip>
     </Flex>
@@ -117,8 +154,8 @@ export function KitchenSink() {
   return (
     <Flex
       direction="column"
-      gap="16"
-      {...stylex.props(gray.bg, gray.text, styles.container)}
+      gap="10"
+      style={[gray.bg, gray.text, styles.container]}
     >
       <Flex direction="column" gap="4">
         <Heading1>Tooltips</Heading1>

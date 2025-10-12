@@ -13,6 +13,7 @@ import { buttonConfig } from "../components/button/button-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { typographyConfig } from "../components/typography/typography-config.js";
 import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
+import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 const COMPONENT_CONFIGS = [
@@ -20,6 +21,7 @@ const COMPONENT_CONFIGS = [
   flexConfig,
   typographyConfig,
   tooltipConfig,
+  iconButtonConfig,
 ];
 
 function StringSetting({
