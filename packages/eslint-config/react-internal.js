@@ -39,7 +39,7 @@ export const config = [
 
       "@stylexjs/valid-styles": "error",
       "@stylexjs/valid-styles": "error",
-      "@stylexjs/sort-keys": "error",
+      "@stylexjs/sort-keys": ["error", { allowLineSeparatedGroups: true }],
       "@stylexjs/valid-shorthands": "error",
       "@stylexjs/enforce-extension": "error",
       "@stylexjs/no-unused": "error",

@@ -1,7 +1,9 @@
 "use client";
 
+import * as stylex from "@stylexjs/stylex";
 import { Button } from "../components/button";
 import { Flex } from "../components/flex";
+import { Tooltip } from "../components/tooltip";
 import { Plus } from "lucide-react";
 import {
   Blockquote,
@@ -15,6 +17,14 @@ import {
   OrderedList,
   UnorderedList,
 } from "./typography";
+import { gray } from "./theme/semantic-color.stylex";
+import { spacing } from "./theme/spacing.stylex";
+
+const styles = stylex.create({
+  container: {
+    padding: spacing["16"],
+  },
+});
 
 function Typography() {
   return (
@@ -93,11 +103,35 @@ function Buttons() {
   );
 }
 
+function Tooltips() {
+  return (
+    <Flex direction="column" gap="4" align="start">
+      <Tooltip text="Tooltip">
+        <Button>Hover me</Button>
+      </Tooltip>
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
   return (
-    <Flex direction="column" gap="4">
-      <Typography />
-      <Buttons />
+    <Flex
+      direction="column"
+      gap="16"
+      {...stylex.props(gray.bg, gray.text, styles.container)}
+    >
+      <Flex direction="column" gap="4">
+        <Heading1>Tooltips</Heading1>
+        <Tooltips />
+      </Flex>
+      <Flex direction="column" gap="4">
+        <Heading1>Typography</Heading1>
+        <Typography />
+      </Flex>
+      <Flex direction="column" gap="4">
+        <Heading1>Buttons</Heading1>
+        <Buttons />
+      </Flex>
     </Flex>
   );
 }

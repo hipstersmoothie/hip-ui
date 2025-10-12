@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
+// eslint-disable-next-line @stylexjs/enforce-extension
 export const breakpoints = stylex.defineConsts({
   sm: "@media (min-width: 40rem)",
   md: "@media (min-width: 48rem)",

@@ -62,75 +62,88 @@ export const tracking = stylex.defineVars({
   widest: "0.1em",
 });
 
+// eslint-disable-next-line @stylexjs/enforce-extension
 export const typeramp = stylex.create({
   heading1: {
-    margin: 0,
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
-    scrollMarginBlockStart: spacing["20"],
-    fontWeight: fontWeight["extrabold"],
-    letterSpacing: tracking["tight"],
-    textBalance: "balance",
     fontSize: {
       default: fontSize["4xl"],
       [breakpoints["md"]]: fontSize["5xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontWeight: fontWeight["extrabold"],
+    letterSpacing: tracking["tight"],
     lineHeight: {
       default: lineHeight["4xl"],
       [breakpoints["md"]]: lineHeight["5xl"],
     },
+    margin: 0,
+    scrollMarginBlockStart: spacing["20"],
   },
   heading2: {
-    fontFamily: fontFamily["sans"],
-    scrollMarginBlockStart: spacing["20"],
     borderBottomWidth: 1,
-    paddingBottom: spacing["2"],
-    fontWeight: fontWeight["semibold"],
-    letterSpacing: tracking["tight"],
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontFamily: fontFamily["sans"],
     fontSize: {
       default: fontSize["3xl"],
       [breakpoints["md"]]: fontSize["4xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontWeight: fontWeight["semibold"],
+    letterSpacing: tracking["tight"],
     lineHeight: {
       default: lineHeight["3xl"],
       [breakpoints["md"]]: lineHeight["4xl"],
     },
     margin: 0,
+    paddingBottom: spacing["2"],
+    scrollMarginBlockStart: spacing["20"],
   },
   heading3: {
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
-    scrollMarginBlockStart: spacing["20"],
+    fontSize: { default: fontSize["2xl"] },
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
-    fontSize: { default: fontSize["2xl"] },
     lineHeight: { default: lineHeight["2xl"] },
     margin: 0,
+    scrollMarginBlockStart: spacing["20"],
   },
   heading4: {
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
-    scrollMarginBlockStart: spacing["20"],
+    fontSize: { default: fontSize["xl"] },
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
-    fontSize: { default: fontSize["xl"] },
     lineHeight: { default: lineHeight["xl"] },
     margin: 0,
+    scrollMarginBlockStart: spacing["20"],
   },
   body: {
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
-    lineHeight: spacing["7"],
     fontSize: { default: fontSize["base"] },
+    lineHeight: spacing["7"],
     margin: 0,
   },
   label: {
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
+    fontSize: { default: fontSize["sm"] },
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["medium"],
     letterSpacing: tracking["tight"],
-    fontSize: { default: fontSize["sm"] },
     lineHeight: { default: lineHeight["sm"] },
   },
   sublabel: {
+    // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
-    fontWeight: fontWeight["medium"],
     fontSize: { default: fontSize["xs"] },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontWeight: fontWeight["medium"],
     lineHeight: { default: lineHeight["xs"] },
   },
 });

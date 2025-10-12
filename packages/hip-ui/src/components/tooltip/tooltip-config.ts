@@ -1,8 +1,8 @@
 import { ComponentConfig } from "../../types";
 
-export const buttonConfig: ComponentConfig = {
-  name: "button",
-  filepath: "./button.tsx",
+export const tooltipConfig: ComponentConfig = {
+  name: "tooltip",
+  filepath: "./tooltip.tsx",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
     "../theme/colors.stylex.tsx",

@@ -9,6 +9,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
     <div>
       <meta name="description" content={data.description} />
       <link rel="icon" type="image/png" href={data.icon} />
+      <style>{"body { margin: 0; }"}</style>
       <main>{children}</main>
     </div>
   );
