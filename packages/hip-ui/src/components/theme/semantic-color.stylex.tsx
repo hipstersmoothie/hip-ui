@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { slate, plum } from "./colors.stylex";
 
+// eslint-disable-next-line @stylexjs/enforce-extension
 export const gray = stylex.create({
   bg: {
     backgroundColor: slate[1],
@@ -39,17 +40,17 @@ export const gray = stylex.create({
     },
   },
   borderDim: {
-    borderWidth: 1,
-    borderStyle: "solid",
     borderColor: slate[6],
+    borderStyle: "solid",
+    borderWidth: 1,
   },
   border: {
-    borderWidth: 1,
-    borderStyle: "solid",
     borderColor: {
       default: slate[7],
       ":hover": slate[8],
     },
+    borderStyle: "solid",
+    borderWidth: 1,
   },
   bgSolid: {
     backgroundColor: slate[9],
@@ -65,6 +66,7 @@ export const gray = stylex.create({
   },
 });
 
+// eslint-disable-next-line @stylexjs/enforce-extension
 export const primary = stylex.create({
   bg: {
     backgroundColor: plum[1],
@@ -103,17 +105,17 @@ export const primary = stylex.create({
     },
   },
   borderDim: {
-    borderWidth: 1,
-    borderStyle: "solid",
     borderColor: plum[6],
+    borderStyle: "solid",
+    borderWidth: 1,
   },
   border: {
-    borderWidth: 1,
-    borderStyle: "solid",
     borderColor: {
       default: plum[7],
       ":hover": plum[8],
     },
+    borderStyle: "solid",
+    borderWidth: 1,
   },
   bgSolid: {
     backgroundColor: plum[9],

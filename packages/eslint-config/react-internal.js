@@ -5,6 +5,7 @@ import pluginReactHooks from "eslint-plugin-react-hooks";
 import pluginReact from "eslint-plugin-react";
 import globals from "globals";
 import { config as baseConfig } from "./base.js";
+import * as stylex from "@stylexjs/eslint-plugin";
 
 /**
  * A custom ESLint configuration for libraries that use React.
@@ -28,12 +29,22 @@ export const config = [
   {
     plugins: {
       "react-hooks": pluginReactHooks,
+      "@stylexjs": stylex,
     },
     settings: { react: { version: "detect" } },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
       // React scope no longer necessary with new JSX transform.
       "react/react-in-jsx-scope": "off",
+
+      "@stylexjs/valid-styles": "error",
+      "@stylexjs/valid-styles": "error",
+      "@stylexjs/sort-keys": "error",
+      "@stylexjs/valid-shorthands": "error",
+      "@stylexjs/enforce-extension": "error",
+      "@stylexjs/no-unused": "error",
+      "@stylexjs/no-legacy-contextual-styles": "error",
+      "@stylexjs/no-lookahead-selectors": "error",
     },
   },
 ];
