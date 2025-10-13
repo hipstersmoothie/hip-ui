@@ -63,6 +63,9 @@ const styles = stylex.create({
     backgroundColor: "transparent",
     borderWidth: 0,
     boxSizing: "border-box",
+    color: {
+      "::placeholder": slate[11],
+    },
     flexGrow: 1,
     fontFamily: fontFamily["sans"],
     outline: "none",

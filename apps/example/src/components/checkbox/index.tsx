@@ -73,7 +73,7 @@ export function CheckboxGroup({
 }: CheckboxGroupProps) {
   return (
     <AriaCheckboxGroup {...props} {...stylex.props(styles.group, style)}>
-      {label && <Label>{label}</Label>}
+      {label && <Label size={size}>{label}</Label>}
       <Flex direction="column" gap="2">
         {children}
       </Flex>

@@ -48,6 +48,7 @@ import { Checkbox, CheckboxGroup } from "./checkbox";
 import { Radio, RadioGroup } from "./radio";
 import { Separator } from "./separator";
 import { TextArea } from "./text-area";
+import { Select, SelectItem } from "./select";
 
 const styles = stylex.create({
   subCard: {
@@ -63,6 +64,9 @@ const styles = stylex.create({
   signUpForm: {
     width: 300,
     padding: spacing["2"],
+  },
+  grow: {
+    flexGrow: 1,
   },
 });
 
@@ -178,16 +182,50 @@ function ButtonGroups() {
 
 function FormElements() {
   return (
-    <Flex direction="column" gap="4">
+    <Flex gap="4">
       {buttonSizes.map((size) => (
         <Card key={`${size}-text-field`} style={styles.subCard}>
-          <Flex gap="6">
+          <Flex direction="column" gap="6">
             <TextField
               key={`${size}-text-field`}
               label="Text Field"
               description="Input Description"
               size={size}
             />
+            <Select
+              label="Select"
+              placeholder="Select"
+              description="Select Description"
+              size={size}
+            >
+              <SelectItem>Select 1</SelectItem>
+              <SelectItem>Select 2</SelectItem>
+              <SelectItem>Select 3</SelectItem>
+              <SelectItem>Select 4</SelectItem>
+              <SelectItem>Select 5</SelectItem>
+            </Select>
+            <CheckboxGroup
+              label="Checkbox Group"
+              description="Checkbox Group Description"
+              size={size}
+            >
+              <Checkbox value="1">Checkbox 1</Checkbox>
+              <Checkbox value="2" isDisabled>
+                Checkbox 2
+              </Checkbox>
+              <Checkbox value="3" isIndeterminate>
+                Checkbox 3
+              </Checkbox>
+            </CheckboxGroup>
+            <RadioGroup
+              label="Radio Group"
+              description="Radio Group Description"
+              size={size}
+            >
+              <Radio value="1">Radio 1</Radio>
+              <Radio value="2">Radio 2</Radio>
+              <Radio value="3">Radio 3</Radio>
+            </RadioGroup>
           </Flex>
         </Card>
       ))}
@@ -315,12 +353,36 @@ function PaymentMethod() {
               <TextField
                 label="Card Number"
                 placeholder="1234 5678 9012 3456"
+                style={styles.grow}
               />
-              <TextField label="CVV" placeholder="123" />
+              <TextField label="CVV" placeholder="123" style={styles.grow} />
             </Flex>
             <SmallBody variant="secondary">
               Enter your 16 digit number.
             </SmallBody>
+          </Flex>
+          <Flex gap="3">
+            <Select label="Month" placeholder="MM" style={styles.grow}>
+              <SelectItem>01</SelectItem>
+              <SelectItem>02</SelectItem>
+              <SelectItem>03</SelectItem>
+              <SelectItem>04</SelectItem>
+              <SelectItem>05</SelectItem>
+              <SelectItem>06</SelectItem>
+              <SelectItem>07</SelectItem>
+              <SelectItem>08</SelectItem>
+              <SelectItem>09</SelectItem>
+              <SelectItem>10</SelectItem>
+              <SelectItem>11</SelectItem>
+              <SelectItem>12</SelectItem>
+            </Select>
+            <Select label="Year" placeholder="YYYY" style={styles.grow}>
+              <SelectItem>2025</SelectItem>
+              <SelectItem>2026</SelectItem>
+              <SelectItem>2027</SelectItem>
+              <SelectItem>2028</SelectItem>
+              <SelectItem>2029</SelectItem>
+            </Select>
           </Flex>
           <Separator />
           <Flex direction="column" gap="4">

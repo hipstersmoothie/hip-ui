@@ -24,6 +24,9 @@ export const gray = stylex.create({
       ":hover": slate[4],
       ":active": slate[5],
     },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
   },
   bgGhost: {
     backgroundColor: {
@@ -31,6 +34,9 @@ export const gray = stylex.create({
       ":hover": slate[4],
       ":active": slate[5],
     },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
     backgroundColor: {
@@ -38,6 +44,9 @@ export const gray = stylex.create({
       ":hover": slate[5],
       ":active": slate[6],
     },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
   },
   borderDim: {
     borderColor: slate[6],
@@ -56,6 +65,10 @@ export const gray = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
+
+    transitionDuration: "100ms",
+    transitionProperty: "border-color",
+    transitionTimingFunction: "ease-in-out",
   },
   bgSolid: {
     backgroundColor: slate[9],

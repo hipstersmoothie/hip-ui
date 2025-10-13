@@ -69,7 +69,11 @@ const styles = stylex.create({
   input: {
     backgroundColor: "transparent",
     borderWidth: 0,
+    color: {
+      "::placeholder": slate[11],
+    },
     flexGrow: 1,
+    lineHeight: lineHeight["none"],
     outline: "none",
   },
   sm: {
@@ -77,7 +81,6 @@ const styles = stylex.create({
   },
   smInput: {
     fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
     paddingLeft: { ":first-child": spacing["1"] },
     paddingRight: spacing["1"],
   },
@@ -86,7 +89,6 @@ const styles = stylex.create({
   },
   mdInput: {
     fontSize: fontSize["sm"],
-    lineHeight: lineHeight["sm"],
     paddingLeft: { ":first-child": spacing["2"] },
     paddingRight: spacing["2"],
   },
@@ -95,7 +97,6 @@ const styles = stylex.create({
   },
   lgInput: {
     fontSize: fontSize["base"],
-    lineHeight: lineHeight["base"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
   },
