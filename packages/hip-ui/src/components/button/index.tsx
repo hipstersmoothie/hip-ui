@@ -109,14 +109,24 @@ const buttonStyle = stylex.create({
     },
   },
 
-  group: {
+  groupHorizontal: {
     borderBottomLeftRadius: { ":not(:first-child)": 0 },
     borderBottomRightRadius: { ":not(:last-child)": 0 },
     borderLeftWidth: { ":not(:first-child)": 0 },
     borderTopLeftRadius: { ":not(:first-child)": 0 },
     borderTopRightRadius: { ":not(:last-child)": 0 },
   },
-  secondaryGroup: {
+  secondaryGroupHorizontal: {
+    borderRightColor: { ":not(:last-child)": slate[7] },
+  },
+  groupVertical: {
+    borderBottomLeftRadius: { ":not(:last-child)": 0 },
+    borderBottomRightRadius: { ":not(:last-child)": 0 },
+    borderTopLeftRadius: { ":not(:first-child)": 0 },
+    borderTopRightRadius: { ":not(:first-child)": 0 },
+    borderTopWidth: { ":not(:first-child)": 0 },
+  },
+  secondaryGroupVertical: {
     borderRightColor: { ":not(:last-child)": slate[7] },
   },
 });
@@ -127,7 +137,9 @@ interface ButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
   size?: "sm" | "md" | "lg";
 }
 
-export const ButtonGroupContext = createContext(false);
+export const ButtonGroupContext = createContext<
+  undefined | "vertical" | "horizontal"
+>(undefined);
 
 export const Button = ({
   children,
@@ -136,13 +148,14 @@ export const Button = ({
   size = "md",
   ...props
 }: ButtonProps) => {
-  const isInButtonGroup = use(ButtonGroupContext);
+  const group = use(ButtonGroupContext);
 
   return (
     <AriaButton
       {...stylex.props(
         buttonStyle.base,
-        isInButtonGroup && buttonStyle.group,
+        group === "horizontal" && buttonStyle.groupHorizontal,
+        group === "vertical" && buttonStyle.groupVertical,
         variant === "primary" && [
           primary.bgAction,
           primary.borderInteractive,
@@ -153,13 +166,15 @@ export const Button = ({
           gray.bgUi,
           buttonStyle.secondary,
           gray.text,
-          isInButtonGroup && buttonStyle.secondaryGroup,
+          group === "horizontal" && buttonStyle.secondaryGroupHorizontal,
+          group === "vertical" && buttonStyle.secondaryGroupVertical,
         ],
         variant === "tertiary" && [
           gray.bgGhost,
           buttonStyle.tertiary,
           gray.text,
-          isInButtonGroup && buttonStyle.secondaryGroup,
+          group === "horizontal" && buttonStyle.secondaryGroupHorizontal,
+          group === "vertical" && buttonStyle.secondaryGroupVertical,
         ],
         variant === "outline" && [
           gray.borderInteractive,

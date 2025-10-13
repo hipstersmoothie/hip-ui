@@ -5,7 +5,15 @@ import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { Tooltip } from "../components/tooltip";
 import { ButtonGroup } from "../components/button-group";
-import { ArrowLeft, ArrowRight, Clock, Ellipsis, Plus } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowLeft,
+  ArrowRight,
+  ArrowUp,
+  Clock,
+  Ellipsis,
+  Plus,
+} from "lucide-react";
 import {
   Blockquote,
   Body,
@@ -23,6 +31,7 @@ import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
 import { IconButton } from "./icon-button";
 import { Popover } from "./popover";
+import { Card, CardBody, CardHeader, CardTitle } from "./card";
 
 const styles = stylex.create({
   container: {
@@ -127,6 +136,19 @@ function ButtonGroups() {
           </ButtonGroup>
         </Flex>
       ))}
+
+      <Flex gap="2">
+        {buttons.map((button) => (
+          <ButtonGroup orientation="vertical" key={`${button}-vertical`}>
+            <IconButton label="Up" variant={button}>
+              <ArrowUp />
+            </IconButton>
+            <IconButton label="Down" variant={button}>
+              <ArrowDown />
+            </IconButton>
+          </ButtonGroup>
+        ))}
+      </Flex>
     </Flex>
   );
 }
@@ -144,10 +166,27 @@ function Tooltips() {
 function Popovers() {
   return (
     <Flex direction="column" gap="4" align="start">
-      <Popover trigger={<Button>Hover me</Button>} placement="top">
+      <Popover trigger={<Button>Click me</Button>} placement="top">
         <SmallBody>Content</SmallBody>
       </Popover>
     </Flex>
+  );
+}
+
+function TitleCard({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{title}</CardTitle>
+      </CardHeader>
+      <CardBody>{children}</CardBody>
+    </Card>
   );
 }
 
@@ -158,26 +197,21 @@ export function KitchenSink() {
       gap="10"
       style={[gray.bg, gray.text, styles.container]}
     >
-      <Flex direction="column" gap="4">
-        <Heading1>Buttons</Heading1>
+      <TitleCard title="Buttons">
         <Buttons />
-      </Flex>
-      <Flex direction="column" gap="4">
-        <Heading1>Button Groups</Heading1>
+      </TitleCard>
+      <TitleCard title="Button Groups">
         <ButtonGroups />
-      </Flex>
-      <Flex direction="column" gap="4">
-        <Heading1>Tooltips</Heading1>
+      </TitleCard>
+      <TitleCard title="Tooltips">
         <Tooltips />
-      </Flex>
-      <Flex direction="column" gap="4">
-        <Heading1>Popovers</Heading1>
+      </TitleCard>
+      <TitleCard title="Popovers">
         <Popovers />
-      </Flex>
-      <Flex direction="column" gap="4">
-        <Heading1>Typography</Heading1>
+      </TitleCard>
+      <TitleCard title="Typography">
         <Typography />
-      </Flex>
+      </TitleCard>
     </Flex>
   );
 }

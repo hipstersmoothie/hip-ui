@@ -16,6 +16,7 @@ import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { popoverConfig } from "../components/popover/popover-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
+import { cardConfig } from "../components/card/card-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -27,6 +28,7 @@ const COMPONENT_CONFIGS = [
   iconButtonConfig,
   popoverConfig,
   buttonGroupConfig,
+  cardConfig,
 ];
 
 function StringSetting({
