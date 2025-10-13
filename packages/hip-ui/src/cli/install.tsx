@@ -21,6 +21,9 @@ import { textFieldConfig } from "../components/text-field/text-field-config.js";
 import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
 import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
+import { radioConfig } from "../components/radio/radio-config.js";
+import { separatorConfig } from "../components/separator/separator-config.js";
+import { textAreaConfig } from "../components/text-area/text-area-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -37,6 +40,9 @@ const COMPONENT_CONFIGS = [
   labelConfig,
   linkConfig,
   checkboxConfig,
+  radioConfig,
+  separatorConfig,
+  textAreaConfig,
 ];
 
 function StringSetting({

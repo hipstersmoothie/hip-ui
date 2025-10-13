@@ -25,7 +25,7 @@ const styles = stylex.create({
       ":has(p)": "flex-start",
     },
     display: "flex",
-    gap: spacing["3"],
+    gap: spacing["2.5"],
 
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],

@@ -4,6 +4,7 @@ import { gray } from "../theme/semantic-color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
+import { Flex } from "../flex";
 
 const styles = stylex.create({
   card: {
@@ -23,6 +24,11 @@ const styles = stylex.create({
   cardTitle: {
     fontSize: fontSize["lg"],
     fontWeight: fontWeight["bold"],
+  },
+  cardDescription: {
+    fontSize: fontSize["sm"],
+    fontWeight: fontWeight["normal"],
+    margin: 0,
   },
   cardBody: {
     paddingBottom: { ":last-child": spacing["4"] },
@@ -60,7 +66,14 @@ export interface CardHeaderProps
 }
 
 export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
-  return <div {...props} {...stylex.props(styles.cardHeader, style)} />;
+  return (
+    <Flex
+      {...props}
+      style={[styles.cardHeader, style]}
+      direction="column"
+      gap="3"
+    />
+  );
 };
 
 export interface CardTitleProps
@@ -70,6 +83,20 @@ export interface CardTitleProps
 
 export const CardTitle = ({ style, ...props }: CardTitleProps) => {
   return <div {...props} {...stylex.props(styles.cardTitle, style)} />;
+};
+
+export interface CardDescriptionProps
+  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+}
+
+export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
+  return (
+    <p
+      {...props}
+      {...stylex.props(styles.cardDescription, gray.textDim, style)}
+    />
+  );
 };
 
 export interface CardBodyProps

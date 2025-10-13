@@ -1,27 +1,20 @@
 import {
-  TextFieldProps as AriaTextFieldProps,
-  InputContext,
+  TextArea as AriaTextArea,
+  TextAreaProps as AriaTextAreaProps,
   InputProps,
+  TextFieldProps,
   ValidationResult,
 } from "react-aria-components";
 
-import {
-  FieldError,
-  Input,
-  TextField as AriaTextField,
-} from "react-aria-components";
+import { FieldError, TextField as AriaTextField } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
-import { lineHeight, fontSize } from "../theme/typography.stylex";
+import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
 import { slate } from "../theme/colors.stylex";
 import { useRef } from "react";
-import { useState } from "react";
-import { IconButton } from "../icon-button";
-import { Eye, EyeOff } from "lucide-react";
-import { use } from "react";
 
 const styles = stylex.create({
   wrapper: {
@@ -69,35 +62,37 @@ const styles = stylex.create({
   input: {
     backgroundColor: "transparent",
     borderWidth: 0,
+    boxSizing: "border-box",
     flexGrow: 1,
+    fontFamily: fontFamily["sans"],
     outline: "none",
-  },
-  sm: {
-    height: spacing["6"],
   },
   smInput: {
     fontSize: fontSize["xs"],
     lineHeight: lineHeight["xs"],
+    minHeight: spacing["6"],
+    paddingBottom: spacing["1"],
     paddingLeft: { ":first-child": spacing["1"] },
     paddingRight: spacing["1"],
-  },
-  md: {
-    height: spacing["8"],
+    paddingTop: spacing["1"],
   },
   mdInput: {
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
+    minHeight: spacing["8"],
+    paddingBottom: spacing["2"],
     paddingLeft: { ":first-child": spacing["2"] },
     paddingRight: spacing["2"],
-  },
-  lg: {
-    height: spacing["10"],
+    paddingTop: spacing["2"],
   },
   lgInput: {
     fontSize: fontSize["base"],
     lineHeight: lineHeight["base"],
+    minHeight: spacing["10"],
+    paddingBottom: spacing["3"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
+    paddingTop: spacing["3"],
   },
   description: {
     color: gray.textDim,
@@ -110,33 +105,9 @@ const styles = stylex.create({
   },
 });
 
-function PasswordToggle({
-  type,
-  setType,
-}: {
-  type: TextFieldProps["type"];
-  setType: (type: TextFieldProps["type"]) => void;
-}) {
-  const state = use(InputContext);
-
-  if (!state || !("value" in state) || !state.value) return null;
-
-  return (
-    <div {...stylex.props(styles.addon)}>
-      <IconButton
-        size="sm"
-        variant="tertiary"
-        label="Toggle password visibility"
-        onPress={() => setType(type === "password" ? "text" : "password")}
-      >
-        {type === "password" ? <EyeOff /> : <Eye />}
-      </IconButton>
-    </div>
-  );
-}
-
-export interface TextFieldProps
-  extends Omit<AriaTextFieldProps, "style" | "className">,
+export interface TextAreaProps
+  extends Omit<TextFieldProps, "style" | "className">,
+    Pick<AriaTextAreaProps, "rows">,
     Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
@@ -147,7 +118,7 @@ export interface TextFieldProps
   suffix?: React.ReactNode;
 }
 
-export function TextField({
+export function TextArea({
   label,
   description,
   errorMessage,
@@ -156,38 +127,26 @@ export function TextField({
   prefix,
   suffix,
   placeholder,
+  rows,
   ...props
-}: TextFieldProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [type, setType] = useState<TextFieldProps["type"]>(
-    props.type || "text"
-  );
-  const isPasswordInput = props.type === "password";
+}: TextAreaProps) {
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
   return (
-    <AriaTextField
-      {...props}
-      type={type}
-      {...stylex.props(styles.wrapper, style)}
-    >
+    <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
       <Label size={size}>{label}</Label>
       <div
-        {...stylex.props(
-          styles.inputWrapper,
-          gray.bgUi,
-          gray.text,
-          styles[size]
-        )}
-        onClick={() => inputRef.current?.focus()}
+        {...stylex.props(styles.inputWrapper, gray.bgUi, gray.text)}
+        onClick={() => textAreaRef.current?.focus()}
       >
         {prefix && <div {...stylex.props(styles.addon)}>{prefix}</div>}
-        <Input
+        <AriaTextArea
           {...stylex.props(styles.input, styles[`${size}Input`])}
-          ref={inputRef}
+          ref={textAreaRef}
           placeholder={placeholder}
+          rows={rows}
         />
         {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
-        {isPasswordInput && <PasswordToggle type={type} setType={setType} />}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

@@ -34,10 +34,20 @@ import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
 import { IconButton } from "./icon-button";
 import { Popover } from "./popover";
-import { Card, CardBody, CardFooter, CardHeader, CardTitle } from "./card";
+import {
+  Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "./card";
 import { Link } from "./link";
 import { typeramp } from "./theme/typography.stylex";
 import { Checkbox, CheckboxGroup } from "./checkbox";
+import { Radio, RadioGroup } from "./radio";
+import { Separator } from "./separator";
+import { TextArea } from "./text-area";
 
 const styles = stylex.create({
   subCard: {
@@ -278,6 +288,66 @@ function CheckboxGroups() {
   );
 }
 
+function Radios() {
+  return (
+    <Flex direction="column" gap="4">
+      <RadioGroup label="Radio Group" description="Radio Group Description">
+        <Radio value="1">Radio 1</Radio>
+        <Radio value="2">Radio 2</Radio>
+        <Radio value="3">Radio 3</Radio>
+      </RadioGroup>
+    </Flex>
+  );
+}
+
+function PaymentMethod() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Payment Method</CardTitle>
+        <CardDescription>Select a payment method</CardDescription>
+      </CardHeader>
+      <CardBody>
+        <Flex direction="column" gap="6">
+          <TextField label="Name on Card" placeholder="John Doe" />
+          <Flex direction="column" gap="3">
+            <Flex gap="3">
+              <TextField
+                label="Card Number"
+                placeholder="1234 5678 9012 3456"
+              />
+              <TextField label="CVV" placeholder="123" />
+            </Flex>
+            <SmallBody variant="secondary">
+              Enter your 16 digit number.
+            </SmallBody>
+          </Flex>
+          <Separator />
+          <Flex direction="column" gap="4">
+            <Flex direction="column" gap="3">
+              <CardTitle>Billing Address</CardTitle>
+              <CardDescription>
+                The billing address associated with your payment method
+              </CardDescription>
+            </Flex>
+            <Checkbox>Same as shipping address</Checkbox>
+          </Flex>
+          <Separator />
+          <TextArea
+            label="Message"
+            placeholder="Add any additional comments"
+            rows={4}
+          />
+          <Flex gap="2">
+            <Button>Submit</Button>
+            <Button variant="secondary">Cancel</Button>
+          </Flex>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
 export function KitchenSink() {
   return (
     <Flex
@@ -286,6 +356,7 @@ export function KitchenSink() {
       style={[gray.bg, gray.text, styles.container]}
     >
       <SignUpForm />
+      <PaymentMethod />
       <TitleCard title="Buttons">
         <Buttons />
       </TitleCard>
@@ -297,6 +368,9 @@ export function KitchenSink() {
       </TitleCard>
       <TitleCard title="Checkbox Groups">
         <CheckboxGroups />
+      </TitleCard>
+      <TitleCard title="Radios">
+        <Radios />
       </TitleCard>
       <TitleCard title="Text Fields">
         <TextFields />

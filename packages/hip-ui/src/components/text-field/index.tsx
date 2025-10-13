@@ -1,13 +1,13 @@
 import {
   TextFieldProps as AriaTextFieldProps,
   InputContext,
+  InputProps,
   ValidationResult,
 } from "react-aria-components";
 
 import {
   FieldError,
   Input,
-  Text,
   TextField as AriaTextField,
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
@@ -27,7 +27,7 @@ const styles = stylex.create({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    gap: spacing["1.5"],
+    gap: spacing["2"],
   },
   addon: {
     color: gray.textDim,
@@ -136,7 +136,8 @@ function PasswordToggle({
 }
 
 export interface TextFieldProps
-  extends Omit<AriaTextFieldProps, "style" | "className"> {
+  extends Omit<AriaTextFieldProps, "style" | "className">,
+    Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;
@@ -154,6 +155,7 @@ export function TextField({
   size = "md",
   prefix,
   suffix,
+  placeholder,
   ...props
 }: TextFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -182,6 +184,7 @@ export function TextField({
         <Input
           {...stylex.props(styles.input, styles[`${size}Input`])}
           ref={inputRef}
+          placeholder={placeholder}
         />
         {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
         {isPasswordInput && <PasswordToggle type={type} setType={setType} />}

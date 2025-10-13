@@ -1,15 +1,15 @@
 import type {
-  CheckboxProps as AriaCheckboxProps,
-  CheckboxGroupProps as AriaCheckboxGroupProps,
+  RadioProps as AriaRadioProps,
+  RadioGroupProps as AriaRadioGroupProps,
   ValidationResult,
 } from "react-aria-components";
 import {
-  Checkbox as AriaCheckbox,
-  CheckboxGroup as AriaCheckboxGroup,
+  Radio as AriaRadio,
+  RadioGroup as AriaRadioGroup,
   FieldError,
+  SelectionIndicator,
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-import { Check, Minus } from "lucide-react";
 
 import { spacing } from "../theme/spacing.stylex";
 import { radius } from "../theme/radius.stylex";
@@ -17,6 +17,15 @@ import { gray, primary } from "../theme/semantic-color.stylex";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
+
+const scaleIn = stylex.keyframes({
+  "0%": {
+    transform: "translate(-50%, -50%) scale(0)",
+  },
+  "100%": {
+    transform: "translate(-50%, -50%) scale(1)",
+  },
+});
 
 const styles = stylex.create({
   wrapper: {
@@ -32,15 +41,36 @@ const styles = stylex.create({
     lineHeight: lineHeight["sm"],
     opacity: { ":is([data-disabled])": 0.5 },
   },
-  checkbox: {
+  radio: {
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
 
-    borderRadius: radius["sm"],
+    borderRadius: radius["full"],
     borderWidth: 2,
     height: spacing["4"],
+    position: "relative",
     width: spacing["4"],
+
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color, color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  selectionIndicator: {
+    backgroundColor: "white",
+    borderRadius: radius["full"],
+    height: spacing["2"],
+    width: spacing["2"],
+
+    left: "50%",
+    position: "absolute",
+    top: "50%",
+    transform: "translate(-50%, -50%)",
+
+    animationDuration: "100ms",
+    animationFillMode: "forwards",
+    animationName: scaleIn,
+    animationTimingFunction: "ease-in-out",
   },
   checked: {
     color: "white",
@@ -52,8 +82,8 @@ const styles = stylex.create({
   },
 });
 
-interface CheckboxGroupProps
-  extends Omit<AriaCheckboxGroupProps, "children" | "style" | "className"> {
+interface RadioGroupProps
+  extends Omit<AriaRadioGroupProps, "children" | "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children?: React.ReactNode;
   label?: React.ReactNode;
@@ -62,7 +92,7 @@ interface CheckboxGroupProps
   size?: "sm" | "md" | "lg";
 }
 
-export function CheckboxGroup({
+export function RadioGroup({
   label,
   description,
   errorMessage,
@@ -70,33 +100,33 @@ export function CheckboxGroup({
   size = "md",
   style,
   ...props
-}: CheckboxGroupProps) {
+}: RadioGroupProps) {
   return (
-    <AriaCheckboxGroup {...props} {...stylex.props(styles.group, style)}>
+    <AriaRadioGroup {...props} {...stylex.props(styles.group, style)}>
       {label && <Label>{label}</Label>}
       <Flex direction="column" gap="2">
         {children}
       </Flex>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
-    </AriaCheckboxGroup>
+    </AriaRadioGroup>
   );
 }
 
-export interface CheckboxProps
-  extends Omit<AriaCheckboxProps, "className" | "style" | "children"> {
+export interface RadioProps
+  extends Omit<AriaRadioProps, "className" | "style" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children?: React.ReactNode;
 }
 
-export function Checkbox({ children, style, ...props }: CheckboxProps) {
+export function Radio({ children, style, ...props }: RadioProps) {
   return (
-    <AriaCheckbox {...props} {...stylex.props(styles.wrapper, style)}>
-      {({ isIndeterminate, isSelected, isDisabled }) => (
+    <AriaRadio {...props} {...stylex.props(styles.wrapper, style)}>
+      {({ isSelected, isDisabled }) => (
         <>
           <div
             {...stylex.props(
-              styles.checkbox,
+              styles.radio,
               isDisabled
                 ? [gray.bgSolid, gray.border, styles.checked]
                 : isSelected
@@ -104,17 +134,13 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
                   : [gray.borderInteractive]
             )}
           >
-            {isIndeterminate ? (
-              <Minus size={16} />
-            ) : isSelected ? (
-              <Check size={16} />
-            ) : null}
+            <SelectionIndicator {...stylex.props(styles.selectionIndicator)} />
           </div>
           <Flex direction="column" gap="1">
             {children}
           </Flex>
         </>
       )}
-    </AriaCheckbox>
+    </AriaRadio>
   );
 }
