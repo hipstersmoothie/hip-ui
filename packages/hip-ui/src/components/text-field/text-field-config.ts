@@ -12,4 +12,7 @@ export const textFieldConfig: ComponentConfig = {
     "../theme/breakpoints.stylex.tsx",
     "../theme/shadow.stylex.tsx",
   ],
+  dependencies: {
+    "lucide-react": "^0.545.0",
+  },
 };

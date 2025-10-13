@@ -1,5 +1,6 @@
 import {
   TextFieldProps as AriaTextFieldProps,
+  InputContext,
   ValidationResult,
 } from "react-aria-components";
 
@@ -16,6 +17,11 @@ import { Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { lineHeight, fontSize } from "../theme/typography.stylex";
 import { slate } from "../theme/colors.stylex";
+import { useRef } from "react";
+import { useState } from "react";
+import { IconButton } from "../icon-button";
+import { Eye, EyeOff } from "lucide-react";
+import { use } from "react";
 
 const styles = stylex.create({
   wrapper: {
@@ -23,10 +29,34 @@ const styles = stylex.create({
     flexDirection: "column",
     gap: spacing["1.5"],
   },
-  input: {
+  addon: {
+    color: gray.textDim,
+    flexShrink: 0,
+    height: "100%",
+    minWidth: spacing["8"],
+    paddingLeft: { ":first-child": spacing["0.5"] },
+    paddingRight: {
+      ":last-child": spacing["2"],
+      ":last-child:has(svg)": spacing["0.5"],
+    },
+
+    alignItems: "center",
+    display: "flex",
+    gap: spacing["0.5"],
+    justifyContent: "center",
+
+    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
+    ":is(*) svg": {
+      flexShrink: 0,
+      height: spacing["4"],
+      pointerEvents: "none",
+      width: spacing["4"],
+    },
+  },
+  inputWrapper: {
     borderRadius: radius["md"],
     boxSizing: "border-box",
-    outline: "none",
+    display: "flex",
 
     borderColor: {
       default: slate[7],
@@ -36,23 +66,35 @@ const styles = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
   },
+  input: {
+    backgroundColor: "transparent",
+    borderWidth: 0,
+    flexGrow: 1,
+    outline: "none",
+  },
   sm: {
-    fontSize: fontSize["xs"],
     height: spacing["6"],
+  },
+  smInput: {
+    fontSize: fontSize["xs"],
     lineHeight: lineHeight["xs"],
-    paddingLeft: spacing["1"],
+    paddingLeft: { ":first-child": spacing["1"] },
     paddingRight: spacing["1"],
   },
   md: {
-    fontSize: fontSize["sm"],
     height: spacing["8"],
+  },
+  mdInput: {
+    fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
-    paddingLeft: spacing["2"],
+    paddingLeft: { ":first-child": spacing["2"] },
     paddingRight: spacing["2"],
   },
   lg: {
-    fontSize: fontSize["base"],
     height: spacing["10"],
+  },
+  lgInput: {
+    fontSize: fontSize["base"],
     lineHeight: lineHeight["base"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
@@ -68,13 +110,40 @@ const styles = stylex.create({
   },
 });
 
+function PasswordToggle({
+  type,
+  setType,
+}: {
+  type: TextFieldProps["type"];
+  setType: (type: TextFieldProps["type"]) => void;
+}) {
+  const state = use(InputContext);
+
+  if (!state || !("value" in state) || !state.value) return null;
+
+  return (
+    <div {...stylex.props(styles.addon)}>
+      <IconButton
+        size="sm"
+        variant="tertiary"
+        label="Toggle password visibility"
+        onPress={() => setType(type === "password" ? "text" : "password")}
+      >
+        {type === "password" ? <EyeOff /> : <Eye />}
+      </IconButton>
+    </div>
+  );
+}
+
 export interface TextFieldProps
   extends Omit<AriaTextFieldProps, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  label?: string;
+  label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: "sm" | "md" | "lg";
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
 export function TextField({
@@ -83,14 +152,40 @@ export function TextField({
   errorMessage,
   style,
   size = "md",
+  prefix,
+  suffix,
   ...props
 }: TextFieldProps) {
+  const inputRef = useRef<HTMLInputElement>(null);
+  const [type, setType] = useState<TextFieldProps["type"]>(
+    props.type || "text"
+  );
+  const isPasswordInput = props.type === "password";
+
   return (
-    <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
+    <AriaTextField
+      {...props}
+      type={type}
+      {...stylex.props(styles.wrapper, style)}
+    >
       <Label size={size}>{label}</Label>
-      <Input
-        {...stylex.props(styles.input, gray.bgAction, gray.text, styles[size])}
-      />
+      <div
+        {...stylex.props(
+          styles.inputWrapper,
+          gray.bgUi,
+          gray.text,
+          styles[size]
+        )}
+        onClick={() => inputRef.current?.focus()}
+      >
+        {prefix && <div {...stylex.props(styles.addon)}>{prefix}</div>}
+        <Input
+          {...stylex.props(styles.input, styles[`${size}Input`])}
+          ref={inputRef}
+        />
+        {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
+        {isPasswordInput && <PasswordToggle type={type} setType={setType} />}
+      </div>
       {description && (
         <Text
           slot="description"

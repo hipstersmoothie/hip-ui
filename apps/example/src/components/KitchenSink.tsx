@@ -11,8 +11,10 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUp,
+  Check,
   Ellipsis,
   Plus,
+  Search,
 } from "lucide-react";
 import {
   Blockquote,
@@ -31,15 +33,24 @@ import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
 import { IconButton } from "./icon-button";
 import { Popover } from "./popover";
-import { Card, CardBody, CardHeader, CardTitle } from "./card";
+import { Card, CardBody, CardFooter, CardHeader, CardTitle } from "./card";
+import { Link } from "./link";
+import { typeramp } from "./theme/typography.stylex";
 
 const styles = stylex.create({
+  subCard: {
+    padding: spacing["4"],
+  },
   container: {
     padding: spacing["16"],
   },
   buttonLabel: {
     width: 80,
     textTransform: "capitalize",
+  },
+  signUpForm: {
+    width: 300,
+    padding: spacing["2"],
   },
 });
 
@@ -157,16 +168,46 @@ function FormElements() {
   return (
     <Flex direction="column" gap="4">
       {buttonSizes.map((size) => (
-        <Flex gap="6">
-          <TextField
-            key={`${size}-text-field`}
-            label="Text Field"
-            description="Input Description"
-            size={size}
-          />
-        </Flex>
+        <Card key={`${size}-text-field`} style={styles.subCard}>
+          <Flex gap="6">
+            <TextField
+              key={`${size}-text-field`}
+              label="Text Field"
+              description="Input Description"
+              size={size}
+            />
+          </Flex>
+        </Card>
       ))}
     </Flex>
+  );
+}
+
+function SignUpForm() {
+  return (
+    <Card style={styles.signUpForm}>
+      <CardHeader>
+        <CardTitle>Sign Up</CardTitle>
+      </CardHeader>
+      <CardBody>
+        <Flex direction="column" gap="4">
+          <TextField label="Email Address" type="email" />
+          <TextField
+            type="password"
+            label={
+              <Flex justify="between" align="center">
+                <span>Password</span>
+                <Link style={typeramp.sublabel}>Forgot Password?</Link>
+              </Flex>
+            }
+          />
+        </Flex>
+      </CardBody>
+      <CardFooter>
+        <Button variant="secondary">Create Account</Button>
+        <Button>Sign In</Button>
+      </CardFooter>
+    </Card>
   );
 }
 
@@ -187,6 +228,20 @@ function TitleCard({
   );
 }
 
+function TextFields() {
+  return (
+    <Flex direction="column" gap="4">
+      <TextField label="Text Field" />
+      <TextField label="Text Field with Icon" prefix={<Search />} />
+      <TextField
+        label="Text Field with Suffix"
+        suffix={<SmallBody variant="secondary">suffix</SmallBody>}
+      />
+      <TextField label="Text Field with Icon" suffix={<Check />} />
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
   return (
     <Flex
@@ -194,8 +249,15 @@ export function KitchenSink() {
       gap="10"
       style={[gray.bg, gray.text, styles.container]}
     >
+      <SignUpForm />
       <TitleCard title="Buttons">
         <Buttons />
+      </TitleCard>
+      <TitleCard title="Button Groups">
+        <ButtonGroups />
+      </TitleCard>
+      <TitleCard title="Text Fields">
+        <TextFields />
       </TitleCard>
       <TitleCard title="Button Groups">
         <ButtonGroups />

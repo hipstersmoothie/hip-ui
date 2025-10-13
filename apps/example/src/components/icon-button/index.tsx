@@ -1,6 +1,5 @@
 "use client";
 
-import { HTMLAttributes } from "react";
 import { ButtonProps as AriaButtonProps } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 
@@ -23,12 +22,7 @@ const styles = stylex.create({
   },
 });
 
-interface IconButtonProps
-  extends Omit<
-      HTMLAttributes<HTMLButtonElement>,
-      "onFocus" | "onBlur" | "onClick" | "className" | "style"
-    >,
-    Pick<AriaButtonProps, "onFocus" | "onBlur" | "onClick"> {
+interface IconButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: "primary" | "secondary" | "tertiary" | "outline";
   size?: "sm" | "md" | "lg";

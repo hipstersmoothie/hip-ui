@@ -127,7 +127,7 @@ const buttonStyle = stylex.create({
     borderTopWidth: { ":not(:first-child)": 0 },
   },
   secondaryGroupVertical: {
-    borderRightColor: { ":not(:last-child)": slate[7] },
+    borderBottomColor: { ":not(:last-child)": slate[7] },
   },
 });
 

@@ -11,14 +11,14 @@ const styles = stylex.create({
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
-    gap: spacing["4"],
+    gap: spacing["6"],
     width: "fit-content",
   },
   cardHeader: {
     paddingBottom: { ":last-child": spacing["4"] },
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
-    paddingTop: spacing["4"],
+    paddingTop: spacing["5"],
   },
   cardTitle: {
     fontSize: fontSize["lg"],
@@ -30,9 +30,13 @@ const styles = stylex.create({
     paddingRight: spacing["4"],
   },
   cardFooter: {
-    paddingBottom: spacing["4"],
+    paddingBottom: spacing["5"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
+
+    display: "flex",
+    gap: spacing["2"],
+    justifyContent: "flex-end",
   },
 });
 

@@ -19,6 +19,7 @@ import { buttonGroupConfig } from "../components/button-group/button-group-confi
 import { cardConfig } from "../components/card/card-config.js";
 import { textFieldConfig } from "../components/text-field/text-field-config.js";
 import { labelConfig } from "../components/label/label-config.js";
+import { linkConfig } from "../components/link/link-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -33,6 +34,7 @@ const COMPONENT_CONFIGS = [
   cardConfig,
   textFieldConfig,
   labelConfig,
+  linkConfig,
 ];
 
 function StringSetting({
