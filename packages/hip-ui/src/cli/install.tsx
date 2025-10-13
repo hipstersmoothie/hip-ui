@@ -20,6 +20,7 @@ import { cardConfig } from "../components/card/card-config.js";
 import { textFieldConfig } from "../components/text-field/text-field-config.js";
 import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
+import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -35,6 +36,7 @@ const COMPONENT_CONFIGS = [
   textFieldConfig,
   labelConfig,
   linkConfig,
+  checkboxConfig,
 ];
 
 function StringSetting({

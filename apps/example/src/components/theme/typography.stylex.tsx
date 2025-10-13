@@ -21,9 +21,9 @@ export const fontWeight = stylex.defineVars({
 });
 
 export const fontSize = stylex.defineVars({
-  xs: "0.65rem",
-  sm: "0.8rem",
-  base: "0.95rem",
+  xs: "0.75rem",
+  sm: "0.85rem",
+  base: "1rem",
   lg: "1.125rem",
   xl: "1.25rem",
   "2xl": "1.5rem",
@@ -38,8 +38,8 @@ export const fontSize = stylex.defineVars({
 
 export const lineHeight = stylex.defineVars({
   none: "1",
-  xs: "calc(1 / 0.65)",
-  sm: "calc(1.25 / 0.75)",
+  xs: "1",
+  sm: "1.25",
   base: "calc(1.5 / 1)",
   lg: "calc(1.75 / 1.125)",
   xl: "calc(1.75 / 1.25)",
@@ -152,5 +152,6 @@ export const typeramp = stylex.create({
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["medium"],
     lineHeight: { default: lineHeight["xs"] },
+    margin: 0,
   },
 });

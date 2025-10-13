@@ -8,6 +8,8 @@ import {
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { radius } from "../theme/radius.stylex";
+import { useMemo } from "react";
+import { LinkContext } from "../link";
 
 const styles = stylex.create({
   blockquote: {
@@ -48,6 +50,9 @@ const styles = stylex.create({
     borderRadius: radius["sm"],
     fontSize: "0.9em",
     padding: spacing["1"],
+  },
+  underline: {
+    textDecorationLine: "underline",
   },
 });
 
@@ -116,6 +121,38 @@ export const SmallBody = ({
       )}
       {...props}
     />
+  );
+};
+
+interface SubLabelProps
+  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  variant?: "default" | "secondary";
+}
+
+export const SubLabel = ({
+  style,
+  variant = "default",
+  ...props
+}: SubLabelProps) => {
+  const contextValue = useMemo(
+    () => ({
+      style: [variant === "secondary" && gray.textDim, styles.underline],
+    }),
+    [variant]
+  );
+
+  return (
+    <LinkContext.Provider value={contextValue}>
+      <p
+        {...stylex.props(
+          typeramp.sublabel,
+          variant === "secondary" && gray.textDim,
+          style
+        )}
+        {...props}
+      />
+    </LinkContext.Provider>
   );
 };
 

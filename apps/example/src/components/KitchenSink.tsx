@@ -28,6 +28,7 @@ import {
   ListItem,
   OrderedList,
   UnorderedList,
+  SubLabel,
 } from "./typography";
 import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
@@ -36,6 +37,7 @@ import { Popover } from "./popover";
 import { Card, CardBody, CardFooter, CardHeader, CardTitle } from "./card";
 import { Link } from "./link";
 import { typeramp } from "./theme/typography.stylex";
+import { Checkbox, CheckboxGroup } from "./checkbox";
 
 const styles = stylex.create({
   subCard: {
@@ -242,6 +244,36 @@ function TextFields() {
   );
 }
 
+function Checkboxes() {
+  return (
+    <Flex direction="column" gap="4">
+      <Checkbox>Accept terms and conditions</Checkbox>
+      <Checkbox>
+        <span>Accept terms and conditions</span>
+        <SubLabel variant="secondary">
+          By clicking this box, you agree to our <Link>Terms of Service</Link>{" "}
+          and <Link>Privacy Policy</Link>.
+        </SubLabel>
+      </Checkbox>
+    </Flex>
+  );
+}
+
+function CheckboxGroups() {
+  return (
+    <Flex direction="column" gap="4">
+      <CheckboxGroup
+        label="Checkbox Group"
+        description="Checkbox Group Description"
+      >
+        <Checkbox value="1">Checkbox 1</Checkbox>
+        <Checkbox value="2">Checkbox 2</Checkbox>
+        <Checkbox value="3">Checkbox 3</Checkbox>
+      </CheckboxGroup>
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
   return (
     <Flex
@@ -255,6 +287,12 @@ export function KitchenSink() {
       </TitleCard>
       <TitleCard title="Button Groups">
         <ButtonGroups />
+      </TitleCard>
+      <TitleCard title="Checkboxes">
+        <Checkboxes />
+      </TitleCard>
+      <TitleCard title="Checkbox Groups">
+        <CheckboxGroups />
       </TitleCard>
       <TitleCard title="Text Fields">
         <TextFields />

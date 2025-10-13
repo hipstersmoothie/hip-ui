@@ -13,7 +13,7 @@ import {
 import * as stylex from "@stylexjs/stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Label } from "../label";
+import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { lineHeight, fontSize } from "../theme/typography.stylex";
 import { slate } from "../theme/colors.stylex";
@@ -186,17 +186,7 @@ export function TextField({
         {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
         {isPasswordInput && <PasswordToggle type={type} setType={setType} />}
       </div>
-      {description && (
-        <Text
-          slot="description"
-          {...stylex.props(
-            styles.description,
-            size === "sm" && styles.descriptionSm
-          )}
-        >
-          {description}
-        </Text>
-      )}
+      {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>
     </AriaTextField>
   );
