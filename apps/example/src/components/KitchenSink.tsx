@@ -4,10 +4,11 @@ import * as stylex from "@stylexjs/stylex";
 import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { Tooltip } from "../components/tooltip";
-import { Clock, Plus } from "lucide-react";
+import { ArrowRight, Clock, Plus } from "lucide-react";
 import {
   Blockquote,
   Body,
+  SmallBody,
   InlineCode,
   Heading1,
   Heading2,
@@ -20,10 +21,16 @@ import {
 import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
 import { IconButton } from "./icon-button";
+import { Popover } from "./popover";
+import { Fragment } from "react/jsx-runtime";
 
 const styles = stylex.create({
   container: {
     padding: spacing["16"],
+  },
+  buttonLabel: {
+    width: 80,
+    textTransform: "capitalize",
   },
 });
 
@@ -55,87 +62,43 @@ function Typography() {
   );
 }
 
+const buttons = ["primary", "secondary", "tertiary", "outline"] as const;
+const buttonSizes = ["sm", "md", "lg"] as const;
+
 function Buttons() {
   return (
     <Flex direction="column" gap="4">
-      <Flex gap="2">
-        <Button size="sm">Primary</Button>
-        <IconButton size="sm" label="Primary">
-          <Clock />
-        </IconButton>
-        <Button size="sm">
-          <Plus />
-          Primary
-        </Button>
-        <Button variant="secondary" size="sm">
-          Secondary
-        </Button>
-        <IconButton size="sm" variant="secondary" label="Secondary">
-          <Clock />
-        </IconButton>
-        <Button variant="tertiary" size="sm">
-          Tertiary
-        </Button>
-        <IconButton size="sm" variant="tertiary" label="Tertiary">
-          <Clock />
-        </IconButton>
-        <Button variant="outline" size="sm">
-          Outline
-        </Button>
-        <IconButton size="sm" variant="outline" label="Outline">
-          <Clock />
-        </IconButton>
-      </Flex>
-      <Flex gap="2">
-        <Button>Primary</Button>
-        <IconButton label="Primary">
-          <Clock />
-        </IconButton>
-        <Button>
-          <Plus />
-          Primary
-        </Button>
-        <Button variant="secondary">Secondary</Button>
-        <IconButton variant="secondary" label="Secondary">
-          <Clock />
-        </IconButton>
-        <Button variant="tertiary">Tertiary</Button>
-        <IconButton variant="tertiary" label="Tertiary">
-          <Clock />
-        </IconButton>
-        <Button variant="outline">Outline</Button>
-        <IconButton variant="outline" label="Outline">
-          <Clock />
-        </IconButton>
-      </Flex>
-      <Flex gap="2">
-        <Button size="lg">Primary</Button>
-        <IconButton size="lg" label="Primary">
-          <Clock />
-        </IconButton>
-        <Button size="lg">
-          <Plus />
-          Primary
-        </Button>
-        <Button variant="secondary" size="lg">
-          Secondary
-        </Button>
-        <IconButton size="lg" variant="secondary" label="Secondary">
-          <Clock />
-        </IconButton>
-        <Button variant="tertiary" size="lg">
-          Tertiary
-        </Button>
-        <IconButton size="lg" variant="tertiary" label="Tertiary">
-          <Clock />
-        </IconButton>
-        <Button variant="outline" size="lg">
-          Outline
-        </Button>
-        <IconButton size="lg" variant="outline" label="Outline">
-          <Clock />
-        </IconButton>
-      </Flex>
+      {buttons.map((button) => (
+        <Flex align="center" gap="2">
+          <SmallBody style={[styles.buttonLabel, gray.textDim]}>
+            {button}
+          </SmallBody>
+
+          <Flex align="center" gap="8">
+            {buttonSizes.map((size) => (
+              <Flex align="center" gap="2" key={`${button}-${size}`}>
+                <IconButton variant={button} label="Add Another" size={size}>
+                  <Plus />
+                </IconButton>
+                <Button variant={button} size={size}>
+                  Button
+                </Button>
+                <Button variant={button} size={size}>
+                  <Plus />
+                  Add Another
+                </Button>
+                <Button variant={button} size={size}>
+                  Next
+                  <ArrowRight />
+                </Button>
+                <Button variant={button} isDisabled size={size}>
+                  Button
+                </Button>
+              </Flex>
+            ))}
+          </Flex>
+        </Flex>
+      ))}
     </Flex>
   );
 }
@@ -143,9 +106,19 @@ function Buttons() {
 function Tooltips() {
   return (
     <Flex direction="column" gap="4" align="start">
-      <Tooltip text="Tooltip" isOpen placement="bottom">
+      <Tooltip text="Tooltip">
         <Button>Hover me</Button>
       </Tooltip>
+    </Flex>
+  );
+}
+
+function Popovers() {
+  return (
+    <Flex direction="column" gap="4" align="start">
+      <Popover trigger={<Button>Hover me</Button>} placement="top">
+        <SmallBody>Content</SmallBody>
+      </Popover>
     </Flex>
   );
 }
@@ -158,16 +131,21 @@ export function KitchenSink() {
       style={[gray.bg, gray.text, styles.container]}
     >
       <Flex direction="column" gap="4">
+        <Heading1>Buttons</Heading1>
+        <Buttons />
+      </Flex>
+
+      <Flex direction="column" gap="4">
         <Heading1>Tooltips</Heading1>
         <Tooltips />
       </Flex>
       <Flex direction="column" gap="4">
-        <Heading1>Typography</Heading1>
-        <Typography />
+        <Heading1>Popovers</Heading1>
+        <Popovers />
       </Flex>
       <Flex direction="column" gap="4">
-        <Heading1>Buttons</Heading1>
-        <Buttons />
+        <Heading1>Typography</Heading1>
+        <Typography />
       </Flex>
     </Flex>
   );

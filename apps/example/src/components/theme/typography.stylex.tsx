@@ -129,6 +129,13 @@ export const typeramp = stylex.create({
     lineHeight: spacing["7"],
     margin: 0,
   },
+  smallBody: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontFamily: fontFamily["sans"],
+    fontSize: { default: fontSize["sm"] },
+    lineHeight: { default: lineHeight["sm"] },
+    margin: 0,
+  },
   label: {
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],

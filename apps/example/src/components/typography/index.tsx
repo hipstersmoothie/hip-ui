@@ -96,6 +96,15 @@ export const Body = ({ style, ...props }: BodyProps) => {
   return <p {...stylex.props(typeramp.body, style)} {...props} />;
 };
 
+export interface SmallBodyProps
+  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+}
+
+export const SmallBody = ({ style, ...props }: SmallBodyProps) => {
+  return <p {...stylex.props(typeramp.smallBody, style)} {...props} />;
+};
+
 export interface BlockquoteProps
   extends Omit<React.ComponentProps<"blockquote">, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];

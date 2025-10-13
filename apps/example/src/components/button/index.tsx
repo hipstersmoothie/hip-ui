@@ -17,6 +17,7 @@ import {
   lineHeight,
 } from "../theme/typography.stylex";
 import { shadow } from "../theme/shadow.stylex";
+import { slate } from "../theme/colors.stylex";
 
 const buttonStyle = stylex.create({
   shadow: {
@@ -26,7 +27,7 @@ const buttonStyle = stylex.create({
     alignItems: "center",
     borderRadius: radius["md"],
     borderStyle: "solid",
-    borderWidth: 0,
+    borderWidth: 1,
     boxSizing: "border-box",
     display: "inline-flex",
     flexShrink: 0,
@@ -93,14 +94,23 @@ const buttonStyle = stylex.create({
   outline: {
     borderWidth: 1,
   },
+  secondary: {
+    borderColor: {
+      default: slate[3],
+      ":hover": slate[4],
+      ":active": slate[5],
+    },
+  },
+  tertiary: {
+    borderColor: {
+      default: "transparent",
+      ":hover": slate[4],
+      ":active": slate[5],
+    },
+  },
 });
 
-interface ButtonProps
-  extends Omit<
-      HTMLAttributes<HTMLButtonElement>,
-      "onFocus" | "onBlur" | "onClick" | "className" | "style"
-    >,
-    Pick<AriaButtonProps, "onFocus" | "onBlur" | "onClick"> {
+interface ButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: "primary" | "secondary" | "tertiary" | "outline";
   size?: "sm" | "md" | "lg";
@@ -119,14 +129,22 @@ export const Button = ({
         buttonStyle.base,
         variant === "primary" && [
           primary.bgAction,
-          primary.border,
+          primary.borderInteractive,
           primary.text,
           buttonStyle.shadow,
         ],
-        variant === "secondary" && [gray.bgUi, gray.text],
-        variant === "tertiary" && [gray.bgGhost, gray.text],
+        variant === "secondary" && [
+          gray.bgUi,
+          buttonStyle.secondary,
+          gray.text,
+        ],
+        variant === "tertiary" && [
+          gray.bgGhost,
+          buttonStyle.tertiary,
+          gray.text,
+        ],
         variant === "outline" && [
-          gray.border,
+          gray.borderInteractive,
           gray.bgGhost,
           gray.text,
           buttonStyle.outline,

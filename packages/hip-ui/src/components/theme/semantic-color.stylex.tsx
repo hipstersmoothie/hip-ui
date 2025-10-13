@@ -45,6 +45,11 @@ export const gray = stylex.create({
     borderWidth: 1,
   },
   border: {
+    borderColor: slate[7],
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
+  borderInteractive: {
     borderColor: {
       default: slate[7],
       ":hover": slate[8],
@@ -110,6 +115,11 @@ export const primary = stylex.create({
     borderWidth: 1,
   },
   border: {
+    borderColor: plum[7],
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
+  borderInteractive: {
     borderColor: {
       default: plum[7],
       ":hover": plum[8],
