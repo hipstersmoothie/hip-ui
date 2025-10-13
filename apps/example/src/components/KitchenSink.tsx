@@ -13,6 +13,7 @@ import {
   ArrowUp,
   Check,
   Ellipsis,
+  Pin,
   Plus,
   Search,
 } from "lucide-react";
@@ -49,6 +50,7 @@ import { Radio, RadioGroup } from "./radio";
 import { Separator } from "./separator";
 import { TextArea } from "./text-area";
 import { Select, SelectItem } from "./select";
+import { ToggleButton } from "./toggle-button";
 
 const styles = stylex.create({
   subCard: {
@@ -424,6 +426,24 @@ export function KitchenSink() {
       </TitleCard>
       <TitleCard title="Button Groups">
         <ButtonGroups />
+      </TitleCard>
+      <TitleCard title="Toggle Buttons">
+        <Flex direction="column" gap="4">
+          {buttons.map((button) => (
+            <Flex gap="2">
+              {buttonSizes.map((size) => (
+                <ToggleButton
+                  key={`${button}-${size}`}
+                  variant={button}
+                  size={size}
+                  label={`${button} ${size}`}
+                >
+                  <Pin />
+                </ToggleButton>
+              ))}
+            </Flex>
+          ))}
+        </Flex>
       </TitleCard>
       <TitleCard title="Checkboxes">
         <Checkboxes />

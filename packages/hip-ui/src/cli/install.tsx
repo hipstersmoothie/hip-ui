@@ -25,6 +25,7 @@ import { radioConfig } from "../components/radio/radio-config.js";
 import { separatorConfig } from "../components/separator/separator-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
 import { selectConfig } from "../components/select/select-config.js";
+import { toggleButtonConfig } from "../components/toggle-button/toggle-button-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -45,6 +46,7 @@ const COMPONENT_CONFIGS = [
   separatorConfig,
   textAreaConfig,
   selectConfig,
+  toggleButtonConfig,
 ];
 
 function StringSetting({

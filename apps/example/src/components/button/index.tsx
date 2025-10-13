@@ -19,7 +19,7 @@ import { shadow } from "../theme/shadow.stylex";
 import { slate } from "../theme/colors.stylex";
 import { createContext, use } from "react";
 
-const buttonStyle = stylex.create({
+const styles = stylex.create({
   shadow: {
     boxShadow: shadow["xs"],
   },
@@ -153,39 +153,39 @@ export const Button = ({
   return (
     <AriaButton
       {...stylex.props(
-        buttonStyle.base,
-        group === "horizontal" && buttonStyle.groupHorizontal,
-        group === "vertical" && buttonStyle.groupVertical,
+        styles.base,
+        group === "horizontal" && styles.groupHorizontal,
+        group === "vertical" && styles.groupVertical,
         variant === "primary" && [
           primary.bgAction,
           primary.borderInteractive,
           primary.text,
-          buttonStyle.shadow,
+          styles.shadow,
         ],
         variant === "secondary" && [
           gray.bgUi,
-          buttonStyle.secondary,
+          styles.secondary,
           gray.text,
-          group === "horizontal" && buttonStyle.secondaryGroupHorizontal,
-          group === "vertical" && buttonStyle.secondaryGroupVertical,
+          group === "horizontal" && styles.secondaryGroupHorizontal,
+          group === "vertical" && styles.secondaryGroupVertical,
         ],
         variant === "tertiary" && [
           gray.bgGhost,
-          buttonStyle.tertiary,
+          styles.tertiary,
           gray.text,
-          group === "horizontal" && buttonStyle.secondaryGroupHorizontal,
-          group === "vertical" && buttonStyle.secondaryGroupVertical,
+          group === "horizontal" && styles.secondaryGroupHorizontal,
+          group === "vertical" && styles.secondaryGroupVertical,
         ],
         variant === "outline" && [
           gray.borderInteractive,
           gray.bgGhost,
           gray.text,
-          buttonStyle.outline,
-          buttonStyle.shadow,
+          styles.outline,
+          styles.shadow,
         ],
-        size === "sm" && buttonStyle.small,
-        size === "md" && buttonStyle.medium,
-        size === "lg" && buttonStyle.large,
+        size === "sm" && styles.small,
+        size === "md" && styles.medium,
+        size === "lg" && styles.large,
         style
       )}
       {...props}
