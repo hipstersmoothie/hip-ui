@@ -22,8 +22,8 @@ export const fontWeight = stylex.defineVars({
 
 export const fontSize = stylex.defineVars({
   xs: "0.65rem",
-  sm: "0.75rem",
-  base: "1rem",
+  sm: "0.8rem",
+  base: "0.95rem",
   lg: "1.125rem",
   xl: "1.25rem",
   "2xl": "1.5rem",
@@ -141,7 +141,7 @@ export const typeramp = stylex.create({
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["sm"] },
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontWeight: fontWeight["medium"],
+    fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: { default: lineHeight["sm"] },
   },

@@ -5,12 +5,12 @@ import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { Tooltip } from "../components/tooltip";
 import { ButtonGroup } from "../components/button-group";
+import { TextField } from "../components/text-field";
 import {
   ArrowDown,
   ArrowLeft,
   ArrowRight,
   ArrowUp,
-  Clock,
   Ellipsis,
   Plus,
 } from "lucide-react";
@@ -153,22 +153,19 @@ function ButtonGroups() {
   );
 }
 
-function Tooltips() {
+function FormElements() {
   return (
-    <Flex direction="column" gap="4" align="start">
-      <Tooltip text="Tooltip">
-        <Button>Hover me</Button>
-      </Tooltip>
-    </Flex>
-  );
-}
-
-function Popovers() {
-  return (
-    <Flex direction="column" gap="4" align="start">
-      <Popover trigger={<Button>Click me</Button>} placement="top">
-        <SmallBody>Content</SmallBody>
-      </Popover>
+    <Flex direction="column" gap="4">
+      {buttonSizes.map((size) => (
+        <Flex gap="6">
+          <TextField
+            key={`${size}-text-field`}
+            label="Text Field"
+            description="Input Description"
+            size={size}
+          />
+        </Flex>
+      ))}
     </Flex>
   );
 }
@@ -203,11 +200,18 @@ export function KitchenSink() {
       <TitleCard title="Button Groups">
         <ButtonGroups />
       </TitleCard>
+      <TitleCard title="Form Elements">
+        <FormElements />
+      </TitleCard>
       <TitleCard title="Tooltips">
-        <Tooltips />
+        <Tooltip text="Tooltip">
+          <Button>Hover me</Button>
+        </Tooltip>
       </TitleCard>
       <TitleCard title="Popovers">
-        <Popovers />
+        <Popover trigger={<Button>Click me</Button>} placement="top">
+          <SmallBody>Content</SmallBody>
+        </Popover>
       </TitleCard>
       <TitleCard title="Typography">
         <Typography />

@@ -99,10 +99,24 @@ export const Body = ({ style, ...props }: BodyProps) => {
 export interface SmallBodyProps
   extends Omit<React.ComponentProps<"p">, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  variant?: "default" | "secondary";
 }
 
-export const SmallBody = ({ style, ...props }: SmallBodyProps) => {
-  return <p {...stylex.props(typeramp.smallBody, style)} {...props} />;
+export const SmallBody = ({
+  style,
+  variant = "default",
+  ...props
+}: SmallBodyProps) => {
+  return (
+    <p
+      {...stylex.props(
+        typeramp.smallBody,
+        variant === "secondary" && gray.textDim,
+        style
+      )}
+      {...props}
+    />
+  );
 };
 
 export interface BlockquoteProps

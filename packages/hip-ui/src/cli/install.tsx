@@ -17,6 +17,8 @@ import { iconButtonConfig } from "../components/icon-button/icon-button-config.j
 import { popoverConfig } from "../components/popover/popover-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
 import { cardConfig } from "../components/card/card-config.js";
+import { textFieldConfig } from "../components/text-field/text-field-config.js";
+import { labelConfig } from "../components/label/label-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -29,6 +31,8 @@ const COMPONENT_CONFIGS = [
   popoverConfig,
   buttonGroupConfig,
   cardConfig,
+  textFieldConfig,
+  labelConfig,
 ];
 
 function StringSetting({
