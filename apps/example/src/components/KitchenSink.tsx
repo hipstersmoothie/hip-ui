@@ -4,7 +4,8 @@ import * as stylex from "@stylexjs/stylex";
 import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { Tooltip } from "../components/tooltip";
-import { ArrowRight, Clock, Plus } from "lucide-react";
+import { ButtonGroup } from "../components/button-group";
+import { ArrowLeft, ArrowRight, Clock, Ellipsis, Plus } from "lucide-react";
 import {
   Blockquote,
   Body,
@@ -22,7 +23,6 @@ import { gray } from "./theme/semantic-color.stylex";
 import { spacing } from "./theme/spacing.stylex";
 import { IconButton } from "./icon-button";
 import { Popover } from "./popover";
-import { Fragment } from "react/jsx-runtime";
 
 const styles = stylex.create({
   container: {
@@ -103,6 +103,34 @@ function Buttons() {
   );
 }
 
+function ButtonGroups() {
+  return (
+    <Flex direction="column" gap="4">
+      {buttons.map((button) => (
+        <Flex align="center" gap="2" key={button}>
+          <ButtonGroup>
+            <IconButton variant={button} label="Previous">
+              <ArrowLeft />
+            </IconButton>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant={button}>Button 1</Button>
+            <Button variant={button}>Button 2</Button>
+            <Button variant={button}>Button 3</Button>
+            <Button variant={button}>Button 4</Button>
+          </ButtonGroup>
+          <ButtonGroup>
+            <Button variant={button}>Action</Button>
+            <IconButton variant={button} label="More">
+              <Ellipsis />
+            </IconButton>
+          </ButtonGroup>
+        </Flex>
+      ))}
+    </Flex>
+  );
+}
+
 function Tooltips() {
   return (
     <Flex direction="column" gap="4" align="start">
@@ -134,7 +162,10 @@ export function KitchenSink() {
         <Heading1>Buttons</Heading1>
         <Buttons />
       </Flex>
-
+      <Flex direction="column" gap="4">
+        <Heading1>Button Groups</Heading1>
+        <ButtonGroups />
+      </Flex>
       <Flex direction="column" gap="4">
         <Heading1>Tooltips</Heading1>
         <Tooltips />

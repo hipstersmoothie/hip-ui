@@ -1,6 +1,5 @@
 "use client";
 
-import { HTMLAttributes } from "react";
 import {
   Button as AriaButton,
   ButtonProps as AriaButtonProps,
@@ -18,6 +17,7 @@ import {
 } from "../theme/typography.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { slate } from "../theme/colors.stylex";
+import { createContext, use } from "react";
 
 const buttonStyle = stylex.create({
   shadow: {
@@ -108,18 +108,26 @@ const buttonStyle = stylex.create({
       ":active": slate[5],
     },
   },
+
+  group: {
+    borderBottomLeftRadius: { ":not(:first-child)": 0 },
+    borderBottomRightRadius: { ":not(:last-child)": 0 },
+    borderLeftWidth: { ":not(:first-child)": 0 },
+    borderTopLeftRadius: { ":not(:first-child)": 0 },
+    borderTopRightRadius: { ":not(:last-child)": 0 },
+  },
+  secondaryGroup: {
+    borderRightColor: { ":not(:last-child)": slate[7] },
+  },
 });
 
-interface ButtonProps
-  extends Omit<
-      HTMLAttributes<HTMLButtonElement>,
-      "onFocus" | "onBlur" | "onClick" | "className" | "style"
-    >,
-    Pick<AriaButtonProps, "onFocus" | "onBlur" | "onClick"> {
+interface ButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: "primary" | "secondary" | "tertiary" | "outline";
   size?: "sm" | "md" | "lg";
 }
+
+export const ButtonGroupContext = createContext(false);
 
 export const Button = ({
   children,
@@ -128,10 +136,13 @@ export const Button = ({
   size = "md",
   ...props
 }: ButtonProps) => {
+  const isInButtonGroup = use(ButtonGroupContext);
+
   return (
     <AriaButton
       {...stylex.props(
         buttonStyle.base,
+        isInButtonGroup && buttonStyle.group,
         variant === "primary" && [
           primary.bgAction,
           primary.borderInteractive,
@@ -142,11 +153,13 @@ export const Button = ({
           gray.bgUi,
           buttonStyle.secondary,
           gray.text,
+          isInButtonGroup && buttonStyle.secondaryGroup,
         ],
         variant === "tertiary" && [
           gray.bgGhost,
           buttonStyle.tertiary,
           gray.text,
+          isInButtonGroup && buttonStyle.secondaryGroup,
         ],
         variant === "outline" && [
           gray.borderInteractive,
