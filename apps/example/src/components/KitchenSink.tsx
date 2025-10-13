@@ -267,8 +267,12 @@ function CheckboxGroups() {
         description="Checkbox Group Description"
       >
         <Checkbox value="1">Checkbox 1</Checkbox>
-        <Checkbox value="2">Checkbox 2</Checkbox>
-        <Checkbox value="3">Checkbox 3</Checkbox>
+        <Checkbox value="2" isDisabled>
+          Checkbox 2
+        </Checkbox>
+        <Checkbox value="3" isIndeterminate>
+          Checkbox 3
+        </Checkbox>
       </CheckboxGroup>
     </Flex>
   );

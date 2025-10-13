@@ -30,6 +30,7 @@ const styles = stylex.create({
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
+    opacity: { ":is([data-disabled])": 0.5 },
   },
   checkbox: {
     alignItems: "center",
@@ -91,14 +92,16 @@ export interface CheckboxProps
 export function Checkbox({ children, style, ...props }: CheckboxProps) {
   return (
     <AriaCheckbox {...props} {...stylex.props(styles.wrapper, style)}>
-      {({ isIndeterminate, isSelected }) => (
+      {({ isIndeterminate, isSelected, isDisabled }) => (
         <>
           <div
             {...stylex.props(
               styles.checkbox,
-              isSelected
-                ? [primary.bgSolid, primary.borderInteractive, styles.checked]
-                : [gray.borderInteractive]
+              isDisabled
+                ? [gray.bgSolid, gray.border, styles.checked]
+                : isSelected
+                  ? [primary.bgSolid, primary.borderInteractive, styles.checked]
+                  : [gray.borderInteractive]
             )}
           >
             {isIndeterminate ? (
