@@ -225,7 +225,7 @@ async function installHipDependencies(
       path.join(componentConfig.name, dependency), // kind of hacky but works
       content
     );
-    console.log(`✅ Created ${dependency}`);
+    console.log(`➕ Created ${dependency}`);
   }
 }
 
@@ -245,22 +245,48 @@ async function copyFiles(
   );
 
   await outputFile(config, outputPath, template);
-  console.log(`✅ Created ${componentConfig.filepath} at ${outputPath}`);
+  console.log(`➕ Created ${componentConfig.filepath} at ${outputPath}`);
 }
 
-export async function installComponent({ component }: { component: string }) {
-  const componentConfig = COMPONENT_CONFIGS.find(
-    (config) => config.name === component
-  );
+export async function installComponent({
+  component,
+  all,
+}: {
+  component: string[];
+  all: boolean;
+}) {
+  let componentConfigs: ComponentConfig[] = [];
 
-  if (!componentConfig) {
-    console.error(`❌ Component ${component} not found.`);
-    process.exit(1);
+  if (all) {
+    componentConfigs = COMPONENT_CONFIGS;
+  } else {
+    componentConfigs = component
+      .map((componentName) =>
+        COMPONENT_CONFIGS.find((config) => config.name === componentName)
+      )
+      .filter((config) => config !== undefined);
+  }
+
+  for (const componentName of component) {
+    const componentConfig = COMPONENT_CONFIGS.find(
+      (config) => config.name === componentName
+    );
+
+    if (!componentConfig) {
+      console.error(`❌ Component ${componentName} not found.`);
+      process.exit(1);
+    }
+
+    componentConfigs.push(componentConfig);
   }
 
   const config = await setup();
 
-  await installDependencies(config, componentConfig.dependencies);
-  await installHipDependencies(config, componentConfig);
-  await copyFiles(config, componentConfig);
+  for (const componentConfig of componentConfigs) {
+    console.log(`🔄 Installing ${componentConfig.name}`);
+    await installDependencies(config, componentConfig.dependencies);
+    await installHipDependencies(config, componentConfig);
+    await copyFiles(config, componentConfig);
+    console.log(`✅ Installed ${componentConfig.name}\n`);
+  }
 }

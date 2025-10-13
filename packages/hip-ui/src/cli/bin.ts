@@ -4,14 +4,19 @@ import { installComponent } from "./install.js";
 const install: Command = {
   name: "install",
   description: "Install a component",
-  examples: ["install button"],
-  require: ["component"],
+  examples: ["install button", "install --all"],
   options: [
     {
       name: "component",
       type: String,
       defaultOption: true,
+      multiple: true,
       description: "The component to install",
+    },
+    {
+      name: "all",
+      type: Boolean,
+      description: "Install all components",
     },
   ],
 };
@@ -25,7 +30,14 @@ const hip: MultiCommand = {
 const args = app(hip);
 
 if (args?._command === "install") {
+  const component = Array.isArray(args.component)
+    ? args.component
+    : args.component
+      ? [args.component]
+      : [];
+
   installComponent({
-    component: args.component,
+    component,
+    all: args.all,
   });
 }
