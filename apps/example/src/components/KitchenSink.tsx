@@ -53,7 +53,14 @@ import { TextArea } from "./text-area";
 import { Select, SelectItem } from "./select";
 import { ToggleButton } from "./toggle-button";
 import { ToggleButtonGroup } from "./toggle-button-group";
-import { Menu, MenuItem } from "./menu";
+import {
+  Menu,
+  MenuItem,
+  MenuSection,
+  MenuSectionHeader,
+  MenuSeparator,
+  SubMenu,
+} from "./menu";
 import {
   ListBoxSection,
   ListBoxSectionHeader,
@@ -479,25 +486,31 @@ function MenuExample() {
           </IconButton>
         }
       >
-        <ListBoxSection>
-          <ListBoxSectionHeader>Menu Section Header</ListBoxSectionHeader>
+        <MenuSection>
+          <MenuSectionHeader>Menu Section Header</MenuSectionHeader>
           <MenuItem>Menu Item 1</MenuItem>
           <MenuItem>Menu Item 2</MenuItem>
           <MenuItem>Menu Item 3</MenuItem>
-        </ListBoxSection>
-        <ListBoxSeparator />
-        <ListBoxSection>
-          <ListBoxSectionHeader>Menu Section 2</ListBoxSectionHeader>
+        </MenuSection>
+        <MenuSeparator />
+        <MenuSection>
+          <MenuSectionHeader>Menu Section 2</MenuSectionHeader>
           <MenuItem>Menu Item 4</MenuItem>
           <MenuItem>Menu Item 5</MenuItem>
-          <MenuItem>Menu Item 6</MenuItem>
-        </ListBoxSection>
+          <SubMenu trigger={<MenuItem>Menu Item 6</MenuItem>}>
+            <MenuItem>Menu Item 7</MenuItem>
+            <MenuItem>Menu Item 8</MenuItem>
+            <MenuItem>Menu Item 9</MenuItem>
+          </SubMenu>
+        </MenuSection>
       </Menu>
     </Flex>
   );
 }
 
 export function KitchenSink() {
+  return <MenuExample />;
+
   return (
     <Flex
       direction="column"

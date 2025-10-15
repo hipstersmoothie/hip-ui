@@ -3,6 +3,7 @@ import {
   Button,
   Popover,
   SelectValue,
+  PopoverProps,
 } from "react-aria-components";
 import { Select as AriaSelect } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
@@ -86,7 +87,14 @@ const styles = stylex.create({
 });
 
 export interface SelectProps<T extends object, M extends "single" | "multiple">
-  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className"> {
+  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className">,
+    Pick<
+      PopoverProps,
+      | "shouldCloseOnInteractOutside"
+      | "shouldFlip"
+      | "shouldUpdatePosition"
+      | "placement"
+    > {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: string;
   description?: string;
@@ -107,6 +115,10 @@ export function Select<
   items,
   style,
   size = "md",
+  shouldCloseOnInteractOutside,
+  shouldFlip,
+  shouldUpdatePosition,
+  placement,
   ...props
 }: SelectProps<T, M>) {
   return (
@@ -122,6 +134,11 @@ export function Select<
         {description && <Description size={size}>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
         <Popover
+          containerPadding={8}
+          shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
+          shouldFlip={shouldFlip}
+          shouldUpdatePosition={shouldUpdatePosition}
+          placement={placement}
           {...stylex.props(
             styles.popover,
             gray.bgSubtle,

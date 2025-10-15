@@ -3,10 +3,14 @@ import {
   Button,
   Popover,
   SelectValue,
+  PopoverProps,
 } from "react-aria-components";
 import { Select as AriaSelect } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-import type { ValidationResult } from "react-aria-components";
+import type {
+  ListBoxSectionProps,
+  ValidationResult,
+} from "react-aria-components";
 import { FieldError } from "react-aria-components";
 import { Description, Label } from "../label";
 import { ChevronDown } from "lucide-react";
@@ -16,7 +20,16 @@ import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
 import { Size } from "../types";
-import { ListBox, ListBoxItem, ListBoxItemProps } from "../listbox";
+import {
+  ListBox,
+  ListBoxItem,
+  ListBoxItemProps,
+  ListBoxSectionHeaderProps,
+  ListBoxSectionHeader,
+  ListBoxSeparatorProps,
+  ListBoxSeparator,
+  ListBoxSection,
+} from "../listbox";
 import { SizeContext } from "../context";
 
 const styles = stylex.create({
@@ -74,7 +87,14 @@ const styles = stylex.create({
 });
 
 export interface SelectProps<T extends object, M extends "single" | "multiple">
-  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className"> {
+  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className">,
+    Pick<
+      PopoverProps,
+      | "shouldCloseOnInteractOutside"
+      | "shouldFlip"
+      | "shouldUpdatePosition"
+      | "placement"
+    > {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: string;
   description?: string;
@@ -95,9 +115,12 @@ export function Select<
   items,
   style,
   size = "md",
+  shouldCloseOnInteractOutside,
+  shouldFlip,
+  shouldUpdatePosition,
+  placement,
   ...props
 }: SelectProps<T, M>) {
-  console.log("size", size);
   return (
     <SizeContext.Provider value={size}>
       <AriaSelect {...props} {...stylex.props(styles.wrapper, style)}>
@@ -111,6 +134,11 @@ export function Select<
         {description && <Description size={size}>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
         <Popover
+          containerPadding={8}
+          shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
+          shouldFlip={shouldFlip}
+          shouldUpdatePosition={shouldUpdatePosition}
+          placement={placement}
           {...stylex.props(
             styles.popover,
             gray.bgSubtle,
@@ -127,3 +155,9 @@ export function Select<
 
 export type SelectItemProps = ListBoxItemProps;
 export const SelectItem = ListBoxItem;
+export type SelectSectionProps<T extends object> = ListBoxSectionProps<T>;
+export const SelectSection = ListBoxSection;
+export type SelectSectionHeaderProps = ListBoxSectionHeaderProps;
+export const SelectSectionHeader = ListBoxSectionHeader;
+export type SelectSeparatorProps = ListBoxSeparatorProps;
+export const SelectSeparator = ListBoxSeparator;

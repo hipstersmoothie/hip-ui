@@ -2,8 +2,15 @@ import {
   MenuTriggerProps,
   MenuTrigger,
   Popover,
-  ListBoxSectionProps,
-  ListBoxSection,
+  SubmenuTriggerProps,
+  Menu as AriaMenu,
+  MenuProps as AriaMenuProps,
+  MenuSection as AriaMenuSection,
+  MenuSectionProps as AriaMenuSectionProps,
+  MenuItem as AriaMenuItem,
+  MenuItemProps as AriaMenuItemProps,
+  SubmenuTrigger,
+  PopoverProps,
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -11,30 +18,86 @@ import { gray } from "../theme/semantic-color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { Size } from "../types";
 import {
-  ListBox,
-  ListBoxItem,
-  ListBoxItemProps,
   ListBoxSectionHeaderProps,
   ListBoxSectionHeader,
   ListBoxSeparator,
   ListBoxSeparatorProps,
 } from "../listbox";
 import { SizeContext } from "../context";
+import { fontWeight, typeramp } from "../theme/typography.stylex";
+import { useContext } from "react";
+import { Check, ChevronRight } from "lucide-react";
+import { plum, slate } from "../theme/colors.stylex";
 
 const styles = stylex.create({
   popover: {
     borderRadius: radius["md"],
     minWidth: spacing["40"],
-    overflow: "auto",
     outline: "none",
-    width: "var(--trigger-width)",
-    paddingTop: spacing["1"],
+    overflow: "auto",
     paddingBottom: spacing["1"],
+    paddingTop: spacing["1"],
+    width: "var(--trigger-width)",
+  },
+  menu: {
+    outline: "none",
+  },
+  section: {},
+  item: {
+    display: "flex",
+    userSelect: "none",
+
+    boxSizing: "border-box",
+    fontWeight: fontWeight["medium"],
+    outline: {
+      default: "none",
+      ":focus": "none",
+    },
+    padding: spacing["1"],
+  },
+  sm: {
+    height: spacing["9"],
+  },
+  md: {
+    height: spacing["9"],
+  },
+  lg: {
+    height: spacing["11"],
+  },
+  itemInner: {
+    alignItems: "center",
+    backgroundColor: {
+      default: "transparent",
+      [":is(:hover > *)"]: slate[4],
+      [":is(:active > *)"]: slate[5],
+    },
+    borderRadius: radius["md"],
+    boxSizing: "border-box",
+    display: "flex",
+    flexGrow: 1,
+    gap: spacing["2"],
+    justifyContent: "space-between",
+    paddingLeft: spacing["2"],
+    paddingRight: spacing["2"],
+    transitionDuration: "100ms",
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  check: {
+    color: plum[9],
   },
 });
 
 export interface MenuProps<T extends object>
-  extends Omit<MenuTriggerProps, "trigger" | "children"> {
+  extends Omit<MenuTriggerProps, "trigger" | "children">,
+    Omit<AriaMenuProps<T>, "children" | "className" | "style">,
+    Pick<
+      PopoverProps,
+      | "shouldCloseOnInteractOutside"
+      | "shouldFlip"
+      | "shouldUpdatePosition"
+      | "placement"
+    > {
   trigger: React.ReactNode;
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
@@ -43,16 +106,30 @@ export interface MenuProps<T extends object>
 
 export function Menu<T extends object>({
   trigger,
-  children,
-  items,
   size = "md",
+  defaultOpen,
+  isOpen,
+  onOpenChange,
+  shouldCloseOnInteractOutside,
+  shouldFlip,
+  shouldUpdatePosition,
+  placement,
   ...props
 }: MenuProps<T>) {
   return (
     <SizeContext.Provider value={size}>
-      <MenuTrigger {...props}>
+      <MenuTrigger
+        defaultOpen={defaultOpen}
+        isOpen={isOpen}
+        onOpenChange={onOpenChange}
+      >
         {trigger}
         <Popover
+          containerPadding={8}
+          shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
+          shouldFlip={shouldFlip}
+          shouldUpdatePosition={shouldUpdatePosition}
+          placement={placement}
           {...stylex.props(
             styles.popover,
             gray.bgSubtle,
@@ -60,17 +137,96 @@ export function Menu<T extends object>({
             gray.border
           )}
         >
-          <ListBox items={items}>{children}</ListBox>
+          <AriaMenu {...props} {...stylex.props(styles.menu)} />
         </Popover>
       </MenuTrigger>
     </SizeContext.Provider>
   );
 }
 
-export type MenuItemProps = ListBoxItemProps;
-export const MenuItem = ListBoxItem;
-export type MenuSectionProps<T extends object> = ListBoxSectionProps<T>;
-export const MenuSection = ListBoxSection;
+export interface SubMenuProps<T extends object>
+  extends Omit<SubmenuTriggerProps, "trigger" | "children">,
+    Omit<AriaMenuProps<T>, "children" | "className" | "style">,
+    Pick<
+      PopoverProps,
+      | "shouldCloseOnInteractOutside"
+      | "shouldFlip"
+      | "shouldUpdatePosition"
+      | "placement"
+    > {
+  trigger: React.ReactElement<MenuTriggerProps>;
+  children: React.ReactNode | ((item: T) => React.ReactNode);
+  items?: Iterable<T>;
+  size?: Size;
+}
+
+export function SubMenu<T extends object>({
+  trigger,
+  delay,
+  shouldCloseOnInteractOutside,
+  shouldFlip,
+  shouldUpdatePosition,
+  placement,
+  ...props
+}: SubMenuProps<T>) {
+  return (
+    <SubmenuTrigger delay={delay}>
+      {trigger}
+      <Popover
+        shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
+        shouldFlip={shouldFlip}
+        shouldUpdatePosition={shouldUpdatePosition}
+        placement={placement}
+        containerPadding={8}
+        offset={-8}
+        {...stylex.props(styles.popover, gray.bgSubtle, gray.text, gray.border)}
+      >
+        <AriaMenu {...props} />
+      </Popover>
+    </SubmenuTrigger>
+  );
+}
+
+export interface MenuSectionProps<T extends object>
+  extends Omit<AriaMenuSectionProps<T>, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  children: React.ReactNode;
+}
+
+export function MenuSection<T extends object>({
+  style,
+  ...props
+}: MenuSectionProps<T>) {
+  return (
+    <AriaMenuSection {...props} {...stylex.props(styles.section, style)} />
+  );
+}
+
+export interface MenuItemProps
+  extends Omit<AriaMenuItemProps, "style" | "className" | "children"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  children: React.ReactNode;
+}
+
+export function MenuItem({ style, children, ...props }: MenuItemProps) {
+  const size = useContext(SizeContext);
+
+  return (
+    <AriaMenuItem
+      {...props}
+      {...stylex.props(typeramp.label, styles.item, styles[size], style)}
+    >
+      {({ isSelected, hasSubmenu }) => (
+        <div {...stylex.props(styles.itemInner)}>
+          {children}
+          {isSelected && <Check size={16} {...stylex.props(styles.check)} />}
+          {hasSubmenu && <ChevronRight size={16} />}
+        </div>
+      )}
+    </AriaMenuItem>
+  );
+}
+
 export type MenuSectionHeaderProps = ListBoxSectionHeaderProps;
 export const MenuSectionHeader = ListBoxSectionHeader;
 export type MenuSeparatorProps = ListBoxSeparatorProps;

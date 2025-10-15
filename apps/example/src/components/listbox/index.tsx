@@ -123,7 +123,6 @@ export interface ListBoxItemProps
 export function ListBoxItem({ style, children, ...props }: ListBoxItemProps) {
   const size = useContext(SizeContext);
 
-  console.log("size", { size });
   return (
     <AriaListBoxItem
       {...props}
@@ -160,7 +159,7 @@ export interface ListBoxSeparatorProps
 }
 
 export function ListBoxSeparator({ style, ...props }: ListBoxSeparatorProps) {
-  return <Separator {...props} style={styles.separator} />;
+  return <Separator {...props} style={[styles.separator, style]} />;
 }
 
 export interface ListBoxSectionHeaderProps
