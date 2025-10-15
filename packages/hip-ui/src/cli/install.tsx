@@ -29,6 +29,7 @@ import { toggleButtonConfig } from "../components/toggle-button/toggle-button-co
 import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggle-button-group-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
+import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -53,6 +54,7 @@ const COMPONENT_CONFIGS = [
   toggleButtonGroupConfig,
   menuConfig,
   listboxConfig,
+  contextMenuConfig,
 ];
 
 function StringSetting({

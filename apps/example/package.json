@@ -9,14 +9,17 @@
     "start": "waku start"
   },
   "dependencies": {
+    "@react-types/overlays": "^3.9.2",
     "@repo/typescript-config": "workspace:*",
     "@stylexjs/stylex": "^0.16.1",
     "hip-ui": "workspace:*",
     "lucide-react": "^0.545.0",
     "react": "catalog:",
+    "react-aria": "^3.44.0",
     "react-aria-components": "^1.13.0",
     "react-dom": "catalog:",
     "react-server-dom-webpack": "19.1.1",
+    "react-stately": "^3.42.0",
     "unplugin-stylex": "^0.5.5",
     "waku": "0.26.1"
   },

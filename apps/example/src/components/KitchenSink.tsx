@@ -61,11 +61,9 @@ import {
   MenuSeparator,
   SubMenu,
 } from "./menu";
-import {
-  ListBoxSection,
-  ListBoxSectionHeader,
-  ListBoxSeparator,
-} from "./listbox";
+import { ContextMenu } from "./context-menu";
+import { slate } from "./theme/colors.stylex";
+import { radius } from "./theme/radius.stylex";
 
 const styles = stylex.create({
   subCard: {
@@ -84,6 +82,16 @@ const styles = stylex.create({
   },
   grow: {
     flexGrow: 1,
+  },
+  contextMenuArea: {
+    width: "100px",
+    height: "100px",
+    backgroundColor: slate[3],
+    padding: spacing["4"],
+    borderRadius: radius["md"],
+    borderWidth: 1,
+    borderStyle: "solid",
+    borderColor: slate[7],
   },
 });
 
@@ -504,6 +512,27 @@ function MenuExample() {
           </SubMenu>
         </MenuSection>
       </Menu>
+
+      <ContextMenu
+        trigger={
+          <Flex
+            style={styles.contextMenuArea}
+            align="center"
+            justify="center"
+            {...stylex.props(
+              typeramp.label,
+              styles.contextMenuArea,
+              gray.borderInteractive
+            )}
+          >
+            Right Click me
+          </Flex>
+        }
+      >
+        <MenuItem>Menu Item 1</MenuItem>
+        <MenuItem>Menu Item 2</MenuItem>
+        <MenuItem>Menu Item 3</MenuItem>
+      </ContextMenu>
     </Flex>
   );
 }
