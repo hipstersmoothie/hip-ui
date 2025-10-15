@@ -16,6 +16,7 @@ import {
   Pin,
   Plus,
   Search,
+  Star,
 } from "lucide-react";
 import {
   Blockquote,
@@ -51,6 +52,13 @@ import { Separator } from "./separator";
 import { TextArea } from "./text-area";
 import { Select, SelectItem } from "./select";
 import { ToggleButton } from "./toggle-button";
+import { ToggleButtonGroup } from "./toggle-button-group";
+import { Menu, MenuItem } from "./menu";
+import {
+  ListBoxSection,
+  ListBoxSectionHeader,
+  ListBoxSeparator,
+} from "./listbox";
 
 const styles = stylex.create({
   subCard: {
@@ -152,10 +160,18 @@ function ButtonGroups() {
             </IconButton>
           </ButtonGroup>
           <ButtonGroup>
+            <ToggleButton variant={button}>
+              <Star />
+            </ToggleButton>
             <Button variant={button}>Button 1</Button>
             <Button variant={button}>Button 2</Button>
             <Button variant={button}>Button 3</Button>
             <Button variant={button}>Button 4</Button>
+            <ToggleButtonGroup>
+              <ToggleButton variant={button}>Toggle Button 1</ToggleButton>
+              <ToggleButton variant={button}>Toggle Button 2</ToggleButton>
+              <ToggleButton variant={button}>Toggle Button 3</ToggleButton>
+            </ToggleButtonGroup>
           </ButtonGroup>
           <ButtonGroup>
             <Button variant={button}>Action</Button>
@@ -412,6 +428,75 @@ function PaymentMethod() {
   );
 }
 
+function ToggleButtonGroups() {
+  return (
+    <Flex direction="column" gap="4">
+      {buttons.map((button) => (
+        <Flex key={button} gap="8">
+          {buttonSizes.map((size) => (
+            <ToggleButtonGroup key={`${button}-${size}`} selectionMode="single">
+              <ToggleButton
+                variant={button}
+                size={size}
+                id={`${button}-${size}-1`}
+              >
+                Toggle Button 1
+              </ToggleButton>
+              <ToggleButton
+                variant={button}
+                size={size}
+                id={`${button}-${size}-2`}
+              >
+                Toggle Button 2
+              </ToggleButton>
+              <ToggleButton
+                variant={button}
+                size={size}
+                id={`${button}-${size}-3`}
+              >
+                Toggle Button 3
+              </ToggleButton>
+            </ToggleButtonGroup>
+          ))}
+        </Flex>
+      ))}
+    </Flex>
+  );
+}
+
+function MenuExample() {
+  return (
+    <Flex gap="2">
+      <Menu trigger={<Button>Click me</Button>}>
+        <MenuItem>Menu Item 1</MenuItem>
+        <MenuItem>Menu Item 2</MenuItem>
+        <MenuItem>Menu Item 3</MenuItem>
+      </Menu>
+      <Menu
+        trigger={
+          <IconButton label="More">
+            <Ellipsis />
+          </IconButton>
+        }
+      >
+        <ListBoxSection>
+          <ListBoxSectionHeader>Menu Section Header</ListBoxSectionHeader>
+          <MenuItem>Menu Item 1</MenuItem>
+          <MenuItem>Menu Item 2</MenuItem>
+          <MenuItem>Menu Item 3</MenuItem>
+        </ListBoxSection>
+        <ListBoxSeparator />
+        <ListBoxSection>
+          <ListBoxSectionHeader>Menu Section 2</ListBoxSectionHeader>
+          <MenuItem>Menu Item 4</MenuItem>
+          <MenuItem>Menu Item 5</MenuItem>
+          <MenuItem>Menu Item 6</MenuItem>
+        </ListBoxSection>
+      </Menu>
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
   return (
     <Flex
@@ -430,20 +515,27 @@ export function KitchenSink() {
       <TitleCard title="Toggle Buttons">
         <Flex direction="column" gap="4">
           {buttons.map((button) => (
-            <Flex gap="2">
+            <Flex gap="8">
               {buttonSizes.map((size) => (
-                <ToggleButton
-                  key={`${button}-${size}`}
-                  variant={button}
-                  size={size}
-                  label={`${button} ${size}`}
-                >
-                  <Pin />
-                </ToggleButton>
+                <Flex key={`${button}-${size}`} gap="2">
+                  <ToggleButton variant={button} size={size}>
+                    <Pin />
+                  </ToggleButton>
+                  <ToggleButton variant={button} size={size}>
+                    Pin
+                  </ToggleButton>
+                  <ToggleButton variant={button} size={size}>
+                    <Pin />
+                    Pin
+                  </ToggleButton>
+                </Flex>
               ))}
             </Flex>
           ))}
         </Flex>
+      </TitleCard>
+      <TitleCard title="Toggle Button Groups">
+        <ToggleButtonGroups />
       </TitleCard>
       <TitleCard title="Checkboxes">
         <Checkboxes />
@@ -459,6 +551,9 @@ export function KitchenSink() {
       </TitleCard>
       <TitleCard title="Button Groups">
         <ButtonGroups />
+      </TitleCard>
+      <TitleCard title="Menus">
+        <MenuExample />
       </TitleCard>
       <TitleCard title="Form Elements">
         <FormElements />

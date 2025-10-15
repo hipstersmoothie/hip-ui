@@ -1,7 +1,7 @@
 import { ComponentConfig } from "../../types";
 
-export const buttonConfig: ComponentConfig = {
-  name: "button",
+export const toggleButtonGroupConfig: ComponentConfig = {
+  name: "toggle-button-group",
   filepath: "./index.tsx",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
@@ -11,9 +11,8 @@ export const buttonConfig: ComponentConfig = {
     "../theme/typography.stylex.tsx",
     "../theme/breakpoints.stylex.tsx",
     "../theme/shadow.stylex.tsx",
-    "./useButtonStyles.ts",
-    "./context.ts",
-    "../types.ts",
+    // TODO:
+    // "button"
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",

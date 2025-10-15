@@ -2,146 +2,131 @@ import { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-component
 import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 
-import { fontFamily, fontWeight } from "../theme/typography.stylex";
-import { gray, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
 import { plum, slate } from "../theme/colors.stylex";
+import { Children } from "react";
+import { useButtonStyles } from "../button/useButtonStyles";
+import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({
-  base: {
-    alignItems: "center",
-    borderRadius: radius["md"],
-    borderStyle: "solid",
-    borderWidth: 1,
-    boxSizing: "border-box",
-    display: "inline-flex",
-    flexShrink: 0,
-    fontFamily: fontFamily["sans"],
-    fontWeight: fontWeight["medium"],
-    gap: spacing["1"],
-    justifyContent: "center",
-    opacity: {
-      ":disabled": 0.5,
-    },
-    pointerEvents: {
-      ":disabled": "none",
-    },
-    transitionDuration: "100ms",
-    transitionProperty: "all",
-    transitionTimingFunction: "ease-in-out",
-
-    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
-    ":is(*) svg": {
-      flexShrink: 0,
-      height: spacing["4"],
-      pointerEvents: "none",
-      width: spacing["4"],
-    },
-  },
-  primary: {
+  primarySelected: {
     backgroundColor: {
-      default: plum[4],
-      ":hover": plum[5],
-      ":active": plum[6],
-      ":is([data-selected=true])": plum[9],
+      default: plum[9],
+      ":hover": plum[10],
+      ":active": plum[11],
     },
-    color: {
-      default: plum[12],
-      ":is([data-selected=true])": "light-dark(white, black)",
-    },
-    transitionDuration: "100ms",
-    transitionProperty: "background-color, border-color",
-    transitionTimingFunction: "ease-in-out",
+    color: "light-dark(white, black)",
   },
-  secondary: {
+  secondarySelected: {
     backgroundColor: {
-      default: slate[3],
-      ":hover": slate[4],
-      ":active": slate[5],
-      ":is([data-selected=true])": slate[6],
+      default: slate[6],
+      ":hover": slate[7],
+      ":active": slate[8],
     },
     borderColor: {
-      default: slate[3],
-      ":hover": slate[4],
-      ":active": slate[5],
-      ":is([data-selected=true])": slate[6],
+      default: slate[6],
+      ":hover": slate[7],
+      ":active": slate[8],
     },
-    transitionDuration: "100ms",
-    transitionProperty: "background-color, border-color",
-    transitionTimingFunction: "ease-in-out",
   },
-  tertiary: {
+  tertiarySelected: {
     backgroundColor: {
-      default: "transparent",
-      ":hover": slate[4],
-      ":active": slate[5],
-      ":is([data-selected=true])": slate[6],
+      default: slate[6],
+      ":hover": slate[7],
+      ":active": slate[8],
     },
     borderColor: {
-      default: "transparent",
-      ":hover": slate[4],
-      ":active": slate[5],
-      ":is([data-selected=true])": slate[6],
+      default: slate[6],
+      ":hover": slate[7],
+      ":active": slate[8],
     },
-    transitionDuration: "100ms",
-    transitionProperty: "background-color, border-color",
-    transitionTimingFunction: "ease-in-out",
   },
-  outline: {
+  outlineSelected: {
     backgroundColor: {
-      default: "transparent",
-      ":hover": slate[4],
-      ":active": slate[5],
-      ":is([data-selected=true])": slate[6],
+      default: slate[6],
+      ":hover": slate[7],
+      ":active": slate[8],
     },
-    transitionDuration: "100ms",
-    transitionProperty: "background-color, border-color",
-    transitionTimingFunction: "ease-in-out",
+    borderColor: {
+      default: slate[6],
+      ":hover": slate[7],
+      ":active": slate[8],
+    },
   },
   sm: {
-    height: spacing["7"],
-    width: spacing["7"],
+    paddingLeft: {
+      ":has(> * + *, > *:not(svg):only-child)": spacing["2"],
+    },
+    paddingRight: {
+      ":has(> * + *, > *:not(svg):only-child)": spacing["2"],
+    },
+    width: {
+      ":has(svg:only-child)": spacing["7"],
+    },
   },
   md: {
-    height: spacing["8"],
-    width: spacing["8"],
+    paddingLeft: {
+      ":has(> * + *, > *:not(svg):only-child)": spacing["3"],
+    },
+    paddingRight: {
+      ":has(> * + *, > *:not(svg):only-child)": spacing["3"],
+    },
+    width: {
+      ":has(svg:only-child)": spacing["8"],
+    },
   },
   lg: {
-    height: spacing["10"],
-    width: spacing["10"],
+    paddingLeft: {
+      ":has(> * + *, > *:not(svg):only-child)": spacing["4"],
+    },
+    paddingRight: {
+      ":has(> * + *, > *:not(svg):only-child)": spacing["4"],
+    },
+    width: {
+      ":has(svg:only-child)": spacing["10"],
+    },
   },
 });
 
 export interface ToggleButtonProps
-  extends Omit<AriaToggleButtonProps, "style" | "className"> {
+  extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  variant?: "primary" | "secondary" | "tertiary" | "outline";
-  size?: "sm" | "md" | "lg";
+  variant?: ButtonVariant;
+  size?: Size;
+  children?: React.ReactNode;
 }
 
 export function ToggleButton({
   style,
   variant = "primary",
   size = "md",
+  children,
   ...props
 }: ToggleButtonProps) {
+  const buttonStyles = useButtonStyles({ variant, size });
+  const toggleButtonStyles = (isSelected?: boolean) =>
+    stylex.props(
+      buttonStyles,
+      styles[size],
+      isSelected ? styles[`${variant}Selected`] : undefined,
+      style
+    );
+
   return (
     <AriaToggleButton
       {...props}
-      {...stylex.props(
-        styles.base,
-        variant === "primary" && [styles.primary, primary.borderInteractive],
-        variant === "secondary" && [styles.secondary, gray.text],
-        variant === "tertiary" && [styles.tertiary, gray.text],
-        variant === "outline" && [
-          gray.borderInteractive,
-          gray.text,
-          styles.outline,
-        ],
-        styles[size],
-        style
+      {...toggleButtonStyles()}
+      className={({ isSelected }) =>
+        toggleButtonStyles(isSelected).className || ""
+      }
+    >
+      {Children.map(children, (child, index) =>
+        typeof child === "string" ? (
+          <span key={`${child}-${index}`}>{child}</span>
+        ) : (
+          child
+        )
       )}
-    />
+    </AriaToggleButton>
   );
 }

@@ -26,6 +26,9 @@ import { separatorConfig } from "../components/separator/separator-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
 import { selectConfig } from "../components/select/select-config.js";
 import { toggleButtonConfig } from "../components/toggle-button/toggle-button-config.js";
+import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggle-button-group-config.js";
+import { listboxConfig } from "../components/listbox/listbox-config.js";
+import { menuConfig } from "../components/menu/menu-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -47,6 +50,9 @@ const COMPONENT_CONFIGS = [
   textAreaConfig,
   selectConfig,
   toggleButtonConfig,
+  toggleButtonGroupConfig,
+  menuConfig,
+  listboxConfig,
 ];
 
 function StringSetting({

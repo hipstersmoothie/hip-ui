@@ -2,15 +2,14 @@
 
 import { Group, GroupProps } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-
-import { ButtonGroupContext } from "../button";
+import { ButtonGroupContext } from "../button/context";
 
 const styles = stylex.create({
   group: {
-    alignItems: "center",
     display: "flex",
   },
   horizontal: {
+    alignItems: "center",
     flexDirection: "row",
   },
   vertical: {

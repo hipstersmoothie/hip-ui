@@ -8,6 +8,7 @@ import * as stylex from "@stylexjs/stylex";
 
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 import { gray } from "../theme/semantic-color.stylex";
+import { Size } from "../types";
 
 const styles = stylex.create({
   label: {
@@ -39,7 +40,7 @@ const styles = stylex.create({
 export interface LabelProps
   extends Omit<AriaLabelProps, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  size?: "sm" | "md" | "lg";
+  size?: Size;
 }
 
 export function Label({ style, size = "md", ...props }: LabelProps) {
@@ -54,7 +55,7 @@ export function Label({ style, size = "md", ...props }: LabelProps) {
 export interface DescriptionProps
   extends Omit<TextProps, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  size?: "sm" | "md" | "lg";
+  size?: Size;
 }
 
 export function Description({

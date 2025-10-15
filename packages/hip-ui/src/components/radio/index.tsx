@@ -17,6 +17,7 @@ import { gray, primary } from "../theme/semantic-color.stylex";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
+import { Size } from "../types";
 
 const scaleIn = stylex.keyframes({
   "0%": {
@@ -89,7 +90,7 @@ interface RadioGroupProps
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
-  size?: "sm" | "md" | "lg";
+  size?: Size;
 }
 
 export function RadioGroup({

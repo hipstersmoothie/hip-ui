@@ -15,6 +15,7 @@ import { radius } from "../theme/radius.stylex";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
 import { slate } from "../theme/colors.stylex";
 import { useRef } from "react";
+import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -116,7 +117,7 @@ export interface TextAreaProps
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
-  size?: "sm" | "md" | "lg";
+  size?: Size;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }

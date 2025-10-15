@@ -22,6 +22,7 @@ import { useState } from "react";
 import { IconButton } from "../icon-button";
 import { Eye, EyeOff } from "lucide-react";
 import { use } from "react";
+import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -143,7 +144,7 @@ export interface TextFieldProps
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
-  size?: "sm" | "md" | "lg";
+  size?: Size;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }

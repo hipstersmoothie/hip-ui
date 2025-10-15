@@ -6,6 +6,7 @@ import * as stylex from "@stylexjs/stylex";
 import { Tooltip } from "../tooltip";
 import { Button } from "../button";
 import { spacing } from "../theme/spacing.stylex";
+import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({
   sm: {
@@ -24,8 +25,8 @@ const styles = stylex.create({
 
 interface IconButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  variant?: "primary" | "secondary" | "tertiary" | "outline";
-  size?: "sm" | "md" | "lg";
+  variant?: ButtonVariant;
+  size?: Size;
   label: string;
 }
 
