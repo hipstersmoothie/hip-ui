@@ -30,16 +30,14 @@
 - [ ] Alert Dialog
 - [ ] Breadcrumb
 - [ ] Calendar
-- [ ] Combobox
 - [ ] Color Area
-- [ ] Color Field
 - [ ] Color Picker
 - [ ] Color Swatch
 - [ ] Color Swatch Picker
 - [ ] Color Wheel
+- [ ] Combobox
 - [ ] Command
 - [ ] Data Table
-- [ ] Date Field
 - [ ] Date Picker
 - [ ] Dialog
 - [ ] Disclosure
@@ -55,11 +53,9 @@
 - [ ] Meter
 - [ ] Menubar
 - [ ] Navigation Menu
-- [ ] Number Field
 - [ ] Progress
 - [ ] Range Date Picker
 - [ ] Segmented Control
-- [ ] Search Field
 - [ ] Sheet
 - [ ] Slider
 - [ ] Spinner
@@ -67,9 +63,13 @@
 - [ ] Table
 - [ ] Tabs
 - [ ] Tag Group
-- [ ] Timefield
 - [ ] Toolbar
 - [ ] Toast
+- [x] Number Field
+- [x] Color Field
+- [x] Search Field
+- [x] Date Field
+- [x] Timefield
 - [x] Button
 - [x] Button Group
 - [x] Card

@@ -12,6 +12,7 @@ import {
   ArrowRight,
   ArrowUp,
   Check,
+  CpuIcon,
   Ellipsis,
   Pin,
   Plus,
@@ -64,6 +65,11 @@ import {
 import { ContextMenu } from "./context-menu";
 import { slate } from "./theme/colors.stylex";
 import { radius } from "./theme/radius.stylex";
+import { TimeField } from "./time-field";
+import { DateField } from "./date-field";
+import { SearchField } from "./search-field";
+import { ColorField } from "./color-field";
+import { NumberField } from "./number-field";
 
 const styles = stylex.create({
   subCard: {
@@ -315,12 +321,22 @@ function TextFields() {
   return (
     <Flex direction="column" gap="4">
       <TextField label="Text Field" />
-      <TextField label="Text Field with Icon" prefix={<Search />} />
+      <TextField label="Text Field with Icon" prefix={<CpuIcon />} />
       <TextField
         label="Text Field with Suffix"
         suffix={<SmallBody variant="secondary">suffix</SmallBody>}
       />
       <TextField label="Text Field with Icon" suffix={<Check />} />
+      <SearchField label="Search Field" />
+      <ColorField label="Color Field" />
+      <NumberField
+        label="Number Field"
+        minValue={0}
+        prefix={<CpuIcon />}
+        defaultValue={1}
+      />
+      <TimeField label="Time Field" size="lg" />
+      <DateField label="Date Field" size="lg" />
     </Flex>
   );
 }

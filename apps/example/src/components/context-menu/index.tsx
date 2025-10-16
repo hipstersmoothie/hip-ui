@@ -22,7 +22,6 @@ import {
   useState,
 } from "react";
 import { Size } from "../types";
-import { gray } from "../theme/semantic-color.stylex";
 import { SizeContext } from "../context";
 import { useMenuTriggerState } from "react-stately";
 import { AriaButtonProps, useMenuTrigger } from "react-aria";

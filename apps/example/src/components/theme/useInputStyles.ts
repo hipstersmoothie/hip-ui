@@ -40,8 +40,8 @@ const styles = stylex.create({
     borderRadius: radius["md"],
     boxSizing: "border-box",
     display: "flex",
-    gap: spacing["2"],
     lineHeight: lineHeight["none"],
+    overflow: "hidden",
     padding: 0,
 
     borderColor: {
@@ -51,11 +51,14 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
+
+    transitionProperty: "background-color, border-color",
   },
   input: {
     alignItems: "center",
     backgroundColor: "transparent",
     borderWidth: 0,
+    boxSizing: "border-box",
     color: {
       ":is(::placeholder,[data-placeholder])": slate[11],
     },
@@ -63,6 +66,11 @@ const styles = stylex.create({
     flexGrow: 1,
     lineHeight: lineHeight["none"],
     outline: "none",
+
+    appearance: {
+      "::-webkit-search-cancel-button": "none",
+      "::-webkit-search-decoration": "none",
+    },
   },
   sm: {
     height: spacing["6"],
@@ -93,7 +101,7 @@ const styles = stylex.create({
 export function useInputStyles({ size = "md" }: { size?: Size }) {
   return {
     field: [styles.field],
-    wrapper: [styles.inputWrapper, gray.bgUi, gray.text, styles[size]],
+    wrapper: [styles.inputWrapper, gray.text, styles[size]],
     input: [styles.input, styles[`${size}Input`]],
     addon: [styles.addon],
   };

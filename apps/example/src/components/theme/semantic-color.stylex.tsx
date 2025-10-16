@@ -21,31 +21,34 @@ export const gray = stylex.create({
   bgUi: {
     backgroundColor: {
       default: slate[3],
-      ":hover": slate[4],
-      ":active": slate[5],
+      ":hover:not(:has(* button:hover)):not(:disabled)": slate[4],
+      ":active:not(:disabled)": slate[5],
+      ":disabled": slate[3],
     },
     transitionDuration: "100ms",
-    transitionProperty: "background-color",
+    transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover": slate[4],
-      ":active": slate[5],
+      ":hover:not(:has(* button:hover)):not(:disabled)": slate[4],
+      ":active:not(:disabled)": slate[5],
+      ":disabled": slate[3],
     },
     transitionDuration: "100ms",
-    transitionProperty: "background-color",
+    transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
     backgroundColor: {
       default: slate[4],
-      ":hover": slate[5],
-      ":active": slate[6],
+      ":hover:not(:has(* button:hover)):not(:disabled)": slate[5],
+      ":active:not(:disabled)": slate[6],
+      ":disabled": slate[3],
     },
     transitionDuration: "100ms",
-    transitionProperty: "background-color",
+    transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
   borderDim: {
@@ -67,7 +70,7 @@ export const gray = stylex.create({
     borderWidth: 1,
 
     transitionDuration: "100ms",
-    transitionProperty: "border-color",
+    transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolid: {
@@ -104,22 +107,25 @@ export const primary = stylex.create({
   bgUi: {
     backgroundColor: {
       default: plum[3],
-      ":hover": plum[4],
+      ":hover:not(:has(* button:hover)):not(:disabled)": plum[4],
       ":active": plum[5],
+      ":disabled": plum[3],
     },
   },
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover": plum[4],
-      ":active": plum[5],
+      ":hover:not(:has(* button:hover)):not(:disabled)": plum[4],
+      ":active:not(:disabled)": plum[5],
+      ":disabled": plum[3],
     },
   },
   bgAction: {
     backgroundColor: {
       default: plum[4],
-      ":hover": plum[5],
-      ":active": plum[6],
+      ":hover:not(:has(* button:hover)):not(:disabled)": plum[5],
+      ":active:not(:disabled)": plum[6],
+      ":disabled": plum[3],
     },
   },
   borderDim: {

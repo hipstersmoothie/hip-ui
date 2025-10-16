@@ -30,6 +30,11 @@ import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggl
 import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
+import { timeFieldConfig } from "../components/time-field/time-field-config.js";
+import { dateFieldConfig } from "../components/date-field/date-field-config.js";
+import { searchFieldConfig } from "../components/search-field/search-field-config.js";
+import { colorFieldConfig } from "../components/color-field/color-field-config.js";
+import { numberFieldConfig } from "../components/number-field/number-field-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -55,6 +60,11 @@ const COMPONENT_CONFIGS = [
   menuConfig,
   listboxConfig,
   contextMenuConfig,
+  timeFieldConfig,
+  dateFieldConfig,
+  searchFieldConfig,
+  colorFieldConfig,
+  numberFieldConfig,
 ];
 
 function StringSetting({
