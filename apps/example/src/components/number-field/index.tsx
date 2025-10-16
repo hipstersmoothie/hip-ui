@@ -75,6 +75,11 @@ export function NumberField({
 }: NumberFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const inputStyles = useInputStyles({ size });
+  const buttonStyles = stylex.props(
+    styles.button,
+    gray.borderInteractive,
+    gray.bgAction
+  );
 
   return (
     <AriaNumberField {...props} {...stylex.props(inputStyles.field, style)}>
@@ -91,24 +96,10 @@ export function NumberField({
         />
         {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
         <Group {...stylex.props(styles.buttons)}>
-          <Button
-            slot="decrement"
-            {...stylex.props(
-              styles.button,
-              gray.borderInteractive,
-              gray.bgAction
-            )}
-          >
+          <Button slot="decrement" {...buttonStyles}>
             <Minus />
           </Button>
-          <Button
-            slot="increment"
-            {...stylex.props(
-              styles.button,
-              gray.borderInteractive,
-              gray.bgAction
-            )}
-          >
+          <Button slot="increment" {...buttonStyles}>
             <Plus />
           </Button>
         </Group>

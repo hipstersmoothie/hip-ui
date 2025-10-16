@@ -14,6 +14,7 @@ import {
   Check,
   CpuIcon,
   Ellipsis,
+  GlobeIcon,
   Pin,
   Plus,
   Search,
@@ -70,6 +71,7 @@ import { DateField } from "./date-field";
 import { SearchField } from "./search-field";
 import { ColorField } from "./color-field";
 import { NumberField } from "./number-field";
+import { ComboBox, ComboBoxItem } from "./combobox";
 
 const styles = stylex.create({
   subCard: {
@@ -335,8 +337,22 @@ function TextFields() {
         prefix={<CpuIcon />}
         defaultValue={1}
       />
-      <TimeField label="Time Field" size="lg" />
-      <DateField label="Date Field" size="lg" />
+      <TimeField label="Time Field" />
+      <DateField label="Date Field" />
+      <ComboBox label="ComboBox" placeholder="Select an option">
+        <ComboBoxItem>ComboBox Item 1</ComboBoxItem>
+        <ComboBoxItem prefix={<GlobeIcon />} suffix={<div>new</div>}>
+          ComboBox Item 2
+        </ComboBoxItem>
+        <ComboBoxItem isDisabled>ComboBox Item 2</ComboBoxItem>
+        <ComboBoxItem>ComboBox Item 3</ComboBoxItem>
+        <ComboBoxItem prefix={<Plus />}>
+          ComboBox Item 4
+          <SubLabel variant="secondary">
+            This is a description for ComboBox Item 4
+          </SubLabel>
+        </ComboBoxItem>
+      </ComboBox>
     </Flex>
   );
 }

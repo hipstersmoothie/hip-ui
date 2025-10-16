@@ -35,6 +35,7 @@ import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
 import { numberFieldConfig } from "../components/number-field/number-field-config.js";
+import { comboboxConfig } from "../components/combobox/combobox-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -65,6 +66,7 @@ const COMPONENT_CONFIGS = [
   searchFieldConfig,
   colorFieldConfig,
   numberFieldConfig,
+  comboboxConfig,
 ];
 
 function StringSetting({

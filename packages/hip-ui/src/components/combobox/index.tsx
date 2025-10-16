@@ -1,13 +1,14 @@
 import {
-  SelectProps as AriaSelectProps,
   Button,
   Popover,
-  SelectValue,
   PopoverProps,
+  ComboBox as AriaComboBox,
+  ComboBoxProps as AriaComboBoxProps,
+  Input,
 } from "react-aria-components";
-import { Select as AriaSelect } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import type {
+  ListBoxProps,
   ListBoxSectionProps,
   ValidationResult,
 } from "react-aria-components";
@@ -28,22 +29,39 @@ import {
 import { SizeContext } from "../context";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { IconButton } from "../icon-button";
+import { SmallBody } from "../typography";
+import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
   matchWidth: {
     width: "var(--trigger-width)",
   },
+  emptyState: {
+    display: "flex",
+    justifyContent: "center",
+    padding: spacing["4"],
+  },
 });
 
-export interface SelectProps<T extends object, M extends "single" | "multiple">
-  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className">,
+function EmptyState() {
+  return (
+    <div {...stylex.props(styles.emptyState)}>
+      <SmallBody variant="secondary">No items found</SmallBody>
+    </div>
+  );
+}
+
+export interface ComboBoxProps<T extends object>
+  extends Omit<AriaComboBoxProps<T>, "children" | "style" | "className">,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"
       | "shouldFlip"
       | "shouldUpdatePosition"
       | "placement"
-    > {
+    >,
+    Pick<ListBoxProps<T>, "renderEmptyState"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: string;
   description?: string;
@@ -56,10 +74,7 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
   suffix?: React.ReactNode;
 }
 
-export function Select<
-  T extends object,
-  M extends "single" | "multiple" = "single",
->({
+export function ComboBox<T extends object>({
   label,
   description,
   errorMessage,
@@ -74,32 +89,27 @@ export function Select<
   placeholder = "Select an option",
   prefix,
   suffix,
+  renderEmptyState,
   ...props
-}: SelectProps<T, M>) {
+}: ComboBoxProps<T>) {
   const inputStyles = useInputStyles({ size });
   const popoverStyles = usePopoverStyles();
 
   return (
     <SizeContext.Provider value={size}>
-      <AriaSelect
-        {...props}
-        {...stylex.props(inputStyles.field, style)}
-        placeholder={placeholder}
-      >
+      <AriaComboBox {...props} {...stylex.props(inputStyles.field, style)}>
         {label && <Label size={size}>{label}</Label>}
         <Button {...stylex.props(inputStyles.wrapper)}>
           {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
-          <SelectValue {...stylex.props(inputStyles.input)}>
-            {({ selectedText, isPlaceholder, defaultChildren }) => {
-              if (isPlaceholder) return placeholder;
-              if (selectedText) return selectedText;
-
-              return defaultChildren;
-            }}
-          </SelectValue>
+          <Input
+            {...stylex.props(inputStyles.input)}
+            placeholder={placeholder}
+          />
           {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
           <div {...stylex.props(inputStyles.addon)}>
-            <ChevronDown size={16} aria-hidden="true" />
+            <IconButton size="sm" variant="secondary" label="Open combobox">
+              <ChevronDown size={16} aria-hidden="true" />
+            </IconButton>
           </div>
         </Button>
         {description && <Description size={size}>{description}</Description>}
@@ -114,20 +124,21 @@ export function Select<
           <ListBox
             items={items}
             {...stylex.props(popoverStyles, styles.matchWidth)}
+            renderEmptyState={renderEmptyState || EmptyState}
           >
             {children}
           </ListBox>
         </Popover>
-      </AriaSelect>
+      </AriaComboBox>
     </SizeContext.Provider>
   );
 }
 
-export type SelectItemProps = ListBoxItemProps;
-export const SelectItem = ListBoxItem;
-export type SelectSectionProps<T extends object> = ListBoxSectionProps<T>;
-export const SelectSection = ListBoxSection;
-export type SelectSectionHeaderProps = ListBoxSectionHeaderProps;
-export const SelectSectionHeader = ListBoxSectionHeader;
-export type SelectSeparatorProps = ListBoxSeparatorProps;
-export const SelectSeparator = ListBoxSeparator;
+export type ComboBoxItemProps = ListBoxItemProps;
+export const ComboBoxItem = ListBoxItem;
+export type ComboBoxSectionProps<T extends object> = ListBoxSectionProps<T>;
+export const ComboBoxSection = ListBoxSection;
+export type ComboBoxSectionHeaderProps = ListBoxSectionHeaderProps;
+export const ComboBoxSectionHeader = ListBoxSectionHeader;
+export type ComboBoxSeparatorProps = ListBoxSeparatorProps;
+export const ComboBoxSeparator = ListBoxSeparator;

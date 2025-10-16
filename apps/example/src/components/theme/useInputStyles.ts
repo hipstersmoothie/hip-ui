@@ -101,7 +101,7 @@ const styles = stylex.create({
 export function useInputStyles({ size = "md" }: { size?: Size }) {
   return {
     field: [styles.field],
-    wrapper: [styles.inputWrapper, gray.text, styles[size]],
+    wrapper: [styles.inputWrapper, gray.bgUi, gray.text, styles[size]],
     input: [styles.input, styles[`${size}Input`]],
     addon: [styles.addon],
   };

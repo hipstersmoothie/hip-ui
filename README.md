@@ -2,6 +2,11 @@
 
 ## TODO
 
+### Imprrovements
+
+- [ ] Add Virtualizer
+- [ ] add borderless variant for input fields
+
 ### Components
 
 ## Maybe
@@ -27,6 +32,12 @@
 
 #### react-aria wrappers
 
+- [ ] File Trigger
+- [ ] File Drop zone
+- [ ] Segmented Control
+- [ ] Switch
+- [ ] Slider
+
 - [ ] Alert Dialog
 - [ ] Breadcrumb
 - [ ] Calendar
@@ -35,7 +46,6 @@
 - [ ] Color Swatch
 - [ ] Color Swatch Picker
 - [ ] Color Wheel
-- [ ] Combobox
 - [ ] Command
 - [ ] Data Table
 - [ ] Date Picker
@@ -43,8 +53,6 @@
 - [ ] Disclosure
 - [ ] Disclosure Group
 - [ ] Drawer
-- [ ] File Trigger
-- [ ] File Drop zone
 - [ ] Field
 - [ ] Form
 - [ ] Grid List
@@ -55,16 +63,15 @@
 - [ ] Navigation Menu
 - [ ] Progress
 - [ ] Range Date Picker
-- [ ] Segmented Control
 - [ ] Sheet
-- [ ] Slider
 - [ ] Spinner
-- [ ] Switch
 - [ ] Table
 - [ ] Tabs
 - [ ] Tag Group
 - [ ] Toolbar
 - [ ] Toast
+
+- [x] Combobox
 - [x] Number Field
 - [x] Color Field
 - [x] Search Field
@@ -92,7 +99,3 @@
 - [x] Tooltip
 - [x] Tree
 - [x] Typography
-
-### Imprrovements
-
-- [ ] Add Virtualizer

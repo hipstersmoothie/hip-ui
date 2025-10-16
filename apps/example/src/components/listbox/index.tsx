@@ -13,7 +13,12 @@ import { Check } from "lucide-react";
 import { spacing } from "../theme/spacing.stylex";
 import { plum, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
-import { fontWeight, typeramp } from "../theme/typography.stylex";
+import {
+  fontSize,
+  fontWeight,
+  lineHeight,
+  typeramp,
+} from "../theme/typography.stylex";
 import { Size } from "../types";
 import { SizeContext } from "../context";
 import { use, useContext } from "react";
@@ -37,32 +42,43 @@ const styles = stylex.create({
     padding: spacing["1"],
   },
   sm: {
-    height: spacing["9"],
+    minHeight: spacing["9"],
   },
   md: {
-    height: spacing["9"],
+    minHeight: spacing["9"],
   },
   lg: {
-    height: spacing["11"],
+    minHeight: spacing["11"],
   },
   itemInner: {
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      [":is(:hover > *)"]: slate[4],
+      [":is(:hover:not([data-disabled]) > *,[data-focused] > *)"]: slate[4],
       [":is(:active > *)"]: slate[5],
     },
     borderRadius: radius["md"],
     boxSizing: "border-box",
+    color: {
+      default: slate[12],
+      [":is([data-disabled] > *)"]: slate[8],
+    },
     display: "flex",
     flexGrow: 1,
     gap: spacing["2"],
-    justifyContent: "space-between",
+    paddingBottom: spacing["2"],
     paddingLeft: spacing["2"],
     paddingRight: spacing["2"],
+    paddingTop: spacing["2"],
     transitionDuration: "100ms",
     transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
+  },
+  smItemInner: {
+    fontSize: fontSize["xs"],
+    lineHeight: lineHeight["xs"],
+    paddingBottom: spacing["1"],
+    paddingTop: spacing["1"],
   },
   check: {
     color: plum[9],
@@ -89,6 +105,27 @@ const styles = stylex.create({
   separator: {
     marginBottom: spacing["1.5"],
     marginTop: spacing["1.5"],
+  },
+  addon: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    minWidth: spacing["4"],
+
+    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
+    ":is(*) svg": {
+      color: slate[11],
+      flexShrink: 0,
+      height: spacing["4"],
+      pointerEvents: "none",
+      width: spacing["4"],
+    },
+  },
+  label: {
+    display: "flex",
+    flexDirection: "column",
+    flexGrow: 1,
+    gap: spacing["1.5"],
   },
 });
 
@@ -118,19 +155,38 @@ export interface ListBoxItemProps
   extends Omit<AriaListBoxItemProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
-export function ListBoxItem({ style, children, ...props }: ListBoxItemProps) {
+export function ListBoxItem({
+  style,
+  children,
+  prefix,
+  suffix,
+  ...props
+}: ListBoxItemProps) {
   const size = useContext(SizeContext);
 
   return (
     <AriaListBoxItem
       {...props}
+      value={props.value || { id: props.id, label: children }}
+      textValue={
+        props.textValue || (typeof children === "string" ? children : undefined)
+      }
       {...stylex.props(typeramp.label, styles.item, styles[size], style)}
     >
       {({ isSelected }) => (
-        <div {...stylex.props(styles.itemInner)}>
-          {children}
+        <div
+          {...stylex.props(
+            styles.itemInner,
+            size === "sm" && styles.smItemInner
+          )}
+        >
+          {prefix && <div {...stylex.props(styles.addon)}>{prefix}</div>}
+          <div {...stylex.props(styles.label)}>{children}</div>
+          {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
           {isSelected && <Check size={16} {...stylex.props(styles.check)} />}
         </div>
       )}

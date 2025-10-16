@@ -52,6 +52,8 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
   placeholder?: string;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
 export function Select<
@@ -70,6 +72,8 @@ export function Select<
   shouldUpdatePosition,
   placement,
   placeholder = "Select an option",
+  prefix,
+  suffix,
   ...props
 }: SelectProps<T, M>) {
   const inputStyles = useInputStyles({ size });
@@ -84,6 +88,7 @@ export function Select<
       >
         {label && <Label size={size}>{label}</Label>}
         <Button {...stylex.props(inputStyles.wrapper)}>
+          {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
           <SelectValue {...stylex.props(inputStyles.input)}>
             {({ selectedText, isPlaceholder, defaultChildren }) => {
               if (isPlaceholder) return placeholder;
@@ -92,6 +97,7 @@ export function Select<
               return defaultChildren;
             }}
           </SelectValue>
+          {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
           <div {...stylex.props(inputStyles.addon)}>
             <ChevronDown size={16} aria-hidden="true" />
           </div>
