@@ -26,22 +26,7 @@ import { gray } from "../theme/semantic-color.stylex";
 import { SizeContext } from "../context";
 import { useMenuTriggerState } from "react-stately";
 import { AriaButtonProps, useMenuTrigger } from "react-aria";
-import { radius } from "../theme/radius.stylex";
-import { spacing } from "../theme/spacing.stylex";
-
-const styles = stylex.create({
-  popover: {
-    borderRadius: radius["md"],
-    minWidth: spacing["40"],
-    outline: "none",
-    overflow: "auto",
-    paddingBottom: spacing["1"],
-    paddingTop: spacing["1"],
-  },
-  menu: {
-    outline: "none",
-  },
-});
+import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const ContextMenuTriggerProps = createContext<
   AriaButtonProps<"button"> & { ref?: React.Ref<HTMLDivElement> }
@@ -63,22 +48,15 @@ const ContextMenuStateContext = createContext<{
 function ContextMenuRoot(
   props: OverlayTriggerProps & { children: React.ReactNode }
 ) {
+  const scrollRef = useRef(null);
   const state = useMenuTriggerState(props);
   const ref = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState<Position>({
-    x: 0,
-    y: 0,
-  });
+  const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const { menuTriggerProps, menuProps } = useMenuTrigger(
-    {
-      ...props,
-      type: "menu",
-    },
+    { ...props, type: "menu" },
     state,
     ref
   );
-
-  const scrollRef = useRef(null);
 
   return (
     <Provider
@@ -116,9 +94,9 @@ function ContextMenuTrigger(
       e.preventDefault();
       e.stopPropagation();
       overlayTriggerState?.open();
-      setPosition({ x: e.clientX, y: e.clientY });
+      setPosition({ x: e.pageX, y: e.pageY });
     },
-    [menuTriggerProps, overlayTriggerState, setPosition]
+    [overlayTriggerState, setPosition]
   );
 
   if (Children.count(props.children) !== 1) {
@@ -139,11 +117,7 @@ function ContextMenuTrigger(
       )}
       <div
         ref={menuTriggerProps.ref}
-        style={{
-          position: "absolute",
-          top: position?.y,
-          left: position?.x,
-        }}
+        style={{ position: "absolute", top: position?.y, left: position?.x }}
       />
     </>
   );
@@ -177,6 +151,8 @@ export function ContextMenu<T extends object>({
   placement,
   ...props
 }: ContextMenuProps<T>) {
+  const popoverStyles = usePopoverStyles();
+
   return (
     <SizeContext.Provider value={size}>
       <ContextMenuRoot
@@ -191,14 +167,8 @@ export function ContextMenu<T extends object>({
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
-          {...stylex.props(
-            styles.popover,
-            gray.bgSubtle,
-            gray.text,
-            gray.border
-          )}
         >
-          <AriaMenu {...props} {...stylex.props(styles.menu)} />
+          <AriaMenu {...props} {...stylex.props(popoverStyles)} />
         </Popover>
       </ContextMenuRoot>
     </SizeContext.Provider>

@@ -6,7 +6,7 @@ import {
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 
-import { useButtonStyles } from "./useButtonStyles";
+import { useButtonStyles } from "../theme/useButtonStyles";
 import { Size, ButtonVariant } from "../types";
 
 interface ButtonProps extends Omit<AriaButtonProps, "className" | "style"> {

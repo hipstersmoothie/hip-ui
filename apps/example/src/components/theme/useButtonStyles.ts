@@ -2,20 +2,20 @@
 
 import * as stylex from "@stylexjs/stylex";
 
-import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
-import { gray, primary } from "../theme/semantic-color.stylex";
+import { spacing } from "./spacing.stylex";
+import { radius } from "./radius.stylex";
+import { gray, primary } from "./semantic-color.stylex";
 import {
   fontFamily,
   fontSize,
   fontWeight,
   lineHeight,
-} from "../theme/typography.stylex";
-import { shadow } from "../theme/shadow.stylex";
-import { slate } from "../theme/colors.stylex";
+} from "./typography.stylex";
+import { shadow } from "./shadow.stylex";
+import { slate } from "./colors.stylex";
 import { use } from "react";
 import { Size, ButtonVariant } from "../types";
-import { ButtonGroupContext } from "./context";
+import { ButtonGroupContext } from "../button/context";
 
 const styles = stylex.create({
   shadow: {

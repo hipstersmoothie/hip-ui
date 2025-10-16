@@ -1,0 +1,23 @@
+import * as stylex from "@stylexjs/stylex";
+
+import { radius } from "./radius.stylex";
+import { spacing } from "./spacing.stylex";
+import { gray } from "./semantic-color.stylex";
+import { shadow } from "./shadow.stylex";
+
+const styles = stylex.create({
+  popover: {
+    borderRadius: radius["md"],
+    boxShadow: shadow["md"],
+    minWidth: spacing["40"],
+    outline: "none",
+    overflow: "auto",
+
+    paddingBottom: spacing["1"],
+    paddingTop: spacing["1"],
+  },
+});
+
+export function usePopoverStyles() {
+  return [styles.popover, gray.bgSubtle, gray.text, gray.border];
+}

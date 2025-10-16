@@ -6,7 +6,6 @@ import { spacing } from "../theme/spacing.stylex";
 import { plum, slate } from "../theme/colors.stylex";
 import { Children } from "react";
 import { useButtonStyles } from "../theme/useButtonStyles";
-import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({
   primarySelected: {
@@ -91,8 +90,8 @@ const styles = stylex.create({
 export interface ToggleButtonProps
   extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  variant?: ButtonVariant;
-  size?: Size;
+  variant?: "primary" | "secondary" | "tertiary" | "outline";
+  size?: "sm" | "md" | "lg";
   children?: React.ReactNode;
 }
 

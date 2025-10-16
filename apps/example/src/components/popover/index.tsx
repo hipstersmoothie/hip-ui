@@ -10,18 +10,21 @@ import {
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 
-import { radius } from "../theme/radius.stylex";
 import { slate } from "../theme/colors.stylex";
-import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
-  popover: {
+  wrapper: {
     filter: `drop-shadow(-0.5px -0.5px 0 ${slate[7]}) drop-shadow(0.5px -0.5px 0 ${slate[7]}) drop-shadow(0.5px 0.5px 0 ${slate[7]}) drop-shadow(-0.5px 0.5px 0 ${slate[7]}) drop-shadow(0px 1px 3px rgb(0 0 0 / 0.1)) drop-shadow(0px -1px 3px rgb(0 0 0 / 0.1))`,
   },
   content: {
-    borderRadius: radius["md"],
-    padding: spacing["2"],
+    borderWidth: 0,
+    boxShadow: "none",
+    paddingBottom: spacing["2"],
+    paddingLeft: spacing["2"],
+    paddingRight: spacing["2"],
+    paddingTop: spacing["2"],
     position: "relative",
   },
   caret: {},
@@ -53,6 +56,8 @@ export const Popover = ({
   onOpenChange,
   ...popoverProps
 }: TooltipProps) => {
+  const popoverStyles = usePopoverStyles();
+
   return (
     <DialogTrigger
       {...({ isOpen, onOpenChange, defaultOpen } as DialogTriggerProps)}
@@ -60,7 +65,7 @@ export const Popover = ({
       {trigger}
 
       <AriaPopover
-        {...stylex.props(styles.popover)}
+        {...stylex.props(styles.wrapper)}
         {...popoverProps}
         offset={8}
         containerPadding={8}
@@ -68,7 +73,7 @@ export const Popover = ({
         <OverlayArrow {...stylex.props(styles.caret)}>
           <div {...stylex.props(styles.arrow)} />
         </OverlayArrow>
-        <Dialog {...stylex.props(styles.content, gray.bgSubtle, gray.text)}>
+        <Dialog {...stylex.props(popoverStyles, styles.content)}>
           {children}
         </Dialog>
       </AriaPopover>

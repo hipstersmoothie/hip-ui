@@ -11,120 +11,30 @@ import {
   TextField as AriaTextField,
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-import { gray } from "../theme/semantic-color.stylex";
-import { spacing } from "../theme/spacing.stylex";
 import { Description, Label } from "../label";
-import { radius } from "../theme/radius.stylex";
-import { lineHeight, fontSize } from "../theme/typography.stylex";
-import { slate } from "../theme/colors.stylex";
 import { useRef } from "react";
 import { useState } from "react";
 import { IconButton } from "../icon-button";
 import { Eye, EyeOff } from "lucide-react";
 import { use } from "react";
 import { Size } from "../types";
-
-const styles = stylex.create({
-  wrapper: {
-    display: "flex",
-    flexDirection: "column",
-    gap: spacing["2"],
-  },
-  addon: {
-    color: gray.textDim,
-    flexShrink: 0,
-    height: "100%",
-    minWidth: spacing["8"],
-    paddingLeft: { ":first-child": spacing["0.5"] },
-    paddingRight: {
-      ":last-child": spacing["2"],
-      ":last-child:has(svg)": spacing["0.5"],
-    },
-
-    alignItems: "center",
-    display: "flex",
-    gap: spacing["0.5"],
-    justifyContent: "center",
-
-    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
-    ":is(*) svg": {
-      flexShrink: 0,
-      height: spacing["4"],
-      pointerEvents: "none",
-      width: spacing["4"],
-    },
-  },
-  inputWrapper: {
-    borderRadius: radius["md"],
-    boxSizing: "border-box",
-    display: "flex",
-
-    borderColor: {
-      default: slate[7],
-      ":hover": slate[8],
-      ":focus": slate[9],
-    },
-    borderStyle: "solid",
-    borderWidth: 1,
-  },
-  input: {
-    backgroundColor: "transparent",
-    borderWidth: 0,
-    color: {
-      "::placeholder": slate[11],
-    },
-    flexGrow: 1,
-    lineHeight: lineHeight["none"],
-    outline: "none",
-  },
-  sm: {
-    height: spacing["6"],
-  },
-  smInput: {
-    fontSize: fontSize["xs"],
-    paddingLeft: { ":first-child": spacing["1"] },
-    paddingRight: spacing["1"],
-  },
-  md: {
-    height: spacing["8"],
-  },
-  mdInput: {
-    fontSize: fontSize["sm"],
-    paddingLeft: { ":first-child": spacing["2"] },
-    paddingRight: spacing["2"],
-  },
-  lg: {
-    height: spacing["10"],
-  },
-  lgInput: {
-    fontSize: fontSize["base"],
-    paddingLeft: spacing["3"],
-    paddingRight: spacing["3"],
-  },
-  description: {
-    color: gray.textDim,
-    fontSize: fontSize["sm"],
-    lineHeight: lineHeight["sm"],
-  },
-  descriptionSm: {
-    fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
-  },
-});
+import { useInputStyles } from "../theme/useInputStyles";
 
 function PasswordToggle({
   type,
   setType,
+  style,
 }: {
   type: TextFieldProps["type"];
   setType: (type: TextFieldProps["type"]) => void;
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }) {
   const state = use(InputContext);
 
   if (!state || !("value" in state) || !state.value) return null;
 
   return (
-    <div {...stylex.props(styles.addon)}>
+    <div {...stylex.props(style)}>
       <IconButton
         size="sm"
         variant="tertiary"
@@ -165,31 +75,33 @@ export function TextField({
     props.type || "text"
   );
   const isPasswordInput = props.type === "password";
+  const inputStyles = useInputStyles({ size });
 
   return (
     <AriaTextField
       {...props}
       type={type}
-      {...stylex.props(styles.wrapper, style)}
+      {...stylex.props(inputStyles.field, style)}
     >
       <Label size={size}>{label}</Label>
       <div
-        {...stylex.props(
-          styles.inputWrapper,
-          gray.bgUi,
-          gray.text,
-          styles[size]
-        )}
+        {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(styles.addon)}>{prefix}</div>}
+        {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
         <Input
-          {...stylex.props(styles.input, styles[`${size}Input`])}
+          {...stylex.props(inputStyles.input)}
           ref={inputRef}
           placeholder={placeholder}
         />
-        {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
-        {isPasswordInput && <PasswordToggle type={type} setType={setType} />}
+        {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+        {isPasswordInput && (
+          <PasswordToggle
+            type={type}
+            setType={setType}
+            style={inputStyles.addon}
+          />
+        )}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

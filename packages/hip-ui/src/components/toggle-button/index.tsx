@@ -5,7 +5,7 @@ import * as stylex from "@stylexjs/stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { plum, slate } from "../theme/colors.stylex";
 import { Children } from "react";
-import { useButtonStyles } from "../button/useButtonStyles";
+import { useButtonStyles } from "../theme/useButtonStyles";
 import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({

@@ -14,11 +14,6 @@ import type {
 import { FieldError } from "react-aria-components";
 import { Description, Label } from "../label";
 import { ChevronDown } from "lucide-react";
-import { spacing } from "../theme/spacing.stylex";
-import { gray } from "../theme/semantic-color.stylex";
-import { slate } from "../theme/colors.stylex";
-import { radius } from "../theme/radius.stylex";
-import { fontSize, lineHeight } from "../theme/typography.stylex";
 import { Size } from "../types";
 import {
   ListBox,
@@ -31,58 +26,12 @@ import {
   ListBoxSection,
 } from "../listbox";
 import { SizeContext } from "../context";
+import { useInputStyles } from "../theme/useInputStyles";
+import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
-  wrapper: {
-    display: "flex",
-    flexDirection: "column",
-    gap: spacing["2"],
-  },
-  trigger: {
-    alignItems: "center",
-    boxSizing: "border-box",
-    display: "flex",
-    gap: spacing["2"],
-    justifyContent: "space-between",
-    lineHeight: lineHeight["none"],
-
-    borderColor: {
-      default: slate[7],
-      ":hover": slate[8],
-      ":focus": slate[9],
-    },
-    borderRadius: radius["md"],
-    borderStyle: "solid",
-    borderWidth: 1,
-  },
-  sm: {
-    fontSize: fontSize["xs"],
-    height: spacing["6"],
-    paddingLeft: { ":first-child": spacing["1"] },
-    paddingRight: spacing["1"],
-  },
-  md: {
-    fontSize: fontSize["sm"],
-    height: spacing["8"],
-    paddingLeft: { ":first-child": spacing["2"] },
-    paddingRight: spacing["2"],
-  },
-  lg: {
-    fontSize: fontSize["base"],
-    height: spacing["10"],
-    paddingLeft: spacing["3"],
-    paddingRight: spacing["3"],
-  },
-  popover: {
-    borderRadius: radius["md"],
-    minWidth: spacing["40"],
-    overflow: "auto",
+  matchWidth: {
     width: "var(--trigger-width)",
-  },
-  value: {
-    color: {
-      ":is([data-placeholder])": slate[11],
-    },
   },
 });
 
@@ -102,6 +51,7 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
+  placeholder?: string;
 }
 
 export function Select<
@@ -119,17 +69,32 @@ export function Select<
   shouldFlip,
   shouldUpdatePosition,
   placement,
+  placeholder = "Select an option",
   ...props
 }: SelectProps<T, M>) {
+  const inputStyles = useInputStyles({ size });
+  const popoverStyles = usePopoverStyles();
+
   return (
     <SizeContext.Provider value={size}>
-      <AriaSelect {...props} {...stylex.props(styles.wrapper, style)}>
+      <AriaSelect
+        {...props}
+        {...stylex.props(inputStyles.field, style)}
+        placeholder={placeholder}
+      >
         {label && <Label size={size}>{label}</Label>}
-        <Button
-          {...stylex.props(styles.trigger, gray.bgUi, gray.text, styles[size])}
-        >
-          <SelectValue {...stylex.props(styles.value)} />
-          <ChevronDown size={16} aria-hidden="true" />
+        <Button {...stylex.props(inputStyles.wrapper)}>
+          <SelectValue {...stylex.props(inputStyles.input)}>
+            {({ selectedText, isPlaceholder, defaultChildren }) => {
+              if (isPlaceholder) return placeholder;
+              if (selectedText) return selectedText;
+
+              return defaultChildren;
+            }}
+          </SelectValue>
+          <div {...stylex.props(inputStyles.addon)}>
+            <ChevronDown size={16} aria-hidden="true" />
+          </div>
         </Button>
         {description && <Description size={size}>{description}</Description>}
         <FieldError>{errorMessage}</FieldError>
@@ -139,14 +104,13 @@ export function Select<
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
-          {...stylex.props(
-            styles.popover,
-            gray.bgSubtle,
-            gray.text,
-            gray.border
-          )}
         >
-          <ListBox items={items}>{children}</ListBox>
+          <ListBox
+            items={items}
+            {...stylex.props(popoverStyles, styles.matchWidth)}
+          >
+            {children}
+          </ListBox>
         </Popover>
       </AriaSelect>
     </SizeContext.Provider>

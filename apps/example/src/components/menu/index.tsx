@@ -14,7 +14,6 @@ import {
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { gray } from "../theme/semantic-color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { Size } from "../types";
 import {
@@ -28,20 +27,9 @@ import { fontWeight, typeramp } from "../theme/typography.stylex";
 import { useContext } from "react";
 import { Check, ChevronRight } from "lucide-react";
 import { plum, slate } from "../theme/colors.stylex";
+import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
-  popover: {
-    borderRadius: radius["md"],
-    minWidth: spacing["40"],
-    outline: "none",
-    overflow: "auto",
-    paddingBottom: spacing["1"],
-    paddingTop: spacing["1"],
-    width: "var(--trigger-width)",
-  },
-  menu: {
-    outline: "none",
-  },
   section: {},
   item: {
     display: "flex",
@@ -116,6 +104,8 @@ export function Menu<T extends object>({
   placement,
   ...props
 }: MenuProps<T>) {
+  const popoverStyles = usePopoverStyles();
+
   return (
     <SizeContext.Provider value={size}>
       <MenuTrigger
@@ -130,14 +120,8 @@ export function Menu<T extends object>({
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
-          {...stylex.props(
-            styles.popover,
-            gray.bgSubtle,
-            gray.text,
-            gray.border
-          )}
         >
-          <AriaMenu {...props} {...stylex.props(styles.menu)} />
+          <AriaMenu {...props} {...stylex.props(popoverStyles)} />
         </Popover>
       </MenuTrigger>
     </SizeContext.Provider>
@@ -169,6 +153,8 @@ export function SubMenu<T extends object>({
   placement,
   ...props
 }: SubMenuProps<T>) {
+  const popoverStyles = usePopoverStyles();
+
   return (
     <SubmenuTrigger delay={delay}>
       {trigger}
@@ -179,9 +165,8 @@ export function SubMenu<T extends object>({
         placement={placement}
         containerPadding={8}
         offset={-8}
-        {...stylex.props(styles.popover, gray.bgSubtle, gray.text, gray.border)}
       >
-        <AriaMenu {...props} />
+        <AriaMenu {...props} {...stylex.props(popoverStyles)} />
       </Popover>
     </SubmenuTrigger>
   );

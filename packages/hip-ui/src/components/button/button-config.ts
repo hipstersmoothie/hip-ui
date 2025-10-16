@@ -11,7 +11,7 @@ export const buttonConfig: ComponentConfig = {
     "../theme/typography.stylex.tsx",
     "../theme/breakpoints.stylex.tsx",
     "../theme/shadow.stylex.tsx",
-    "./useButtonStyles.ts",
+    "../theme/useButtonStyles.ts",
     "./context.ts",
     "../types.ts",
   ],

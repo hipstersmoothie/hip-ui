@@ -538,8 +538,6 @@ function MenuExample() {
 }
 
 export function KitchenSink() {
-  return <MenuExample />;
-
   return (
     <Flex
       direction="column"

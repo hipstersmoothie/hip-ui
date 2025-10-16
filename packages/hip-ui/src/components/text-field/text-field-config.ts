@@ -11,6 +11,7 @@ export const textFieldConfig: ComponentConfig = {
     "../theme/typography.stylex.tsx",
     "../theme/breakpoints.stylex.tsx",
     "../theme/shadow.stylex.tsx",
+    "../theme/useInputStyles.ts",
   ],
   dependencies: {
     "lucide-react": "^0.545.0",
