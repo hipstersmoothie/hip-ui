@@ -8,6 +8,7 @@ import {
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import type {
+  ListBoxProps,
   ListBoxSectionProps,
   ValidationResult,
 } from "react-aria-components";
@@ -29,12 +30,27 @@ import { SizeContext } from "../context";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { IconButton } from "../icon-button";
+import { SmallBody } from "../typography";
+import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
   matchWidth: {
     width: "var(--trigger-width)",
   },
+  emptyState: {
+    display: "flex",
+    justifyContent: "center",
+    padding: spacing["4"],
+  },
 });
+
+function EmptyState() {
+  return (
+    <div {...stylex.props(styles.emptyState)}>
+      <SmallBody variant="secondary">No items found</SmallBody>
+    </div>
+  );
+}
 
 export interface ComboBoxProps<T extends object>
   extends Omit<AriaComboBoxProps<T>, "children" | "style" | "className">,
@@ -44,7 +60,8 @@ export interface ComboBoxProps<T extends object>
       | "shouldFlip"
       | "shouldUpdatePosition"
       | "placement"
-    > {
+    >,
+    Pick<ListBoxProps<T>, "renderEmptyState"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: string;
   description?: string;
@@ -72,6 +89,7 @@ export function ComboBox<T extends object>({
   placeholder = "Select an option",
   prefix,
   suffix,
+  renderEmptyState,
   ...props
 }: ComboBoxProps<T>) {
   const inputStyles = useInputStyles({ size });
@@ -106,6 +124,7 @@ export function ComboBox<T extends object>({
           <ListBox
             items={items}
             {...stylex.props(popoverStyles, styles.matchWidth)}
+            renderEmptyState={renderEmptyState || EmptyState}
           >
             {children}
           </ListBox>

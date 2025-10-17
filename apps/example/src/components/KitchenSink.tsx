@@ -14,7 +14,10 @@ import {
   Check,
   CpuIcon,
   Ellipsis,
+  File,
+  Folder,
   GlobeIcon,
+  Image,
   Pin,
   Plus,
   Search,
@@ -72,6 +75,7 @@ import { SearchField } from "./search-field";
 import { ColorField } from "./color-field";
 import { NumberField } from "./number-field";
 import { ComboBox, ComboBoxItem } from "./combobox";
+import { Tree, TreeItem } from "./tree";
 
 const styles = stylex.create({
   subCard: {
@@ -100,6 +104,9 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: slate[7],
+  },
+  tree: {
+    height: "300px",
   },
 });
 
@@ -529,7 +536,7 @@ function MenuExample() {
         <MenuSection>
           <MenuSectionHeader>Menu Section Header</MenuSectionHeader>
           <MenuItem>Menu Item 1</MenuItem>
-          <MenuItem>Menu Item 2</MenuItem>
+          <MenuItem isDisabled>Menu Item 2</MenuItem>
           <MenuItem>Menu Item 3</MenuItem>
         </MenuSection>
         <MenuSeparator />
@@ -569,7 +576,61 @@ function MenuExample() {
   );
 }
 
+function TreeExample() {
+  return (
+    <>
+      <Tree
+        aria-label="Files"
+        selectionMode="multiple"
+        selectionBehavior="replace"
+        defaultExpandedKeys={["documents", "photos", "project"]}
+      >
+        <TreeItem id="documents" title="Documents" prefix={<Folder />}>
+          <TreeItem id="project" title="Project" prefix={<Folder />}>
+            <TreeItem id="report" title="Weekly Report" prefix={<File />} />
+          </TreeItem>
+        </TreeItem>
+        <TreeItem id="photos" title="Photos" prefix={<Folder />}>
+          <TreeItem id="one" title="Image 1" prefix={<Image />} />
+          <TreeItem id="two" title="Image 2" isDisabled prefix={<Image />} />
+        </TreeItem>
+        <TreeItem
+          id="three"
+          title="Image 3"
+          prefix={<Image />}
+          suffix={
+            <Menu
+              placement="right top"
+              trigger={
+                <IconButton size="sm" variant="tertiary" label="More">
+                  <Ellipsis />
+                </IconButton>
+              }
+            >
+              <MenuItem>Menu Item 1</MenuItem>
+              <MenuItem>Menu Item 2</MenuItem>
+              <MenuItem>Menu Item 3</MenuItem>
+            </Menu>
+          }
+        />
+      </Tree>
+    </>
+  );
+}
+
 export function KitchenSink() {
+  return (
+    <Flex
+      direction="column"
+      gap="10"
+      style={[gray.bg, gray.text, styles.container]}
+    >
+      <TitleCard title="Tree">
+        <TreeExample />
+      </TitleCard>
+      <MenuExample />
+    </Flex>
+  );
   return (
     <Flex
       direction="column"

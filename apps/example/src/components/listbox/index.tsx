@@ -11,79 +11,18 @@ import {
 import * as stylex from "@stylexjs/stylex";
 import { Check } from "lucide-react";
 import { spacing } from "../theme/spacing.stylex";
-import { plum, slate } from "../theme/colors.stylex";
-import { radius } from "../theme/radius.stylex";
-import {
-  fontSize,
-  fontWeight,
-  lineHeight,
-  typeramp,
-} from "../theme/typography.stylex";
+import { typeramp } from "../theme/typography.stylex";
 import { Size } from "../types";
 import { SizeContext } from "../context";
 import { use, useContext } from "react";
 import { Separator } from "../separator";
 import { gray } from "../theme/semantic-color.stylex";
+import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 
 const styles = stylex.create({
   listBox: {
     outline: "none",
   },
-  item: {
-    display: "flex",
-    userSelect: "none",
-
-    boxSizing: "border-box",
-    fontWeight: fontWeight["medium"],
-    outline: {
-      default: "none",
-      ":focus": "none",
-    },
-    padding: spacing["1"],
-  },
-  sm: {
-    minHeight: spacing["9"],
-  },
-  md: {
-    minHeight: spacing["9"],
-  },
-  lg: {
-    minHeight: spacing["11"],
-  },
-  itemInner: {
-    alignItems: "center",
-    backgroundColor: {
-      default: "transparent",
-      [":is(:hover:not([data-disabled]) > *,[data-focused] > *)"]: slate[4],
-      [":is(:active > *)"]: slate[5],
-    },
-    borderRadius: radius["md"],
-    boxSizing: "border-box",
-    color: {
-      default: slate[12],
-      [":is([data-disabled] > *)"]: slate[8],
-    },
-    display: "flex",
-    flexGrow: 1,
-    gap: spacing["2"],
-    paddingBottom: spacing["2"],
-    paddingLeft: spacing["2"],
-    paddingRight: spacing["2"],
-    paddingTop: spacing["2"],
-    transitionDuration: "100ms",
-    transitionProperty: "background-color",
-    transitionTimingFunction: "ease-in-out",
-  },
-  smItemInner: {
-    fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
-    paddingBottom: spacing["1"],
-    paddingTop: spacing["1"],
-  },
-  check: {
-    color: plum[9],
-  },
-  section: {},
   sectionLabel: {
     alignItems: "center",
     boxSizing: "border-box",
@@ -105,27 +44,6 @@ const styles = stylex.create({
   separator: {
     marginBottom: spacing["1.5"],
     marginTop: spacing["1.5"],
-  },
-  addon: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    minWidth: spacing["4"],
-
-    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
-    ":is(*) svg": {
-      color: slate[11],
-      flexShrink: 0,
-      height: spacing["4"],
-      pointerEvents: "none",
-      width: spacing["4"],
-    },
-  },
-  label: {
-    display: "flex",
-    flexDirection: "column",
-    flexGrow: 1,
-    gap: spacing["1.5"],
   },
 });
 
@@ -166,7 +84,7 @@ export function ListBoxItem({
   suffix,
   ...props
 }: ListBoxItemProps) {
-  const size = useContext(SizeContext);
+  const listBoxItemStyles = useListBoxItemStyles();
 
   return (
     <AriaListBoxItem
@@ -175,19 +93,20 @@ export function ListBoxItem({
       textValue={
         props.textValue || (typeof children === "string" ? children : undefined)
       }
-      {...stylex.props(typeramp.label, styles.item, styles[size], style)}
+      {...stylex.props(listBoxItemStyles.wrapper, style)}
     >
       {({ isSelected }) => (
-        <div
-          {...stylex.props(
-            styles.itemInner,
-            size === "sm" && styles.smItemInner
+        <div {...stylex.props(listBoxItemStyles.inner)}>
+          {prefix && (
+            <div {...stylex.props(listBoxItemStyles.addon)}>{prefix}</div>
           )}
-        >
-          {prefix && <div {...stylex.props(styles.addon)}>{prefix}</div>}
-          <div {...stylex.props(styles.label)}>{children}</div>
-          {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
-          {isSelected && <Check size={16} {...stylex.props(styles.check)} />}
+          <div {...stylex.props(listBoxItemStyles.label)}>{children}</div>
+          {suffix && (
+            <div {...stylex.props(listBoxItemStyles.addon)}>{suffix}</div>
+          )}
+          {isSelected && (
+            <Check size={16} {...stylex.props(listBoxItemStyles.check)} />
+          )}
         </div>
       )}
     </AriaListBoxItem>
@@ -204,9 +123,7 @@ export function ListBoxSection<T extends object>({
   style,
   ...props
 }: ListBoxSectionProps<T>) {
-  return (
-    <AriaListBoxSection {...props} {...stylex.props(styles.section, style)} />
-  );
+  return <AriaListBoxSection {...props} {...stylex.props(style)} />;
 }
 
 export interface ListBoxSeparatorProps

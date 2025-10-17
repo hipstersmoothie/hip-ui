@@ -111,9 +111,11 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
               <Check size={16} />
             ) : null}
           </div>
-          <Flex direction="column" gap="1">
-            {children}
-          </Flex>
+          {children && (
+            <Flex direction="column" gap="1">
+              {children}
+            </Flex>
+          )}
         </>
       )}
     </AriaCheckbox>

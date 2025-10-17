@@ -6,6 +6,7 @@
 
 - [ ] Add Virtualizer
 - [ ] add borderless variant for input fields
+- [ ] Field erros
 
 ### Components
 
@@ -30,6 +31,12 @@
 - [ ] Sidebar
 - [ ] Skeleton
 
+#### OTher Wrappers
+
+- [ ] Canvas (tldraw)
+- [ ] RichTextEditor (lexical)
+- [ ] Window Splitter
+
 #### react-aria wrappers
 
 - [ ] File Trigger
@@ -38,21 +45,26 @@
 - [ ] Switch
 - [ ] Slider
 
-- [ ] Alert Dialog
-- [ ] Breadcrumb
-- [ ] Calendar
 - [ ] Color Area
 - [ ] Color Picker
 - [ ] Color Swatch
 - [ ] Color Swatch Picker
 - [ ] Color Wheel
-- [ ] Command
-- [ ] Data Table
+
+- [ ] Calendar
 - [ ] Date Picker
+- [ ] Range Date Picker
+
 - [ ] Dialog
+- [ ] Alert Dialog
+- [ ] Command
+- [ ] Drawer
+- [ ] Sheet
+
+- [ ] Breadcrumb
+- [ ] Data Table
 - [ ] Disclosure
 - [ ] Disclosure Group
-- [ ] Drawer
 - [ ] Field
 - [ ] Form
 - [ ] Grid List
@@ -62,8 +74,6 @@
 - [ ] Menubar
 - [ ] Navigation Menu
 - [ ] Progress
-- [ ] Range Date Picker
-- [ ] Sheet
 - [ ] Spinner
 - [ ] Table
 - [ ] Tabs

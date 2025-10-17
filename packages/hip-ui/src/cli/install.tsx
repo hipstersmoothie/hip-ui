@@ -36,6 +36,7 @@ import { searchFieldConfig } from "../components/search-field/search-field-confi
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
 import { numberFieldConfig } from "../components/number-field/number-field-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
+import { treeConfig } from "../components/tree/tree-config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -67,6 +68,7 @@ const COMPONENT_CONFIGS = [
   colorFieldConfig,
   numberFieldConfig,
   comboboxConfig,
+  treeConfig,
 ];
 
 function StringSetting({

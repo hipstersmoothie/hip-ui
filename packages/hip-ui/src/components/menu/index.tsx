@@ -13,8 +13,6 @@ import {
   PopoverProps,
 } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
 import { Size } from "../types";
 import {
   ListBoxSectionHeaderProps,
@@ -23,58 +21,9 @@ import {
   ListBoxSeparatorProps,
 } from "../listbox";
 import { SizeContext } from "../context";
-import { fontWeight, typeramp } from "../theme/typography.stylex";
-import { useContext } from "react";
 import { Check, ChevronRight } from "lucide-react";
-import { plum, slate } from "../theme/colors.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-
-const styles = stylex.create({
-  section: {},
-  item: {
-    display: "flex",
-    userSelect: "none",
-
-    boxSizing: "border-box",
-    fontWeight: fontWeight["medium"],
-    outline: {
-      default: "none",
-      ":focus": "none",
-    },
-    padding: spacing["1"],
-  },
-  sm: {
-    height: spacing["9"],
-  },
-  md: {
-    height: spacing["9"],
-  },
-  lg: {
-    height: spacing["11"],
-  },
-  itemInner: {
-    alignItems: "center",
-    backgroundColor: {
-      default: "transparent",
-      [":is(:hover > *)"]: slate[4],
-      [":is(:active > *)"]: slate[5],
-    },
-    borderRadius: radius["md"],
-    boxSizing: "border-box",
-    display: "flex",
-    flexGrow: 1,
-    gap: spacing["2"],
-    justifyContent: "space-between",
-    paddingLeft: spacing["2"],
-    paddingRight: spacing["2"],
-    transitionDuration: "100ms",
-    transitionProperty: "background-color",
-    transitionTimingFunction: "ease-in-out",
-  },
-  check: {
-    color: plum[9],
-  },
-});
+import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 
 export interface MenuProps<T extends object>
   extends Omit<MenuTriggerProps, "trigger" | "children">,
@@ -182,9 +131,7 @@ export function MenuSection<T extends object>({
   style,
   ...props
 }: MenuSectionProps<T>) {
-  return (
-    <AriaMenuSection {...props} {...stylex.props(styles.section, style)} />
-  );
+  return <AriaMenuSection {...props} {...stylex.props(style)} />;
 }
 
 export interface MenuItemProps
@@ -194,18 +141,23 @@ export interface MenuItemProps
 }
 
 export function MenuItem({ style, children, ...props }: MenuItemProps) {
-  const size = useContext(SizeContext);
+  const menuItemStyles = useListBoxItemStyles();
 
   return (
-    <AriaMenuItem
-      {...props}
-      {...stylex.props(typeramp.label, styles.item, styles[size], style)}
-    >
+    <AriaMenuItem {...props} {...stylex.props(menuItemStyles.wrapper, style)}>
       {({ isSelected, hasSubmenu }) => (
-        <div {...stylex.props(styles.itemInner)}>
-          {children}
-          {isSelected && <Check size={16} {...stylex.props(styles.check)} />}
-          {hasSubmenu && <ChevronRight size={16} />}
+        <div {...stylex.props(menuItemStyles.inner)}>
+          <div {...stylex.props(menuItemStyles.label)}>{children}</div>
+          {isSelected && (
+            <div {...stylex.props(menuItemStyles.addon)}>
+              <Check size={16} {...stylex.props(menuItemStyles.check)} />
+            </div>
+          )}
+          {hasSubmenu && (
+            <div {...stylex.props(menuItemStyles.addon)}>
+              <ChevronRight size={16} />
+            </div>
+          )}
         </div>
       )}
     </AriaMenuItem>
