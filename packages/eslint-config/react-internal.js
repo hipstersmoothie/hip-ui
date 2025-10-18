@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/eslint-plugin";
 import pluginReactHooks from "eslint-plugin-react-hooks";
 import eslintReact from "@eslint-react/eslint-plugin";
 import { defineConfig } from "eslint/config";
+import jsxA11y from "eslint-plugin-jsx-a11y";
 
 import { config as baseConfig } from "./base.js";
 
@@ -19,7 +20,10 @@ export const config = defineConfig([
       "@stylexjs": stylex,
     },
 
-    extends: [eslintReact.configs["strict-type-checked"]],
+    extends: [
+      eslintReact.configs["strict-type-checked"],
+      jsxA11y.flatConfigs.recommended,
+    ],
 
     settings: { react: { version: "detect" } },
     rules: {

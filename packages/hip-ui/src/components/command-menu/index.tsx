@@ -164,6 +164,8 @@ export function CommandMenu<T extends object>({
               onInputChange={onInputChange}
             >
               <div {...stylex.props(styles.searchField)}>
+                {/* This is part of the interaction for a CMD+K menu. */}
+                {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
                 <SearchField placeholder={placeholder} autoFocus />
               </div>
               <Separator />

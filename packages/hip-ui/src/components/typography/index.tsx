@@ -62,6 +62,7 @@ export interface Heading1Props
 }
 
 export const Heading1 = ({ style, ...props }: Heading1Props) => {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h1 {...stylex.props(typeramp.heading1, style)} {...props} />;
 };
 
@@ -71,6 +72,7 @@ export interface Heading2Props
 }
 
 export const Heading2 = ({ style, ...props }: Heading2Props) => {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h2 {...stylex.props(typeramp.heading2, style)} {...props} />;
 };
 
@@ -80,6 +82,7 @@ export interface Heading3Props
 }
 
 export const Heading3 = ({ style, ...props }: Heading3Props) => {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h3 {...stylex.props(typeramp.heading3, style)} {...props} />;
 };
 
@@ -89,6 +92,7 @@ export interface Heading4Props
 }
 
 export const Heading4 = ({ style, ...props }: Heading4Props) => {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h4 {...stylex.props(typeramp.heading4, style)} {...props} />;
 };
 

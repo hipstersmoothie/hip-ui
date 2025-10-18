@@ -40,6 +40,11 @@ export function TimeField<T extends TimeValue>({
   return (
     <AriaTimeField {...props} {...stylex.props(inputStyles.field, style)}>
       {label !== undefined && <Label size={size}>{label}</Label>}
+      {/* 
+        This onClick is specifically for mouse users not clicking directly on the input.
+        A keyboard user would not encounter the same issue.
+      */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
