@@ -94,7 +94,7 @@ const styles = stylex.create({
 export interface ToggleButtonProps
   extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  variant?: ButtonVariant;
+  variant?: Exclude<ButtonVariant, "critical">;
   size?: Size;
   children?: React.ReactNode;
 }
@@ -113,7 +113,7 @@ export function ToggleButton({
       buttonStyles,
       styles[size],
       isSelected ? styles[`${variant}Selected`] : undefined,
-      style,
+      style
     );
 
   return (
@@ -130,7 +130,7 @@ export function ToggleButton({
           <span key={`${child}-${index.toString()}`}>{child}</span>
         ) : (
           child
-        ),
+        )
       )}
     </AriaToggleButton>
   );

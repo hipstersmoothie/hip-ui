@@ -1,12 +1,13 @@
 "use client";
 
+import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 import {
   ToggleButtonGroupProps as AriaToggleButtonGroupProps,
   ToggleButtonGroup as AriaToggleButtonGroup,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
+
 import { ButtonGroupContext } from "../button/context";
-import { use } from "react";
 
 const styles = stylex.create({
   group: {
@@ -31,6 +32,7 @@ const styles = stylex.create({
     borderTopRightRadius: { ":is(:not(:last-child))  *": "0" },
   },
   verticalContents: {
+    // eslint-disable-next-line @stylexjs/valid-styles
     borderBottomLeftWidth: { ":is(:not(:first-child))  *": "0" },
     borderBottomRightRadius: { ":is(:not(:last-child))  *": "0" },
     borderBottomWidth: { ":is(:not(:last-child))  *": "0" },
@@ -58,7 +60,7 @@ export const ToggleButtonGroup = ({
   const orientation = groupOrientation || orientationProp;
 
   return (
-    <ButtonGroupContext.Provider value={orientation}>
+    <ButtonGroupContext value={orientation}>
       <AriaToggleButtonGroup
         {...stylex.props(
           isInGroup
@@ -72,12 +74,12 @@ export const ToggleButtonGroup = ({
                 orientation === "horizontal" && styles.horizontal,
                 orientation === "vertical" && styles.vertical,
               ],
-          style
+          style,
         )}
         {...props}
       >
         {children}
       </AriaToggleButtonGroup>
-    </ButtonGroupContext.Provider>
+    </ButtonGroupContext>
   );
 };

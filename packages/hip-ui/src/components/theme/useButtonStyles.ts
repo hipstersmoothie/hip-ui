@@ -8,7 +8,7 @@ import { SizeContext } from "../context";
 import { Size, ButtonVariant } from "../types";
 import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
-import { gray, primary } from "./semantic-color.stylex";
+import { critical, gray, primary } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
 import {
@@ -169,6 +169,12 @@ export const useButtonStyles = ({
       gray.bgGhost,
       gray.text,
       styles.outline,
+      styles.shadow,
+    ],
+    variant === "critical" && [
+      critical.bgSolidAction,
+      critical.borderInteractive,
+      critical.textContrast,
       styles.shadow,
     ],
     size === "sm" && styles.small,

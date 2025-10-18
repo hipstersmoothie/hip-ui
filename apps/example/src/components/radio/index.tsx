@@ -3,20 +3,21 @@ import type {
   RadioGroupProps as AriaRadioGroupProps,
   ValidationResult,
 } from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
 import {
   Radio as AriaRadio,
   RadioGroup as AriaRadioGroup,
   FieldError,
   SelectionIndicator,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 
-import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
-import { gray, primary } from "../theme/semantic-color.stylex";
-import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
+import { radius } from "../theme/radius.stylex";
+import { gray, primary } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 import { Size } from "../types";
 
 const scaleIn = stylex.keyframes({
@@ -104,7 +105,7 @@ export function RadioGroup({
 }: RadioGroupProps) {
   return (
     <AriaRadioGroup {...props} {...stylex.props(styles.group, style)}>
-      {label && <Label size={size}>{label}</Label>}
+      {label !== null && <Label size={size}>{label}</Label>}
       <Flex direction="column" gap="2">
         {children}
       </Flex>
@@ -132,7 +133,7 @@ export function Radio({ children, style, ...props }: RadioProps) {
                 ? [gray.bgSolid, gray.border, styles.checked]
                 : isSelected
                   ? [primary.bgSolid, primary.borderInteractive, styles.checked]
-                  : [gray.borderInteractive]
+                  : [gray.borderInteractive],
             )}
           >
             <SelectionIndicator {...stylex.props(styles.selectionIndicator)} />

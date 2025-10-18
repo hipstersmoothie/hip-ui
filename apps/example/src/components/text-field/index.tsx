@@ -1,24 +1,20 @@
+import * as stylex from "@stylexjs/stylex";
+import { Eye, EyeOff } from "lucide-react";
+import { useRef, useState, use } from "react";
 import {
   TextFieldProps as AriaTextFieldProps,
   InputContext,
   InputProps,
   ValidationResult,
-} from "react-aria-components";
-
-import {
   FieldError,
   Input,
   TextField as AriaTextField,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import { Description, Label } from "../label";
-import { useRef } from "react";
-import { useState } from "react";
+
 import { IconButton } from "../icon-button";
-import { Eye, EyeOff } from "lucide-react";
-import { use } from "react";
-import { Size } from "../types";
+import { Description, Label } from "../label";
 import { useInputStyles } from "../theme/useInputStyles";
+import { Size } from "../types";
 
 function PasswordToggle({
   type,
@@ -39,7 +35,9 @@ function PasswordToggle({
         size="sm"
         variant="tertiary"
         label="Toggle password visibility"
-        onPress={() => setType(type === "password" ? "text" : "password")}
+        onPress={() => {
+          setType(type === "password" ? "text" : "password");
+        }}
       >
         {type === "password" ? <EyeOff /> : <Eye />}
       </IconButton>
@@ -72,7 +70,7 @@ export function TextField({
 }: TextFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState<TextFieldProps["type"]>(
-    props.type || "text"
+    props.type || "text",
   );
   const isPasswordInput = props.type === "password";
   const inputStyles = useInputStyles({ size });
@@ -83,18 +81,27 @@ export function TextField({
       type={type}
       {...stylex.props(inputStyles.field, style)}
     >
-      <Label size={size}>{label}</Label>
+      {label !== null && <Label size={size}>{label}</Label>}
+      {/* 
+        This onClick is specifically for mouse users not clicking directly on the input.
+        A keyboard user would not encounter the same issue.
+      */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+        {prefix !== null && (
+          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+        )}
         <Input
           {...stylex.props(inputStyles.input)}
           ref={inputRef}
           placeholder={placeholder}
         />
-        {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+        {suffix !== null && (
+          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+        )}
         {isPasswordInput && (
           <PasswordToggle
             type={type}

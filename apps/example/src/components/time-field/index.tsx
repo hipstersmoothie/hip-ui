@@ -1,17 +1,18 @@
+import * as stylex from "@stylexjs/stylex";
+import { useRef } from "react";
 import {
   TimeFieldProps as AriaTimeFieldProps,
   DateInput,
   DateSegment,
   TimeValue,
   ValidationResult,
+  FieldError,
+  TimeField as AriaTimeField,
 } from "react-aria-components";
 
-import { FieldError, TimeField as AriaTimeField } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 import { Description, Label } from "../label";
-import { useRef } from "react";
-import { Size } from "../types";
 import { useInputStyles } from "../theme/useInputStyles";
+import { Size } from "../types";
 
 export interface TimeFieldProps<T extends TimeValue>
   extends Omit<AriaTimeFieldProps<T>, "style" | "className"> {
@@ -39,16 +40,25 @@ export function TimeField<T extends TimeValue>({
 
   return (
     <AriaTimeField {...props} {...stylex.props(inputStyles.field, style)}>
-      <Label size={size}>{label}</Label>
+      {label !== null && <Label size={size}>{label}</Label>}
+      {/* 
+        This onClick is specifically for mouse users not clicking directly on the input.
+        A keyboard user would not encounter the same issue.
+      */}
+      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+        {prefix !== null && (
+          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+        )}
         <DateInput {...stylex.props(inputStyles.input)} ref={inputRef}>
           {(segment) => <DateSegment segment={segment} />}
         </DateInput>
-        {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+        {suffix !== null && (
+          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+        )}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

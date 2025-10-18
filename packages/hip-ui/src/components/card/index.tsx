@@ -69,7 +69,7 @@ export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   return (
     <Flex
       {...props}
-      style={[styles.cardHeader, style]}
+      style={[styles.cardHeader as unknown as stylex.StyleXStyles, style]}
       direction="column"
       gap="3"
     />

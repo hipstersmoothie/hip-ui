@@ -1,13 +1,15 @@
-import { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-components";
-import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-
-import { spacing } from "../theme/spacing.stylex";
-import { plum, slate } from "../theme/colors.stylex";
 import { Children, use } from "react";
+import {
+  ToggleButtonProps as AriaToggleButtonProps,
+  ToggleButton as AriaToggleButton,
+} from "react-aria-components";
+
+import { SizeContext } from "../context";
+import { plum, slate } from "../theme/colors.stylex";
+import { spacing } from "../theme/spacing.stylex";
 import { useButtonStyles } from "../theme/useButtonStyles";
 import { ButtonVariant, Size } from "../types";
-import { SizeContext } from "../context";
 
 const styles = stylex.create({
   primarySelected: {
@@ -92,7 +94,7 @@ const styles = stylex.create({
 export interface ToggleButtonProps
   extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  variant?: ButtonVariant;
+  variant?: Exclude<ButtonVariant, "critical">;
   size?: Size;
   children?: React.ReactNode;
 }
@@ -122,9 +124,10 @@ export function ToggleButton({
         toggleButtonStyles(isSelected).className || ""
       }
     >
+      {/* eslint-disable-next-line @eslint-react/no-children-map */}
       {Children.map(children, (child, index) =>
         typeof child === "string" ? (
-          <span key={`${child}-${index}`}>{child}</span>
+          <span key={`${child}-${index.toString()}`}>{child}</span>
         ) : (
           child
         )

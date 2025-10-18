@@ -1,10 +1,13 @@
-import { LinkProps as AriaLinkProps } from "react-aria-components";
-import { Link as AriaLink } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
+import {
+  LinkProps as AriaLinkProps,
+  Link as AriaLink,
+} from "react-aria-components";
 
 import { blue } from "../theme/colors.stylex";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
-import { createContext, useContext } from "react";
+import { LinkContext } from "./link-context";
 
 const styles = stylex.create({
   link: {
@@ -22,16 +25,12 @@ const styles = stylex.create({
   },
 });
 
-export const LinkContext = createContext<{
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}>({});
-
 export interface LinkProps extends Omit<AriaLinkProps, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
 export function Link({ style, ...props }: LinkProps) {
-  const context = useContext(LinkContext);
+  const context = use(LinkContext);
 
   return (
     <AriaLink {...props} {...stylex.props(styles.link, context.style, style)} />

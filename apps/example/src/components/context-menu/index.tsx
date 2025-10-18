@@ -1,4 +1,15 @@
 import { OverlayTriggerProps } from "@react-types/overlays";
+import * as stylex from "@stylexjs/stylex";
+import {
+  Children,
+  cloneElement,
+  createContext,
+  use,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
+import { AriaButtonProps, useMenuTrigger } from "react-aria";
 import {
   Menu as AriaMenu,
   MenuProps as AriaMenuProps,
@@ -10,25 +21,14 @@ import {
   Provider,
   RootMenuTriggerStateContext,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-
-import {
-  Children,
-  cloneElement,
-  createContext,
-  use,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
-import { Size } from "../types";
-import { SizeContext } from "../context";
 import { useMenuTriggerState } from "react-stately";
-import { AriaButtonProps, useMenuTrigger } from "react-aria";
-import { usePopoverStyles } from "../theme/usePopoverStyles";
 
-const ContextMenuTriggerProps = createContext<
-  AriaButtonProps<"button"> & { ref?: React.Ref<HTMLDivElement> }
+import { SizeContext } from "../context";
+import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { Size } from "../types";
+
+const ContextMenuTriggerPropsContext = createContext<
+  AriaButtonProps & { ref?: React.Ref<HTMLDivElement> }
 >({});
 
 interface Position {
@@ -44,9 +44,10 @@ const ContextMenuStateContext = createContext<{
   setPosition: () => {},
 });
 
-function ContextMenuRoot(
-  props: OverlayTriggerProps & { children: React.ReactNode }
-) {
+function ContextMenuRoot({
+  children,
+  ...props
+}: OverlayTriggerProps & { children: React.ReactNode }) {
   const scrollRef = useRef(null);
   const state = useMenuTriggerState(props);
   const ref = useRef<HTMLDivElement>(null);
@@ -54,7 +55,7 @@ function ContextMenuRoot(
   const { menuTriggerProps, menuProps } = useMenuTrigger(
     { ...props, type: "menu" },
     state,
-    ref
+    ref,
   );
 
   return (
@@ -63,7 +64,7 @@ function ContextMenuRoot(
         [MenuContext, { ...menuProps, ref: scrollRef }],
         [OverlayTriggerStateContext, state],
         [RootMenuTriggerStateContext, state],
-        [ContextMenuTriggerProps, { ...menuTriggerProps, ref }],
+        [ContextMenuTriggerPropsContext, { ...menuTriggerProps, ref }],
         [ContextMenuStateContext, { position, setPosition }],
         [
           PopoverContext,
@@ -77,16 +78,17 @@ function ContextMenuRoot(
         ],
       ]}
     >
-      {props.children}
+      {children}
     </Provider>
   );
 }
 
-function ContextMenuTrigger(
-  props: OverlayTriggerProps & { children: React.ReactNode }
-) {
+function ContextMenuTrigger({
+  children,
+  ...props
+}: OverlayTriggerProps & { children: React.ReactNode }) {
   const overlayTriggerState = use(OverlayTriggerStateContext);
-  const menuTriggerProps = use(ContextMenuTriggerProps);
+  const menuTriggerProps = use(ContextMenuTriggerPropsContext);
   const { position, setPosition } = use(ContextMenuStateContext);
   const onContextMenu = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -95,28 +97,31 @@ function ContextMenuTrigger(
       overlayTriggerState?.open();
       setPosition({ x: e.pageX, y: e.pageY });
     },
-    [overlayTriggerState, setPosition]
+    [overlayTriggerState, setPosition],
   );
 
-  if (Children.count(props.children) !== 1) {
+  // eslint-disable-next-line @eslint-react/no-children-count
+  if (Children.count(children) !== 1) {
     throw new Error("ContextMenuTrigger must have exactly one child");
   }
 
   return (
     <>
+      {/* eslint-disable-next-line @eslint-react/no-clone-element */}
       {cloneElement(
-        props.children as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
+        children as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
         {
+          ...props,
           "aria-controls": menuTriggerProps["aria-controls"],
           "aria-expanded": menuTriggerProps["aria-expanded"],
           "aria-haspopup": menuTriggerProps["aria-haspopup"],
           id: menuTriggerProps["id"],
           onContextMenu: onContextMenu,
-        }
+        },
       )}
       <div
         ref={menuTriggerProps.ref}
-        style={{ position: "absolute", top: position?.y, left: position?.x }}
+        style={{ position: "absolute", top: position.y, left: position.x }}
       />
     </>
   );
@@ -154,7 +159,7 @@ export function ContextMenu<T extends object>({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <ContextMenuRoot
         defaultOpen={defaultOpen}
         isOpen={isOpen}
@@ -171,6 +176,6 @@ export function ContextMenu<T extends object>({
           <AriaMenu {...props} {...stylex.props(popoverStyles)} />
         </Popover>
       </ContextMenuRoot>
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }

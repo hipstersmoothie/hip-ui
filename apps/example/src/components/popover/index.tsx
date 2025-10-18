@@ -1,5 +1,6 @@
 "use client";
 
+import * as stylex from "@stylexjs/stylex";
 import {
   OverlayArrow,
   Popover as AriaPopover,
@@ -8,7 +9,6 @@ import {
   DialogTriggerProps,
   Dialog,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 
 import { slate } from "../theme/colors.stylex";
 import { spacing } from "../theme/spacing.stylex";

@@ -1,4 +1,6 @@
+import * as stylex from "@stylexjs/stylex";
 import { ChevronRight, GripVertical } from "lucide-react";
+import { use } from "react";
 import {
   Button,
   Tree as AriaTree,
@@ -8,15 +10,14 @@ import {
   TreeItemProps as AriaTreeItemProps,
   TreeItemContentProps as AriaTreeItemContentProps,
 } from "react-aria-components";
+
 import { Checkbox } from "../checkbox";
-import * as stylex from "@stylexjs/stylex";
-import { Size } from "../types";
 import { SizeContext } from "../context";
-import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
-import { spacing } from "../theme/spacing.stylex";
-import { gray } from "../theme/semantic-color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { use } from "react";
+import { gray } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
+import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -118,20 +119,20 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
               styles.chevron,
               gray.textDim,
               listBoxItemStyles.addon,
-              !hasChildItems && styles.hidden
+              !hasChildItems && styles.hidden,
             )}
           >
             <ChevronRight size={16} />
           </Button>
 
           <div {...stylex.props(styles.content)}>
-            {prefix && (
+            {prefix !== null && (
               <div {...stylex.props(listBoxItemStyles.addon, styles.addon)}>
                 {prefix}
               </div>
             )}
             <div {...stylex.props(listBoxItemStyles.label)}>{children}</div>
-            {suffix && (
+            {suffix !== null && (
               <div {...stylex.props(listBoxItemStyles.addon, styles.addon)}>
                 {suffix}
               </div>
@@ -169,7 +170,7 @@ export function TreeItem<T extends object>({
         listBoxItemStyles.wrapper,
         styles.wrapper,
         styles.itemInner,
-        style
+        style,
       )}
     >
       <TreeItemContent prefix={prefix} suffix={suffix}>
@@ -195,8 +196,8 @@ export function Tree<T extends object>({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <AriaTree {...props} {...stylex.props(style)} />
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }

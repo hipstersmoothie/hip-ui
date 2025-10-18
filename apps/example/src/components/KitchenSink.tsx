@@ -149,7 +149,13 @@ function Typography() {
   );
 }
 
-const buttons = ["primary", "secondary", "tertiary", "outline"] as const;
+const buttons = [
+  "primary",
+  "secondary",
+  "tertiary",
+  "outline",
+  "critical",
+] as const;
 const buttonSizes = ["sm", "md", "lg"] as const;
 
 function Buttons() {
@@ -193,35 +199,38 @@ function Buttons() {
 function ButtonGroups() {
   return (
     <Flex direction="column" gap="4">
-      {buttons.map((button) => (
-        <Flex align="center" gap="2" key={button}>
-          <ButtonGroup>
-            <IconButton variant={button} label="Previous">
-              <ArrowLeft />
-            </IconButton>
-          </ButtonGroup>
-          <ButtonGroup>
-            <ToggleButton variant={button}>
-              <Star />
-            </ToggleButton>
-            <Button variant={button}>Button 1</Button>
-            <Button variant={button}>Button 2</Button>
-            <Button variant={button}>Button 3</Button>
-            <Button variant={button}>Button 4</Button>
-            <ToggleButtonGroup>
-              <ToggleButton variant={button}>Toggle Button 1</ToggleButton>
-              <ToggleButton variant={button}>Toggle Button 2</ToggleButton>
-              <ToggleButton variant={button}>Toggle Button 3</ToggleButton>
-            </ToggleButtonGroup>
-          </ButtonGroup>
-          <ButtonGroup>
-            <Button variant={button}>Action</Button>
-            <IconButton variant={button} label="More">
-              <Ellipsis />
-            </IconButton>
-          </ButtonGroup>
-        </Flex>
-      ))}
+      {buttons.map(
+        (button) =>
+          button !== "critical" && (
+            <Flex align="center" gap="2" key={button}>
+              <ButtonGroup>
+                <IconButton variant={button} label="Previous">
+                  <ArrowLeft />
+                </IconButton>
+              </ButtonGroup>
+              <ButtonGroup>
+                <ToggleButton variant={button}>
+                  <Star />
+                </ToggleButton>
+                <Button variant={button}>Button 1</Button>
+                <Button variant={button}>Button 2</Button>
+                <Button variant={button}>Button 3</Button>
+                <Button variant={button}>Button 4</Button>
+                <ToggleButtonGroup>
+                  <ToggleButton variant={button}>Toggle Button 1</ToggleButton>
+                  <ToggleButton variant={button}>Toggle Button 2</ToggleButton>
+                  <ToggleButton variant={button}>Toggle Button 3</ToggleButton>
+                </ToggleButtonGroup>
+              </ButtonGroup>
+              <ButtonGroup>
+                <Button variant={button}>Action</Button>
+                <IconButton variant={button} label="More">
+                  <Ellipsis />
+                </IconButton>
+              </ButtonGroup>
+            </Flex>
+          )
+      )}
 
       <Flex gap="2">
         {buttons.map((button) => (
@@ -496,35 +505,41 @@ function PaymentMethod() {
 function ToggleButtonGroups() {
   return (
     <Flex direction="column" gap="4">
-      {buttons.map((button) => (
-        <Flex key={button} gap="8">
-          {buttonSizes.map((size) => (
-            <ToggleButtonGroup key={`${button}-${size}`} selectionMode="single">
-              <ToggleButton
-                variant={button}
-                size={size}
-                id={`${button}-${size}-1`}
-              >
-                Toggle Button 1
-              </ToggleButton>
-              <ToggleButton
-                variant={button}
-                size={size}
-                id={`${button}-${size}-2`}
-              >
-                Toggle Button 2
-              </ToggleButton>
-              <ToggleButton
-                variant={button}
-                size={size}
-                id={`${button}-${size}-3`}
-              >
-                Toggle Button 3
-              </ToggleButton>
-            </ToggleButtonGroup>
-          ))}
-        </Flex>
-      ))}
+      {buttons.map(
+        (button) =>
+          button !== "critical" && (
+            <Flex key={button} gap="8">
+              {buttonSizes.map((size) => (
+                <ToggleButtonGroup
+                  key={`${button}-${size}`}
+                  selectionMode="single"
+                >
+                  <ToggleButton
+                    variant={button}
+                    size={size}
+                    id={`${button}-${size}-1`}
+                  >
+                    Toggle Button 1
+                  </ToggleButton>
+                  <ToggleButton
+                    variant={button}
+                    size={size}
+                    id={`${button}-${size}-2`}
+                  >
+                    Toggle Button 2
+                  </ToggleButton>
+                  <ToggleButton
+                    variant={button}
+                    size={size}
+                    id={`${button}-${size}-3`}
+                  >
+                    Toggle Button 3
+                  </ToggleButton>
+                </ToggleButtonGroup>
+              ))}
+            </Flex>
+          )
+      )}
     </Flex>
   );
 }
@@ -665,14 +680,6 @@ export function KitchenSink() {
       style={[gray.bg, gray.text, styles.container]}
     >
       <CommandMenuExample />
-    </Flex>
-  );
-  return (
-    <Flex
-      direction="column"
-      gap="10"
-      style={[gray.bg, gray.text, styles.container]}
-    >
       <TitleCard title="Tree">
         <TreeExample />
       </TitleCard>
@@ -688,20 +695,23 @@ export function KitchenSink() {
         <Flex direction="column" gap="4">
           {buttons.map((button) => (
             <Flex gap="8">
-              {buttonSizes.map((size) => (
-                <Flex key={`${button}-${size}`} gap="2">
-                  <ToggleButton variant={button} size={size}>
-                    <Pin />
-                  </ToggleButton>
-                  <ToggleButton variant={button} size={size}>
-                    Pin
-                  </ToggleButton>
-                  <ToggleButton variant={button} size={size}>
-                    <Pin />
-                    Pin
-                  </ToggleButton>
-                </Flex>
-              ))}
+              {buttonSizes.map(
+                (size) =>
+                  button !== "critical" && (
+                    <Flex key={`${button}-${size}`} gap="2">
+                      <ToggleButton variant={button} size={size}>
+                        <Pin />
+                      </ToggleButton>
+                      <ToggleButton variant={button} size={size}>
+                        Pin
+                      </ToggleButton>
+                      <ToggleButton variant={button} size={size}>
+                        <Pin />
+                        Pin
+                      </ToggleButton>
+                    </Flex>
+                  )
+              )}
             </Flex>
           ))}
         </Flex>

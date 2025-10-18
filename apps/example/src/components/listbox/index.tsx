@@ -1,3 +1,6 @@
+import * as stylex from "@stylexjs/stylex";
+import { Check } from "lucide-react";
+import { use } from "react";
 import {
   ListBoxProps as AriaListBoxProps,
   ListBoxItem as AriaListBoxItem,
@@ -8,16 +11,14 @@ import {
   Header,
   SeparatorProps,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import { Check } from "lucide-react";
-import { spacing } from "../theme/spacing.stylex";
-import { typeramp } from "../theme/typography.stylex";
-import { Size } from "../types";
+
 import { SizeContext } from "../context";
-import { use } from "react";
 import { Separator } from "../separator";
 import { gray } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { typeramp } from "../theme/typography.stylex";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
+import { Size } from "../types";
 
 const styles = stylex.create({
   listBox: {
@@ -63,9 +64,9 @@ export function ListBox<T extends object>({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 
@@ -97,11 +98,11 @@ export function ListBoxItem({
     >
       {({ isSelected }) => (
         <div {...stylex.props(listBoxItemStyles.inner)}>
-          {prefix && (
+          {prefix !== null && (
             <div {...stylex.props(listBoxItemStyles.addon)}>{prefix}</div>
           )}
           <div {...stylex.props(listBoxItemStyles.label)}>{children}</div>
-          {suffix && (
+          {suffix !== null && (
             <div {...stylex.props(listBoxItemStyles.addon)}>{suffix}</div>
           )}
           {isSelected && (
@@ -154,7 +155,7 @@ export function ListBoxSectionHeader({
         styles.sectionLabel,
         gray.textDim,
         styles[`${size}SectionLabel`],
-        style
+        style,
       )}
     />
   );

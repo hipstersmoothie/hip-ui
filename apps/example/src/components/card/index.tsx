@@ -1,10 +1,10 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { gray } from "../theme/semantic-color.stylex";
+import { Flex } from "../flex";
 import { radius } from "../theme/radius.stylex";
+import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
-import { Flex } from "../flex";
 
 const styles = stylex.create({
   card: {
@@ -69,7 +69,7 @@ export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   return (
     <Flex
       {...props}
-      style={[styles.cardHeader, style]}
+      style={[styles.cardHeader as unknown as stylex.StyleXStyles, style]}
       direction="column"
       gap="3"
     />

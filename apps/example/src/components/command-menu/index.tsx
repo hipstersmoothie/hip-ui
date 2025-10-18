@@ -1,3 +1,6 @@
+import { useControlledState } from "@react-stately/utils";
+import * as stylex from "@stylexjs/stylex";
+import { useEffect, useEffectEvent } from "react";
 import {
   InputProps,
   Modal,
@@ -8,28 +11,16 @@ import {
   ModalOverlay,
   AutocompleteProps as AriaAutocompleteProps,
 } from "react-aria-components";
-import { useControlledState } from "@react-stately/utils";
-import { SearchField } from "../search-field";
 import { OverlayTriggerProps } from "react-stately";
-import {
-  MenuItem,
-  MenuItemProps,
-  MenuSection,
-  MenuSectionHeader,
-  MenuSectionHeaderProps,
-  MenuSectionProps,
-  MenuSeparator,
-  MenuSeparatorProps,
-} from "../menu";
-import { useEffect, useEffectEvent } from "react";
-import * as stylex from "@stylexjs/stylex";
-import { shadow } from "../theme/shadow.stylex";
+
+import { SizeContext } from "../context";
+import { SearchField } from "../search-field";
+import { Separator } from "../separator";
+import { animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
-import { animations } from "../theme/animations.stylex";
+import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { SizeContext } from "../context";
-import { Separator } from "../separator";
 
 const styles = stylex.create({
   overlay: {
@@ -41,20 +32,20 @@ const styles = stylex.create({
     width: "100vw",
     zIndex: 100,
 
-    transitionProperty: "opacity",
-    transitionDuration: {
-      ":is([data-exiting])": "100ms",
-    },
-    transitionTimingFunction: "ease-in-out",
-    opacity: {
-      default: 1,
-      ":is([data-exiting])": 0,
-    },
+    animationDuration: "200ms",
     animationName: {
       ":is([data-entering])": animations.fadeIn,
     },
     animationTimingFunction: "ease-in",
-    animationDuration: "200ms",
+    opacity: {
+      default: 1,
+      ":is([data-exiting])": 0,
+    },
+    transitionDuration: {
+      ":is([data-exiting])": "100ms",
+    },
+    transitionProperty: "opacity",
+    transitionTimingFunction: "ease-in-out",
   },
   modal: {
     borderRadius: radius["lg"],
@@ -106,6 +97,7 @@ export interface CommandMenuProps<T extends object>
     Pick<InputProps, "placeholder">,
     AriaAutocompleteProps<T> {
   children: React.ReactNode;
+  disableGlobalShortcut?: boolean;
 }
 
 export function CommandMenu<T extends object>({
@@ -120,29 +112,36 @@ export function CommandMenu<T extends object>({
   disableVirtualFocus,
   inputValue,
   onInputChange,
+  disableGlobalShortcut = false,
 }: CommandMenuProps<T>) {
   const defaultFilter = useFilter({ sensitivity: "base" });
   const [isOpen, setIsOpen] = useControlledState(
     isOpenProp,
     defaultOpen ?? false,
-    onOpenChange
+    onOpenChange,
   );
-  const onClose = useEffectEvent(() => setIsOpen(false));
+  const onClose = useEffectEvent(() => {
+    setIsOpen(false);
+  });
 
   useEffect(() => {
+    if (disableGlobalShortcut) return;
+
     function handleKeyDown(event: KeyboardEvent) {
       if (event.metaKey && event.key === "k") {
         setIsOpen(true);
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown);
+    globalThis.addEventListener("keydown", handleKeyDown);
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [setIsOpen]);
+    return () => {
+      globalThis.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [setIsOpen, disableGlobalShortcut]);
 
   return (
-    <SizeContext.Provider value="lg">
+    <SizeContext value="lg">
       <ModalOverlay
         isDismissable
         isOpen={isOpen}
@@ -160,6 +159,8 @@ export function CommandMenu<T extends object>({
               onInputChange={onInputChange}
             >
               <div {...stylex.props(styles.searchField)}>
+                {/* This is part of the interaction for a CMD+K menu. */}
+                {/* eslint-disable-next-line jsx-a11y/no-autofocus */}
                 <SearchField placeholder={placeholder} autoFocus />
               </div>
               <Separator />
@@ -170,15 +171,20 @@ export function CommandMenu<T extends object>({
           </Dialog>
         </Modal>
       </ModalOverlay>
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 
-export type CommandMenuItemProps = MenuItemProps;
-export const CommandMenuItem = MenuItem;
-export type CommandMenuSectionHeaderProps = MenuSectionHeaderProps;
-export const CommandMenuSectionHeader = MenuSectionHeader;
-export type CommandMenuSectionProps<T extends object> = MenuSectionProps<T>;
-export const CommandMenuSection = MenuSection;
-export type CommandMenuSeparatorProps = MenuSeparatorProps;
-export const CommandMenuSeparator = MenuSeparator;
+export type {
+  MenuItemProps as CommandMenuItemProps,
+  MenuSectionHeaderProps as CommandMenuSectionHeaderProps,
+  MenuSectionProps as CommandMenuSectionProps,
+  MenuSeparatorProps as CommandMenuSeparatorProps,
+} from "../menu";
+
+export {
+  MenuItem as CommandMenuItem,
+  MenuSectionHeader as CommandMenuSectionHeader,
+  MenuSection as CommandMenuSection,
+  MenuSeparator as CommandMenuSeparator,
+} from "../menu";
