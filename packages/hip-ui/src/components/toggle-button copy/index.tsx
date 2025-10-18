@@ -121,8 +121,10 @@ export function ToggleButton({
         toggleButtonStyles(isSelected).className || ""
       }
     >
+      {/* eslint-disable-next-line @eslint-react/no-children-map */}
       {Children.map(children, (child, index) =>
         typeof child === "string" ? (
+          // eslint-disable-next-line @eslint-react/no-array-index-key
           <span key={`${child}-${index}`}>{child}</span>
         ) : (
           child

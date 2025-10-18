@@ -63,9 +63,9 @@ export function ListBox<T extends object>({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 
@@ -97,11 +97,11 @@ export function ListBoxItem({
     >
       {({ isSelected }) => (
         <div {...stylex.props(listBoxItemStyles.inner)}>
-          {prefix && (
+          {prefix !== undefined && (
             <div {...stylex.props(listBoxItemStyles.addon)}>{prefix}</div>
           )}
           <div {...stylex.props(listBoxItemStyles.label)}>{children}</div>
-          {suffix && (
+          {suffix !== undefined && (
             <div {...stylex.props(listBoxItemStyles.addon)}>{suffix}</div>
           )}
           {isSelected && (

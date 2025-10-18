@@ -88,13 +88,17 @@ export function NumberField({
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+        {prefix !== undefined && (
+          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+        )}
         <Input
           placeholder={placeholder}
           ref={inputRef}
           {...stylex.props(inputStyles.input)}
         />
-        {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+        {suffix !== undefined && (
+          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+        )}
         <Group {...stylex.props(styles.buttons)}>
           <Button slot="decrement" {...buttonStyles}>
             <Minus />

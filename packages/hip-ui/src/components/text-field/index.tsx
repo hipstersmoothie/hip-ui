@@ -83,18 +83,22 @@ export function TextField({
       type={type}
       {...stylex.props(inputStyles.field, style)}
     >
-      {label && <Label size={size}>{label}</Label>}
+      {label !== undefined && <Label size={size}>{label}</Label>}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+        {prefix !== undefined && (
+          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+        )}
         <Input
           {...stylex.props(inputStyles.input)}
           ref={inputRef}
           placeholder={placeholder}
         />
-        {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+        {suffix !== undefined && (
+          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+        )}
         {isPasswordInput && (
           <PasswordToggle
             type={type}

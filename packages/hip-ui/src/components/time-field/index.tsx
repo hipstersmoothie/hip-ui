@@ -39,16 +39,20 @@ export function TimeField<T extends TimeValue>({
 
   return (
     <AriaTimeField {...props} {...stylex.props(inputStyles.field, style)}>
-      {label && <Label size={size}>{label}</Label>}
+      {label !== undefined && <Label size={size}>{label}</Label>}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+        {prefix !== undefined && (
+          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+        )}
         <DateInput {...stylex.props(inputStyles.input)} ref={inputRef}>
           {(segment) => <DateSegment segment={segment} />}
         </DateInput>
-        {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+        {suffix !== undefined && (
+          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+        )}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

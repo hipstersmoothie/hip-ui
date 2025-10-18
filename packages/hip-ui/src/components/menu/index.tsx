@@ -58,7 +58,7 @@ export function Menu<T extends object>({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <MenuTrigger
         defaultOpen={defaultOpen}
         isOpen={isOpen}
@@ -75,7 +75,7 @@ export function Menu<T extends object>({
           <AriaMenu {...props} {...stylex.props(popoverStyles)} />
         </Popover>
       </MenuTrigger>
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 
@@ -163,11 +163,11 @@ export function MenuItem({
     >
       {({ isSelected, hasSubmenu }) => (
         <div {...stylex.props(menuItemStyles.inner)}>
-          {prefix && (
+          {prefix !== undefined && (
             <div {...stylex.props(menuItemStyles.addon)}>{prefix}</div>
           )}
           <div {...stylex.props(menuItemStyles.label)}>{children}</div>
-          {suffix && (
+          {suffix !== undefined && (
             <div {...stylex.props(menuItemStyles.addon)}>{suffix}</div>
           )}
           {isSelected && (

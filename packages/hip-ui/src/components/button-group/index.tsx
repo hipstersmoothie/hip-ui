@@ -29,7 +29,7 @@ export const ButtonGroup = ({
   ...props
 }: ButtonGroupProps) => {
   return (
-    <ButtonGroupContext.Provider value={orientation}>
+    <ButtonGroupContext value={orientation}>
       <Group
         {...stylex.props(
           styles.group,
@@ -41,6 +41,6 @@ export const ButtonGroup = ({
       >
         {children}
       </Group>
-    </ButtonGroupContext.Provider>
+    </ButtonGroupContext>
   );
 };

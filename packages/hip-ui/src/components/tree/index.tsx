@@ -125,13 +125,13 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
           </Button>
 
           <div {...stylex.props(styles.content)}>
-            {prefix && (
+            {prefix !== undefined && (
               <div {...stylex.props(listBoxItemStyles.addon, styles.addon)}>
                 {prefix}
               </div>
             )}
             <div {...stylex.props(listBoxItemStyles.label)}>{children}</div>
-            {suffix && (
+            {suffix !== undefined && (
               <div {...stylex.props(listBoxItemStyles.addon, styles.addon)}>
                 {suffix}
               </div>
@@ -195,8 +195,8 @@ export function Tree<T extends object>({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <AriaTree {...props} {...stylex.props(style)} />
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }

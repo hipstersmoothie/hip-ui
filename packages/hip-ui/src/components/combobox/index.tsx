@@ -98,16 +98,20 @@ export function ComboBox<T extends object>({
   const popoverStyles = usePopoverStyles();
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <AriaComboBox {...props} {...stylex.props(inputStyles.field, style)}>
         {label && <Label size={size}>{label}</Label>}
         <Button {...stylex.props(inputStyles.wrapper)}>
-          {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+          {prefix !== undefined && (
+            <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+          )}
           <Input
             {...stylex.props(inputStyles.input)}
             placeholder={placeholder}
           />
-          {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+          {suffix !== undefined && (
+            <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+          )}
           <div {...stylex.props(inputStyles.addon)}>
             <IconButton size="sm" variant="secondary" label="Open combobox">
               <ChevronDown size={16} aria-hidden="true" />
@@ -132,7 +136,7 @@ export function ComboBox<T extends object>({
           </ListBox>
         </Popover>
       </AriaComboBox>
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 

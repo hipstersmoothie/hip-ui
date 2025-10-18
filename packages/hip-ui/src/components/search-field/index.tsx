@@ -42,13 +42,15 @@ export interface SearchFieldProps
   suffix?: React.ReactNode;
 }
 
+const defaultPrefix = <SearchIcon />;
+
 export function SearchField({
   label,
   description,
   errorMessage,
   style,
   size,
-  prefix = <SearchIcon />,
+  prefix = defaultPrefix,
   suffix,
   placeholder,
   ...props
@@ -61,12 +63,12 @@ export function SearchField({
       {({ isEmpty }) => {
         return (
           <>
-            {label && <Label size={size}>{label}</Label>}
+            {label !== undefined && <Label size={size}>{label}</Label>}
             <div
               {...stylex.props(inputStyles.wrapper, styles.wrapper)}
               onClick={() => inputRef.current?.focus()}
             >
-              {prefix && (
+              {prefix !== undefined && (
                 <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
               )}
               <Input
@@ -77,7 +79,7 @@ export function SearchField({
                   !isEmpty && styles.clearButtonPadding
                 )}
               />
-              {suffix && (
+              {suffix !== undefined && (
                 <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
               )}
               {!isEmpty && (

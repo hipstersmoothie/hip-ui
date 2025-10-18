@@ -18,6 +18,7 @@ const styles = stylex.create({
   },
 });
 
+// eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
 export function usePopoverStyles() {
   return [styles.popover, gray.bgSubtle, gray.text, gray.border];
 }

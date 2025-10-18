@@ -104,7 +104,7 @@ export function RadioGroup({
 }: RadioGroupProps) {
   return (
     <AriaRadioGroup {...props} {...stylex.props(styles.group, style)}>
-      {label && <Label size={size}>{label}</Label>}
+      {label !== undefined && <Label size={size}>{label}</Label>}
       <Flex direction="column" gap="2">
         {children}
       </Flex>

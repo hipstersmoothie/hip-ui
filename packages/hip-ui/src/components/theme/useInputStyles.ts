@@ -107,6 +107,6 @@ export function useInputStyles({ size: sizeProp }: { size?: Size }) {
     field: [styles.field],
     wrapper: [styles.inputWrapper, gray.bgUi, gray.text, styles[size]],
     input: [styles.input, styles[`${size}Input`]],
-    addon: [styles.addon],
+    addon: styles.addon as unknown as stylex.StyleXStyles,
   };
 }

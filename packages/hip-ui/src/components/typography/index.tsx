@@ -143,7 +143,7 @@ export const SubLabel = ({
   );
 
   return (
-    <LinkContext.Provider value={contextValue}>
+    <LinkContext value={contextValue}>
       <p
         {...stylex.props(
           typeramp.sublabel,
@@ -152,7 +152,7 @@ export const SubLabel = ({
         )}
         {...props}
       />
-    </LinkContext.Provider>
+    </LinkContext>
   );
 };
 

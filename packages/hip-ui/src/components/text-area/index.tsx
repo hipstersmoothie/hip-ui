@@ -140,19 +140,23 @@ export function TextArea({
 
   return (
     <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
-      {label && <Label size={size}>{label}</Label>}
+      {label !== undefined && <Label size={size}>{label}</Label>}
       <div
         {...stylex.props(styles.inputWrapper, gray.bgUi, gray.text)}
         onClick={() => textAreaRef.current?.focus()}
       >
-        {prefix && <div {...stylex.props(styles.addon)}>{prefix}</div>}
+        {prefix !== undefined && (
+          <div {...stylex.props(styles.addon)}>{prefix}</div>
+        )}
         <AriaTextArea
           {...stylex.props(styles.input, styles[`${size}Input`])}
           ref={textAreaRef}
           placeholder={placeholder}
           rows={rows}
         />
-        {suffix && <div {...stylex.props(styles.addon)}>{suffix}</div>}
+        {suffix !== undefined && (
+          <div {...stylex.props(styles.addon)}>{suffix}</div>
+        )}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

@@ -1,41 +1,29 @@
-import js from "@eslint/js";
-import eslintConfigPrettier from "eslint-config-prettier";
-import tseslint from "typescript-eslint";
-import pluginReactHooks from "eslint-plugin-react-hooks";
-import pluginReact from "eslint-plugin-react";
-import globals from "globals";
-import { config as baseConfig } from "./base.js";
 import * as stylex from "@stylexjs/eslint-plugin";
+import pluginReactHooks from "eslint-plugin-react-hooks";
+import eslintReact from "@eslint-react/eslint-plugin";
+import { defineConfig } from "eslint/config";
+
+import { config as baseConfig } from "./base.js";
 
 /**
  * A custom ESLint configuration for libraries that use React.
  *
  * @type {import("eslint").Linter.Config[]} */
-export const config = [
+export const config = defineConfig([
   ...baseConfig,
-  js.configs.recommended,
-  eslintConfigPrettier,
-  ...tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
   {
-    languageOptions: {
-      ...pluginReact.configs.flat.recommended.languageOptions,
-      globals: {
-        ...globals.serviceworker,
-        ...globals.browser,
-      },
-    },
-  },
-  {
+    files: ["**/*.ts", "**/*.tsx"],
+
     plugins: {
       "react-hooks": pluginReactHooks,
       "@stylexjs": stylex,
     },
+
+    extends: [eslintReact.configs["strict-type-checked"]],
+
     settings: { react: { version: "detect" } },
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
-      // React scope no longer necessary with new JSX transform.
-      "react/react-in-jsx-scope": "off",
 
       "@stylexjs/valid-styles": "error",
       "@stylexjs/valid-styles": "error",
@@ -47,4 +35,4 @@ export const config = [
       "@stylexjs/no-lookahead-selectors": "error",
     },
   },
-];
+]);

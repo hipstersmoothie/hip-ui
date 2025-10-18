@@ -9,7 +9,7 @@ import {
   typeramp,
 } from "../theme/typography.stylex";
 import { SizeContext } from "../context";
-import { useContext } from "react";
+import { use } from "react";
 
 const styles = stylex.create({
   item: {
@@ -94,7 +94,7 @@ const styles = stylex.create({
 });
 
 export function useListBoxItemStyles() {
-  const size = useContext(SizeContext);
+  const size = use(SizeContext);
 
   return {
     wrapper: [typeramp.label, styles.item, styles[size]],

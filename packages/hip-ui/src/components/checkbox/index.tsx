@@ -74,7 +74,7 @@ export function CheckboxGroup({
 }: CheckboxGroupProps) {
   return (
     <AriaCheckboxGroup {...props} {...stylex.props(styles.group, style)}>
-      {label && <Label size={size}>{label}</Label>}
+      {label !== undefined && <Label size={size}>{label}</Label>}
       <Flex direction="column" gap="2">
         {children}
       </Flex>
@@ -111,7 +111,7 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
               <Check size={16} />
             ) : null}
           </div>
-          {children && (
+          {children !== undefined && (
             <Flex direction="column" gap="1">
               {children}
             </Flex>

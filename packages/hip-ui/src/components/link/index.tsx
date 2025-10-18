@@ -4,7 +4,7 @@ import * as stylex from "@stylexjs/stylex";
 
 import { blue } from "../theme/colors.stylex";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 
 const styles = stylex.create({
   link: {
@@ -31,7 +31,7 @@ export interface LinkProps extends Omit<AriaLinkProps, "style" | "className"> {
 }
 
 export function Link({ style, ...props }: LinkProps) {
-  const context = useContext(LinkContext);
+  const context = use(LinkContext);
 
   return (
     <AriaLink {...props} {...stylex.props(styles.link, context.style, style)} />

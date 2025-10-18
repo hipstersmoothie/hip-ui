@@ -82,7 +82,7 @@ export function Select<
   const popoverStyles = usePopoverStyles();
 
   return (
-    <SizeContext.Provider value={size}>
+    <SizeContext value={size}>
       <AriaSelect
         {...props}
         {...stylex.props(inputStyles.field, style)}
@@ -90,7 +90,9 @@ export function Select<
       >
         {label && <Label size={size}>{label}</Label>}
         <Button {...stylex.props(inputStyles.wrapper)}>
-          {prefix && <div {...stylex.props(inputStyles.addon)}>{prefix}</div>}
+          {prefix !== undefined && (
+            <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+          )}
           <SelectValue {...stylex.props(inputStyles.input)}>
             {({ selectedText, isPlaceholder, defaultChildren }) => {
               if (isPlaceholder) return placeholder;
@@ -99,7 +101,9 @@ export function Select<
               return defaultChildren;
             }}
           </SelectValue>
-          {suffix && <div {...stylex.props(inputStyles.addon)}>{suffix}</div>}
+          {suffix !== undefined && (
+            <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+          )}
           <div {...stylex.props(inputStyles.addon)}>
             <ChevronDown size={16} aria-hidden="true" />
           </div>
@@ -121,7 +125,7 @@ export function Select<
           </ListBox>
         </Popover>
       </AriaSelect>
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 

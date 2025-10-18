@@ -146,7 +146,7 @@ export function CommandMenu<T extends object>({
   }, [setIsOpen, disableGlobalShortcut]);
 
   return (
-    <SizeContext.Provider value="lg">
+    <SizeContext value="lg">
       <ModalOverlay
         isDismissable
         isOpen={isOpen}
@@ -174,7 +174,7 @@ export function CommandMenu<T extends object>({
           </Dialog>
         </Modal>
       </ModalOverlay>
-    </SizeContext.Provider>
+    </SizeContext>
   );
 }
 

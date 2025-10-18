@@ -59,7 +59,7 @@ export const ToggleButtonGroup = ({
   const orientation = groupOrientation || orientationProp;
 
   return (
-    <ButtonGroupContext.Provider value={orientation}>
+    <ButtonGroupContext value={orientation}>
       <AriaToggleButtonGroup
         {...stylex.props(
           isInGroup
@@ -79,6 +79,6 @@ export const ToggleButtonGroup = ({
       >
         {children}
       </AriaToggleButtonGroup>
-    </ButtonGroupContext.Provider>
+    </ButtonGroupContext>
   );
 };
