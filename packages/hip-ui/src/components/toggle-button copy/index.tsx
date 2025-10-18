@@ -13,46 +13,46 @@ import { useButtonStyles } from "../theme/useButtonStyles";
 const styles = stylex.create({
   primarySelected: {
     backgroundColor: {
-      default: plum[9],
-      ":hover": plum[10],
-      ":active": plum[11],
+      default: plum.solid1,
+      ":hover": plum.solid2,
+      ":active": plum.text1,
     },
     color: "light-dark(white, black)",
   },
   secondarySelected: {
     backgroundColor: {
-      default: slate[6],
-      ":hover": slate[7],
-      ":active": slate[8],
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
     },
     borderColor: {
-      default: slate[6],
-      ":hover": slate[7],
-      ":active": slate[8],
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
     },
   },
   tertiarySelected: {
     backgroundColor: {
-      default: slate[6],
-      ":hover": slate[7],
-      ":active": slate[8],
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
     },
     borderColor: {
-      default: slate[6],
-      ":hover": slate[7],
-      ":active": slate[8],
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
     },
   },
   outlineSelected: {
     backgroundColor: {
-      default: slate[6],
-      ":hover": slate[7],
-      ":active": slate[8],
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
     },
     borderColor: {
-      default: slate[6],
-      ":hover": slate[7],
-      ":active": slate[8],
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
     },
   },
   sm: {

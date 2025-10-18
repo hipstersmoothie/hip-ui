@@ -87,6 +87,23 @@ import { NumberField } from "./number-field";
 import { ComboBox, ComboBoxItem } from "./combobox";
 import { Tree, TreeItem } from "./tree";
 import { DialogTrigger } from "react-aria-components";
+import {
+  AlertDialog,
+  AlertDialogFooter,
+} from "hip-ui/components/alert-dialog/index";
+import {
+  AlertDialogActionButton,
+  AlertDialogCancelButton,
+  AlertDialogDescription,
+  AlertDialogHeader,
+} from "./alert-dialog";
+import {
+  Dialog,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+} from "hip-ui/components/dialog/index";
+import { Avatar } from "hip-ui/components/avatar/index";
 
 const styles = stylex.create({
   subCard: {
@@ -109,12 +126,12 @@ const styles = stylex.create({
   contextMenuArea: {
     width: "100px",
     height: "100px",
-    backgroundColor: slate[3],
+    backgroundColor: slate.component1,
     padding: spacing["4"],
     borderRadius: radius["md"],
     borderWidth: 1,
     borderStyle: "solid",
-    borderColor: slate[7],
+    borderColor: slate.border2,
   },
   tree: {
     height: "300px",
@@ -229,7 +246,7 @@ function ButtonGroups() {
                 </IconButton>
               </ButtonGroup>
             </Flex>
-          )
+          ),
       )}
 
       <Flex gap="2">
@@ -538,7 +555,7 @@ function ToggleButtonGroups() {
                 </ToggleButtonGroup>
               ))}
             </Flex>
-          )
+          ),
       )}
     </Flex>
   );
@@ -587,7 +604,7 @@ function MenuExample() {
             {...stylex.props(
               typeramp.label,
               styles.contextMenuArea,
-              gray.borderInteractive
+              gray.borderInteractive,
             )}
           >
             Right Click me
@@ -672,13 +689,134 @@ function CommandMenuExample() {
   );
 }
 
+function AlertDialogExample() {
+  return (
+    <Flex direction="column" gap="4">
+      <AlertDialog trigger={<Button>Noraml Alert Dialog</Button>}>
+        <AlertDialogHeader>Unauthenticated</AlertDialogHeader>
+        <AlertDialogDescription>
+          Please log in to continue.
+        </AlertDialogDescription>
+        <AlertDialogFooter>
+          <AlertDialogActionButton>Log In</AlertDialogActionButton>
+        </AlertDialogFooter>
+      </AlertDialog>
+      <AlertDialog trigger={<Button>Critical Alert Dialog</Button>}>
+        <AlertDialogHeader>Critical Alert Dialog</AlertDialogHeader>
+        <AlertDialogDescription>
+          This action is critical and cannot be undone.
+        </AlertDialogDescription>
+        <AlertDialogFooter>
+          <AlertDialogCancelButton />
+          <AlertDialogActionButton variant="critical">
+            Delete
+          </AlertDialogActionButton>
+        </AlertDialogFooter>
+      </AlertDialog>
+    </Flex>
+  );
+}
+
+function DialogExample() {
+  return (
+    <Flex direction="column" gap="4">
+      <Dialog trigger={<Button>Click me</Button>}>
+        <DialogHeader>Billing Information</DialogHeader>
+        <DialogDescription>
+          <Flex direction="column" gap="6">
+            <TextField label="Name on Card" placeholder="John Doe" />
+            <Flex direction="column" gap="3">
+              <Flex gap="3">
+                <TextField
+                  label="Card Number"
+                  placeholder="1234 5678 9012 3456"
+                  style={styles.grow}
+                />
+                <TextField label="CVV" placeholder="123" style={styles.grow} />
+              </Flex>
+              <SmallBody variant="secondary">
+                Enter your 16 digit number.
+              </SmallBody>
+            </Flex>
+            <Flex gap="3">
+              <Select label="Month" placeholder="MM" style={styles.grow}>
+                <SelectItem>01</SelectItem>
+                <SelectItem>02</SelectItem>
+                <SelectItem>03</SelectItem>
+                <SelectItem>04</SelectItem>
+                <SelectItem>05</SelectItem>
+                <SelectItem>06</SelectItem>
+                <SelectItem>07</SelectItem>
+                <SelectItem>08</SelectItem>
+                <SelectItem>09</SelectItem>
+                <SelectItem>10</SelectItem>
+                <SelectItem>11</SelectItem>
+                <SelectItem>12</SelectItem>
+              </Select>
+              <Select label="Year" placeholder="YYYY" style={styles.grow}>
+                <SelectItem>2025</SelectItem>
+                <SelectItem>2026</SelectItem>
+                <SelectItem>2027</SelectItem>
+                <SelectItem>2028</SelectItem>
+                <SelectItem>2029</SelectItem>
+              </Select>
+            </Flex>
+            <Separator />
+            <Flex direction="column" gap="4">
+              <Flex direction="column" gap="3">
+                <CardTitle>Billing Address</CardTitle>
+                <CardDescription>
+                  The billing address associated with your payment method
+                </CardDescription>
+              </Flex>
+              <Checkbox>Same as shipping address</Checkbox>
+            </Flex>
+            <Separator />
+            <TextArea
+              label="Message"
+              placeholder="Add any additional comments"
+              rows={4}
+            />
+          </Flex>
+        </DialogDescription>
+        <DialogFooter>
+          <Button slot="close">Cancel</Button>
+          <Button>Action</Button>
+        </DialogFooter>
+      </Dialog>
+    </Flex>
+  );
+}
+
+function AvatarExample() {
+  return (
+    <Flex direction="column" gap="4">
+      {[...buttonSizes, "xl" as const].map((size) => (
+        <Avatar
+          key={size}
+          size={size}
+          src="https://github.com/shadcn.png"
+          fallback="JD"
+        />
+      ))}
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
+  return <AvatarExample />;
   return (
     <Flex
       direction="column"
       gap="10"
       style={[gray.bg, gray.text, styles.container]}
     >
+      <TitleCard title="Dialog">
+        <DialogExample />
+      </TitleCard>
+      <TitleCard title="Alert Dialog">
+        <AlertDialogExample />
+      </TitleCard>
       <CommandMenuExample />
       <TitleCard title="Tree">
         <TreeExample />
@@ -710,7 +848,7 @@ export function KitchenSink() {
                         Pin
                       </ToggleButton>
                     </Flex>
-                  )
+                  ),
               )}
             </Flex>
           ))}

@@ -95,16 +95,16 @@ const styles = stylex.create({
   },
   secondary: {
     borderColor: {
-      default: slate[3],
-      ":hover": slate[4],
-      ":active": slate[5],
+      default: slate.component1,
+      ":hover": slate.component2,
+      ":active": slate.component3,
     },
   },
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":hover": slate[4],
-      ":active": slate[5],
+      ":hover": slate.component2,
+      ":active": slate.component3,
     },
   },
 
@@ -116,7 +116,7 @@ const styles = stylex.create({
     borderTopRightRadius: { ":not(:last-child)": 0 },
   },
   secondaryGroupHorizontal: {
-    borderRightColor: { ":not(:last-child)": slate[7] },
+    borderRightColor: { ":not(:last-child)": slate.border2 },
   },
   groupVertical: {
     borderBottomLeftRadius: { ":not(:last-child)": 0 },
@@ -126,7 +126,7 @@ const styles = stylex.create({
     borderTopWidth: { ":not(:first-child)": 0 },
   },
   secondaryGroupVertical: {
-    borderBottomColor: { ":not(:last-child)": slate[7] },
+    borderBottomColor: { ":not(:last-child)": slate.border2 },
   },
 });
 

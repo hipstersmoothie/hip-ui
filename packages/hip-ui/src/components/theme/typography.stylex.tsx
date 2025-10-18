@@ -123,6 +123,15 @@ export const typeramp = stylex.create({
     margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
+  heading5: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontFamily: fontFamily["sans"],
+    fontSize: { default: fontSize["lg"] },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    fontWeight: fontWeight["semibold"],
+    letterSpacing: tracking["tight"],
+    lineHeight: { default: lineHeight["lg"] },
+  },
   body: {
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],

@@ -16,63 +16,10 @@ import { OverlayTriggerProps } from "react-stately";
 import { SizeContext } from "../context";
 import { SearchField } from "../search-field";
 import { Separator } from "../separator";
-import { animations } from "../theme/animations.stylex";
-import { radius } from "../theme/radius.stylex";
-import { gray } from "../theme/semantic-color.stylex";
-import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { useDialogStyles } from "../theme/useDialogStyles";
 
 const styles = stylex.create({
-  overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    height: "var(--page-height)",
-    left: 0,
-    position: "absolute",
-    top: 0,
-    width: "100vw",
-    zIndex: 100,
-
-    animationDuration: "200ms",
-    animationName: {
-      ":is([data-entering])": animations.fadeIn,
-    },
-    animationTimingFunction: "ease-in",
-    opacity: {
-      default: 1,
-      ":is([data-exiting])": 0,
-    },
-    transitionDuration: {
-      ":is([data-exiting])": "100ms",
-    },
-    transitionProperty: "opacity",
-    transitionTimingFunction: "ease-in-out",
-  },
-  modal: {
-    borderRadius: radius["lg"],
-    boxShadow: shadow["lg"],
-    display: "flex",
-    flexDirection: "column",
-    left: "50%",
-    maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
-    outline: "none",
-    position: "fixed",
-    top: "calc(var(--visual-viewport-height) / 2)",
-    translate: "-50% -50%",
-    width: 400,
-
-    animationDuration: { ":is([data-entering])": "300ms" },
-    animationName: { ":is([data-entering])": animations.zoomIn },
-    animationTimingFunction: {
-      ":is([data-entering])": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    },
-  },
-  dialog: {
-    display: "flex",
-    flexDirection: "column",
-    flexGrow: 1,
-    minHeight: 0,
-    outline: "none",
-  },
   menu: {
     flexGrow: 1,
     marginLeft: `calc(${spacing["0.5"]} * -1)`,
@@ -115,10 +62,11 @@ export function CommandMenu<T extends object>({
   disableGlobalShortcut = false,
 }: CommandMenuProps<T>) {
   const defaultFilter = useFilter({ sensitivity: "base" });
+  const dialogStyles = useDialogStyles({ size: "sm" });
   const [isOpen, setIsOpen] = useControlledState(
     isOpenProp,
     defaultOpen ?? false,
-    onOpenChange,
+    onOpenChange
   );
   const onClose = useEffectEvent(() => {
     setIsOpen(false);
@@ -146,10 +94,10 @@ export function CommandMenu<T extends object>({
         isDismissable
         isOpen={isOpen}
         onOpenChange={setIsOpen}
-        {...stylex.props(styles.overlay)}
+        {...stylex.props(dialogStyles.overlay)}
       >
-        <Modal {...stylex.props(styles.modal, gray.bg, gray.text, gray.border)}>
-          <Dialog {...stylex.props(styles.dialog)}>
+        <Modal {...stylex.props(dialogStyles.modal)}>
+          <Dialog {...stylex.props(dialogStyles.dialog)}>
             <Autocomplete
               filter={filter ?? defaultFilter.contains}
               defaultInputValue={defaultInputValue}

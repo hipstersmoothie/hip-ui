@@ -21,8 +21,8 @@ export const config = defineConfig([
   eslintJs.configs.recommended,
   comments.recommended,
   importX.flatConfigs.recommended,
-  eslintPluginUnicorn.configs.recommended,
   {
+    extends: [eslintPluginUnicorn.configs.recommended],
     rules: {
       "unicorn/prevent-abbreviations": "off",
       "unicorn/filename-case": "off",

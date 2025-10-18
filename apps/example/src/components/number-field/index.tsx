@@ -45,8 +45,8 @@ const styles = stylex.create({
     },
 
     color: {
-      default: slate[12],
-      ":disabled": slate[11],
+      default: slate.text2,
+      ":disabled": slate.text1,
     },
   },
 });

@@ -1,224 +1,224 @@
 import * as stylex from "@stylexjs/stylex";
 
 export const slateLight = stylex.defineVars({
-  1: stylex.types.color("#fcfcfd"),
-  2: stylex.types.color("#f9f9fb"),
-  3: stylex.types.color("#f0f0f3"),
-  4: stylex.types.color("#e8e8ec"),
-  5: stylex.types.color("#e0e1e6"),
-  6: stylex.types.color("#d9d9e0"),
-  7: stylex.types.color("#cdced6"),
-  8: stylex.types.color("#b9bbc6"),
-  9: stylex.types.color("#8b8d98"),
-  10: stylex.types.color("#80838d"),
-  11: stylex.types.color("#60646c"),
-  12: stylex.types.color("#1c2024"),
+  bg1: stylex.types.color("#fcfcfd"),
+  bg2: stylex.types.color("#f9f9fb"),
+  component1: stylex.types.color("#f0f0f3"),
+  component2: stylex.types.color("#e8e8ec"),
+  component3: stylex.types.color("#e0e1e6"),
+  border1: stylex.types.color("#d9d9e0"),
+  border2: stylex.types.color("#cdced6"),
+  border3: stylex.types.color("#b9bbc6"),
+  solid1: stylex.types.color("#8b8d98"),
+  solid2: stylex.types.color("#80838d"),
+  text1: stylex.types.color("#60646c"),
+  text2: stylex.types.color("#1c2024"),
 });
 
 export const slateLightP3 = stylex.defineVars({
-  1: stylex.types.color("color(display-p3 0.988 0.988 0.992)"),
-  2: stylex.types.color("color(display-p3 0.976 0.976 0.984)"),
-  3: stylex.types.color("color(display-p3 0.94 0.941 0.953)"),
-  4: stylex.types.color("color(display-p3 0.908 0.909 0.925)"),
-  5: stylex.types.color("color(display-p3 0.88 0.881 0.901)"),
-  6: stylex.types.color("color(display-p3 0.85 0.852 0.876)"),
-  7: stylex.types.color("color(display-p3 0.805 0.808 0.838)"),
-  8: stylex.types.color("color(display-p3 0.727 0.733 0.773)"),
-  9: stylex.types.color("color(display-p3 0.547 0.553 0.592)"),
-  10: stylex.types.color("color(display-p3 0.503 0.512 0.549)"),
-  11: stylex.types.color("color(display-p3 0.379 0.392 0.421)"),
-  12: stylex.types.color("color(display-p3 0.113 0.125 0.14)"),
+  bg1: stylex.types.color("color(display-p3 0.988 0.988 0.992)"),
+  bg2: stylex.types.color("color(display-p3 0.976 0.976 0.984)"),
+  component1: stylex.types.color("color(display-p3 0.94 0.941 0.953)"),
+  component2: stylex.types.color("color(display-p3 0.908 0.909 0.925)"),
+  component3: stylex.types.color("color(display-p3 0.88 0.881 0.901)"),
+  border1: stylex.types.color("color(display-p3 0.85 0.852 0.876)"),
+  border2: stylex.types.color("color(display-p3 0.805 0.808 0.838)"),
+  border3: stylex.types.color("color(display-p3 0.727 0.733 0.773)"),
+  solid1: stylex.types.color("color(display-p3 0.547 0.553 0.592)"),
+  solid2: stylex.types.color("color(display-p3 0.503 0.512 0.549)"),
+  text1: stylex.types.color("color(display-p3 0.379 0.392 0.421)"),
+  text2: stylex.types.color("color(display-p3 0.113 0.125 0.14)"),
 });
 
 export const slateDark = stylex.defineVars({
-  1: stylex.types.color("#111113"),
-  2: stylex.types.color("#18191b"),
-  3: stylex.types.color("#212225"),
-  4: stylex.types.color("#272a2d"),
-  5: stylex.types.color("#2e3135"),
-  6: stylex.types.color("#363a3f"),
-  7: stylex.types.color("#43484e"),
-  8: stylex.types.color("#5a6169"),
-  9: stylex.types.color("#696e77"),
-  10: stylex.types.color("#777b84"),
-  11: stylex.types.color("#b0b4ba"),
-  12: stylex.types.color("#edeef0"),
+  bg1: stylex.types.color("#111113"),
+  bg2: stylex.types.color("#18191b"),
+  component1: stylex.types.color("#212225"),
+  component2: stylex.types.color("#272a2d"),
+  component3: stylex.types.color("#2e3135"),
+  border1: stylex.types.color("#363a3f"),
+  border2: stylex.types.color("#43484e"),
+  border3: stylex.types.color("#5a6169"),
+  solid1: stylex.types.color("#696e77"),
+  solid2: stylex.types.color("#777b84"),
+  text1: stylex.types.color("#b0b4ba"),
+  text2: stylex.types.color("#edeef0"),
 });
 
 export const slateDarkP3 = stylex.defineVars({
-  1: stylex.types.color("color(display-p3 0.067 0.067 0.074)"),
-  2: stylex.types.color("color(display-p3 0.095 0.098 0.105)"),
-  3: stylex.types.color("color(display-p3 0.13 0.135 0.145)"),
-  4: stylex.types.color("color(display-p3 0.156 0.163 0.176)"),
-  5: stylex.types.color("color(display-p3 0.183 0.191 0.206)"),
-  6: stylex.types.color("color(display-p3 0.215 0.226 0.244)"),
-  7: stylex.types.color("color(display-p3 0.265 0.28 0.302)"),
-  8: stylex.types.color("color(display-p3 0.357 0.381 0.409)"),
-  9: stylex.types.color("color(display-p3 0.415 0.431 0.463)"),
-  10: stylex.types.color("color(display-p3 0.469 0.483 0.514)"),
-  11: stylex.types.color("color(display-p3 0.692 0.704 0.728)"),
-  12: stylex.types.color("color(display-p3 0.93 0.933 0.94)"),
+  bg1: stylex.types.color("color(display-p3 0.067 0.067 0.074)"),
+  bg2: stylex.types.color("color(display-p3 0.095 0.098 0.105)"),
+  component1: stylex.types.color("color(display-p3 0.13 0.135 0.145)"),
+  component2: stylex.types.color("color(display-p3 0.156 0.163 0.176)"),
+  component3: stylex.types.color("color(display-p3 0.183 0.191 0.206)"),
+  border1: stylex.types.color("color(display-p3 0.215 0.226 0.244)"),
+  border2: stylex.types.color("color(display-p3 0.265 0.28 0.302)"),
+  border3: stylex.types.color("color(display-p3 0.357 0.381 0.409)"),
+  solid1: stylex.types.color("color(display-p3 0.415 0.431 0.463)"),
+  solid2: stylex.types.color("color(display-p3 0.469 0.483 0.514)"),
+  text1: stylex.types.color("color(display-p3 0.692 0.704 0.728)"),
+  text2: stylex.types.color("color(display-p3 0.93 0.933 0.94)"),
 });
 
 export const slate = stylex.defineVars({
-  1: {
-    default: `light-dark(${slateLight[1]}, ${slateDark[1]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[1]}, ${slateDarkP3[1]})`,
+  bg1: {
+    default: `light-dark(${slateLight.bg1}, ${slateDark.bg1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.bg1}, ${slateDarkP3.bg1})`,
   },
-  2: {
-    default: `light-dark(${slateLight[2]}, ${slateDark[2]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[2]}, ${slateDarkP3[2]})`,
+  bg2: {
+    default: `light-dark(${slateLight.bg2}, ${slateDark.bg2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.bg2}, ${slateDarkP3.bg2})`,
   },
-  3: {
-    default: `light-dark(${slateLight[3]}, ${slateDark[3]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[3]}, ${slateDarkP3[3]})`,
+  component1: {
+    default: `light-dark(${slateLight.component1}, ${slateDark.component1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.component1}, ${slateDarkP3.component1})`,
   },
-  4: {
-    default: `light-dark(${slateLight[4]}, ${slateDark[4]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[4]}, ${slateDarkP3[4]})`,
+  component2: {
+    default: `light-dark(${slateLight.component2}, ${slateDark.component2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.component2}, ${slateDarkP3.component2})`,
   },
-  5: {
-    default: `light-dark(${slateLight[5]}, ${slateDark[5]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[5]}, ${slateDarkP3[5]})`,
+  component3: {
+    default: `light-dark(${slateLight.component3}, ${slateDark.component3})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.component3}, ${slateDarkP3.component3})`,
   },
-  6: {
-    default: `light-dark(${slateLight[6]}, ${slateDark[6]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[6]}, ${slateDarkP3[6]})`,
+  border1: {
+    default: `light-dark(${slateLight.border1}, ${slateDark.border1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.border1}, ${slateDarkP3.border1})`,
   },
-  7: {
-    default: `light-dark(${slateLight[7]}, ${slateDark[7]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[7]}, ${slateDarkP3[7]})`,
+  border2: {
+    default: `light-dark(${slateLight.border2}, ${slateDark.border2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.border2}, ${slateDarkP3.border2})`,
   },
-  8: {
-    default: `light-dark(${slateLight[8]}, ${slateDark[8]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[8]}, ${slateDarkP3[8]})`,
+  border3: {
+    default: `light-dark(${slateLight.border3}, ${slateDark.border3})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.border3}, ${slateDarkP3.border3})`,
   },
-  9: {
-    default: `light-dark(${slateLight[9]}, ${slateDark[9]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[9]}, ${slateDarkP3[9]})`,
+  solid1: {
+    default: `light-dark(${slateLight.solid1}, ${slateDark.solid1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.solid1}, ${slateDarkP3.solid1})`,
   },
-  10: {
-    default: `light-dark(${slateLight[10]}, ${slateDark[10]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[10]}, ${slateDarkP3[10]})`,
+  solid2: {
+    default: `light-dark(${slateLight.solid2}, ${slateDark.solid2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.solid2}, ${slateDarkP3.solid2})`,
   },
-  11: {
-    default: `light-dark(${slateLight[11]}, ${slateDark[11]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[11]}, ${slateDarkP3[11]})`,
+  text1: {
+    default: `light-dark(${slateLight.text1}, ${slateDark.text1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.text1}, ${slateDarkP3.text1})`,
   },
-  12: {
-    default: `light-dark(${slateLight[12]}, ${slateDark[12]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateLightP3[12]}, ${slateDarkP3[12]})`,
+  text2: {
+    default: `light-dark(${slateLight.text2}, ${slateDark.text2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateLightP3.text2}, ${slateDarkP3.text2})`,
   },
 });
 
 export const slateInverted = stylex.defineVars({
-  1: {
-    default: `light-dark(${slateDark[1]}, ${slateLight[1]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[1]}, ${slateLightP3[1]})`,
+  bg1: {
+    default: `light-dark(${slateDark.bg1}, ${slateLight.bg1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.bg1}, ${slateLightP3.bg1})`,
   },
-  2: {
-    default: `light-dark(${slateDark[2]}, ${slateLight[2]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[2]}, ${slateLightP3[2]})`,
+  bg2: {
+    default: `light-dark(${slateDark.bg2}, ${slateLight.bg2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.bg2}, ${slateLightP3.bg2})`,
   },
-  3: {
-    default: `light-dark(${slateDark[3]}, ${slateLight[3]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[3]}, ${slateLightP3[3]})`,
+  component1: {
+    default: `light-dark(${slateDark.component1}, ${slateLight["component1"]})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.component1}, ${slateLightP3.component1})`,
   },
-  4: {
-    default: `light-dark(${slateDark[4]}, ${slateLight[4]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[4]}, ${slateLightP3[4]})`,
+  component2: {
+    default: `light-dark(${slateDark.component2}, ${slateLight["component2"]})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.component2}, ${slateLightP3.component2})`,
   },
-  5: {
-    default: `light-dark(${slateDark[5]}, ${slateLight[5]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[5]}, ${slateLightP3[5]})`,
+  component3: {
+    default: `light-dark(${slateDark.component3}, ${slateLight["component3"]})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.component3}, ${slateLightP3.component3})`,
   },
-  6: {
-    default: `light-dark(${slateDark[6]}, ${slateLight[6]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[6]}, ${slateLightP3[6]})`,
+  border1: {
+    default: `light-dark(${slateDark.border1}, ${slateLight.border1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.border1}, ${slateLightP3.border1})`,
   },
-  7: {
-    default: `light-dark(${slateDark[7]}, ${slateLight[7]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[7]}, ${slateLightP3[7]})`,
+  border2: {
+    default: `light-dark(${slateDark.border2}, ${slateLight.border2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.border2}, ${slateLightP3.border2})`,
   },
-  8: {
-    default: `light-dark(${slateDark[8]}, ${slateLight[8]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[8]}, ${slateLightP3[8]})`,
+  border3: {
+    default: `light-dark(${slateDark.border3}, ${slateLight.border3})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.border3}, ${slateLightP3.border3})`,
   },
-  9: {
-    default: `light-dark(${slateDark[9]}, ${slateLight[9]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[9]}, ${slateLightP3[9]})`,
+  solid1: {
+    default: `light-dark(${slateDark.solid1}, ${slateLight.solid1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.solid1}, ${slateLightP3.solid1})`,
   },
-  10: {
-    default: `light-dark(${slateDark[10]}, ${slateLight[10]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[10]}, ${slateLightP3[10]})`,
+  solid2: {
+    default: `light-dark(${slateDark.solid2}, ${slateLight.solid2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.solid2}, ${slateLightP3.solid2})`,
   },
-  11: {
-    default: `light-dark(${slateDark[11]}, ${slateLight[11]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[11]}, ${slateLightP3[11]})`,
+  text1: {
+    default: `light-dark(${slateDark.text1}, ${slateLight.text1})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.text1}, ${slateLightP3.text1})`,
   },
-  12: {
-    default: `light-dark(${slateDark[12]}, ${slateLight[12]})`,
-    "@media (color-gamut: p3)": `light-dark(${slateDarkP3[12]}, ${slateLightP3[12]})`,
+  text2: {
+    default: `light-dark(${slateDark.text2}, ${slateLight.text2})`,
+    "@media (color-gamut: p3)": `light-dark(${slateDarkP3.text2}, ${slateLightP3.text2})`,
   },
 });
 
 export const plum = stylex.defineVars({
-  1: {
+  bg1: {
     default: "light-dark(#fefcff, #181118)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.995 0.988 0.999), color(display-p3 0.09 0.068 0.092))",
   },
-  2: {
+  bg2: {
     default: "light-dark(#fdf7fd, #201320)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.988 0.971 0.99), color(display-p3 0.118 0.077 0.121))",
   },
-  3: {
+  component1: {
     default: "light-dark(#fbebfb, #351a35)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.973 0.923 0.98), color(display-p3 0.192 0.105 0.202))",
   },
-  4: {
+  component2: {
     default: "light-dark(#f7def8, #451d47)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.953 0.875 0.966), color(display-p3 0.25 0.121 0.271))",
   },
-  5: {
+  component3: {
     default: "light-dark(#f2d1f3, #512454)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.926 0.825 0.945), color(display-p3 0.293 0.152 0.319))",
   },
-  6: {
+  border1: {
     default: "light-dark(#e9c2ec, #5e3061)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.89 0.765 0.916), color(display-p3 0.343 0.198 0.372))",
   },
-  7: {
+  border2: {
     default: "light-dark(#deade3, #734079)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.84 0.686 0.877), color(display-p3 0.424 0.262 0.461))",
   },
-  8: {
+  border3: {
     default: "light-dark(#cf91d8, #92549c)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.775 0.58 0.832), color(display-p3 0.54 0.341 0.595))",
   },
-  9: {
+  solid1: {
     default: "light-dark(#ab4aba, #ab4aba)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.624 0.313 0.708), color(display-p3 0.624 0.313 0.708))",
   },
-  10: {
+  solid2: {
     default: "light-dark(#a144af, #b658c4)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.587 0.29 0.667), color(display-p3 0.666 0.365 0.748))",
   },
-  11: {
+  text1: {
     default: "light-dark(#953ea3, #e796f3)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.543 0.263 0.619), color(display-p3 0.86 0.602 0.933))",
   },
-  12: {
+  text2: {
     default: "light-dark(#53195d, #f4d4f4)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.299 0.114 0.352), color(display-p3 0.936 0.836 0.949))",
@@ -226,62 +226,62 @@ export const plum = stylex.defineVars({
 });
 
 export const blue = stylex.defineVars({
-  1: {
+  bg1: {
     default: "light-dark(#fbfdff, #0d1520)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.986 0.992 0.999), color(display-p3 0.057 0.081 0.122))",
   },
-  2: {
+  bg2: {
     default: "light-dark(#f4faff, #111927)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.96 0.979 0.998), color(display-p3 0.072 0.098 0.147))",
   },
-  3: {
+  component1: {
     default: "light-dark(#e6f4fe, #0d2847)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.912 0.956 0.991), color(display-p3 0.078 0.154 0.27))",
   },
-  4: {
+  component2: {
     default: "light-dark(#d5efff, #003362)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.853 0.932 1), color(display-p3 0.033 0.197 0.37))",
   },
-  5: {
+  component3: {
     default: "light-dark(#c2e5ff, #004074)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.788 0.894 0.998), color(display-p3 0.08 0.245 0.441))",
   },
-  6: {
+  border1: {
     default: "light-dark(#acd8fc, #104d87)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.709 0.843 0.976), color(display-p3 0.14 0.298 0.511))",
   },
-  7: {
+  border2: {
     default: "light-dark(#8ec8f6, #205d9e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.606 0.777 0.947), color(display-p3 0.195 0.361 0.6))",
   },
-  8: {
+  border3: {
     default: "light-dark(#5eb1ef, #2870bd)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.451 0.688 0.917), color(display-p3 0.239 0.434 0.72))",
   },
-  9: {
+  solid1: {
     default: "light-dark(#0090ff, #0090ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.247 0.556 0.969), color(display-p3 0.247 0.556 0.969))",
   },
-  10: {
+  solid2: {
     default: "light-dark(#0588f0, #3b9eff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.234 0.523 0.912), color(display-p3 0.344 0.612 0.973))",
   },
-  11: {
+  text1: {
     default: "light-dark(#0d74ce, #70b8ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.15 0.44 0.84), color(display-p3 0.49 0.72 1))",
   },
-  12: {
+  text2: {
     default: "light-dark(#113264, #c2e6ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.102 0.193 0.379), color(display-p3 0.788 0.898 0.99))",
@@ -289,62 +289,62 @@ export const blue = stylex.defineVars({
 });
 
 export const red = stylex.defineVars({
-  1: {
+  bg1: {
     default: "light-dark(#fffcfc, #191111)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.998 0.989 0.988), color(display-p3 0.093 0.068 0.067))",
   },
-  2: {
+  bg2: {
     default: "light-dark(#fff7f7, #201314)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.995 0.971 0.971), color(display-p3 0.118 0.077 0.079))",
   },
-  3: {
+  component1: {
     default: "light-dark(#feebec, #3b1219)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.985 0.925 0.925), color(display-p3 0.211 0.081 0.099))",
   },
-  4: {
+  component2: {
     default: "light-dark(#ffdbdc, #500f1c)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.999 0.866 0.866), color(display-p3 0.287 0.079 0.113))",
   },
-  5: {
+  component3: {
     default: "light-dark(#ffcdce, #611623)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.984 0.812 0.811), color(display-p3 0.348 0.11 0.142))",
   },
-  6: {
+  border1: {
     default: "light-dark(#fdbdbe, #72232d)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.955 0.751 0.749), color(display-p3 0.414 0.16 0.183))",
   },
-  7: {
+  border2: {
     default: "light-dark(#f4a9aa, #8c333a)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.915 0.675 0.672), color(display-p3 0.508 0.224 0.236))",
   },
-  8: {
+  border3: {
     default: "light-dark(#eb8e90, #b54548)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.872 0.575 0.572), color(display-p3 0.659 0.298 0.297))",
   },
-  9: {
+  solid1: {
     default: "light-dark(#e5484d, #e5484d)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.83 0.329 0.324), color(display-p3 0.83 0.329 0.324))",
   },
-  10: {
+  solid2: {
     default: "light-dark(#dc3e42, #ec5d5e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.798 0.294 0.285), color(display-p3 0.861 0.403 0.387))",
   },
-  11: {
+  text1: {
     default: "light-dark(#ce2c31, #ff9592)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.744 0.234 0.222), color(display-p3 1 0.57 0.55))",
   },
-  12: {
+  text2: {
     default: "light-dark(#641723, #ffd1d9)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.36 0.115 0.143), color(display-p3 0.971 0.826 0.852))",

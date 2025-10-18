@@ -16,5 +16,8 @@
   "packageManager": "pnpm@10.18.2",
   "engines": {
     "node": ">=18"
+  },
+  "prettier": {
+    "trailingComma": "all"
   }
 }

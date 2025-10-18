@@ -8,6 +8,8 @@ import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import * as React from "react";
 
+import { alertDialogConfig } from "../components/alert-dialog/alert-dialog-config.js";
+import { avatarConfig } from "../components/avatar/avatar-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
 import { buttonConfig } from "../components/button/button-config.js";
 import { cardConfig } from "../components/card/card-config.js";
@@ -17,6 +19,7 @@ import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
+import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { labelConfig } from "../components/label/label-config.js";
@@ -72,6 +75,9 @@ const COMPONENT_CONFIGS = [
   comboboxConfig,
   treeConfig,
   commandMenuConfig,
+  alertDialogConfig,
+  dialogConfig,
+  avatarConfig,
 ];
 
 function StringSetting({

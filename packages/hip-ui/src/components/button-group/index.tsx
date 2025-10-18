@@ -18,7 +18,8 @@ const styles = stylex.create({
   },
 });
 
-interface ButtonGroupProps extends Omit<GroupProps, "className" | "style"> {
+export interface ButtonGroupProps
+  extends Omit<GroupProps, "className" | "style"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   orientation?: "horizontal" | "vertical";
 }
@@ -36,7 +37,7 @@ export const ButtonGroup = ({
           styles.group,
           orientation === "horizontal" && styles.horizontal,
           orientation === "vertical" && styles.vertical,
-          style,
+          style
         )}
         {...props}
       >

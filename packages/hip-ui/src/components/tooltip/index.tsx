@@ -17,10 +17,10 @@ import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const tooltipStyle = stylex.create({
   content: {
-    backgroundColor: slateInverted[1],
+    backgroundColor: slateInverted.bg1,
     borderRadius: radius["md"],
     boxShadow: shadow["sm"],
-    color: slateInverted[11],
+    color: slateInverted.text1,
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
@@ -49,7 +49,7 @@ const tooltipStyle = stylex.create({
   },
   caret: {
     display: "flex",
-    fill: slateInverted[1],
+    fill: slateInverted.bg1,
   },
   arrow: {
     transform: {

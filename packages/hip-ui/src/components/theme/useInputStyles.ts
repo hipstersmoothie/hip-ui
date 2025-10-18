@@ -48,9 +48,9 @@ const styles = stylex.create({
     padding: 0,
 
     borderColor: {
-      default: slate[7],
-      ":hover": slate[8],
-      ":focus": slate[9],
+      default: slate.border2,
+      ":hover": slate.border3,
+      ":focus": slate.solid1,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -63,7 +63,7 @@ const styles = stylex.create({
     borderWidth: 0,
     boxSizing: "border-box",
     color: {
-      ":is(::placeholder,[data-placeholder])": slate[11],
+      ":is(::placeholder,[data-placeholder])": slate.text1,
     },
     display: "flex",
     flexGrow: 1,

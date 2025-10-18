@@ -103,7 +103,7 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
                 ? [gray.bgSolid, gray.border, styles.checked]
                 : isSelected
                   ? [primary.bgSolid, primary.borderInteractive, styles.checked]
-                  : [gray.borderInteractive],
+                  : [gray.borderInteractive]
             )}
           >
             {isIndeterminate ? (

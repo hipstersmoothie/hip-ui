@@ -55,9 +55,9 @@ const styles = stylex.create({
     display: "flex",
 
     borderColor: {
-      default: slate[7],
-      ":hover": slate[8],
-      ":focus": slate[9],
+      default: slate.border2,
+      ":hover": slate.border3,
+      ":focus": slate.solid1,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -67,7 +67,7 @@ const styles = stylex.create({
     borderWidth: 0,
     boxSizing: "border-box",
     color: {
-      "::placeholder": slate[11],
+      "::placeholder": slate.text1,
     },
     flexGrow: 1,
     fontFamily: fontFamily["sans"],

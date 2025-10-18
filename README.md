@@ -18,7 +18,6 @@
 
 - [ ] Alert / Callout
 - [ ] Aspect Ratio
-- [ ] Avatar
 - [ ] Badge
 - [ ] Carousel
 - [ ] Empty
@@ -39,8 +38,6 @@
 
 #### react-aria wrappers
 
-- [ ] Dialog
-
 - [ ] File Trigger
 - [ ] File Drop zone
 - [ ] Segmented Control
@@ -57,7 +54,6 @@
 - [ ] Date Picker
 - [ ] Range Date Picker
 
-- [ ] Alert Dialog
 - [ ] Drawer
 - [ ] Sheet
 
@@ -81,6 +77,9 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Avatar
+- [x] Alert Dialog
+- [x] Dialog
 - [x] Command
 - [x] Tree
 - [x] Combobox

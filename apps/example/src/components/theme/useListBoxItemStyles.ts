@@ -35,18 +35,20 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      [":is([data-react-aria-pressable=true][data-focused] *)"]: slate[4],
-      [":is([data-react-aria-pressable=true][data-selected=true] *)"]: slate[4],
+      [":is([data-react-aria-pressable=true][data-focused] *)"]:
+        slate.component2,
+      [":is([data-react-aria-pressable=true][data-selected=true] *)"]:
+        slate.component2,
       [":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)"]:
-        slate[4],
+        slate.component2,
       [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
-        slate[5],
+        slate.component3,
     },
     borderRadius: radius["md"],
     boxSizing: "border-box",
     color: {
-      default: slate[12],
-      [":is([data-react-aria-pressable=true][data-disabled] *)"]: slate[8],
+      default: slate.text2,
+      [":is([data-react-aria-pressable=true][data-disabled] *)"]: slate.border3,
     },
     display: "flex",
     flexGrow: 1,
@@ -70,7 +72,7 @@ const styles = stylex.create({
     fontSize: fontSize["base"],
   },
   check: {
-    color: plum[9],
+    color: plum.solid1,
   },
   addon: {
     alignItems: "center",

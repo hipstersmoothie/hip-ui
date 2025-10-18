@@ -8,7 +8,7 @@ import { slate } from "../theme/colors.stylex";
 
 const styles = stylex.create({
   separator: {
-    backgroundColor: slate[7],
+    backgroundColor: slate.border2,
     borderWidth: 0,
     height: {
       default: "1px",
