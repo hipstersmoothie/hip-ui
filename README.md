@@ -18,10 +18,8 @@
 
 - [ ] Alert / Callout
 - [ ] Aspect Ratio
-- [ ] Badge
 - [ ] Carousel
 - [ ] Empty
-- [ ] Grid
 - [ ] Input Group
 - [ ] Input OTP
 - [ ] Kbd
@@ -77,6 +75,8 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Grid
+- [x] Badge
 - [x] Avatar
 - [x] Alert Dialog
 - [x] Dialog

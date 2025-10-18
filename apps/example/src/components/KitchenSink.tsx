@@ -840,13 +840,15 @@ function BadgeExample() {
 }
 
 export function KitchenSink() {
-  return <BadgeExample />;
   return (
     <Flex
       direction="column"
       gap="10"
       style={[gray.bg, gray.text, styles.container]}
     >
+      <TitleCard title="Badges">
+        <BadgeExample />
+      </TitleCard>
       <TitleCard title="Avatars">
         <AvatarExample />
       </TitleCard>

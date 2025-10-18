@@ -5,6 +5,14 @@
     }
   ],
   "search.exclude": {
+    "**/routeTree.gen.ts": true,
+    "**/apps/docs/src/components/**": true,
     "**/apps/example/src/components/**": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
   }
 }

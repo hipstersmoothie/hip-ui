@@ -22,6 +22,7 @@ import { contextMenuConfig } from "../components/context-menu/context-menu-confi
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
+import { gridConfig } from "../components/grid/grid-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
@@ -80,6 +81,7 @@ const COMPONENT_CONFIGS = [
   dialogConfig,
   avatarConfig,
   badgeConfig,
+  gridConfig,
 ];
 
 function StringSetting({
@@ -88,12 +90,14 @@ function StringSetting({
   onChange,
   onSubmit,
   isEditing,
+  placeholder,
 }: {
   label: string;
   defaultValue: string | undefined;
   onChange: (value: string) => void;
   onSubmit: () => void;
   isEditing: boolean;
+  placeholder: string;
 }) {
   return (
     <Box gap={1}>
@@ -102,7 +106,7 @@ function StringSetting({
         <TextInput
           defaultValue={defaultValue}
           onChange={onChange}
-          placeholder="src/components"
+          placeholder={placeholder}
           onSubmit={onSubmit}
         />
       ) : (
@@ -165,10 +169,15 @@ const ConfigPrompt = ({
 
       <StringSetting
         label="Component directory:"
+        placeholder="src/components"
         defaultValue={value}
         onChange={setValue}
         onSubmit={() => {
           setStep(step + 1);
+
+          if (!value) {
+            setValue("src/components");
+          }
         }}
         isEditing={step === 0}
       />
@@ -207,9 +216,9 @@ async function setup() {
 
   if (
     config.componentDir !==
-      (loadedConfig?.config as ConfigOptions).componentDir ||
+      (loadedConfig?.config as ConfigOptions | undefined)?.componentDir ||
     config.packageManager !==
-      (loadedConfig?.config as ConfigOptions).packageManager
+      (loadedConfig?.config as ConfigOptions | undefined)?.packageManager
   ) {
     setConfig(loadedConfig, config as ConfigOptions);
   }
