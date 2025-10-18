@@ -41,8 +41,8 @@ const styles = stylex.create({
   },
   xl: {
     borderRadius: radius["xl"],
-    height: spacing["12"],
-    width: spacing["12"],
+    height: spacing["14"],
+    width: spacing["14"],
   },
   image: {
     height: "100%",

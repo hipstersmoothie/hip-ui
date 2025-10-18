@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { slate, plum, red } from "./colors.stylex";
+import { slate, plum, red, yellow, green } from "./colors.stylex";
 import { fontFamily } from "./typography.stylex";
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -215,6 +215,159 @@ export const critical = stylex.create({
       default: red.solid1,
       ":hover:not(:has(* button:hover)):not(:disabled)": red.solid2,
       ":disabled": red.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+});
+
+// eslint-disable-next-line @stylexjs/enforce-extension
+export const warning = stylex.create({
+  bg: { backgroundColor: yellow.bg1 },
+  bgSubtle: { backgroundColor: yellow.bg2 },
+  bgDim: { backgroundColor: yellow.component1 },
+  bgSecondary: { backgroundColor: yellow.component2 },
+  bgActive: { backgroundColor: yellow.component3 },
+  borderDim: {
+    borderColor: yellow.border1,
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
+  border: {
+    borderColor: yellow.border2,
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
+  borderInteractive: {
+    borderColor: {
+      default: yellow.border2,
+      ":hover": yellow.border3,
+    },
+  },
+  bgSolid: { backgroundColor: yellow.solid1 },
+  bgSolidDark: { backgroundColor: yellow.solid2 },
+  textDim: { color: yellow.text1, fontFamily: fontFamily["sans"] },
+  text: { color: yellow.text2, fontFamily: fontFamily["sans"] },
+  textContrast: { color: "black" },
+
+  bgGhost: {
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
+      ":active:not(:disabled)": yellow.component3,
+      ":disabled": yellow.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgUi: {
+    backgroundColor: {
+      default: yellow.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
+      ":active:not(:disabled)": yellow.component3,
+      ":disabled": yellow.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgAction: {
+    backgroundColor: {
+      default: yellow.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component3,
+      ":active:not(:disabled)": yellow.component3,
+      ":disabled": yellow.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgSolidAction: {
+    backgroundColor: {
+      default: yellow.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.solid2,
+      ":disabled": yellow.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+});
+
+// eslint-disable-next-line @stylexjs/enforce-extension
+export const success = stylex.create({
+  bg: { backgroundColor: green.bg1 },
+  bgSubtle: { backgroundColor: green.bg2 },
+  bgDim: { backgroundColor: green.component1 },
+  bgSecondary: { backgroundColor: green.component2 },
+  bgActive: { backgroundColor: green.component3 },
+  borderDim: {
+    borderColor: green.border1,
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
+  border: {
+    borderColor: green.border2,
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
+  borderInteractive: {
+    borderColor: {
+      default: green.border2,
+      ":hover": green.border3,
+    },
+    borderStyle: "solid",
+    borderWidth: 1,
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgSolid: { backgroundColor: green.solid1 },
+  bgSolidDark: { backgroundColor: green.solid2 },
+  textDim: { color: green.text1, fontFamily: fontFamily["sans"] },
+  text: { color: green.text2, fontFamily: fontFamily["sans"] },
+  textContrast: { color: "white" },
+
+  bgGhost: {
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
+      ":active:not(:disabled)": green.component3,
+      ":disabled": green.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgUi: {
+    backgroundColor: {
+      default: green.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
+      ":active:not(:disabled)": green.component3,
+      ":disabled": green.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgAction: {
+    backgroundColor: {
+      default: green.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.component3,
+      ":active:not(:disabled)": green.component3,
+      ":disabled": green.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgSolidAction: {
+    backgroundColor: {
+      default: green.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.solid2,
+      ":disabled": green.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",

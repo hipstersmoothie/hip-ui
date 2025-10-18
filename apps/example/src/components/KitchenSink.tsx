@@ -20,6 +20,7 @@ import {
   Folder,
   GlobeIcon,
   Image,
+  Info,
   Pin,
   Plus,
   Scissors,
@@ -104,8 +105,12 @@ import {
   DialogHeader,
 } from "hip-ui/components/dialog/index";
 import { Avatar } from "hip-ui/components/avatar/index";
+import { Badge } from "hip-ui/components/badge/index";
 
 const styles = stylex.create({
+  capitalize: {
+    textTransform: "capitalize",
+  },
   subCard: {
     padding: spacing["4"],
   },
@@ -803,14 +808,48 @@ function AvatarExample() {
   );
 }
 
+const bageVariants = [
+  "primary",
+  "default",
+  "warning",
+  "critical",
+  "success",
+] as const;
+
+function BadgeExample() {
+  return (
+    <Flex gap="4">
+      {bageVariants.map((variant) => (
+        <Flex gap="4" direction="column" style={styles.capitalize}>
+          <Badge variant={variant}>{variant}</Badge>
+          <Badge variant={variant} size="md">
+            {variant}
+          </Badge>
+          <Badge variant={variant}>
+            <Info />
+            {variant}
+          </Badge>
+          <Badge variant={variant} size="sm">
+            <Info />
+            {variant}
+          </Badge>
+        </Flex>
+      ))}
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
-  return <AvatarExample />;
+  return <BadgeExample />;
   return (
     <Flex
       direction="column"
       gap="10"
       style={[gray.bg, gray.text, styles.container]}
     >
+      <TitleCard title="Avatars">
+        <AvatarExample />
+      </TitleCard>
       <TitleCard title="Dialog">
         <DialogExample />
       </TitleCard>

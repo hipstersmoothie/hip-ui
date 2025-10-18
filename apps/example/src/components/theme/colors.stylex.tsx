@@ -350,3 +350,129 @@ export const red = stylex.defineVars({
       "light-dark(color(display-p3 0.36 0.115 0.143), color(display-p3 0.971 0.826 0.852))",
   },
 });
+
+export const yellow = stylex.defineVars({
+  bg1: {
+    default: "light-dark(#fdfdf9, #14120b)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.992 0.992 0.978), color(display-p3 0.078 0.069 0.047))",
+  },
+  bg2: {
+    default: "light-dark(#fefce9, #1b180f)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.995 0.99 0.922), color(display-p3 0.103 0.094 0.063))",
+  },
+  component1: {
+    default: "light-dark(#fffab8, #2d2305)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.997 0.982 0.749), color(display-p3 0.168 0.137 0.039))",
+  },
+  component2: {
+    default: "light-dark(#fff394, #362b00)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.992 0.953 0.627), color(display-p3 0.209 0.169 0))",
+  },
+  component3: {
+    default: "light-dark(#ffe770, #433500)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.984 0.91 0.51), color(display-p3 0.255 0.209 0))",
+  },
+  border1: {
+    default: "light-dark(#f3d768, #524202)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.934 0.847 0.474), color(display-p3 0.31 0.261 0.07))",
+  },
+  border2: {
+    default: "light-dark(#e4c767, #665417)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.876 0.785 0.46), color(display-p3 0.389 0.331 0.135))",
+  },
+  border3: {
+    default: "light-dark(#d5ae39, #836a21)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.811 0.689 0.313), color(display-p3 0.497 0.42 0.182))",
+  },
+  solid1: {
+    default: "light-dark(#ffe629, #ffe629)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 1 0.92 0.22), color(display-p3 1 0.92 0.22))",
+  },
+  solid2: {
+    default: "light-dark(#ffdc00, #ffff57)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.977 0.868 0.291), color(display-p3 1 1 0.456))",
+  },
+  text1: {
+    default: "light-dark(#9e6c00, #f5e147)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.6 0.44 0), color(display-p3 0.948 0.885 0.392))",
+  },
+  text2: {
+    default: "light-dark(#473b1f, #f6eeb4)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.271 0.233 0.137), color(display-p3 0.959 0.934 0.731))",
+  },
+});
+
+export const green = stylex.defineVars({
+  bg1: {
+    default: "light-dark(#fbfefc, #0e1512)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.986 0.996 0.989), color(display-p3 0.062 0.083 0.071))",
+  },
+  bg2: {
+    default: "light-dark(#f4fbf6, #121b17)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.963 0.983 0.967), color(display-p3 0.079 0.106 0.09))",
+  },
+  component1: {
+    default: "light-dark(#e6f6eb, #132d21)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.913 0.964 0.925), color(display-p3 0.1 0.173 0.133))",
+  },
+  component2: {
+    default: "light-dark(#d6f1df, #113b29)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.859 0.94 0.879), color(display-p3 0.115 0.229 0.166))",
+  },
+  component3: {
+    default: "light-dark(#c4e8d1, #174933)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.796 0.907 0.826), color(display-p3 0.147 0.282 0.206))",
+  },
+  border1: {
+    default: "light-dark(#adddc0, #19573a)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.718 0.863 0.761), color(display-p3 0.185 0.338 0.25))",
+  },
+  border2: {
+    default: "light-dark(#8eceaa, #28684a)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.61 0.801 0.675), color(display-p3 0.227 0.403 0.298))",
+  },
+  border3: {
+    default: "light-dark(#5bb98b, #2f7c57)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.451 0.715 0.559), color(display-p3 0.27 0.479 0.351))",
+  },
+  solid1: {
+    default: "light-dark(#30a46c, #30a46c)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.332 0.634 0.442), color(display-p3 0.332 0.634 0.442))",
+  },
+  solid2: {
+    default: "light-dark(#2b9a66, #33b074)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.308 0.595 0.417), color(display-p3 0.357 0.682 0.474))",
+  },
+  text1: {
+    default: "light-dark(#218358, #3dd68c)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.19 0.5 0.32), color(display-p3 0.434 0.828 0.573))",
+  },
+  text2: {
+    default: "light-dark(#193b2d, #b1f1cb)",
+    "@media (color-gamut: p3)":
+      "light-dark(color(display-p3 0.132 0.228 0.18), color(display-p3 0.747 0.938 0.807))",
+  },
+});

@@ -10,6 +10,7 @@ import * as React from "react";
 
 import { alertDialogConfig } from "../components/alert-dialog/alert-dialog-config.js";
 import { avatarConfig } from "../components/avatar/avatar-config.js";
+import { badgeConfig } from "../components/badge/badge-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
 import { buttonConfig } from "../components/button/button-config.js";
 import { cardConfig } from "../components/card/card-config.js";
@@ -78,6 +79,7 @@ const COMPONENT_CONFIGS = [
   alertDialogConfig,
   dialogConfig,
   avatarConfig,
+  badgeConfig,
 ];
 
 function StringSetting({
