@@ -1,3 +1,6 @@
+import * as stylex from "@stylexjs/stylex";
+import { Minus, Plus } from "lucide-react";
+import { useRef } from "react";
 import {
   NumberFieldProps as AriaNumberFieldProps,
   Input,
@@ -8,15 +11,13 @@ import {
   Group,
   Button,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
+
 import { Description, Label } from "../label";
-import { useRef } from "react";
-import { Size } from "../types";
-import { useInputStyles } from "../theme/useInputStyles";
-import { Minus, Plus } from "lucide-react";
+import { slate } from "../theme/colors.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { slate } from "../theme/colors.stylex";
+import { useInputStyles } from "../theme/useInputStyles";
+import { Size } from "../types";
 
 const styles = stylex.create({
   buttons: {
@@ -78,7 +79,7 @@ export function NumberField({
   const buttonStyles = stylex.props(
     styles.button,
     gray.borderInteractive,
-    gray.bgAction
+    gray.bgAction,
   );
 
   return (
@@ -93,7 +94,7 @@ export function NumberField({
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix !== undefined && (
+        {prefix !== null && (
           <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
         )}
         <Input
@@ -101,7 +102,7 @@ export function NumberField({
           ref={inputRef}
           {...stylex.props(inputStyles.input)}
         />
-        {suffix !== undefined && (
+        {suffix !== null && (
           <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
         )}
         <Group {...stylex.props(styles.buttons)}>

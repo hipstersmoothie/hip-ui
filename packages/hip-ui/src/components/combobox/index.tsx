@@ -1,3 +1,8 @@
+import type { ListBoxProps, ValidationResult } from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { ChevronDown } from "lucide-react";
+import { use } from "react";
 import {
   Button,
   Popover,
@@ -5,34 +10,18 @@ import {
   ComboBox as AriaComboBox,
   ComboBoxProps as AriaComboBoxProps,
   Input,
+  FieldError,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import type {
-  ListBoxProps,
-  ListBoxSectionProps,
-  ValidationResult,
-} from "react-aria-components";
-import { FieldError } from "react-aria-components";
-import { Description, Label } from "../label";
-import { ChevronDown } from "lucide-react";
-import { Size } from "../types";
-import {
-  ListBox,
-  ListBoxItem,
-  ListBoxItemProps,
-  ListBoxSectionHeaderProps,
-  ListBoxSectionHeader,
-  ListBoxSeparatorProps,
-  ListBoxSeparator,
-  ListBoxSection,
-} from "../listbox";
+
 import { SizeContext } from "../context";
+import { IconButton } from "../icon-button";
+import { Description, Label } from "../label";
+import { ListBox } from "../listbox";
+import { spacing } from "../theme/spacing.stylex";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { IconButton } from "../icon-button";
+import { Size } from "../types";
 import { SmallBody } from "../typography";
-import { spacing } from "../theme/spacing.stylex";
-import { use } from "react";
 
 const styles = stylex.create({
   matchWidth: {
@@ -102,14 +91,14 @@ export function ComboBox<T extends object>({
       <AriaComboBox {...props} {...stylex.props(inputStyles.field, style)}>
         {label && <Label size={size}>{label}</Label>}
         <Button {...stylex.props(inputStyles.wrapper)}>
-          {prefix !== undefined && (
+          {prefix !== null && (
             <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
           )}
           <Input
             {...stylex.props(inputStyles.input)}
             placeholder={placeholder}
           />
-          {suffix !== undefined && (
+          {suffix !== null && (
             <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
           )}
           <div {...stylex.props(inputStyles.addon)}>
@@ -140,11 +129,16 @@ export function ComboBox<T extends object>({
   );
 }
 
-export type ComboBoxItemProps = ListBoxItemProps;
-export const ComboBoxItem = ListBoxItem;
-export type ComboBoxSectionProps<T extends object> = ListBoxSectionProps<T>;
-export const ComboBoxSection = ListBoxSection;
-export type ComboBoxSectionHeaderProps = ListBoxSectionHeaderProps;
-export const ComboBoxSectionHeader = ListBoxSectionHeader;
-export type ComboBoxSeparatorProps = ListBoxSeparatorProps;
-export const ComboBoxSeparator = ListBoxSeparator;
+export type {
+  ListBoxItemProps as ComboBoxItemProps,
+  ListBoxSectionProps as ComboBoxSectionProps,
+  ListBoxSectionHeaderProps as ComboBoxSectionHeaderProps,
+  ListBoxSeparatorProps as ComboBoxSeparatorProps,
+} from "../listbox";
+
+export {
+  ListBoxItem as ComboBoxItem,
+  ListBoxSection as ComboBoxSection,
+  ListBoxSectionHeader as ComboBoxSectionHeader,
+  ListBoxSeparator as ComboBoxSeparator,
+} from "../listbox";

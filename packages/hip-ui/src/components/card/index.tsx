@@ -1,10 +1,10 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { gray } from "../theme/semantic-color.stylex";
+import { Flex } from "../flex";
 import { radius } from "../theme/radius.stylex";
+import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
-import { Flex } from "../flex";
 
 const styles = stylex.create({
   card: {

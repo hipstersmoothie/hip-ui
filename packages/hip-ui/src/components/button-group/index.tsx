@@ -1,7 +1,8 @@
 "use client";
 
-import { Group, GroupProps } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
+import { Group, GroupProps } from "react-aria-components";
+
 import { ButtonGroupContext } from "../button/context";
 
 const styles = stylex.create({
@@ -35,7 +36,7 @@ export const ButtonGroup = ({
           styles.group,
           orientation === "horizontal" && styles.horizontal,
           orientation === "vertical" && styles.vertical,
-          style
+          style,
         )}
         {...props}
       >

@@ -13,7 +13,6 @@
     "@next/eslint-plugin-next": "^15.5.0",
     "eslint": "^9.34.0",
     "eslint-config-prettier": "^10.1.1",
-    "eslint-plugin-only-warn": "^1.1.0",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-turbo": "^2.5.0",
@@ -22,8 +21,15 @@
     "typescript-eslint": "^8.40.0"
   },
   "dependencies": {
+    "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
     "@eslint-react/eslint-plugin": "^2.2.2",
     "@stylexjs/eslint-plugin": "^0.16.2",
-    "eslint-plugin-jsx-a11y": "^6.10.2"
+    "eslint-config-flat-gitignore": "^2.1.0",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import-x": "^4.16.1",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-perfectionist": "^4.15.1",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "eslint-plugin-unicorn": "^61.0.2"
   }
 }

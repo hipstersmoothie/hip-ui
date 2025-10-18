@@ -1,5 +1,6 @@
 "use client";
 
+import * as stylex from "@stylexjs/stylex";
 import {
   OverlayArrow,
   Tooltip as AriaTooltip,
@@ -7,13 +8,12 @@ import {
   TooltipTriggerComponentProps,
   TooltipProps as AriaTooltipProps,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 
-import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
-import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
-import { shadow } from "../theme/shadow.stylex";
 import { slateInverted } from "../theme/colors.stylex";
+import { radius } from "../theme/radius.stylex";
+import { shadow } from "../theme/shadow.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const tooltipStyle = stylex.create({
   content: {

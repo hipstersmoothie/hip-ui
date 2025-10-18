@@ -1,16 +1,16 @@
+import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 import {
   LabelProps as AriaLabelProps,
   Text,
   TextProps,
+  Label as AriaLabel,
 } from "react-aria-components";
-import { Label as AriaLabel } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 
-import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
-import { gray } from "../theme/semantic-color.stylex";
-import { Size } from "../types";
-import { use } from "react";
 import { SizeContext } from "../context";
+import { gray } from "../theme/semantic-color.stylex";
+import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
+import { Size } from "../types";
 
 const styles = stylex.create({
   label: {
@@ -76,7 +76,7 @@ export function Description({
         styles.description,
         gray.textDim,
         size === "sm" && styles.descriptionSm,
-        style
+        style,
       )}
       {...props}
     />

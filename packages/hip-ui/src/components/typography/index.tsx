@@ -1,15 +1,16 @@
 import * as stylex from "@stylexjs/stylex";
+import { useMemo } from "react";
+
+import { LinkContext } from "../link/link-context";
+import { radius } from "../theme/radius.stylex";
+import { gray } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
 import {
   fontFamily,
   fontSize,
   lineHeight,
   typeramp,
 } from "../theme/typography.stylex";
-import { gray } from "../theme/semantic-color.stylex";
-import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
-import { useMemo } from "react";
-import { LinkContext } from "../link";
 
 const styles = stylex.create({
   blockquote: {
@@ -121,7 +122,7 @@ export const SmallBody = ({
       {...stylex.props(
         typeramp.smallBody,
         variant === "secondary" && gray.textDim,
-        style
+        style,
       )}
       {...props}
     />
@@ -143,7 +144,7 @@ export const SubLabel = ({
     () => ({
       style: [variant === "secondary" && gray.textDim, styles.underline],
     }),
-    [variant]
+    [variant],
   );
 
   return (
@@ -152,7 +153,7 @@ export const SubLabel = ({
         {...stylex.props(
           typeramp.sublabel,
           variant === "secondary" && gray.textDim,
-          style
+          style,
         )}
         {...props}
       />

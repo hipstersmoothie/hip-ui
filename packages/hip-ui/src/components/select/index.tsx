@@ -1,34 +1,24 @@
+import type { ValidationResult } from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { ChevronDown } from "lucide-react";
+import { use } from "react";
 import {
   SelectProps as AriaSelectProps,
   Button,
   Popover,
   SelectValue,
   PopoverProps,
+  Select as AriaSelect,
+  FieldError,
 } from "react-aria-components";
-import { Select as AriaSelect } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import type {
-  ListBoxSectionProps,
-  ValidationResult,
-} from "react-aria-components";
-import { FieldError } from "react-aria-components";
-import { Description, Label } from "../label";
-import { ChevronDown } from "lucide-react";
-import { Size } from "../types";
-import {
-  ListBox,
-  ListBoxItem,
-  ListBoxItemProps,
-  ListBoxSectionHeaderProps,
-  ListBoxSectionHeader,
-  ListBoxSeparatorProps,
-  ListBoxSeparator,
-  ListBoxSection,
-} from "../listbox";
+
 import { SizeContext } from "../context";
+import { Description, Label } from "../label";
+import { ListBox } from "../listbox";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { use } from "react";
+import { Size } from "../types";
 
 const styles = stylex.create({
   matchWidth: {
@@ -90,7 +80,7 @@ export function Select<
       >
         {label && <Label size={size}>{label}</Label>}
         <Button {...stylex.props(inputStyles.wrapper)}>
-          {prefix !== undefined && (
+          {prefix !== null && (
             <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
           )}
           <SelectValue {...stylex.props(inputStyles.input)}>
@@ -101,7 +91,7 @@ export function Select<
               return defaultChildren;
             }}
           </SelectValue>
-          {suffix !== undefined && (
+          {suffix !== null && (
             <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
           )}
           <div {...stylex.props(inputStyles.addon)}>
@@ -129,11 +119,16 @@ export function Select<
   );
 }
 
-export type SelectItemProps = ListBoxItemProps;
-export const SelectItem = ListBoxItem;
-export type SelectSectionProps<T extends object> = ListBoxSectionProps<T>;
-export const SelectSection = ListBoxSection;
-export type SelectSectionHeaderProps = ListBoxSectionHeaderProps;
-export const SelectSectionHeader = ListBoxSectionHeader;
-export type SelectSeparatorProps = ListBoxSeparatorProps;
-export const SelectSeparator = ListBoxSeparator;
+export type {
+  ListBoxItemProps as SelectItemProps,
+  ListBoxSectionProps as SelectSectionProps,
+  ListBoxSectionHeaderProps as SelectSectionHeaderProps,
+  ListBoxSeparatorProps as SelectSeparatorProps,
+} from "../listbox";
+
+export {
+  ListBoxItem as SelectItem,
+  ListBoxSection as SelectSection,
+  ListBoxSectionHeader as SelectSectionHeader,
+  ListBoxSeparator as SelectSeparator,
+} from "../listbox";

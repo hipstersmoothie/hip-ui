@@ -1,3 +1,6 @@
+import { useControlledState } from "@react-stately/utils";
+import * as stylex from "@stylexjs/stylex";
+import { useEffect, useEffectEvent } from "react";
 import {
   InputProps,
   Modal,
@@ -8,28 +11,16 @@ import {
   ModalOverlay,
   AutocompleteProps as AriaAutocompleteProps,
 } from "react-aria-components";
-import { useControlledState } from "@react-stately/utils";
-import { SearchField } from "../search-field";
 import { OverlayTriggerProps } from "react-stately";
-import {
-  MenuItem,
-  MenuItemProps,
-  MenuSection,
-  MenuSectionHeader,
-  MenuSectionHeaderProps,
-  MenuSectionProps,
-  MenuSeparator,
-  MenuSeparatorProps,
-} from "../menu";
-import { useEffect, useEffectEvent } from "react";
-import * as stylex from "@stylexjs/stylex";
-import { shadow } from "../theme/shadow.stylex";
+
+import { SizeContext } from "../context";
+import { SearchField } from "../search-field";
+import { Separator } from "../separator";
+import { animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
-import { animations } from "../theme/animations.stylex";
+import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { SizeContext } from "../context";
-import { Separator } from "../separator";
 
 const styles = stylex.create({
   overlay: {
@@ -127,9 +118,11 @@ export function CommandMenu<T extends object>({
   const [isOpen, setIsOpen] = useControlledState(
     isOpenProp,
     defaultOpen ?? false,
-    onOpenChange
+    onOpenChange,
   );
-  const onClose = useEffectEvent(() => setIsOpen(false));
+  const onClose = useEffectEvent(() => {
+    setIsOpen(false);
+  });
 
   useEffect(() => {
     if (disableGlobalShortcut) return;
@@ -140,9 +133,11 @@ export function CommandMenu<T extends object>({
       }
     }
 
-    window.addEventListener("keydown", handleKeyDown);
+    globalThis.addEventListener("keydown", handleKeyDown);
 
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    return () => {
+      globalThis.removeEventListener("keydown", handleKeyDown);
+    };
   }, [setIsOpen, disableGlobalShortcut]);
 
   return (
@@ -180,11 +175,16 @@ export function CommandMenu<T extends object>({
   );
 }
 
-export type CommandMenuItemProps = MenuItemProps;
-export const CommandMenuItem = MenuItem;
-export type CommandMenuSectionHeaderProps = MenuSectionHeaderProps;
-export const CommandMenuSectionHeader = MenuSectionHeader;
-export type CommandMenuSectionProps<T extends object> = MenuSectionProps<T>;
-export const CommandMenuSection = MenuSection;
-export type CommandMenuSeparatorProps = MenuSeparatorProps;
-export const CommandMenuSeparator = MenuSeparator;
+export type {
+  MenuItemProps as CommandMenuItemProps,
+  MenuSectionHeaderProps as CommandMenuSectionHeaderProps,
+  MenuSectionProps as CommandMenuSectionProps,
+  MenuSeparatorProps as CommandMenuSeparatorProps,
+} from "../menu";
+
+export {
+  MenuItem as CommandMenuItem,
+  MenuSectionHeader as CommandMenuSectionHeader,
+  MenuSection as CommandMenuSection,
+  MenuSeparator as CommandMenuSeparator,
+} from "../menu";

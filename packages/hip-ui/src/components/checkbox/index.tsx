@@ -3,20 +3,21 @@ import type {
   CheckboxGroupProps as AriaCheckboxGroupProps,
   ValidationResult,
 } from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { Check, Minus } from "lucide-react";
 import {
   Checkbox as AriaCheckbox,
   CheckboxGroup as AriaCheckboxGroup,
   FieldError,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import { Check, Minus } from "lucide-react";
 
-import { spacing } from "../theme/spacing.stylex";
-import { radius } from "../theme/radius.stylex";
-import { gray, primary } from "../theme/semantic-color.stylex";
-import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
+import { radius } from "../theme/radius.stylex";
+import { gray, primary } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 import { Size } from "../types";
 
 const styles = stylex.create({
@@ -74,7 +75,7 @@ export function CheckboxGroup({
 }: CheckboxGroupProps) {
   return (
     <AriaCheckboxGroup {...props} {...stylex.props(styles.group, style)}>
-      {label !== undefined && <Label size={size}>{label}</Label>}
+      {label !== null && <Label size={size}>{label}</Label>}
       <Flex direction="column" gap="2">
         {children}
       </Flex>
@@ -102,7 +103,7 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
                 ? [gray.bgSolid, gray.border, styles.checked]
                 : isSelected
                   ? [primary.bgSolid, primary.borderInteractive, styles.checked]
-                  : [gray.borderInteractive]
+                  : [gray.borderInteractive],
             )}
           >
             {isIndeterminate ? (
@@ -111,7 +112,7 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
               <Check size={16} />
             ) : null}
           </div>
-          {children !== undefined && (
+          {children !== null && (
             <Flex direction="column" gap="1">
               {children}
             </Flex>

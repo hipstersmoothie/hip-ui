@@ -1,43 +1,44 @@
+/* eslint-disable react-refresh/only-export-components */
+
 import { Option, Select, TextInput } from "@inkjs/ui";
-import path from "path";
 import { render, Box, Text } from "ink";
+import { exec } from "node:child_process";
+import { readFileSync, writeFileSync } from "node:fs";
+import { mkdir } from "node:fs/promises";
+import path from "node:path";
 import * as React from "react";
-import { mkdir } from "fs/promises";
-import { exec } from "child_process";
-import { readFileSync, writeFileSync } from "fs";
 
-import { ConfigOptions, getConfig, setConfig } from "./config.js";
-import { ComponentConfig } from "../types.js";
-
-import { buttonConfig } from "../components/button/button-config.js";
-import { flexConfig } from "../components/flex/flex-config.js";
-import { typographyConfig } from "../components/typography/typography-config.js";
-import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
-import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
-import { popoverConfig } from "../components/popover/popover-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
+import { buttonConfig } from "../components/button/button-config.js";
 import { cardConfig } from "../components/card/card-config.js";
-import { textFieldConfig } from "../components/text-field/text-field-config.js";
+import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
+import { colorFieldConfig } from "../components/color-field/color-field-config.js";
+import { comboboxConfig } from "../components/combobox/combobox-config.js";
+import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
+import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
+import { dateFieldConfig } from "../components/date-field/date-field-config.js";
+import { flexConfig } from "../components/flex/flex-config.js";
+import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
-import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
-import { radioConfig } from "../components/radio/radio-config.js";
-import { separatorConfig } from "../components/separator/separator-config.js";
-import { textAreaConfig } from "../components/text-area/text-area-config.js";
-import { selectConfig } from "../components/select/select-config.js";
-import { toggleButtonConfig } from "../components/toggle-button/toggle-button-config.js";
-import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggle-button-group-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
-import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
-import { timeFieldConfig } from "../components/time-field/time-field-config.js";
-import { dateFieldConfig } from "../components/date-field/date-field-config.js";
-import { searchFieldConfig } from "../components/search-field/search-field-config.js";
-import { colorFieldConfig } from "../components/color-field/color-field-config.js";
 import { numberFieldConfig } from "../components/number-field/number-field-config.js";
-import { comboboxConfig } from "../components/combobox/combobox-config.js";
+import { popoverConfig } from "../components/popover/popover-config.js";
+import { radioConfig } from "../components/radio/radio-config.js";
+import { searchFieldConfig } from "../components/search-field/search-field-config.js";
+import { selectConfig } from "../components/select/select-config.js";
+import { separatorConfig } from "../components/separator/separator-config.js";
+import { textAreaConfig } from "../components/text-area/text-area-config.js";
+import { textFieldConfig } from "../components/text-field/text-field-config.js";
+import { timeFieldConfig } from "../components/time-field/time-field-config.js";
+import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggle-button-group-config.js";
+import { toggleButtonConfig } from "../components/toggle-button/toggle-button-config.js";
+import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
 import { treeConfig } from "../components/tree/tree-config.js";
-import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
+import { typographyConfig } from "../components/typography/typography-config.js";
+import { ComponentConfig } from "../types.js";
+import { ConfigOptions, getConfig, setConfig } from "./config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -132,10 +133,14 @@ function SelectSetting({
   );
 }
 
-const ConfigPrompt = ({ config }: { config: ConfigOptions | null }) => {
+const ConfigPrompt = ({
+  config,
+}: {
+  config: Partial<ConfigOptions> | null;
+}) => {
   const [value, setValue] = React.useState(config?.componentDir);
   const [packageManager, setPackageManager] = React.useState(
-    config?.packageManager
+    config?.packageManager,
   );
   const [step, setStep] = React.useState(0);
 
@@ -154,7 +159,9 @@ const ConfigPrompt = ({ config }: { config: ConfigOptions | null }) => {
         label="Component directory:"
         defaultValue={value}
         onChange={setValue}
-        onSubmit={() => setStep(step + 1)}
+        onSubmit={() => {
+          setStep(step + 1);
+        }}
         isEditing={step === 0}
       />
 
@@ -179,28 +186,32 @@ const ConfigPrompt = ({ config }: { config: ConfigOptions | null }) => {
 
 async function setup() {
   const loadedConfig = await getConfig();
-  const config: ConfigOptions = loadedConfig ? { ...loadedConfig.config } : {};
+  const config = (
+    loadedConfig ? { ...loadedConfig.config } : {}
+  ) as Partial<ConfigOptions>;
 
   if (config.componentDir && config.packageManager) {
-    return config;
+    return config as ConfigOptions;
   }
 
   const { waitUntilExit } = render(<ConfigPrompt config={config} />);
   await waitUntilExit();
 
   if (
-    config.componentDir !== loadedConfig?.config.componentDir ||
-    config.packageManager !== loadedConfig?.config.packageManager
+    config.componentDir !==
+      (loadedConfig?.config as ConfigOptions).componentDir ||
+    config.packageManager !==
+      (loadedConfig?.config as ConfigOptions).packageManager
   ) {
-    await setConfig(loadedConfig, config);
+    setConfig(loadedConfig, config as ConfigOptions);
   }
 
-  return config;
+  return config as ConfigOptions;
 }
 
 async function installDependencies(
   config: ConfigOptions,
-  dependencies: { [key: string]: string } | undefined
+  dependencies: { [key: string]: string } | undefined,
 ) {
   if (!dependencies) {
     return;
@@ -208,12 +219,17 @@ async function installDependencies(
 
   const packageJson = readFileSync(
     path.join(process.cwd(), "package.json"),
-    "utf-8"
+    "utf8",
   );
-  const packageJsonObject = JSON.parse(packageJson);
+  const packageJsonObject = JSON.parse(packageJson) as Record<string, unknown>;
+
+  const packageDependencies = packageJsonObject.dependencies as Record<
+    string,
+    string
+  >;
 
   for (const [packageName, version] of Object.entries(dependencies)) {
-    if (packageJsonObject.dependencies[packageName] === version) {
+    if (packageDependencies[packageName] === version) {
       continue;
     }
 
@@ -224,12 +240,12 @@ async function installDependencies(
         if (error) {
           console.error(
             `❌ Error installing ${packageName}@${version}:`,
-            error
+            error,
           );
         }
 
         resolve(true);
-      })
+      }),
     );
   }
 }
@@ -237,7 +253,7 @@ async function installDependencies(
 async function outputFile(
   config: ConfigOptions,
   filepath: string,
-  content: string
+  content: string,
 ) {
   const outputPath = path.join(process.cwd(), config.componentDir, filepath);
   await mkdir(path.dirname(outputPath), { recursive: true });
@@ -246,7 +262,7 @@ async function outputFile(
 
 async function installHipDependencies(
   config: ConfigOptions,
-  componentConfig: ComponentConfig
+  componentConfig: ComponentConfig,
 ) {
   if (!componentConfig.hipDependencies) {
     return;
@@ -258,14 +274,14 @@ async function installHipDependencies(
         __dirname,
         "../../src/components",
         componentConfig.name,
-        dependency
+        dependency,
       ),
-      "utf-8"
+      "utf8",
     );
     await outputFile(
       config,
       path.join(componentConfig.name, dependency), // kind of hacky but works
-      content
+      content,
     );
     console.log(`➕ Created ${dependency}`);
   }
@@ -273,7 +289,7 @@ async function installHipDependencies(
 
 async function copyFiles(
   config: ConfigOptions,
-  componentConfig: ComponentConfig
+  componentConfig: ComponentConfig,
 ) {
   const outputPath = path.join(componentConfig.name, "index.tsx");
   const template = readFileSync(
@@ -281,9 +297,9 @@ async function copyFiles(
       __dirname,
       "../../src/components",
       componentConfig.name,
-      componentConfig.filepath
+      componentConfig.filepath,
     ),
-    "utf-8"
+    "utf8",
   );
 
   await outputFile(config, outputPath, template);
@@ -297,26 +313,21 @@ export async function installComponent({
   component: string[];
   all: boolean;
 }) {
-  let componentConfigs: ComponentConfig[] = [];
-
-  if (all) {
-    componentConfigs = COMPONENT_CONFIGS;
-  } else {
-    componentConfigs = component
-      .map((componentName) =>
-        COMPONENT_CONFIGS.find((config) => config.name === componentName)
-      )
-      .filter((config) => config !== undefined);
-  }
+  const componentConfigs = all
+    ? COMPONENT_CONFIGS
+    : component
+        .map((componentName) =>
+          COMPONENT_CONFIGS.find((config) => config.name === componentName),
+        )
+        .filter((config): config is ComponentConfig => config !== undefined);
 
   for (const componentName of component) {
     const componentConfig = COMPONENT_CONFIGS.find(
-      (config) => config.name === componentName
+      (config) => config.name === componentName,
     );
 
     if (!componentConfig) {
-      console.error(`❌ Component ${componentName} not found.`);
-      process.exit(1);
+      throw new Error(`Component ${componentName} not found.`);
     }
 
     componentConfigs.push(componentConfig);
@@ -332,3 +343,5 @@ export async function installComponent({
     console.log(`✅ Installed ${componentConfig.name}\n`);
   }
 }
+
+/* eslint-enable react-refresh/only-export-components */

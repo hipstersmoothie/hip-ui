@@ -1,3 +1,6 @@
+import * as stylex from "@stylexjs/stylex";
+import { Check, ChevronRight } from "lucide-react";
+import { use } from "react";
 import {
   MenuTriggerProps,
   MenuTrigger,
@@ -12,19 +15,11 @@ import {
   SubmenuTrigger,
   PopoverProps,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import { Size } from "../types";
-import {
-  ListBoxSectionHeaderProps,
-  ListBoxSectionHeader,
-  ListBoxSeparator,
-  ListBoxSeparatorProps,
-} from "../listbox";
+
 import { SizeContext } from "../context";
-import { Check, ChevronRight } from "lucide-react";
-import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
-import { use } from "react";
+import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { Size } from "../types";
 
 export interface MenuProps<T extends object>
   extends Omit<MenuTriggerProps, "trigger" | "children">,
@@ -163,11 +158,11 @@ export function MenuItem({
     >
       {({ isSelected, hasSubmenu }) => (
         <div {...stylex.props(menuItemStyles.inner)}>
-          {prefix !== undefined && (
+          {prefix !== null && (
             <div {...stylex.props(menuItemStyles.addon)}>{prefix}</div>
           )}
           <div {...stylex.props(menuItemStyles.label)}>{children}</div>
-          {suffix !== undefined && (
+          {suffix !== null && (
             <div {...stylex.props(menuItemStyles.addon)}>{suffix}</div>
           )}
           {isSelected && (
@@ -186,7 +181,12 @@ export function MenuItem({
   );
 }
 
-export type MenuSectionHeaderProps = ListBoxSectionHeaderProps;
-export const MenuSectionHeader = ListBoxSectionHeader;
-export type MenuSeparatorProps = ListBoxSeparatorProps;
-export const MenuSeparator = ListBoxSeparator;
+export type {
+  ListBoxSectionHeaderProps as MenuSectionHeaderProps,
+  ListBoxSeparatorProps as MenuSeparatorProps,
+} from "../listbox";
+
+export {
+  ListBoxSectionHeader as MenuSectionHeader,
+  ListBoxSeparator as MenuSeparator,
+} from "../listbox";

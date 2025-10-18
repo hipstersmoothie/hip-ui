@@ -1,22 +1,22 @@
 "use client";
 
 import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 
-import { spacing } from "./spacing.stylex";
+import { ButtonGroupContext } from "../button/context";
+import { SizeContext } from "../context";
+import { Size, ButtonVariant } from "../types";
+import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
 import { gray, primary } from "./semantic-color.stylex";
+import { shadow } from "./shadow.stylex";
+import { spacing } from "./spacing.stylex";
 import {
   fontFamily,
   fontSize,
   fontWeight,
   lineHeight,
 } from "./typography.stylex";
-import { shadow } from "./shadow.stylex";
-import { slate } from "./colors.stylex";
-import { use } from "react";
-import { Size, ButtonVariant } from "../types";
-import { ButtonGroupContext } from "../button/context";
-import { SizeContext } from "../context";
 
 const styles = stylex.create({
   shadow: {

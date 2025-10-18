@@ -1,17 +1,18 @@
+import * as stylex from "@stylexjs/stylex";
+import { useRef } from "react";
 import {
   TimeFieldProps as AriaTimeFieldProps,
   DateInput,
   DateSegment,
   TimeValue,
   ValidationResult,
+  FieldError,
+  TimeField as AriaTimeField,
 } from "react-aria-components";
 
-import { FieldError, TimeField as AriaTimeField } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 import { Description, Label } from "../label";
-import { useRef } from "react";
-import { Size } from "../types";
 import { useInputStyles } from "../theme/useInputStyles";
+import { Size } from "../types";
 
 export interface TimeFieldProps<T extends TimeValue>
   extends Omit<AriaTimeFieldProps<T>, "style" | "className"> {
@@ -39,7 +40,7 @@ export function TimeField<T extends TimeValue>({
 
   return (
     <AriaTimeField {...props} {...stylex.props(inputStyles.field, style)}>
-      {label !== undefined && <Label size={size}>{label}</Label>}
+      {label !== null && <Label size={size}>{label}</Label>}
       {/* 
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
@@ -49,13 +50,13 @@ export function TimeField<T extends TimeValue>({
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}
       >
-        {prefix !== undefined && (
+        {prefix !== null && (
           <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
         )}
         <DateInput {...stylex.props(inputStyles.input)} ref={inputRef}>
           {(segment) => <DateSegment segment={segment} />}
         </DateInput>
-        {suffix !== undefined && (
+        {suffix !== null && (
           <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
         )}
       </div>

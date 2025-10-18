@@ -1,9 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { radius } from "./radius.stylex";
-import { spacing } from "./spacing.stylex";
 import { gray } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
+import { spacing } from "./spacing.stylex";
 
 const styles = stylex.create({
   popover: {

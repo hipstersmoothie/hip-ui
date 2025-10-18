@@ -1,12 +1,13 @@
 import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
+
+import { SizeContext } from "../context";
+import { Size } from "../types";
+import { slate } from "./colors.stylex";
+import { radius } from "./radius.stylex";
 import { gray } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
-import { radius } from "./radius.stylex";
 import { lineHeight, fontSize } from "./typography.stylex";
-import { slate } from "./colors.stylex";
-import { Size } from "../types";
-import { use } from "react";
-import { SizeContext } from "../context";
 
 const styles = stylex.create({
   field: {

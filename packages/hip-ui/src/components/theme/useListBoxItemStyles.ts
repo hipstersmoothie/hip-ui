@@ -1,15 +1,16 @@
 import * as stylex from "@stylexjs/stylex";
-import { spacing } from "../theme/spacing.stylex";
+import { use } from "react";
+
+import { SizeContext } from "../context";
 import { plum, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { spacing } from "../theme/spacing.stylex";
 import {
   fontSize,
   fontWeight,
   lineHeight,
   typeramp,
 } from "../theme/typography.stylex";
-import { SizeContext } from "../context";
-import { use } from "react";
 
 const styles = stylex.create({
   item: {

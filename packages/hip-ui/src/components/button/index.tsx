@@ -1,10 +1,10 @@
 "use client";
 
+import * as stylex from "@stylexjs/stylex";
 import {
   Button as AriaButton,
   ButtonProps as AriaButtonProps,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 
 import { useButtonStyles } from "../theme/useButtonStyles";
 import { Size, ButtonVariant } from "../types";

@@ -1,12 +1,13 @@
 "use client";
 
+import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 import {
   ToggleButtonGroupProps as AriaToggleButtonGroupProps,
   ToggleButtonGroup as AriaToggleButtonGroup,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
+
 import { ButtonGroupContext } from "../button/context";
-import { use } from "react";
 
 const styles = stylex.create({
   group: {
@@ -73,7 +74,7 @@ export const ToggleButtonGroup = ({
                 orientation === "horizontal" && styles.horizontal,
                 orientation === "vertical" && styles.vertical,
               ],
-          style
+          style,
         )}
         {...props}
       >

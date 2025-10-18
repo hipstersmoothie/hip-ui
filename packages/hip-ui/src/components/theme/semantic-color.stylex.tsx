@@ -1,4 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
+
 import { slate, plum } from "./colors.stylex";
 
 // eslint-disable-next-line @stylexjs/enforce-extension

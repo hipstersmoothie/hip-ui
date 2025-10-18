@@ -1,6 +1,8 @@
-import { SeparatorProps as AriaSeparatorProps } from "react-aria-components";
-import { Separator as AriaSeparator } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
+import {
+  SeparatorProps as AriaSeparatorProps,
+  Separator as AriaSeparator,
+} from "react-aria-components";
 
 import { slate } from "../theme/colors.stylex";
 

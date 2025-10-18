@@ -1,4 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
+
 import { Spacing, spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
@@ -141,7 +142,7 @@ export const Flex = ({
 
         typeof gap === "string" && styles[`gap-${gap}` as keyof typeof styles],
 
-        style
+        style,
       )}
     />
   );

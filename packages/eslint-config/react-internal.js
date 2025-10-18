@@ -3,6 +3,7 @@ import pluginReactHooks from "eslint-plugin-react-hooks";
 import eslintReact from "@eslint-react/eslint-plugin";
 import { defineConfig } from "eslint/config";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import reactRefresh from "eslint-plugin-react-refresh";
 
 import { config as baseConfig } from "./base.js";
 
@@ -23,6 +24,7 @@ export const config = defineConfig([
     extends: [
       eslintReact.configs["strict-type-checked"],
       jsxA11y.flatConfigs.recommended,
+      reactRefresh.configs.recommended,
     ],
 
     settings: { react: { version: "detect" } },

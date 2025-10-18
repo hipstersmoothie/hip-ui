@@ -1,3 +1,6 @@
+import * as stylex from "@stylexjs/stylex";
+import { SearchIcon, X } from "lucide-react";
+import { useRef } from "react";
 import {
   SearchFieldProps as AriaSearchFieldProps,
   Input,
@@ -6,14 +9,12 @@ import {
   FieldError,
   SearchField as AriaSearchField,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-import { Description, Label } from "../label";
-import { useRef } from "react";
-import { Size } from "../types";
-import { useInputStyles } from "../theme/useInputStyles";
-import { SearchIcon, X } from "lucide-react";
+
 import { IconButton } from "../icon-button";
+import { Description, Label } from "../label";
 import { spacing } from "../theme/spacing.stylex";
+import { useInputStyles } from "../theme/useInputStyles";
+import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -63,7 +64,7 @@ export function SearchField({
       {({ isEmpty }) => {
         return (
           <>
-            {label !== undefined && <Label size={size}>{label}</Label>}
+            {label !== null && <Label size={size}>{label}</Label>}
             {/* 
               This onClick is specifically for mouse users not clicking directly on the input.
               A keyboard user would not encounter the same issue.
@@ -73,7 +74,7 @@ export function SearchField({
               {...stylex.props(inputStyles.wrapper, styles.wrapper)}
               onClick={() => inputRef.current?.focus()}
             >
-              {prefix !== undefined && (
+              {prefix !== null && (
                 <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
               )}
               <Input
@@ -81,10 +82,10 @@ export function SearchField({
                 ref={inputRef}
                 {...stylex.props(
                   inputStyles.input,
-                  !isEmpty && styles.clearButtonPadding
+                  !isEmpty && styles.clearButtonPadding,
                 )}
               />
-              {suffix !== undefined && (
+              {suffix !== null && (
                 <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
               )}
               {!isEmpty && (

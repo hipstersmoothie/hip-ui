@@ -1,4 +1,5 @@
 import { app, Command, MultiCommand } from "command-line-application";
+
 import { installComponent } from "./install.js";
 
 const install: Command = {
@@ -30,14 +31,16 @@ const hip: MultiCommand = {
 const args = app(hip);
 
 if (args?._command === "install") {
-  const component = Array.isArray(args.component)
-    ? args.component
-    : args.component
-      ? [args.component]
-      : [];
+  const component = (
+    Array.isArray(args.component)
+      ? args.component
+      : args.component
+        ? [args.component]
+        : []
+  ) as string[];
 
-  installComponent({
+  void installComponent({
     component,
-    all: args.all,
+    all: args.all as boolean,
   });
 }

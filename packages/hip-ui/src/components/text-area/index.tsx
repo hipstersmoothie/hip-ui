@@ -1,22 +1,23 @@
+import * as stylex from "@stylexjs/stylex";
+import { use, useRef } from "react";
 import {
   TextArea as AriaTextArea,
   TextAreaProps as AriaTextAreaProps,
   InputProps,
   TextFieldProps,
   ValidationResult,
+  FieldError,
+  TextField as AriaTextField,
 } from "react-aria-components";
 
-import { FieldError, TextField as AriaTextField } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
+import { SizeContext } from "../context";
+import { Description, Label } from "../label";
+import { slate } from "../theme/colors.stylex";
+import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Description, Label } from "../label";
-import { radius } from "../theme/radius.stylex";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
-import { slate } from "../theme/colors.stylex";
-import { use, useRef } from "react";
 import { Size } from "../types";
-import { SizeContext } from "../context";
 
 const styles = stylex.create({
   wrapper: {
@@ -140,7 +141,7 @@ export function TextArea({
 
   return (
     <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
-      {label !== undefined && <Label size={size}>{label}</Label>}
+      {label !== null && <Label size={size}>{label}</Label>}
       {/* 
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
@@ -150,18 +151,14 @@ export function TextArea({
         {...stylex.props(styles.inputWrapper, gray.bgUi, gray.text)}
         onClick={() => textAreaRef.current?.focus()}
       >
-        {prefix !== undefined && (
-          <div {...stylex.props(styles.addon)}>{prefix}</div>
-        )}
+        {prefix !== null && <div {...stylex.props(styles.addon)}>{prefix}</div>}
         <AriaTextArea
           {...stylex.props(styles.input, styles[`${size}Input`])}
           ref={textAreaRef}
           placeholder={placeholder}
           rows={rows}
         />
-        {suffix !== undefined && (
-          <div {...stylex.props(styles.addon)}>{suffix}</div>
-        )}
+        {suffix !== null && <div {...stylex.props(styles.addon)}>{suffix}</div>}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

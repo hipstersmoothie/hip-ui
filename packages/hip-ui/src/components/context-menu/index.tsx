@@ -1,4 +1,15 @@
 import { OverlayTriggerProps } from "@react-types/overlays";
+import * as stylex from "@stylexjs/stylex";
+import {
+  Children,
+  cloneElement,
+  createContext,
+  use,
+  useCallback,
+  useRef,
+  useState,
+} from "react";
+import { AriaButtonProps, useMenuTrigger } from "react-aria";
 import {
   Menu as AriaMenu,
   MenuProps as AriaMenuProps,
@@ -10,25 +21,14 @@ import {
   Provider,
   RootMenuTriggerStateContext,
 } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
-
-import {
-  Children,
-  cloneElement,
-  createContext,
-  use,
-  useCallback,
-  useRef,
-  useState,
-} from "react";
-import { Size } from "../types";
-import { SizeContext } from "../context";
 import { useMenuTriggerState } from "react-stately";
-import { AriaButtonProps, useMenuTrigger } from "react-aria";
+
+import { SizeContext } from "../context";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { Size } from "../types";
 
 const ContextMenuTriggerPropsContext = createContext<
-  AriaButtonProps<"button"> & { ref?: React.Ref<HTMLDivElement> }
+  AriaButtonProps & { ref?: React.Ref<HTMLDivElement> }
 >({});
 
 interface Position {
@@ -55,7 +55,7 @@ function ContextMenuRoot({
   const { menuTriggerProps, menuProps } = useMenuTrigger(
     { ...props, type: "menu" },
     state,
-    ref
+    ref,
   );
 
   return (
@@ -97,7 +97,7 @@ function ContextMenuTrigger({
       overlayTriggerState?.open();
       setPosition({ x: e.pageX, y: e.pageY });
     },
-    [overlayTriggerState, setPosition]
+    [overlayTriggerState, setPosition],
   );
 
   // eslint-disable-next-line @eslint-react/no-children-count
@@ -117,11 +117,11 @@ function ContextMenuTrigger({
           "aria-haspopup": menuTriggerProps["aria-haspopup"],
           id: menuTriggerProps["id"],
           onContextMenu: onContextMenu,
-        }
+        },
       )}
       <div
         ref={menuTriggerProps.ref}
-        style={{ position: "absolute", top: position?.y, left: position?.x }}
+        style={{ position: "absolute", top: position.y, left: position.x }}
       />
     </>
   );

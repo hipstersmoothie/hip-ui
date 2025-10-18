@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
-import { spacing } from "./spacing.stylex";
+
 import { breakpoints } from "./breakpoints.stylex";
+import { spacing } from "./spacing.stylex";
 
 export const fontFamily = stylex.defineVars({
   sans: "Inter, sans-serif",

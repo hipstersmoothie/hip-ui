@@ -1,12 +1,14 @@
-import { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-components";
-import { ToggleButton as AriaToggleButton } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
-
-import { spacing } from "../theme/spacing.stylex";
-import { plum, slate } from "../theme/colors.stylex";
 import { Children, use } from "react";
-import { useButtonStyles } from "../theme/useButtonStyles";
+import {
+  ToggleButtonProps as AriaToggleButtonProps,
+  ToggleButton as AriaToggleButton,
+} from "react-aria-components";
+
 import { SizeContext } from "../context";
+import { plum, slate } from "../theme/colors.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { useButtonStyles } from "../theme/useButtonStyles";
 
 const styles = stylex.create({
   primarySelected: {
@@ -110,7 +112,7 @@ export function ToggleButton({
       buttonStyles,
       styles[size],
       isSelected ? styles[`${variant}Selected`] : undefined,
-      style
+      style,
     );
 
   return (
@@ -124,11 +126,10 @@ export function ToggleButton({
       {/* eslint-disable-next-line @eslint-react/no-children-map */}
       {Children.map(children, (child, index) =>
         typeof child === "string" ? (
-          // eslint-disable-next-line @eslint-react/no-array-index-key
-          <span key={`${child}-${index}`}>{child}</span>
+          <span key={`${child}-${index.toString()}`}>{child}</span>
         ) : (
           child
-        )
+        ),
       )}
     </AriaToggleButton>
   );
