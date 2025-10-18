@@ -29,7 +29,7 @@ export function TimeField<T extends TimeValue>({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix,
   suffix,
   ...props
@@ -39,7 +39,7 @@ export function TimeField<T extends TimeValue>({
 
   return (
     <AriaTimeField {...props} {...stylex.props(inputStyles.field, style)}>
-      <Label size={size}>{label}</Label>
+      {label && <Label size={size}>{label}</Label>}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}

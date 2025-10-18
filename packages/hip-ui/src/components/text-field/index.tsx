@@ -64,7 +64,7 @@ export function TextField({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix,
   suffix,
   placeholder,
@@ -83,7 +83,7 @@ export function TextField({
       type={type}
       {...stylex.props(inputStyles.field, style)}
     >
-      <Label size={size}>{label}</Label>
+      {label && <Label size={size}>{label}</Label>}
       <div
         {...stylex.props(inputStyles.wrapper)}
         onClick={() => inputRef.current?.focus()}

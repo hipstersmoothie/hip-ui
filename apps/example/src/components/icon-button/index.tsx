@@ -7,6 +7,8 @@ import { Tooltip } from "../tooltip";
 import { Button } from "../button";
 import { spacing } from "../theme/spacing.stylex";
 import { ButtonVariant, Size } from "../types";
+import { use } from "react";
+import { SizeContext } from "../context";
 
 const styles = stylex.create({
   sm: {
@@ -32,11 +34,13 @@ interface IconButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
 
 export const IconButton = ({
   children,
-  size = "md",
+  size: sizeProp,
   label,
   style,
   ...props
 }: IconButtonProps) => {
+  const size = sizeProp || use(SizeContext);
+
   return (
     <Tooltip text={label}>
       <Button size={size} style={[styles[size], style]} {...props}>

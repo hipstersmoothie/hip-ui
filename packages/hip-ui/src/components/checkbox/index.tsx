@@ -68,7 +68,7 @@ export function CheckboxGroup({
   description,
   errorMessage,
   children,
-  size = "md",
+  size,
   style,
   ...props
 }: CheckboxGroupProps) {

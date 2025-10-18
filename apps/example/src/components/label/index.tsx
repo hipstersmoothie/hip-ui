@@ -9,6 +9,8 @@ import * as stylex from "@stylexjs/stylex";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { Size } from "../types";
+import { use } from "react";
+import { SizeContext } from "../context";
 
 const styles = stylex.create({
   label: {
@@ -43,7 +45,9 @@ export interface LabelProps
   size?: Size;
 }
 
-export function Label({ style, size = "md", ...props }: LabelProps) {
+export function Label({ style, size: sizeProp, ...props }: LabelProps) {
+  const size = sizeProp || use(SizeContext);
+
   return (
     <AriaLabel
       {...props}
@@ -60,9 +64,11 @@ export interface DescriptionProps
 
 export function Description({
   style,
-  size = "md",
+  size: sizeProp,
   ...props
 }: DescriptionProps) {
+  const size = sizeProp || use(SizeContext);
+
   return (
     <Text
       slot="description"

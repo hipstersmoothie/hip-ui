@@ -19,7 +19,7 @@ export const Button = ({
   children,
   style,
   variant = "primary",
-  size = "md",
+  size,
   ...props
 }: ButtonProps) => {
   const buttonStyles = useButtonStyles({ variant, size });

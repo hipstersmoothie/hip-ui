@@ -14,7 +14,7 @@ import { spacing } from "../theme/spacing.stylex";
 import { typeramp } from "../theme/typography.stylex";
 import { Size } from "../types";
 import { SizeContext } from "../context";
-import { use, useContext } from "react";
+import { use } from "react";
 import { Separator } from "../separator";
 import { gray } from "../theme/semantic-color.stylex";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
@@ -60,7 +60,7 @@ export function ListBox<T extends object>({
   style,
   ...props
 }: ListBoxProps<T>) {
-  const size = sizeProp || use(SizeContext) || "md";
+  const size = sizeProp || use(SizeContext);
 
   return (
     <SizeContext.Provider value={size}>
@@ -144,7 +144,8 @@ export function ListBoxSectionHeader({
   style,
   ...props
 }: ListBoxSectionHeaderProps) {
-  const size = useContext(SizeContext);
+  const size = use(SizeContext);
+
   return (
     <Header
       {...props}

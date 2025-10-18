@@ -29,7 +29,7 @@ export function TimeField<T extends TimeValue>({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix,
   suffix,
   ...props

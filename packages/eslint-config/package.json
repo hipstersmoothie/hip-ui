@@ -22,6 +22,6 @@
     "typescript-eslint": "^8.40.0"
   },
   "dependencies": {
-    "@stylexjs/eslint-plugin": "^0.16.1"
+    "@stylexjs/eslint-plugin": "^0.16.2"
   }
 }

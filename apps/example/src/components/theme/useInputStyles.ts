@@ -5,6 +5,8 @@ import { radius } from "./radius.stylex";
 import { lineHeight, fontSize } from "./typography.stylex";
 import { slate } from "./colors.stylex";
 import { Size } from "../types";
+import { use } from "react";
+import { SizeContext } from "../context";
 
 const styles = stylex.create({
   field: {
@@ -93,12 +95,14 @@ const styles = stylex.create({
   },
   lgInput: {
     fontSize: fontSize["base"],
-    paddingLeft: spacing["3"],
-    paddingRight: spacing["3"],
+    paddingLeft: spacing["1"],
+    paddingRight: spacing["2"],
   },
 });
 
-export function useInputStyles({ size = "md" }: { size?: Size }) {
+export function useInputStyles({ size: sizeProp }: { size?: Size }) {
+  const size = sizeProp || use(SizeContext);
+
   return {
     field: [styles.field],
     wrapper: [styles.inputWrapper, gray.bgUi, gray.text, styles[size]],

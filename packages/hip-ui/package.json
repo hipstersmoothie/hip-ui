@@ -25,8 +25,9 @@
   },
   "dependencies": {
     "@inkjs/ui": "^2.0.0",
+    "@react-stately/utils": "^3.10.8",
     "@react-types/overlays": "^3.9.2",
-    "@stylexjs/stylex": "^0.16.1",
+    "@stylexjs/stylex": "^0.16.2",
     "command-line-application": "^0.10.1",
     "ink": "^6.3.1",
     "lilconfig": "^3.1.3",

@@ -24,6 +24,7 @@ import { SizeContext } from "../context";
 import { Check, ChevronRight } from "lucide-react";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
+import { use } from "react";
 
 export interface MenuProps<T extends object>
   extends Omit<MenuTriggerProps, "trigger" | "children">,
@@ -43,7 +44,7 @@ export interface MenuProps<T extends object>
 
 export function Menu<T extends object>({
   trigger,
-  size = "md",
+  size: sizeProp,
   defaultOpen,
   isOpen,
   onOpenChange,
@@ -54,6 +55,7 @@ export function Menu<T extends object>({
   ...props
 }: MenuProps<T>) {
   const popoverStyles = usePopoverStyles();
+  const size = sizeProp || use(SizeContext);
 
   return (
     <SizeContext.Provider value={size}>
@@ -138,16 +140,36 @@ export interface MenuItemProps
   extends Omit<AriaMenuItemProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode;
+  prefix?: React.ReactNode;
+  suffix?: React.ReactNode;
 }
 
-export function MenuItem({ style, children, ...props }: MenuItemProps) {
+export function MenuItem({
+  style,
+  children,
+  prefix,
+  suffix,
+  ...props
+}: MenuItemProps) {
   const menuItemStyles = useListBoxItemStyles();
 
   return (
-    <AriaMenuItem {...props} {...stylex.props(menuItemStyles.wrapper, style)}>
+    <AriaMenuItem
+      {...props}
+      textValue={
+        props.textValue || (typeof children === "string" ? children : undefined)
+      }
+      {...stylex.props(menuItemStyles.wrapper, style)}
+    >
       {({ isSelected, hasSubmenu }) => (
         <div {...stylex.props(menuItemStyles.inner)}>
+          {prefix && (
+            <div {...stylex.props(menuItemStyles.addon)}>{prefix}</div>
+          )}
           <div {...stylex.props(menuItemStyles.label)}>{children}</div>
+          {suffix && (
+            <div {...stylex.props(menuItemStyles.addon)}>{suffix}</div>
+          )}
           {isSelected && (
             <div {...stylex.props(menuItemStyles.addon)}>
               <Check size={16} {...stylex.props(menuItemStyles.check)} />

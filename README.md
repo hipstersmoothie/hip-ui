@@ -39,6 +39,8 @@
 
 #### react-aria wrappers
 
+- [ ] Dialog
+
 - [ ] File Trigger
 - [ ] File Drop zone
 - [ ] Segmented Control
@@ -55,9 +57,7 @@
 - [ ] Date Picker
 - [ ] Range Date Picker
 
-- [ ] Dialog
 - [ ] Alert Dialog
-- [ ] Command
 - [ ] Drawer
 - [ ] Sheet
 
@@ -81,6 +81,8 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Command
+- [x] Tree
 - [x] Combobox
 - [x] Number Field
 - [x] Color Field
@@ -107,5 +109,4 @@
 - [x] Toggle
 - [x] Toggle Group
 - [x] Tooltip
-- [x] Tree
 - [x] Typography

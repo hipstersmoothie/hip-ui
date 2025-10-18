@@ -64,7 +64,7 @@ export function TextField({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix,
   suffix,
   placeholder,

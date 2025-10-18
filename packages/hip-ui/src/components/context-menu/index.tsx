@@ -140,7 +140,7 @@ export interface ContextMenuProps<T extends object>
 
 export function ContextMenu<T extends object>({
   trigger,
-  size = "md",
+  size: sizeProp,
   defaultOpen,
   isOpen,
   onOpenChange,
@@ -151,6 +151,7 @@ export function ContextMenu<T extends object>({
   ...props
 }: ContextMenuProps<T>) {
   const popoverStyles = usePopoverStyles();
+  const size = sizeProp || use(SizeContext);
 
   return (
     <SizeContext.Provider value={size}>

@@ -9,6 +9,7 @@
     "start": "waku start"
   },
   "dependencies": {
+    "@react-stately/utils": "^3.10.8",
     "@react-types/overlays": "^3.9.2",
     "@repo/typescript-config": "workspace:*",
     "@stylexjs/stylex": "^0.16.1",

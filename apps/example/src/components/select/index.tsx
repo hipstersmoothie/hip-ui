@@ -28,6 +28,7 @@ import {
 import { SizeContext } from "../context";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { use } from "react";
 
 const styles = stylex.create({
   matchWidth: {
@@ -66,7 +67,7 @@ export function Select<
   children,
   items,
   style,
-  size = "md",
+  size: sizeProp,
   shouldCloseOnInteractOutside,
   shouldFlip,
   shouldUpdatePosition,
@@ -76,6 +77,7 @@ export function Select<
   suffix,
   ...props
 }: SelectProps<T, M>) {
+  const size = sizeProp || use(SizeContext);
   const inputStyles = useInputStyles({ size });
   const popoverStyles = usePopoverStyles();
 

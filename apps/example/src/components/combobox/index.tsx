@@ -32,6 +32,7 @@ import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { IconButton } from "../icon-button";
 import { SmallBody } from "../typography";
 import { spacing } from "../theme/spacing.stylex";
+import { use } from "react";
 
 const styles = stylex.create({
   matchWidth: {
@@ -81,7 +82,7 @@ export function ComboBox<T extends object>({
   children,
   items,
   style,
-  size = "md",
+  size: sizeProp,
   shouldCloseOnInteractOutside,
   shouldFlip,
   shouldUpdatePosition,
@@ -92,6 +93,7 @@ export function ComboBox<T extends object>({
   renderEmptyState,
   ...props
 }: ComboBoxProps<T>) {
+  const size = sizeProp || use(SizeContext);
   const inputStyles = useInputStyles({ size });
   const popoverStyles = usePopoverStyles();
 

@@ -11,7 +11,9 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUp,
+  AxeIcon,
   Check,
+  Copy,
   CpuIcon,
   Ellipsis,
   File,
@@ -20,6 +22,7 @@ import {
   Image,
   Pin,
   Plus,
+  Scissors,
   Search,
   Star,
 } from "lucide-react";
@@ -59,6 +62,13 @@ import { Select, SelectItem } from "./select";
 import { ToggleButton } from "./toggle-button";
 import { ToggleButtonGroup } from "./toggle-button-group";
 import {
+  CommandMenu,
+  CommandMenuItem,
+  CommandMenuSection,
+  CommandMenuSectionHeader,
+  CommandMenuSeparator,
+} from "./command-menu";
+import {
   Menu,
   MenuItem,
   MenuSection,
@@ -76,6 +86,7 @@ import { ColorField } from "./color-field";
 import { NumberField } from "./number-field";
 import { ComboBox, ComboBoxItem } from "./combobox";
 import { Tree, TreeItem } from "./tree";
+import { DialogTrigger } from "react-aria-components";
 
 const styles = stylex.create({
   subCard: {
@@ -618,7 +629,44 @@ function TreeExample() {
   );
 }
 
+function CommandMenuExample() {
+  return (
+    <Flex direction="column" gap="4">
+      <CommandMenu>
+        <CommandMenuItem prefix={<AxeIcon />}>New</CommandMenuItem>
+        <CommandMenuSection>
+          <CommandMenuSectionHeader>Edit</CommandMenuSectionHeader>
+          <CommandMenuItem
+            prefix={<Copy />}
+            onAction={() => console.log("Copy")}
+          >
+            Copy
+          </CommandMenuItem>
+          <CommandMenuItem prefix={<Plus />}>Paste</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+          <CommandMenuItem prefix={<Scissors />}>Cut</CommandMenuItem>
+        </CommandMenuSection>
+      </CommandMenu>
+    </Flex>
+  );
+}
+
 export function KitchenSink() {
+  return (
+    <Flex
+      direction="column"
+      gap="10"
+      style={[gray.bg, gray.text, styles.container]}
+    >
+      <CommandMenuExample />
+    </Flex>
+  );
   return (
     <Flex
       direction="column"
@@ -628,15 +676,6 @@ export function KitchenSink() {
       <TitleCard title="Tree">
         <TreeExample />
       </TitleCard>
-      <MenuExample />
-    </Flex>
-  );
-  return (
-    <Flex
-      direction="column"
-      gap="10"
-      style={[gray.bg, gray.text, styles.container]}
-    >
       <SignUpForm />
       <PaymentMethod />
       <TitleCard title="Buttons">

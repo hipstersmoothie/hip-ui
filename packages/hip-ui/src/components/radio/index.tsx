@@ -98,7 +98,7 @@ export function RadioGroup({
   description,
   errorMessage,
   children,
-  size = "md",
+  size,
   style,
   ...props
 }: RadioGroupProps) {

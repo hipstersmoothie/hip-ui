@@ -29,7 +29,7 @@ export function DateField<T extends DateValue>({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix,
   suffix,
   ...props

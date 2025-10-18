@@ -4,9 +4,10 @@ import * as stylex from "@stylexjs/stylex";
 
 import { spacing } from "../theme/spacing.stylex";
 import { plum, slate } from "../theme/colors.stylex";
-import { Children } from "react";
+import { Children, use } from "react";
 import { useButtonStyles } from "../theme/useButtonStyles";
 import { ButtonVariant, Size } from "../types";
+import { SizeContext } from "../context";
 
 const styles = stylex.create({
   primarySelected: {
@@ -99,10 +100,11 @@ export interface ToggleButtonProps
 export function ToggleButton({
   style,
   variant = "primary",
-  size = "md",
+  size: sizeProp,
   children,
   ...props
 }: ToggleButtonProps) {
+  const size = sizeProp || use(SizeContext);
   const buttonStyles = useButtonStyles({ variant, size });
   const toggleButtonStyles = (isSelected?: boolean) =>
     stylex.props(

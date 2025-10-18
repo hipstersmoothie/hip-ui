@@ -14,8 +14,9 @@ import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
 import { slate } from "../theme/colors.stylex";
-import { useRef } from "react";
+import { use, useRef } from "react";
 import { Size } from "../types";
+import { SizeContext } from "../context";
 
 const styles = stylex.create({
   wrapper: {
@@ -127,7 +128,7 @@ export function TextArea({
   description,
   errorMessage,
   style,
-  size = "md",
+  size: sizeProp,
   prefix,
   suffix,
   placeholder,
@@ -135,6 +136,7 @@ export function TextArea({
   ...props
 }: TextAreaProps) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+  const size = sizeProp || use(SizeContext);
 
   return (
     <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>

@@ -49,10 +49,10 @@ const styles = stylex.create({
     },
     display: "flex",
     flexGrow: 1,
-    gap: spacing["2"],
+    gap: spacing["3"],
     paddingBottom: spacing["2"],
-    paddingLeft: spacing["2"],
-    paddingRight: spacing["2"],
+    paddingLeft: spacing["3"],
+    paddingRight: spacing["3"],
     paddingTop: spacing["2"],
     transitionDuration: "100ms",
     transitionProperty: "background-color",
@@ -60,9 +60,13 @@ const styles = stylex.create({
   },
   smItemInner: {
     fontSize: fontSize["xs"],
+    gap: spacing["2"],
     lineHeight: lineHeight["xs"],
     paddingBottom: spacing["1"],
     paddingTop: spacing["1"],
+  },
+  lgItemInner: {
+    fontSize: fontSize["base"],
   },
   check: {
     color: plum[9],
@@ -94,7 +98,11 @@ export function useListBoxItemStyles() {
 
   return {
     wrapper: [typeramp.label, styles.item, styles[size]],
-    inner: [styles.itemInner, size === "sm" && styles.smItemInner],
+    inner: [
+      styles.itemInner,
+      size === "sm" && styles.smItemInner,
+      size === "lg" && styles.lgItemInner,
+    ],
     label: styles.label,
     addon: styles.addon,
     check: styles.check,

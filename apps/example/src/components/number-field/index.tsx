@@ -67,7 +67,7 @@ export function NumberField({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix,
   suffix,
   placeholder,

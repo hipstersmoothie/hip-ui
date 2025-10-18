@@ -16,6 +16,7 @@ import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 import { spacing } from "../theme/spacing.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { radius } from "../theme/radius.stylex";
+import { use } from "react";
 
 const styles = stylex.create({
   wrapper: {
@@ -54,24 +55,24 @@ const styles = stylex.create({
     marginTop: `calc(${spacing["2"]} * -1)`,
   },
   dragButtonWrapper: {
+    left: 0,
     opacity: {
       default: 0,
       ":hover": 1,
       ":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)": 1,
     },
+    position: "absolute",
+    top: "50%",
+    transform: "translate(-100%, -50%)",
     transitionDuration: "100ms",
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",
-    position: "absolute",
-    top: "50%",
-    left: 0,
-    transform: "translate(-100%, -50%)",
   },
   dragButton: {
+    alignItems: "center",
     borderRadius: radius["sm"],
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
 
     height: spacing["8"],
     width: spacing["8"],
@@ -188,9 +189,11 @@ export interface TreeProps<T extends object>
 
 export function Tree<T extends object>({
   style,
-  size = "md",
+  size: sizeProp,
   ...props
 }: TreeProps<T>) {
+  const size = sizeProp || use(SizeContext);
+
   return (
     <SizeContext.Provider value={size}>
       <AriaTree {...props} {...stylex.props(style)} />

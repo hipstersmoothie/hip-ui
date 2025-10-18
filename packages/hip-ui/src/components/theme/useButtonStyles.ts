@@ -16,6 +16,7 @@ import { slate } from "./colors.stylex";
 import { use } from "react";
 import { Size, ButtonVariant } from "../types";
 import { ButtonGroupContext } from "../button/context";
+import { SizeContext } from "../context";
 
 const styles = stylex.create({
   shadow: {
@@ -131,11 +132,12 @@ const styles = stylex.create({
 
 export const useButtonStyles = ({
   variant = "primary",
-  size = "md",
+  size: sizeProp,
 }: {
   variant?: ButtonVariant;
   size?: Size;
 }) => {
+  const size = sizeProp || use(SizeContext);
   const group = use(ButtonGroupContext);
 
   return [

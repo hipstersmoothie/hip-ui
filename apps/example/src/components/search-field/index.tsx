@@ -47,7 +47,7 @@ export function SearchField({
   description,
   errorMessage,
   style,
-  size = "md",
+  size,
   prefix = <SearchIcon />,
   suffix,
   placeholder,
@@ -61,7 +61,7 @@ export function SearchField({
       {({ isEmpty }) => {
         return (
           <>
-            <Label size={size}>{label}</Label>
+            {label && <Label size={size}>{label}</Label>}
             <div
               {...stylex.props(inputStyles.wrapper, styles.wrapper)}
               onClick={() => inputRef.current?.focus()}
