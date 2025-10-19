@@ -32,6 +32,8 @@ export interface MenuProps<T extends object>
       | "placement"
     > {
   trigger: React.ReactNode;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
@@ -47,6 +49,8 @@ export function Menu<T extends object>({
   shouldFlip,
   shouldUpdatePosition,
   placement,
+  header,
+  footer,
   ...props
 }: MenuProps<T>) {
   const popoverStyles = usePopoverStyles();
@@ -67,7 +71,9 @@ export function Menu<T extends object>({
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
         >
+          {header}
           <AriaMenu {...props} {...stylex.props(popoverStyles)} />
+          {footer}
         </Popover>
       </MenuTrigger>
     </SizeContext>
@@ -85,6 +91,8 @@ export interface SubMenuProps<T extends object>
       | "placement"
     > {
   trigger: React.ReactElement<MenuTriggerProps>;
+  header?: React.ReactNode;
+  footer?: React.ReactNode;
   children: React.ReactNode | ((item: T) => React.ReactNode);
   items?: Iterable<T>;
   size?: Size;
@@ -97,6 +105,8 @@ export function SubMenu<T extends object>({
   shouldFlip,
   shouldUpdatePosition,
   placement,
+  header,
+  footer,
   ...props
 }: SubMenuProps<T>) {
   const popoverStyles = usePopoverStyles();
@@ -112,7 +122,9 @@ export function SubMenu<T extends object>({
         containerPadding={8}
         offset={-8}
       >
+        {header}
         <AriaMenu {...props} {...stylex.props(popoverStyles)} />
+        {footer}
       </Popover>
     </SubmenuTrigger>
   );
