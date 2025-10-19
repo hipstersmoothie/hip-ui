@@ -4,4 +4,5 @@ export type ButtonVariant =
   | "secondary"
   | "tertiary"
   | "outline"
-  | "critical";
+  | "critical"
+  | "critical-outline";

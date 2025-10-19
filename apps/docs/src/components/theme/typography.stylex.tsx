@@ -4,7 +4,7 @@ import { breakpoints } from "./breakpoints.stylex";
 import { spacing } from "./spacing.stylex";
 
 export const fontFamily = stylex.defineVars({
-  sans: "Inter, sans-serif",
+  sans: "'Inter', sans-serif",
   serif: "Georgia, serif",
   mono: "Monaco, monospace",
 });
@@ -131,6 +131,8 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: { default: lineHeight["lg"] },
+    margin: 0,
+    scrollMarginBlockStart: spacing["20"],
   },
   body: {
     // eslint-disable-next-line @stylexjs/valid-styles

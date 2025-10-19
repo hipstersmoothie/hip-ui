@@ -90,9 +90,6 @@ const styles = stylex.create({
     },
     paddingRight: spacing["4"],
   },
-  outline: {
-    borderWidth: 1,
-  },
   secondary: {
     borderColor: {
       default: slate.component1,
@@ -168,13 +165,18 @@ export const useButtonStyles = ({
       gray.borderInteractive,
       gray.bgGhost,
       gray.text,
-      styles.outline,
       styles.shadow,
     ],
     variant === "critical" && [
       critical.bgSolidAction,
       critical.borderInteractive,
       critical.textContrast,
+      styles.shadow,
+    ],
+    variant === "critical-outline" && [
+      critical.borderInteractive,
+      critical.bgGhost,
+      critical.text,
       styles.shadow,
     ],
     size === "sm" && styles.small,

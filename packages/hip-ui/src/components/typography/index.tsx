@@ -97,6 +97,16 @@ export const Heading4 = ({ style, ...props }: Heading4Props) => {
   return <h4 {...stylex.props(typeramp.heading4, style)} {...props} />;
 };
 
+export interface Heading5Props
+  extends Omit<React.ComponentProps<"h5">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+}
+
+export const Heading5 = ({ style, ...props }: Heading5Props) => {
+  // eslint-disable-next-line jsx-a11y/heading-has-content
+  return <h5 {...stylex.props(typeramp.heading5, style)} {...props} />;
+};
+
 export interface BodyProps
   extends Omit<React.ComponentProps<"p">, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
@@ -129,16 +139,34 @@ export const SmallBody = ({
   variant = "default",
   ...props
 }: SmallBodyProps) => {
-  return (
-    <p
-      {...stylex.props(
-        typeramp.smallBody,
-        variant === "secondary" && gray.textDim,
-        style,
-      )}
-      {...props}
-    />
+  const contextValue = useMemo(
+    () => ({
+      style: [variant === "secondary" && gray.textDim, styles.underline],
+    }),
+    [variant],
   );
+
+  return (
+    <LinkContext value={contextValue}>
+      <p
+        {...stylex.props(
+          typeramp.smallBody,
+          variant === "secondary" && gray.textDim,
+          style,
+        )}
+        {...props}
+      />
+    </LinkContext>
+  );
+};
+
+interface LabelTextProps
+  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+}
+
+export const LabelText = ({ style, ...props }: LabelTextProps) => {
+  return <p {...stylex.props(typeramp.label, style)} {...props} />;
 };
 
 interface SubLabelProps

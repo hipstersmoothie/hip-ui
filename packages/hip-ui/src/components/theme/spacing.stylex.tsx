@@ -1,5 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
+import { ThemeKeys } from "./types";
+
 export const spacing = stylex.defineVars({
   px: "1px",
   "0": "0px",
@@ -39,4 +41,4 @@ export const spacing = stylex.defineVars({
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
-export type Spacing = keyof typeof spacing;
+export type Spacing = ThemeKeys<typeof spacing>;

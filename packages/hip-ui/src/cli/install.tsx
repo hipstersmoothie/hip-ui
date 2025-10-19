@@ -34,6 +34,7 @@ import { radioConfig } from "../components/radio/radio-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
 import { selectConfig } from "../components/select/select-config.js";
 import { separatorConfig } from "../components/separator/separator-config.js";
+import { switchConfig } from "../components/switch/switch-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
 import { textFieldConfig } from "../components/text-field/text-field-config.js";
 import { timeFieldConfig } from "../components/time-field/time-field-config.js";
@@ -82,6 +83,7 @@ const COMPONENT_CONFIGS = [
   avatarConfig,
   badgeConfig,
   gridConfig,
+  switchConfig,
 ];
 
 function StringSetting({

@@ -56,6 +56,13 @@ const styles = stylex.create({
       ":active": slate.border3,
     },
   },
+  "critical-outlineSelected": {
+    backgroundColor: {
+      default: slate.border1,
+      ":hover": slate.border2,
+      ":active": slate.border3,
+    },
+  },
   sm: {
     paddingLeft: {
       ":has(> * + *, > *:not(svg):only-child)": spacing["2"],

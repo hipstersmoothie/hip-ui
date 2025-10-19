@@ -13,7 +13,6 @@ const styles = stylex.create({
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
     gap: spacing["6"],
-    width: "fit-content",
   },
   cardHeader: {
     paddingBottom: { ":last-child": spacing["4"] },
@@ -22,7 +21,7 @@ const styles = stylex.create({
     paddingTop: spacing["5"],
   },
   cardTitle: {
-    fontSize: fontSize["lg"],
+    fontSize: fontSize["xl"],
     fontWeight: fontWeight["bold"],
   },
   cardDescription: {
@@ -31,6 +30,9 @@ const styles = stylex.create({
     margin: 0,
   },
   cardBody: {
+    display: "flex",
+    flexDirection: "column",
+    gap: spacing["6"],
     paddingBottom: { ":last-child": spacing["4"] },
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
@@ -55,7 +57,13 @@ export const Card = ({ style, ...props }: CardProps) => {
   return (
     <div
       {...props}
-      {...stylex.props(styles.card, gray.bgSubtle, gray.border, style)}
+      {...stylex.props(
+        styles.card,
+        gray.bgSubtle,
+        gray.border,
+        gray.text,
+        style,
+      )}
     />
   );
 };

@@ -1,6 +1,8 @@
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
+import * as stylex from "@stylexjs/stylex";
+import { gray } from "@/components/theme/semantic-color.stylex";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -16,6 +18,20 @@ export const Route = createRootRoute({
         title: "TanStack Start Starter",
       },
     ],
+    links: [
+      {
+        rel: "preconnect",
+        href: "https://fonts.googleapis.com",
+      },
+      {
+        rel: "preconnect",
+        href: "https://fonts.gstatic.com",
+      },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+      },
+    ],
   }),
 
   shellComponent: RootDocument,
@@ -27,7 +43,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body>
+      <body {...stylex.props(gray.bg, gray.text)}>
         {children}
         <TanStackDevtools
           config={{

@@ -10,5 +10,7 @@ export const typographyConfig: ComponentConfig = {
     "../theme/spacing.stylex.tsx",
     "../theme/typography.stylex.tsx",
     "../link/link-context.ts",
+    "../theme/types.ts",
+    "./text.tsx",
   ],
 };
