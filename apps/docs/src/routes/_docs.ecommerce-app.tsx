@@ -14,6 +14,9 @@ import { Button } from "@/components/button";
 import { Text } from "@/components/typography/text";
 import { Separator } from "@/components/separator";
 import { Select, SelectItem } from "@/components/select";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
+import { ToggleButton } from "@/components/toggle-button";
+import { ColorSwatch } from "@/components/color-swatch";
 
 const styles = stylex.create({
   grow: {
@@ -104,12 +107,144 @@ function SmallProductCardWithBuying() {
   );
 }
 
+function ProductOptionsCard() {
+  return (
+    <Card size="sm">
+      <CardBody>
+        <Flex direction="column" gap="5">
+          <Flex direction="column" gap="2">
+            <Text weight="semibold">Delivery</Text>
+            <ToggleButtonGroup
+              variant="separate"
+              itemsPerRow={2}
+              selectionMode="single"
+            >
+              <ToggleButton id="tomorrow" variant="secondary">
+                Tomorrow
+              </ToggleButton>
+              <ToggleButton id="within-3-days" variant="secondary">
+                Within 3 days
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Flex>
+          <Flex direction="column" gap="2">
+            <Text weight="semibold">Size</Text>
+            <ToggleButtonGroup
+              variant="separate"
+              itemsPerRow={5}
+              selectionMode="single"
+            >
+              <ToggleButton id="5.5" variant="secondary">
+                5.5
+              </ToggleButton>
+              <ToggleButton id="6" variant="secondary">
+                6
+              </ToggleButton>
+              <ToggleButton id="6.5" variant="secondary">
+                6.5
+              </ToggleButton>
+              <ToggleButton id="7" variant="secondary">
+                7
+              </ToggleButton>
+              <ToggleButton id="7.5" variant="secondary">
+                7.5
+              </ToggleButton>
+              <ToggleButton id="8" variant="secondary">
+                8
+              </ToggleButton>
+              <ToggleButton id="8.5" variant="secondary">
+                8.5
+              </ToggleButton>
+              <ToggleButton id="9" variant="secondary">
+                9
+              </ToggleButton>
+              <ToggleButton id="9.5" variant="secondary">
+                9.5
+              </ToggleButton>
+              <ToggleButton id="10" variant="secondary">
+                10
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Flex>
+          <Flex direction="column" gap="2">
+            <Text weight="semibold">Material</Text>
+            <ToggleButtonGroup
+              variant="separate"
+              itemsPerRow={5}
+              selectionMode="single"
+            >
+              <ToggleButton id="leather" variant="secondary">
+                Leather
+              </ToggleButton>
+              <ToggleButton id="suede" variant="secondary">
+                Suede
+              </ToggleButton>
+              <ToggleButton id="mesh" variant="secondary">
+                Mesh
+              </ToggleButton>
+              <ToggleButton id="canvas" variant="secondary">
+                Canvas
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Flex>
+          <Flex direction="column" gap="2">
+            <Text weight="semibold">Color</Text>
+            <ToggleButtonGroup
+              variant="separate"
+              itemsPerRow={3}
+              selectionMode="single"
+            >
+              <ToggleButton id="white" variant="secondary">
+                <ColorSwatch color="#fff" size="sm" />
+                White
+              </ToggleButton>
+              <ToggleButton id="grey" variant="secondary">
+                <ColorSwatch color="#808080" size="sm" />
+                Grey
+              </ToggleButton>
+              <ToggleButton id="black" variant="secondary">
+                <ColorSwatch color="#000" size="sm" />
+                Black
+              </ToggleButton>
+              <ToggleButton id="red" variant="secondary">
+                <ColorSwatch color="#f00" size="sm" />
+                Red
+              </ToggleButton>
+              <ToggleButton id="pink" variant="secondary">
+                <ColorSwatch color="#f0f" size="sm" />
+                Pink
+              </ToggleButton>
+              <ToggleButton id="violet" variant="secondary">
+                <ColorSwatch color="#800080" size="sm" />
+                Violet
+              </ToggleButton>
+              <ToggleButton id="blue" variant="secondary">
+                <ColorSwatch color="#00f" size="sm" />
+                Blue
+              </ToggleButton>
+              <ToggleButton id="green" variant="secondary">
+                <ColorSwatch color="#0f0" size="sm" />
+                Green
+              </ToggleButton>
+              <ToggleButton id="beige" variant="secondary">
+                <ColorSwatch color="#f5f5dc" size="sm" />
+                Beige
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </Flex>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
 function RouteComponent() {
   return (
     <Flex gap="4">
       <Flex direction="column" gap="4" style={styles.skinny}>
         <SmallProductCard />
         <SmallProductCardWithBuying />
+        <ProductOptionsCard />
       </Flex>
       <Flex direction="column" gap="4" style={styles.skinny}></Flex>
       <Flex direction="column" gap="4" style={styles.skinny}></Flex>

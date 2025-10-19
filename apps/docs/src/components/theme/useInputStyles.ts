@@ -117,6 +117,7 @@ export function useInputStyles({
       styles.inputWrapper,
       variant === "primary" && [gray.bgUi, styles.primary],
       variant === "secondary" && [gray.bgUi],
+      variant === "tertiary" && [gray.bgGhost],
       gray.text,
       styles[size],
     ],

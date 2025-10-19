@@ -112,7 +112,7 @@ const styles = stylex.create({
     borderTopLeftRadius: { ":not(:first-child)": 0 },
     borderTopRightRadius: { ":not(:last-child)": 0 },
   },
-  secondaryGroupHorizontal: {
+  secondaryGroupedHorizontal: {
     borderRightColor: { ":not(:last-child)": slate.border2 },
   },
   groupVertical: {
@@ -122,8 +122,14 @@ const styles = stylex.create({
     borderTopRightRadius: { ":not(:first-child)": 0 },
     borderTopWidth: { ":not(:first-child)": 0 },
   },
-  secondaryGroupVertical: {
+  secondaryGroupedVertical: {
     borderBottomColor: { ":not(:last-child)": slate.border2 },
+  },
+  separate: {
+    flexBasis:
+      "calc((1 / var(--items-per-row)) * (100% - (var(--toggle-button-group-gap) * (var(--items-per-row) - 1))))",
+    flexGrow: 1,
+    flexShrink: 1,
   },
 });
 
@@ -139,8 +145,12 @@ export const useButtonStyles = ({
 
   return [
     styles.base,
-    group === "horizontal" && styles.groupHorizontal,
-    group === "vertical" && styles.groupVertical,
+    group?.orientation === "horizontal" &&
+      group.variant === "grouped" &&
+      styles.groupHorizontal,
+    group?.orientation === "vertical" &&
+      group.variant === "grouped" &&
+      styles.groupVertical,
     variant === "primary" && [
       primary.bgAction,
       primary.borderInteractive,
@@ -151,15 +161,23 @@ export const useButtonStyles = ({
       gray.bgUi,
       styles.secondary,
       gray.text,
-      group === "horizontal" && styles.secondaryGroupHorizontal,
-      group === "vertical" && styles.secondaryGroupVertical,
+      group?.orientation === "horizontal" &&
+        group.variant === "grouped" &&
+        styles.secondaryGroupedHorizontal,
+      group?.orientation === "vertical" &&
+        group.variant === "grouped" &&
+        styles.secondaryGroupedVertical,
     ],
     variant === "tertiary" && [
       gray.bgGhost,
       styles.tertiary,
       gray.text,
-      group === "horizontal" && styles.secondaryGroupHorizontal,
-      group === "vertical" && styles.secondaryGroupVertical,
+      group?.orientation === "horizontal" &&
+        group.variant === "grouped" &&
+        styles.secondaryGroupedHorizontal,
+      group?.orientation === "vertical" &&
+        group.variant === "grouped" &&
+        styles.secondaryGroupedVertical,
     ],
     variant === "outline" && [
       gray.borderInteractive,
@@ -182,5 +200,6 @@ export const useButtonStyles = ({
     size === "sm" && styles.small,
     size === "md" && styles.medium,
     size === "lg" && styles.large,
+    group?.variant === "separate" && styles.separate,
   ];
 };

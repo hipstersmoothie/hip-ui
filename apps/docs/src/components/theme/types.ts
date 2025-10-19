@@ -12,3 +12,4 @@ export type ButtonVariant =
   | "critical"
   | "critical-outline";
 export type InputVariant = "primary" | "secondary" | "tertiary";
+export type ButtonGroupVariant = "grouped" | "separate";

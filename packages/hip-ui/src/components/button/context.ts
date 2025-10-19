@@ -1,5 +1,9 @@
 import { createContext } from "react";
 
 export const ButtonGroupContext = createContext<
-  undefined | "vertical" | "horizontal"
+  | {
+      orientation: "vertical" | "horizontal";
+      variant: "grouped" | "separate";
+    }
+  | undefined
 >(undefined);

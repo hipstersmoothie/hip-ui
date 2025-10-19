@@ -43,7 +43,6 @@
 
 - [ ] Color Area
 - [ ] Color Picker
-- [ ] Color Swatch
 - [ ] Color Swatch Picker
 - [ ] Color Wheel
 
@@ -74,6 +73,8 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Color Swatch
+- [x] Aspect Ratio
 - [x] Switch
 - [x] Grid
 - [x] Badge
