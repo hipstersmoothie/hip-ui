@@ -1,5 +1,5 @@
 import { createContext } from "react";
 
-import { Size } from "./types";
+import { Size } from "./theme/types";
 
 export const SizeContext = createContext<Size>("md");

@@ -6,8 +6,8 @@ import {
   ButtonProps as AriaButtonProps,
 } from "react-aria-components";
 
+import { Size, ButtonVariant } from "../theme/types";
 import { useButtonStyles } from "../theme/useButtonStyles";
-import { Size, ButtonVariant } from "../types";
 
 export interface ButtonProps
   extends Omit<AriaButtonProps, "className" | "style"> {

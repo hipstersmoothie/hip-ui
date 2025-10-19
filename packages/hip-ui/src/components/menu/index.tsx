@@ -17,9 +17,9 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
+import { Size } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 
 export interface MenuProps<T extends object>
   extends Omit<MenuTriggerProps, "trigger" | "children">,

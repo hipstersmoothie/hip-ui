@@ -16,9 +16,9 @@ import {
 import { SizeContext } from "../context";
 import { Description, Label } from "../label";
 import { ListBox } from "../listbox";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   matchWidth: {
@@ -42,6 +42,7 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
+  variant?: InputVariant;
   placeholder?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -58,6 +59,7 @@ export function Select<
   items,
   style,
   size: sizeProp,
+  variant,
   shouldCloseOnInteractOutside,
   shouldFlip,
   shouldUpdatePosition,
@@ -68,7 +70,7 @@ export function Select<
   ...props
 }: SelectProps<T, M>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
   const popoverStyles = usePopoverStyles();
 
   return (

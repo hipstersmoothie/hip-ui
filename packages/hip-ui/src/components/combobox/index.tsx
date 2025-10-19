@@ -18,9 +18,9 @@ import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
 import { ListBox } from "../listbox";
 import { spacing } from "../theme/spacing.stylex";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 import { SmallBody } from "../typography";
 
 const styles = stylex.create({
@@ -59,6 +59,7 @@ export interface ComboBoxProps<T extends object>
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
+  variant?: InputVariant;
   placeholder?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -72,6 +73,7 @@ export function ComboBox<T extends object>({
   items,
   style,
   size: sizeProp,
+  variant,
   shouldCloseOnInteractOutside,
   shouldFlip,
   shouldUpdatePosition,
@@ -83,7 +85,7 @@ export function ComboBox<T extends object>({
   ...props
 }: ComboBoxProps<T>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
   const popoverStyles = usePopoverStyles();
 
   return (

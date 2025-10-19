@@ -5,7 +5,7 @@ import { SizeContext } from "../context";
 import { animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
-import { Size } from "../types";
+import { Size } from "../theme/types";
 import { gray } from "./semantic-color.stylex";
 
 const styles = stylex.create({

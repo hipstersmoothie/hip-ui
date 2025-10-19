@@ -5,13 +5,13 @@ import { SizeContext } from "../context";
 import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import {
   fontSize,
   fontWeight,
   lineHeight,
   fontFamily,
 } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {

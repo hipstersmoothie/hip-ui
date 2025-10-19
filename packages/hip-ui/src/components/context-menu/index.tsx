@@ -24,8 +24,8 @@ import {
 import { useMenuTriggerState } from "react-stately";
 
 import { SizeContext } from "../context";
+import { Size } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 
 const ContextMenuTriggerPropsContext = createContext<
   AriaButtonProps & { ref?: React.Ref<HTMLDivElement> }

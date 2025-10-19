@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
-import { Size } from "../types";
+import { InputVariant, Size } from "../theme/types";
 import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
 import { gray } from "./semantic-color.stylex";
@@ -41,21 +41,12 @@ const styles = stylex.create({
   },
   inputWrapper: {
     borderRadius: radius["md"],
+    borderWidth: 0,
     boxSizing: "border-box",
     display: "flex",
     lineHeight: lineHeight["none"],
     overflow: "hidden",
     padding: 0,
-
-    borderColor: {
-      default: slate.border2,
-      ":hover": slate.border3,
-      ":focus": slate.solid1,
-    },
-    borderStyle: "solid",
-    borderWidth: 1,
-
-    transitionProperty: "background-color, border-color",
   },
   input: {
     alignItems: "center",
@@ -99,14 +90,36 @@ const styles = stylex.create({
     paddingLeft: spacing["1"],
     paddingRight: spacing["2"],
   },
+  primary: {
+    borderColor: {
+      default: slate.border2,
+      ":hover": slate.border3,
+      ":focus": slate.solid1,
+    },
+    borderStyle: "solid",
+    borderWidth: 1,
+    transitionProperty: "background-color, border-color",
+  },
 });
 
-export function useInputStyles({ size: sizeProp }: { size?: Size }) {
+export function useInputStyles({
+  size: sizeProp,
+  variant = "primary",
+}: {
+  size: Size | undefined;
+  variant: InputVariant | undefined;
+}) {
   const size = sizeProp || use(SizeContext);
 
   return {
     field: [styles.field],
-    wrapper: [styles.inputWrapper, gray.bgUi, gray.text, styles[size]],
+    wrapper: [
+      styles.inputWrapper,
+      variant === "primary" && [gray.bgUi, styles.primary],
+      variant === "secondary" && [gray.bgUi],
+      gray.text,
+      styles[size],
+    ],
     input: [styles.input, styles[`${size}Input`]],
     addon: styles.addon as unknown as stylex.StyleXStyles,
   };

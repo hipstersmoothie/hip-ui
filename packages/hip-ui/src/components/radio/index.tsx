@@ -17,8 +17,8 @@ import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { gray, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const scaleIn = stylex.keyframes({
   "0%": {

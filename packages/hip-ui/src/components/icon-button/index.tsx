@@ -7,8 +7,8 @@ import { ButtonProps as AriaButtonProps } from "react-aria-components";
 import { Button } from "../button";
 import { SizeContext } from "../context";
 import { spacing } from "../theme/spacing.stylex";
+import { ButtonVariant, Size } from "../theme/types";
 import { Tooltip } from "../tooltip";
-import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({
   sm: {

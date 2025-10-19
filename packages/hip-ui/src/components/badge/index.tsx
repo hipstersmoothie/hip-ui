@@ -11,8 +11,8 @@ import {
   warning,
 } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {

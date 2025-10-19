@@ -13,8 +13,8 @@ import {
 
 import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 function PasswordToggle({
   type,
@@ -53,6 +53,7 @@ export interface TextFieldProps
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
+  variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
@@ -63,6 +64,7 @@ export function TextField({
   errorMessage,
   style,
   size,
+  variant,
   prefix,
   suffix,
   placeholder,
@@ -73,7 +75,7 @@ export function TextField({
     props.type || "text",
   );
   const isPasswordInput = props.type === "password";
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
 
   return (
     <AriaTextField

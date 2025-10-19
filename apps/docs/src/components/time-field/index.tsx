@@ -11,8 +11,8 @@ import {
 } from "react-aria-components";
 
 import { Description, Label } from "../label";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 export interface TimeFieldProps<T extends TimeValue>
   extends Omit<AriaTimeFieldProps<T>, "style" | "className"> {
@@ -21,6 +21,7 @@ export interface TimeFieldProps<T extends TimeValue>
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
+  variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
@@ -31,12 +32,13 @@ export function TimeField<T extends TimeValue>({
   errorMessage,
   style,
   size,
+  variant,
   prefix,
   suffix,
   ...props
 }: TimeFieldProps<T>) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
 
   return (
     <AriaTimeField {...props} {...stylex.props(inputStyles.field, style)}>

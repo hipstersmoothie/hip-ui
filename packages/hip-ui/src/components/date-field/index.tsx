@@ -11,8 +11,8 @@ import {
 } from "react-aria-components";
 
 import { Description, Label } from "../label";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 export interface DateFieldProps<T extends DateValue>
   extends Omit<AriaDateFieldProps<T>, "style" | "className"> {
@@ -21,6 +21,7 @@ export interface DateFieldProps<T extends DateValue>
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
+  variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
@@ -31,12 +32,13 @@ export function DateField<T extends DateValue>({
   errorMessage,
   style,
   size,
+  variant,
   prefix,
   suffix,
   ...props
 }: DateFieldProps<T>) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
 
   return (
     <AriaDateField {...props} {...stylex.props(inputStyles.field, style)}>

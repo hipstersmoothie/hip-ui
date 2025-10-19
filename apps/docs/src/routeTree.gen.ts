@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DocsRouteImport } from './routes/_docs'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsInvoiceAppRouteImport } from './routes/_docs.invoice-app'
+import { Route as DocsEcommerceAppRouteImport } from './routes/_docs.ecommerce-app'
 
 const DocsRoute = DocsRouteImport.update({
   id: '/_docs',
@@ -27,27 +28,40 @@ const DocsInvoiceAppRoute = DocsInvoiceAppRouteImport.update({
   path: '/invoice-app',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsEcommerceAppRoute = DocsEcommerceAppRouteImport.update({
+  id: '/ecommerce-app',
+  path: '/ecommerce-app',
+  getParentRoute: () => DocsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ecommerce-app': typeof DocsEcommerceAppRoute
   '/invoice-app': typeof DocsInvoiceAppRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ecommerce-app': typeof DocsEcommerceAppRoute
   '/invoice-app': typeof DocsInvoiceAppRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_docs': typeof DocsRouteWithChildren
+  '/_docs/ecommerce-app': typeof DocsEcommerceAppRoute
   '/_docs/invoice-app': typeof DocsInvoiceAppRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/invoice-app'
+  fullPaths: '/' | '/ecommerce-app' | '/invoice-app'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/invoice-app'
-  id: '__root__' | '/' | '/_docs' | '/_docs/invoice-app'
+  to: '/' | '/ecommerce-app' | '/invoice-app'
+  id:
+    | '__root__'
+    | '/'
+    | '/_docs'
+    | '/_docs/ecommerce-app'
+    | '/_docs/invoice-app'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -78,14 +92,23 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsInvoiceAppRouteImport
       parentRoute: typeof DocsRoute
     }
+    '/_docs/ecommerce-app': {
+      id: '/_docs/ecommerce-app'
+      path: '/ecommerce-app'
+      fullPath: '/ecommerce-app'
+      preLoaderRoute: typeof DocsEcommerceAppRouteImport
+      parentRoute: typeof DocsRoute
+    }
   }
 }
 
 interface DocsRouteChildren {
+  DocsEcommerceAppRoute: typeof DocsEcommerceAppRoute
   DocsInvoiceAppRoute: typeof DocsInvoiceAppRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
+  DocsEcommerceAppRoute: DocsEcommerceAppRoute,
   DocsInvoiceAppRoute: DocsInvoiceAppRoute,
 }
 

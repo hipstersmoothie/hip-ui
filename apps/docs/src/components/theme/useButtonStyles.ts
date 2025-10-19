@@ -5,7 +5,7 @@ import { use } from "react";
 
 import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
-import { Size, ButtonVariant } from "../types";
+import { Size, ButtonVariant } from "../theme/types";
 import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
 import { critical, gray, primary } from "./semantic-color.stylex";

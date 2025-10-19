@@ -13,8 +13,8 @@ import {
 import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
 import { spacing } from "../theme/spacing.stylex";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -39,6 +39,7 @@ export interface SearchFieldProps
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
+  variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
@@ -51,13 +52,14 @@ export function SearchField({
   errorMessage,
   style,
   size,
+  variant,
   prefix = defaultPrefix,
   suffix,
   placeholder,
   ...props
 }: SearchFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
 
   return (
     <AriaSearchField {...props} {...stylex.props(inputStyles.field, style)}>

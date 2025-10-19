@@ -1,9 +1,12 @@
 import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 
-import { Flex } from "../flex";
+import { AspectRatio } from "../aspect-ratio";
+import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -12,57 +15,100 @@ const styles = stylex.create({
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
-    gap: spacing["6"],
+    gap: "var(--card-gap)",
+  },
+  smCard: {
+    "--card-gap": spacing["2"],
+    "--card-x-padding": spacing["2"],
+    "--card-y-padding": spacing["2"],
+  },
+  mdCard: {
+    "--card-gap": spacing["6"],
+    "--card-x-padding": spacing["6"],
+    "--card-y-padding": spacing["7"],
+  },
+  lgCard: {
+    "--card-gap": spacing["9"],
+    "--card-x-padding": spacing["9"],
+    "--card-y-padding": spacing["10"],
+  },
+  cardSection: {
+    boxSizing: "border-box",
+    paddingBottom: { ":last-child": "var(--card-y-padding)" },
+    paddingLeft: "var(--card-x-padding)",
+    paddingRight: "var(--card-x-padding)",
+    paddingTop: { ":first-child": "var(--card-y-padding)" },
   },
   cardHeader: {
-    paddingBottom: { ":last-child": spacing["4"] },
-    paddingLeft: spacing["4"],
-    paddingRight: spacing["4"],
-    paddingTop: spacing["5"],
+    alignItems: "center",
+    display: "grid",
+    gap: "var(--card-gap)",
+    gridTemplate: `
+      'title action' 
+      'description action'
+    `,
+  },
+  cardHeaderAction: {
+    display: "flex",
+    gap: spacing["2"],
+    gridArea: "action",
+    justifyContent: "flex-end",
   },
   cardTitle: {
-    fontSize: fontSize["xl"],
+    fontSize: {
+      ":is([data-card-size='sm'] *)": fontSize["lg"],
+      ":is([data-card-size='md'] *)": fontSize["xl"],
+      ":is([data-card-size='lg'] *)": fontSize["2xl"],
+    },
     fontWeight: fontWeight["bold"],
+    gridArea: "title",
   },
   cardDescription: {
     fontSize: fontSize["sm"],
     fontWeight: fontWeight["normal"],
+    gridArea: "description",
     margin: 0,
   },
   cardBody: {
     display: "flex",
     flexDirection: "column",
-    gap: spacing["6"],
-    paddingBottom: { ":last-child": spacing["4"] },
-    paddingLeft: spacing["4"],
-    paddingRight: spacing["4"],
+    gap: "var(--card-gap)",
   },
   cardFooter: {
-    paddingBottom: spacing["5"],
-    paddingLeft: spacing["4"],
-    paddingRight: spacing["4"],
-
     display: "flex",
     gap: spacing["2"],
     justifyContent: "flex-end",
+  },
+  cardHeaderImageWrapper: {},
+  cardHeaderImage: {
+    borderRadius: radius["md"],
+    height: "100%",
+    objectFit: "cover",
+    overflow: "hidden",
+    width: "100%",
   },
 });
 
 export interface CardProps
   extends Omit<React.ComponentProps<"div">, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  size?: Size;
 }
 
-export const Card = ({ style, ...props }: CardProps) => {
+export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
+  const size = sizeProp || use(SizeContext);
+
   return (
     <div
       {...props}
+      data-card-size={size}
       {...stylex.props(
         styles.card,
         gray.bgSubtle,
         gray.border,
         gray.text,
         style,
+        styles[`${size}Card`],
       )}
     />
   );
@@ -75,11 +121,9 @@ export interface CardHeaderProps
 
 export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   return (
-    <Flex
+    <div
       {...props}
-      style={[styles.cardHeader as unknown as stylex.StyleXStyles, style]}
-      direction="column"
-      gap="3"
+      {...stylex.props(styles.cardSection, styles.cardHeader, style)}
     />
   );
 };
@@ -107,13 +151,29 @@ export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
   );
 };
 
+export interface CardHeaderActionProps
+  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+}
+
+export const CardHeaderAction = ({
+  style,
+  ...props
+}: CardHeaderActionProps) => {
+  return <div {...props} {...stylex.props(styles.cardHeaderAction, style)} />;
+};
 export interface CardBodyProps
   extends Omit<React.ComponentProps<"div">, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
 export const CardBody = ({ style, ...props }: CardBodyProps) => {
-  return <div {...props} {...stylex.props(styles.cardBody, style)} />;
+  return (
+    <div
+      {...props}
+      {...stylex.props(styles.cardSection, styles.cardBody, style)}
+    />
+  );
 };
 
 export interface CardFooterProps
@@ -122,5 +182,28 @@ export interface CardFooterProps
 }
 
 export const CardFooter = ({ style, ...props }: CardFooterProps) => {
-  return <div {...props} {...stylex.props(styles.cardFooter, style)} />;
+  return (
+    <div
+      {...props}
+      {...stylex.props(styles.cardSection, styles.cardFooter, style)}
+    />
+  );
+};
+
+export interface CardImageProps
+  extends Omit<React.ComponentProps<"img">, "style" | "className"> {
+  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  aspectRatio?: number;
+}
+
+export const CardImage = ({ style, ...props }: CardImageProps) => {
+  return (
+    <AspectRatio
+      {...props}
+      style={[styles.cardSection as unknown as stylex.StyleXStyles, style]}
+    >
+      {/* eslint-disable-next-line jsx-a11y/alt-text */}
+      <img {...props} {...stylex.props(styles.cardHeaderImage, style)} />
+    </AspectRatio>
+  );
 };

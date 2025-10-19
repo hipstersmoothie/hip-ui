@@ -16,8 +16,8 @@ import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {

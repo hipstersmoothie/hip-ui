@@ -9,8 +9,8 @@ import {
 
 import { SizeContext } from "../context";
 import { gray } from "../theme/semantic-color.stylex";
+import { Size } from "../theme/types";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   label: {

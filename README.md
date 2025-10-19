@@ -39,7 +39,6 @@
 - [ ] File Trigger
 - [ ] File Drop zone
 - [ ] Segmented Control
-- [ ] Switch
 - [ ] Slider
 
 - [ ] Color Area
@@ -75,6 +74,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Switch
 - [x] Grid
 - [x] Badge
 - [x] Avatar

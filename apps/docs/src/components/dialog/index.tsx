@@ -14,9 +14,9 @@ import {
 import { IconButton } from "../icon-button";
 import { slate } from "../theme/colors.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   dialog: {

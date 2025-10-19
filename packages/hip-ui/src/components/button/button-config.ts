@@ -13,7 +13,7 @@ export const buttonConfig: ComponentConfig = {
     "../theme/shadow.stylex.tsx",
     "../theme/useButtonStyles.ts",
     "./context.ts",
-    "../types.ts",
+    "../theme/types.ts",
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",

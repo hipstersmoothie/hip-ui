@@ -16,8 +16,8 @@ import { Description, Label } from "../label";
 import { slate } from "../theme/colors.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   buttons: {
@@ -59,6 +59,7 @@ export interface NumberFieldProps
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
+  variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
@@ -69,13 +70,14 @@ export function NumberField({
   errorMessage,
   style,
   size,
+  variant,
   prefix,
   suffix,
   placeholder,
   ...props
 }: NumberFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
   const buttonStyles = stylex.props(
     styles.button,
     gray.borderInteractive,

@@ -10,8 +10,8 @@ import {
 } from "react-aria-components";
 
 import { Description, Label } from "../label";
+import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 export interface ColorFieldProps
   extends Omit<AriaColorFieldProps, "style" | "className">,
@@ -21,6 +21,7 @@ export interface ColorFieldProps
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
+  variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
 }
@@ -31,13 +32,14 @@ export function ColorField({
   errorMessage,
   style,
   size,
+  variant,
   prefix,
   suffix,
   placeholder,
   ...props
 }: ColorFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const inputStyles = useInputStyles({ size });
+  const inputStyles = useInputStyles({ size, variant });
 
   return (
     <AriaColorField {...props} {...stylex.props(inputStyles.field, style)}>

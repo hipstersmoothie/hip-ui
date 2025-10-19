@@ -16,8 +16,8 @@ import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { Size } from "../theme/types";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {

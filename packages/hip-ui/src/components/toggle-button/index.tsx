@@ -8,8 +8,8 @@ import {
 import { SizeContext } from "../context";
 import { plum, slate } from "../theme/colors.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { ButtonVariant, Size } from "../theme/types";
 import { useButtonStyles } from "../theme/useButtonStyles";
-import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({
   primarySelected: {
