@@ -59,6 +59,7 @@ const styles = stylex.create({
     display: "flex",
     flexGrow: 1,
     lineHeight: lineHeight["none"],
+    minWidth: 0,
     outline: "none",
 
     appearance: {

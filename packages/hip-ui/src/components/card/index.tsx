@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
-import { AspectRatio } from "../aspect-ratio";
+import { AspectRatio, AspectRatioImage } from "../aspect-ratio";
 import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
@@ -43,10 +43,13 @@ const styles = stylex.create({
     alignItems: "center",
     display: "grid",
     gap: "var(--card-gap)",
-    gridTemplate: `
-      'title action' 
-      'description action'
-    `,
+    gridTemplate: {
+      default: `'title action'`,
+      ":has([data-card-header-description])": `
+        'title action'
+        'description action'
+      `,
+    },
   },
   cardHeaderAction: {
     display: "flex",
@@ -78,14 +81,6 @@ const styles = stylex.create({
     display: "flex",
     gap: spacing["2"],
     justifyContent: "flex-end",
-  },
-  cardHeaderImageWrapper: {},
-  cardHeaderImage: {
-    borderRadius: radius["md"],
-    height: "100%",
-    objectFit: "cover",
-    overflow: "hidden",
-    width: "100%",
   },
 });
 
@@ -146,6 +141,7 @@ export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
   return (
     <p
       {...props}
+      data-card-header-description
       {...stylex.props(styles.cardDescription, gray.textDim, style)}
     />
   );
@@ -196,14 +192,13 @@ export interface CardImageProps
   aspectRatio?: number;
 }
 
-export const CardImage = ({ style, ...props }: CardImageProps) => {
+export const CardImage = ({ style, aspectRatio, ...props }: CardImageProps) => {
   return (
     <AspectRatio
-      {...props}
+      aspectRatio={aspectRatio}
       style={[styles.cardSection as unknown as stylex.StyleXStyles, style]}
     >
-      {/* eslint-disable-next-line jsx-a11y/alt-text */}
-      <img {...props} {...stylex.props(styles.cardHeaderImage, style)} />
+      <AspectRatioImage {...props} />
     </AspectRatio>
   );
 };

@@ -5,6 +5,7 @@ import {
   Card,
   CardBody,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardHeaderAction,
   CardImage,
@@ -17,18 +18,50 @@ import { Select, SelectItem } from "@/components/select";
 import { ToggleButtonGroup } from "@/components/toggle-button-group";
 import { ToggleButton } from "@/components/toggle-button";
 import { ColorSwatch } from "@/components/color-swatch";
+import { Grid } from "@/components/grid";
+import { Fragment } from "react/jsx-runtime";
+import { Avatar } from "@/components/avatar";
+import { spacing } from "../components/theme/spacing.stylex";
+import { IconButton } from "@/components/icon-button";
+import { Bookmark, Shredder, Upload } from "lucide-react";
+import { Badge } from "@/components/badge";
+import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
+import { LabelText, SmallBody } from "@/components/typography";
+import { Link } from "@/components/link";
+import { TextField } from "@/components/text-field";
+import { NumberField } from "@/components/number-field";
+import { FileDropZone } from "@/components/file-drop-zone";
+import { TextArea } from "@/components/text-area";
 
 const styles = stylex.create({
+  heightFull: {
+    height: "100%",
+  },
   grow: {
     flexGrow: 1,
     flexShrink: 0,
     flexBasis: "0%",
     minWidth: 0,
   },
+  medium: {
+    flexGrow: 0.75,
+    flexShrink: 0,
+    flexBasis: "0%",
+  },
   skinny: {
     flexGrow: 0.5,
     flexShrink: 0,
     flexBasis: "0%",
+  },
+  relative: {
+    position: "relative",
+  },
+  bottomRight: {
+    position: "absolute",
+    bottom: 0,
+    right: 0,
+    marginRight: spacing["4"],
+    marginBottom: spacing["4"],
   },
 });
 
@@ -54,7 +87,14 @@ function SmallProductCard() {
 function SmallProductCardWithBuying() {
   return (
     <Card size="sm">
-      <CardImage src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=560&h=540&q=80" />
+      <div {...stylex.props(styles.relative)}>
+        <CardImage src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=560&h=540&q=80" />
+        <div {...stylex.props(styles.bottomRight)}>
+          <IconButton label="Bookmark" variant="secondary">
+            <Bookmark />
+          </IconButton>
+        </div>
+      </div>
       <CardBody>
         <Flex direction="column" gap="4">
           <Flex direction="column" gap="2">
@@ -238,6 +278,366 @@ function ProductOptionsCard() {
   );
 }
 
+function ShoppingCartCard() {
+  const cart = [
+    {
+      title: "Poncho #4",
+      image:
+        "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=entropy",
+      price: 79,
+      size: "M",
+      count: 1,
+    },
+    {
+      title: "Jeans #8",
+      image:
+        "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=entropy",
+      price: 59,
+      size: "30",
+      count: 2,
+    },
+    {
+      title: "Sneakers #14",
+      image:
+        "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=80&h=80&q=80&crop=center",
+      price: 116,
+      size: "8",
+      count: 1,
+    },
+  ];
+
+  return (
+    <Card size="sm">
+      <CardHeader>
+        <CardTitle>Shopping Cart</CardTitle>
+      </CardHeader>
+      <CardBody>
+        <Flex direction="column" gap="4">
+          <Grid columns="auto 1fr auto auto" columnGap="3" alignItems="center">
+            {cart.map((item) => (
+              <Fragment key={item.title}>
+                <Avatar
+                  src={item.image}
+                  alt={item.title}
+                  fallback={item.title.charAt(0)}
+                  size="lg"
+                />
+                <Flex direction="column" gap="1">
+                  <Text weight="medium">{item.title}</Text>
+                  <Text variant="secondary" size="sm">
+                    Size {item.size}
+                  </Text>
+                </Flex>
+                <Select defaultValue={item.count.toString()}>
+                  <SelectItem id="1">1</SelectItem>
+                  <SelectItem id="2">2</SelectItem>
+                  <SelectItem id="3">3</SelectItem>
+                  <SelectItem id="4">4</SelectItem>
+                  <SelectItem id="5">5</SelectItem>
+                  <SelectItem id="6">6</SelectItem>
+                  <SelectItem id="7">7</SelectItem>
+                  <SelectItem id="8">8</SelectItem>
+                  <SelectItem id="9">9</SelectItem>
+                  <SelectItem id="10">10</SelectItem>
+                </Select>
+                <Text size="sm" variant="secondary">
+                  {Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  }).format(item.price * item.count)}
+                </Text>
+              </Fragment>
+            ))}
+          </Grid>
+          <Separator />
+          <Flex gap="2" justify="between">
+            <div></div>
+            <Button>Go to checkout</Button>
+          </Flex>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
+function Delivery() {
+  return (
+    <Card size="sm">
+      <Flex direction="column" gap="5">
+        <CardHeader>
+          <CardTitle>Delivery</CardTitle>
+          <CardHeaderAction>
+            <Badge variant="warning" size="sm">
+              Guaranteed
+            </Badge>
+          </CardHeaderAction>
+        </CardHeader>
+        <CardBody>
+          <Flex direction="column" gap="1.5">
+            <Text weight="semibold">Tomorrow</Text>
+            <Text variant="secondary" size="sm">
+              12:00 pm - 2:00 pm
+            </Text>
+          </Flex>
+
+          <Flex direction="column" gap="1.5">
+            <Text weight="semibold">Luna Rodriguez</Text>
+            <Text variant="secondary" size="sm">
+              9876 Maple Avenue
+              <br />
+              Cityville, WA 54321
+            </Text>
+          </Flex>
+        </CardBody>
+        <CardImage src="https://workos.imgix.net/images/bc04b345-f225-488d-8a46-1811096d0c3b.png?auto=format&fit=clip&q=90&w=840&h=654" />
+        <CardFooter>
+          <Button variant="secondary">Edit</Button>
+          <Button>Confirm</Button>
+        </CardFooter>
+      </Flex>
+    </Card>
+  );
+}
+
+function Bookmarks() {
+  const bookmarks = [
+    {
+      title: "Jeans #8",
+      image:
+        "https://images.unsplash.com/photo-1602293589930-45aad59ba3ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80&crop=entropy",
+      price: 118,
+    },
+    {
+      title: "Jacket #3",
+      image:
+        "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&crop=entropy&w=272&h=272&q=80",
+      price: 49,
+    },
+    {
+      title: "Pants #10",
+      image:
+        "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80",
+      price: 32,
+    },
+    {
+      title: "Shirt #11",
+      image:
+        "https://images.unsplash.com/photo-1611312449412-6cefac5dc3e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=272&h=272&q=80",
+      price: 39,
+    },
+  ];
+
+  return (
+    <Card size="sm">
+      <CardHeader>
+        <CardTitle>Bookmarks</CardTitle>
+        <CardHeaderAction>
+          <Button variant="tertiary">Buy all</Button>
+        </CardHeaderAction>
+      </CardHeader>
+      <CardBody>
+        <Grid columns="1fr 1fr" columnGap="2">
+          {bookmarks.map((bookmark) => (
+            <Flex direction="column" gap="2" key={bookmark.title}>
+              <AspectRatio aspectRatio={1}>
+                <AspectRatioImage src={bookmark.image} />
+              </AspectRatio>
+              <div>
+                <Text weight="medium" size="sm">
+                  {bookmark.title}
+                </Text>
+                <Text variant="secondary" size="sm">
+                  {", "}
+                  {Intl.NumberFormat("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  }).format(bookmark.price)}
+                </Text>
+              </div>
+            </Flex>
+          ))}
+        </Grid>
+      </CardBody>
+    </Card>
+  );
+}
+
+function DiscardedCard() {
+  return (
+    <Card>
+      <CardBody>
+        <Flex direction="column" gap="4" align="center">
+          <Shredder size={48} />
+          <Text weight="semibold" size="lg">
+            Product discarded
+          </Text>
+          <SmallBody variant="secondary">
+            It's still available in the <Link>archive.</Link>
+          </SmallBody>
+          <Flex gap="2">
+            <Button variant="secondary">Undo</Button>
+            <Button>Done</Button>
+          </Flex>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
+function EditProductCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Edit product</CardTitle>
+      </CardHeader>
+      <CardBody>
+        <Grid columns="1fr 140px" columnGap="2">
+          <TextField label="Title" defaultValue="Sneakers #12" />
+          <NumberField
+            label="Price"
+            defaultValue={116}
+            formatOptions={{
+              style: "currency",
+              currency: "USD",
+            }}
+          />
+        </Grid>
+        <Flex direction="column" gap="2">
+          <LabelText>Media</LabelText>
+          <Grid columns="1fr 1fr 1fr" columnGap="2">
+            <AspectRatio>
+              <AspectRatioImage src="https://images.unsplash.com/photo-1551163943-3f6a855d1153?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=400&q=80&crop=bottom" />
+            </AspectRatio>
+            <AspectRatio>
+              <AspectRatioImage src="https://workos.imgix.net/images/c773ee38-9136-49d1-804c-6d166dad9c65.png?auto=format&fit=clip&q=80w=400&h=400" />
+            </AspectRatio>
+            <AspectRatio>
+              <FileDropZone style={styles.heightFull}>
+                <IconButton variant="secondary" label="Upload image">
+                  <Upload />
+                </IconButton>
+              </FileDropZone>
+            </AspectRatio>
+          </Grid>
+        </Flex>
+        <TextArea
+          label="Description"
+          defaultValue="This is a description of the product."
+          rows={4}
+        />
+        <Flex direction="column" gap="2">
+          <Text weight="semibold">Material</Text>
+          <ToggleButtonGroup
+            variant="separate"
+            itemsPerRow={3}
+            selectionMode="single"
+          >
+            <ToggleButton id="synthetic" variant="secondary">
+              Synthetic
+            </ToggleButton>
+            <ToggleButton id="wool" variant="secondary">
+              Wool
+            </ToggleButton>
+            <ToggleButton id="cotton" variant="secondary">
+              Cotton
+            </ToggleButton>
+            <ToggleButton id="linen" variant="secondary">
+              Linen
+            </ToggleButton>
+            <ToggleButton id="denim" variant="secondary">
+              Denim
+            </ToggleButton>
+            <ToggleButton id="leather" variant="secondary">
+              Leather
+            </ToggleButton>
+            <ToggleButton id="silk" variant="secondary">
+              Silk
+            </ToggleButton>
+            <ToggleButton id="chiffon" variant="secondary">
+              Chiffon
+            </ToggleButton>
+            <ToggleButton id="other" variant="secondary">
+              Other
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Flex>
+        <Flex direction="column" gap="2">
+          <Text weight="semibold">Main Color</Text>
+          <ToggleButtonGroup
+            variant="separate"
+            itemsPerRow={3}
+            selectionMode="single"
+          >
+            <ToggleButton id="white" variant="secondary">
+              <ColorSwatch color="#fff" size="sm" />
+              White
+            </ToggleButton>
+            <ToggleButton id="grey" variant="secondary">
+              <ColorSwatch color="#808080" size="sm" />
+              Grey
+            </ToggleButton>
+            <ToggleButton id="black" variant="secondary">
+              <ColorSwatch color="#000" size="sm" />
+              Black
+            </ToggleButton>
+            <ToggleButton id="red" variant="secondary">
+              <ColorSwatch color="#f00" size="sm" />
+              Red
+            </ToggleButton>
+            <ToggleButton id="pink" variant="secondary">
+              <ColorSwatch color="#f0f" size="sm" />
+              Pink
+            </ToggleButton>
+            <ToggleButton id="violet" variant="secondary">
+              <ColorSwatch color="#800080" size="sm" />
+              Violet
+            </ToggleButton>
+            <ToggleButton id="blue" variant="secondary">
+              <ColorSwatch color="#00f" size="sm" />
+              Blue
+            </ToggleButton>
+            <ToggleButton id="green" variant="secondary">
+              <ColorSwatch color="#0f0" size="sm" />
+              Green
+            </ToggleButton>
+            <ToggleButton id="beige" variant="secondary">
+              <ColorSwatch color="#f5f5dc" size="sm" />
+              Beige
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Flex>
+        <Flex direction="column" gap="2">
+          <Text weight="semibold">Size</Text>
+          <ToggleButtonGroup
+            variant="separate"
+            itemsPerRow={3}
+            selectionMode="single"
+          >
+            <ToggleButton id="xs" variant="secondary">
+              XS
+            </ToggleButton>
+            <ToggleButton id="s" variant="secondary">
+              S
+            </ToggleButton>
+            <ToggleButton id="m" variant="secondary">
+              M
+            </ToggleButton>
+            <ToggleButton id="l" variant="secondary">
+              L
+            </ToggleButton>
+            <ToggleButton id="xl" variant="secondary">
+              XL
+            </ToggleButton>
+            <ToggleButton id="xxl" variant="secondary">
+              XXL
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
 function RouteComponent() {
   return (
     <Flex gap="4">
@@ -246,8 +646,15 @@ function RouteComponent() {
         <SmallProductCardWithBuying />
         <ProductOptionsCard />
       </Flex>
-      <Flex direction="column" gap="4" style={styles.skinny}></Flex>
-      <Flex direction="column" gap="4" style={styles.skinny}></Flex>
+      <Flex direction="column" gap="4" style={styles.skinny}>
+        <Delivery />
+        <Bookmarks />
+        <ShoppingCartCard />
+      </Flex>
+      <Flex direction="column" gap="4" style={styles.medium}>
+        <DiscardedCard />
+        <EditProductCard />
+      </Flex>
       <Flex direction="column" gap="4" style={styles.grow}></Flex>
     </Flex>
   );

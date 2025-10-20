@@ -62,6 +62,7 @@ export interface NumberFieldProps
   variant?: InputVariant;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  hideStepper?: boolean;
 }
 
 export function NumberField({
@@ -74,6 +75,7 @@ export function NumberField({
   prefix,
   suffix,
   placeholder,
+  hideStepper = false,
   ...props
 }: NumberFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -107,14 +109,16 @@ export function NumberField({
         {suffix != null && (
           <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
         )}
-        <Group {...stylex.props(styles.buttons)}>
-          <Button slot="decrement" {...buttonStyles}>
-            <Minus />
-          </Button>
-          <Button slot="increment" {...buttonStyles}>
-            <Plus />
-          </Button>
-        </Group>
+        {!hideStepper && (
+          <Group {...stylex.props(styles.buttons)}>
+            <Button slot="decrement" {...buttonStyles}>
+              <Minus />
+            </Button>
+            <Button slot="increment" {...buttonStyles}>
+              <Plus />
+            </Button>
+          </Group>
+        )}
       </div>
       {description && <Description size={size}>{description}</Description>}
       <FieldError>{errorMessage}</FieldError>

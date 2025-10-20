@@ -23,6 +23,7 @@ import { commandMenuConfig } from "../components/command-menu/command-menu-confi
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { dialogConfig } from "../components/dialog/dialog-config.js";
+import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
@@ -88,6 +89,7 @@ const COMPONENT_CONFIGS = [
   switchConfig,
   aspectRatioConfig,
   colorSwatchConfig,
+  fileDropZoneConfig,
 ];
 
 function StringSetting({

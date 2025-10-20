@@ -156,6 +156,7 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: { default: lineHeight["sm"] },
+    margin: 0,
   },
   sublabel: {
     // eslint-disable-next-line @stylexjs/valid-styles
