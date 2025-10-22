@@ -101,7 +101,7 @@ const styles = stylex.create({
 export interface ToggleButtonProps
   extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  variant?: Exclude<ButtonVariant, "critical">;
+  variant?: Exclude<ButtonVariant, "critical" | "critical-outline">;
   size?: Size;
   children?: React.ReactNode;
 }

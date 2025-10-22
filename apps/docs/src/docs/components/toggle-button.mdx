@@ -1,0 +1,47 @@
+---
+title: Toggle Button
+description: A toggle button component that can be pressed to toggle between states.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/toggle-button/basic'
+import { Sizes } from '../../examples/toggle-button/sizes'
+import { Variants } from '../../examples/toggle-button/variants'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the toggle button component to your project.
+
+```bash
+pnpm hip install toggle-button
+```
+
+## Features
+
+### Sizes
+
+The toggle button component comes in three sizes: small, medium, and large.
+    
+<Example src={Sizes} />
+
+### Variants
+
+The toggle button component comes in four variants: primary, secondary, tertiary, and outline.
+
+<Example src={Variants} />
+
+## Props
+
+This component is built using the [React Aria Toggle Button](https://react-spectrum.adobe.com/react-aria/ToggleButton.html).
+
+<PropDocs components={["ToggleButton"]} />
+
+## Related Components
+
+- [Button](/components/button) - For regular clickable buttons
+- [IconButton](/components/icon-button) - For icon-only toggle buttons
+- [ToggleButtonGroup](/components/toggle-button-group) - For grouping toggle buttons together
+- [Switch](/components/switch) - For toggle switches with labels

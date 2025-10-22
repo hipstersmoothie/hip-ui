@@ -104,6 +104,9 @@ importers:
       react-aria-components:
         specifier: ^1.13.0
         version: 1.13.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react-docgen-typescript:
+        specifier: ^2.4.0
+        version: 2.4.0(typescript@5.9.2)
       react-dom:
         specifier: ^19.0.0
         version: 19.2.0(react@19.2.0)
@@ -5243,6 +5246,11 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
+
+  react-docgen-typescript@2.4.0:
+    resolution: {integrity: sha512-ZtAp5XTO5HRzQctjPU0ybY0RRCQO19X/8fxn3w7y2VVTUbGHDKULPTL4ky3vB05euSgG5NpALhEhDPvQ56wvXg==}
+    peerDependencies:
+      typescript: '>= 4.3.x'
 
   react-dom@19.2.0:
     resolution: {integrity: sha512-UlbRu4cAiGaIewkPyiRGJk0imDN2T3JjieT6spoL2UeSf5od4n5LB/mQ4ejmxhCFT1tYe8IvaFulzynWovsEFQ==}
@@ -12780,6 +12788,10 @@ snapshots:
       '@react-types/shared': 3.32.1(react@19.2.0)
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
+
+  react-docgen-typescript@2.4.0(typescript@5.9.2):
+    dependencies:
+      typescript: 5.9.2
 
   react-dom@19.2.0(react@19.2.0):
     dependencies:

@@ -1,0 +1,47 @@
+---
+title: Icon Button
+description: A button component specifically designed for icons with built-in tooltip support.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/icon-button/basic'
+import { IconButtonVariants } from '../../examples/icon-button/variants'
+import { IconButtonSizes } from '../../examples/icon-button/sizes'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the icon button component to your project.
+
+```bash
+pnpm hip install icon-button
+```
+
+## Props
+
+This component is built using the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html).
+
+<PropDocs components={["IconButton"]} />
+
+## Features
+
+### Variants
+
+Icon buttons support the same variants as regular buttons.
+
+<Example src={IconButtonVariants} />
+
+### Sizes
+
+Icon buttons support three different sizes.
+
+<Example src={IconButtonSizes} />
+
+## Related Components
+
+- [Button](/components/button) - For buttons with text and icons
+- [ToggleButton](/components/toggle-button) - For toggleable icon buttons
+- [Tooltip](/components/tooltip) - For providing context on icon-only buttons
+- [ButtonGroup](/components/button-group) - For grouping icon buttons together

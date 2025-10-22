@@ -1,0 +1,61 @@
+---
+title: Time Field
+description: A time input component for selecting times with proper formatting.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/time-field/basic'
+import { Sizes } from '../../examples/time-field/sizes'
+import { Variants } from '../../examples/time-field/variants'
+import { Description } from '../../examples/time-field/description'
+import { PrefixAndSuffix } from '../../examples/time-field/prefix-and-suffix'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the time field component to your project.
+
+```bash
+pnpm hip install time-field
+```
+
+## Features
+
+### Prefix and Suffix
+
+The time field component supports a prefix and suffix.
+
+<Example src={PrefixAndSuffix} />
+
+### Sizes
+
+The time field component comes in three sizes: small, medium, and large.
+
+<Example src={Sizes} />
+
+### Variants
+
+The time field component comes in three variants: primary, secondary, and tertiary.
+
+<Example src={Variants} />
+
+### Description
+
+The time field component supports a description.
+
+<Example src={Description} />
+
+## Props
+
+This component is built using the [React Aria TimeField](https://react-spectrum.adobe.com/react-aria/TimeField.html).
+
+<PropDocs components={["TimeField"]} />
+
+## Related Components
+
+- [DateField](/components/date-field) - For date input
+- [TextField](/components/text-field) - For general text input
+- [NumberField](/components/number-field) - For numeric input
+- [Label](/components/label) - For form labels and descriptions

@@ -75,10 +75,15 @@ export interface AvatarProps
     React.ComponentProps<"div">,
     "style" | "className" | "children"
   > {
+  /** The stylex styles of the avatar. */
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  /** The source of the image. */
   src?: string;
+  /** The alt text of the image. */
   alt?: string;
+  /** The fallback content of the avatar. */
   fallback: React.ReactNode;
+  /** The size of the avatar. */
   size?: Size | "xl";
 }
 

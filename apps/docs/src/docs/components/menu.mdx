@@ -1,0 +1,31 @@
+---
+title: Menu
+description: A menu component for displaying a list of actions or options.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/menu/basic'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the menu component to your project.
+
+```bash
+pnpm hip install menu
+```
+
+## Props
+
+This component is built using the [React Aria Menu](https://react-spectrum.adobe.com/react-aria/Menu.html).
+
+<PropDocs components={["Menu", "MenuItem", "MenuSection", "SubMenu"]} />
+
+## Related Components
+
+- [ContextMenu](/components/context-menu) - For right-click context menus
+- [CommandMenu](/components/command-menu) - For command palette menus
+- [Popover](/components/popover) - For menu containers
+- [Button](/components/button) - For menu triggers

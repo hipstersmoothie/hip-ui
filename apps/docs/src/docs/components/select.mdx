@@ -1,0 +1,47 @@
+---
+title: Select
+description: A select component for choosing from a list of options.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/select/basic'
+import { SelectWithDescription } from '../../examples/select/with-description'
+import { SelectSizes } from '../../examples/select/sizes'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the select component to your project.
+
+```bash
+pnpm hip install select
+```
+
+## Props
+
+This component is built using the [React Aria Select](https://react-spectrum.adobe.com/react-aria/Select.html).
+
+<PropDocs components={["Select", "SelectItem", "SelectSection", "SelectSectionHeader", "SelectSeparator"]} />
+
+## Features
+
+### With Description
+
+Select components can include descriptive text to provide additional context.
+
+<Example src={SelectWithDescription} />
+
+### Sizes
+
+Select components support different sizes for various use cases.
+
+<Example src={SelectSizes} />
+
+## Related Components
+
+- [ComboBox](/components/combobox) - For searchable dropdown selection
+- [Radio](/components/radio) - For single selection from multiple options
+- [Checkbox](/components/checkbox) - For multiple selection options
+- [Label](/components/label) - For form labels and descriptions

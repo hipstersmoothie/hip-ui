@@ -6,3 +6,8 @@ declare module "virtual:content" {
     React.ComponentType<{ components: MDXComponents }>
   >;
 }
+
+declare module "virtual:propDocs" {
+  import type { ComponentDoc } from "react-docgen-typescript";
+  export const propDocs: ComponentDoc[];
+}

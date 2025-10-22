@@ -51,7 +51,13 @@ const styles = stylex.create({
 });
 
 export interface AlertDialogProps extends DialogTriggerProps {
+  /**
+   * The trigger element to open the dialog.
+   */
   trigger: React.ReactNode;
+  /**
+   * The content of the dialog.
+   */
   children: React.ReactNode;
 }
 

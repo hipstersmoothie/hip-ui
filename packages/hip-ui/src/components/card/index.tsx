@@ -94,18 +94,20 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
   const size = sizeProp || use(SizeContext);
 
   return (
-    <div
-      {...props}
-      data-card-size={size}
-      {...stylex.props(
-        styles.card,
-        ui.bgSubtle,
-        ui.border,
-        ui.text,
-        style,
-        styles[`${size}Card`],
-      )}
-    />
+    <SizeContext value={size}>
+      <div
+        {...props}
+        data-card-size={size}
+        {...stylex.props(
+          styles.card,
+          ui.bgSubtle,
+          ui.border,
+          ui.text,
+          style,
+          styles[`${size}Card`],
+        )}
+      />
+    </SizeContext>
   );
 };
 

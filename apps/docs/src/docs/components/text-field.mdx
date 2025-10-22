@@ -1,0 +1,61 @@
+---
+title: Text Field
+description: A text input component with support for labels, descriptions, and validation.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/text-field/basic'
+import { TextFieldVariants } from '../../examples/text-field/variants'
+import { TextFieldSizes } from '../../examples/text-field/sizes'
+import { PasswordField } from '../../examples/text-field/password'
+import { PrefixAndSuffix } from '../../examples/text-field/prefix-and-suffix'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the text field component to your project.
+
+```bash
+pnpm hip install text-field
+```
+
+## Props
+
+This component is built using the [React Aria TextField](https://react-spectrum.adobe.com/react-aria/TextField.html).
+
+<PropDocs components={["TextField"]} />
+
+## Features 
+
+### Prefix and Suffix
+
+The text field supports a prefix and suffix.
+
+<Example src={PrefixAndSuffix} />
+
+### Variants
+
+The text field supports different visual variants.
+
+<Example src={TextFieldVariants} />
+
+### Sizes
+
+The text field supports three different sizes.
+
+<Example src={TextFieldSizes} />
+
+### Password Field
+
+Text fields automatically include password visibility toggle when type is set to "password".
+
+<Example src={PasswordField} />
+
+## Related Components
+
+- [TextArea](/components/text-area) - For multi-line text input
+- [NumberField](/components/number-field) - For numeric input
+- [SearchField](/components/search-field) - For search input with clear button
+- [Label](/components/label) - For form labels and descriptions

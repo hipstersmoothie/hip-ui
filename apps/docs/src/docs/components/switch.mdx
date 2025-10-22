@@ -1,0 +1,47 @@
+---
+title: Switch
+description: A toggle switch component for binary choices.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/switch/basic'
+import { SwitchStates } from '../../examples/switch/states'
+import { SwitchWithDescription } from '../../examples/switch/with-description'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the switch component to your project.
+
+```bash
+pnpm hip install switch
+```
+
+## Props
+
+This component is built using the [React Aria Switch](https://react-spectrum.adobe.com/react-aria/Switch.html).
+
+<PropDocs components={["Switch"]} />
+
+## Features
+
+### States
+
+Switches support different states including checked, unchecked, and disabled.
+
+<Example src={SwitchStates} />
+
+### With Description
+
+Switches can include descriptive text to provide additional context.
+
+<Example src={SwitchWithDescription} />
+
+## Related Components
+
+- [Checkbox](/components/checkbox) - For multiple selection options
+- [Radio](/components/radio) - For single selection from multiple options
+- [ToggleButton](/components/toggle-button) - For toggleable button states
+- [Label](/components/label) - For form labels and descriptions

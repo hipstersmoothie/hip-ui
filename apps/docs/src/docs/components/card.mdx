@@ -1,0 +1,61 @@
+---
+title: Card
+description: A flexible container component for grouping related content.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/card/basic'
+import { CardWithImage } from '../../examples/card/with-image'
+import { CardSizes } from '../../examples/card/sizes'
+import { CardWithActions } from '../../examples/card/with-actions'
+import { CardWithBadges } from '../../examples/card/with-badges'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the card component to your project.
+
+```bash
+pnpm hip install card
+```
+
+## Props
+
+This is a custom component built for grouping related content.
+
+<PropDocs components={["Card", "CardHeader", "CardTitle", "CardDescription", "CardHeaderAction", "CardBody", "CardFooter", "CardImage"]} />
+
+## Features
+
+### With Image
+
+Cards can include images with customizable aspect ratios.
+
+<Example src={CardWithImage} />
+
+### With Actions
+
+Cards can include header actions for interactive elements.
+
+<Example src={CardWithActions} />
+
+### With Badges
+
+Cards can include badges for status indicators and tags.
+
+<Example src={CardWithBadges} />
+
+### Sizes
+
+The card supports three different sizes that affect padding and spacing.
+
+<Example src={CardSizes} />
+
+## Related Components
+
+- [Table](/components/table) - For structured data display
+- [Badge](/components/badge) - For status indicators in cards
+- [Button](/components/button) - For card actions
+- [AspectRatio](/components/aspect-ratio) - For card images

@@ -1,0 +1,47 @@
+---
+title: Toggle Button Group
+description: A group of toggle buttons that work together as a single control.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+
+import { Basic } from '../../examples/toggle-button-group/basic'
+import { Orientation } from '../../examples/toggle-button-group/orientation'
+import { Variants } from '../../examples/toggle-button-group/variants'
+
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the toggle button group component to your project.
+
+```bash
+pnpm hip install toggle-button-group
+```
+
+## Features
+
+### Orientation
+
+The toggle button group component can be oriented horizontally or vertically.
+
+<Example src={Orientation} />
+
+### Variants
+
+The toggle button group component can be grouped or separate.
+
+<Example src={Variants} />
+
+## Props
+
+<PropDocs components={["ToggleButtonGroup"]} />
+
+## Related Components
+
+- [ToggleButton](/components/toggle-button) - Individual toggle buttons within the group
+- [ButtonGroup](/components/button-group) - For grouping regular buttons together
+- [Radio](/components/radio) - For single-selection from multiple options
+- [Checkbox](/components/checkbox) - For multiple-selection options

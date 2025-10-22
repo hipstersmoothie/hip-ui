@@ -1,0 +1,54 @@
+---
+title: Typography
+description: A collection of text components for consistent typography throughout your application.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Headings } from '../../examples/typography/headings'
+import { Text } from '../../examples/typography/text'
+import { TextVariants } from '../../examples/typography/variants'
+import { Lists } from '../../examples/typography/lists'
+
+<Example src={Headings} />
+
+## Installation
+
+Run the following command to add the typography component to your project.
+
+```bash
+pnpm hip install typography
+```
+
+## Props
+
+This is a custom component collection built for typography.
+
+<PropDocs components={["Heading1", "Heading2", "Heading3", "Heading4", "Heading5", "Body", "SmallBody", "LabelText", "SubLabel", "Blockquote", "UnorderedList", "OrderedList", "ListItem", "InlineCode"]} />
+
+## Features
+
+### Text Components
+
+Typography includes various text components for different use cases.
+
+<Example src={Text} />
+
+### Text Variants
+
+Text components support different variants for styling.
+
+<Example src={TextVariants} />
+
+### Lists and Other Elements
+
+Typography also includes list components and other text elements.
+
+<Example src={Lists} />
+
+## Related Components
+
+- [Link](/components/link) - For text links within typography
+- [Badge](/components/badge) - For status indicators in text
+- [Card](/components/card) - For containing typography content
+- [Label](/components/label) - For form labels and descriptions

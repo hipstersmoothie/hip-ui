@@ -109,6 +109,16 @@ export const ui = stylex.create({
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
+  bgSolidAction: {
+    backgroundColor: {
+      default: uiColor.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.solid2,
+      ":disabled": uiColor.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -195,6 +205,16 @@ export const primary = stylex.create({
         primaryColor.component3,
       ":is(:active,[data-pressed=true]):not(:disabled)":
         primaryColor.component3,
+      ":disabled": primaryColor.component1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  bgSolidAction: {
+    backgroundColor: {
+      default: primaryColor.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": primaryColor.solid2,
       ":disabled": primaryColor.component1,
     },
     transitionDuration: "100ms",

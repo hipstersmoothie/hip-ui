@@ -1,16 +1,35 @@
 import { Grid } from "@/components/grid";
 import { Tree, TreeItem } from "@/components/tree";
-import { createFileRoute, LinkProps, Outlet } from "@tanstack/react-router";
+import {
+  createFileRoute,
+  LinkProps,
+  Outlet,
+  useLocation,
+  useMatches,
+} from "@tanstack/react-router";
 import { Collection } from "react-aria-components";
 import { createLink } from "@tanstack/react-router";
 import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
+import { spacing } from "../components/theme/spacing.stylex";
 
 const TreeItemLink = createLink(TreeItem);
 
 const styles = stylex.create({
+  aside: {
+    position: "sticky",
+    top: 0,
+    height: "100vh",
+    overflow: "auto",
+    paddingRight: spacing["4"],
+    paddingLeft: spacing["4"],
+    paddingTop: spacing["4"],
+    paddingBottom: spacing["4"],
+  },
   main: {
     maxWidth: "80ch",
+    paddingTop: spacing["10"],
+    paddingBottom: spacing["20"],
   },
 });
 
@@ -57,11 +76,29 @@ const sidebarItems: SidebarItem[] = [
   },
 ];
 
+const flatItems = sidebarItems
+  .flatMap((item) => ("items" in item ? item.items : [item]))
+  .filter((item): item is SidebarItem => item !== undefined);
+
 function Sidebar() {
+  const location = useLocation();
+  const matches = useMatches();
+  const match = matches.find((match) => match.pathname === location.pathname);
+  const item = flatItems.find(
+    (item) =>
+      match?.params &&
+      "_splat" in match.params &&
+      match.params._splat &&
+      item.id === match.params._splat.replace("/docs/", ""),
+  );
+
   return (
     <Tree
       items={sidebarItems}
+      selectionMode="single"
+      selectionBehavior="replace"
       defaultExpandedKeys={["foundations", "components"]}
+      selectedKeys={item ? [item.id] : []}
     >
       {function renderTreeItem(item) {
         return (
@@ -80,8 +117,8 @@ export const Route = createFileRoute("/docs")({
 
 function RouteComponent() {
   return (
-    <Grid columns="200px 1fr">
-      <aside>
+    <Grid columns="240px 1fr" columnGap="4">
+      <aside {...stylex.props(styles.aside)}>
         <Sidebar />
       </aside>
       <main {...stylex.props(styles.main)}>

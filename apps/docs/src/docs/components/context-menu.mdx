@@ -1,0 +1,31 @@
+---
+title: Context Menu
+description: A context menu component that appears on right-click or long press.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/context-menu/basic'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the context menu component to your project.
+
+```bash
+pnpm hip install context-menu
+```
+
+## Props
+
+This is a custom component built using a Menu and a custom logic to position a Popover.
+
+<PropDocs components={["ContextMenu", "ContextMenuTrigger"]} />
+
+## Related Components
+
+- [Menu](/components/menu) - The underlying menu component
+- [Popover](/components/popover) - For positioning the context menu
+- [CommandMenu](/components/command-menu) - For command palette menus
+- [Button](/components/button) - For context menu triggers

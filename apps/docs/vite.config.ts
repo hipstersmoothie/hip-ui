@@ -14,6 +14,7 @@ import remarkFrontmatter from "remark-frontmatter";
 import MagicString from "magic-string";
 import { codeToHtml } from "shiki";
 import rehypeShiki, { RehypeShikiOptions } from "@shikijs/rehype";
+import docgen from "react-docgen-typescript";
 
 /** Generate a virtual model that imports all the content files. */
 function content() {
@@ -154,6 +155,59 @@ function annotateExamples() {
   } as PluginOption;
 }
 
+function propDocs() {
+  const virtualModuleId = "virtual:propDocs";
+  const resolvedVirtualModuleId = "\0" + virtualModuleId;
+
+  const parser = docgen.withDefaultConfig({
+    propFilter: (prop) => {
+      if (
+        prop.parent?.fileName.includes("@types/react") &&
+        prop.name !== "children"
+      ) {
+        return false;
+      }
+
+      if (prop.parent?.fileName.endsWith("/dom.d.ts")) {
+        return false;
+      }
+
+      return true;
+    },
+  });
+  const docs: docgen.ComponentDoc[] = [];
+
+  return {
+    name: "my-plugin", // required, will show up in warnings and errors
+
+    buildStart: async () => {
+      const files = await glob(
+        path.join(process.cwd(), "src/components/**/*.tsx"),
+      );
+
+      for (const file of files) {
+        const doc = parser.parse(file);
+        docs.push(...doc);
+      }
+    },
+
+    resolveId(id) {
+      if (id === virtualModuleId) {
+        return resolvedVirtualModuleId;
+      }
+    },
+
+    load(id) {
+      if (id === resolvedVirtualModuleId) {
+        const code = dedent`
+          export const propDocs = ${JSON.stringify(docs).replaceAll("\\n", "\\\\n")};
+        `;
+        return code;
+      }
+    },
+  } as PluginOption;
+}
+
 const config = defineConfig({
   plugins: [
     shiki(),
@@ -181,6 +235,7 @@ const config = defineConfig({
     content(),
     examples(),
     annotateExamples(),
+    propDocs(),
   ],
 });
 

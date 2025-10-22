@@ -1,0 +1,31 @@
+---
+title: Table
+description: A table component for displaying structured data in rows and columns.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/table/basic'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the table component to your project.
+
+```bash
+pnpm hip install table
+```
+
+## Props
+
+This component is built using the [React Aria Table](https://react-spectrum.adobe.com/react-aria/Table.html).
+
+<PropDocs components={["Table", "TableHeader", "TableBody", "TableColumn", "TableRow", "TableCell"]} />
+
+## Related Components
+
+- [ListBox](/components/listbox) - For selectable list data
+- [Tree](/components/tree) - For hierarchical data display
+- [Card](/components/card) - For displaying table data in cards
+- [Badge](/components/badge) - For status indicators in table cells

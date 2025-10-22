@@ -1,0 +1,68 @@
+---
+title: Button
+description: A clickable button component with multiple variants and sizes.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/button/basic'
+import { ButtonVariants } from '../../examples/button/variants'
+import { ButtonSizes } from '../../examples/button/sizes'
+import { ButtonWithIcons } from '../../examples/button/with-icons'
+import { ButtonStates } from '../../examples/button/states'
+import { ButtonLoading } from '../../examples/button/loading'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the button component to your project.
+
+```bash
+pnpm hip install button
+```
+
+## Props
+
+This component is built using the [React Aria Button](https://react-spectrum.adobe.com/react-aria/Button.html).
+
+<PropDocs components={["Button"]} />
+
+## Features
+
+### Variants
+
+The button comes in four different variants to suit different use cases.
+
+<Example src={ButtonVariants} />
+
+### Sizes
+
+The button supports three different sizes.
+
+<Example src={ButtonSizes} />
+
+### With Icons
+
+Buttons can include icons alongside text for better visual communication.
+
+<Example src={ButtonWithIcons} />
+
+### States
+
+Buttons support different interactive states.
+
+<Example src={ButtonStates} />
+
+### Loading State
+
+Buttons can show a loading state during async operations.
+
+<Example src={ButtonLoading} />
+
+## Related Components
+
+- [IconButton](/components/icon-button) - For icon-only buttons
+- [ToggleButton](/components/toggle-button) - For toggleable buttons
+- [ButtonGroup](/components/button-group) - For grouping buttons together
+- [Link](/components/link) - For navigation links that look like buttons
