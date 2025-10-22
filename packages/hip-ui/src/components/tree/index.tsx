@@ -14,7 +14,7 @@ import {
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
@@ -103,7 +103,7 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
             <div {...stylex.props(styles.dragButtonWrapper)}>
               <Button
                 slot="drag"
-                {...stylex.props(styles.dragButton, gray.border, gray.bgSubtle)}
+                {...stylex.props(styles.dragButton, ui.border, ui.bgSubtle)}
               >
                 <GripVertical size={18} />
               </Button>
@@ -117,7 +117,7 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
             slot="chevron"
             {...stylex.props(
               styles.chevron,
-              gray.textDim,
+              ui.textDim,
               listBoxItemStyles.addon,
               !hasChildItems && styles.hidden,
             )}

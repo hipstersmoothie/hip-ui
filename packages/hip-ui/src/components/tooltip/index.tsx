@@ -9,18 +9,18 @@ import {
   TooltipProps as AriaTooltipProps,
 } from "react-aria-components";
 
-import { slateInverted } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { uiInverted } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const tooltipStyle = stylex.create({
   content: {
-    backgroundColor: slateInverted.bg1,
+    backgroundColor: uiInverted.bg,
     borderRadius: radius["md"],
     boxShadow: shadow["sm"],
-    color: slateInverted.text1,
+    color: uiInverted.text1,
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
@@ -49,7 +49,7 @@ const tooltipStyle = stylex.create({
   },
   caret: {
     display: "flex",
-    fill: slateInverted.bg1,
+    fill: uiInverted.bg,
   },
   arrow: {
     transform: {

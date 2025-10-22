@@ -15,7 +15,7 @@ import {
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
-import { gray, primary } from "../theme/semantic-color.stylex";
+import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
@@ -130,10 +130,10 @@ export function Radio({ children, style, ...props }: RadioProps) {
             {...stylex.props(
               styles.radio,
               isDisabled
-                ? [gray.bgSolid, gray.border, styles.checked]
+                ? [ui.bgSolid, ui.border, styles.checked]
                 : isSelected
                   ? [primary.bgSolid, primary.borderInteractive, styles.checked]
-                  : [gray.borderInteractive],
+                  : [ui.borderInteractive],
             )}
           >
             <SelectionIndicator {...stylex.props(styles.selectionIndicator)} />

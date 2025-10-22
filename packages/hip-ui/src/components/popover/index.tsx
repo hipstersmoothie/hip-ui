@@ -10,13 +10,13 @@ import {
   Dialog,
 } from "react-aria-components";
 
-import { slate } from "../theme/colors.stylex";
+import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
   wrapper: {
-    filter: `drop-shadow(-0.5px -0.5px 0 ${slate.border2}) drop-shadow(0.5px -0.5px 0 ${slate.border2}) drop-shadow(0.5px 0.5px 0 ${slate.border2}) drop-shadow(-0.5px 0.5px 0 ${slate.border2}) drop-shadow(0px 1px 3px rgb(0 0 0 / 0.1)) drop-shadow(0px -1px 3px rgb(0 0 0 / 0.1))`,
+    filter: `drop-shadow(-0.5px -0.5px 0 ${uiColor.border2}) drop-shadow(0.5px -0.5px 0 ${uiColor.border2}) drop-shadow(0.5px 0.5px 0 ${uiColor.border2}) drop-shadow(-0.5px 0.5px 0 ${uiColor.border2}) drop-shadow(0px 1px 3px rgb(0 0 0 / 0.1)) drop-shadow(0px -1px 3px rgb(0 0 0 / 0.1))`,
   },
   content: {
     borderWidth: 0,
@@ -29,11 +29,11 @@ const styles = stylex.create({
   },
   caret: {},
   arrow: {
-    backgroundColor: slate.bg2,
+    backgroundColor: uiColor.bgSubtle,
     height: spacing["2"],
     transform: {
       [":is([data-placement=bottom] *)"]: "rotate(180deg)",
-      [":is([data-placement=top] *)"]: "translateY(-50%) rotate(-45deg)",
+      [":is([data-placement=top] *)"]: "tranuiColorY(-50%) rotate(-45deg)",
       [":is([data-placement=left] *)"]: "rotate(90deg)",
       [":is([data-placement=right] *)"]: "rotate(-90deg)",
     },

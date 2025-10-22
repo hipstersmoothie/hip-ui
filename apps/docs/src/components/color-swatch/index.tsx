@@ -5,14 +5,14 @@ import { use } from "react";
 import { ColorSwatch as AriaColorSwatch } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 
 const styles = stylex.create({
   swatch: {
-    borderColor: slate.border2,
+    borderColor: uiColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
     boxSizing: "border-box",

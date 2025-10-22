@@ -2,7 +2,6 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
-import { plum, red, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import {
@@ -11,6 +10,7 @@ import {
   lineHeight,
   typeramp,
 } from "../theme/typography.stylex";
+import { criticalColor, primaryColor, uiColor } from "./semantic-color.stylex";
 
 const styles = stylex.create({
   item: {
@@ -36,19 +36,20 @@ const styles = stylex.create({
     backgroundColor: {
       default: "transparent",
       [":is([data-react-aria-pressable=true][data-focused] *)"]:
-        slate.component2,
+        uiColor.component2,
       [":is([data-react-aria-pressable=true][data-selected=true] *)"]:
-        slate.component2,
+        uiColor.component2,
       [":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)"]:
-        slate.component2,
+        uiColor.component2,
       [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
-        slate.component3,
+        uiColor.component3,
     },
     borderRadius: radius["md"],
     boxSizing: "border-box",
     color: {
-      default: slate.text2,
-      [":is([data-react-aria-pressable=true][data-disabled] *)"]: slate.border3,
+      default: uiColor.text2,
+      [":is([data-react-aria-pressable=true][data-disabled] *)"]:
+        uiColor.border3,
     },
     display: "flex",
     flexGrow: 1,
@@ -72,7 +73,7 @@ const styles = stylex.create({
     fontSize: fontSize["base"],
   },
   check: {
-    color: plum.solid1,
+    color: primaryColor.solid1,
   },
   addon: {
     alignItems: "center",
@@ -90,7 +91,7 @@ const styles = stylex.create({
   },
   label: {
     color: {
-      [":is([data-variant=destructive] *)"]: red.text1,
+      [":is([data-variant=destructive] *)"]: criticalColor.text1,
     },
     display: "flex",
     flexDirection: "column",

@@ -12,12 +12,11 @@ import {
 } from "react-aria-components";
 
 import { IconButton } from "../icon-button";
-import { slate } from "../theme/colors.stylex";
+import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
-
 const styles = stylex.create({
   dialog: {
     paddingBottom: spacing["2"],
@@ -33,7 +32,7 @@ const styles = stylex.create({
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
 
-    borderBottomColor: slate.border1,
+    borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
     borderBottomWidth: 1,
   },
@@ -52,7 +51,7 @@ const styles = stylex.create({
     paddingRight: spacing["4"],
     paddingTop: spacing["4"],
 
-    borderTopColor: slate.border1,
+    borderTopColor: uiColor.border1,
     borderTopStyle: "solid",
     borderTopWidth: 1,
   },

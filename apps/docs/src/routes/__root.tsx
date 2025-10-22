@@ -2,7 +2,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import * as stylex from "@stylexjs/stylex";
-import { gray } from "@/components/theme/semantic-color.stylex";
+import { ui } from "@/components/theme/semantic-color.stylex";
 
 export const Route = createRootRoute({
   head: () => ({
@@ -43,7 +43,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body {...stylex.props(gray.bg, gray.text)}>
+      <body {...stylex.props(ui.bg, ui.text)}>
         {children}
         <TanStackDevtools
           config={{

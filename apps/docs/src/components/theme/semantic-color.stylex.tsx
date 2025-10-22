@@ -1,29 +1,67 @@
+/* eslint-disable @stylexjs/valid-styles */
+
 import * as stylex from "@stylexjs/stylex";
 
-import { slate, plum, red, yellow, green } from "./colors.stylex";
+import { green } from "./colors/green.stylex";
+import { red } from "./colors/red.stylex";
+import { slate, slateInverted } from "./colors/slate.stylex";
+import { teal } from "./colors/teal.stylex";
+import { yellow } from "./colors/yellow.stylex";
 import { fontFamily } from "./typography.stylex";
 
+export const uiColor = stylex.defineVars({
+  bg: slate.bg,
+  bgSubtle: slate.bgSubtle,
+  component1: slate.component1,
+  component2: slate.component2,
+  component3: slate.component3,
+  border1: slate.border1,
+  border2: slate.border2,
+  border3: slate.border3,
+  solid1: slate.solid1,
+  solid2: slate.solid2,
+  text1: slate.text1,
+  text2: slate.text2,
+  textContrast: "white",
+});
+
+export const uiInverted = stylex.defineVars({
+  bg: slateInverted.bg,
+  bgSubtle: slateInverted.bgSubtle,
+  component1: slateInverted.component1,
+  component2: slateInverted.component2,
+  component3: slateInverted.component3,
+  border1: slateInverted.border1,
+  border2: slateInverted.border2,
+  border3: slateInverted.border3,
+  solid1: slateInverted.solid1,
+  solid2: slateInverted.solid2,
+  text1: slateInverted.text1,
+  text2: slateInverted.text2,
+  textContrast: "white",
+});
+
 // eslint-disable-next-line @stylexjs/enforce-extension
-export const gray = stylex.create({
-  bg: { backgroundColor: slate.bg1 },
-  bgSubtle: { backgroundColor: slate.bg2 },
-  bgDim: { backgroundColor: slate.component1 },
-  bgSecondary: { backgroundColor: slate.component2 },
-  bgActive: { backgroundColor: slate.component3 },
+export const ui = stylex.create({
+  bg: { backgroundColor: uiColor.bg },
+  bgSubtle: { backgroundColor: uiColor.bgSubtle },
+  bgDim: { backgroundColor: uiColor.component1 },
+  bgSecondary: { backgroundColor: uiColor.component2 },
+  bgActive: { backgroundColor: uiColor.component3 },
   borderDim: {
-    borderColor: slate.border1,
+    borderColor: uiColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   border: {
-    borderColor: slate.border2,
+    borderColor: uiColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: slate.border2,
-      ":hover": slate.border3,
+      default: uiColor.border2,
+      ":hover": uiColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -32,18 +70,18 @@ export const gray = stylex.create({
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-  bgSolid: { backgroundColor: slate.solid1 },
-  bgSolidDark: { backgroundColor: slate.solid2 },
-  textDim: { color: slate.text1, fontFamily: fontFamily["sans"] },
-  text: { color: slate.text2, fontFamily: fontFamily["sans"] },
-  textContrast: { color: "white" },
+  bgSolid: { backgroundColor: uiColor.solid1 },
+  bgSolidDark: { backgroundColor: uiColor.solid2 },
+  textDim: { color: uiColor.text1, fontFamily: fontFamily["sans"] },
+  text: { color: uiColor.text2, fontFamily: fontFamily["sans"] },
+  textContrast: { color: uiColor.textContrast },
 
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": slate.component3,
-      ":disabled": slate.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": uiColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -51,10 +89,10 @@ export const gray = stylex.create({
   },
   bgUi: {
     backgroundColor: {
-      default: slate.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": slate.component3,
-      ":disabled": slate.component1,
+      default: uiColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": uiColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -62,38 +100,55 @@ export const gray = stylex.create({
   },
   bgAction: {
     backgroundColor: {
-      default: slate.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)": slate.component3,
-      ":disabled": slate.component1,
+      default: uiColor.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component3,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": uiColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
+});
+
+// eslint-disable-next-line @stylexjs/enforce-extension
+export const primaryColor = stylex.defineVars({
+  bg: teal.bg,
+  bgSubtle: teal.bgSubtle,
+  component1: teal.component1,
+  component2: teal.component2,
+  component3: teal.component3,
+  border1: teal.border1,
+  border2: teal.border2,
+  border3: teal.border3,
+  solid1: teal.solid1,
+  solid2: teal.solid2,
+  text1: teal.text1,
+  text2: teal.text2,
+  textContrast: "white",
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const primary = stylex.create({
-  bg: { backgroundColor: plum.bg1 },
-  bgSubtle: { backgroundColor: plum.bg2 },
-  bgDim: { backgroundColor: plum.component1 },
-  bgSecondary: { backgroundColor: plum.component2 },
-  bgActive: { backgroundColor: plum.component3 },
+  bg: { backgroundColor: primaryColor.bg },
+  bgSubtle: { backgroundColor: primaryColor.bgSubtle },
+  bgDim: { backgroundColor: primaryColor.component1 },
+  bgSecondary: { backgroundColor: primaryColor.component2 },
+  bgActive: { backgroundColor: primaryColor.component3 },
   borderDim: {
-    borderColor: plum.border1,
+    borderColor: primaryColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   border: {
-    borderColor: plum.border2,
+    borderColor: primaryColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: plum.border2,
-      ":hover": plum.border3,
+      default: primaryColor.border2,
+      ":hover": primaryColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -102,18 +157,20 @@ export const primary = stylex.create({
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-  bgSolid: { backgroundColor: plum.solid1 },
-  bgSolidDark: { backgroundColor: plum.solid2 },
-  textDim: { color: plum.text1, fontFamily: fontFamily["sans"] },
-  text: { color: plum.text2, fontFamily: fontFamily["sans"] },
-  textContrast: { color: "white" },
+  bgSolid: { backgroundColor: primaryColor.solid1 },
+  bgSolidDark: { backgroundColor: primaryColor.solid2 },
+  textDim: { color: primaryColor.text1, fontFamily: fontFamily["sans"] },
+  text: { color: primaryColor.text2, fontFamily: fontFamily["sans"] },
+  textContrast: { color: primaryColor.textContrast },
 
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": plum.component3,
-      ":disabled": plum.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        primaryColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        primaryColor.component3,
+      ":disabled": primaryColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -121,10 +178,11 @@ export const primary = stylex.create({
   },
   bgUi: {
     backgroundColor: {
-      default: plum.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component2,
-      ":is(:active,[data-pressed=true])": plum.component3,
-      ":disabled": plum.component1,
+      default: primaryColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        primaryColor.component2,
+      ":is(:active,[data-pressed=true])": primaryColor.component3,
+      ":disabled": primaryColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -132,10 +190,12 @@ export const primary = stylex.create({
   },
   bgAction: {
     backgroundColor: {
-      default: plum.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)": plum.component3,
-      ":disabled": plum.component1,
+      default: primaryColor.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        primaryColor.component3,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        primaryColor.component3,
+      ":disabled": primaryColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -144,25 +204,42 @@ export const primary = stylex.create({
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
+export const criticalColor = stylex.defineVars({
+  bg: red.bg,
+  bgSubtle: red.bgSubtle,
+  component1: red.component1,
+  component2: red.component2,
+  component3: red.component3,
+  border1: red.border1,
+  border2: red.border2,
+  border3: red.border3,
+  solid1: red.solid1,
+  solid2: red.solid2,
+  text1: red.text1,
+  text2: red.text2,
+  textContrast: "white",
+});
+
+// eslint-disable-next-line @stylexjs/enforce-extension
 export const critical = stylex.create({
-  bg: { backgroundColor: red.bg1 },
-  bgSubtle: { backgroundColor: red.bg2 },
-  bgDim: { backgroundColor: red.component1 },
-  bgSecondary: { backgroundColor: red.component2 },
-  bgActive: { backgroundColor: red.component3 },
+  bg: { backgroundColor: criticalColor.bg },
+  bgSubtle: { backgroundColor: criticalColor.bgSubtle },
+  bgDim: { backgroundColor: criticalColor.component1 },
+  bgSecondary: { backgroundColor: criticalColor.component2 },
+  bgActive: { backgroundColor: criticalColor.component3 },
   borderDim: {
-    borderColor: red.border1,
+    borderColor: criticalColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   border: {
-    borderColor: red.border2,
+    borderColor: criticalColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: red.border2,
+      default: criticalColor.border2,
       ":hover": red.border3,
     },
     borderStyle: "solid",
@@ -171,18 +248,20 @@ export const critical = stylex.create({
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-  bgSolid: { backgroundColor: red.solid1 },
-  bgSolidDark: { backgroundColor: red.solid2 },
-  textDim: { color: red.text1, fontFamily: fontFamily["sans"] },
-  text: { color: red.text2, fontFamily: fontFamily["sans"] },
+  bgSolid: { backgroundColor: criticalColor.solid1 },
+  bgSolidDark: { backgroundColor: criticalColor.solid2 },
+  textDim: { color: criticalColor.text1, fontFamily: fontFamily["sans"] },
+  text: { color: criticalColor.text2, fontFamily: fontFamily["sans"] },
   textContrast: { color: "white" },
 
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": red.component3,
-      ":disabled": red.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        criticalColor.component3,
+      ":disabled": criticalColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -190,10 +269,12 @@ export const critical = stylex.create({
   },
   bgUi: {
     backgroundColor: {
-      default: red.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": red.component3,
-      ":disabled": red.component1,
+      default: criticalColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        criticalColor.component3,
+      ":disabled": criticalColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -201,10 +282,12 @@ export const critical = stylex.create({
   },
   bgAction: {
     backgroundColor: {
-      default: red.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)": red.component3,
-      ":disabled": red.component1,
+      default: criticalColor.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component3,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        criticalColor.component3,
+      ":disabled": criticalColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -212,51 +295,70 @@ export const critical = stylex.create({
   },
   bgSolidAction: {
     backgroundColor: {
-      default: red.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.solid2,
-      ":disabled": red.component1,
+      default: criticalColor.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": criticalColor.solid2,
+      ":disabled": criticalColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
+});
+
+// eslint-disable-next-line @stylexjs/enforce-extension
+export const warningColor = stylex.defineVars({
+  bg: yellow.bg,
+  bgSubtle: yellow.bgSubtle,
+  component1: yellow.component1,
+  component2: yellow.component2,
+  component3: yellow.component3,
+  border1: yellow.border1,
+  border2: yellow.border2,
+  border3: yellow.border3,
+  solid1: yellow.solid1,
+  solid2: yellow.solid2,
+  text1: yellow.text1,
+  text2: yellow.text2,
+  textContrast: "black",
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const warning = stylex.create({
-  bg: { backgroundColor: yellow.bg1 },
-  bgSubtle: { backgroundColor: yellow.bg2 },
-  bgDim: { backgroundColor: yellow.component1 },
-  bgSecondary: { backgroundColor: yellow.component2 },
-  bgActive: { backgroundColor: yellow.component3 },
+  bg: { backgroundColor: warningColor.bg },
+  bgSubtle: { backgroundColor: warningColor.bgSubtle },
+  bgDim: { backgroundColor: warningColor.component1 },
+  bgSecondary: { backgroundColor: warningColor.component2 },
+  bgActive: { backgroundColor: warningColor.component3 },
   borderDim: {
-    borderColor: yellow.border1,
+    borderColor: warningColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   border: {
-    borderColor: yellow.border2,
+    borderColor: warningColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: yellow.border2,
-      ":hover": yellow.border3,
+      default: warningColor.border2,
+      ":hover": warningColor.border3,
     },
   },
-  bgSolid: { backgroundColor: yellow.solid1 },
-  bgSolidDark: { backgroundColor: yellow.solid2 },
-  textDim: { color: yellow.text1, fontFamily: fontFamily["sans"] },
-  text: { color: yellow.text2, fontFamily: fontFamily["sans"] },
-  textContrast: { color: "black" },
+  bgSolid: { backgroundColor: warningColor.solid1 },
+  bgSolidDark: { backgroundColor: warningColor.solid2 },
+  textDim: { color: warningColor.text1, fontFamily: fontFamily["sans"] },
+  text: { color: warningColor.text2, fontFamily: fontFamily["sans"] },
+  textContrast: { color: warningColor.textContrast },
 
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": yellow.component3,
-      ":disabled": yellow.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        warningColor.component3,
+      ":disabled": warningColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -264,10 +366,11 @@ export const warning = stylex.create({
   },
   bgUi: {
     backgroundColor: {
-      default: yellow.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
+      default: warningColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component2,
       ":is(:active,[data-pressed=true]):not(:disabled)": yellow.component3,
-      ":disabled": yellow.component1,
+      ":disabled": warningColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -275,10 +378,12 @@ export const warning = stylex.create({
   },
   bgAction: {
     backgroundColor: {
-      default: yellow.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)": yellow.component3,
-      ":disabled": yellow.component1,
+      default: warningColor.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component3,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        warningColor.component3,
+      ":disabled": warningColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -286,9 +391,9 @@ export const warning = stylex.create({
   },
   bgSolidAction: {
     backgroundColor: {
-      default: yellow.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.solid2,
-      ":disabled": yellow.component1,
+      default: warningColor.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": warningColor.solid2,
+      ":disabled": warningColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -297,25 +402,42 @@ export const warning = stylex.create({
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
+export const successColor = stylex.defineVars({
+  bg: green.bg,
+  bgSubtle: green.bgSubtle,
+  component1: green.component1,
+  component2: green.component2,
+  component3: green.component3,
+  border1: green.border1,
+  border2: green.border2,
+  border3: green.border3,
+  solid1: green.solid1,
+  solid2: green.solid2,
+  text1: green.text1,
+  text2: green.text2,
+  textContrast: "white",
+});
+
+// eslint-disable-next-line @stylexjs/enforce-extension
 export const success = stylex.create({
-  bg: { backgroundColor: green.bg1 },
-  bgSubtle: { backgroundColor: green.bg2 },
-  bgDim: { backgroundColor: green.component1 },
-  bgSecondary: { backgroundColor: green.component2 },
-  bgActive: { backgroundColor: green.component3 },
+  bg: { backgroundColor: successColor.bg },
+  bgSubtle: { backgroundColor: successColor.bgSubtle },
+  bgDim: { backgroundColor: successColor.component1 },
+  bgSecondary: { backgroundColor: successColor.component2 },
+  bgActive: { backgroundColor: successColor.component3 },
   borderDim: {
-    borderColor: green.border1,
+    borderColor: successColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   border: {
-    borderColor: green.border2,
+    borderColor: successColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: green.border2,
+      default: successColor.border2,
       ":hover": green.border3,
     },
     borderStyle: "solid",
@@ -324,18 +446,20 @@ export const success = stylex.create({
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-  bgSolid: { backgroundColor: green.solid1 },
-  bgSolidDark: { backgroundColor: green.solid2 },
-  textDim: { color: green.text1, fontFamily: fontFamily["sans"] },
-  text: { color: green.text2, fontFamily: fontFamily["sans"] },
-  textContrast: { color: "white" },
+  bgSolid: { backgroundColor: successColor.solid1 },
+  bgSolidDark: { backgroundColor: successColor.solid2 },
+  textDim: { color: successColor.text1, fontFamily: fontFamily["sans"] },
+  text: { color: successColor.text2, fontFamily: fontFamily["sans"] },
+  textContrast: { color: successColor.textContrast },
 
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": green.component3,
-      ":disabled": green.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        successColor.component3,
+      ":disabled": successColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -343,10 +467,12 @@ export const success = stylex.create({
   },
   bgUi: {
     backgroundColor: {
-      default: green.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": green.component3,
-      ":disabled": green.component1,
+      default: successColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        successColor.component3,
+      ":disabled": successColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -354,10 +480,12 @@ export const success = stylex.create({
   },
   bgAction: {
     backgroundColor: {
-      default: green.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)": green.component3,
-      ":disabled": green.component1,
+      default: successColor.component2,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component3,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        successColor.component3,
+      ":disabled": successColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -365,12 +493,14 @@ export const success = stylex.create({
   },
   bgSolidAction: {
     backgroundColor: {
-      default: green.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.solid2,
-      ":disabled": green.component1,
+      default: successColor.solid1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": successColor.solid2,
+      ":disabled": successColor.component1,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
 });
+
+/* eslint-enable @stylexjs/valid-styles */

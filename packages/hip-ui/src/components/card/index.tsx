@@ -4,7 +4,7 @@ import { use } from "react";
 import { AspectRatio, AspectRatioImage } from "../aspect-ratio";
 import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
@@ -99,9 +99,9 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
       data-card-size={size}
       {...stylex.props(
         styles.card,
-        gray.bgSubtle,
-        gray.border,
-        gray.text,
+        ui.bgSubtle,
+        ui.border,
+        ui.text,
         style,
         styles[`${size}Card`],
       )}
@@ -142,7 +142,7 @@ export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
     <p
       {...props}
       data-card-header-description
-      {...stylex.props(styles.cardDescription, gray.textDim, style)}
+      {...stylex.props(styles.cardDescription, ui.textDim, style)}
     />
   );
 };

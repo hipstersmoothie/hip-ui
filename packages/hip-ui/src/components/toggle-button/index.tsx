@@ -6,7 +6,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { plum, slate } from "../theme/colors.stylex";
+import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { ButtonVariant, Size } from "../theme/types";
 import { useButtonStyles } from "../theme/useButtonStyles";
@@ -14,53 +14,53 @@ import { useButtonStyles } from "../theme/useButtonStyles";
 const styles = stylex.create({
   primarySelected: {
     backgroundColor: {
-      default: plum.solid1,
-      ":hover": plum.solid2,
-      ":active": plum.text1,
+      default: primaryColor.solid1,
+      ":hover": primaryColor.solid2,
+      ":active": primaryColor.text1,
     },
     color: "light-dark(white, black)",
   },
   secondarySelected: {
     backgroundColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
     borderColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
   },
   tertiarySelected: {
     backgroundColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
     borderColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
   },
   outlineSelected: {
     backgroundColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
     borderColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
   },
   "critical-outlineSelected": {
     backgroundColor: {
-      default: slate.border1,
-      ":hover": slate.border2,
-      ":active": slate.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
+      ":active": uiColor.border3,
     },
   },
   sm: {

@@ -12,9 +12,8 @@ import {
 
 import { SizeContext } from "../context";
 import { Description, Label } from "../label";
-import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
@@ -26,7 +25,7 @@ const styles = stylex.create({
     gap: spacing["2"],
   },
   addon: {
-    color: gray.textDim,
+    color: ui.textDim,
     flexShrink: 0,
     height: "100%",
     minWidth: spacing["8"],
@@ -55,9 +54,9 @@ const styles = stylex.create({
     display: "flex",
 
     borderColor: {
-      default: slate.border2,
-      ":hover": slate.border3,
-      ":focus": slate.solid1,
+      default: uiColor.border2,
+      ":hover": uiColor.border3,
+      ":focus": uiColor.solid1,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -67,7 +66,7 @@ const styles = stylex.create({
     borderWidth: 0,
     boxSizing: "border-box",
     color: {
-      "::placeholder": slate.text1,
+      "::placeholder": uiColor.text1,
     },
     flexGrow: 1,
     fontFamily: fontFamily["sans"],
@@ -101,7 +100,7 @@ const styles = stylex.create({
     paddingTop: spacing["3"],
   },
   description: {
-    color: gray.textDim,
+    color: ui.textDim,
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
   },
@@ -148,7 +147,7 @@ export function TextArea({
       */}
       {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
       <div
-        {...stylex.props(styles.inputWrapper, gray.bgUi, gray.text)}
+        {...stylex.props(styles.inputWrapper, ui.bgUi, ui.text)}
         onClick={() => textAreaRef.current?.focus()}
       >
         {prefix != null && <div {...stylex.props(styles.addon)}>{prefix}</div>}

@@ -6,9 +6,8 @@ import { use } from "react";
 import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
 import { Size, ButtonVariant } from "../theme/types";
-import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
-import { critical, gray, primary } from "./semantic-color.stylex";
+import { critical, ui, primary, uiColor } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
 import {
@@ -92,16 +91,16 @@ const styles = stylex.create({
   },
   secondary: {
     borderColor: {
-      default: slate.component1,
-      ":hover": slate.component2,
-      ":active": slate.component3,
+      default: uiColor.component1,
+      ":hover": uiColor.component2,
+      ":active": uiColor.component3,
     },
   },
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":hover": slate.component2,
-      ":active": slate.component3,
+      ":hover": uiColor.component2,
+      ":active": uiColor.component3,
     },
   },
 
@@ -113,7 +112,7 @@ const styles = stylex.create({
     borderTopRightRadius: { ":not(:last-child)": 0 },
   },
   secondaryGroupedHorizontal: {
-    borderRightColor: { ":not(:last-child)": slate.border2 },
+    borderRightColor: { ":not(:last-child)": uiColor.border2 },
   },
   groupVertical: {
     borderBottomLeftRadius: { ":not(:last-child)": 0 },
@@ -123,7 +122,7 @@ const styles = stylex.create({
     borderTopWidth: { ":not(:first-child)": 0 },
   },
   secondaryGroupedVertical: {
-    borderBottomColor: { ":not(:last-child)": slate.border2 },
+    borderBottomColor: { ":not(:last-child)": uiColor.border2 },
   },
   separate: {
     flexBasis:
@@ -158,9 +157,9 @@ export const useButtonStyles = ({
       styles.shadow,
     ],
     variant === "secondary" && [
-      gray.bgUi,
+      ui.bgUi,
       styles.secondary,
-      gray.text,
+      ui.text,
       group?.orientation === "horizontal" &&
         group.variant === "grouped" &&
         styles.secondaryGroupedHorizontal,
@@ -169,9 +168,9 @@ export const useButtonStyles = ({
         styles.secondaryGroupedVertical,
     ],
     variant === "tertiary" && [
-      gray.bgGhost,
+      ui.bgGhost,
       styles.tertiary,
-      gray.text,
+      ui.text,
       group?.orientation === "horizontal" &&
         group.variant === "grouped" &&
         styles.secondaryGroupedHorizontal,
@@ -180,9 +179,9 @@ export const useButtonStyles = ({
         styles.secondaryGroupedVertical,
     ],
     variant === "outline" && [
-      gray.borderInteractive,
-      gray.bgGhost,
-      gray.text,
+      ui.borderInteractive,
+      ui.bgGhost,
+      ui.text,
       styles.shadow,
     ],
     variant === "critical" && [

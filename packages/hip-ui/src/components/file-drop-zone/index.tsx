@@ -9,8 +9,8 @@ import {
   DropZoneProps,
 } from "react-aria-components";
 
-import { plum, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Text } from "../typography/text";
 
@@ -23,12 +23,12 @@ async function getFiles(items: DropItem[]): Promise<File[]> {
 const styles = stylex.create({
   dropZone: {
     backgroundColor: {
-      default: slate.bg2,
-      ":is([data-drop-target])": plum.component1,
+      default: uiColor.bgSubtle,
+      ":is([data-drop-target])": primaryColor.component1,
     },
     borderColor: {
-      default: slate.border2,
-      ":is([data-drop-target])": plum.solid1,
+      default: uiColor.border2,
+      ":is([data-drop-target])": primaryColor.solid1,
     },
     borderRadius: radius.md,
     borderStyle: {

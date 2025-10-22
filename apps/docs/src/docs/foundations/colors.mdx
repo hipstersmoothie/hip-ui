@@ -1,0 +1,119 @@
+---
+title: Colors
+description: An accessible semantic color palette.
+---
+
+import { GrayColors, UiColors } from "../../examples/foundations/color";
+
+## Apprach
+
+We use a semantic color palette approach to define our colors.
+Each color has an intended use case and is named accordingly.
+
+Read more about the approach in the [Radix Color Docs](https://www.radix-ui.com/colors/docs/palette-composition/understanding-the-scale).
+
+## Base Colors
+
+The UI is built on top of the Radix Color palette.
+There are two type of colors you'll work with:
+
+### Gray Colors
+
+The gray color is used to style the background and borders of the UI.
+Each one of these colors matches the tone of a particular UI color.
+Read more about [componsing a color palette](https://www.radix-ui.com/colors/docs/palette-composition/composing-a-palette).
+
+<GrayColors />
+
+### UI Colors
+
+These colors are used to style the "primary" state of the UI.
+This typically matches your brand color.
+
+<UiColors />
+
+### Scale
+
+Each color is a scale of 12 colors.
+Every color has a specific use:
+
+- `bg` - App background color
+- `bgSubtle` - Subtle background color
+- `component1` - UI Element background
+- `component2` - Hovered UI Element background
+- `component3` - Active/Selected UI Element background
+- `border1` - Subtle border color
+- `border2` - UI Element border color and focus rings
+- `border3` - Solid border color
+- `solid1` - Solid color
+- `solid2` - Hovered solid color
+- `text1` - Low contrast text color
+- `text2` - High contrast text color
+
+## Semantic Colors
+
+For the most part you should not work with the base colors directly.
+Instead, use the semantic colors that are defined in the `semantic-color.stylex.tsx` file.
+
+Each of these colors represent speficic use cases.
+You can edit the semantic colors to any of the included base colors to esaily update the base theme.
+
+There are four semantic colors:
+
+- `ui` - The color of the application UI.
+- `primary` - The primary color used for the main brand.
+- `success` - The color of the successful actions.
+- `warning` - The color of the warning actions.
+- `critical` - The color of the error actions.
+
+### Usage
+
+Use the semantic colors to style your components.
+
+```tsx
+import { uiColor } from "@/components/theme/semantic-color.stylex";
+import * as stylex from "@stylexjs/stylex";
+
+const styles = stylex.create({
+  container: {
+    backgroundColor: uiColor.bg,
+    color: uiColor.text1,
+  },
+});
+```
+
+## Semantic Color Classes
+
+For convenience, we also provide semantic color classes that you can use to style your components.
+
+```tsx
+import { ui } from "@/components/theme/semantic-color.stylex";
+import { Flex } from "@/components/flex";
+
+export function MyComponent() {
+  return <Flex style={[ui.bg, ui.text1]}>My Component</Flex>;
+}
+```
+
+### List of classes
+
+Each color includes 2 sets of classes.
+
+#### Utility
+
+For each step in the scale, we include a utility class that makes sense for the color.
+
+For example:
+
+- `ui.bg` => sets the background color to `uiColor.bg`
+- `ui.borderDim` => sets the border color to `uiColor.border1`
+
+#### Pattern
+
+We also include some classes that compose multiple steps in the scale for hover and active states.
+
+- `borderInteractive`
+- `bgGhost` 
+- `bgUi`
+- `bgAction`
+- `bgSolidAction`

@@ -14,7 +14,7 @@ import {
 
 import { SizeContext } from "../context";
 import { Separator } from "../separator";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
@@ -153,7 +153,7 @@ export function ListBoxSectionHeader({
       {...stylex.props(
         typeramp.sublabel,
         styles.sectionLabel,
-        gray.textDim,
+        ui.textDim,
         styles[`${size}SectionLabel`],
         style,
       )}

@@ -4,8 +4,8 @@ import {
   Switch as AriaSwitch,
 } from "react-aria-components";
 
-import { plum, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { typeramp } from "../theme/typography.stylex";
@@ -18,8 +18,8 @@ const styles = stylex.create({
   },
   indicator: {
     backgroundColor: {
-      default: slate.component3,
-      ":is([data-selected=true] *)": plum.solid1,
+      default: uiColor.component3,
+      ":is([data-selected=true] *)": primaryColor.solid1,
     },
     borderRadius: radius.full,
     height: spacing["6"],
@@ -34,7 +34,7 @@ const styles = stylex.create({
     width: spacing["10"],
   },
   thumb: {
-    backgroundColor: slate.bg2,
+    backgroundColor: uiColor.bgSubtle,
     borderRadius: radius.full,
     boxShadow: shadow.lg,
     content: "''",

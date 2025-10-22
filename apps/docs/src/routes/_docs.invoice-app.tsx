@@ -40,7 +40,7 @@ import { spacing } from "../components/theme/spacing.stylex";
 import { Badge } from "@/components/badge";
 import { Checkbox } from "@/components/checkbox";
 import { green, plum } from "../components/theme/colors.stylex";
-import { gray, primary } from "@/components/theme/semantic-color.stylex";
+import { ui, primary } from "@/components/theme/semantic-color.stylex";
 import { radius } from "../components/theme/radius.stylex";
 
 const styles = stylex.create({
@@ -865,7 +865,7 @@ function YourCompanyCard() {
         <div
           {...stylex.props(
             styles.creditCardWrapper,
-            gray.bgDim,
+            ui.bgDim,
             primary.textContrast,
           )}
         >

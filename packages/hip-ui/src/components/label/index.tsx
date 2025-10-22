@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { Size } from "../theme/types";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 
@@ -29,7 +29,7 @@ const styles = stylex.create({
     lineHeight: lineHeight["base"],
   },
   description: {
-    color: gray.textDim,
+    color: ui.textDim,
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
   },
@@ -74,7 +74,7 @@ export function Description({
       slot="description"
       {...stylex.props(
         styles.description,
-        gray.textDim,
+        ui.textDim,
         size === "sm" && styles.descriptionSm,
         style,
       )}

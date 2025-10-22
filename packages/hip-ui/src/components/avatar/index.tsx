@@ -2,8 +2,8 @@ import * as stylex from "@stylexjs/stylex";
 import { use, useLayoutEffect, useState } from "react";
 
 import { SizeContext } from "../context";
-import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size } from "../theme/types";
 import {
@@ -16,8 +16,8 @@ import {
 const styles = stylex.create({
   wrapper: {
     alignItems: "center",
-    backgroundColor: slate.component1,
-    borderColor: slate.border1,
+    backgroundColor: uiColor.component1,
+    borderColor: uiColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
     display: "flex",
@@ -51,7 +51,7 @@ const styles = stylex.create({
     width: "100%",
   },
   fallback: {
-    color: slate.text1,
+    color: uiColor.text1,
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["medium"],
     lineHeight: lineHeight["none"],

@@ -13,8 +13,7 @@ import {
 } from "react-aria-components";
 
 import { Description, Label } from "../label";
-import { slate } from "../theme/colors.stylex";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { InputVariant, Size } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
@@ -45,8 +44,8 @@ const styles = stylex.create({
     },
 
     color: {
-      default: slate.text2,
-      ":disabled": slate.text1,
+      default: uiColor.text2,
+      ":disabled": uiColor.text1,
     },
   },
 });
@@ -82,8 +81,8 @@ export function NumberField({
   const inputStyles = useInputStyles({ size, variant });
   const buttonStyles = stylex.props(
     styles.button,
-    gray.borderInteractive,
-    gray.bgAction,
+    ui.borderInteractive,
+    ui.bgAction,
   );
 
   return (

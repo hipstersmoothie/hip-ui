@@ -9,8 +9,8 @@ import {
   DropZoneProps,
 } from "react-aria-components";
 
-import { plum, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
+import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Text } from "../typography/text";
 
@@ -23,12 +23,12 @@ async function getFiles(items: DropItem[]): Promise<File[]> {
 const styles = stylex.create({
   dropZone: {
     backgroundColor: {
-      default: slate.bg2,
-      ":is([data-drop-target])": plum.component1,
+      default: uiColor.bgSubtle,
+      ":is([data-drop-target])": primaryColor.component1,
     },
     borderColor: {
-      default: slate.border2,
-      ":is([data-drop-target])": plum.solid1,
+      default: uiColor.border2,
+      ":is([data-drop-target])": primaryColor.solid1,
     },
     borderRadius: radius.md,
     borderStyle: {
@@ -51,7 +51,7 @@ const styles = stylex.create({
 
 interface FileDropZoneProps
   extends Omit<AriaFileTriggerProps, "className" | "style">,
-    Pick<DropZoneProps, "getDropOperation" | "isDisabled"> {
+    Pick<DropZoneProps, "isDisabled"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   onAddFiles?: (files: File[]) => void;
 }
@@ -60,14 +60,13 @@ export const FileDropZone = ({
   children,
   style,
   onAddFiles,
-  getDropOperation,
   isDisabled,
+  acceptedFileTypes,
   ...props
 }: FileDropZoneProps) => {
   return (
     <DropZone
       {...stylex.props(styles.dropZone, style)}
-      getDropOperation={getDropOperation}
       isDisabled={isDisabled}
       onDrop={(e) => {
         void getFiles(e.items).then((files) => {
@@ -75,8 +74,8 @@ export const FileDropZone = ({
         });
       }}
       getDropOperation={(types) => {
-        console.log(types);
-        return types.has("image/png") || types.has("image/jpeg")
+        if (!acceptedFileTypes) return "copy";
+        return acceptedFileTypes.some((type) => types.has(type))
           ? "copy"
           : "cancel";
       }}
@@ -98,6 +97,7 @@ export const FileDropZone = ({
         return (
           <AriaFileTrigger
             {...props}
+            acceptedFileTypes={acceptedFileTypes}
             onSelect={(files) => {
               // eslint-disable-next-line unicorn/prefer-spread
               onAddFiles?.(Array.from(files ?? []));

@@ -5,7 +5,6 @@ export const textAreaConfig: ComponentConfig = {
   filepath: "./index.tsx",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
-    "../theme/colors.stylex.tsx",
     "../theme/radius.stylex.tsx",
     "../theme/semantic-color.stylex.tsx",
     "../theme/typography.stylex.tsx",

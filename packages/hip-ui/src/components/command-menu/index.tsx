@@ -66,7 +66,7 @@ export function CommandMenu<T extends object>({
   const [isOpen, setIsOpen] = useControlledState(
     isOpenProp,
     defaultOpen ?? false,
-    onOpenChange
+    onOpenChange,
   );
   const onClose = useEffectEvent(() => {
     setIsOpen(false);

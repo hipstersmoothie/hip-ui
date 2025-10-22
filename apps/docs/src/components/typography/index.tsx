@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 import { LinkContext } from "../link/link-context";
 import { radius } from "../theme/radius.stylex";
-import { gray } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import {
   fontFamily,
@@ -14,10 +14,10 @@ import {
 
 const styles = stylex.create({
   blockquote: {
-    borderLeftColor: gray.borderDim,
+    borderLeftColor: ui.borderDim,
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    color: gray.textDim,
+    color: ui.textDim,
     fontFamily: fontFamily["serif"],
     marginBottom: 0,
     marginLeft: spacing["2"],
@@ -28,7 +28,7 @@ const styles = stylex.create({
   unorderedList: {
     display: "flex",
     flexDirection: "column",
-    gap: spacing["1"],
+    gap: spacing["3"],
     listStyleType: "disc",
     margin: 0,
     paddingLeft: spacing["8"],
@@ -36,7 +36,7 @@ const styles = stylex.create({
   orderedList: {
     display: "flex",
     flexDirection: "column",
-    gap: spacing["1"],
+    gap: spacing["3"],
     listStyleType: "decimal",
     margin: 0,
     paddingLeft: spacing["8"],
@@ -116,7 +116,7 @@ export interface BodyProps
 export const Body = ({ style, variant = "default", ...props }: BodyProps) => {
   const contextValue = useMemo(
     () => ({
-      style: [variant === "secondary" && gray.textDim, styles.underline],
+      style: [variant === "secondary" && ui.textDim, styles.underline],
     }),
     [variant],
   );
@@ -141,7 +141,7 @@ export const SmallBody = ({
 }: SmallBodyProps) => {
   const contextValue = useMemo(
     () => ({
-      style: [variant === "secondary" && gray.textDim, styles.underline],
+      style: [variant === "secondary" && ui.textDim, styles.underline],
     }),
     [variant],
   );
@@ -151,7 +151,7 @@ export const SmallBody = ({
       <p
         {...stylex.props(
           typeramp.smallBody,
-          variant === "secondary" && gray.textDim,
+          variant === "secondary" && ui.textDim,
           style,
         )}
         {...props}
@@ -182,7 +182,7 @@ export const SubLabel = ({
 }: SubLabelProps) => {
   const contextValue = useMemo(
     () => ({
-      style: [variant === "secondary" && gray.textDim, styles.underline],
+      style: [variant === "secondary" && ui.textDim, styles.underline],
     }),
     [variant],
   );
@@ -192,7 +192,7 @@ export const SubLabel = ({
       <p
         {...stylex.props(
           typeramp.sublabel,
-          variant === "secondary" && gray.textDim,
+          variant === "secondary" && ui.textDim,
           style,
         )}
         {...props}
@@ -233,8 +233,12 @@ export interface ListItemProps
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
-export const ListItem = ({ style, ...props }: ListItemProps) => {
-  return <li {...stylex.props(styles.listItem, style)} {...props} />;
+export const ListItem = ({ style, children, ...props }: ListItemProps) => {
+  return (
+    <li {...stylex.props(styles.listItem, style)} {...props}>
+      {children}
+    </li>
+  );
 };
 
 export interface InlineCodeProps
@@ -245,7 +249,7 @@ export interface InlineCodeProps
 export const InlineCode = ({ style, ...props }: InlineCodeProps) => {
   return (
     <code
-      {...stylex.props(styles.inlineCode, gray.bgSecondary, style)}
+      {...stylex.props(styles.inlineCode, ui.bgSecondary, style)}
       {...props}
     />
   );

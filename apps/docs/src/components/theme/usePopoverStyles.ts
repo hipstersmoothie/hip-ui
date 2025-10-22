@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { radius } from "./radius.stylex";
-import { gray } from "./semantic-color.stylex";
+import { ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
 
@@ -20,5 +20,5 @@ const styles = stylex.create({
 
 // eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
 export function usePopoverStyles() {
-  return [styles.popover, gray.bgSubtle, gray.text, gray.border];
+  return [styles.popover, ui.bgSubtle, ui.text, ui.border];
 }

@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { red, slate } from "../theme/colors.stylex";
+import { criticalColor, uiColor } from "../theme/semantic-color.stylex";
 import { ThemeKeys } from "../theme/types";
 import {
   fontFamily,
@@ -61,9 +61,9 @@ const styles = stylex.create({
   "tracking-wider": { letterSpacing: tracking["wider"] },
   "tracking-widest": { letterSpacing: tracking["widest"] },
 
-  "variant-primary": { color: slate.text2 },
-  "variant-secondary": { color: slate.text1 },
-  "variant-destructive": { color: red.text2 },
+  "variant-primary": { color: uiColor.text2 },
+  "variant-secondary": { color: uiColor.text1 },
+  "variant-destructive": { color: criticalColor.text2 },
 
   strikethrough: { textDecoration: "line-through" },
 });

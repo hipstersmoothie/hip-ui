@@ -9,13 +9,15 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as DocsRouteImport } from './routes/_docs'
+import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DocsSplatRouteImport } from './routes/docs.$'
 import { Route as DocsInvoiceAppRouteImport } from './routes/_docs.invoice-app'
 import { Route as DocsEcommerceAppRouteImport } from './routes/_docs.ecommerce-app'
 
 const DocsRoute = DocsRouteImport.update({
-  id: '/_docs',
+  id: '/docs',
+  path: '/docs',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -23,58 +25,71 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DocsInvoiceAppRoute = DocsInvoiceAppRouteImport.update({
-  id: '/invoice-app',
-  path: '/invoice-app',
+const DocsSplatRoute = DocsSplatRouteImport.update({
+  id: '/$',
+  path: '/$',
   getParentRoute: () => DocsRoute,
 } as any)
+const DocsInvoiceAppRoute = DocsInvoiceAppRouteImport.update({
+  id: '/_docs/invoice-app',
+  path: '/invoice-app',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DocsEcommerceAppRoute = DocsEcommerceAppRouteImport.update({
-  id: '/ecommerce-app',
+  id: '/_docs/ecommerce-app',
   path: '/ecommerce-app',
-  getParentRoute: () => DocsRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/docs': typeof DocsRouteWithChildren
   '/ecommerce-app': typeof DocsEcommerceAppRoute
   '/invoice-app': typeof DocsInvoiceAppRoute
+  '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/docs': typeof DocsRouteWithChildren
   '/ecommerce-app': typeof DocsEcommerceAppRoute
   '/invoice-app': typeof DocsInvoiceAppRoute
+  '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/_docs': typeof DocsRouteWithChildren
+  '/docs': typeof DocsRouteWithChildren
   '/_docs/ecommerce-app': typeof DocsEcommerceAppRoute
   '/_docs/invoice-app': typeof DocsInvoiceAppRoute
+  '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ecommerce-app' | '/invoice-app'
+  fullPaths: '/' | '/docs' | '/ecommerce-app' | '/invoice-app' | '/docs/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ecommerce-app' | '/invoice-app'
+  to: '/' | '/docs' | '/ecommerce-app' | '/invoice-app' | '/docs/$'
   id:
     | '__root__'
     | '/'
-    | '/_docs'
+    | '/docs'
     | '/_docs/ecommerce-app'
     | '/_docs/invoice-app'
+    | '/docs/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsRoute: typeof DocsRouteWithChildren
+  DocsEcommerceAppRoute: typeof DocsEcommerceAppRoute
+  DocsInvoiceAppRoute: typeof DocsInvoiceAppRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/_docs': {
-      id: '/_docs'
-      path: ''
-      fullPath: ''
+    '/docs': {
+      id: '/docs'
+      path: '/docs'
+      fullPath: '/docs'
       preLoaderRoute: typeof DocsRouteImport
       parentRoute: typeof rootRouteImport
     }
@@ -85,31 +100,36 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/docs/$': {
+      id: '/docs/$'
+      path: '/$'
+      fullPath: '/docs/$'
+      preLoaderRoute: typeof DocsSplatRouteImport
+      parentRoute: typeof DocsRoute
+    }
     '/_docs/invoice-app': {
       id: '/_docs/invoice-app'
       path: '/invoice-app'
       fullPath: '/invoice-app'
       preLoaderRoute: typeof DocsInvoiceAppRouteImport
-      parentRoute: typeof DocsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/_docs/ecommerce-app': {
       id: '/_docs/ecommerce-app'
       path: '/ecommerce-app'
       fullPath: '/ecommerce-app'
       preLoaderRoute: typeof DocsEcommerceAppRouteImport
-      parentRoute: typeof DocsRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
 interface DocsRouteChildren {
-  DocsEcommerceAppRoute: typeof DocsEcommerceAppRoute
-  DocsInvoiceAppRoute: typeof DocsInvoiceAppRoute
+  DocsSplatRoute: typeof DocsSplatRoute
 }
 
 const DocsRouteChildren: DocsRouteChildren = {
-  DocsEcommerceAppRoute: DocsEcommerceAppRoute,
-  DocsInvoiceAppRoute: DocsInvoiceAppRoute,
+  DocsSplatRoute: DocsSplatRoute,
 }
 
 const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
@@ -117,6 +137,8 @@ const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsRoute: DocsRouteWithChildren,
+  DocsEcommerceAppRoute: DocsEcommerceAppRoute,
+  DocsInvoiceAppRoute: DocsInvoiceAppRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

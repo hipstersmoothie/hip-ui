@@ -4,11 +4,11 @@ import {
   Separator as AriaSeparator,
 } from "react-aria-components";
 
-import { slate } from "../theme/colors.stylex";
+import { uiColor } from "../theme/semantic-color.stylex";
 
 const styles = stylex.create({
   separator: {
-    backgroundColor: slate.border2,
+    backgroundColor: uiColor.border2,
     borderWidth: 0,
     height: {
       default: "1px",

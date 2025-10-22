@@ -6,7 +6,7 @@ import { animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { Size } from "../theme/types";
-import { gray } from "./semantic-color.stylex";
+import { ui } from "./semantic-color.stylex";
 
 const styles = stylex.create({
   overlay: {
@@ -77,9 +77,9 @@ export function useDialogStyles({ size: sizeProp }: { size?: Size }) {
     modal: [
       styles.modal,
       styles.modal,
-      gray.bg,
-      gray.text,
-      gray.border,
+      ui.bg,
+      ui.text,
+      ui.border,
       styles[size],
     ],
     dialog: styles.dialog,

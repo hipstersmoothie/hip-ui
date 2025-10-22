@@ -5,15 +5,15 @@ import {
   Link as AriaLink,
 } from "react-aria-components";
 
-import { plum } from "../theme/colors.stylex";
+import { primaryColor } from "../theme/semantic-color.stylex";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 import { LinkContext } from "./link-context";
 
 const styles = stylex.create({
   link: {
     color: {
-      default: plum.text1,
-      ":visited": plum.text2,
+      default: primaryColor.text1,
+      ":visited": primaryColor.text2,
     },
     cursor: "pointer",
     fontFamily: fontFamily["sans"],

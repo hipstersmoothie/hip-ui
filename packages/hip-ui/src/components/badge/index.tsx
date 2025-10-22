@@ -5,7 +5,7 @@ import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
-  gray,
+  ui,
   primary,
   success,
   warning,
@@ -88,7 +88,7 @@ export function Badge({
           primary.borderDim,
           primary.text,
         ],
-        variant === "default" && [gray.bgDim, gray.borderDim, gray.text],
+        variant === "default" && [ui.bgDim, ui.borderDim, ui.text],
         variant === "warning" && [
           warning.bgDim,
           warning.borderDim,

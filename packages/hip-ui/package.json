@@ -9,10 +9,11 @@
     "./*": "./dist/*.js"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc --build tsconfig.build.json",
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
-    "check-types": "tsc --noEmit"
+    "check-types": "tsc --noEmit",
+    "generate-colors": "tsx scripts/generate-colors.tsx"
   },
   "devDependencies": {
     "@repo/eslint-config": "workspace:*",
@@ -21,14 +22,18 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "eslint": "^9.34.0",
+    "tsx": "^4.20.6",
     "typescript": "5.9.2"
   },
   "dependencies": {
     "@inkjs/ui": "^2.0.0",
+    "@radix-ui/colors": "^3.0.0",
     "@react-stately/utils": "^3.10.8",
     "@react-types/overlays": "^3.9.2",
     "@stylexjs/stylex": "^0.16.2",
+    "change-case": "^5.4.4",
     "command-line-application": "^0.10.1",
+    "dedent": "^1.7.0",
     "ink": "^6.3.1",
     "lilconfig": "^3.1.3",
     "lucide-react": "^0.545.0",

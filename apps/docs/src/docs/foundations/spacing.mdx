@@ -1,0 +1,29 @@
+---
+title: Spacing
+description: Build upon consistent spacing to create a consistent design system.
+---
+
+import { Spacing } from "../../examples/foundations/spacing";
+
+
+## Usage
+
+To use the spacing, you can use the `spacing` object.
+
+```tsx
+import { spacing } from "@/components/theme/spacing.stylex";
+
+const styles = stylex.create({
+  example: {
+    padding: spacing["4"],
+  },
+});
+```
+
+## Scale
+
+The following is the default scale of spacing.
+It can be customized by editing the `spacing` object in the `spacing.stylex.tsx` file.
+
+<Spacing />
+
