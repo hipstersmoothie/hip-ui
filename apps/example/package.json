@@ -9,24 +9,24 @@
     "start": "waku start"
   },
   "dependencies": {
-    "@react-stately/utils": "^3.10.8",
-    "@react-types/overlays": "^3.9.2",
+    "@react-stately/utils": "catalog:",
+    "@react-types/overlays": "catalog:",
     "@repo/typescript-config": "workspace:*",
-    "@stylexjs/stylex": "^0.16.1",
+    "@stylexjs/stylex": "catalog:",
     "hip-ui": "workspace:*",
-    "lucide-react": "^0.545.0",
+    "lucide-react": "catalog:",
     "react": "catalog:",
-    "react-aria": "^3.44.0",
-    "react-aria-components": "^1.13.0",
+    "react-aria": "catalog:",
+    "react-aria-components": "catalog:",
     "react-dom": "catalog:",
     "react-server-dom-webpack": "19.1.1",
-    "react-stately": "^3.42.0",
+    "react-stately": "catalog:",
     "unplugin-stylex": "^0.5.5",
     "waku": "0.26.1"
   },
   "devDependencies": {
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
-    "typescript": "5.9.2"
+    "typescript": "catalog:"
   }
 }
