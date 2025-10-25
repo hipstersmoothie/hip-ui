@@ -10,13 +10,12 @@ import {
 } from "react-aria-components";
 
 import { Description, Label } from "../label";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 export interface ColorFieldProps
-  extends Omit<AriaColorFieldProps, "style" | "className">,
+  extends StyleXComponentProps<AriaColorFieldProps>,
     Pick<InputProps, "placeholder"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

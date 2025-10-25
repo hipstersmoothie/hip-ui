@@ -24,7 +24,7 @@ import {
 import { useMenuTriggerState } from "react-stately";
 
 import { SizeContext } from "../context";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const ContextMenuTriggerPropsContext = createContext<
@@ -129,7 +129,7 @@ function ContextMenuTrigger({
 
 export interface ContextMenuProps<T extends object>
   extends OverlayTriggerProps,
-    Omit<AriaMenuProps<T>, "children" | "className" | "style">,
+    StyleXComponentProps<Omit<AriaMenuProps<T>, "children">>,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"
@@ -153,6 +153,7 @@ export function ContextMenu<T extends object>({
   shouldFlip,
   shouldUpdatePosition,
   placement,
+  style,
   ...props
 }: ContextMenuProps<T>) {
   const popoverStyles = usePopoverStyles();
@@ -173,7 +174,7 @@ export function ContextMenu<T extends object>({
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
         >
-          <AriaMenu {...props} {...stylex.props(popoverStyles)} />
+          <AriaMenu {...props} {...stylex.props(popoverStyles, style)} />
         </Popover>
       </ContextMenuRoot>
     </SizeContext>

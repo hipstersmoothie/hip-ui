@@ -64,6 +64,7 @@ export const config = defineConfig([
     rules: {
       "@typescript-eslint/no-confusing-void-expression": "off",
       "@typescript-eslint/unbound-method": "off",
+      "@typescript-eslint/no-empty-object-type": "off",
     },
   },
   {

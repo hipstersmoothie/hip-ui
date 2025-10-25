@@ -18,7 +18,7 @@ import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
 import { ListBox } from "../listbox";
 import { spacing } from "../theme/spacing.stylex";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { SmallBody } from "../typography";
@@ -43,7 +43,7 @@ function EmptyState() {
 }
 
 export interface ComboBoxProps<T extends object>
-  extends Omit<AriaComboBoxProps<T>, "children" | "style" | "className">,
+  extends StyleXComponentProps<Omit<AriaComboBoxProps<T>, "children">>,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"
@@ -52,7 +52,6 @@ export interface ComboBoxProps<T extends object>
       | "placement"
     >,
     Pick<ListBoxProps<T>, "renderEmptyState"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -120,7 +119,7 @@ export function ComboBox<T extends object>({
         >
           <ListBox
             items={items}
-            {...stylex.props(popoverStyles, styles.matchWidth)}
+            style={[popoverStyles, styles.matchWidth]}
             renderEmptyState={renderEmptyState || EmptyState}
           >
             {children}

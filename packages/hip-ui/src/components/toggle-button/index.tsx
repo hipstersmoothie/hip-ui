@@ -8,7 +8,7 @@ import {
 import { SizeContext } from "../context";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { ButtonVariant, Size } from "../theme/types";
+import { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useButtonStyles } from "../theme/useButtonStyles";
 
 const styles = stylex.create({
@@ -99,8 +99,7 @@ const styles = stylex.create({
 });
 
 export interface ToggleButtonProps
-  extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaToggleButtonProps, "children">> {
   variant?: Exclude<ButtonVariant, "critical" | "critical-outline">;
   size?: Size;
   children?: React.ReactNode;

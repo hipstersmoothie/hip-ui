@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { Spacing, spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   base: { display: "flex" },
@@ -58,8 +59,7 @@ const styles = stylex.create({
 });
 
 export interface FlexProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   /**
    * The direction of the flex container.
    * @default "row"

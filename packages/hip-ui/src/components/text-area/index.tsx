@@ -15,7 +15,7 @@ import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -111,10 +111,9 @@ const styles = stylex.create({
 });
 
 export interface TextAreaProps
-  extends Omit<TextFieldProps, "style" | "className">,
+  extends StyleXComponentProps<Omit<TextFieldProps, "children">>,
     Pick<AriaTextAreaProps, "rows">,
     Pick<InputProps, "placeholder"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

@@ -16,7 +16,7 @@ import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 
 const styles = stylex.create({
@@ -145,9 +145,10 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
 }
 
 interface TreeItemProps<T extends object>
-  extends Omit<AriaTreeItemProps<T>, "style" | "textValue" | "children">,
+  extends StyleXComponentProps<
+      Omit<AriaTreeItemProps<T>, "textValue" | "children">
+    >,
     Pick<TreeItemContentProps, "prefix" | "suffix"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   title: string;
   children?: React.ReactNode;
 }
@@ -182,8 +183,7 @@ export function TreeItem<T extends object>({
 }
 
 export interface TreeProps<T extends object>
-  extends Omit<AriaTreeProps<T>, "children" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaTreeProps<T>, "children">> {
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
 }

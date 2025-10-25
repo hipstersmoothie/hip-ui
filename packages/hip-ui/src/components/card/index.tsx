@@ -6,17 +6,17 @@ import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   card: {
     borderRadius: radius["lg"],
     display: "flex",
-    overflow: "hidden",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
     gap: "var(--card-gap)",
+    overflow: "hidden",
   },
   smCard: {
     "--card-gap": spacing["2"],
@@ -84,17 +84,16 @@ const styles = stylex.create({
     justifyContent: "flex-end",
   },
   cardImage: {
-    borderTopLeftRadius: { default: 0, ":first-child": radius.md },
     borderBottomLeftRadius: { default: 0, ":last-child": radius.md },
-    borderTopRightRadius: { default: 0, ":first-child": radius.md },
     borderBottomRightRadius: { default: 0, ":last-child": radius.md },
+    borderTopLeftRadius: { default: 0, ":first-child": radius.md },
+    borderTopRightRadius: { default: 0, ":first-child": radius.md },
     overflow: "hidden",
   },
 });
 
 export interface CardProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   size?: Size;
 }
 
@@ -120,9 +119,7 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
 };
 
 export interface CardHeaderProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   return (
@@ -134,18 +131,14 @@ export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
 };
 
 export interface CardTitleProps
-  extends Omit<React.ComponentProps<"h2">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"h2">> {}
 
 export const CardTitle = ({ style, ...props }: CardTitleProps) => {
   return <div {...props} {...stylex.props(styles.cardTitle, style)} />;
 };
 
 export interface CardDescriptionProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"p">> {}
 
 export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
   return (
@@ -158,9 +151,7 @@ export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
 };
 
 export interface CardHeaderActionProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const CardHeaderAction = ({
   style,
@@ -169,9 +160,7 @@ export const CardHeaderAction = ({
   return <div {...props} {...stylex.props(styles.cardHeaderAction, style)} />;
 };
 export interface CardBodyProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const CardBody = ({ style, ...props }: CardBodyProps) => {
   return (
@@ -183,9 +172,7 @@ export const CardBody = ({ style, ...props }: CardBodyProps) => {
 };
 
 export interface CardFooterProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const CardFooter = ({ style, ...props }: CardFooterProps) => {
   return (
@@ -197,8 +184,7 @@ export const CardFooter = ({ style, ...props }: CardFooterProps) => {
 };
 
 export interface CardImageProps
-  extends Omit<React.ComponentProps<"img">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"img">> {
   aspectRatio?: number;
 }
 

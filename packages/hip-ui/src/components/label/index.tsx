@@ -9,7 +9,7 @@ import {
 
 import { SizeContext } from "../context";
 import { ui } from "../theme/semantic-color.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -39,9 +39,7 @@ const styles = stylex.create({
   },
 });
 
-export interface LabelProps
-  extends Omit<AriaLabelProps, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+export interface LabelProps extends StyleXComponentProps<AriaLabelProps> {
   size?: Size;
 }
 
@@ -56,9 +54,7 @@ export function Label({ style, size: sizeProp, ...props }: LabelProps) {
   );
 }
 
-export interface DescriptionProps
-  extends Omit<TextProps, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+export interface DescriptionProps extends StyleXComponentProps<TextProps> {
   size?: Size;
 }
 

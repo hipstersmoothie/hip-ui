@@ -17,6 +17,7 @@ import {
 import { Button, ButtonProps } from "../button";
 import { IconButton } from "../icon-button";
 import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
 
@@ -96,9 +97,7 @@ export const AlertDialog = ({
 };
 
 export interface AlertDialogHeaderProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const AlertDialogHeader = ({
   children,
@@ -115,9 +114,7 @@ export const AlertDialogHeader = ({
 };
 
 export interface AlertDialogDescriptionProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const AlertDialogDescription = ({
   children,
@@ -131,9 +128,7 @@ export const AlertDialogDescription = ({
 };
 
 export interface AlertDialogFooterProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const AlertDialogFooter = ({
   children,

@@ -16,7 +16,7 @@ import {
 import { SizeContext } from "../context";
 import { Description, Label } from "../label";
 import { ListBox } from "../listbox";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
@@ -27,7 +27,7 @@ const styles = stylex.create({
 });
 
 export interface SelectProps<T extends object, M extends "single" | "multiple">
-  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className">,
+  extends StyleXComponentProps<Omit<AriaSelectProps<T, M>, "children">>,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"
@@ -35,7 +35,6 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
       | "shouldUpdatePosition"
       | "placement"
     > {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: string;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
@@ -109,10 +108,7 @@ export function Select<
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
         >
-          <ListBox
-            items={items}
-            {...stylex.props(popoverStyles, styles.matchWidth)}
-          >
+          <ListBox items={items} style={[popoverStyles, styles.matchWidth]}>
             {children}
           </ListBox>
         </Popover>

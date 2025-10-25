@@ -7,7 +7,7 @@ import { ButtonProps as AriaButtonProps } from "react-aria-components";
 import { Button } from "../button";
 import { SizeContext } from "../context";
 import { spacing } from "../theme/spacing.stylex";
-import { ButtonVariant, Size } from "../theme/types";
+import { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 import { Tooltip } from "../tooltip";
 
 const styles = stylex.create({
@@ -25,8 +25,7 @@ const styles = stylex.create({
   },
 });
 
-interface IconButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+interface IconButtonProps extends StyleXComponentProps<AriaButtonProps> {
   variant?: ButtonVariant;
   size?: Size;
   label: string;

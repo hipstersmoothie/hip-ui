@@ -11,12 +11,11 @@ import {
 } from "react-aria-components";
 
 import { Description, Label } from "../label";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 export interface DateFieldProps<T extends DateValue>
-  extends Omit<AriaDateFieldProps<T>, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<AriaDateFieldProps<T>> {
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

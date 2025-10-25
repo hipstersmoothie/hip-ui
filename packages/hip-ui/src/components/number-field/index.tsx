@@ -15,7 +15,7 @@ import {
 import { Description, Label } from "../label";
 import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 const styles = stylex.create({
@@ -51,9 +51,8 @@ const styles = stylex.create({
 });
 
 export interface NumberFieldProps
-  extends Omit<AriaNumberFieldProps, "style" | "className">,
+  extends StyleXComponentProps<Omit<AriaNumberFieldProps, "children">>,
     Pick<InputProps, "placeholder"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

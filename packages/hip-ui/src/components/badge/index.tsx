@@ -11,7 +11,7 @@ import {
   warning,
 } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -60,8 +60,7 @@ const styles = stylex.create({
 });
 
 export interface BadgeProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   size?: Extract<Size, "sm" | "md">;
   variant?: "primary" | "default" | "warning" | "critical" | "success";
 }

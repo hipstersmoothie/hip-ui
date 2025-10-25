@@ -14,7 +14,7 @@ import {
 import { IconButton } from "../icon-button";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
 const styles = stylex.create({
@@ -96,9 +96,7 @@ export const Dialog = ({
 };
 
 export interface DialogHeaderProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const DialogHeader = ({ children, style }: DialogHeaderProps) => {
   return (
@@ -112,9 +110,7 @@ export const DialogHeader = ({ children, style }: DialogHeaderProps) => {
 };
 
 export interface DialogDescriptionProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const DialogDescription = ({
   children,
@@ -128,9 +124,7 @@ export const DialogDescription = ({
 };
 
 export interface DialogFooterProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const DialogFooter = ({ children, style }: DialogFooterProps) => {
   return <div {...stylex.props(styles.footer, style)}>{children}</div>;

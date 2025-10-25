@@ -5,7 +5,7 @@ import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import {
   fontSize,
   fontWeight,
@@ -71,12 +71,7 @@ const styles = stylex.create({
 });
 
 export interface AvatarProps
-  extends Omit<
-    React.ComponentProps<"div">,
-    "style" | "className" | "children"
-  > {
-  /** The stylex styles of the avatar. */
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<React.ComponentProps<"div">, "children">> {
   /** The source of the image. */
   src?: string;
   /** The alt text of the image. */

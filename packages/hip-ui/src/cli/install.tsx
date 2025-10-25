@@ -37,6 +37,7 @@ import { radioConfig } from "../components/radio/radio-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
 import { selectConfig } from "../components/select/select-config.js";
 import { separatorConfig } from "../components/separator/separator-config.js";
+import { sliderConfig } from "../components/slider/slider-config.js";
 import { switchConfig } from "../components/switch/switch-config.js";
 import { tableConfig } from "../components/table/table-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
@@ -92,6 +93,7 @@ const COMPONENT_CONFIGS = [
   colorSwatchConfig,
   fileDropZoneConfig,
   tableConfig,
+  sliderConfig,
 ];
 
 function StringSetting({

@@ -1,0 +1,102 @@
+---
+title: Slider
+description: A range input component for selecting values within a specified range.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/slider/basic'
+import { Range } from '../../examples/slider/range'
+import { WithLabels } from '../../examples/slider/with-labels'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the slider component to your project.
+
+```bash
+pnpm hip install slider
+```
+
+## Props
+
+This component is built using the [React Aria Slider](https://react-spectrum.adobe.com/react-aria/Slider.html).
+
+<PropDocs components={["Slider"]} />
+
+## Features
+
+### Basic Usage
+
+The slider component allows users to select a single value within a specified range.
+
+<Example src={Basic} />
+
+### Range Selection
+
+For selecting a range of values, provide an array as the `defaultValue` prop.
+
+<Example src={Range} />
+
+### With Labels
+
+Add descriptive labels to slider thumbs using the `thumbLabels` prop for better accessibility.
+
+<Example src={WithLabels} />
+
+## Accessibility
+
+The slider component includes built-in accessibility features:
+
+- **Keyboard Navigation**: Use arrow keys to adjust values
+- **Screen Reader Support**: Proper ARIA labels and announcements
+- **Focus Management**: Clear focus indicators
+- **Value Announcements**: Current values are announced to screen readers
+
+## Usage Examples
+
+### Volume Control
+
+```tsx
+<Slider
+  label="Volume"
+  defaultValue={50}
+  minValue={0}
+  maxValue={100}
+  step={1}
+/>
+```
+
+### Price Range Selector
+
+```tsx
+<Slider
+  label="Price Range"
+  defaultValue={[20, 80]}
+  minValue={0}
+  maxValue={100}
+  step={5}
+  thumbLabels={['Min', 'Max']}
+/>
+```
+
+### Temperature Control
+
+```tsx
+<Slider
+  label="Temperature"
+  defaultValue={75}
+  minValue={0}
+  maxValue={100}
+  step={1}
+  thumbLabels={['Temperature']}
+/>
+```
+
+## Related Components
+
+- [NumberField](/docs/components/number-field) - For precise numeric input
+- [RangeSlider](/docs/components/range-slider) - For dual-handle range selection
+- [Switch](/docs/components/switch) - For binary on/off controls
+- [Checkbox](/docs/components/checkbox) - For boolean selections
