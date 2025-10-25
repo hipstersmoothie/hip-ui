@@ -12,6 +12,7 @@ import {
 
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
@@ -41,10 +42,11 @@ const styles = stylex.create({
     zIndex: 0,
   },
 });
-interface TooltipProps
+interface PopoverProps
   extends DialogTriggerProps,
-    Pick<AriaPopoverProps, "crossOffset" | "placement" | "shouldFlip"> {
+    StyleXComponentProps<Omit<AriaPopoverProps, "className" | "trigger">> {
   trigger: React.ReactNode;
+  triggerName?: Pick<AriaPopoverProps, "trigger">;
   children: React.ReactNode;
 }
 
@@ -54,8 +56,9 @@ export const Popover = ({
   defaultOpen,
   isOpen,
   onOpenChange,
+  style,
   ...popoverProps
-}: TooltipProps) => {
+}: PopoverProps) => {
   const popoverStyles = usePopoverStyles();
 
   return (
@@ -65,10 +68,10 @@ export const Popover = ({
       {trigger}
 
       <AriaPopover
-        {...stylex.props(styles.wrapper)}
-        {...popoverProps}
+        {...stylex.props(styles.wrapper, style)}
         offset={8}
         containerPadding={8}
+        {...popoverProps}
       >
         <OverlayArrow {...stylex.props(styles.caret)}>
           <div {...stylex.props(styles.arrow)} />

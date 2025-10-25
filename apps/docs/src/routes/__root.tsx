@@ -1,14 +1,15 @@
+import * as stylex from "@stylexjs/stylex";
+import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { TanStackDevtools } from "@tanstack/react-devtools";
-import * as stylex from "@stylexjs/stylex";
+
 import { ui } from "@/components/theme/semantic-color.stylex";
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
-        charSet: "utf-8",
+        charSet: "utf8",
       },
       {
         name: "viewport",

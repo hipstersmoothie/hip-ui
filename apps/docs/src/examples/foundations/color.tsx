@@ -1,51 +1,52 @@
-import { radius } from "../../components/theme/radius.stylex";
+import * as stylex from "@stylexjs/stylex";
+import { Fragment } from "react/jsx-runtime";
+
+import { Grid } from "@/components/grid";
+
 import { Flex } from "../../components/flex";
-import { gray } from "../../components/theme/colors/gray.stylex";
-import { mauve } from "../../components/theme/colors/mauve.stylex";
-import { olive } from "../../components/theme/colors/olive.stylex";
-import { sage } from "../../components/theme/colors/sage.stylex";
-import { sand } from "../../components/theme/colors/sand.stylex";
-import { slate } from "../../components/theme/colors/slate.stylex";
-import { tomato } from "../../components/theme/colors/tomato.stylex";
-import { red } from "../../components/theme/colors/red.stylex";
-import { ruby } from "../../components/theme/colors/ruby.stylex";
+import { amber } from "../../components/theme/colors/amber.stylex";
+import { blue } from "../../components/theme/colors/blue.stylex";
+import { bronze } from "../../components/theme/colors/bronze.stylex";
+import { brown } from "../../components/theme/colors/brown.stylex";
 import { crimson } from "../../components/theme/colors/crimson.stylex";
+import { cyan } from "../../components/theme/colors/cyan.stylex";
+import { gold } from "../../components/theme/colors/gold.stylex";
+import { grass } from "../../components/theme/colors/grass.stylex";
+import { gray } from "../../components/theme/colors/gray.stylex";
+import { green } from "../../components/theme/colors/green.stylex";
+import { indigo } from "../../components/theme/colors/indigo.stylex";
+import { iris } from "../../components/theme/colors/iris.stylex";
+import { jade } from "../../components/theme/colors/jade.stylex";
+import { lime } from "../../components/theme/colors/lime.stylex";
+import { mauve } from "../../components/theme/colors/mauve.stylex";
+import { mint } from "../../components/theme/colors/mint.stylex";
+import { olive } from "../../components/theme/colors/olive.stylex";
+import { orange } from "../../components/theme/colors/orange.stylex";
 import { pink } from "../../components/theme/colors/pink.stylex";
 import { plum } from "../../components/theme/colors/plum.stylex";
 import { purple } from "../../components/theme/colors/purple.stylex";
+import { red } from "../../components/theme/colors/red.stylex";
+import { ruby } from "../../components/theme/colors/ruby.stylex";
+import { sage } from "../../components/theme/colors/sage.stylex";
+import { sand } from "../../components/theme/colors/sand.stylex";
+import { sky } from "../../components/theme/colors/sky.stylex";
+import { slate } from "../../components/theme/colors/slate.stylex";
+import { teal } from "../../components/theme/colors/teal.stylex";
+import { tomato } from "../../components/theme/colors/tomato.stylex";
 import { violet } from "../../components/theme/colors/violet.stylex";
+import { yellow } from "../../components/theme/colors/yellow.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 import { Text } from "../../components/typography/text";
-import { iris } from "../../components/theme/colors/iris.stylex";
-import { indigo } from "../../components/theme/colors/indigo.stylex";
-import { blue } from "../../components/theme/colors/blue.stylex";
-import { cyan } from "../../components/theme/colors/cyan.stylex";
-import { teal } from "../../components/theme/colors/teal.stylex";
-import { jade } from "../../components/theme/colors/jade.stylex";
-import { green } from "../../components/theme/colors/green.stylex";
-import { grass } from "../../components/theme/colors/grass.stylex";
-import { bronze } from "../../components/theme/colors/bronze.stylex";
-import { gold } from "../../components/theme/colors/gold.stylex";
-import { brown } from "../../components/theme/colors/brown.stylex";
-import { orange } from "../../components/theme/colors/orange.stylex";
-import { amber } from "../../components/theme/colors/amber.stylex";
-import { yellow } from "../../components/theme/colors/yellow.stylex";
-import { lime } from "../../components/theme/colors/lime.stylex";
-import { mint } from "../../components/theme/colors/mint.stylex";
-import { sky } from "../../components/theme/colors/sky.stylex";
-import * as stylex from "@stylexjs/stylex";
-import { Fragment } from "react/jsx-runtime";
-import { Grid } from "@/components/grid";
 
 const styles = stylex.create({
   center: {
     textAlign: "center",
   },
   swatch: {
+    paddingBottom: spacing["4"],
     paddingLeft: spacing["6"],
     paddingRight: spacing["6"],
     paddingTop: spacing["4"],
-    paddingBottom: spacing["4"],
   },
 });
 
@@ -159,7 +160,10 @@ export function UiColors() {
                 <div
                   key={key}
                   {...stylex.props(styles.swatch)}
-                  style={{ backgroundColor: value, color: value.text2 }}
+                  style={{
+                    backgroundColor: value as string,
+                    color: color.value.text2,
+                  }}
                 ></div>
               );
             })}

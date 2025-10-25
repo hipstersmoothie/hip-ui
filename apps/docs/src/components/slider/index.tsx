@@ -1,6 +1,6 @@
 import type { SliderProps as AriaSliderProps } from "react-aria-components";
-import * as stylex from "@stylexjs/stylex";
 
+import * as stylex from "@stylexjs/stylex";
 import {
   Slider as AriaSlider,
   SliderTrack,
@@ -9,15 +9,15 @@ import {
   Label,
 } from "react-aria-components";
 
+import { StyleXComponentProps } from "../theme/types";
+
 const styles = stylex.create({
   wrapper: {
     width: "100%",
   },
 });
 
-interface MySliderProps<T>
-  extends Omit<AriaSliderProps<T>, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+interface SliderProps<T> extends StyleXComponentProps<AriaSliderProps<T>> {
   label?: string;
   thumbLabels?: string[];
 }
@@ -27,7 +27,7 @@ export function Slider<T extends number | number[]>({
   thumbLabels,
   style,
   ...props
-}: MySliderProps<T>) {
+}: SliderProps<T>) {
   return (
     <AriaSlider {...props} {...stylex.props(styles.wrapper, style)}>
       {label && <Label>{label}</Label>}
@@ -39,6 +39,7 @@ export function Slider<T extends number | number[]>({
       <SliderTrack>
         {({ state }) =>
           state.values.map((_, i) => (
+            // eslint-disable-next-line @eslint-react/no-array-index-key
             <SliderThumb key={i} index={i} aria-label={thumbLabels?.[i]} />
           ))
         }

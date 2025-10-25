@@ -8,7 +8,7 @@ import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   swatch: {
@@ -35,8 +35,7 @@ const styles = stylex.create({
 });
 
 export interface ColorSwatchProps
-  extends Omit<AriaColorSwatchProps, "children" | "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaColorSwatchProps, "children">> {
   children?: React.ReactNode;
   size?: Size;
 }

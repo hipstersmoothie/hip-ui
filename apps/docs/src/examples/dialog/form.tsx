@@ -1,7 +1,7 @@
-import { Dialog, DialogHeader, DialogFooter } from "@/components/dialog";
-import { TextField } from "@/components/text-field";
-import { Flex } from "@/components/flex";
 import { Button } from "@/components/button";
+import { Dialog, DialogHeader, DialogFooter } from "@/components/dialog";
+import { Flex } from "@/components/flex";
+import { TextField } from "@/components/text-field";
 
 export function DialogForm() {
   return (

@@ -1,6 +1,12 @@
-import { Flex } from "@/components/flex";
-import { createFileRoute } from "@tanstack/react-router";
 import * as stylex from "@stylexjs/stylex";
+import { createFileRoute } from "@tanstack/react-router";
+import { Bookmark, Shredder, Upload } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
+
+import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
+import { Avatar } from "@/components/avatar";
+import { Badge } from "@/components/badge";
+import { Button } from "@/components/button";
 import {
   Card,
   CardBody,
@@ -11,57 +17,53 @@ import {
   CardImage,
   CardTitle,
 } from "@/components/card";
-import { Button } from "@/components/button";
-import { Text } from "@/components/typography/text";
-import { Separator } from "@/components/separator";
-import { Select, SelectItem } from "@/components/select";
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
-import { ToggleButton } from "@/components/toggle-button";
 import { ColorSwatch } from "@/components/color-swatch";
-import { Grid } from "@/components/grid";
-import { Fragment } from "react/jsx-runtime";
-import { Avatar } from "@/components/avatar";
-import { spacing } from "../components/theme/spacing.stylex";
-import { IconButton } from "@/components/icon-button";
-import { Bookmark, Shredder, Upload } from "lucide-react";
-import { Badge } from "@/components/badge";
-import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
-import { LabelText, SmallBody } from "@/components/typography";
-import { Link } from "@/components/link";
-import { TextField } from "@/components/text-field";
-import { NumberField } from "@/components/number-field";
 import { FileDropZone } from "@/components/file-drop-zone";
+import { Flex } from "@/components/flex";
+import { Grid } from "@/components/grid";
+import { IconButton } from "@/components/icon-button";
+import { Link } from "@/components/link";
+import { NumberField } from "@/components/number-field";
+import { Select, SelectItem } from "@/components/select";
+import { Separator } from "@/components/separator";
 import { TextArea } from "@/components/text-area";
+import { TextField } from "@/components/text-field";
+import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
+import { LabelText, SmallBody } from "@/components/typography";
+import { Text } from "@/components/typography/text";
+
+import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   heightFull: {
     height: "100%",
   },
   grow: {
+    flexBasis: "0%",
     flexGrow: 1,
     flexShrink: 0,
-    flexBasis: "0%",
     minWidth: 0,
   },
   medium: {
+    flexBasis: "0%",
     flexGrow: 0.75,
     flexShrink: 0,
-    flexBasis: "0%",
   },
   skinny: {
+    flexBasis: "0%",
     flexGrow: 0.5,
     flexShrink: 0,
-    flexBasis: "0%",
   },
   relative: {
     position: "relative",
   },
   bottomRight: {
-    position: "absolute",
     bottom: 0,
-    right: 0,
-    marginRight: spacing["4"],
     marginBottom: spacing["4"],
+    marginRight: spacing["4"],
+    position: "absolute",
+    right: 0,
   },
 });
 

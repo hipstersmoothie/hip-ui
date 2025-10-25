@@ -9,6 +9,7 @@ import {
 
 import { ButtonGroupContext } from "../button/context";
 import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   group: {
@@ -50,8 +51,7 @@ const styles = stylex.create({
 });
 
 interface ToggleButtonGroupBaseProps
-  extends Omit<AriaToggleButtonGroupProps, "className" | "style" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaToggleButtonGroupProps, "children">> {
   orientation?: "horizontal" | "vertical";
   children?: React.ReactNode;
 }

@@ -1,7 +1,8 @@
-import { Card, CardHeader, CardTitle, CardDescription, CardBody, CardFooter, CardHeaderAction } from "@/components/card";
-import { Button } from "@/components/button";
-import { IconButton } from "@/components/icon-button";
 import { MoreHorizontal, Heart, Share } from "lucide-react";
+
+import { Button } from "@/components/button";
+import { Card, CardHeader, CardTitle, CardDescription, CardBody, CardFooter, CardHeaderAction } from "@/components/card";
+import { IconButton } from "@/components/icon-button";
 
 export function CardWithActions() {
   return (

@@ -1,5 +1,5 @@
-import { Dialog, DialogHeader } from "@/components/dialog";
 import { Button } from "@/components/button";
+import { Dialog, DialogHeader } from "@/components/dialog";
 import { Flex } from "@/components/flex";
 
 export function DialogSizes() {

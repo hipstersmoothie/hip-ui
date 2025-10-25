@@ -1,5 +1,4 @@
 import { Tree, TreeItem } from "@/components/tree";
-import { Collection } from "react-aria-components";
 
 const treeData = [
   {
@@ -23,11 +22,9 @@ export function Basic() {
       {function renderTreeItem(item) {
         return (
           <TreeItem key={item.id} id={item.id} title={item.name}>
-            {item.children
-              ? item.children.map((child) => (
-                  <TreeItem key={child.id} id={child.id} title={child.name} />
-                ))
-              : null}
+            {item.children.map((child) => (
+              <TreeItem key={child.id} id={child.id} title={child.name} />
+            ))}
           </TreeItem>
         );
       }}

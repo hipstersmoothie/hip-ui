@@ -1,6 +1,7 @@
+import { Home } from "lucide-react";
+
 import { Flex } from "@/components/flex";
 import { TextField } from "@/components/text-field";
-import { Home } from "lucide-react";
 
 export function PrefixAndSuffix() {
   return (

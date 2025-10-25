@@ -1,21 +1,4 @@
-import { Avatar } from "@/components/avatar";
-import { Button } from "@/components/button";
-import {
-  Card,
-  CardBody,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/card";
-import { Flex } from "@/components/flex";
-import { Grid, GridItem } from "@/components/grid";
-import { IconButton } from "@/components/icon-button";
-import { Link } from "@/components/link";
-import { Menu, MenuItem, MenuSeparator } from "@/components/menu";
-import { Separator } from "@/components/separator";
-import { TextField } from "@/components/text-field";
-import { Body, Heading5, SmallBody } from "@/components/typography";
+import * as stylex from "@stylexjs/stylex";
 import { createFileRoute } from "@tanstack/react-router";
 import {
   ArrowDown,
@@ -31,17 +14,40 @@ import {
   X,
 } from "lucide-react";
 import { Fragment } from "react/jsx-runtime";
-import * as stylex from "@stylexjs/stylex";
-import { Switch } from "@/components/switch";
-import { fontFamily, typeramp } from "../components/theme/typography.stylex";
-import { Text } from "@/components/typography/text";
-import { ToggleButton } from "@/components/toggle-button";
-import { spacing } from "../components/theme/spacing.stylex";
+
+import { Avatar } from "@/components/avatar";
 import { Badge } from "@/components/badge";
+import { Button } from "@/components/button";
+import {
+  Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/card";
 import { Checkbox } from "@/components/checkbox";
-import { green, plum } from "../components/theme/colors.stylex";
-import { ui, primary } from "@/components/theme/semantic-color.stylex";
+import { Flex } from "@/components/flex";
+import { Grid, GridItem } from "@/components/grid";
+import { IconButton } from "@/components/icon-button";
+import { Link } from "@/components/link";
+import { Menu, MenuItem, MenuSeparator } from "@/components/menu";
+import { Separator } from "@/components/separator";
+import { Switch } from "@/components/switch";
+import { TextField } from "@/components/text-field";
+import {
+  ui,
+  primary,
+  successColor,
+  primaryColor,
+} from "@/components/theme/semantic-color.stylex";
+import { ToggleButton } from "@/components/toggle-button";
+import { Body, Heading5, SmallBody } from "@/components/typography";
+import { Text } from "@/components/typography/text";
+
 import { radius } from "../components/theme/radius.stylex";
+import { spacing } from "../components/theme/spacing.stylex";
+import { fontFamily, typeramp } from "../components/theme/typography.stylex";
 
 const styles = stylex.create({
   relative: {
@@ -51,46 +57,46 @@ const styles = stylex.create({
     textAlign: "center",
   },
   grow: {
+    flexBasis: "0%",
     flexGrow: 1,
     flexShrink: 0,
-    flexBasis: "0%",
     minWidth: 0,
   },
   skinny: {
+    flexBasis: "0%",
     flexGrow: 0.75,
     flexShrink: 0,
-    flexBasis: "0%",
   },
   pinnedButtons: {
-    position: "absolute",
-    top: 0,
-    right: 0,
     marginRight: spacing["4"],
     marginTop: spacing["4"],
+    position: "absolute",
+    right: 0,
+    top: 0,
   },
   invoiceCard: {
     padding: spacing["6"],
   },
   check: {
-    color: green.solid2,
+    color: successColor.solid2,
   },
   creditCardWrapper: {
     borderRadius: radius["lg"],
     padding: spacing["8"],
   },
   creditCard: {
-    fontFamily: fontFamily["mono"],
+    backgroundImage: `linear-gradient(135deg, ${primaryColor.solid2} 0%, ${primaryColor.text1} 100%)`,
     borderRadius: radius["lg"],
-    padding: spacing["4"],
+    fontFamily: fontFamily["mono"],
     height: spacing["40"],
-    backgroundImage: `linear-gradient(135deg, ${plum.solid2} 0%, ${plum.text1} 100%)`,
+    padding: spacing["4"],
   },
   copyCardNumber: {
-    color: "white",
     backgroundColor: {
       default: "transparent",
       ":hover": "rgba(255, 255, 255, 0.3)",
     },
+    color: "white",
   },
 });
 

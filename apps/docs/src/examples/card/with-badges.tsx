@@ -1,6 +1,6 @@
+import { Badge } from "@/components/badge";
 import { Card, CardHeader, CardTitle, CardBody } from "@/components/card";
 import { Flex } from "@/components/flex";
-import { Badge } from "@/components/badge";
 
 export function CardWithBadges() {
   return (

@@ -1,7 +1,8 @@
-import { IconButton } from "@/components/icon-button";
-import { Copy } from "lucide-react";
 import * as stylex from "@stylexjs/stylex";
+import { Copy } from "lucide-react";
 import { useRef, useState } from "react";
+
+import { IconButton } from "@/components/icon-button";
 
 export function CopyToClipboardButton({
   style,
@@ -23,7 +24,7 @@ export function CopyToClipboardButton({
       clearTimeout(timeoutRef.current);
       timeoutRef.current = null;
     }
-    navigator.clipboard.writeText(text);
+    void navigator.clipboard.writeText(text);
     setTooltipText("Copied ✓");
     setTooltipOpen(true);
     timeoutRef.current = setTimeout(() => {

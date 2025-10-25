@@ -17,7 +17,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
@@ -131,8 +131,7 @@ export function SubMenu<T extends object>({
 }
 
 export interface MenuSectionProps<T extends object>
-  extends Omit<AriaMenuSectionProps<T>, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<AriaMenuSectionProps<T>> {
   children: React.ReactNode;
 }
 
@@ -144,8 +143,7 @@ export function MenuSection<T extends object>({
 }
 
 export interface MenuItemProps
-  extends Omit<AriaMenuItemProps, "style" | "className" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaMenuItemProps, "children">> {
   children: React.ReactNode;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;

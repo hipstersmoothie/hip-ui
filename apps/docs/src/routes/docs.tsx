@@ -1,30 +1,32 @@
-import { Grid } from "@/components/grid";
-import { Tree, TreeItem } from "@/components/tree";
+import * as stylex from "@stylexjs/stylex";
 import {
   createFileRoute,
   LinkProps,
   Outlet,
   useLocation,
   useMatches,
+  createLink,
 } from "@tanstack/react-router";
-import { Collection } from "react-aria-components";
-import { createLink } from "@tanstack/react-router";
-import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
+import { Collection } from "react-aria-components";
+
+import { Grid } from "@/components/grid";
+import { Tree, TreeItem } from "@/components/tree";
+
 import { spacing } from "../components/theme/spacing.stylex";
 
 const TreeItemLink = createLink(TreeItem);
 
 const styles = stylex.create({
   aside: {
-    position: "sticky",
-    top: 0,
     height: "100vh",
     overflow: "auto",
-    paddingRight: spacing["4"],
-    paddingLeft: spacing["4"],
-    paddingTop: spacing["4"],
     paddingBottom: spacing["4"],
+    paddingLeft: spacing["4"],
+    paddingRight: spacing["4"],
+    paddingTop: spacing["4"],
+    position: "sticky",
+    top: 0,
   },
 });
 

@@ -1,7 +1,8 @@
-import { ButtonGroup } from "@/components/button-group";
-import { Button } from "@/components/button";
-import { IconButton } from "@/components/icon-button";
 import { MenuIcon } from "lucide-react";
+
+import { Button } from "@/components/button";
+import { ButtonGroup } from "@/components/button-group";
+import { IconButton } from "@/components/icon-button";
 
 export function Basic() {
   return (

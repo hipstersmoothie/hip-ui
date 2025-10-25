@@ -1,5 +1,5 @@
-import { Select } from "@/components/select";
 import { Flex } from "@/components/flex";
+import { Select } from "@/components/select";
 
 const sizes = [
   { id: "xs", name: "Extra Small" },

@@ -13,7 +13,7 @@ import {
 import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
 import { spacing } from "../theme/spacing.stylex";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 const styles = stylex.create({
@@ -32,9 +32,8 @@ const styles = stylex.create({
 });
 
 export interface SearchFieldProps
-  extends Omit<AriaSearchFieldProps, "style" | "className">,
+  extends StyleXComponentProps<AriaSearchFieldProps>,
     Pick<InputProps, "placeholder"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

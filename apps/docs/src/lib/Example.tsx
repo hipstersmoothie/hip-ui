@@ -1,51 +1,55 @@
-import { Card } from "@/components/card";
-import { examples } from "virtual:examples";
 import * as stylex from "@stylexjs/stylex";
+import { useEffect, useRef, useState } from "react";
+import { examples } from "virtual:examples";
+
+import { Card } from "@/components/card";
 import { Flex } from "@/components/flex";
-import { spacing } from "../components/theme/spacing.stylex";
+
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
+import { spacing } from "../components/theme/spacing.stylex";
 import { CopyToClipboardButton } from "./CopyToClipboardButton";
-import { useEffect, useRef, useState } from "react";
 
 const styles = stylex.create({
   card: {
-    overflow: "hidden",
     borderRadius: radius["lg"],
-    marginTop: spacing["8"],
     marginBottom: spacing["8"],
+    marginTop: spacing["8"],
+    overflow: "hidden",
   },
   preview: {
-    minHeight: spacing["40"],
-    padding: spacing["4"],
+    alignItems: "center",
+    backgroundColor: uiColor.bgSubtle,
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
     justifyContent: "center",
-    backgroundColor: uiColor.bgSubtle,
+    minHeight: spacing["40"],
+    padding: spacing["4"],
   },
   codeWrapper: {
-    position: "relative",
-    borderTopWidth: 1,
-    borderTopStyle: "solid",
     borderTopColor: uiColor.border2,
+    borderTopStyle: "solid",
+    borderTopWidth: 1,
+    position: "relative",
   },
   code: {
+    /* eslint-disable @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
+      borderBottomLeftRadius: radius["lg"],
+      borderBottomRightRadius: radius["lg"],
       margin: 0,
-      paddingTop: spacing["4"],
       paddingBottom: spacing["4"],
       paddingLeft: spacing["4"],
       paddingRight: spacing["4"],
-      borderBottomLeftRadius: radius["lg"],
-      borderBottomRightRadius: radius["lg"],
+      paddingTop: spacing["4"],
     },
     ":is(*) code": {},
+    /* eslint-enable @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
   },
   copyButton: {
     position: "absolute",
-    top: spacing["3"],
     right: spacing["3"],
+    top: spacing["3"],
   },
 });
 
@@ -54,11 +58,13 @@ export function Example({
 }: {
   src: (() => React.JSX.Element) & { slug: string };
 }) {
+  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
   const code = examples[Component.slug];
   const ref = useRef<HTMLDivElement>(null);
   const [textContent, setTextContent] = useState("error");
 
   useEffect(() => {
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect
     setTextContent(ref.current?.textContent ?? "error");
   }, [code]);
 
@@ -73,7 +79,8 @@ export function Example({
           <div
             ref={ref}
             {...stylex.props(styles.code)}
-            dangerouslySetInnerHTML={{ __html: code }}
+            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @eslint-react/dom/no-dangerously-set-innerhtml
+            dangerouslySetInnerHTML={{ __html: code ?? "error example" }}
           />
           <CopyToClipboardButton style={styles.copyButton} text={textContent} />
         </div>

@@ -23,7 +23,7 @@ import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   table: {},
@@ -65,9 +65,7 @@ const styles = stylex.create({
   },
 });
 
-export interface TableProps
-  extends Omit<AriaTableProps, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+export interface TableProps extends StyleXComponentProps<AriaTableProps> {
   size?: Size;
 }
 
@@ -86,8 +84,7 @@ export const Table = ({ style, size: sizeProp, ...props }: TableProps) => {
 };
 
 export interface TableColumnProps
-  extends Omit<AriaColumnProps, "className" | "style" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaColumnProps, "children">> {
   children?: React.ReactNode;
 }
 
@@ -113,9 +110,7 @@ export function TableColumn({ style, children, ...props }: TableColumnProps) {
 }
 
 export interface TableHeaderProps<T extends object>
-  extends Omit<AriaTableHeaderProps<T>, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<AriaTableHeaderProps<T>> {}
 
 export function TableHeader<T extends object>({
   children,
@@ -143,9 +138,7 @@ export function TableHeader<T extends object>({
 }
 
 export interface TableRowProps<T extends object>
-  extends Omit<AriaRowProps<T>, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<AriaRowProps<T>> {}
 
 export function TableRow<T extends object>({
   id,
@@ -176,9 +169,7 @@ export function TableRow<T extends object>({
 }
 
 export interface TableBodyProps<T extends object>
-  extends Omit<AriaTableBodyProps<T>, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<AriaTableBodyProps<T>> {}
 
 export function TableBody<T extends object>({
   style,
@@ -187,10 +178,7 @@ export function TableBody<T extends object>({
   return <AriaTableBody {...stylex.props(styles.tableBody, style)} {...prop} />;
 }
 
-export interface TableCellProps
-  extends Omit<AriaCellProps, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+export interface TableCellProps extends StyleXComponentProps<AriaCellProps> {}
 
 export function TableCell({ style, ...props }: TableCellProps) {
   return <AriaCell {...stylex.props(styles.cell, style)} {...props} />;

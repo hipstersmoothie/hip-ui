@@ -1,5 +1,5 @@
-import { Popover } from "@/components/popover";
 import { Button } from "@/components/button";
+import { Popover } from "@/components/popover";
 
 export function Basic() {
   return (

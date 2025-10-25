@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { radius } from "../theme/radius.stylex";
+import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   aspectRatio: (aspectRatio: number) => ({
@@ -11,10 +12,10 @@ const styles = stylex.create({
     position: "relative",
   },
   rounded: {
-    borderTopLeftRadius: radius["md"],
     borderBottomLeftRadius: radius["md"],
-    borderTopRightRadius: radius["md"],
     borderBottomRightRadius: radius["md"],
+    borderTopLeftRadius: radius["md"],
+    borderTopRightRadius: radius["md"],
   },
   imageContainer: {
     inset: 0,
@@ -28,8 +29,7 @@ const styles = stylex.create({
 });
 
 export interface AspectRatioProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   aspectRatio?: number;
   rounded?: boolean;
 }
@@ -40,6 +40,7 @@ export function AspectRatio({
   rounded = true,
   ...props
 }: AspectRatioProps) {
+  console.log(style);
   return (
     <div
       {...props}
@@ -54,9 +55,7 @@ export function AspectRatio({
 }
 
 export interface AspectRatioImageProps
-  extends Omit<React.ComponentProps<"img">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"img">> {}
 
 export function AspectRatioImage({ style, ...props }: AspectRatioImageProps) {
   return (

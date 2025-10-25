@@ -16,7 +16,7 @@ import { SizeContext } from "../context";
 import { Separator } from "../separator";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 
@@ -49,8 +49,7 @@ const styles = stylex.create({
 });
 
 export interface ListBoxProps<T extends object>
-  extends Omit<AriaListBoxProps<T>, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<AriaListBoxProps<T>> {
   size?: Size;
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
@@ -71,8 +70,7 @@ export function ListBox<T extends object>({
 }
 
 export interface ListBoxItemProps
-  extends Omit<AriaListBoxItemProps, "style" | "className" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaListBoxItemProps, "children">> {
   children: React.ReactNode;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -115,8 +113,7 @@ export function ListBoxItem({
 }
 
 export interface ListBoxSectionProps<T extends object>
-  extends Omit<AriaListBoxSectionProps<T>, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<AriaListBoxSectionProps<T>> {
   children: React.ReactNode;
 }
 
@@ -128,18 +125,14 @@ export function ListBoxSection<T extends object>({
 }
 
 export interface ListBoxSeparatorProps
-  extends Omit<SeparatorProps, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<SeparatorProps> {}
 
 export function ListBoxSeparator({ style, ...props }: ListBoxSeparatorProps) {
   return <Separator {...props} style={[styles.separator, style]} />;
 }
 
 export interface ListBoxSectionHeaderProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.HTMLAttributes<HTMLElement>> {}
 
 export function ListBoxSectionHeader({
   style,

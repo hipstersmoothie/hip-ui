@@ -1,3 +1,4 @@
+import { Button } from "@/components/button";
 import {
   Card,
   CardHeader,
@@ -6,7 +7,6 @@ import {
   CardBody,
   CardFooter,
 } from "@/components/card";
-import { Button } from "@/components/button";
 
 export function Basic() {
   return (

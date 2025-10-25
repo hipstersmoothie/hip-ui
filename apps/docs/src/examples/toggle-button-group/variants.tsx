@@ -1,7 +1,8 @@
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
-import { ToggleButton } from "@/components/toggle-button";
-import { Flex } from "@/components/flex";
 import * as stylex from "@stylexjs/stylex";
+
+import { Flex } from "@/components/flex";
+import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
 
 const styles = stylex.create({
   container: {

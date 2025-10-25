@@ -1,4 +1,4 @@
-import { ListBox, ListBoxItem, ListBoxSection } from "@/components/listbox";
+import { ListBox, ListBoxItem } from "@/components/listbox";
 
 const items = [
   { id: "item1", name: "Item 1" },

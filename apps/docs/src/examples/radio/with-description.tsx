@@ -1,5 +1,4 @@
 import { RadioGroup, Radio } from "@/components/radio";
-import { Flex } from "@/components/flex";
 
 export function RadioWithDescription() {
   return (

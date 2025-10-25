@@ -1,5 +1,5 @@
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
 import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
 
 export function Basic() {
   return (

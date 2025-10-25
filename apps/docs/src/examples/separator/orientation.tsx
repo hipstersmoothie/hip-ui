@@ -1,5 +1,5 @@
-import { Separator } from "@/components/separator";
 import { Flex } from "@/components/flex";
+import { Separator } from "@/components/separator";
 
 export function SeparatorOrientation() {
   return (

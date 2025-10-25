@@ -1,5 +1,5 @@
-import { Dialog, DialogHeader, DialogFooter } from "@/components/dialog";
 import { Button } from "@/components/button";
+import { Dialog, DialogHeader, DialogFooter } from "@/components/dialog";
 import { Body } from "@/components/typography";
 
 export function Basic() {

@@ -1,5 +1,6 @@
+import { Plus } from "lucide-react";
+
 import { IconButton } from "@/components/icon-button";
-import { Plus, Minus, Settings, Heart } from "lucide-react";
 
 export function Basic() {
   return (

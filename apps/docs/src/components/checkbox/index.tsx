@@ -17,7 +17,7 @@ import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -55,8 +55,7 @@ const styles = stylex.create({
 });
 
 interface CheckboxGroupProps
-  extends Omit<AriaCheckboxGroupProps, "children" | "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaCheckboxGroupProps, "children">> {
   children?: React.ReactNode;
   label?: React.ReactNode;
   description?: string;
@@ -86,8 +85,7 @@ export function CheckboxGroup({
 }
 
 export interface CheckboxProps
-  extends Omit<AriaCheckboxProps, "className" | "style" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaCheckboxProps, "children">> {
   children?: React.ReactNode;
 }
 

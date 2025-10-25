@@ -6,6 +6,7 @@ import {
 } from "react-aria-components";
 
 import { primaryColor } from "../theme/semantic-color.stylex";
+import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 import { LinkContext } from "./link-context";
 
@@ -22,9 +23,7 @@ const styles = stylex.create({
   },
 });
 
-export interface LinkProps extends Omit<AriaLinkProps, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+export interface LinkProps extends StyleXComponentProps<AriaLinkProps> {}
 
 export function Link({ style, ...props }: LinkProps) {
   const context = use(LinkContext);

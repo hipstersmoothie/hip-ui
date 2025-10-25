@@ -1,4 +1,8 @@
-import { Flex } from "@/components/flex";
+import * as stylex from "@stylexjs/stylex";
+import { Heart, Star } from "lucide-react";
+
+import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
+import { Button } from "@/components/button";
 import {
   Card,
   CardBody,
@@ -6,17 +10,15 @@ import {
   CardHeaderAction,
   CardTitle,
 } from "@/components/card";
-import { spacing } from "../components/theme/spacing.stylex";
-import { primaryColor } from "../components/theme/semantic-color.stylex";
-import * as stylex from "@stylexjs/stylex";
-import { Button } from "@/components/button";
-import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
-import { Text } from "@/components/typography/text";
-import { Heart, Star } from "lucide-react";
-import { IconButton } from "@/components/icon-button";
-import { TextField } from "@/components/text-field";
 import { Checkbox, CheckboxGroup } from "@/components/checkbox";
+import { Flex } from "@/components/flex";
+import { IconButton } from "@/components/icon-button";
 import { Separator } from "@/components/separator";
+import { TextField } from "@/components/text-field";
+import { Text } from "@/components/typography/text";
+
+import { primaryColor } from "../components/theme/semantic-color.stylex";
+import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   main: {
@@ -26,15 +28,12 @@ const styles = stylex.create({
   skinny: {
     width: 500,
   },
-  queueCard: {
-    width: 280,
-  },
   grow: {
-    flex: 1,
+    flexGrow: 1,
   },
   albumArt: {
-    width: 52,
     height: 52,
+    width: 52,
   },
   albumCardArt: {
     width: "60%",
@@ -47,17 +46,17 @@ const styles = stylex.create({
     fill: primaryColor.solid1,
   },
   membershipTier: {
-    paddingLeft: spacing["3"],
-    paddingRight: spacing["3"],
-    paddingTop: spacing["3"],
-    paddingBottom: spacing["3"],
-    marginLeft: `calc(${spacing["3"]} * -1)`,
-    marginRight: `calc(${spacing["3"]} * -1)`,
-    borderRadius: spacing["2"],
-    cursor: "pointer",
     backgroundColor: {
       ":hover": primaryColor.component2,
     },
+    borderRadius: spacing["2"],
+    cursor: "pointer",
+    marginLeft: `calc(${spacing["3"]} * -1)`,
+    marginRight: `calc(${spacing["3"]} * -1)`,
+    paddingBottom: spacing["3"],
+    paddingLeft: spacing["3"],
+    paddingRight: spacing["3"],
+    paddingTop: spacing["3"],
   },
   selectedTier: {
     backgroundColor: {
@@ -67,17 +66,17 @@ const styles = stylex.create({
     color: primaryColor.text2,
   },
   priceBox: {
-    padding: spacing["2"],
-    borderRadius: spacing["1"],
-    borderWidth: 1,
-    borderStyle: "solid",
-    borderColor: primaryColor.border2,
     backgroundColor: primaryColor.bgSubtle,
+    borderColor: primaryColor.border2,
+    borderRadius: spacing["1"],
+    borderStyle: "solid",
+    borderWidth: 1,
     color: primaryColor.text1,
+    padding: spacing["2"],
   },
   selectedPriceBox: {
-    borderColor: primaryColor.solid2,
     backgroundColor: primaryColor.solid1,
+    borderColor: primaryColor.solid2,
     color: primaryColor.textContrast,
   },
   membershipCard: {
@@ -234,9 +233,9 @@ function AlbumCard() {
           <Flex direction="row" gap="1">
             {[1, 2, 3, 4, 5].map((star) =>
               4 >= star ? (
-                <Star {...stylex.props(styles.filled)} />
+                <Star key={star} {...stylex.props(styles.filled)} />
               ) : (
-                <Star {...stylex.props(styles.starOutline)} />
+                <Star key={star} {...stylex.props(styles.starOutline)} />
               ),
             )}
           </Flex>

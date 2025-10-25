@@ -1,5 +1,5 @@
-import { Menu, MenuItem } from "@/components/menu";
 import { Button } from "@/components/button";
+import { Menu, MenuItem } from "@/components/menu";
 
 export function Basic() {
   return (

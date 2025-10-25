@@ -1,6 +1,6 @@
-import { Tooltip } from "@/components/tooltip";
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
+import { Tooltip } from "@/components/tooltip";
 
 export function TooltipPlacements() {
   return (

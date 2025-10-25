@@ -1,5 +1,5 @@
-import { Flex } from "@/components/flex";
 import { Avatar } from "@/components/avatar";
+import { Flex } from "@/components/flex";
 
 export function Basic() {
   return (

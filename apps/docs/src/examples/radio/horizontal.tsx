@@ -1,5 +1,5 @@
-import { RadioGroup, Radio } from "@/components/radio";
 import { Flex } from "@/components/flex";
+import { RadioGroup, Radio } from "@/components/radio";
 
 export function RadioHorizontal() {
   return (

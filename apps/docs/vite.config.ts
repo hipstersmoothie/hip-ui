@@ -1,20 +1,20 @@
 import contentCollections from "@content-collections/vite";
-import { defineConfig, PluginOption } from "vite";
+import mdx from "@mdx-js/rollup";
+import rehypeShiki, { RehypeShikiOptions } from "@shikijs/rehype";
+import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import viteTsConfigPaths from "vite-tsconfig-paths";
-import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
-import stylexPlugin from "unplugin-stylex/vite";
-import mdx from "@mdx-js/rollup";
-import { glob } from "glob";
 import { camelCase } from "change-case";
 import dedent from "dedent";
-import path from "path";
-import remarkFrontmatter from "remark-frontmatter";
+import { glob } from "glob";
 import MagicString from "magic-string";
-import { codeToHtml } from "shiki";
-import rehypeShiki, { RehypeShikiOptions } from "@shikijs/rehype";
+import path from "node:path";
 import docgen from "react-docgen-typescript";
+import remarkFrontmatter from "remark-frontmatter";
+import { codeToHtml } from "shiki";
+import stylexPlugin from "unplugin-stylex/vite";
+import { defineConfig, PluginOption } from "vite";
+import viteTsConfigPaths from "vite-tsconfig-paths";
 
 /** Generate a virtual model that imports all the content files. */
 function content() {
@@ -200,7 +200,7 @@ function propDocs() {
     load(id) {
       if (id === resolvedVirtualModuleId) {
         const code = dedent`
-          export const propDocs = ${JSON.stringify(docs).replaceAll("\\n", "\\\\n")};
+          export const propDocs = ${JSON.stringify(docs).replaceAll(String.raw`\n`, String.raw`\\n`)};
         `;
         return code;
       }

@@ -1,5 +1,5 @@
-import { Label } from "@/components/label";
 import { Flex } from "@/components/flex";
+import { Label } from "@/components/label";
 
 export function LabelSizes() {
   return (

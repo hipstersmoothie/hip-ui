@@ -1,5 +1,7 @@
-import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
 import * as stylex from "@stylexjs/stylex";
+
+import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
+
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({

@@ -1,6 +1,7 @@
+import { ClockIcon } from "lucide-react";
+
 import { Flex } from "@/components/flex";
 import { TimeField } from "@/components/time-field";
-import { ClockIcon } from "lucide-react";
 
 export function PrefixAndSuffix() {
   return (

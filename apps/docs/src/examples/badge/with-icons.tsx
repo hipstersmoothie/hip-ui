@@ -1,6 +1,7 @@
+import { CheckCircle, AlertCircle, XCircle, Info } from "lucide-react";
+
 import { Badge } from "@/components/badge";
 import { Flex } from "@/components/flex";
-import { CheckCircle, AlertCircle, XCircle, Info } from "lucide-react";
 
 export function BadgeWithIcons() {
   return (

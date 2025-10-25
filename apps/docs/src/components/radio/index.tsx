@@ -17,7 +17,7 @@ import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size } from "../theme/types";
+import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const scaleIn = stylex.keyframes({
@@ -85,8 +85,7 @@ const styles = stylex.create({
 });
 
 interface RadioGroupProps
-  extends Omit<AriaRadioGroupProps, "children" | "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaRadioGroupProps, "children">> {
   children?: React.ReactNode;
   label?: React.ReactNode;
   description?: string;
@@ -116,8 +115,7 @@ export function RadioGroup({
 }
 
 export interface RadioProps
-  extends Omit<AriaRadioProps, "className" | "style" | "children"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaRadioProps, "children">> {
   children?: React.ReactNode;
 }
 

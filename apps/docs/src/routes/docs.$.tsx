@@ -1,4 +1,13 @@
+import type { MDXComponents } from "mdx/types";
+
+import * as stylex from "@stylexjs/stylex";
+import { createFileRoute, useLocation } from "@tanstack/react-router";
+import { allDocs } from "content-collections";
+import { useEffect, useRef, useState } from "react";
+import { pages } from "virtual:content";
+
 import { Flex } from "@/components/flex";
+import { LinkProps, Link as TypographyLink } from "@/components/link";
 import {
   Body,
   Heading1,
@@ -10,71 +19,63 @@ import {
   OrderedList,
   UnorderedList,
 } from "@/components/typography";
-import { LinkProps, Link as TypographyLink } from "@/components/link";
 import { Text } from "@/components/typography/text";
-import { createFileRoute, useLocation } from "@tanstack/react-router";
-import { allDocs } from "content-collections";
-import { pages } from "virtual:content";
-import type { MDXComponents } from "mdx/types";
-import * as stylex from "@stylexjs/stylex";
-import { spacing } from "../components/theme/spacing.stylex";
+import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
+
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
-import { IconButton } from "@/components/icon-button";
-import { Copy } from "lucide-react";
-import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
-import { useEffect, useRef, useState } from "react";
+import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   main: {
     maxWidth: "80ch",
-    paddingTop: spacing["20"],
     paddingBottom: spacing["20"],
     paddingLeft: spacing["16"],
     paddingRight: spacing["16"],
+    paddingTop: spacing["20"],
   },
   pre: {
-    position: "relative",
-    marginTop: spacing["8"],
-    marginBottom: spacing["8"],
-    padding: spacing["4"],
-    borderRadius: radius["lg"],
-    borderWidth: 1,
-    borderStyle: "solid",
     borderColor: uiColor.border2,
+    borderRadius: radius["lg"],
+    borderStyle: "solid",
+    borderWidth: 1,
+    marginBottom: spacing["8"],
+    marginTop: spacing["8"],
+    padding: spacing["4"],
+    position: "relative",
   },
   copyButton: {
     position: "absolute",
-    top: "50%",
     right: spacing["3"],
+    top: "50%",
     transform: "translateY(-50%)",
   },
   h1: {
-    marginTop: spacing["8"],
     marginBottom: spacing["8"],
+    marginTop: spacing["8"],
   },
   h2: {
-    marginTop: spacing["8"],
     marginBottom: spacing["4"],
+    marginTop: spacing["8"],
   },
   h3: {
-    marginTop: spacing["8"],
     marginBottom: spacing["5"],
+    marginTop: spacing["8"],
   },
   h4: {
-    marginTop: spacing["8"],
     marginBottom: spacing["8"],
+    marginTop: spacing["8"],
   },
   h5: {
-    marginTop: spacing["8"],
     marginBottom: spacing["8"],
+    marginTop: spacing["8"],
   },
   p: {
-    marginTop: {
+    marginBottom: {
       default: spacing["5"],
       ":is(li *)": spacing["0"],
     },
-    marginBottom: {
+    marginTop: {
       default: spacing["5"],
       ":is(li *)": spacing["0"],
     },
@@ -94,6 +95,7 @@ function Pre({ children, ...props }: React.ComponentProps<"pre">) {
 
   useEffect(() => {
     console.log(ref.current?.textContent);
+    // eslint-disable-next-line react-hooks/set-state-in-effect, @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setTextContent(ref.current?.textContent ?? "error");
   }, [ref]);
 
@@ -129,7 +131,7 @@ function RouteComponent() {
   const doc = allDocs.find((d) => location.pathname.includes(d._meta.path));
 
   if (!doc) {
-    throw new Error(`Doc not found: ${_splat}`);
+    throw new Error(`Doc not found: ${_splat ?? "unknown"}`);
   }
 
   const Content = pages[location.pathname];
@@ -142,9 +144,9 @@ function RouteComponent() {
   return (
     <div {...stylex.props(styles.main)}>
       <Flex direction="column" gap="4" style={styles.header}>
-        <Heading1>{doc?.title}</Heading1>
+        <Heading1>{doc.title}</Heading1>
         <Text size="xl" variant="secondary">
-          {doc?.description}
+          {doc.description}
         </Text>
       </Flex>
       <Content components={components} />

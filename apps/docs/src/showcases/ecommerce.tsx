@@ -1,5 +1,11 @@
-import { Flex } from "@/components/flex";
 import * as stylex from "@stylexjs/stylex";
+import { Bookmark, Shredder, Upload } from "lucide-react";
+import { Fragment } from "react/jsx-runtime";
+
+import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
+import { Avatar } from "@/components/avatar";
+import { Badge } from "@/components/badge";
+import { Button } from "@/components/button";
 import {
   Card,
   CardBody,
@@ -10,102 +16,95 @@ import {
   CardImage,
   CardTitle,
 } from "@/components/card";
-import { Button } from "@/components/button";
-import { Text } from "@/components/typography/text";
-import { Separator } from "@/components/separator";
-import { Select, SelectItem } from "@/components/select";
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
-import { ToggleButton } from "@/components/toggle-button";
 import { ColorSwatch } from "@/components/color-swatch";
-import { Grid } from "@/components/grid";
-import { Fragment } from "react/jsx-runtime";
-import { Avatar } from "@/components/avatar";
-import { spacing } from "../components/theme/spacing.stylex";
-import { IconButton } from "@/components/icon-button";
-import { Bookmark, Shredder, Upload } from "lucide-react";
-import { Badge } from "@/components/badge";
-import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
-import { LabelText, SmallBody } from "@/components/typography";
-import { Link } from "@/components/link";
-import { TextField } from "@/components/text-field";
-import { NumberField } from "@/components/number-field";
 import { FileDropZone } from "@/components/file-drop-zone";
-import { TextArea } from "@/components/text-area";
+import { Flex } from "@/components/flex";
+import { Grid } from "@/components/grid";
+import { IconButton } from "@/components/icon-button";
+import { Link } from "@/components/link";
+import { NumberField } from "@/components/number-field";
 import { SearchField } from "@/components/search-field";
+import { Select, SelectItem } from "@/components/select";
+import { Separator } from "@/components/separator";
+import { TextArea } from "@/components/text-area";
+import { TextField } from "@/components/text-field";
+import { ToggleButton } from "@/components/toggle-button";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
+import { LabelText, SmallBody } from "@/components/typography";
+import { Text } from "@/components/typography/text";
+
+import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   heightFull: {
     height: "100%",
   },
   grow: {
+    flexBasis: "0%",
     flexGrow: 1,
     flexShrink: 0,
-    flexBasis: "0%",
     minWidth: 0,
   },
   medium: {
+    flexBasis: "0%",
     flexGrow: 0.75,
     flexShrink: 0,
-    flexBasis: "0%",
   },
   skinny: {
+    flexBasis: "0%",
     flexGrow: 0.5,
     flexShrink: 0,
-    flexBasis: "0%",
   },
   relative: {
     position: "relative",
   },
   bottomRight: {
-    position: "absolute",
     bottom: 0,
-    right: 0,
-    marginRight: spacing["4"],
     marginBottom: spacing["4"],
+    marginRight: spacing["4"],
+    position: "absolute",
+    right: 0,
   },
   timelineContainer: {
     position: "relative",
   },
   timelineLine: {
-    position: "absolute",
-    left: spacing["2"],
-    top: spacing["3"],
-    bottom: spacing["3"],
-    width: "2px",
     backgroundColor: "#14b8a6", // teal color
+    bottom: spacing["3"],
+    left: spacing["2"],
+    position: "absolute",
+    top: spacing["3"],
+    width: "2px",
   },
   timelineItem: {
-    position: "relative",
     paddingLeft: spacing["10"],
+    position: "relative",
   },
   timelineDot: {
-    position: "absolute",
+    backgroundColor: "#14b8a6", // teal color
+    borderRadius: "50%",
+    flexShrink: 0,
+    height: spacing["2.5"],
     left: spacing["1"],
+    position: "absolute",
     top: spacing["1"],
     width: spacing["2.5"],
-    height: spacing["2.5"],
-    borderRadius: "50%",
-    backgroundColor: "#14b8a6", // teal color
-    flexShrink: 0,
-  },
-  gridHeight: {
-    height: "400px",
   },
   cardSection: {
-    paddingTop: spacing["6"],
-    paddingBottom: spacing["6"],
-    paddingLeft: spacing["6"],
-    paddingRight: spacing["6"],
+    alignItems: "center",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
+    paddingBottom: spacing["6"],
+    paddingLeft: spacing["6"],
+    paddingRight: spacing["6"],
+    paddingTop: spacing["6"],
   },
   customerRow: {
-    paddingTop: spacing["4"],
     paddingBottom: spacing["4"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
+    paddingTop: spacing["4"],
   },
   separator: {
     height: "auto",
@@ -781,6 +780,7 @@ function ShipmentTracking() {
               <div {...stylex.props(styles.timelineLine)} />
               {trackingEvents.map((event, index) => (
                 <Flex
+                  // eslint-disable-next-line @eslint-react/no-array-index-key
                   key={index}
                   align="start"
                   gap="3"
@@ -811,21 +811,21 @@ function TopCustomersCard() {
       name: "Elijah Wilson",
       customerSince: "November 3, 2017",
       address: "735 Pine Street, Apartment 4C, Portland, OR 34567",
-      sales: 15432.56,
+      sales: 15_432.56,
       orders: 42,
     },
     {
       name: "Cameron Johnson",
       customerSince: "June 10, 2020",
       address: "2465 Main Street, Apt 3B, Springfield, OH 12345",
-      sales: 13976.43,
+      sales: 13_976.43,
       orders: 12,
     },
     {
       name: "Sophia Martinez",
       customerSince: "September 27, 2019",
       address: "512 Oakwood Avenue, Unit 201, Greenville, SC 67890",
-      sales: 11653.03,
+      sales: 11_653.03,
       orders: 34,
     },
     {
@@ -966,6 +966,7 @@ function MarketingCallout() {
         <AspectRatio style={styles.cardSection} rounded={false}>
           <Flex wrap gap="1">
             {fashionItems.map((item, index) => (
+              // eslint-disable-next-line @eslint-react/no-array-index-key
               <Text variant="secondary" key={index} leading="2xl" size="sm">
                 {item}
               </Text>

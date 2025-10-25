@@ -1,6 +1,6 @@
 import { useControlledState } from "@react-stately/utils";
 import * as stylex from "@stylexjs/stylex";
-import { useEffect, useEffectEvent } from "react";
+import { useEffect, useCallback } from "react";
 import {
   InputProps,
   Modal,
@@ -68,9 +68,9 @@ export function CommandMenu<T extends object>({
     defaultOpen ?? false,
     onOpenChange,
   );
-  const onClose = useEffectEvent(() => {
+  const onClose = useCallback(() => {
     setIsOpen(false);
-  });
+  }, [setIsOpen]);
 
   useEffect(() => {
     if (disableGlobalShortcut) return;

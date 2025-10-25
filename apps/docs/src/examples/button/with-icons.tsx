@@ -1,6 +1,7 @@
+import { Download, Upload, Settings } from "lucide-react";
+
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
-import { Download, Upload, Settings } from "lucide-react";
 
 export function ButtonWithIcons() {
   return (

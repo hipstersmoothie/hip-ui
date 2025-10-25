@@ -5,6 +5,7 @@ import {
 } from "react-aria-components";
 
 import { uiColor } from "../theme/semantic-color.stylex";
+import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   separator: {
@@ -23,9 +24,7 @@ const styles = stylex.create({
 });
 
 export interface SeparatorProps
-  extends Omit<AriaSeparatorProps, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<AriaSeparatorProps> {}
 
 export function Separator({ style, ...props }: SeparatorProps) {
   return (

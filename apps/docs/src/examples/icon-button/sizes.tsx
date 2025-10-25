@@ -1,6 +1,7 @@
-import { IconButton } from "@/components/icon-button";
-import { Flex } from "@/components/flex";
 import { Plus, Minus, Settings } from "lucide-react";
+
+import { Flex } from "@/components/flex";
+import { IconButton } from "@/components/icon-button";
 
 export function IconButtonSizes() {
   return (

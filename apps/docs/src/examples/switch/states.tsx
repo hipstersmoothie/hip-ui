@@ -1,5 +1,5 @@
-import { Switch } from "@/components/switch";
 import { Flex } from "@/components/flex";
+import { Switch } from "@/components/switch";
 
 export function SwitchStates() {
   return (

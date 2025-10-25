@@ -9,7 +9,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { AriaButtonProps, useMenuTrigger } from "react-aria";
+import { AriaButtonProps, mergeProps, useMenuTrigger } from "react-aria";
 import {
   Menu as AriaMenu,
   MenuProps as AriaMenuProps,
@@ -105,19 +105,19 @@ function ContextMenuTrigger({
     throw new Error("ContextMenuTrigger must have exactly one child");
   }
 
+  /* eslint-disable react-hooks/refs */
   return (
     <>
       {/* eslint-disable-next-line @eslint-react/no-clone-element */}
       {cloneElement(
         children as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
-        {
-          ...props,
+        mergeProps(props, {
           "aria-controls": menuTriggerProps["aria-controls"],
           "aria-expanded": menuTriggerProps["aria-expanded"],
           "aria-haspopup": menuTriggerProps["aria-haspopup"],
           id: menuTriggerProps["id"],
           onContextMenu: onContextMenu,
-        },
+        }),
       )}
       <div
         ref={menuTriggerProps.ref}
@@ -125,6 +125,7 @@ function ContextMenuTrigger({
       />
     </>
   );
+  /* eslint-enable react-hooks/refs */
 }
 
 export interface ContextMenuProps<T extends object>

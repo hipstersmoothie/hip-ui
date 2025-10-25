@@ -8,6 +8,7 @@ import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -56,8 +57,7 @@ const styles = stylex.create({
 });
 
 export interface SwitchProps
-  extends Omit<AriaSwitchProps, "children" | "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<Omit<AriaSwitchProps, "children">> {
   children: React.ReactNode;
 }
 

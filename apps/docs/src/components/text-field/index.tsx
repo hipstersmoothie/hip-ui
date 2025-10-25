@@ -13,7 +13,7 @@ import {
 
 import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
-import { InputVariant, Size } from "../theme/types";
+import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 function PasswordToggle({
@@ -46,9 +46,8 @@ function PasswordToggle({
 }
 
 export interface TextFieldProps
-  extends Omit<AriaTextFieldProps, "style" | "className">,
+  extends StyleXComponentProps<AriaTextFieldProps>,
     Pick<InputProps, "placeholder"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { Group, GroupProps } from "react-aria-components";
 
 import { ButtonGroupContext } from "../button/context";
-import { ButtonGroupVariant } from "../theme/types";
+import { ButtonGroupVariant, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   group: {
@@ -20,9 +20,7 @@ const styles = stylex.create({
   },
 });
 
-export interface ButtonGroupProps
-  extends Omit<GroupProps, "className" | "style"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+export interface ButtonGroupProps extends StyleXComponentProps<GroupProps> {
   orientation?: "horizontal" | "vertical";
   variant?: ButtonGroupVariant;
 }

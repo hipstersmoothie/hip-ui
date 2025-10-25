@@ -1,5 +1,11 @@
+import * as stylex from "@stylexjs/stylex";
+import { Grid } from "lucide-react";
+import { useState } from "react";
+import { ComponentDoc } from "react-docgen-typescript";
 import { propDocs } from "virtual:propDocs";
 
+import { Card, CardBody } from "@/components/card";
+import { Flex } from "@/components/flex";
 import {
   Table,
   TableBody,
@@ -8,16 +14,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/table";
-import { ComponentDoc } from "react-docgen-typescript";
-import { SmallBody } from "@/components/typography";
-import { Card, CardBody } from "@/components/card";
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
 import { ToggleButton } from "@/components/toggle-button";
-import { Flex } from "@/components/flex";
-import { Activity, Fragment, useState } from "react";
-import { Grid } from "lucide-react";
+import { ToggleButtonGroup } from "@/components/toggle-button-group";
+import { SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
-import * as stylex from "@stylexjs/stylex";
 
 const styles = stylex.create({
   props: {
@@ -44,6 +44,7 @@ function PropTable({ doc }: { doc: ComponentDoc }) {
               <TableRow key={prop.name}>
                 <TableCell>{prop.name}</TableCell>
                 <TableCell>{prop.type.name}</TableCell>
+                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
                 <TableCell>{prop.defaultValue?.value}</TableCell>
                 <TableCell>
                   <SmallBody>{prop.description}</SmallBody>
@@ -60,7 +61,7 @@ function PropTable({ doc }: { doc: ComponentDoc }) {
 export function PropDocs({ components }: { components: string[] }) {
   const docs = propDocs
     .filter((doc) => components.includes(doc.displayName))
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const aIndex = components.indexOf(a.displayName);
       const bIndex = components.indexOf(b.displayName);
       return aIndex - bIndex;

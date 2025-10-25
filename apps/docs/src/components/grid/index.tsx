@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { Spacing, spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   base: { display: "grid" },
@@ -107,8 +108,7 @@ const styles = stylex.create({
 });
 
 export interface GridProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   /**
    * The grid template rows of the grid container.
    * @default "auto"
@@ -227,8 +227,7 @@ export const Grid = ({
 };
 
 interface GridItemProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   columnStart?: number;
   columnEnd?: number;
   rowStart?: number;

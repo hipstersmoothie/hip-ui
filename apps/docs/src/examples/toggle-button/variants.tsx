@@ -1,5 +1,5 @@
-import { ToggleButton } from "@/components/toggle-button";
 import { Flex } from "@/components/flex";
+import { ToggleButton } from "@/components/toggle-button";
 
 export function Variants() {
   return (

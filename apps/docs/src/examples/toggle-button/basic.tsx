@@ -1,6 +1,7 @@
+import { PinIcon } from "lucide-react";
+
 import { Flex } from "@/components/flex";
 import { ToggleButton } from "@/components/toggle-button";
-import { PinIcon } from "lucide-react";
 
 export function Basic() {
   return (

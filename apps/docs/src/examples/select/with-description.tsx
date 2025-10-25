@@ -1,5 +1,5 @@
-import { Select } from "@/components/select";
 import { Flex } from "@/components/flex";
+import { Select } from "@/components/select";
 
 const countries = [
   { id: "us", name: "United States", code: "US" },

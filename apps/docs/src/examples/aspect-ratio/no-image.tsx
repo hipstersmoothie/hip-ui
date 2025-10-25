@@ -1,19 +1,21 @@
-import { AspectRatio } from "@/components/aspect-ratio";
 import * as stylex from "@stylexjs/stylex";
-import { spacing } from "../../components/theme/spacing.stylex";
 import { Upload } from "lucide-react";
+
+import { AspectRatio } from "@/components/aspect-ratio";
 import { Button } from "@/components/button";
+
 import { uiColor } from "../../components/theme/semantic-color.stylex";
+import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   example: {
-    height: spacing["40"],
-    display: "flex",
-    justifyContent: "center",
     alignItems: "center",
-    borderWidth: 1,
-    borderStyle: "solid",
     borderColor: uiColor.border1,
+    borderStyle: "solid",
+    borderWidth: 1,
+    display: "flex",
+    height: spacing["40"],
+    justifyContent: "center",
   },
 });
 

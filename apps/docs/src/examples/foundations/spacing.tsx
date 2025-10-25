@@ -1,19 +1,21 @@
-import { Grid } from "@/components/grid";
-import { spacing } from "../../components/theme/spacing.stylex";
 import * as stylex from "@stylexjs/stylex";
-import { Fragment } from "react/jsx-runtime";
 import { useEffect, useState } from "react";
+import { Fragment } from "react/jsx-runtime";
+
+import { Grid } from "@/components/grid";
 import { Text } from "@/components/typography/text";
+
 import { radius } from "../../components/theme/radius.stylex";
 import { primaryColor } from "../../components/theme/semantic-color.stylex";
+import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   box: {
     backgroundColor: primaryColor.solid1,
   },
   boxContainer: {
-    marginTop: spacing["8"],
     marginBottom: spacing["8"],
+    marginTop: spacing["8"],
   },
 });
 
@@ -24,6 +26,7 @@ function VariableValue({ value }: { value: string }) {
     const r = getComputedStyle(document.documentElement).getPropertyValue(
       value.replace(/^var\(/, "").replace(/\)$/, ""),
     );
+    // eslint-disable-next-line react-hooks/set-state-in-effect, @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setResolved(r);
   }, [value]);
   return <div>{resolved}</div>;
@@ -31,11 +34,11 @@ function VariableValue({ value }: { value: string }) {
 
 const sortedSpacing = Object.entries(spacing)
   .filter(([key]) => !key.startsWith("__"))
-  .sort(([a], [b]) => {
+  .toSorted(([a], [b]) => {
     if (a === "px") return -1;
     if (b === "px") return 1;
-    return parseFloat(a) - parseFloat(b);
-  });
+    return Number.parseFloat(a) - Number.parseFloat(b);
+  }) as [string, string][];
 
 export function Spacing() {
   return (
@@ -63,7 +66,7 @@ export function Spacing() {
 
 const sortedRadius = Object.entries(radius).filter(
   ([key]) => !key.startsWith("__"),
-);
+) as [string, string][];
 
 export function Radius() {
   return (
