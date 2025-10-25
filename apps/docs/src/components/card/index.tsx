@@ -13,6 +13,7 @@ const styles = stylex.create({
   card: {
     borderRadius: radius["lg"],
     display: "flex",
+    overflow: "hidden",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
     gap: "var(--card-gap)",
@@ -81,6 +82,13 @@ const styles = stylex.create({
     display: "flex",
     gap: spacing["2"],
     justifyContent: "flex-end",
+  },
+  cardImage: {
+    borderTopLeftRadius: { default: 0, ":first-child": radius.md },
+    borderBottomLeftRadius: { default: 0, ":last-child": radius.md },
+    borderTopRightRadius: { default: 0, ":first-child": radius.md },
+    borderBottomRightRadius: { default: 0, ":last-child": radius.md },
+    overflow: "hidden",
   },
 });
 
@@ -198,7 +206,11 @@ export const CardImage = ({ style, aspectRatio, ...props }: CardImageProps) => {
   return (
     <AspectRatio
       aspectRatio={aspectRatio}
-      style={[styles.cardSection as unknown as stylex.StyleXStyles, style]}
+      style={[
+        styles.cardSection as unknown as stylex.StyleXStyles,
+        styles.cardImage,
+        style,
+      ]}
     >
       <AspectRatioImage {...props} />
     </AspectRatio>

@@ -62,7 +62,7 @@ interface ToggleButtonGroupSeparateProps extends ToggleButtonGroupBaseProps {
 }
 
 interface ToggleButtonGroupGroupedProps extends ToggleButtonGroupBaseProps {
-  variant: "grouped";
+  variant?: "grouped";
   itemsPerRow?: never;
 }
 

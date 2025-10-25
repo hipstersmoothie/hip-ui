@@ -7,17 +7,22 @@ const styles = stylex.create({
     aspectRatio,
   }),
   container: {
+    overflow: "hidden",
     position: "relative",
+  },
+  rounded: {
+    borderTopLeftRadius: radius["md"],
+    borderBottomLeftRadius: radius["md"],
+    borderTopRightRadius: radius["md"],
+    borderBottomRightRadius: radius["md"],
   },
   imageContainer: {
     inset: 0,
     position: "absolute",
   },
   image: {
-    borderRadius: radius["md"],
     height: "100%",
     objectFit: "cover",
-    overflow: "hidden",
     width: "100%",
   },
 });
@@ -26,11 +31,13 @@ export interface AspectRatioProps
   extends Omit<React.ComponentProps<"div">, "style" | "className"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   aspectRatio?: number;
+  rounded?: boolean;
 }
 
 export function AspectRatio({
   style,
   aspectRatio = 1,
+  rounded = true,
   ...props
 }: AspectRatioProps) {
   return (
@@ -39,6 +46,7 @@ export function AspectRatio({
       {...stylex.props(
         styles.container,
         styles.aspectRatio(aspectRatio),
+        rounded && styles.rounded,
         style,
       )}
     />

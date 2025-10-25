@@ -22,6 +22,13 @@ import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
 
 const styles = stylex.create({
+  main: {
+    maxWidth: "80ch",
+    paddingTop: spacing["20"],
+    paddingBottom: spacing["20"],
+    paddingLeft: spacing["16"],
+    paddingRight: spacing["16"],
+  },
   pre: {
     marginTop: spacing["8"],
     marginBottom: spacing["8"],
@@ -61,6 +68,9 @@ const styles = stylex.create({
       ":is(li *)": spacing["0"],
     },
   },
+  header: {
+    marginBottom: spacing["12"],
+  },
 });
 
 function Link(props: LinkProps) {
@@ -97,16 +107,21 @@ function RouteComponent() {
   }
 
   const Content = pages[location.pathname];
+  const isShowcase = location.pathname.includes("showcase");
+
+  if (isShowcase) {
+    return <Content components={components} />;
+  }
 
   return (
-    <div>
-      <Flex direction="column" gap="4">
+    <div {...stylex.props(styles.main)}>
+      <Flex direction="column" gap="4" style={styles.header}>
         <Heading1>{doc?.title}</Heading1>
         <Text size="xl" variant="secondary">
           {doc?.description}
         </Text>
       </Flex>
-      {Content && <Content components={components} />}
+      <Content components={components} />
     </div>
   );
 }

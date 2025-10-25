@@ -3,6 +3,8 @@ import {
   AlertDialogHeader,
   AlertDialogFooter,
   AlertDialogDescription,
+  AlertDialogCancelButton,
+  AlertDialogActionButton,
 } from "@/components/alert-dialog";
 import { Button } from "@/components/button";
 
@@ -14,8 +16,12 @@ export function Basic() {
         This action cannot be undone. This will permanently delete the item.
       </AlertDialogDescription>
       <AlertDialogFooter>
-        <Button variant="secondary">Cancel</Button>
-        <Button variant="critical">Delete</Button>
+        <AlertDialogCancelButton variant="secondary">
+          Cancel
+        </AlertDialogCancelButton>
+        <AlertDialogActionButton variant="critical">
+          Delete
+        </AlertDialogActionButton>
       </AlertDialogFooter>
     </AlertDialog>
   );

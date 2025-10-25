@@ -66,6 +66,10 @@ const styles = stylex.create({
   "variant-destructive": { color: criticalColor.text2 },
 
   strikethrough: { textDecoration: "line-through" },
+
+  left: { textAlign: "left" },
+  center: { textAlign: "center" },
+  right: { textAlign: "right" },
 });
 
 interface TextProps
@@ -78,6 +82,7 @@ interface TextProps
   tracking?: ThemeKeys<typeof tracking>;
   variant?: "primary" | "secondary" | "destructive";
   strikethrough?: boolean;
+  align?: "left" | "center" | "right";
 }
 
 export const Text = ({
@@ -89,6 +94,7 @@ export const Text = ({
   tracking,
   variant,
   strikethrough = false,
+  align,
   ...props
 }: TextProps) => {
   return (
@@ -101,6 +107,7 @@ export const Text = ({
         tracking && styles[`tracking-${tracking}`],
         variant && styles[`variant-${variant}`],
         strikethrough && styles.strikethrough,
+        align && styles[align],
         style,
       )}
       {...props}

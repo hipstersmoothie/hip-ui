@@ -11,10 +11,7 @@ import { LinkContext } from "./link-context";
 
 const styles = stylex.create({
   link: {
-    color: {
-      default: primaryColor.text1,
-      ":visited": primaryColor.text2,
-    },
+    color: primaryColor.text2,
     cursor: "pointer",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],

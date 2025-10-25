@@ -61,6 +61,7 @@ const styles = stylex.create({
       ":is([data-table-size=md] *)": spacing["2"],
       ":is([data-table-size=lg] *)": spacing["3"],
     },
+    textAlign: "left",
   },
 });
 

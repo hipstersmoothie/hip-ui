@@ -26,11 +26,6 @@ const styles = stylex.create({
     paddingTop: spacing["4"],
     paddingBottom: spacing["4"],
   },
-  main: {
-    maxWidth: "80ch",
-    paddingTop: spacing["10"],
-    paddingBottom: spacing["20"],
-  },
 });
 
 interface SidebarItem {
@@ -46,6 +41,9 @@ const componentDocs = allDocs.filter((doc) =>
 );
 const foundationDocs = allDocs.filter((doc) =>
   doc._meta.directory.startsWith("foundations"),
+);
+const showcaseDocs = allDocs.filter((doc) =>
+  doc._meta.directory.startsWith("showcase"),
 );
 
 const sidebarItems: SidebarItem[] = [
@@ -68,6 +66,16 @@ const sidebarItems: SidebarItem[] = [
     id: "components",
     label: "Components",
     items: componentDocs.map((doc) => ({
+      id: doc._meta.path,
+      label: doc.title,
+      to: "/docs/$",
+      params: { _splat: doc._meta.path },
+    })),
+  },
+  {
+    id: "showcases",
+    label: "Showcases",
+    items: showcaseDocs.map((doc) => ({
       id: doc._meta.path,
       label: doc.title,
       to: "/docs/$",
@@ -121,7 +129,7 @@ function RouteComponent() {
       <aside {...stylex.props(styles.aside)}>
         <Sidebar />
       </aside>
-      <main {...stylex.props(styles.main)}>
+      <main>
         <Outlet />
       </main>
     </Grid>
