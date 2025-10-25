@@ -3,19 +3,22 @@ import type { MDXComponents } from "mdx/types";
 import * as stylex from "@stylexjs/stylex";
 import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
-import { useEffect, useRef, useState } from "react";
+import { createContext, use, useEffect, useRef, useState } from "react";
 import { pages } from "virtual:content";
 
 import { Flex } from "@/components/flex";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
 import { StyleXComponentProps } from "@/components/theme/types";
 import {
+  Blockquote,
+  BlockquoteProps,
   Body,
   Heading1,
   Heading2,
   Heading3,
   Heading4,
   Heading5,
+  InlineCode,
   ListItem,
   OrderedList,
   UnorderedList,
@@ -26,6 +29,7 @@ import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
+import { lineHeight } from "../components/theme/typography.stylex";
 
 const styles = stylex.create({
   main: {
@@ -72,23 +76,39 @@ const styles = stylex.create({
     marginTop: spacing["8"],
   },
   p: {
+    lineHeight: {
+      default: lineHeight.xl,
+      ":is(li *)": lineHeight.base,
+      ":is(blockquote *)": lineHeight.base,
+    },
     marginBottom: {
       default: spacing["5"],
       ":is(li *)": spacing["0"],
+      ":is(blockquote *)": spacing["0"],
     },
     marginTop: {
       default: spacing["5"],
       ":is(li *)": spacing["0"],
+      ":is(blockquote *)": spacing["0"],
     },
   },
   header: {
     marginBottom: spacing["12"],
+  },
+  blockquote: {
+    marginBottom: 0,
+    marginLeft: spacing["2"],
+    marginRight: 0,
+    marginTop: 0,
+    paddingLeft: spacing["4"],
   },
 });
 
 function Link(props: LinkProps) {
   return <TypographyLink {...props} />;
 }
+
+const PreContext = createContext(false);
 
 function Pre({
   children,
@@ -105,16 +125,32 @@ function Pre({
   }, [ref]);
 
   return (
-    <pre
-      ref={ref}
-      {...props}
-      {...stylex.props(styles.pre, style)}
-      data-testid="code"
-    >
-      {children}
-      <CopyToClipboardButton style={styles.copyButton} text={textContent} />
-    </pre>
+    <PreContext value={true}>
+      <pre
+        ref={ref}
+        {...props}
+        {...stylex.props(styles.pre, style)}
+        data-testid="code"
+      >
+        {children}
+        <CopyToClipboardButton style={styles.copyButton} text={textContent} />
+      </pre>
+    </PreContext>
   );
+}
+
+function Code({ className, style, ...props }: React.ComponentProps<"code">) {
+  const isPre = use(PreContext);
+
+  if (isPre) {
+    return <code {...props} className={className} style={style} />;
+  }
+
+  return <InlineCode {...props} />;
+}
+
+function DocsBlockquote(props: BlockquoteProps) {
+  return <Blockquote {...props} style={styles.blockquote} />;
 }
 
 const components: MDXComponents = {
@@ -129,6 +165,8 @@ const components: MDXComponents = {
   ul: UnorderedList,
   ol: OrderedList,
   li: ListItem,
+  code: Code,
+  blockquote: DocsBlockquote,
 };
 
 export const Route = createFileRoute("/docs/$")({

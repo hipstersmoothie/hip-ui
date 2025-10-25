@@ -15,6 +15,9 @@ import { Typeramp } from "../../examples/typography/typeramp";
 Typography is a fundamental design system component that ensures consistent and readable text across your application.
 Our typography system is built on a foundation of design tokens and composed into semantic type styles.
 
+This page documents the tokens that compose the typography system.
+In most cases you will not need to use the tokens directly, but instead use the [Typography Components](/docs/components/typography) or the [Text Component](/docs/components/text) to create styled text.
+
 ## Tokens
 
 Design tokens are the atomic building blocks of our typography system.
@@ -56,29 +59,9 @@ Letter spacing tokens control the space between characters:
 
 <Example src={LetterSpacing} />
 
-## Typeramp
-
-The typeramp is a composed system that combines individual tokens into semantic text styles.
-Instead of manually combining tokens each time you need styled text, the typeramp provides pre-composed styles for common use cases.
-
-<Example src={Typeramp} />
-
-### Why Use a Typeramp?
-
-A typeramp provides several key benefits when developing applications:
-
-1. **Consistency**: Ensures all text follows the same visual hierarchy and spacing rules
-2. **Efficiency**: Reduces the need to manually combine tokens for common text patterns
-3. **Maintainability**: Changes to the design system can be made in one place
-4. **Accessibility**: Built-in responsive behavior and proper contrast ratios
-5. **Semantic Meaning**: Styles are named for their purpose rather than their appearance
-
-### Responsive Behavior
-
-The typeramp includes responsive font sizes that automatically adjust based on screen size. For example, `heading1` uses `fontSize["4xl"]` on mobile and `fontSize["5xl"]` on medium screens and up.
-
 ## Related
 
+- [Typography Components](/docs/components/typography) - Learn about the typography components and using the typeramp
 - [Design Tokens](/docs/foundations/tokens) - Learn about the broader token system
 - [Spacing](/docs/foundations/spacing) - Understand spacing tokens used in typography
 - [Breakpoints](/docs/foundations/breakpoints) - See how responsive typography works

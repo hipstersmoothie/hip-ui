@@ -15,8 +15,10 @@ import { FontSizes } from '../../examples/typography/font-sizes'
 import { LineHeights } from '../../examples/typography/line-heights'
 import { LetterSpacing } from '../../examples/typography/letter-spacing'
 import { Typeramp } from '../../examples/typography/typeramp'
-
-<Example src={Headings} />
+import { BlockquoteExample } from '../../examples/typography/blockquote'
+import { InlineCodeExample } from '../../examples/typography/inline-code'
+        
+<Example src={Typeramp} />
 
 ## Installation
 
@@ -32,61 +34,50 @@ This is a custom component collection built for typography.
 
 <PropDocs components={["Heading1", "Heading2", "Heading3", "Heading4", "Heading5", "Body", "SmallBody", "LabelText", "SubLabel", "Blockquote", "UnorderedList", "OrderedList", "ListItem", "InlineCode"]} />
 
+## Typeramp
+
+The typeramp is a composed system that combines individual tokens into semantic text styles.
+Instead of manually combining tokens each time you need styled text, the typeramp provides pre-composed styles for common use cases.
+
+### Why Use a Typeramp?
+
+A typeramp provides several key benefits when developing applications:
+
+1. **Consistency**: Ensures all text follows the same visual hierarchy and spacing rules
+2. **Efficiency**: Reduces the need to manually combine tokens for common text patterns
+3. **Maintainability**: Changes to the design system can be made in one place
+4. **Accessibility**: Built-in responsive behavior and proper contrast ratios
+5. **Semantic Meaning**: Styles are named for their purpose rather than their appearance
+
+### Responsive Behavior
+
+The typeramp includes responsive font sizes that automatically adjust based on screen size. For example, `heading1` uses `fontSize["4xl"]` on mobile and `fontSize["5xl"]` on medium screens and up.
+
 ## Features
-
-### Text Components
-
-Typography includes various text components for different use cases.
-
-<Example src={Text} />
 
 ### Text Variants
 
-Text components support different variants for styling.
+The Body and Label components support secondary variants for styling.
 
 <Example src={TextVariants} />
 
-### Font Families
+### Lists
 
-Typography components can be styled with different font families using the style prop.
-
-<Example src={FontFamilies} />
-
-### Font Weights
-
-Typography components support different font weights for emphasis and hierarchy.
-
-<Example src={FontWeights} />
-
-### Font Sizes
-
-Typography components support a comprehensive range of font sizes for different use cases.
-
-<Example src={FontSizes} />
-
-### Line Heights
-
-Typography components support different line heights for optimal readability and spacing.
-
-<Example src={LineHeights} />
-
-### Letter Spacing
-
-Typography components support different letter spacing for emphasis and readability.
-
-<Example src={LetterSpacing} />
-
-### Typeramp
-
-The typeramp combines individual tokens into semantic text styles for consistent typography.
-
-<Example src={Typeramp} />
-
-### Lists and Other Elements
-
-Typography also includes list components and other text elements.
+Typography also includes list components.
 
 <Example src={Lists} />
+
+### Blockquote  
+
+Typography also includes a blockquote component.
+
+<Example src={BlockquoteExample} />
+
+### Inline Code
+
+Typography also includes an inline code component.
+
+<Example src={InlineCodeExample} />
 
 ## Related Components
 

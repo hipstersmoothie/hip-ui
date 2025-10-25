@@ -3,9 +3,9 @@ import { useMemo } from "react";
 
 import { LinkContext } from "../link/link-context";
 import { radius } from "../theme/radius.stylex";
-import { ui } from "../theme/semantic-color.stylex";
+import { critical, criticalColor, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
+import { StyleXComponentProps, TextVariant } from "../theme/types";
 import {
   fontFamily,
   fontSize,
@@ -50,8 +50,13 @@ const styles = stylex.create({
   },
   inlineCode: {
     borderRadius: radius["sm"],
-    fontSize: "0.9em",
-    padding: spacing["1"],
+    fontSize: "0.95em",
+    paddingBottom: spacing["1"],
+    paddingLeft: spacing["1"],
+    paddingRight: spacing["1"],
+    paddingTop: spacing["1"],
+    position: "relative",
+    top: "-0.01em",
   },
   underline: {
     textDecorationLine: "underline",
@@ -100,37 +105,53 @@ export const Heading5 = ({ style, ...props }: Heading5Props) => {
 
 export interface BodyProps
   extends StyleXComponentProps<React.ComponentProps<"p">> {
-  variant?: "default" | "secondary";
+  variant?: TextVariant;
 }
 
-export const Body = ({ style, variant = "default", ...props }: BodyProps) => {
+export const Body = ({ style, variant = "primary", ...props }: BodyProps) => {
   const contextValue = useMemo(
     () => ({
-      style: [variant === "secondary" && ui.textDim, styles.underline],
+      style: [
+        variant === "secondary" && ui.textDim,
+        variant === "critical" && critical.textDim,
+        styles.underline,
+      ],
     }),
     [variant],
   );
 
   return (
     <LinkContext value={contextValue}>
-      <p {...stylex.props(typeramp.body, style)} {...props} />
+      <p
+        {...stylex.props(
+          typeramp.body,
+          variant === "secondary" && ui.textDim,
+          variant === "critical" && critical.textDim,
+          style,
+        )}
+        {...props}
+      />
     </LinkContext>
   );
 };
 
 export interface SmallBodyProps
   extends StyleXComponentProps<React.ComponentProps<"p">> {
-  variant?: "default" | "secondary";
+  variant?: TextVariant;
 }
 
 export const SmallBody = ({
   style,
-  variant = "default",
+  variant = "primary",
   ...props
 }: SmallBodyProps) => {
   const contextValue = useMemo(
     () => ({
-      style: [variant === "secondary" && ui.textDim, styles.underline],
+      style: [
+        variant === "secondary" && ui.textDim,
+        variant === "critical" && critical.textDim,
+        styles.underline,
+      ],
     }),
     [variant],
   );
@@ -141,6 +162,7 @@ export const SmallBody = ({
         {...stylex.props(
           typeramp.smallBody,
           variant === "secondary" && ui.textDim,
+          variant === "critical" && critical.textDim,
           style,
         )}
         {...props}
@@ -150,25 +172,45 @@ export const SmallBody = ({
 };
 
 interface LabelTextProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {}
+  extends StyleXComponentProps<React.ComponentProps<"p">> {
+  variant?: TextVariant;
+}
 
-export const LabelText = ({ style, ...props }: LabelTextProps) => {
-  return <p {...stylex.props(typeramp.label, style)} {...props} />;
+export const LabelText = ({
+  style,
+  variant = "primary",
+  ...props
+}: LabelTextProps) => {
+  return (
+    <p
+      {...stylex.props(
+        typeramp.label,
+        variant === "secondary" && ui.textDim,
+        variant === "critical" && critical.textDim,
+        style,
+      )}
+      {...props}
+    />
+  );
 };
 
 interface SubLabelProps
   extends StyleXComponentProps<React.ComponentProps<"p">> {
-  variant?: "default" | "secondary";
+  variant?: TextVariant;
 }
 
 export const SubLabel = ({
   style,
-  variant = "default",
+  variant = "primary",
   ...props
 }: SubLabelProps) => {
   const contextValue = useMemo(
     () => ({
-      style: [variant === "secondary" && ui.textDim, styles.underline],
+      style: [
+        variant === "secondary" && ui.textDim,
+        variant === "critical" && critical.textDim,
+        styles.underline,
+      ],
     }),
     [variant],
   );
@@ -179,6 +221,7 @@ export const SubLabel = ({
         {...stylex.props(
           typeramp.sublabel,
           variant === "secondary" && ui.textDim,
+          variant === "critical" && critical.textDim,
           style,
         )}
         {...props}

@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { criticalColor, uiColor } from "../theme/semantic-color.stylex";
-import { ThemeKeys } from "../theme/types";
+import { TextVariant, ThemeKeys } from "../theme/types";
 import {
   fontFamily,
   fontSize,
@@ -57,7 +57,7 @@ const styles = stylex.create({
 
   "variant-primary": { color: uiColor.text2 },
   "variant-secondary": { color: uiColor.text1 },
-  "variant-destructive": { color: criticalColor.text2 },
+  "variant-critical": { color: criticalColor.text1 },
 
   strikethrough: { textDecoration: "line-through" },
 
@@ -74,7 +74,7 @@ interface TextProps
   size?: ThemeKeys<typeof fontSize>;
   leading?: ThemeKeys<typeof lineHeight>;
   tracking?: ThemeKeys<typeof tracking>;
-  variant?: "primary" | "secondary" | "destructive";
+  variant?: TextVariant;
   strikethrough?: boolean;
   align?: "left" | "center" | "right";
 }

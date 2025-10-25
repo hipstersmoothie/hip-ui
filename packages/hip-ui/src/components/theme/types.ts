@@ -13,6 +13,7 @@ export type ButtonVariant =
   | "critical-outline";
 export type InputVariant = "primary" | "secondary" | "tertiary";
 export type ButtonGroupVariant = "grouped" | "separate";
+export type TextVariant = "primary" | "secondary" | "critical";
 
 export type StyleXComponentProps<
   T extends {
