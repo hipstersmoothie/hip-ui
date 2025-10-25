@@ -5,6 +5,8 @@ import { Flex } from "@/components/flex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
+import { CopyToClipboardButton } from "./CopyToClipboardButton";
+import { useEffect, useRef, useState } from "react";
 
 const styles = stylex.create({
   card: {
@@ -22,6 +24,12 @@ const styles = stylex.create({
     justifyContent: "center",
     backgroundColor: uiColor.bgSubtle,
   },
+  codeWrapper: {
+    position: "relative",
+    borderTopWidth: 1,
+    borderTopStyle: "solid",
+    borderTopColor: uiColor.border2,
+  },
   code: {
     ":is(*) pre": {
       margin: 0,
@@ -31,11 +39,13 @@ const styles = stylex.create({
       paddingRight: spacing["4"],
       borderBottomLeftRadius: radius["lg"],
       borderBottomRightRadius: radius["lg"],
-      borderTopWidth: 1,
-      borderTopStyle: "solid",
-      borderTopColor: uiColor.border2,
     },
     ":is(*) code": {},
+  },
+  copyButton: {
+    position: "absolute",
+    top: spacing["3"],
+    right: spacing["3"],
   },
 });
 
@@ -45,6 +55,12 @@ export function Example({
   src: (() => React.JSX.Element) & { slug: string };
 }) {
   const code = examples[Component.slug];
+  const ref = useRef<HTMLDivElement>(null);
+  const [textContent, setTextContent] = useState("error");
+
+  useEffect(() => {
+    setTextContent(ref.current?.textContent ?? "error");
+  }, [code]);
 
   return (
     <Card style={styles.card}>
@@ -52,10 +68,15 @@ export function Example({
         <div {...stylex.props(styles.preview)}>
           <Component />
         </div>
-        <div
-          {...stylex.props(styles.code)}
-          dangerouslySetInnerHTML={{ __html: code }}
-        />
+
+        <div {...stylex.props(styles.codeWrapper)}>
+          <div
+            ref={ref}
+            {...stylex.props(styles.code)}
+            dangerouslySetInnerHTML={{ __html: code }}
+          />
+          <CopyToClipboardButton style={styles.copyButton} text={textContent} />
+        </div>
       </Flex>
     </Card>
   );

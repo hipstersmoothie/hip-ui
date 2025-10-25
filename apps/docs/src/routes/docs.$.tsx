@@ -20,6 +20,10 @@ import * as stylex from "@stylexjs/stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
+import { IconButton } from "@/components/icon-button";
+import { Copy } from "lucide-react";
+import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
+import { useEffect, useRef, useState } from "react";
 
 const styles = stylex.create({
   main: {
@@ -30,6 +34,7 @@ const styles = stylex.create({
     paddingRight: spacing["16"],
   },
   pre: {
+    position: "relative",
     marginTop: spacing["8"],
     marginBottom: spacing["8"],
     padding: spacing["4"],
@@ -37,6 +42,12 @@ const styles = stylex.create({
     borderWidth: 1,
     borderStyle: "solid",
     borderColor: uiColor.border2,
+  },
+  copyButton: {
+    position: "absolute",
+    top: "50%",
+    right: spacing["3"],
+    transform: "translateY(-50%)",
   },
   h1: {
     marginTop: spacing["8"],
@@ -77,10 +88,25 @@ function Link(props: LinkProps) {
   return <TypographyLink {...props} />;
 }
 
+function Pre({ children, ...props }: React.ComponentProps<"pre">) {
+  const [textContent, setTextContent] = useState("error");
+  const ref = useRef<HTMLPreElement>(null);
+
+  useEffect(() => {
+    console.log(ref.current?.textContent);
+    setTextContent(ref.current?.textContent ?? "error");
+  }, [ref]);
+
+  return (
+    <pre ref={ref} {...props} {...stylex.props(styles.pre)} data-testid="code">
+      {children}
+      <CopyToClipboardButton style={styles.copyButton} text={textContent} />
+    </pre>
+  );
+}
+
 const components: MDXComponents = {
-  pre: (props) => (
-    <pre {...props} {...stylex.props(styles.pre)} data-testid="code" />
-  ),
+  pre: Pre,
   h1: (props) => <Heading1 {...props} {...stylex.props(styles.h1)} />,
   h2: (props) => <Heading2 {...props} {...stylex.props(styles.h2)} />,
   h3: (props) => <Heading3 {...props} {...stylex.props(styles.h3)} />,

@@ -2,3 +2,26 @@
 title: Shadow
 description: Use elevation to create a sense of depth in the UI.
 ---
+
+import { Shadow } from "../../examples/foundations/shadow";
+
+## Usage
+
+To use the shadow, you can use the `shadow` object.
+
+```tsx
+import { shadow } from "@/components/theme/shadow.stylex";
+
+const styles = stylex.create({
+  example: {
+    boxShadow: shadow["sm"],
+  },
+});
+```
+
+## Scale
+
+The following is the default scale of shadow.
+It can be customized by editing the `shadow` object in the `shadow.stylex.tsx` file.
+
+<Shadow />

@@ -30,6 +30,8 @@ interface IconButtonProps extends Omit<AriaButtonProps, "className" | "style"> {
   variant?: ButtonVariant;
   size?: Size;
   label: string;
+  tooltipOpen?: boolean;
+  onTooltipOpenChange?: (isOpen: boolean) => void;
 }
 
 export const IconButton = ({
@@ -37,12 +39,18 @@ export const IconButton = ({
   size: sizeProp,
   label,
   style,
+  tooltipOpen,
+  onTooltipOpenChange,
   ...props
 }: IconButtonProps) => {
   const size = sizeProp || use(SizeContext);
 
   return (
-    <Tooltip text={label}>
+    <Tooltip
+      text={label}
+      isOpen={tooltipOpen}
+      onOpenChange={onTooltipOpenChange}
+    >
       <Button size={size} style={[styles[size], style]} {...props}>
         {children}
       </Button>

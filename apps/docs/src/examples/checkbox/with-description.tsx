@@ -1,10 +1,9 @@
 import { Checkbox, CheckboxGroup } from "@/components/checkbox";
-import { Flex } from "@/components/flex";
 
 export function CheckboxWithDescription() {
   return (
     <CheckboxGroup label="Notifications">
-      <Checkbox>
+      <Checkbox value="email">
         <div>
           <div>Email notifications</div>
           <div style={{ fontSize: "0.875rem", color: "#666" }}>
@@ -12,7 +11,7 @@ export function CheckboxWithDescription() {
           </div>
         </div>
       </Checkbox>
-      <Checkbox>
+      <Checkbox value="sms">
         <div>
           <div>SMS notifications</div>
           <div style={{ fontSize: "0.875rem", color: "#666" }}>
