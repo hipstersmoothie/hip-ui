@@ -23,6 +23,11 @@ export const config = defineConfig([
   comments.recommended,
   importX.flatConfigs.recommended,
   {
+    rules: {
+      "import-x/no-unresolved": ["error", { ignore: ["^virtual:"] }],
+    },
+  },
+  {
     extends: [eslintPluginUnicorn.configs.recommended],
     rules: {
       "unicorn/prevent-abbreviations": "off",
@@ -46,7 +51,11 @@ export const config = defineConfig([
   },
   {
     settings: {
-      "import-x/resolver-next": [createTypeScriptImportResolver()],
+      "import-x/resolver-next": [
+        createTypeScriptImportResolver({
+          alwaysTryTypes: true,
+        }),
+      ],
     },
   },
   {

@@ -2,7 +2,7 @@ import { Grid, GridItem } from "@/components/grid";
 
 export function GridSpans() {
   return (
-    <Grid columns="repeat(4, 1fr)" gap="4">
+    <Grid columns="repeat(4, 1fr)" columnGap="4">
       <GridItem columnStart={1} columnEnd={3}>
         Spans 2 columns
       </GridItem>

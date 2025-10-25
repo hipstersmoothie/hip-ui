@@ -11,3 +11,7 @@ declare module "virtual:propDocs" {
   import type { ComponentDoc } from "react-docgen-typescript";
   export const propDocs: ComponentDoc[];
 }
+
+declare module "virtual:examples" {
+  export const examples: Record<string, string>;
+}

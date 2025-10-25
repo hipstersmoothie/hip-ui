@@ -2,18 +2,18 @@ import { Flex } from "@/components/flex";
 
 export function FlexDirections() {
   return (
-    <div>
-      <Flex direction="row" gap="4" style={{ marginBottom: "1rem" }}>
+    <Flex direction="column" gap="4">
+      <Flex direction="row" gap="4">
         <div>Row</div>
         <div>Item 2</div>
         <div>Item 3</div>
       </Flex>
-      <Flex direction="column" gap="4" style={{ marginBottom: "1rem" }}>
+      <Flex direction="column" gap="4">
         <div>Column</div>
         <div>Item 2</div>
         <div>Item 3</div>
       </Flex>
-      <Flex direction="row-reverse" gap="4" style={{ marginBottom: "1rem" }}>
+      <Flex direction="row-reverse" gap="4">
         <div>Row Reverse</div>
         <div>Item 2</div>
         <div>Item 3</div>
@@ -23,6 +23,6 @@ export function FlexDirections() {
         <div>Item 2</div>
         <div>Item 3</div>
       </Flex>
-    </div>
+    </Flex>
   );
 }

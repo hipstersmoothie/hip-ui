@@ -5,6 +5,7 @@ import { LinkContext } from "../link/link-context";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 import {
   fontFamily,
   fontSize,
@@ -58,9 +59,7 @@ const styles = stylex.create({
 });
 
 export interface Heading1Props
-  extends Omit<React.ComponentProps<"h1">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"h1">> {}
 
 export const Heading1 = ({ style, ...props }: Heading1Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
@@ -68,9 +67,7 @@ export const Heading1 = ({ style, ...props }: Heading1Props) => {
 };
 
 export interface Heading2Props
-  extends Omit<React.ComponentProps<"h2">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"h2">> {}
 
 export const Heading2 = ({ style, ...props }: Heading2Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
@@ -78,9 +75,7 @@ export const Heading2 = ({ style, ...props }: Heading2Props) => {
 };
 
 export interface Heading3Props
-  extends Omit<React.ComponentProps<"h3">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"h3">> {}
 
 export const Heading3 = ({ style, ...props }: Heading3Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
@@ -88,9 +83,7 @@ export const Heading3 = ({ style, ...props }: Heading3Props) => {
 };
 
 export interface Heading4Props
-  extends Omit<React.ComponentProps<"h4">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"h4">> {}
 
 export const Heading4 = ({ style, ...props }: Heading4Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
@@ -98,9 +91,7 @@ export const Heading4 = ({ style, ...props }: Heading4Props) => {
 };
 
 export interface Heading5Props
-  extends Omit<React.ComponentProps<"h5">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"h5">> {}
 
 export const Heading5 = ({ style, ...props }: Heading5Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
@@ -108,8 +99,7 @@ export const Heading5 = ({ style, ...props }: Heading5Props) => {
 };
 
 export interface BodyProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"p">> {
   variant?: "default" | "secondary";
 }
 
@@ -129,8 +119,7 @@ export const Body = ({ style, variant = "default", ...props }: BodyProps) => {
 };
 
 export interface SmallBodyProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"p">> {
   variant?: "default" | "secondary";
 }
 
@@ -161,17 +150,14 @@ export const SmallBody = ({
 };
 
 interface LabelTextProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"p">> {}
 
 export const LabelText = ({ style, ...props }: LabelTextProps) => {
   return <p {...stylex.props(typeramp.label, style)} {...props} />;
 };
 
 interface SubLabelProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  extends StyleXComponentProps<React.ComponentProps<"p">> {
   variant?: "default" | "secondary";
 }
 
@@ -202,36 +188,28 @@ export const SubLabel = ({
 };
 
 export interface BlockquoteProps
-  extends Omit<React.ComponentProps<"blockquote">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"blockquote">> {}
 
 export const Blockquote = ({ style, ...props }: BlockquoteProps) => {
   return <blockquote {...stylex.props(styles.blockquote, style)} {...props} />;
 };
 
 export interface UnorderedListProps
-  extends Omit<React.ComponentProps<"ul">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"ul">> {}
 
 export const UnorderedList = ({ style, ...props }: UnorderedListProps) => {
   return <ul {...stylex.props(styles.unorderedList, style)} {...props} />;
 };
 
 export interface OrderedListProps
-  extends Omit<React.ComponentProps<"ol">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"ol">> {}
 
 export const OrderedList = ({ style, ...props }: OrderedListProps) => {
   return <ol {...stylex.props(styles.orderedList, style)} {...props} />;
 };
 
 export interface ListItemProps
-  extends Omit<React.ComponentProps<"li">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"li">> {}
 
 export const ListItem = ({ style, children, ...props }: ListItemProps) => {
   return (
@@ -242,9 +220,7 @@ export const ListItem = ({ style, children, ...props }: ListItemProps) => {
 };
 
 export interface InlineCodeProps
-  extends Omit<React.ComponentProps<"code">, "style" | "className"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-}
+  extends StyleXComponentProps<React.ComponentProps<"code">> {}
 
 export const InlineCode = ({ style, ...props }: InlineCodeProps) => {
   return (

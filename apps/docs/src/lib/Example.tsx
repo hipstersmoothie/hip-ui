@@ -58,7 +58,6 @@ export function Example({
 }: {
   src: (() => React.JSX.Element) & { slug: string };
 }) {
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-member-access
   const code = examples[Component.slug];
   const ref = useRef<HTMLDivElement>(null);
   const [textContent, setTextContent] = useState("error");
@@ -79,8 +78,8 @@ export function Example({
           <div
             ref={ref}
             {...stylex.props(styles.code)}
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @eslint-react/dom/no-dangerously-set-innerhtml
-            dangerouslySetInnerHTML={{ __html: code ?? "error example" }}
+            // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+            dangerouslySetInnerHTML={{ __html: code }}
           />
           <CopyToClipboardButton style={styles.copyButton} text={textContent} />
         </div>

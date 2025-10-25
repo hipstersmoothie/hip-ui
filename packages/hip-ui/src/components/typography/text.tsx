@@ -47,12 +47,6 @@ const styles = stylex.create({
   "leading-xl": { lineHeight: lineHeight["xl"] },
   "leading-2xl": { lineHeight: lineHeight["2xl"] },
   "leading-3xl": { lineHeight: lineHeight["3xl"] },
-  "leading-4xl": { lineHeight: lineHeight["4xl"] },
-  "leading-5xl": { lineHeight: lineHeight["5xl"] },
-  "leading-6xl": { lineHeight: lineHeight["6xl"] },
-  "leading-7xl": { lineHeight: lineHeight["7xl"] },
-  "leading-8xl": { lineHeight: lineHeight["8xl"] },
-  "leading-9xl": { lineHeight: lineHeight["9xl"] },
 
   "tracking-tighter": { letterSpacing: tracking["tighter"] },
   "tracking-tight": { letterSpacing: tracking["tight"] },

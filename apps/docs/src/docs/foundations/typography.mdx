@@ -2,3 +2,83 @@
 title: Typography
 description: Create consistent and readable typography.
 ---
+
+import { Example } from "../../lib/Example";
+import { FontFamilies } from "../../examples/typography/font-families";
+import { FontWeights } from "../../examples/typography/font-weights";
+import { FontSizes } from "../../examples/typography/font-sizes";
+import { LineHeights } from "../../examples/typography/line-heights";
+import { LetterSpacing } from "../../examples/typography/letter-spacing";
+import { Typeramp } from "../../examples/typography/typeramp";
+
+
+Typography is a fundamental design system component that ensures consistent and readable text across your application.
+Our typography system is built on a foundation of design tokens and composed into semantic type styles.
+
+## Tokens
+
+Design tokens are the atomic building blocks of our typography system.
+They provide consistent values for font properties that can be used throughout your application.
+
+### Font Family
+
+The font family tokens define the typefaces available in the system:
+
+
+- **sans**: Inter font family for body text and UI elements
+- **serif**: Georgia serif font for emphasis, special content or headings
+- **mono**: Monaco monospace font for code and technical content
+
+<Example src={FontFamilies} />
+
+### Font Weight
+
+We provide the full scale of font weights from thin to black.
+In general you should avoid using the lighter weights, as they can harm the readability of the text.
+
+<Example src={FontWeights} />
+
+### Font Size
+
+Font size tokens create a harmonious scale from small text to large headings:
+
+<Example src={FontSizes} />
+
+### Line Height
+
+Line height tokens ensure optimal readability by providing appropriate spacing between lines:
+
+<Example src={LineHeights} />
+
+### Letter Spacing (Tracking)
+
+Letter spacing tokens control the space between characters:
+
+<Example src={LetterSpacing} />
+
+## Typeramp
+
+The typeramp is a composed system that combines individual tokens into semantic text styles.
+Instead of manually combining tokens each time you need styled text, the typeramp provides pre-composed styles for common use cases.
+
+<Example src={Typeramp} />
+
+### Why Use a Typeramp?
+
+A typeramp provides several key benefits when developing applications:
+
+1. **Consistency**: Ensures all text follows the same visual hierarchy and spacing rules
+2. **Efficiency**: Reduces the need to manually combine tokens for common text patterns
+3. **Maintainability**: Changes to the design system can be made in one place
+4. **Accessibility**: Built-in responsive behavior and proper contrast ratios
+5. **Semantic Meaning**: Styles are named for their purpose rather than their appearance
+
+### Responsive Behavior
+
+The typeramp includes responsive font sizes that automatically adjust based on screen size. For example, `heading1` uses `fontSize["4xl"]` on mobile and `fontSize["5xl"]` on medium screens and up.
+
+## Related
+
+- [Design Tokens](/docs/foundations/tokens) - Learn about the broader token system
+- [Spacing](/docs/foundations/spacing) - Understand spacing tokens used in typography
+- [Breakpoints](/docs/foundations/breakpoints) - See how responsive typography works

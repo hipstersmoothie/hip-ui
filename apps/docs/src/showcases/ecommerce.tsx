@@ -871,7 +871,7 @@ function TopCustomersCard() {
               justify="between"
               align="center"
               gap="8"
-              {...stylex.props(styles.customerRow)}
+              style={styles.customerRow}
             >
               <Flex direction="column" gap="1" style={styles.grow}>
                 <Text weight="semibold">{customer.name}</Text>

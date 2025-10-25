@@ -8,6 +8,7 @@ import { pages } from "virtual:content";
 
 import { Flex } from "@/components/flex";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
+import { StyleXComponentProps } from "@/components/theme/types";
 import {
   Body,
   Heading1,
@@ -89,7 +90,11 @@ function Link(props: LinkProps) {
   return <TypographyLink {...props} />;
 }
 
-function Pre({ children, ...props }: React.ComponentProps<"pre">) {
+function Pre({
+  children,
+  style,
+  ...props
+}: StyleXComponentProps<React.ComponentProps<"pre">>) {
   const [textContent, setTextContent] = useState("error");
   const ref = useRef<HTMLPreElement>(null);
 
@@ -100,7 +105,12 @@ function Pre({ children, ...props }: React.ComponentProps<"pre">) {
   }, [ref]);
 
   return (
-    <pre ref={ref} {...props} {...stylex.props(styles.pre)} data-testid="code">
+    <pre
+      ref={ref}
+      {...props}
+      {...stylex.props(styles.pre, style)}
+      data-testid="code"
+    >
       {children}
       <CopyToClipboardButton style={styles.copyButton} text={textContent} />
     </pre>
@@ -109,12 +119,12 @@ function Pre({ children, ...props }: React.ComponentProps<"pre">) {
 
 const components: MDXComponents = {
   pre: Pre,
-  h1: (props) => <Heading1 {...props} {...stylex.props(styles.h1)} />,
-  h2: (props) => <Heading2 {...props} {...stylex.props(styles.h2)} />,
-  h3: (props) => <Heading3 {...props} {...stylex.props(styles.h3)} />,
-  h4: (props) => <Heading4 {...props} {...stylex.props(styles.h4)} />,
-  h5: (props) => <Heading5 {...props} {...stylex.props(styles.h5)} />,
-  p: (props) => <Body {...props} {...stylex.props(styles.p)} />,
+  h1: (props) => <Heading1 {...props} style={styles.h1} />,
+  h2: (props) => <Heading2 {...props} style={styles.h2} />,
+  h3: (props) => <Heading3 {...props} style={styles.h3} />,
+  h4: (props) => <Heading4 {...props} style={styles.h4} />,
+  h5: (props) => <Heading5 {...props} style={styles.h5} />,
+  p: (props) => <Body {...props} style={styles.p} />,
   a: Link,
   ul: UnorderedList,
   ol: OrderedList,

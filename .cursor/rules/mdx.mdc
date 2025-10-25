@@ -1,0 +1,8 @@
+---
+description: Content Authoring Rules
+globs: ["**/*.mdx"]
+alwaysApply: true
+---
+
+- Each sentence should be on it's own line
+- Prefer authoring @apps/docs/src/examples/ instead of too much inline the mdx file
