@@ -8,21 +8,16 @@ const styles = stylex.create({
   },
 });
 
-export function WithLabels() {
+export function Disabled() {
   return (
     <div {...stylex.props(styles.wrapper)}>
       <Slider
-        label="Temperature"
-        defaultValue={[75, 85]}
+        label="Disabled Slider"
+        defaultValue={50}
         minValue={0}
         maxValue={100}
         step={1}
-        thumbLabels={["Low", "High"]}
-        formatOptions={{
-          style: "unit",
-          unit: "fahrenheit",
-          unitDisplay: "short",
-        }}
+        isDisabled
       />
     </div>
   );

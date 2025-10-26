@@ -17,7 +17,6 @@
 #### Custom
 
 - [ ] Alert / Callout
-- [ ] Aspect Ratio
 - [ ] Carousel
 - [ ] Empty
 - [ ] Input Group
@@ -36,10 +35,7 @@
 
 #### react-aria wrappers
 
-- [ ] File Trigger
-- [ ] File Drop zone
 - [ ] Segmented Control
-- [ ] Slider
 
 - [ ] Color Area
 - [ ] Color Picker
@@ -73,8 +69,11 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] File Trigger
+- [x] File Drop zone
+- [x] Slider
 - [x] Color Swatch
-- [x] Aspect Ratio
+- [x]
 - [x] Switch
 - [x] Grid
 - [x] Badge

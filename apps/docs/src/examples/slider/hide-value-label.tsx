@@ -8,21 +8,16 @@ const styles = stylex.create({
   },
 });
 
-export function WithLabels() {
+export function HideValueLabel() {
   return (
     <div {...stylex.props(styles.wrapper)}>
       <Slider
-        label="Temperature"
-        defaultValue={[75, 85]}
+        label="Volume"
+        defaultValue={50}
         minValue={0}
         maxValue={100}
         step={1}
-        thumbLabels={["Low", "High"]}
-        formatOptions={{
-          style: "unit",
-          unit: "fahrenheit",
-          unitDisplay: "short",
-        }}
+        showValueLabel={false}
       />
     </div>
   );

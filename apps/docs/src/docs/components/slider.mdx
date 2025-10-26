@@ -8,6 +8,10 @@ import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/slider/basic'
 import { Range } from '../../examples/slider/range'
 import { WithLabels } from '../../examples/slider/with-labels'
+import { Vertical } from '../../examples/slider/vertical'
+import { HideValueLabel } from '../../examples/slider/hide-value-label'
+import { ValueFormatting } from '../../examples/slider/value-formatting'
+import { Disabled } from '../../examples/slider/disabled'
 
 <Example src={Basic} />
 
@@ -27,17 +31,17 @@ This component is built using the [React Aria Slider](https://react-spectrum.ado
 
 ## Features
 
-### Basic Usage
-
-The slider component allows users to select a single value within a specified range.
-
-<Example src={Basic} />
-
 ### Range Selection
 
 For selecting a range of values, provide an array as the `defaultValue` prop.
 
 <Example src={Range} />
+
+### Vertical Orientation
+
+The slider can be oriented vertically by setting the `orientation` prop to "vertical".
+
+<Example src={Vertical} />
 
 ### With Labels
 
@@ -45,54 +49,24 @@ Add descriptive labels to slider thumbs using the `thumbLabels` prop for better 
 
 <Example src={WithLabels} />
 
-## Accessibility
+### Hide Value Label
 
-The slider component includes built-in accessibility features:
+The value label can be hidden by setting the `showValueLabel` prop to false.
 
-- **Keyboard Navigation**: Use arrow keys to adjust values
-- **Screen Reader Support**: Proper ARIA labels and announcements
-- **Focus Management**: Clear focus indicators
-- **Value Announcements**: Current values are announced to screen readers
+<Example src={HideValueLabel} />
 
-## Usage Examples
+### Value Formatting
 
-### Volume Control
+The value label can be formatted using the `formatOptions` prop.
+This prop is passed to the `Intl.NumberFormat` constructor.
 
-```tsx
-<Slider
-  label="Volume"
-  defaultValue={50}
-  minValue={0}
-  maxValue={100}
-  step={1}
-/>
-```
+<Example src={ValueFormatting} />
 
-### Price Range Selector
+### Disabled
 
-```tsx
-<Slider
-  label="Price Range"
-  defaultValue={[20, 80]}
-  minValue={0}
-  maxValue={100}
-  step={5}
-  thumbLabels={['Min', 'Max']}
-/>
-```
+The slider can be disabled by setting the `disabled` prop to true.
 
-### Temperature Control
-
-```tsx
-<Slider
-  label="Temperature"
-  defaultValue={75}
-  minValue={0}
-  maxValue={100}
-  step={1}
-  thumbLabels={['Temperature']}
-/>
-```
+<Example src={Disabled} />
 
 ## Related Components
 
