@@ -24,19 +24,47 @@ import { IconButton } from "../icon-button";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
+import { LabelText } from "../typography";
 
 const styles = stylex.create({
-  table: {},
+  table: {
+    borderSpacing: 0,
+  },
   tableHeader: {},
-  row: {},
+  row: {
+    backgroundColor: {
+      default: uiColor.bg,
+      ":has(td:hover)": uiColor.bgSubtle,
+    },
+  },
   column: {
     borderBottomColor: uiColor.border2,
     borderBottomStyle: "solid",
     borderBottomWidth: 1,
+    padding: 0,
+  },
+  columnHeader: {
+    alignItems: "center",
+    backgroundColor: uiColor.component1,
+    display: "flex",
+    paddingLeft: {
+      default: spacing["2"],
+      ":is(:first-child)": 0,
+    },
   },
   tableBody: {},
   cell: {
-    height: {
+    borderBottomColor: uiColor.border2,
+    borderBottomStyle: "solid",
+    borderBottomWidth: {
+      default: 1,
+      ":is([role=row]:last-child *)": 0,
+    },
+    overflow: "auto",
+  },
+  cellContent: {
+    boxSizing: "border-box",
+    minHeight: {
       default: spacing["8"],
       ":is([data-table-size=md] *)": spacing["10"],
       ":is([data-table-size=lg] *)": spacing["12"],
@@ -47,12 +75,12 @@ const styles = stylex.create({
       ":is([data-table-size=lg] *)": spacing["3"],
     },
     paddingLeft: {
-      ":not(:first-child)": spacing["2"],
+      default: spacing["2"],
       ":is([data-table-size=md] *:not(:first-child))": spacing["3"],
       ":is([data-table-size=lg] *:not(:first-child))": spacing["4"],
     },
     paddingRight: {
-      ":not(:last-child)": spacing["2"],
+      default: spacing["2"],
       ":is([data-table-size=md] *:not(:last-child))": spacing["3"],
       ":is([data-table-size=lg] *:not(:last-child))": spacing["4"],
     },
@@ -90,10 +118,10 @@ export interface TableColumnProps
 
 export function TableColumn({ style, children, ...props }: TableColumnProps) {
   return (
-    <AriaColumn {...props} {...stylex.props(styles.column, styles.cell, style)}>
+    <AriaColumn {...props} {...stylex.props(styles.column, style)}>
       {({ allowsSorting, sortDirection }) => (
-        <div className="column-header">
-          {children}
+        <div {...stylex.props(styles.columnHeader, styles.cellContent)}>
+          <LabelText>{children}</LabelText>
           {allowsSorting && (
             <span aria-hidden="true" className="sort-indicator">
               {sortDirection === "ascending" ? (
@@ -178,8 +206,15 @@ export function TableBody<T extends object>({
   return <AriaTableBody {...stylex.props(styles.tableBody, style)} {...prop} />;
 }
 
-export interface TableCellProps extends StyleXComponentProps<AriaCellProps> {}
+export interface TableCellProps
+  extends StyleXComponentProps<Omit<AriaCellProps, "children">> {
+  children?: React.ReactNode;
+}
 
-export function TableCell({ style, ...props }: TableCellProps) {
-  return <AriaCell {...stylex.props(styles.cell, style)} {...props} />;
+export function TableCell({ style, children, ...props }: TableCellProps) {
+  return (
+    <AriaCell {...stylex.props(styles.cell, style)} {...props}>
+      <div {...stylex.props(styles.cellContent)}>{children}</div>
+    </AriaCell>
+  );
 }

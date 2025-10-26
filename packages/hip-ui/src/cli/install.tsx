@@ -33,6 +33,7 @@ import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
 import { numberFieldConfig } from "../components/number-field/number-field-config.js";
 import { popoverConfig } from "../components/popover/popover-config.js";
+import { progressBarConfig } from "../components/progress-bar/progress-bar-config.js";
 import { radioConfig } from "../components/radio/radio-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
 import { selectConfig } from "../components/select/select-config.js";
@@ -96,6 +97,7 @@ const COMPONENT_CONFIGS = [
   tableConfig,
   sliderConfig,
   tagGroupConfig,
+  progressBarConfig,
 ];
 
 function StringSetting({

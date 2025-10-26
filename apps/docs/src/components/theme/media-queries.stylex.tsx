@@ -8,3 +8,8 @@ export const breakpoints = stylex.defineConsts({
   xl: "@media (min-width: 80rem)",
   "2xl": "@media (min-width: 96rem)",
 });
+
+// eslint-disable-next-line @stylexjs/enforce-extension
+export const mediaQueries = stylex.defineConsts({
+  reducedMotion: "@media (prefers-reduced-motion: reduce)",
+});

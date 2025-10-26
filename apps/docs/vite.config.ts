@@ -76,6 +76,16 @@ function content() {
   } as PluginOption;
 }
 
+async function highlightCode(code: string, lang: string) {
+  return await codeToHtml(code, {
+    lang,
+    themes: {
+      light: "github-light",
+      dark: "github-dark",
+    },
+  });
+}
+
 /** Highlight the code using shiki */
 function shiki() {
   return {
@@ -84,13 +94,7 @@ function shiki() {
     async transform(code, id) {
       if (id.endsWith("?shiki")) {
         return dedent`
-          export default \`${await codeToHtml(code, {
-            lang: "tsx",
-            themes: {
-              light: "github-light",
-              dark: "github-dark",
-            },
-          })}\`;
+          export default \`${await highlightCode(code, "tsx")}\`;
         `;
       }
     },
@@ -181,6 +185,10 @@ function propDocs() {
 
   const parser = docgen.withDefaultConfig({
     propFilter: (prop) => {
+      if (prop.name === "className") {
+        return false;
+      }
+
       if (
         prop.parent?.fileName.includes("@types/react") &&
         prop.name !== "children"
@@ -207,7 +215,33 @@ function propDocs() {
 
       for (const file of files) {
         const doc = parser.parse(file);
-        docs.push(...doc);
+        const docsWithPropsHihglighted = await Promise.all(
+          doc.map(async (doc) => {
+            await Promise.all(
+              Object.entries(doc.props).map(async ([key, p]) => {
+                doc.props[key].type.name = await highlightCode(
+                  p.type.name,
+                  "typescript",
+                );
+
+                if (doc.props[key].defaultValue) {
+                  const defaultValue = doc.props[key].defaultValue as {
+                    value: string;
+                  };
+                  defaultValue.value = await highlightCode(
+                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
+                    defaultValue.value.toString(),
+                    "typescript",
+                  );
+                }
+              }),
+            );
+
+            return doc;
+          }),
+        );
+
+        docs.push(...docsWithPropsHihglighted);
       }
     },
 

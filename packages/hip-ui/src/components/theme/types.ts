@@ -24,5 +24,8 @@ export type StyleXComponentProps<
   },
 > = Omit<T, "className" | "style"> & {
   className?: never;
+  /**
+   * The style to apply to the component.
+   */
   style?: stylex.StyleXStyles;
 };

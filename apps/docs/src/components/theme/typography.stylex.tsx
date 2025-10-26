@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { breakpoints } from "./breakpoints.stylex";
+import { breakpoints } from "./media-queries.stylex";
 import { spacing } from "./spacing.stylex";
 
 export const fontFamily = stylex.defineVars({

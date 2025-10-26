@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { Grid } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { ResizableTableContainer } from "react-aria-components";
 import { ComponentDoc } from "react-docgen-typescript";
 import { propDocs } from "virtual:propDocs";
 
@@ -16,44 +17,103 @@ import {
 } from "@/components/table";
 import { ToggleButton } from "@/components/toggle-button";
 import { ToggleButtonGroup } from "@/components/toggle-button-group";
-import { SmallBody } from "@/components/typography";
+import { InlineCode, SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
+import { radius } from "../components/theme/radius.stylex";
+import { uiColor } from "../components/theme/semantic-color.stylex";
+import { shadow } from "../components/theme/shadow.stylex";
+import { spacing } from "../components/theme/spacing.stylex";
+
 const styles = stylex.create({
+  sticky: {
+    left: 0,
+    position: "sticky",
+  },
+  stuck: {
+    backgroundColor: uiColor.bg,
+    borderRightColor: uiColor.border2,
+    borderRightStyle: "solid",
+    borderRightWidth: 1,
+    boxShadow: shadow.lg,
+  },
   props: {
     overflow: "auto",
   },
+  highlightedCode: {
+    width: "fit-content",
+
+    /* eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
+    ":is(*) pre": {
+      borderColor: uiColor.border1,
+      borderRadius: radius["md"],
+      borderStyle: "solid",
+      borderWidth: 1,
+      margin: 0,
+      padding: spacing["1"],
+    },
+  },
 });
 
-function PropTable({ doc }: { doc: ComponentDoc }) {
+function HighlightedCode({ code }: { code: string }) {
   return (
-    <Card size="sm" style={styles.props}>
-      <CardBody>
-        <Table>
+    <div
+      // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+      dangerouslySetInnerHTML={{ __html: code }}
+      {...stylex.props(styles.highlightedCode)}
+    />
+  );
+}
+
+function PropTable({ doc }: { doc: ComponentDoc }) {
+  const [hasScrollX, setHasScrollX] = useState(false);
+
+  return (
+    <Card
+      size="sm"
+      style={styles.props}
+      onScroll={(e) => setHasScrollX(e.currentTarget.scrollLeft > 0)}
+    >
+      <ResizableTableContainer>
+        <Table size="md">
           <TableHeader>
-            <TableColumn isRowHeader minWidth={300}>
+            <TableColumn
+              isRowHeader
+              width={200}
+              style={[styles.sticky, hasScrollX && styles.stuck]}
+            >
               Name
             </TableColumn>
-            <TableColumn>Type</TableColumn>
-            <TableColumn>Default</TableColumn>
-            <TableColumn>Description</TableColumn>
+            <TableColumn width={200}>Type</TableColumn>
+            <TableColumn width={200}>Default</TableColumn>
+            <TableColumn minWidth={300}>Description</TableColumn>
           </TableHeader>
-          <TableBody></TableBody>
           <TableBody>
             {Object.values(doc.props).map((prop) => (
               <TableRow key={prop.name}>
-                <TableCell>{prop.name}</TableCell>
-                <TableCell>{prop.type.name}</TableCell>
-                {/* eslint-disable-next-line @typescript-eslint/no-unsafe-member-access */}
-                <TableCell>{prop.defaultValue?.value}</TableCell>
+                <TableCell style={[styles.sticky, hasScrollX && styles.stuck]}>
+                  <InlineCode>{prop.name}</InlineCode>
+                </TableCell>
                 <TableCell>
-                  <SmallBody>{prop.description}</SmallBody>
+                  <HighlightedCode code={prop.type.name} />
+                </TableCell>
+                <TableCell>
+                  {prop.defaultValue ? (
+                    <HighlightedCode
+                      code={(prop.defaultValue as { value: string }).value}
+                    />
+                  ) : (
+                    <SmallBody variant="secondary">---</SmallBody>
+                  )}
+                </TableCell>
+                <TableCell>
+                  <SmallBody variant="secondary">{prop.description}</SmallBody>
                 </TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
-      </CardBody>
+      </ResizableTableContainer>
     </Card>
   );
 }
