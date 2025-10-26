@@ -18,6 +18,9 @@ import { spacing } from "../components/theme/spacing.stylex";
 const TreeItemLink = createLink(TreeItem);
 
 const styles = stylex.create({
+  root: {
+    width: "100%",
+  },
   aside: {
     height: "100vh",
     overflow: "auto",
@@ -127,7 +130,7 @@ export const Route = createFileRoute("/docs")({
 
 function RouteComponent() {
   return (
-    <Grid columns="240px 1fr" columnGap="4">
+    <Grid columns="240px 1fr" columnGap="4" style={styles.root}>
       <aside {...stylex.props(styles.aside)}>
         <Sidebar />
       </aside>

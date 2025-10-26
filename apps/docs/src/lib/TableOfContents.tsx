@@ -16,10 +16,13 @@ const LevelContext = createContext(1);
 
 const styles = stylex.create({
   wrapper: {
+    boxSizing: "border-box",
+    flexShrink: 0,
     height: "100vh",
     marginTop: spacing["12"],
     overflow: "auto",
     paddingBottom: spacing["20"],
+    paddingRight: spacing["8"],
     paddingTop: spacing["12"],
     position: "sticky",
     top: 0,

@@ -24,6 +24,7 @@ import { pages, tableOfContents } from "virtual:content";
 
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
+import { Grid } from "@/components/grid";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
 import {
   Blockquote,
@@ -51,8 +52,13 @@ import { lineHeight } from "../components/theme/typography.stylex";
 const TypographyRouterLink = createLink(TypographyLink);
 
 const styles = stylex.create({
+  root: {
+    width: "100%",
+  },
   main: {
+    flexGrow: 1,
     maxWidth: "80ch",
+    minWidth: 0,
     paddingBottom: spacing["20"],
     paddingLeft: spacing["16"],
     paddingRight: spacing["16"],
@@ -302,7 +308,7 @@ function RouteComponent() {
   console.log(toc);
 
   return (
-    <Flex gap="10">
+    <Grid columns="1fr 240px" columnGap="4" style={styles.root}>
       <div {...stylex.props(styles.main)}>
         <Flex direction="column" gap="4" style={styles.header}>
           <Heading1>{doc.title}</Heading1>
@@ -313,6 +319,6 @@ function RouteComponent() {
         <Content components={components} />
       </div>
       <TableOfContents toc={toc} />
-    </Flex>
+    </Grid>
   );
 }

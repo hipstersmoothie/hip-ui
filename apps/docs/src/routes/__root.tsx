@@ -5,6 +5,12 @@ import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import { ui } from "@/components/theme/semantic-color.stylex";
 
+const styles = stylex.create({
+  body: {
+    margin: 0,
+  },
+});
+
 export const Route = createRootRoute({
   head: () => ({
     meta: [
@@ -44,7 +50,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <body {...stylex.props(ui.bg, ui.text)}>
+      <body {...stylex.props(ui.bg, ui.text, styles.body)}>
         {children}
         <TanStackDevtools
           config={{
