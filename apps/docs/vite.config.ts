@@ -1,6 +1,8 @@
 import contentCollections from "@content-collections/vite";
 import mdx from "@mdx-js/rollup";
 import rehypeShiki, { RehypeShikiOptions } from "@shikijs/rehype";
+import withToc from "@stefanprobst/rehype-extract-toc";
+import withTocExport from "@stefanprobst/rehype-extract-toc/mdx";
 import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -44,12 +46,27 @@ function content() {
               return `import ${camelCase(slug)} from "${path.resolve(file)}";`;
             })
             .join("\n")}
+          ${files
+            .map((file) => {
+              const slug = file.replace("src/", "/").replace(".mdx", "");
+              return `import { toc as ${camelCase(`${slug}-toc`)} } from "${path.resolve(file)}";`;
+            })
+            .join("\n")}
 
           export const pages = {
             ${files
               .map((file) => {
                 const slug = file.replace("src/", "/").replace(".mdx", "");
                 return `"${slug}": ${camelCase(slug)},`;
+              })
+              .join("\n")}
+          };
+
+          export const tableOfContents = {
+            ${files
+              .map((file) => {
+                const slug = file.replace("src/", "/").replace(".mdx", "");
+                return `"${slug}": ${camelCase(`${slug}-toc`)},`;
               })
               .join("\n")}
           };
@@ -226,6 +243,8 @@ const config = defineConfig({
       rehypePlugins: [
         rehypeSlug,
         rehypeAutolinkHeadings,
+        withToc,
+        [withTocExport, { name: "toc" }],
         [
           rehypeShiki,
           {

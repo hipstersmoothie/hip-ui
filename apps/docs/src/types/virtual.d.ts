@@ -1,10 +1,14 @@
 declare module "virtual:content" {
   import type { MDXComponents } from "mdx/types";
 
+  import { Toc } from "@stefanprobst/rehype-extract-toc";
+
   export const pages: Record<
     string,
     React.ComponentType<{ components: MDXComponents }>
   >;
+
+  export const tableOfContents: Record<string, Toc>;
 }
 
 declare module "virtual:propDocs" {

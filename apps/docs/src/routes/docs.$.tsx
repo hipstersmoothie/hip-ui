@@ -15,7 +15,7 @@ import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
 import { LinkIcon } from "lucide-react";
 import { createContext, use, useEffect, useRef, useState } from "react";
-import { pages } from "virtual:content";
+import { pages, tableOfContents } from "virtual:content";
 
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
@@ -36,6 +36,7 @@ import {
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
+import { TableOfContents } from "@/lib/TableOfContents";
 
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
@@ -275,15 +276,21 @@ function RouteComponent() {
     return <Content components={components} />;
   }
 
+  const toc = tableOfContents[location.pathname];
+  console.log(toc);
+
   return (
-    <div {...stylex.props(styles.main)}>
-      <Flex direction="column" gap="4" style={styles.header}>
-        <Heading1>{doc.title}</Heading1>
-        <Text size="xl" variant="secondary">
-          {doc.description}
-        </Text>
-      </Flex>
-      <Content components={components} />
-    </div>
+    <Flex gap="10">
+      <div {...stylex.props(styles.main)}>
+        <Flex direction="column" gap="4" style={styles.header}>
+          <Heading1>{doc.title}</Heading1>
+          <Text size="xl" variant="secondary">
+            {doc.description}
+          </Text>
+        </Flex>
+        <Content components={components} />
+      </div>
+      <TableOfContents toc={toc} />
+    </Flex>
   );
 }
