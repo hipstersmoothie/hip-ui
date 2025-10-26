@@ -1,5 +1,15 @@
 import * as stylex from "@stylexjs/stylex";
-import { Heart, Star } from "lucide-react";
+import {
+  Volume,
+  Volume2,
+  GripVertical,
+  BarChart3,
+  Box,
+  MoveHorizontal,
+  Heart,
+  Star,
+} from "lucide-react";
+import { useState } from "react";
 
 import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
 import { Button } from "@/components/button";
@@ -12,9 +22,12 @@ import {
 } from "@/components/card";
 import { Checkbox, CheckboxGroup } from "@/components/checkbox";
 import { Flex } from "@/components/flex";
+import { Grid } from "@/components/grid";
 import { IconButton } from "@/components/icon-button";
 import { Separator } from "@/components/separator";
+import { Slider } from "@/components/slider";
 import { TextField } from "@/components/text-field";
+import { ToggleButton } from "@/components/toggle-button";
 import { Text } from "@/components/typography/text";
 
 import { primaryColor } from "../components/theme/semantic-color.stylex";
@@ -345,6 +358,127 @@ function QueueCard() {
   );
 }
 
+function SoundCard() {
+  const [normalize, setNormalize] = useState(false);
+  const [equalizer, setEqualizer] = useState(false);
+  const [audio3d, setAudio3d] = useState(false);
+  const [crossFade, setCrossFade] = useState(false);
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Sound</CardTitle>
+        <CardHeaderAction>
+          <Text variant="secondary" size="sm">
+            Yamaha THR
+          </Text>
+        </CardHeaderAction>
+      </CardHeader>
+      <CardBody>
+        <Flex direction="column" gap="4">
+          <Flex direction="column" gap="2">
+            <Flex direction="row" align="center" justify="between" gap="3">
+              <Volume size={20} color="#6b7280" />
+              <Slider
+                defaultValue={67}
+                minValue={0}
+                maxValue={100}
+                step={1}
+                style={styles.grow}
+                showValueLabel={false}
+                aria-label="Volume"
+              />
+              <Volume2 size={20} color="#6b7280" />
+            </Flex>
+          </Flex>
+
+          <Grid columns="repeat(4, 1fr)" columnGap="3">
+            <Flex direction="column" gap="2" align="center">
+              <ToggleButton
+                aria-label="Normalize"
+                variant="outline"
+                aria-labelledby="normalize-label"
+                isSelected={normalize}
+                onChange={(e) => setNormalize(e)}
+              >
+                <GripVertical size={24} />
+              </ToggleButton>
+              <Flex direction="column" gap="1" align="center">
+                <Text id="normalize-label" weight="medium" size="sm">
+                  Normalize
+                </Text>
+                <Text variant="secondary" size="xs">
+                  {normalize ? "On" : "Off"}
+                </Text>
+              </Flex>
+            </Flex>
+
+            <Flex direction="column" gap="2" align="center">
+              <ToggleButton
+                aria-label="Equalizer"
+                variant="outline"
+                aria-labelledby="equalizer-label"
+                isSelected={equalizer}
+                onChange={(e) => setEqualizer(e)}
+              >
+                <BarChart3 size={24} />
+              </ToggleButton>
+              <Flex direction="column" gap="1" align="center">
+                <Text id="equalizer-label" weight="medium" size="sm">
+                  Equalizer
+                </Text>
+                <Text variant="secondary" size="xs">
+                  {equalizer ? "On" : "Off"}
+                </Text>
+              </Flex>
+            </Flex>
+
+            <Flex direction="column" gap="2" align="center">
+              <ToggleButton
+                aria-label="3D Audio"
+                aria-labelledby="3d-audio-label"
+                variant="outline"
+                isSelected={audio3d}
+                onChange={(e) => setAudio3d(e)}
+              >
+                <Box size={24} />
+              </ToggleButton>
+              <Flex direction="column" gap="1" align="center">
+                <Text id="3d-audio-label" weight="medium" size="sm">
+                  3D Audio
+                </Text>
+                <Text variant="secondary" size="xs">
+                  {audio3d ? "On" : "Off"}
+                </Text>
+              </Flex>
+            </Flex>
+
+            <Flex direction="column" gap="2" align="center">
+              <ToggleButton
+                aria-label="Cross-Fade"
+                aria-labelledby="cross-fade-label"
+                variant="outline"
+                isSelected={crossFade}
+                onChange={(e) => setCrossFade(e)}
+              >
+                <MoveHorizontal size={24} />
+              </ToggleButton>
+              <Flex direction="column" gap="1" align="center">
+                <Text id="cross-fade-label" weight="medium" size="sm">
+                  Cross-Fade
+                </Text>
+                <Text variant="secondary" size="xs">
+                  {crossFade ? "On" : "Off"}
+                </Text>
+              </Flex>
+            </Flex>
+          </Grid>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
 export function Music() {
   return (
     <Flex gap="4" style={styles.main}>
@@ -353,6 +487,9 @@ export function Music() {
         <ProfileCard />
         <QueueCard />
         <AlbumCard />
+      </Flex>
+      <Flex direction="column" gap="4" style={styles.skinny}>
+        <SoundCard />
       </Flex>
     </Flex>
   );
