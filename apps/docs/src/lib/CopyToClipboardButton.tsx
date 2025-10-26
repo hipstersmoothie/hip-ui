@@ -4,12 +4,16 @@ import { useRef, useState } from "react";
 
 import { IconButton } from "@/components/icon-button";
 
+const defaultIcon = <Copy />;
+
 export function CopyToClipboardButton({
   style,
   text,
+  icon = defaultIcon,
 }: {
-  style: stylex.StyleXStyles;
+  style?: stylex.StyleXStyles;
   text: string;
+  icon?: React.ReactNode;
 }) {
   const [tooltipText, setTooltipText] = useState("Copy to clipboard");
   const [tooltipOpen, setTooltipOpen] = useState(false);
@@ -51,7 +55,7 @@ export function CopyToClipboardButton({
       size="sm"
       onClick={handleCopy}
     >
-      <Copy />
+      {icon}
     </IconButton>
   );
 }

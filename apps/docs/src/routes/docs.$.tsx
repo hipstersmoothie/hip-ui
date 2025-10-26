@@ -1,14 +1,25 @@
 import type { MDXComponents } from "mdx/types";
+import type { JSX as Jsx } from "react/jsx-runtime";
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    type ElementClass = Jsx.ElementClass;
+    type Element = Jsx.Element;
+    type IntrinsicElements = Jsx.IntrinsicElements;
+  }
+}
 
 import * as stylex from "@stylexjs/stylex";
 import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
+import { LinkIcon } from "lucide-react";
 import { createContext, use, useEffect, useRef, useState } from "react";
 import { pages } from "virtual:content";
 
+import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
-import { StyleXComponentProps } from "@/components/theme/types";
 import {
   Blockquote,
   BlockquoteProps,
@@ -102,25 +113,35 @@ const styles = stylex.create({
     marginTop: 0,
     paddingLeft: spacing["4"],
   },
+  linkedHeadingLink: {
+    color: "inherit",
+    textDecoration: "none",
+  },
+  linkedHeadingLinkButton: {
+    opacity: {
+      default: 0,
+      ":is([data-heading-link]:hover *)": 1,
+      ":is([data-focus-visible])": 1,
+    },
+    transitionDuration: "100ms",
+    transitionProperty: "opacity",
+    transitionTimingFunction: "ease-in-out",
+  },
 });
-
-function Link(props: LinkProps) {
-  return <TypographyLink {...props} />;
-}
 
 const PreContext = createContext(false);
 
 function Pre({
   children,
-  style,
+  className: _className,
+  style: _style,
   ...props
-}: StyleXComponentProps<React.ComponentProps<"pre">>) {
+}: React.ComponentProps<"pre">) {
   const [textContent, setTextContent] = useState("error");
   const ref = useRef<HTMLPreElement>(null);
 
   useEffect(() => {
-    console.log(ref.current?.textContent);
-    // eslint-disable-next-line react-hooks/set-state-in-effect, @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect
     setTextContent(ref.current?.textContent ?? "error");
   }, [ref]);
 
@@ -129,7 +150,7 @@ function Pre({
       <pre
         ref={ref}
         {...props}
-        {...stylex.props(styles.pre, style)}
+        {...stylex.props(styles.pre)}
         data-testid="code"
       >
         {children}
@@ -153,20 +174,85 @@ function DocsBlockquote(props: BlockquoteProps) {
   return <Blockquote {...props} style={styles.blockquote} />;
 }
 
+function LinkedHeading({
+  id,
+  children,
+  style,
+}: {
+  id?: string;
+  children: React.ReactNode;
+  style?: stylex.StyleXStyles;
+}) {
+  const location = useLocation();
+
+  if (!id) {
+    return children;
+  }
+
+  return (
+    <Flex
+      direction="row"
+      gap="2"
+      align="center"
+      data-heading-link={true}
+      style={[style]}
+    >
+      <a href={`#${id}`} {...stylex.props(styles.linkedHeadingLink)}>
+        {children}
+      </a>
+      <CopyToClipboardButton
+        text={`${location.url}#${id}`}
+        icon={<LinkIcon />}
+        style={styles.linkedHeadingLinkButton}
+      />
+    </Flex>
+  );
+}
+
 const components: MDXComponents = {
   pre: Pre,
-  h1: (props) => <Heading1 {...props} style={styles.h1} />,
-  h2: (props) => <Heading2 {...props} style={styles.h2} />,
-  h3: (props) => <Heading3 {...props} style={styles.h3} />,
-  h4: (props) => <Heading4 {...props} style={styles.h4} />,
-  h5: (props) => <Heading5 {...props} style={styles.h5} />,
-  p: (props) => <Body {...props} style={styles.p} />,
-  a: Link,
-  ul: UnorderedList,
-  ol: OrderedList,
-  li: ListItem,
+  h1: ({ className: _className, style: _style, ...props }) => (
+    <Heading1 {...props} style={styles.h1} />
+  ),
+  h2: ({ className: _className, style: _style, ...props }) => (
+    <LinkedHeading id={props.id} style={styles.h2}>
+      <Heading2 {...props} />
+    </LinkedHeading>
+  ),
+  h3: ({ className: _className, style: _style, ...props }) => (
+    <LinkedHeading id={props.id} style={styles.h3}>
+      <Heading3 {...props} />
+    </LinkedHeading>
+  ),
+  h4: ({ className: _className, style: _style, ...props }) => (
+    <LinkedHeading id={props.id} style={styles.h4}>
+      <Heading4 {...props} />
+    </LinkedHeading>
+  ),
+  h5: ({ className: _className, style: _style, ...props }) => (
+    <LinkedHeading id={props.id} style={styles.h5}>
+      <Heading5 {...props} />
+    </LinkedHeading>
+  ),
+  p: ({ className: _className, style: _style, ...props }) => (
+    <Body {...props} style={styles.p} />
+  ),
+  a: ({ className: _className, style: _style, ...props }) => (
+    <TypographyLink {...(props as LinkProps)} />
+  ),
+  ul: ({ className: _className, style: _style, ...props }) => (
+    <UnorderedList {...props} />
+  ),
+  ol: ({ className: _className, style: _style, ...props }) => (
+    <OrderedList {...props} />
+  ),
+  li: ({ className: _className, style: _style, ...props }) => (
+    <ListItem {...props} />
+  ),
   code: Code,
-  blockquote: DocsBlockquote,
+  blockquote: ({ className: _className, style: _style, ...props }) => (
+    <DocsBlockquote {...props} />
+  ),
 };
 
 export const Route = createFileRoute("/docs/$")({

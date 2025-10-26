@@ -10,6 +10,8 @@ import { glob } from "glob";
 import MagicString from "magic-string";
 import path from "node:path";
 import docgen from "react-docgen-typescript";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
 import remarkFrontmatter from "remark-frontmatter";
 import { codeToHtml } from "shiki";
 import stylexPlugin from "unplugin-stylex/vite";
@@ -155,6 +157,7 @@ function annotateExamples() {
   } as PluginOption;
 }
 
+/** Generate a virtual model that imports all the prop docs */
 function propDocs() {
   const virtualModuleId = "virtual:propDocs";
   const resolvedVirtualModuleId = "\0" + virtualModuleId;
@@ -221,6 +224,8 @@ const config = defineConfig({
     mdx({
       remarkPlugins: [remarkFrontmatter],
       rehypePlugins: [
+        rehypeSlug,
+        rehypeAutolinkHeadings,
         [
           rehypeShiki,
           {
