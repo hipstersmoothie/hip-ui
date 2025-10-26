@@ -91,14 +91,14 @@ function HoverCardInner({
         {trigger}
       </Pressable>
       <AriaPopover
-        {...stylex.props(styles.wrapper, style)}
+        {...stylex.props(styles.wrapper)}
         offset={8}
         containerPadding={8}
         isNonModal={isFocusVisible ? false : true}
         trigger={triggerName}
         {...mergeProps(hoverProps, popoverProps)}
       >
-        <Dialog {...stylex.props(popoverStyles, styles.content)}>
+        <Dialog {...stylex.props(popoverStyles, styles.content, style)}>
           {children}
         </Dialog>
       </AriaPopover>
