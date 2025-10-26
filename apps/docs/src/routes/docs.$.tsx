@@ -1,6 +1,12 @@
 import type { MDXComponents } from "mdx/types";
 import type { JSX as Jsx } from "react/jsx-runtime";
 
+import {
+  createLink,
+  createFileRoute,
+  useLocation,
+} from "@tanstack/react-router";
+
 declare global {
   // eslint-disable-next-line @typescript-eslint/no-namespace
   namespace JSX {
@@ -11,7 +17,6 @@ declare global {
 }
 
 import * as stylex from "@stylexjs/stylex";
-import { createFileRoute, useLocation } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
 import { LinkIcon } from "lucide-react";
 import { createContext, use, useEffect, useRef, useState } from "react";
@@ -42,6 +47,8 @@ import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { lineHeight } from "../components/theme/typography.stylex";
+
+const TypographyRouterLink = createLink(TypographyLink);
 
 const styles = stylex.create({
   main: {
@@ -210,6 +217,21 @@ function LinkedHeading({
   );
 }
 
+function Link({ href, ...props }: LinkProps) {
+  if (href && href.startsWith("/")) {
+    const splat = href.split("/").slice(2).join("/");
+    return (
+      <TypographyRouterLink
+        to="/docs/$"
+        params={{ _splat: splat }}
+        {...props}
+      />
+    );
+  }
+
+  return <TypographyLink {...props} href={href} />;
+}
+
 const components: MDXComponents = {
   pre: Pre,
   h1: ({ className: _className, style: _style, ...props }) => (
@@ -239,7 +261,7 @@ const components: MDXComponents = {
     <Body {...props} style={styles.p} />
   ),
   a: ({ className: _className, style: _style, ...props }) => (
-    <TypographyLink {...(props as LinkProps)} />
+    <Link {...(props as LinkProps)} />
   ),
   ul: ({ className: _className, style: _style, ...props }) => (
     <UnorderedList {...props} />

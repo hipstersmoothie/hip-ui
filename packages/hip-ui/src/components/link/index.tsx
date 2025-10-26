@@ -23,7 +23,10 @@ const styles = stylex.create({
   },
 });
 
-export interface LinkProps extends StyleXComponentProps<AriaLinkProps> {}
+export interface LinkProps
+  extends StyleXComponentProps<Omit<AriaLinkProps, "children">> {
+  children: React.ReactNode;
+}
 
 export function Link({ style, ...props }: LinkProps) {
   const context = use(LinkContext);
