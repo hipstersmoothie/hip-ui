@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { ui } from "../theme/semantic-color.stylex";
+import { critical, ui } from "../theme/semantic-color.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 
@@ -34,6 +34,15 @@ const styles = stylex.create({
     lineHeight: lineHeight["sm"],
   },
   descriptionSm: {
+    fontSize: fontSize["xs"],
+    lineHeight: lineHeight["xs"],
+  },
+  errorMessage: {
+    color: critical.textDim,
+    fontSize: fontSize["sm"],
+    lineHeight: lineHeight["sm"],
+  },
+  errorMessageSm: {
     fontSize: fontSize["xs"],
     lineHeight: lineHeight["xs"],
   },
@@ -72,6 +81,31 @@ export function Description({
         styles.description,
         ui.textDim,
         size === "sm" && styles.descriptionSm,
+        style,
+      )}
+      {...props}
+    />
+  );
+}
+
+export interface ErrorMessageProps extends StyleXComponentProps<TextProps> {
+  size?: Size;
+}
+
+export function ErrorMessage({
+  style,
+  size: sizeProp,
+  ...props
+}: ErrorMessageProps) {
+  const size = sizeProp || use(SizeContext);
+
+  return (
+    <Text
+      slot="errorMessage"
+      {...stylex.props(
+        styles.errorMessage,
+        critical.textDim,
+        size === "sm" && styles.errorMessageSm,
         style,
       )}
       {...props}
