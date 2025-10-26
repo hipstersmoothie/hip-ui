@@ -308,7 +308,7 @@ function RouteComponent() {
   console.log(toc);
 
   return (
-    <Grid columns="1fr 240px" columnGap="4" style={styles.root}>
+    <Grid columns="max-content 240px" columnGap="4" style={styles.root}>
       <div {...stylex.props(styles.main)}>
         <Flex direction="column" gap="4" style={styles.header}>
           <Heading1>{doc.title}</Heading1>
