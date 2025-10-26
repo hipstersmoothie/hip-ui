@@ -38,33 +38,29 @@ const styles = stylex.create({
     gridArea: "bar",
     overflow: "hidden",
     width: "100%",
-  },
-  smBar: {
-    height: spacing["1"],
-  },
-  mdBar: {
-    height: spacing["2"],
-  },
-  lgBar: {
-    height: spacing["3"],
+
+    height: {
+      ":is([data-size=sm])": spacing["1"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=lg])": spacing["3"],
+    },
   },
   valueLabel: {
     color: uiColor.text1,
     fontVariantNumeric: "tabular-nums",
     gridArea: "value-label",
     justifySelf: "flex-end",
-  },
-  smValueLabel: {
-    fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
-  },
-  mdValueLabel: {
-    fontSize: fontSize["sm"],
-    lineHeight: lineHeight["sm"],
-  },
-  lgValueLabel: {
-    fontSize: fontSize["base"],
-    lineHeight: lineHeight["base"],
+
+    fontSize: {
+      ":is([data-size=sm])": fontSize["xs"],
+      ":is([data-size=md])": fontSize["sm"],
+      ":is([data-size=lg])": fontSize["base"],
+    },
+    lineHeight: {
+      ":is([data-size=sm])": lineHeight["xs"],
+      ":is([data-size=md])": lineHeight["sm"],
+      ":is([data-size=lg])": lineHeight["base"],
+    },
   },
   fill: {
     backgroundColor: primaryColor.solid1,
@@ -119,21 +115,18 @@ export function ProgressBar({
 
   return (
     <SizeContext value={size}>
-      <AriaProgressBar {...props} {...stylex.props(styles.wrapper, style)}>
+      <AriaProgressBar
+        {...props}
+        data-size={size}
+        {...stylex.props(styles.wrapper, style)}
+      >
         {({ percentage, valueText, isIndeterminate }) => (
           <>
             {label && <Label style={styles.label}>{label}</Label>}
             {showValueLabel && (
-              <span
-                {...stylex.props(
-                  styles.valueLabel,
-                  styles[`${size}ValueLabel`],
-                )}
-              >
-                {valueText}
-              </span>
+              <span {...stylex.props(styles.valueLabel)}>{valueText}</span>
             )}
-            <div {...stylex.props(styles.bar, styles[`${size}Bar`])}>
+            <div {...stylex.props(styles.bar)}>
               {isIndeterminate ? (
                 <div {...stylex.props(styles.indeterminateFill)} />
               ) : (

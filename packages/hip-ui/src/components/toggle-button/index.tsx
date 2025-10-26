@@ -56,13 +56,6 @@ const styles = stylex.create({
       ":active": uiColor.border3,
     },
   },
-  "critical-outlineSelected": {
-    backgroundColor: {
-      default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
-    },
-  },
   sm: {
     paddingLeft: {
       ":has(> * + *, > *:not(svg):only-child)": spacing["2"],
@@ -117,8 +110,17 @@ export function ToggleButton({
   const toggleButtonStyles = (isSelected?: boolean) =>
     stylex.props(
       buttonStyles,
-      styles[size],
-      isSelected ? styles[`${variant}Selected`] : undefined,
+      size === "sm" && styles.sm,
+      size === "md" && styles.md,
+      size === "lg" && styles.lg,
+      isSelected
+        ? [
+            variant === "primary" && styles.primarySelected,
+            variant === "secondary" && styles.secondarySelected,
+            variant === "tertiary" && styles.tertiarySelected,
+            variant === "outline" && styles.outlineSelected,
+          ]
+        : undefined,
       style,
     );
 

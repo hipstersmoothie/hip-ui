@@ -32,15 +32,12 @@ const styles = stylex.create({
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
     paddingTop: spacing["1"],
-  },
-  smSectionLabel: {
-    height: spacing["7"],
-  },
-  mdSectionLabel: {
-    height: spacing["7"],
-  },
-  lgSectionLabel: {
-    height: spacing["9"],
+
+    height: {
+      ":is([data-size=sm])": spacing["7"],
+      ":is([data-size=md])": spacing["7"],
+      ":is([data-size=lg])": spacing["9"],
+    },
   },
   separator: {
     marginBottom: spacing["1.5"],
@@ -143,11 +140,11 @@ export function ListBoxSectionHeader({
   return (
     <Header
       {...props}
+      data-size={size}
       {...stylex.props(
         typeramp.sublabel,
         styles.sectionLabel,
         ui.textDim,
-        styles[`${size}SectionLabel`],
         style,
       )}
     />

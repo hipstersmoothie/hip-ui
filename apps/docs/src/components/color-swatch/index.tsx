@@ -16,21 +16,22 @@ const styles = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
     boxSizing: "border-box",
-  },
-  sm: {
-    borderRadius: radius.sm,
-    height: spacing["4"],
-    width: spacing["4"],
-  },
-  md: {
-    borderRadius: radius.md,
-    height: spacing["6"],
-    width: spacing["6"],
-  },
-  lg: {
-    borderRadius: radius.lg,
-    height: spacing["8"],
-    width: spacing["8"],
+
+    borderRadius: {
+      ":is([data-size=sm])": radius.sm,
+      ":is([data-size=md])": radius.md,
+      ":is([data-size=lg])": radius.lg,
+    },
+    height: {
+      ":is([data-size=sm])": spacing["4"],
+      ":is([data-size=md])": spacing["6"],
+      ":is([data-size=lg])": spacing["8"],
+    },
+    width: {
+      ":is([data-size=sm])": spacing["4"],
+      ":is([data-size=md])": spacing["6"],
+      ":is([data-size=lg])": spacing["8"],
+    },
   },
 });
 
@@ -50,7 +51,8 @@ export function ColorSwatch({
   return (
     <AriaColorSwatch
       {...props}
-      {...stylex.props(styles.swatch, styles[size], style)}
+      {...stylex.props(styles.swatch, style)}
+      data-size={size}
       style={({ color }) => ({
         background: `linear-gradient(${color.toString()}, ${color.toString()}),
           repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 16px 16px`,

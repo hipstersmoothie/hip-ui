@@ -15,18 +15,17 @@ import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 const styles = stylex.create({
   label: {
     fontWeight: fontWeight["semibold"],
-  },
-  sm: {
-    fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
-  },
-  md: {
-    fontSize: fontSize["sm"],
-    lineHeight: lineHeight["sm"],
-  },
-  lg: {
-    fontSize: fontSize["base"],
-    lineHeight: lineHeight["base"],
+
+    fontSize: {
+      ":is([data-size=sm])": fontSize["xs"],
+      ":is([data-size=md])": fontSize["sm"],
+      ":is([data-size=lg])": fontSize["base"],
+    },
+    lineHeight: {
+      ":is([data-size=sm])": lineHeight["xs"],
+      ":is([data-size=md])": lineHeight["sm"],
+      ":is([data-size=lg])": lineHeight["base"],
+    },
   },
   description: {
     color: ui.textDim,
@@ -58,7 +57,8 @@ export function Label({ style, size: sizeProp, ...props }: LabelProps) {
   return (
     <AriaLabel
       {...props}
-      {...stylex.props(styles[size], styles.label, style)}
+      data-size={size}
+      {...stylex.props(styles.label, style)}
     />
   );
 }

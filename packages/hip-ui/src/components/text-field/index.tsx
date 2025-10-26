@@ -23,7 +23,7 @@ function PasswordToggle({
 }: {
   type: TextFieldProps["type"];
   setType: (type: TextFieldProps["type"]) => void;
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  style?: stylex.StyleXStyles;
 }) {
   const state = use(InputContext);
 

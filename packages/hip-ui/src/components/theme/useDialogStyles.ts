@@ -58,15 +58,9 @@ const styles = stylex.create({
     minHeight: 0,
     outline: "none",
   },
-  sm: {
-    width: 400,
-  },
-  md: {
-    width: 600,
-  },
-  lg: {
-    width: 800,
-  },
+  size: (size: Size) => ({
+    width: size === "sm" ? 400 : size === "md" ? 600 : 800,
+  }),
 });
 
 export function useDialogStyles({ size: sizeProp }: { size?: Size }) {
@@ -80,7 +74,7 @@ export function useDialogStyles({ size: sizeProp }: { size?: Size }) {
       ui.bg,
       ui.text,
       ui.border,
-      styles[size],
+      styles.size(size),
     ],
     dialog: styles.dialog,
   };

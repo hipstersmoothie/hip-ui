@@ -17,21 +17,22 @@ const styles = stylex.create({
     fontFamily: fontFamily["sans"],
     gap: "var(--card-gap)",
     overflow: "hidden",
-  },
-  smCard: {
-    "--card-gap": spacing["2"],
-    "--card-x-padding": spacing["2"],
-    "--card-y-padding": spacing["2"],
-  },
-  mdCard: {
-    "--card-gap": spacing["6"],
-    "--card-x-padding": spacing["6"],
-    "--card-y-padding": spacing["7"],
-  },
-  lgCard: {
-    "--card-gap": spacing["9"],
-    "--card-x-padding": spacing["9"],
-    "--card-y-padding": spacing["10"],
+
+    "--card-gap": {
+      ":is([data-card-size=sm])": spacing["2"],
+      ":is([data-card-size=md])": spacing["6"],
+      ":is([data-card-size=lg])": spacing["9"],
+    },
+    "--card-x-padding": {
+      ":is([data-card-size=sm])": spacing["2"],
+      ":is([data-card-size=md])": spacing["6"],
+      ":is([data-card-size=lg])": spacing["9"],
+    },
+    "--card-y-padding": {
+      ":is([data-card-size=sm])": spacing["2"],
+      ":is([data-card-size=md])": spacing["7"],
+      ":is([data-card-size=lg])": spacing["10"],
+    },
   },
   cardSection: {
     boxSizing: "border-box",
@@ -105,14 +106,7 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
       <div
         {...props}
         data-card-size={size}
-        {...stylex.props(
-          styles.card,
-          ui.bgSubtle,
-          ui.border,
-          ui.text,
-          style,
-          styles[`${size}Card`],
-        )}
+        {...stylex.props(styles.card, ui.bgSubtle, ui.border, ui.text, style)}
       />
     </SizeContext>
   );

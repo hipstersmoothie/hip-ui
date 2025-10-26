@@ -104,7 +104,13 @@ export function useListBoxItemStyles() {
   const size = use(SizeContext);
 
   return {
-    wrapper: [typeramp.label, styles.item, styles[size]],
+    wrapper: [
+      typeramp.label,
+      styles.item,
+      size === "sm" && styles.sm,
+      size === "md" && styles.md,
+      size === "lg" && styles.lg,
+    ],
     inner: [
       styles.itemInner,
       size === "sm" && styles.smItemInner,

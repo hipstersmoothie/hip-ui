@@ -23,26 +23,25 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "center",
     overflow: "hidden",
-  },
-  sm: {
-    borderRadius: radius["sm"],
-    height: spacing["6"],
-    width: spacing["6"],
-  },
-  md: {
-    borderRadius: radius["md"],
-    height: spacing["8"],
-    width: spacing["8"],
-  },
-  lg: {
-    borderRadius: radius["lg"],
-    height: spacing["10"],
-    width: spacing["10"],
-  },
-  xl: {
-    borderRadius: radius["xl"],
-    height: spacing["14"],
-    width: spacing["14"],
+
+    borderRadius: {
+      ":is([data-size=sm])": radius["sm"],
+      ":is([data-size=md])": radius["md"],
+      ":is([data-size=lg])": radius["lg"],
+      ":is([data-size=xl])": radius["xl"],
+    },
+    height: {
+      ":is([data-size=sm])": spacing["6"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=xl])": spacing["14"],
+    },
+    width: {
+      ":is([data-size=sm])": spacing["6"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=xl])": spacing["14"],
+    },
   },
   image: {
     height: "100%",
@@ -55,18 +54,13 @@ const styles = stylex.create({
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["medium"],
     lineHeight: lineHeight["none"],
-  },
-  smFallback: {
-    fontSize: fontSize["sm"],
-  },
-  mdFallback: {
-    fontSize: fontSize["base"],
-  },
-  lgFallback: {
-    fontSize: fontSize["lg"],
-  },
-  xlFallback: {
-    fontSize: fontSize["xl"],
+
+    fontSize: {
+      ":is([data-size=sm] *)": fontSize["sm"],
+      ":is([data-size=md] *)": fontSize["base"],
+      ":is([data-size=lg] *)": fontSize["lg"],
+      ":is([data-size=xl] *)": fontSize["xl"],
+    },
   },
 });
 
@@ -115,14 +109,12 @@ export function Avatar({
   }, [src]);
 
   return (
-    <div {...props} {...stylex.props(styles.wrapper, styles[size], style)}>
+    <div {...props} data-size={size} {...stylex.props(styles.wrapper, style)}>
       {imageLoaded === "loaded" && (
         <img {...stylex.props(styles.image)} src={src} alt={alt} />
       )}
       {(!src || imageLoaded === "error") && (
-        <div {...stylex.props(styles.fallback, styles[`${size}Fallback`])}>
-          {fallback}
-        </div>
+        <div {...stylex.props(styles.fallback)}>{fallback}</div>
       )}
     </div>
   );

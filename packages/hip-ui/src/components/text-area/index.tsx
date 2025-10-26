@@ -71,42 +71,42 @@ const styles = stylex.create({
     flexGrow: 1,
     fontFamily: fontFamily["sans"],
     outline: "none",
-  },
-  smInput: {
-    fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
-    minHeight: spacing["6"],
-    paddingBottom: spacing["1"],
-    paddingLeft: { ":first-child": spacing["1"] },
-    paddingRight: spacing["1"],
-    paddingTop: spacing["1"],
-  },
-  mdInput: {
-    fontSize: fontSize["sm"],
-    lineHeight: lineHeight["sm"],
-    minHeight: spacing["8"],
-    paddingBottom: spacing["2"],
-    paddingLeft: { ":first-child": spacing["2"] },
-    paddingRight: spacing["2"],
-    paddingTop: spacing["2"],
-  },
-  lgInput: {
-    fontSize: fontSize["base"],
-    lineHeight: lineHeight["base"],
-    minHeight: spacing["10"],
-    paddingBottom: spacing["3"],
-    paddingLeft: spacing["3"],
-    paddingRight: spacing["3"],
-    paddingTop: spacing["3"],
-  },
-  description: {
-    color: ui.textDim,
-    fontSize: fontSize["sm"],
-    lineHeight: lineHeight["sm"],
-  },
-  descriptionSm: {
-    fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
+
+    fontSize: {
+      ":is([data-size=sm])": fontSize["xs"],
+      ":is([data-size=md])": fontSize["sm"],
+      ":is([data-size=lg])": fontSize["base"],
+    },
+    lineHeight: {
+      ":is([data-size=sm])": lineHeight["xs"],
+      ":is([data-size=md])": lineHeight["sm"],
+      ":is([data-size=lg])": lineHeight["base"],
+    },
+    minHeight: {
+      ":is([data-size=sm])": spacing["6"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=lg])": spacing["10"],
+    },
+    paddingBottom: {
+      ":is([data-size=sm])": spacing["1"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=lg])": spacing["3"],
+    },
+    paddingLeft: {
+      ":is([data-size=sm])": spacing["1"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=lg])": spacing["3"],
+    },
+    paddingRight: {
+      ":is([data-size=sm])": spacing["1"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=lg])": spacing["3"],
+    },
+    paddingTop: {
+      ":is([data-size=sm])": spacing["1"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=lg])": spacing["3"],
+    },
   },
 });
 
@@ -151,7 +151,8 @@ export function TextArea({
       >
         {prefix != null && <div {...stylex.props(styles.addon)}>{prefix}</div>}
         <AriaTextArea
-          {...stylex.props(styles.input, styles[`${size}Input`])}
+          data-size={size}
+          {...stylex.props(styles.input)}
           ref={textAreaRef}
           placeholder={placeholder}
           rows={rows}

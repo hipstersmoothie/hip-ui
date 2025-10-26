@@ -24,7 +24,11 @@ export const Button = ({
   const buttonStyles = useButtonStyles({ variant, size });
 
   return (
-    <AriaButton {...stylex.props(buttonStyles, style)} {...props}>
+    <AriaButton
+      {...stylex.props(buttonStyles, style)}
+      data-size={size}
+      {...props}
+    >
       {children}
     </AriaButton>
   );

@@ -81,7 +81,8 @@ export function Badge({
       {...props}
       {...stylex.props(
         styles.wrapper,
-        styles[size],
+        size === "sm" && styles.sm,
+        size === "md" && styles.md,
         variant === "primary" && [
           primary.bgDim,
           primary.borderDim,

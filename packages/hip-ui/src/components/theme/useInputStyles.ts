@@ -66,30 +66,6 @@ const styles = stylex.create({
       "::-webkit-search-decoration": "none",
     },
   },
-  sm: {
-    height: spacing["6"],
-  },
-  smInput: {
-    fontSize: fontSize["xs"],
-    paddingLeft: { ":first-child": spacing["1"] },
-    paddingRight: spacing["1"],
-  },
-  md: {
-    height: spacing["8"],
-  },
-  mdInput: {
-    fontSize: fontSize["sm"],
-    paddingLeft: { ":first-child": spacing["2"] },
-    paddingRight: spacing["2"],
-  },
-  lg: {
-    height: spacing["10"],
-  },
-  lgInput: {
-    fontSize: fontSize["base"],
-    paddingLeft: spacing["1"],
-    paddingRight: spacing["2"],
-  },
   primary: {
     borderColor: {
       default: uiColor.border2,
@@ -100,6 +76,36 @@ const styles = stylex.create({
     borderWidth: 1,
     transitionProperty: "background-color, border-color",
   },
+  inputSize: (size: Size) => ({
+    fontSize:
+      size === "sm"
+        ? fontSize["xs"]
+        : size === "md"
+          ? fontSize["sm"]
+          : fontSize["base"],
+    paddingLeft: {
+      ":first-child":
+        size === "sm"
+          ? spacing["1"]
+          : size === "md"
+            ? spacing["2"]
+            : spacing["1"],
+    },
+    paddingRight:
+      size === "sm"
+        ? spacing["1"]
+        : size === "md"
+          ? spacing["2"]
+          : spacing["2"],
+  }),
+  wrapperSize: (size: Size) => ({
+    height:
+      size === "sm"
+        ? spacing["6"]
+        : size === "md"
+          ? spacing["8"]
+          : spacing["10"],
+  }),
 });
 
 export function useInputStyles({
@@ -119,9 +125,9 @@ export function useInputStyles({
       variant === "secondary" && [ui.bgUi],
       variant === "tertiary" && [ui.bgGhost],
       ui.text,
-      styles[size],
+      styles.wrapperSize(size),
     ],
-    input: [styles.input, styles[`${size}Input`]],
+    input: [styles.input, styles.inputSize(size)],
     addon: styles.addon as unknown as stylex.StyleXStyles,
   };
 }
