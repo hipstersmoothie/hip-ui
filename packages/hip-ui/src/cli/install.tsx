@@ -31,6 +31,7 @@ import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
+import { meterConfig } from "../components/meter/meter-config.js";
 import { numberFieldConfig } from "../components/number-field/number-field-config.js";
 import { popoverConfig } from "../components/popover/popover-config.js";
 import { progressBarConfig } from "../components/progress-bar/progress-bar-config.js";
@@ -98,6 +99,7 @@ const COMPONENT_CONFIGS = [
   sliderConfig,
   tagGroupConfig,
   progressBarConfig,
+  meterConfig,
 ];
 
 function StringSetting({

@@ -58,16 +58,16 @@
 - [ ] Grid List
 - [ ] Hover Card
 - [ ] Item
-- [ ] Meter
 - [ ] Menubar
 - [ ] Navigation Menu
-- [ ] Progress Bar
 - [ ] Spinner
 - [ ] Table
 - [ ] Tabs
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Meter
+- [x] Progress Bar
 - [x] Tag Group
 - [x] File Trigger
 - [x] File Drop zone

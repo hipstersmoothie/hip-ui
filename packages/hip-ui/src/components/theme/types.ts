@@ -14,6 +14,12 @@ export type ButtonVariant =
 export type InputVariant = "primary" | "secondary" | "tertiary";
 export type ButtonGroupVariant = "grouped" | "separate";
 export type TextVariant = "primary" | "secondary" | "critical";
+export type MeterVariant =
+  | "primary"
+  | "secondary"
+  | "success"
+  | "warning"
+  | "critical";
 
 export type StyleXComponentProps<
   T extends {
