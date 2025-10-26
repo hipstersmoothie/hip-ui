@@ -64,6 +64,12 @@ const styles = stylex.create({
   left: { textAlign: "left" },
   center: { textAlign: "center" },
   right: { textAlign: "right" },
+
+  textEllipsis: {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  },
 });
 
 interface TextProps
@@ -77,6 +83,7 @@ interface TextProps
   variant?: TextVariant;
   strikethrough?: boolean;
   align?: "left" | "center" | "right";
+  hasEllipsis?: boolean;
 }
 
 export const Text = ({
@@ -89,6 +96,7 @@ export const Text = ({
   variant,
   strikethrough = false,
   align,
+  hasEllipsis = false,
   ...props
 }: TextProps) => {
   return (
@@ -102,6 +110,7 @@ export const Text = ({
         variant && styles[`variant-${variant}`],
         strikethrough && styles.strikethrough,
         align && styles[align],
+        hasEllipsis && styles.textEllipsis,
         style,
       )}
       {...props}

@@ -11,11 +11,15 @@ import {
   PopoverProps,
   Select as AriaSelect,
   FieldError,
+  Autocomplete,
+  useFilter,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
 import { Description, Label } from "../label";
-import { ListBox } from "../listbox";
+import { ListBox, ListBoxSeparator } from "../listbox";
+import { SearchField } from "../search-field";
+import { spacing } from "../theme/spacing.stylex";
 import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
@@ -23,6 +27,10 @@ import { usePopoverStyles } from "../theme/usePopoverStyles";
 const styles = stylex.create({
   matchWidth: {
     width: "var(--trigger-width)",
+  },
+  searchField: {
+    paddingLeft: spacing["1"],
+    paddingRight: spacing["1"],
   },
 });
 
@@ -45,6 +53,7 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
   placeholder?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  isSearchable?: boolean;
 }
 
 export function Select<
@@ -66,11 +75,13 @@ export function Select<
   placeholder = "Select an option",
   prefix,
   suffix,
+  isSearchable = false,
   ...props
 }: SelectProps<T, M>) {
   const size = sizeProp || use(SizeContext);
   const inputStyles = useInputStyles({ size, variant });
   const popoverStyles = usePopoverStyles();
+  const { contains } = useFilter({ sensitivity: "base" });
 
   return (
     <SizeContext value={size}>
@@ -107,10 +118,19 @@ export function Select<
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
+          {...stylex.props(popoverStyles, styles.matchWidth)}
         >
-          <ListBox items={items} style={[popoverStyles, styles.matchWidth]}>
-            {children}
-          </ListBox>
+          {isSearchable ? (
+            <Autocomplete filter={contains}>
+              <div {...stylex.props(styles.searchField)}>
+                <SearchField placeholder="Search" variant="secondary" />
+              </div>
+              <ListBoxSeparator />
+              <ListBox items={items}>{children}</ListBox>
+            </Autocomplete>
+          ) : (
+            <ListBox items={items}>{children}</ListBox>
+          )}
         </Popover>
       </AriaSelect>
     </SizeContext>

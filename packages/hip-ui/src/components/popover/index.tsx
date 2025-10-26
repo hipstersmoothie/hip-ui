@@ -48,6 +48,7 @@ interface PopoverProps
   trigger: React.ReactNode;
   triggerName?: Pick<AriaPopoverProps, "trigger">;
   children: React.ReactNode;
+  hasArrow?: boolean;
 }
 
 export const Popover = ({
@@ -57,6 +58,7 @@ export const Popover = ({
   isOpen,
   onOpenChange,
   style,
+  hasArrow,
   ...popoverProps
 }: PopoverProps) => {
   const popoverStyles = usePopoverStyles();
@@ -68,15 +70,17 @@ export const Popover = ({
       {trigger}
 
       <AriaPopover
-        {...stylex.props(styles.wrapper, style)}
+        {...stylex.props(styles.wrapper)}
         offset={8}
         containerPadding={8}
         {...popoverProps}
       >
-        <OverlayArrow {...stylex.props(styles.caret)}>
-          <div {...stylex.props(styles.arrow)} />
-        </OverlayArrow>
-        <Dialog {...stylex.props(popoverStyles, styles.content)}>
+        {hasArrow && (
+          <OverlayArrow {...stylex.props(styles.caret)}>
+            <div {...stylex.props(styles.arrow)} />
+          </OverlayArrow>
+        )}
+        <Dialog {...stylex.props(popoverStyles, styles.content, style)}>
           {children}
         </Dialog>
       </AriaPopover>

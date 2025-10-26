@@ -1,36 +1,29 @@
 import * as stylex from "@stylexjs/stylex";
 import {
-  Menu,
-  Share2,
-  Save,
-  Code,
   MoreVertical,
   RotateCcw,
   TextAlignJustify,
   Download,
   ListCheck,
+  Copy,
 } from "lucide-react";
 import { useState } from "react";
 
+import { Menu, MenuItem, MenuSeparator } from "@/components/menu";
+import { Popover } from "@/components/popover";
 import {
   SegmentedControl,
   SegmentedControlItem,
 } from "@/components/segmented-control";
-import { ToggleButton } from "@/components/toggle-button";
-import { ToggleButtonGroup } from "@/components/toggle-button-group";
 
 import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { IconButton } from "../components/icon-button";
 import { Select, SelectItem, SelectSection } from "../components/select";
-import { Separator } from "../components/separator";
 import { Slider } from "../components/slider";
 import { TextArea } from "../components/text-area";
 import { radius } from "../components/theme/radius.stylex";
-import {
-  uiColor,
-  primaryColor,
-} from "../components/theme/semantic-color.stylex";
+import { uiColor } from "../components/theme/semantic-color.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontSize, fontWeight } from "../components/theme/typography.stylex";
@@ -85,15 +78,23 @@ const styles = stylex.create({
     padding: spacing["6"],
     width: 320,
   },
-  sectionLabel: {
-    color: uiColor.text1,
-    fontSize: fontSize["sm"],
-    fontWeight: fontWeight["semibold"],
+  shareBox: {
+    paddingBottom: spacing["4"],
+    paddingLeft: spacing["4"],
+    paddingRight: spacing["4"],
+    paddingTop: spacing["4"],
+    width: 400,
   },
-  sliderWrapper: {
-    display: "flex",
-    flexDirection: "column",
-    gap: spacing["2"],
+  copyBox: {
+    backgroundColor: uiColor.bgSubtle,
+    borderColor: uiColor.border1,
+    borderRadius: radius.md,
+    borderStyle: "solid",
+    borderWidth: 1,
+    paddingBottom: spacing["1"],
+    paddingLeft: spacing["2"],
+    paddingRight: spacing["2"],
+    paddingTop: spacing["1"],
   },
 });
 
@@ -111,9 +112,11 @@ function ParameterSlider({
   step?: number;
 }) {
   return (
-    <div {...stylex.props(styles.sliderWrapper)}>
+    <Flex direction="column" gap="2">
       <Flex align="center" justify="between">
-        <Text {...stylex.props(styles.sectionLabel)}>{label}</Text>
+        <Text size="sm" weight="semibold">
+          {label}
+        </Text>
         <Text variant="secondary" size="sm">
           {typeof value === "number" ? value.toFixed(1) : value}
         </Text>
@@ -127,7 +130,7 @@ function ParameterSlider({
         showValueLabel={false}
         aria-label={label}
       />
-    </div>
+    </Flex>
   );
 }
 
@@ -141,7 +144,12 @@ export function LLMApp() {
       {/* Header */}
       <Flex align="center" gap="4" style={styles.header}>
         <Text {...stylex.props(styles.title)}>Playground</Text>
-        <Select aria-label="Mode" variant="secondary" placeholder="Q&A">
+        <Select
+          aria-label="Mode"
+          variant="secondary"
+          placeholder="Q&A"
+          isSearchable
+        >
           <SelectSection>
             <SelectItem id="qa">Q&A</SelectItem>
             <SelectItem id="complete">Complete</SelectItem>
@@ -151,16 +159,53 @@ export function LLMApp() {
         <Flex gap="2">
           <Button variant="secondary">Save</Button>
           <Button variant="secondary">View code</Button>
-          <Button variant="secondary">Share</Button>
-          <IconButton label="More options" variant="secondary">
-            <MoreVertical size={16} />
-          </IconButton>
+          <Popover
+            placement="bottom end"
+            style={styles.shareBox}
+            trigger={<Button variant="secondary">Share</Button>}
+          >
+            <Flex direction="column" gap="4">
+              <Flex direction="column" gap="2">
+                <Text size="lg" weight="semibold">
+                  Share
+                </Text>
+                <Text variant="secondary" size="sm">
+                  Anyone who has this link and an OpenAI account will be able to
+                  view this.
+                </Text>
+              </Flex>
+
+              <Flex
+                align="center"
+                justify="between"
+                gap="2"
+                style={styles.copyBox}
+              >
+                <Text size="sm" variant="secondary" hasEllipsis>
+                  https://platform.openai.com/playground/p/7bbKYQvsVkNmVb8NGcdUOLae?model=text-davinci-003
+                </Text>
+                <IconButton label="Copy" variant="tertiary" size="sm">
+                  <Copy size={16} />
+                </IconButton>
+              </Flex>
+            </Flex>
+          </Popover>
+          <Menu
+            placement="bottom end"
+            trigger={
+              <IconButton label="More options" variant="secondary">
+                <MoreVertical size={16} />
+              </IconButton>
+            }
+          >
+            <MenuItem>Content filter preferences</MenuItem>
+            <MenuSeparator />
+            <MenuItem variant="destructive">Delete preset</MenuItem>
+          </Menu>
         </Flex>
       </Flex>
 
-      {/* Main Content */}
       <Flex gap="0" style={styles.content}>
-        {/* Left Content */}
         <Flex direction="column" gap="4" style={styles.mainContent}>
           <TextArea
             placeholder="Write a tagline for an ice cream shop"
@@ -175,11 +220,11 @@ export function LLMApp() {
           </Flex>
         </Flex>
 
-        {/* Right Sidebar */}
         <Flex direction="column" gap="10" style={styles.sidebar}>
-          {/* Mode Section */}
           <Flex direction="column" gap="3">
-            <Text {...stylex.props(styles.sectionLabel)}>Mode</Text>
+            <Text size="sm" weight="semibold">
+              Mode
+            </Text>
             <SegmentedControl defaultSelectedKeys={["qa"]}>
               <SegmentedControlItem id="qa">
                 <TextAlignJustify />
@@ -193,9 +238,10 @@ export function LLMApp() {
             </SegmentedControl>
           </Flex>
 
-          {/* Model Section */}
           <Flex direction="column" gap="3">
-            <Text {...stylex.props(styles.sectionLabel)}>Model</Text>
+            <Text size="sm" weight="semibold">
+              Model
+            </Text>
             <Select aria-label="Model">
               <SelectSection>
                 <SelectItem id="davinci">text-davinci-003</SelectItem>
