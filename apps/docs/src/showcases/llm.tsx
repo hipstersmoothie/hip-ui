@@ -9,17 +9,30 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 
+import {
+  Dialog,
+  DialogBody,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+} from "@/components/dialog";
 import { Menu, MenuItem, MenuSeparator } from "@/components/menu";
 import { Popover } from "@/components/popover";
 import {
   SegmentedControl,
   SegmentedControlItem,
 } from "@/components/segmented-control";
+import { TextField } from "@/components/text-field";
 
 import { Button } from "../components/button";
 import { Flex } from "../components/flex";
 import { IconButton } from "../components/icon-button";
-import { Select, SelectItem, SelectSection } from "../components/select";
+import {
+  Select,
+  SelectItem,
+  SelectSection,
+  SelectSectionHeader,
+} from "../components/select";
 import { Slider } from "../components/slider";
 import { TextArea } from "../components/text-area";
 import { radius } from "../components/theme/radius.stylex";
@@ -157,7 +170,26 @@ export function LLMApp() {
           </SelectSection>
         </Select>
         <Flex gap="2">
-          <Button variant="secondary">Save</Button>
+          <Dialog trigger={<Button variant="secondary">Save</Button>}>
+            <DialogHeader>Save preset</DialogHeader>
+            <DialogDescription>
+              This will save the current playground state as a preset which you
+              can access later or share with others.
+            </DialogDescription>
+            <DialogBody>
+              <Flex direction="column" gap="2">
+                <TextField label="Name" placeholder="Enter preset name" />
+                <TextArea
+                  label="Description"
+                  placeholder="Enter preset description"
+                />
+              </Flex>
+            </DialogBody>
+            <DialogFooter>
+              <Button variant="secondary">Cancel</Button>
+              <Button>Save</Button>
+            </DialogFooter>
+          </Dialog>
           <Button variant="secondary">View code</Button>
           <Popover
             placement="bottom end"
@@ -242,11 +274,17 @@ export function LLMApp() {
             <Text size="sm" weight="semibold">
               Model
             </Text>
-            <Select aria-label="Model">
+            <Select aria-label="Model" isSearchable>
               <SelectSection>
+                <SelectSectionHeader>GPT 3</SelectSectionHeader>
                 <SelectItem id="davinci">text-davinci-003</SelectItem>
                 <SelectItem id="curie">text-curie-001</SelectItem>
                 <SelectItem id="ada">text-ada-001</SelectItem>
+              </SelectSection>
+              <SelectSection>
+                <SelectSectionHeader>Codex</SelectSectionHeader>
+                <SelectItem id="codex-001">codex-001</SelectItem>
+                <SelectItem id="codex-002">codex-002</SelectItem>
               </SelectSection>
             </Select>
           </Flex>

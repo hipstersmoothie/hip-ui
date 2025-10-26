@@ -37,10 +37,17 @@ const styles = stylex.create({
     borderBottomWidth: 1,
   },
   description: {
+    color: uiColor.text1,
     paddingBottom: spacing["4"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
     paddingTop: spacing["4"],
+  },
+  body: {
+    paddingBottom: spacing["4"],
+    paddingLeft: spacing["4"],
+    paddingRight: spacing["4"],
+    paddingTop: { default: 0, ":first-child": spacing["4"] },
   },
   footer: {
     display: "flex",
@@ -121,6 +128,13 @@ export const DialogDescription = ({
       {children}
     </div>
   );
+};
+
+export interface DialogBodyProps
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+
+export const DialogBody = ({ children, style }: DialogBodyProps) => {
+  return <div {...stylex.props(styles.body, style)}>{children}</div>;
 };
 
 export interface DialogFooterProps

@@ -14,6 +14,7 @@ import { SizeContext } from "../context";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
+import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 
@@ -22,9 +23,16 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: uiColor.component1,
     borderRadius: radius.lg,
+    boxShadow: "inset 0 0 10px 1px rgba(0, 0, 0, 0.1  )",
+    boxSizing: "border-box",
     display: "flex",
     gap: spacing["2"],
-    padding: spacing["1.5"],
+    height: {
+      ":is([data-size=sm])": spacing["7"],
+      ":is([data-size=md])": spacing["9"],
+      ":is([data-size=lg])": spacing["11"],
+    },
+    padding: spacing["1"],
   },
   item: {
     alignItems: "center",
@@ -34,15 +42,12 @@ const styles = stylex.create({
     boxSizing: "border-box",
     color: {
       default: uiColor.text1,
+      ":hover": uiColor.text2,
       ":is([data-selected])": uiColor.text2,
     },
     display: "flex",
     flexGrow: 1,
-    height: {
-      ":is([data-size=sm] *)": spacing["6"],
-      ":is([data-size=md] *)": spacing["8"],
-      ":is([data-size=lg] *)": spacing["10"],
-    },
+    height: "100%",
     justifyContent: "center",
     paddingBottom: spacing["1"],
     paddingLeft: spacing["2"],
@@ -65,11 +70,9 @@ const styles = stylex.create({
   selectionIndicator: {
     backgroundColor: uiColor.bgSubtle,
     borderRadius: radius.md,
+    boxShadow: shadow.sm,
     height: "100%",
     left: 0,
-    outlineColor: uiColor.border2,
-    outlineStyle: "solid",
-    outlineWidth: "1px",
     position: "absolute",
     top: 0,
     transitionDuration: "200ms",
