@@ -17,9 +17,7 @@ export function CardWithImage() {
       <CardHeader>
         <CardTitle>Card with Image</CardTitle>
       </CardHeader>
-      <CardBody>
-        <p>This card includes an image with a 16:9 aspect ratio.</p>
-      </CardBody>
+      <CardBody>This card includes an image with a 16:9 aspect ratio.</CardBody>
     </Card>
   );
 }

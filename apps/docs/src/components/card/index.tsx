@@ -25,8 +25,8 @@ const styles = stylex.create({
     },
     "--card-x-padding": {
       ":is([data-card-size=sm])": spacing["2"],
-      ":is([data-card-size=md])": spacing["6"],
-      ":is([data-card-size=lg])": spacing["9"],
+      ":is([data-card-size=md])": spacing["4"],
+      ":is([data-card-size=lg])": spacing["6"],
     },
     "--card-y-padding": {
       ":is([data-card-size=sm])": spacing["2"],
@@ -44,7 +44,7 @@ const styles = stylex.create({
   cardHeader: {
     alignItems: "center",
     display: "grid",
-    gap: "var(--card-gap)",
+    gap: "calc(var(--card-gap) * 0.5)",
     gridTemplate: {
       default: `'title action'`,
       ":has([data-card-header-description])": `

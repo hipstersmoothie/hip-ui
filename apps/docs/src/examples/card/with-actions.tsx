@@ -1,7 +1,15 @@
 import { MoreHorizontal, Heart, Share } from "lucide-react";
 
 import { Button } from "@/components/button";
-import { Card, CardHeader, CardTitle, CardDescription, CardBody, CardFooter, CardHeaderAction } from "@/components/card";
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardBody,
+  CardFooter,
+  CardHeaderAction,
+} from "@/components/card";
 import { IconButton } from "@/components/icon-button";
 
 export function CardWithActions() {
@@ -11,19 +19,19 @@ export function CardWithActions() {
         <CardTitle>Card with Actions</CardTitle>
         <CardDescription>This card includes header actions</CardDescription>
         <CardHeaderAction>
-          <IconButton label="Like" variant="ghost">
+          <IconButton label="Like" variant="tertiary">
             <Heart />
           </IconButton>
-          <IconButton label="Share" variant="ghost">
+          <IconButton label="Share" variant="tertiary">
             <Share />
           </IconButton>
-          <IconButton label="More" variant="ghost">
+          <IconButton label="More" variant="tertiary">
             <MoreHorizontal />
           </IconButton>
         </CardHeaderAction>
       </CardHeader>
       <CardBody>
-        <p>This card demonstrates how to include actions in the header.</p>
+        This card demonstrates how to include actions in the header.
       </CardBody>
       <CardFooter>
         <Button variant="secondary">Cancel</Button>

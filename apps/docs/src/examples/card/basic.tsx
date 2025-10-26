@@ -15,9 +15,7 @@ export function Basic() {
         <CardTitle>Card Title</CardTitle>
         <CardDescription>Card description goes here</CardDescription>
       </CardHeader>
-      <CardBody>
-        <p>This is the card body content.</p>
-      </CardBody>
+      <CardBody>This is the card body content.</CardBody>
       <CardFooter>
         <Button>Action</Button>
       </CardFooter>
