@@ -10,6 +10,7 @@ import {
   Star,
 } from "lucide-react";
 import { useState } from "react";
+import { Key } from "react-aria-components";
 
 import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
 import { Button } from "@/components/button";
@@ -28,6 +29,7 @@ import { IconButton } from "@/components/icon-button";
 import { Separator } from "@/components/separator";
 import { Slider } from "@/components/slider";
 import { Switch } from "@/components/switch";
+import { Tag, TagGroup } from "@/components/tag-group";
 import { TextField } from "@/components/text-field";
 import { ToggleButton } from "@/components/toggle-button";
 import { Body } from "@/components/typography";
@@ -688,20 +690,93 @@ function LyricsCard() {
   );
 }
 
+function PlaylistCard() {
+  const genres = [
+    { id: "pop", name: "Pop" },
+    { id: "rock", name: "Rock" },
+    { id: "hip-hop", name: "Hip-Hop" },
+    { id: "r&b", name: "R&B" },
+    { id: "country", name: "Country" },
+    { id: "electronic", name: "Electronic" },
+    { id: "experimental", name: "Experimental" },
+    { id: "reggae", name: "Reggae" },
+    { id: "ska", name: "Ska" },
+    { id: "grunge", name: "Grunge" },
+    { id: "psychedelic", name: "Psychedelic" },
+    { id: "post-rock", name: "Post-Rock" },
+    { id: "progressive-rock", name: "Progressive Rock" },
+    { id: "dream-pop", name: "Dream Pop" },
+    { id: "ambient", name: "Ambient" },
+    { id: "classical", name: "Classical" },
+    { id: "trip-hop", name: "Trip-Hop" },
+    { id: "gospel", name: "Gospel" },
+    { id: "folk", name: "Folk" },
+    { id: "indie", name: "Indie" },
+    { id: "alternative", name: "Alternative" },
+    { id: "punk", name: "Punk" },
+    { id: "metal", name: "Metal" },
+    { id: "soul", name: "Soul" },
+    { id: "dance", name: "Dance" },
+    { id: "techno", name: "Techno" },
+    { id: "acoustic", name: "Acoustic" },
+    { id: "house", name: "House" },
+    { id: "dubstep", name: "Dubstep" },
+    { id: "latin", name: "Latin" },
+    { id: "salsa", name: "Salsa" },
+    { id: "k-pop", name: "K-pop" },
+    { id: "jazz", name: "Jazz" },
+    { id: "blues", name: "Blues" },
+    { id: "funk", name: "Funk" },
+  ];
+
+  const [selectedKeys, setSelectedKeys] = useState<Set<Key>>(
+    () => new Set(["jazz", "blues", "funk"]),
+  );
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Create a playlist</CardTitle>
+        <CardHeaderAction>
+          <Button variant="tertiary" size="sm">
+            Start over
+          </Button>
+          <Button size="sm">Next</Button>
+        </CardHeaderAction>
+      </CardHeader>
+      <CardBody>
+        <TagGroup
+          items={genres}
+          selectedKeys={selectedKeys}
+          onSelectionChange={(keys) =>
+            setSelectedKeys(
+              keys === "all" ? new Set(genres.map((genre) => genre.id)) : keys,
+            )
+          }
+          selectionMode="multiple"
+        >
+          {(item) => <Tag id={item.id}>{item.name}</Tag>}
+        </TagGroup>
+      </CardBody>
+    </Card>
+  );
+}
+
 export function Music() {
   return (
     <Flex gap="4" style={styles.main}>
       <Flex direction="column" gap="4" style={styles.skinny}>
         <MembershipCard />
         <ProfileCard />
-        <QueueCard />
-        <AlbumCard />
       </Flex>
       <Flex direction="column" gap="4" style={styles.skinny}>
+        <QueueCard />
         <SoundCard />
         <SettingsCard />
       </Flex>
       <Flex direction="column" gap="4" style={styles.skinny}>
+        <PlaylistCard />
+        <AlbumCard />
         <LyricsCard />
       </Flex>
     </Flex>

@@ -54,7 +54,7 @@ const styles = stylex.create({
   },
   cardHeaderAction: {
     display: "flex",
-    gap: spacing["2"],
+    gap: spacing["1"],
     gridArea: "action",
     justifyContent: "flex-end",
   },

@@ -25,9 +25,10 @@ const styles = stylex.create({
   },
   list: {
     alignItems: "center",
+    columnGap: spacing["1.5"],
     display: "flex",
     flexWrap: "wrap",
-    gap: spacing["1"],
+    rowGap: spacing["2.5"],
   },
   tag: {
     alignItems: "center",

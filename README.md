@@ -61,14 +61,14 @@
 - [ ] Meter
 - [ ] Menubar
 - [ ] Navigation Menu
-- [ ] Progress
+- [ ] Progress Bar
 - [ ] Spinner
 - [ ] Table
 - [ ] Tabs
-- [ ] Tag Group
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Tag Group
 - [x] File Trigger
 - [x] File Drop zone
 - [x] Slider
