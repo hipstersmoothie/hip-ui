@@ -56,10 +56,27 @@ const styles = stylex.create({
   },
 });
 
-export interface SwitchProps
-  extends StyleXComponentProps<Omit<AriaSwitchProps, "children">> {
+interface SwitchBaseProps
+  extends StyleXComponentProps<Omit<AriaSwitchProps, "children">> {}
+
+interface SwitchWithChildrenProps extends SwitchBaseProps {
   children: React.ReactNode;
 }
+
+interface SwitchWithAriaLabelProps extends SwitchBaseProps {
+  "aria-label": string;
+  children?: never;
+}
+
+interface SwitchWithAriaLabelledbyProps extends SwitchBaseProps {
+  "aria-labelledby": string;
+  children?: never;
+}
+
+export type SwitchProps =
+  | SwitchWithChildrenProps
+  | SwitchWithAriaLabelProps
+  | SwitchWithAriaLabelledbyProps;
 
 export function Switch({ children, style, ...props }: SwitchProps) {
   return (
@@ -67,7 +84,9 @@ export function Switch({ children, style, ...props }: SwitchProps) {
       <div {...stylex.props(styles.indicator)}>
         <div {...stylex.props(styles.thumb)} />
       </div>
-      <div {...stylex.props(typeramp.label)}>{children}</div>
+      {children != null && (
+        <div {...stylex.props(typeramp.label)}>{children}</div>
+      )}
     </AriaSwitch>
   );
 }

@@ -16,6 +16,7 @@ import { Button } from "@/components/button";
 import {
   Card,
   CardBody,
+  CardDescription,
   CardHeader,
   CardHeaderAction,
   CardTitle,
@@ -26,8 +27,10 @@ import { Grid } from "@/components/grid";
 import { IconButton } from "@/components/icon-button";
 import { Separator } from "@/components/separator";
 import { Slider } from "@/components/slider";
+import { Switch } from "@/components/switch";
 import { TextField } from "@/components/text-field";
 import { ToggleButton } from "@/components/toggle-button";
+import { Body } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
 import { primaryColor } from "../components/theme/semantic-color.stylex";
@@ -94,6 +97,10 @@ const styles = stylex.create({
   },
   membershipCard: {
     gap: spacing["2"],
+  },
+  lyricsBody: {
+    height: spacing["72"],
+    overflow: "auto",
   },
 });
 
@@ -479,6 +486,208 @@ function SoundCard() {
   );
 }
 
+function SettingsCard() {
+  const [automaticDownloads, setAutomaticDownloads] = useState(true);
+  const [losslessAudio, setLosslessAudio] = useState(true);
+  const [spatialAudio, setSpatialAudio] = useState(false);
+  const [normalizeVolume, setNormalizeVolume] = useState(true);
+  const [maxVolume, setMaxVolume] = useState(75);
+  const [crossfade, setCrossfade] = useState(5);
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Settings</CardTitle>
+      </CardHeader>
+      <CardBody>
+        <Flex direction="column" gap="6">
+          {/* Automatic downloads */}
+          <Flex direction="column" gap="1">
+            <Flex align="center" justify="between">
+              <Flex direction="column" gap="1">
+                <Text weight="medium" id="automatic-downloads-label">
+                  Automatic downloads
+                </Text>
+                <Text
+                  variant="secondary"
+                  size="sm"
+                  id="automatic-downloads-description"
+                >
+                  Automatically download music when added to your library
+                </Text>
+              </Flex>
+              <Switch
+                isSelected={automaticDownloads}
+                onChange={setAutomaticDownloads}
+                aria-labelledby="automatic-downloads-label"
+                aria-describedby="automatic-downloads-description"
+              />
+            </Flex>
+          </Flex>
+
+          {/* Lossless audio */}
+          <Flex direction="column" gap="1">
+            <Flex align="center" justify="between">
+              <Flex direction="column" gap="1">
+                <Text weight="medium" id="lossless-audio-label">
+                  Lossless audio
+                </Text>
+                <Text
+                  variant="secondary"
+                  size="sm"
+                  id="lossless-audio-description"
+                >
+                  Preserve every detail of the original audio, but consume
+                  significantly more data
+                </Text>
+              </Flex>
+              <Switch
+                isSelected={losslessAudio}
+                onChange={setLosslessAudio}
+                aria-labelledby="lossless-audio-label"
+                aria-describedby="lossless-audio-description"
+              />
+            </Flex>
+          </Flex>
+
+          {/* Spatial audio */}
+          <Flex direction="column" gap="1">
+            <Flex align="center" justify="between">
+              <Flex direction="column" gap="1">
+                <Text weight="medium" id="spatial-audio-label">
+                  Spatial audio
+                </Text>
+                <Text
+                  variant="secondary"
+                  size="sm"
+                  id="spatial-audio-description"
+                >
+                  Enhancing the perception of audio in space
+                </Text>
+              </Flex>
+              <Switch
+                isSelected={spatialAudio}
+                onChange={setSpatialAudio}
+                aria-labelledby="spatial-audio-label"
+                aria-describedby="spatial-audio-description"
+              />
+            </Flex>
+          </Flex>
+
+          {/* Normalize volume */}
+          <Flex direction="column" gap="1">
+            <Flex align="center" justify="between">
+              <Flex direction="column" gap="1">
+                <Text weight="medium" id="normalize-volume-label">
+                  Normalize volume
+                </Text>
+                <Text
+                  variant="secondary"
+                  size="sm"
+                  id="normalize-volume-description"
+                >
+                  Set the same volume level for all tracks
+                </Text>
+              </Flex>
+              <Switch
+                isSelected={normalizeVolume}
+                onChange={setNormalizeVolume}
+                aria-labelledby="normalize-volume-label"
+                aria-describedby="normalize-volume-description"
+              />
+            </Flex>
+          </Flex>
+
+          {/* Maximum volume */}
+          <Flex direction="column" gap="2">
+            <Flex direction="column" gap="1">
+              <Text weight="medium">Maximum volume</Text>
+              <Text variant="secondary" size="sm">
+                Limit the maximum volume to protect hearing
+              </Text>
+            </Flex>
+
+            <Flex gap="4" align="center">
+              <Text variant="secondary" size="xs">
+                0%
+              </Text>
+              <Slider
+                value={maxVolume}
+                onChange={setMaxVolume}
+                minValue={0}
+                maxValue={100}
+                step={1}
+                showValueLabel={false}
+                style={styles.grow}
+              />
+              <Text variant="secondary" size="xs">
+                100%
+              </Text>
+            </Flex>
+          </Flex>
+
+          {/* Crossfade */}
+          <Flex direction="column" gap="2">
+            <Flex direction="column" gap="1">
+              <Text weight="medium">Crossfade</Text>
+              <Text variant="secondary" size="sm">
+                Smoothly fade out into the next song.
+              </Text>
+            </Flex>
+
+            <Flex gap="4" align="center">
+              <Text variant="secondary" size="xs">
+                Off
+              </Text>
+              <Slider
+                value={crossfade}
+                onChange={setCrossfade}
+                minValue={0}
+                maxValue={10}
+                step={1}
+                showValueLabel={false}
+                style={styles.grow}
+              />
+              <Text variant="secondary" size="xs">
+                10s
+              </Text>
+            </Flex>
+          </Flex>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
+function LyricsCard() {
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>Lyrics</CardTitle>
+        <CardDescription>King Krule - Biscuit Town</CardDescription>
+      </CardHeader>
+
+      <CardBody style={styles.lyricsBody}>
+        <Flex direction="column" gap="2">
+          <Body>I seem to sink lower, gazing in the rays of the solar</Body>
+          <Body>In fact, we made a pact, but now I think it's over</Body>
+          <Body>Red on white but he sipped on KA soda</Body>
+          <Body>
+            Damn, that's Coca-Cola, <span>as TV sports the Olympic ebola</span>
+          </Body>
+          <Body>
+            I think we might be bipolar, I think she thinks I'm bipolar
+          </Body>
+          <Body>He left the crime scene without the Motorola</Body>
+          <Body>Still had dreams of being Gianfranco Zola</Body>
+          <Body>For at least for now, it's all over</Body>
+          <Body>Yeah, at least for now, it's all over</Body>
+        </Flex>
+      </CardBody>
+    </Card>
+  );
+}
+
 export function Music() {
   return (
     <Flex gap="4" style={styles.main}>
@@ -490,6 +699,10 @@ export function Music() {
       </Flex>
       <Flex direction="column" gap="4" style={styles.skinny}>
         <SoundCard />
+        <SettingsCard />
+      </Flex>
+      <Flex direction="column" gap="4" style={styles.skinny}>
+        <LyricsCard />
       </Flex>
     </Flex>
   );
