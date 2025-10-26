@@ -1,4 +1,4 @@
-import { ComboBox } from "@/components/combobox";
+import { ComboBox, ComboBoxItem } from "@/components/combobox";
 
 const options = [
   { id: "option1", name: "Option 1" },
@@ -13,7 +13,11 @@ export function Basic() {
       placeholder="Type to search..."
       items={options}
     >
-      {(item) => item.name}
+      {(item) => (
+        <ComboBoxItem key={item.id} id={item.id}>
+          {item.name}
+        </ComboBoxItem>
+      )}
     </ComboBox>
   );
 }

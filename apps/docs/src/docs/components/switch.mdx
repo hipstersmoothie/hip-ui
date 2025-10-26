@@ -6,8 +6,7 @@ description: A toggle switch component for binary choices.
 import { PropDocs } from '../../lib/PropDocs'
 import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/switch/basic'
-import { SwitchStates } from '../../examples/switch/states'
-import { SwitchWithDescription } from '../../examples/switch/with-description'
+import { Disabled } from '../../examples/switch/disabled'
 
 <Example src={Basic} />
 
@@ -27,17 +26,11 @@ This component is built using the [React Aria Switch](https://react-spectrum.ado
 
 ## Features
 
-### States
+### Disabled
 
-Switches support different states including checked, unchecked, and disabled.
+The switch can be disabled by setting the `disabled` prop to true.
 
-<Example src={SwitchStates} />
-
-### With Description
-
-Switches can include descriptive text to provide additional context.
-
-<Example src={SwitchWithDescription} />
+<Example src={Disabled} />
 
 ## Related Components
 
