@@ -109,6 +109,20 @@ const styles = stylex.create({
     paddingRight: spacing["2"],
     paddingTop: spacing["1"],
   },
+  preview: {
+    backgroundColor: uiColor.component3,
+    borderColor: uiColor.border2,
+    borderRadius: radius.md,
+    borderStyle: "solid",
+    borderWidth: 1,
+    padding: spacing["4"],
+  },
+  grow: {
+    flexBasis: "0%",
+    flexGrow: 1,
+    flexShrink: 1,
+    minWidth: 0,
+  },
 });
 
 function ParameterSlider({
@@ -151,6 +165,9 @@ export function LLMApp() {
   const [temperature, setTemperature] = useState(0.6);
   const [maxLength, setMaxLength] = useState(2790);
   const [topP, setTopP] = useState(0.9);
+  const [viewType, setViewType] = useState<
+    "input" | "preview" | "instructions"
+  >("input");
 
   return (
     <div {...stylex.props(styles.main)}>
@@ -239,11 +256,48 @@ export function LLMApp() {
 
       <Flex gap="0" style={styles.content}>
         <Flex direction="column" gap="4" style={styles.mainContent}>
-          <TextArea
-            placeholder="Write a tagline for an ice cream shop"
-            isResizable={false}
-            style={styles.promptWrapper}
-          />
+          {viewType === "input" && (
+            <TextArea
+              placeholder="Write a tagline for an ice cream shop"
+              isResizable={false}
+              style={styles.promptWrapper}
+            />
+          )}
+          {viewType === "preview" && (
+            <Flex style={styles.promptWrapper} gap="6">
+              <TextArea
+                placeholder="Write a tagline for an ice cream shop"
+                isResizable={false}
+                style={styles.grow}
+              />
+              <div {...stylex.props(styles.preview, styles.grow)}>
+                <Text size="sm" weight="semibold">
+                  Preview
+                </Text>
+              </div>
+            </Flex>
+          )}
+          {viewType === "instructions" && (
+            <Flex style={styles.promptWrapper} gap="6">
+              <Flex direction="column" gap="6" style={styles.grow}>
+                <TextArea
+                  placeholder="Write a tagline for an ice cream shop"
+                  isResizable={false}
+                  style={styles.grow}
+                />
+                <TextArea
+                  label="Instructions"
+                  placeholder="Write instructions for the AI to follow"
+                  rows={4}
+                />
+              </Flex>
+              <div {...stylex.props(styles.preview, styles.grow)}>
+                <Text size="sm" weight="semibold">
+                  Preview
+                </Text>
+              </div>
+            </Flex>
+          )}
           <Flex align="center" justify="start" gap="3">
             <Button>Submit</Button>
             <IconButton label="Refresh" variant="secondary">
@@ -257,14 +311,21 @@ export function LLMApp() {
             <Text size="sm" weight="semibold">
               Mode
             </Text>
-            <SegmentedControl defaultSelectedKeys={["qa"]}>
-              <SegmentedControlItem id="qa">
+            <SegmentedControl
+              selectedKeys={[viewType]}
+              onSelectionChange={(keys) =>
+                setViewType(
+                  [...keys][0] as "input" | "preview" | "instructions",
+                )
+              }
+            >
+              <SegmentedControlItem id="input">
                 <TextAlignJustify />
               </SegmentedControlItem>
-              <SegmentedControlItem id="complete">
+              <SegmentedControlItem id="preview">
                 <Download />
               </SegmentedControlItem>
-              <SegmentedControlItem id="edit">
+              <SegmentedControlItem id="instructions">
                 <ListCheck />
               </SegmentedControlItem>
             </SegmentedControl>
