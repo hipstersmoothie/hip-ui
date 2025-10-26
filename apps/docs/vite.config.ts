@@ -79,6 +79,7 @@ function content() {
 async function highlightCode(code: string, lang: string) {
   return await codeToHtml(code, {
     lang,
+    defaultColor: "light-dark()",
     themes: {
       light: "github-light",
       dark: "github-dark",
@@ -284,6 +285,7 @@ const config = defineConfig({
           {
             themes: { light: "github-light", dark: "github-dark" },
             addLanguageClass: true,
+            defaultColor: "light-dark()",
           } as RehypeShikiOptions,
         ],
       ],

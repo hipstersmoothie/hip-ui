@@ -77,8 +77,7 @@ const styles = stylex.create({
   copyButton: {
     position: "absolute",
     right: spacing["3"],
-    top: "50%",
-    transform: "translateY(-50%)",
+    top: spacing["2.5"],
   },
   h1: {
     marginBottom: spacing["8"],
@@ -145,12 +144,7 @@ const styles = stylex.create({
 
 const PreContext = createContext(false);
 
-function Pre({
-  children,
-  className: _className,
-  style: _style,
-  ...props
-}: React.ComponentProps<"pre">) {
+function Pre({ children, ...props }: React.ComponentProps<"pre">) {
   const [textContent, setTextContent] = useState("error");
   const ref = useRef<HTMLPreElement>(null);
 
