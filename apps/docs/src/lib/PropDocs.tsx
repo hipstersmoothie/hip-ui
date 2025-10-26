@@ -1,12 +1,13 @@
 import * as stylex from "@stylexjs/stylex";
 import { Grid } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { ResizableTableContainer } from "react-aria-components";
 import { ComponentDoc } from "react-docgen-typescript";
 import { propDocs } from "virtual:propDocs";
 
-import { Card, CardBody } from "@/components/card";
+import { Card } from "@/components/card";
 import { Flex } from "@/components/flex";
+import { HoverCard } from "@/components/hover-card";
 import {
   Table,
   TableBody,
@@ -53,15 +54,64 @@ const styles = stylex.create({
       padding: spacing["1"],
     },
   },
+  fullCodePopover: {
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+  },
+  fullCode: {
+    height: "100%",
+    width: "100%",
+
+    /* eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
+    ":is(*) pre": {
+      borderWidth: 0,
+      height: "100%",
+      margin: 0,
+      padding: spacing["4"],
+      width: "100%",
+    },
+  },
 });
 
 function HighlightedCode({ code }: { code: string }) {
-  return (
+  const [isOverflowing, setIsOverflowing] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    if (ref.current) {
+      // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+      setIsOverflowing(ref.current.scrollWidth > ref.current.clientWidth);
+    }
+  }, [ref]);
+
+  const codeElement = (
     <div
       // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
       dangerouslySetInnerHTML={{ __html: code }}
       {...stylex.props(styles.highlightedCode)}
     />
+  );
+
+  return (
+    <div ref={ref}>
+      {isOverflowing ? (
+        <HoverCard
+          placement="top"
+          trigger={codeElement}
+          style={styles.fullCodePopover}
+        >
+          <div
+            // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
+            dangerouslySetInnerHTML={{ __html: code }}
+            {...stylex.props(styles.fullCode)}
+          />
+        </HoverCard>
+      ) : (
+        codeElement
+      )}
+    </div>
   );
 }
 

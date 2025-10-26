@@ -56,7 +56,6 @@
 - [ ] Field
 - [ ] Form
 - [ ] Grid List
-- [ ] Hover Card
 - [ ] Item
 - [ ] Menubar
 - [ ] Navigation Menu
@@ -66,6 +65,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Hover Card
 - [x] Meter
 - [x] Progress Bar
 - [x] Tag Group

@@ -26,6 +26,7 @@ import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
+import { hoverCardConfig } from "../components/hover-card/hover-card-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
@@ -100,6 +101,7 @@ const COMPONENT_CONFIGS = [
   tagGroupConfig,
   progressBarConfig,
   meterConfig,
+  hoverCardConfig,
 ];
 
 function StringSetting({

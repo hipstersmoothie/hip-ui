@@ -23,6 +23,7 @@ const styles = stylex.create({
       ":is([data-selected=true] *)": primaryColor.solid1,
     },
     borderRadius: radius.full,
+    boxShadow: "inset 0 0 8px 1px rgba(0, 0, 0, 0.2)",
     height: spacing["6"],
     opacity: {
       default: 1,

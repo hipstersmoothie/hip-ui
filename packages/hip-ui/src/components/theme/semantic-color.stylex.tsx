@@ -3,9 +3,9 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { green } from "./colors/green.stylex";
+import { orange } from "./colors/orange.stylex";
 import { red } from "./colors/red.stylex";
 import { slate, slateInverted } from "./colors/slate.stylex";
-import { teal } from "./colors/teal.stylex";
 import { yellow } from "./colors/yellow.stylex";
 import { fontFamily } from "./typography.stylex";
 
@@ -123,18 +123,18 @@ export const ui = stylex.create({
 
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const primaryColor = stylex.defineVars({
-  bg: teal.bg,
-  bgSubtle: teal.bgSubtle,
-  component1: teal.component1,
-  component2: teal.component2,
-  component3: teal.component3,
-  border1: teal.border1,
-  border2: teal.border2,
-  border3: teal.border3,
-  solid1: teal.solid1,
-  solid2: teal.solid2,
-  text1: teal.text1,
-  text2: teal.text2,
+  bg: orange.bg,
+  bgSubtle: orange.bgSubtle,
+  component1: orange.component1,
+  component2: orange.component2,
+  component3: orange.component3,
+  border1: orange.border1,
+  border2: orange.border2,
+  border3: orange.border3,
+  solid1: orange.solid1,
+  solid2: orange.solid2,
+  text1: orange.text1,
+  text2: orange.text2,
   textContrast: "white",
 });
 
