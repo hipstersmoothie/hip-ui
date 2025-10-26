@@ -7,6 +7,7 @@
 - [ ] Add Virtualizer
 - [ ] add borderless variant for input fields
 - [ ] Field erros
+- [ ] perfect inset border radii
 
 ### Components
 
@@ -34,8 +35,6 @@
 - [ ] Window Splitter
 
 #### react-aria wrappers
-
-- [ ] Segmented Control
 
 - [ ] Color Area
 - [ ] Color Picker
@@ -65,6 +64,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Segmented Control
 - [x] Hover Card
 - [x] Meter
 - [x] Progress Bar

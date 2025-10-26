@@ -52,6 +52,7 @@ const styles = stylex.create({
     borderRadius: radius["md"],
     boxSizing: "border-box",
     display: "flex",
+    flexGrow: 1,
 
     borderColor: {
       default: uiColor.border2,
@@ -71,6 +72,7 @@ const styles = stylex.create({
     flexGrow: 1,
     fontFamily: fontFamily["sans"],
     outline: "none",
+    resize: "none",
 
     fontSize: {
       ":is([data-size=sm])": fontSize["xs"],
@@ -108,6 +110,9 @@ const styles = stylex.create({
       ":is([data-size=lg])": spacing["3"],
     },
   },
+  resizable: {
+    resize: "both",
+  },
 });
 
 export interface TextAreaProps
@@ -120,6 +125,7 @@ export interface TextAreaProps
   size?: Size;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  isResizable?: boolean;
 }
 
 export function TextArea({
@@ -132,6 +138,7 @@ export function TextArea({
   suffix,
   placeholder,
   rows,
+  isResizable = true,
   ...props
 }: TextAreaProps) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -152,7 +159,7 @@ export function TextArea({
         {prefix != null && <div {...stylex.props(styles.addon)}>{prefix}</div>}
         <AriaTextArea
           data-size={size}
-          {...stylex.props(styles.input)}
+          {...stylex.props(styles.input, isResizable && styles.resizable)}
           ref={textAreaRef}
           placeholder={placeholder}
           rows={rows}

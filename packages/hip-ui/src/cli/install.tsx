@@ -38,6 +38,7 @@ import { popoverConfig } from "../components/popover/popover-config.js";
 import { progressBarConfig } from "../components/progress-bar/progress-bar-config.js";
 import { radioConfig } from "../components/radio/radio-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
+import { segmentedControlConfig } from "../components/segmented-control/segmented-control-config.js";
 import { selectConfig } from "../components/select/select-config.js";
 import { separatorConfig } from "../components/separator/separator-config.js";
 import { sliderConfig } from "../components/slider/slider-config.js";
@@ -102,6 +103,7 @@ const COMPONENT_CONFIGS = [
   progressBarConfig,
   meterConfig,
   hoverCardConfig,
+  segmentedControlConfig,
 ];
 
 function StringSetting({
