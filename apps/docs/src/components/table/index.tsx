@@ -238,7 +238,7 @@ export function TableHeader<T extends object>({
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <TableColumn minWidth={52} width={52} />}
       {selectionBehavior === "toggle" && (
-        <TableColumn>
+        <TableColumn minWidth={40} width={40}>
           {selectionMode === "multiple" && <Checkbox slot="selection" />}
         </TableColumn>
       )}

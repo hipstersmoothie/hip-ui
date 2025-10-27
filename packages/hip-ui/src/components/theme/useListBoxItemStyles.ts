@@ -35,10 +35,6 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      [":is([data-react-aria-pressable=true][data-focused] *)"]:
-        uiColor.component2,
-      [":is([data-react-aria-pressable=true][data-selected=true] *)"]:
-        uiColor.component2,
       [":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)"]:
         uiColor.component2,
       [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:

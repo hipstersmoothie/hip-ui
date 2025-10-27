@@ -28,6 +28,7 @@ import { flexConfig } from "../components/flex/flex-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
 import { hoverCardConfig } from "../components/hover-card/hover-card-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
+import { kbdConfig } from "../components/kbd/kbd-config.js";
 import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
@@ -106,6 +107,7 @@ const COMPONENT_CONFIGS = [
   hoverCardConfig,
   segmentedControlConfig,
   paginationConfig,
+  kbdConfig,
 ];
 
 function StringSetting({

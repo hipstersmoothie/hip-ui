@@ -22,7 +22,6 @@
 - [ ] Empty
 - [ ] Input Group
 - [ ] Input OTP
-- [ ] Kbd
 - [ ] Resizable
 - [ ] Sidebar
 - [ ] Skeleton
@@ -57,12 +56,13 @@
 - [ ] Menubar
 - [ ] Navigation Menu
 - [ ] Spinner
-- [ ] Table
 - [ ] Tabs
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Kbd
 - [x] Data Table
+- [x] Table
 - [x] Pagination
 - [x] Segmented Control
 - [x] Hover Card

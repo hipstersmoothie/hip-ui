@@ -17,9 +17,29 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
+import { ListBoxSeparator } from "../listbox";
+import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
+
+const styles = stylex.create({
+  header: {
+    paddingBottom: spacing["1"],
+    paddingLeft: spacing["3"],
+    paddingRight: spacing["3"],
+    paddingTop: spacing["2"],
+  },
+  footer: {
+    paddingBottom: spacing["1"],
+    paddingLeft: spacing["3"],
+    paddingRight: spacing["3"],
+    paddingTop: spacing["2"],
+  },
+  menu: {
+    outline: "none",
+  },
+});
 
 export interface MenuProps<T extends object>
   extends Omit<MenuTriggerProps, "trigger" | "children">,
@@ -70,10 +90,21 @@ export function Menu<T extends object>({
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
+          {...stylex.props(popoverStyles)}
         >
-          {header}
-          <AriaMenu {...props} {...stylex.props(popoverStyles)} />
-          {footer}
+          {Boolean(header) && (
+            <>
+              <div {...stylex.props(styles.header)}>{header}</div>
+              <ListBoxSeparator />
+            </>
+          )}
+          <AriaMenu {...props} {...stylex.props(styles.menu)} />
+          {Boolean(footer) && (
+            <>
+              <ListBoxSeparator />
+              <div {...stylex.props(styles.footer)}>{footer}</div>
+            </>
+          )}
         </Popover>
       </MenuTrigger>
     </SizeContext>

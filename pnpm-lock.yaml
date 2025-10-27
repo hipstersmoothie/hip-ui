@@ -83,6 +83,9 @@ importers:
       '@mdx-js/rollup':
         specifier: ^3.1.1
         version: 3.1.1(rollup@4.52.5)
+      '@react-aria/utils':
+        specifier: ^3.31.0
+        version: 3.31.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-stately/utils':
         specifier: ^3.10.8
         version: 3.10.8(react@19.2.0)
@@ -365,6 +368,9 @@ importers:
       '@radix-ui/colors':
         specifier: ^3.0.0
         version: 3.0.0
+      '@react-aria/utils':
+        specifier: ^3.31.0
+        version: 3.31.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-stately/utils':
         specifier: 'catalog:'
         version: 3.10.8(react@19.2.0)
