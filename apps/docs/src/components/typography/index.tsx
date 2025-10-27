@@ -3,7 +3,7 @@ import { useMemo } from "react";
 
 import { LinkContext } from "../link/link-context";
 import { radius } from "../theme/radius.stylex";
-import { critical, criticalColor, ui } from "../theme/semantic-color.stylex";
+import { critical, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps, TextVariant } from "../theme/types";
 import {
@@ -60,6 +60,11 @@ const styles = stylex.create({
   },
   underline: {
     textDecorationLine: "underline",
+  },
+  textEllipsis: {
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
   },
 });
 
@@ -174,11 +179,13 @@ export const SmallBody = ({
 interface LabelTextProps
   extends StyleXComponentProps<React.ComponentProps<"p">> {
   variant?: TextVariant;
+  hasEllipsis?: boolean;
 }
 
 export const LabelText = ({
   style,
   variant = "primary",
+  hasEllipsis = false,
   ...props
 }: LabelTextProps) => {
   return (
@@ -187,6 +194,7 @@ export const LabelText = ({
         typeramp.label,
         variant === "secondary" && ui.textDim,
         variant === "critical" && critical.textDim,
+        hasEllipsis && styles.textEllipsis,
         style,
       )}
       {...props}

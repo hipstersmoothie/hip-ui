@@ -25,21 +25,23 @@ const rows = [
   { id: 1, name: "John Doe", email: "john@example.com", role: "Admin" },
   { id: 2, name: "Jane Smith", email: "jane@example.com", role: "User" },
   { id: 3, name: "Bob Johnson", email: "bob@example.com", role: "User" },
+  { id: 4, name: "Alice Brown", email: "alice@example.com", role: "Moderator" },
+  { id: 5, name: "Charlie Davis", email: "charlie@example.com", role: "User" },
 ];
 
-export function Basic() {
+export function Selection() {
   return (
-    <Table style={styles.table}>
-      <TableHeader>
-        {columns.map((column) => (
-          <TableColumn key={column.id} id={column.id}>
+    <Table selectionMode="multiple" style={styles.table}>
+      <TableHeader columns={columns}>
+        {(column) => (
+          <TableColumn isRowHeader id={column.id}>
             {column.name}
           </TableColumn>
-        ))}
+        )}
       </TableHeader>
       <TableBody items={rows}>
         {(item) => (
-          <TableRow key={item.id} id={item.id}>
+          <TableRow id={item.id}>
             <TableCell>{item.name}</TableCell>
             <TableCell>{item.email}</TableCell>
             <TableCell>{item.role}</TableCell>

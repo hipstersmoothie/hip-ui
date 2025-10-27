@@ -23,7 +23,6 @@
 - [ ] Input Group
 - [ ] Input OTP
 - [ ] Kbd
-- [ ] Pagination
 - [ ] Resizable
 - [ ] Sidebar
 - [ ] Skeleton
@@ -49,7 +48,6 @@
 - [ ] Sheet
 
 - [ ] Breadcrumb
-- [ ] Data Table
 - [ ] Disclosure
 - [ ] Disclosure Group
 - [ ] Field
@@ -64,6 +62,8 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Data Table
+- [x] Pagination
 - [x] Segmented Control
 - [x] Hover Card
 - [x] Meter
@@ -73,7 +73,6 @@
 - [x] File Drop zone
 - [x] Slider
 - [x] Color Swatch
-- [x]
 - [x] Switch
 - [x] Grid
 - [x] Badge

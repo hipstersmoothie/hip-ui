@@ -3,12 +3,12 @@ packages:
   - packages/*
 
 catalog:
-  "@react-stately/utils": 3.10.8
-  "@react-types/overlays": 3.9.2
-  "@stylexjs/stylex": 0.16.2
-  "@types/node": 24.9.1
-  "@types/react": 19.2.0
-  "@types/react-dom": 19.2.0
+  '@react-stately/utils': 3.10.8
+  '@react-types/overlays': 3.9.2
+  '@stylexjs/stylex': 0.16.2
+  '@types/node': 24.9.1
+  '@types/react': 19.2.0
+  '@types/react-dom': 19.2.0
   change-case: 5.4.4
   dedent: 1.7.0
   eslint: 9.38.0

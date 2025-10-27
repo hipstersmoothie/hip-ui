@@ -81,7 +81,7 @@ export const ui = stylex.create({
       default: "transparent",
       ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
       ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
-      ":disabled": uiColor.component1,
+      ":disabled": "transparent",
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
