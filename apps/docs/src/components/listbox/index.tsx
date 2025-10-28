@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 import { Check } from "lucide-react";
-import { use } from "react";
+import { createContext, use } from "react";
 import {
   ListBoxProps as AriaListBoxProps,
   ListBoxItem as AriaListBoxItem,
@@ -10,8 +10,10 @@ import {
   ListBoxItemProps as AriaListBoxItemProps,
   Header,
   SeparatorProps,
+  ListStateContext,
 } from "react-aria-components";
 
+import { Checkbox, CheckboxProps } from "../checkbox";
 import { SizeContext } from "../context";
 import { Separator } from "../separator";
 import { ui } from "../theme/semantic-color.stylex";
@@ -45,24 +47,32 @@ const styles = stylex.create({
   },
 });
 
+type ListBoxVariant = "default" | "checkbox";
+
+const ListboxVariantContext = createContext<ListBoxVariant>("default");
+
 export interface ListBoxProps<T extends object>
   extends StyleXComponentProps<AriaListBoxProps<T>> {
   size?: Size;
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
+  variant?: ListBoxVariant;
 }
 
 export function ListBox<T extends object>({
   size: sizeProp,
   style,
+  variant = "default",
   ...props
 }: ListBoxProps<T>) {
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext value={size}>
-      <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
-    </SizeContext>
+    <ListboxVariantContext value={variant}>
+      <SizeContext value={size}>
+        <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
+      </SizeContext>
+    </ListboxVariantContext>
   );
 }
 
@@ -73,6 +83,20 @@ export interface ListBoxItemProps
   suffix?: React.ReactNode;
 }
 
+function ListBoxCheckbox({ id = "", ...props }: CheckboxProps) {
+  const listboxItemState = use(ListStateContext);
+
+  return (
+    <Checkbox
+      {...props}
+      isSelected={Boolean(
+        listboxItemState?.selectionManager.selectedKeys.has(id),
+      )}
+      onChange={() => listboxItemState?.selectionManager.select(id)}
+    />
+  );
+}
+
 export function ListBoxItem({
   style,
   children,
@@ -81,6 +105,7 @@ export function ListBoxItem({
   ...props
 }: ListBoxItemProps) {
   const listBoxItemStyles = useListBoxItemStyles();
+  const variant = use(ListboxVariantContext);
 
   return (
     <AriaListBoxItem
@@ -93,6 +118,15 @@ export function ListBoxItem({
     >
       {({ isSelected }) => (
         <div {...stylex.props(listBoxItemStyles.inner)}>
+          {variant === "checkbox" && (
+            <div {...stylex.props(listBoxItemStyles.addon)}>
+              <ListBoxCheckbox
+                isSelected={isSelected}
+                id={props.id || (props.value as { id: string })?.id}
+                onPress={(e) => e.continuePropagation()}
+              />
+            </div>
+          )}
           {prefix != null && (
             <div {...stylex.props(listBoxItemStyles.addon)}>{prefix}</div>
           )}
@@ -100,7 +134,7 @@ export function ListBoxItem({
           {suffix != null && (
             <div {...stylex.props(listBoxItemStyles.addon)}>{suffix}</div>
           )}
-          {isSelected && (
+          {isSelected && variant === "default" && (
             <Check size={16} {...stylex.props(listBoxItemStyles.check)} />
           )}
         </div>

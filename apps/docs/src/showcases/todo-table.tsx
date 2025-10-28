@@ -10,11 +10,16 @@ import {
   ChevronsRight,
   Circle,
   MoreHorizontal,
-  Plus,
+  PlusCircle,
   Settings2,
 } from "lucide-react";
 import { useState } from "react";
-import { ResizableTableContainer, Pressable } from "react-aria-components";
+import {
+  ResizableTableContainer,
+  Pressable,
+  Autocomplete,
+  useFilter,
+} from "react-aria-components";
 
 import { Avatar } from "@/components/avatar";
 import { Badge } from "@/components/badge";
@@ -23,9 +28,12 @@ import { Card } from "@/components/card";
 import { Flex } from "@/components/flex";
 import { IconButton } from "@/components/icon-button";
 import { Kbd } from "@/components/kbd";
+import { ListBox, ListBoxItem } from "@/components/listbox";
 import { Menu, MenuItem, MenuSeparator } from "@/components/menu";
+import { Popover } from "@/components/popover";
 import { SearchField } from "@/components/search-field";
 import { Select, SelectItem } from "@/components/select";
+import { Separator } from "@/components/separator";
 import {
   Table,
   TableHeader,
@@ -62,6 +70,15 @@ const styles = stylex.create({
   },
   emptyState: {
     padding: spacing["8"],
+  },
+  noPadding: {
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
+  },
+  filterSection: {
+    padding: spacing["2"],
   },
 });
 
@@ -276,13 +293,84 @@ const columns = [
 
 const hideableColumns = ["status", "priority"];
 
+function Filter<T extends string>({
+  title,
+  selectedKeys,
+  onSelectionChange,
+  children,
+}: {
+  title: string;
+  selectedKeys: T[];
+  onSelectionChange: (keys: T[]) => void;
+  children: React.ReactNode;
+}) {
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  return (
+    <Popover
+      style={styles.noPadding}
+      trigger={
+        <Button variant="outline">
+          <PlusCircle />
+          {title}
+          {selectedKeys.length > 0 && (
+            <Badge size="sm" variant="default">
+              {selectedKeys.join(" / ")}
+            </Badge>
+          )}
+        </Button>
+      }
+    >
+      <Autocomplete filter={contains}>
+        <Flex direction="column" gap="1" style={styles.filterSection}>
+          <SearchField placeholder={`Search ${title}...`} />
+        </Flex>
+        <Separator />
+        <ListBox
+          style={styles.filterSection}
+          variant="checkbox"
+          selectionMode="multiple"
+          selectedKeys={selectedKeys}
+          onSelectionChange={(keys) => {
+            if (keys === "all") {
+              //
+            } else {
+              onSelectionChange([...keys] as T[]);
+            }
+          }}
+        >
+          {children}
+        </ListBox>
+        {selectedKeys.length > 0 && (
+          <>
+            <Separator />
+            <Flex direction="column" style={styles.filterSection}>
+              <Button variant="outline" onClick={() => onSelectionChange([])}>
+                Clear
+              </Button>
+            </Flex>
+          </>
+        )}
+      </Autocomplete>
+    </Popover>
+  );
+}
+
 export function TodoTable() {
   const [search, setSearch] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [selectedRows, setSelectedRows] = useState<Task[]>([]);
   const [page, setPage] = useState(1);
+  const [priorityFilter, setPriorityFilter] = useState<Task["priority"][]>([]);
+  const [statusFilter, setStatusFilter] = useState<Task["status"][]>([]);
   const currentPageTasks = tasks
     .filter((task) => task.title.toLowerCase().includes(search.toLowerCase()))
+    .filter(
+      (task) =>
+        priorityFilter.includes(task.priority) ||
+        statusFilter.includes(task.status) ||
+        (priorityFilter.length === 0 && statusFilter.length === 0),
+    )
     .slice((page - 1) * rowsPerPage, page * rowsPerPage);
   const [visibleColumns, setVisibleColumns] =
     useState<string[]>(hideableColumns);
@@ -332,23 +420,97 @@ export function TodoTable() {
       </Flex>
 
       <Flex justify="between" align="center" wrap gap="3">
-        <div style={{ minWidth: "400px" }}>
-          <SearchField
-            placeholder="Filter tasks..."
-            value={search}
-            onChange={setSearch}
-          />
-        </div>
-
         <Flex gap="2">
-          <Button variant="secondary" size="sm">
-            <Plus size={16} />
-            Status
-          </Button>
-          <Button variant="secondary" size="sm">
-            <Plus size={16} />
-            Priority
-          </Button>
+          <div style={{ minWidth: "400px" }}>
+            <SearchField
+              placeholder="Filter tasks..."
+              value={search}
+              onChange={setSearch}
+            />
+          </div>
+          <Filter
+            title="Status"
+            selectedKeys={statusFilter}
+            onSelectionChange={setStatusFilter}
+          >
+            <ListBoxItem
+              id="Todo"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.status === "Todo").length}
+                </Badge>
+              }
+            >
+              Todo
+            </ListBoxItem>
+            <ListBoxItem
+              id="In Progress"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.status === "In Progress").length}
+                </Badge>
+              }
+            >
+              In Progress
+            </ListBoxItem>
+            <ListBoxItem
+              id="Done"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.status === "Done").length}
+                </Badge>
+              }
+            >
+              Done
+            </ListBoxItem>
+            <ListBoxItem id="Backlog">Backlog</ListBoxItem>
+            <ListBoxItem
+              id="Canceled"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.status === "Canceled").length}
+                </Badge>
+              }
+            >
+              Canceled
+            </ListBoxItem>
+          </Filter>
+          <Filter
+            title="Priority"
+            selectedKeys={priorityFilter}
+            onSelectionChange={setPriorityFilter}
+          >
+            <ListBoxItem
+              id="High"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.priority === "High").length}
+                </Badge>
+              }
+            >
+              High
+            </ListBoxItem>
+            <ListBoxItem
+              id="Medium"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.priority === "Medium").length}
+                </Badge>
+              }
+            >
+              Medium
+            </ListBoxItem>
+            <ListBoxItem
+              id="Low"
+              suffix={
+                <Badge size="sm" variant="default">
+                  {tasks.filter((task) => task.priority === "Low").length}
+                </Badge>
+              }
+            >
+              Low
+            </ListBoxItem>
+          </Filter>
         </Flex>
 
         <Flex gap="2">
