@@ -22,7 +22,6 @@ import { LinkIcon } from "lucide-react";
 import { createContext, use, useEffect, useRef, useState } from "react";
 import { pages, tableOfContents } from "virtual:content";
 
-import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
 import { Grid } from "@/components/grid";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
@@ -299,7 +298,6 @@ function RouteComponent() {
   }
 
   const toc = tableOfContents[location.pathname];
-  console.log(toc);
 
   return (
     <Grid columns="max-content 240px" columnGap="4" style={styles.root}>

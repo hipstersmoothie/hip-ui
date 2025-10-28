@@ -8,27 +8,33 @@ import {
   createLink,
 } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
-import { Collection } from "react-aria-components";
 
 import { Grid } from "@/components/grid";
-import { Tree, TreeItem } from "@/components/tree";
+import {
+  Sidebar,
+  SidebarGroup,
+  SidebarHeader,
+  SidebarItem,
+  SidebarSection,
+} from "@/components/sidebar";
+import { Text } from "@/components/typography/text";
 
-import { spacing } from "../components/theme/spacing.stylex";
+import { uiColor } from "../components/theme/semantic-color.stylex";
 
-const TreeItemLink = createLink(TreeItem);
+const SidebarItemLink = createLink(SidebarItem);
 
 const styles = stylex.create({
   root: {
     width: "100%",
   },
   aside: {
+    backgroundColor: uiColor.bgSubtle,
+    borderRightColor: uiColor.border2,
+    borderRightStyle: "solid",
+    borderRightWidth: 1,
     boxSizing: "border-box",
     height: "100vh",
     overflow: "auto",
-    paddingBottom: spacing["16"],
-    paddingLeft: spacing["4"],
-    paddingRight: spacing["4"],
-    paddingTop: spacing["12"],
     position: "sticky",
     top: 0,
   },
@@ -53,11 +59,6 @@ const showcaseDocs = allDocs.filter((doc) =>
 );
 
 const sidebarItems: SidebarItem[] = [
-  {
-    id: "home",
-    label: "Home",
-    to: "/",
-  },
   {
     id: "foundations",
     label: "Foundations",
@@ -94,11 +95,11 @@ const flatItems = sidebarItems
   .flatMap((item) => ("items" in item ? item.items : [item]))
   .filter((item): item is SidebarItem => item !== undefined);
 
-function Sidebar() {
+function DocSidebar() {
   const location = useLocation();
   const matches = useMatches();
   const match = matches.find((match) => match.pathname === location.pathname);
-  const item = flatItems.find(
+  const currentItem = flatItems.find(
     (item) =>
       match?.params &&
       "_splat" in match.params &&
@@ -107,21 +108,35 @@ function Sidebar() {
   );
 
   return (
-    <Tree
-      items={sidebarItems}
-      selectionMode="single"
-      selectionBehavior="replace"
-      defaultExpandedKeys={["foundations", "components"]}
-      selectedKeys={item ? [item.id] : []}
-    >
-      {function renderTreeItem(item) {
+    <Sidebar>
+      <SidebarHeader>
+        <Text font="serif" size="4xl" weight="bold">
+          Hip UI
+        </Text>
+      </SidebarHeader>
+      {sidebarItems.map((item) => {
+        if (!item.items) {
+          return null;
+        }
+
         return (
-          <TreeItemLink title={item.label} to={item.to} params={item.params}>
-            <Collection items={item.items}>{renderTreeItem}</Collection>
-          </TreeItemLink>
+          <SidebarGroup title={item.label} key={item.id}>
+            <SidebarSection>
+              {item.items.map((item) => (
+                <SidebarItemLink
+                  key={item.id}
+                  to={item.to}
+                  params={item.params}
+                  isActive={currentItem?.id === item.id}
+                >
+                  {item.label}
+                </SidebarItemLink>
+              ))}
+            </SidebarSection>
+          </SidebarGroup>
         );
-      }}
-    </Tree>
+      })}
+    </Sidebar>
   );
 }
 
@@ -131,9 +146,9 @@ export const Route = createFileRoute("/docs")({
 
 function RouteComponent() {
   return (
-    <Grid columns="240px 1fr" columnGap="4" style={styles.root}>
+    <Grid columns="max-content 1fr" columnGap="4" style={styles.root}>
       <aside {...stylex.props(styles.aside)}>
-        <Sidebar />
+        <DocSidebar />
       </aside>
       <main>
         <Outlet />

@@ -122,7 +122,10 @@ export function ListBoxItem({
             <div {...stylex.props(listBoxItemStyles.addon)}>
               <ListBoxCheckbox
                 isSelected={isSelected}
-                id={props.id || (props.value as { id: string })?.id}
+                id={
+                  (props.id as string) ||
+                  (props.value as { id?: string } | undefined)?.id
+                }
                 onPress={(e) => e.continuePropagation()}
               />
             </div>

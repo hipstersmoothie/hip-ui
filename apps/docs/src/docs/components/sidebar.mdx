@@ -1,0 +1,53 @@
+---
+title: Sidebar
+description: A sidebar navigation component with support for sections, groups, and collapsible sections.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/sidebar/basic'
+import { WithSections } from '../../examples/sidebar/with-sections'
+import { WithGroups } from '../../examples/sidebar/with-groups'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the sidebar component to your project.
+
+```bash
+pnpm hip install sidebar
+```
+
+## Props
+
+<PropDocs components={["Sidebar", "SidebarHeader", "SidebarGroup", "SidebarSection", "SidebarItem"]} />
+
+## Features
+
+### With Sections
+
+Organize sidebar items into sections with titles.
+
+<Example src={WithSections} />
+
+### With Groups
+
+Create collapsible groups for organizing content hierarchically.
+
+<Example src={WithGroups} />
+
+## Components
+
+- `Sidebar` - The main container component
+- `SidebarHeader` - Header section, can be a link
+- `SidebarGroup` - Collapsible group with disclosure panel
+- `SidebarSection` - Non-collapsible section with title
+- `SidebarItem` - Individual navigation items
+
+## Related Components
+
+- [Link](/docs/components/link) - For navigation links
+- [Button](/docs/components/button) - Used in SidebarGroup
+- [Flex](/docs/components/flex) - For layout
+
