@@ -14,14 +14,21 @@ import { Button } from "../button";
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
+import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
-  wrapper: {
+  list: {
+    alignItems: "center",
     containerType: "inline-size",
+    display: "flex",
+    gap: spacing["4"],
   },
   pages: {
     flexGrow: 1,
+  },
+  listItem: {
+    listStyleType: "none",
   },
   mobileButton: {
     display: {
@@ -85,80 +92,94 @@ export function Pagination({
   const visiblePages = sliceRange(page, totalPages, maxVisiblePages);
 
   return (
-    <Flex {...props} style={[styles.wrapper, style]} align="center" gap="4">
-      <IconButton
-        style={styles.mobileButton as unknown as stylex.StyleXStyles}
-        size={size}
-        label="Previous page"
-        isDisabled={page === 1}
-        onClick={() => setPage(page - 1)}
-        variant="tertiary"
-      >
-        <ChevronLeft />
-      </IconButton>
-      <Button
-        style={styles.desktopButton as unknown as stylex.StyleXStyles}
-        variant="tertiary"
-        size={size}
-        isDisabled={page === 1}
-        onClick={() => setPage(page - 1)}
-      >
-        <ArrowLeft />
-        Previous
-      </Button>
-      <Flex align="center" justify="center" gap="1" style={styles.pages}>
-        {visiblePages[0] !== 1 && (
-          <Button
-            style={styles.desktopButton as unknown as stylex.StyleXStyles}
-            variant="tertiary"
-            size={size}
-            onClick={() => setPage(page - maxVisiblePages)}
-          >
-            <Ellipsis />
-          </Button>
-        )}
-        {visiblePages.map((visiblePage) => (
-          <Button
-            variant={page === visiblePage ? "outline" : "tertiary"}
-            size={size}
-            key={visiblePage}
-            onClick={() => setPage(visiblePage)}
-          >
-            {visiblePage}
-          </Button>
-        ))}
-        {visiblePages.at(-1) !== totalPages && (
+    <nav {...props} {...stylex.props(style)}>
+      <ul {...stylex.props(styles.list)}>
+        <li {...stylex.props(styles.listItem, styles.mobileButton)}>
           <IconButton
-            style={styles.desktopButton as unknown as stylex.StyleXStyles}
-            label="More pages"
+            size={size}
+            label="Previous page"
+            isDisabled={page === 1}
+            onClick={() => setPage(page - 1)}
+            variant="tertiary"
+          >
+            <ChevronLeft />
+          </IconButton>
+        </li>
+        <li {...stylex.props(styles.listItem, styles.desktopButton)}>
+          <Button
             variant="tertiary"
             size={size}
-            onClick={() => setPage(page + maxVisiblePages)}
+            isDisabled={page === 1}
+            onClick={() => setPage(page - 1)}
           >
-            <Ellipsis />
+            <ArrowLeft />
+            Previous
+          </Button>
+        </li>
+        <li {...stylex.props(styles.listItem, styles.pages)}>
+          <ul>
+            <Flex align="center" justify="center" gap="1">
+              {visiblePages[0] !== 1 && (
+                <li {...stylex.props(styles.listItem, styles.desktopButton)}>
+                  <Button
+                    variant="tertiary"
+                    size={size}
+                    onClick={() => setPage(page - maxVisiblePages)}
+                  >
+                    <Ellipsis />
+                  </Button>
+                </li>
+              )}
+              {visiblePages.map((visiblePage) => (
+                <li key={visiblePage} {...stylex.props(styles.listItem)}>
+                  <Button
+                    variant={page === visiblePage ? "outline" : "tertiary"}
+                    aria-current={page === visiblePage ? "page" : undefined}
+                    size={size}
+                    onClick={() => setPage(visiblePage)}
+                  >
+                    {visiblePage}
+                  </Button>
+                </li>
+              ))}
+              {visiblePages.at(-1) !== totalPages && (
+                <li {...stylex.props(styles.listItem, styles.desktopButton)}>
+                  <IconButton
+                    label="More pages"
+                    variant="tertiary"
+                    size={size}
+                    onClick={() => setPage(page + maxVisiblePages)}
+                  >
+                    <Ellipsis />
+                  </IconButton>
+                </li>
+              )}
+            </Flex>
+          </ul>
+        </li>
+        <li {...stylex.props(styles.listItem, styles.mobileButton)}>
+          <IconButton
+            size={size}
+            label="Next page"
+            isDisabled={page === totalPages}
+            onClick={() => setPage(page + 1)}
+            variant="tertiary"
+          >
+            <ChevronRight />
           </IconButton>
-        )}
-      </Flex>
-      <IconButton
-        style={styles.mobileButton as unknown as stylex.StyleXStyles}
-        size={size}
-        label="Next page"
-        isDisabled={page === totalPages}
-        onClick={() => setPage(page + 1)}
-        variant="tertiary"
-      >
-        <ChevronRight />
-      </IconButton>
-      <Button
-        style={styles.desktopButton as unknown as stylex.StyleXStyles}
-        variant="tertiary"
-        size={size}
-        isDisabled={page === totalPages}
-        onClick={() => setPage(page + 1)}
-      >
-        Next
-        <ArrowRight />
-      </Button>
-    </Flex>
+        </li>
+        <li {...stylex.props(styles.listItem, styles.desktopButton)}>
+          <Button
+            variant="tertiary"
+            size={size}
+            isDisabled={page === totalPages}
+            onClick={() => setPage(page + 1)}
+          >
+            Next
+            <ArrowRight />
+          </Button>
+        </li>
+      </ul>
+    </nav>
   );
 }
