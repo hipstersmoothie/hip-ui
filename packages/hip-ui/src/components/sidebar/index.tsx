@@ -17,6 +17,7 @@ import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 import { Text } from "../typography/text";
+import { mergeProps, useHover, usePress } from "react-aria";
 
 interface SidebarContextType {
   headerId: string;
@@ -57,11 +58,12 @@ const styles = stylex.create({
     padding: 0,
   },
   sidebarItem: {
+    textDecoration: "none",
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered=true])": uiColor.component2,
+      ":is([data-pressed=true])": uiColor.component3,
     },
     borderRadius: radius["md"],
     color: uiColor.text2,
@@ -80,8 +82,8 @@ const styles = stylex.create({
   sidebarItemActive: {
     backgroundColor: {
       default: primaryColor.component1,
-      ":hover": primaryColor.component2,
-      ":active": primaryColor.component3,
+      ":is([data-hovered=true])": primaryColor.component2,
+      ":is([data-pressed=true])": primaryColor.component3,
     },
     color: primaryColor.text2,
   },
@@ -141,13 +143,13 @@ export function Sidebar({ children, style, ...props }: SidebarProps) {
 
   return (
     <SidebarContext value={contextValue}>
-      <div
+      <nav
         {...props}
         {...stylex.props(styles.sidebar, style)}
         aria-labelledby={headerId}
       >
         {children}
-      </div>
+      </nav>
     </SidebarContext>
   );
 }
@@ -257,16 +259,24 @@ export function SidebarItem({
   isActive,
   ...props
 }: SidebarItemProps) {
+  const { hoverProps, isHovered } = useHover({});
+  const { pressProps, isPressed } = usePress({});
+  const Component = "href" in props ? "a" : "button";
+
   return (
-    <li
-      {...props}
-      {...stylex.props(
-        styles.sidebarItem,
-        isActive && styles.sidebarItemActive,
-        style,
-      )}
-    >
-      {children}
+    <li>
+      <Component
+        {...mergeProps(props as any, hoverProps, pressProps)}
+        data-hovered={isHovered}
+        data-pressed={isPressed}
+        {...stylex.props(
+          styles.sidebarItem,
+          isActive && styles.sidebarItemActive,
+          style,
+        )}
+      >
+        {children}
+      </Component>
     </li>
   );
 }

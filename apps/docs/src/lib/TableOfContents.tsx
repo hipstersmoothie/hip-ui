@@ -19,7 +19,10 @@ const LevelContext = createContext(1);
 const styles = stylex.create({
   wrapper: {
     boxSizing: "border-box",
+    display: "flex",
+    flexDirection: "column",
     flexShrink: 0,
+    gap: spacing["2"],
     height: "100vh",
     marginTop: spacing["12"],
     overflow: "auto",
@@ -143,7 +146,7 @@ export function TableOfContents({ toc }: { toc: Toc }) {
 
   return (
     <ActiveHeaderIdContext value={activeHeaderId}>
-      <Flex direction="column" gap="2" style={styles.wrapper}>
+      <nav {...stylex.props(styles.wrapper)}>
         <LevelContext value={1}>
           <ul {...stylex.props(styles.itemList)}>
             {toc.map((item) => (
@@ -151,7 +154,7 @@ export function TableOfContents({ toc }: { toc: Toc }) {
             ))}
           </ul>
         </LevelContext>
-      </Flex>
+      </nav>
     </ActiveHeaderIdContext>
   );
 }

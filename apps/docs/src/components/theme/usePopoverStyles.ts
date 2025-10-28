@@ -30,12 +30,15 @@ const styles = stylex.create({
       ":is([data-entering], [data-entering] > *)": 0,
       ":is([data-exiting], [data-exiting] > *)": 0,
     },
+    pointerEvents: {
+      ":is([data-exiting], [data-exiting] > *)": "none",
+    },
     transform: {
       ":is([data-entering], [data-entering] > *)": `scale(0.95) translate(var(--origin-x, 0), var(--origin-y, 0))`,
       ":is([data-exiting], [data-exiting] > *)":
         "scale(0.95) translate(var(--origin-x, 0), var(--origin-y, 0))",
     },
-    transitionDuration: animationDuration.default,
+    transitionDuration: animationDuration.fast,
     transitionProperty: "transform, opacity",
   },
 });

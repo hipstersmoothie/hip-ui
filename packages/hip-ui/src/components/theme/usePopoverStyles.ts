@@ -38,7 +38,7 @@ const styles = stylex.create({
       ":is([data-exiting], [data-exiting] > *)":
         "scale(0.95) translate(var(--origin-x, 0), var(--origin-y, 0))",
     },
-    transitionDuration: animationDuration.default,
+    transitionDuration: animationDuration.fast,
     transitionProperty: "transform, opacity",
   },
 });
