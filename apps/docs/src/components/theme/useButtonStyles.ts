@@ -6,6 +6,7 @@ import { use } from "react";
 import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
 import { Size, ButtonVariant } from "../theme/types";
+import { animationDuration } from "./animations.stylex";
 import { radius } from "./radius.stylex";
 import { critical, ui, primary, uiColor } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
@@ -39,7 +40,7 @@ const styles = stylex.create({
     pointerEvents: {
       ":disabled": "none",
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "all",
     transitionTimingFunction: "ease-in-out",
     whiteSpace: "nowrap",

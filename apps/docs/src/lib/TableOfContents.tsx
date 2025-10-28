@@ -4,6 +4,8 @@ import { createContext, use, useEffect, useState } from "react";
 
 import { Flex } from "@/components/flex";
 
+import { animationDuration } from "../components/theme/animations.stylex";
+import { mediaQueries } from "../components/theme/media-queries.stylex";
 import {
   primaryColor,
   uiColor,
@@ -52,8 +54,11 @@ const styles = stylex.create({
     height: spacing[8],
     position: "relative",
     textDecoration: "none",
-    transitionDuration: "100ms",
-    transitionProperty: "color, border-left-color",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "color, border-left-color",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
 
     "::before": {

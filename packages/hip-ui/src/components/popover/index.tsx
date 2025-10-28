@@ -10,17 +10,23 @@ import {
   Dialog,
 } from "react-aria-components";
 
+import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
-  wrapper: {
+  wrapperWithArrow: {
     filter: `drop-shadow(-0.5px -0.5px 0 ${uiColor.border2}) drop-shadow(0.5px -0.5px 0 ${uiColor.border2}) drop-shadow(0.5px 0.5px 0 ${uiColor.border2}) drop-shadow(-0.5px 0.5px 0 ${uiColor.border2}) drop-shadow(0px 1px 3px rgb(0 0 0 / 0.1)) drop-shadow(0px -1px 3px rgb(0 0 0 / 0.1))`,
   },
+  wrapper: {
+    borderColor: uiColor.border2,
+    borderRadius: radius["md"],
+    borderStyle: "solid",
+    borderWidth: 1,
+  },
   content: {
-    borderWidth: 0,
     boxShadow: "none",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["2"],
@@ -70,7 +76,10 @@ export const Popover = ({
       {trigger}
 
       <AriaPopover
-        {...stylex.props(styles.wrapper)}
+        {...stylex.props(
+          popoverStyles.animation,
+          hasArrow && styles.wrapperWithArrow,
+        )}
         offset={8}
         containerPadding={8}
         {...popoverProps}
@@ -80,7 +89,14 @@ export const Popover = ({
             <div {...stylex.props(styles.arrow)} />
           </OverlayArrow>
         )}
-        <Dialog {...stylex.props(popoverStyles, styles.content, style)}>
+        <Dialog
+          {...stylex.props(
+            popoverStyles.wrapper,
+            styles.content,
+            !hasArrow && styles.wrapper,
+            style,
+          )}
+        >
           {children}
         </Dialog>
       </AriaPopover>

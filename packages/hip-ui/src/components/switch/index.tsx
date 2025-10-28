@@ -4,6 +4,8 @@ import {
   Switch as AriaSwitch,
 } from "react-aria-components";
 
+import { animationDuration } from "../theme/animations.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
@@ -30,8 +32,11 @@ const styles = stylex.create({
       ":is([data-disabled=true] *)": 0.5,
     },
     position: "relative",
-    transitionDuration: "100ms",
-    transitionProperty: "background-color",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "background-color",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
     width: spacing["10"],
   },
@@ -50,7 +55,7 @@ const styles = stylex.create({
       default: "translateY(-50%)",
       ":is([data-selected=true] *)": "translate(100%, -50%)",
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "transform",
     transitionTimingFunction: "ease-in-out",
     width: spacing["4"],

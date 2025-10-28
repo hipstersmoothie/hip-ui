@@ -22,3 +22,10 @@ export const animations = stylex.defineVars({
   fadeIn,
   zoomIn,
 });
+
+export const animationDuration = stylex.defineVars({
+  fast: "100ms",
+  default: "150ms",
+  slow: "200ms",
+  verySlow: "300ms",
+});

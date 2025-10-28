@@ -6,6 +6,7 @@ import { Meter as AriaMeter } from "react-aria-components";
 
 import { SizeContext } from "../context";
 import { Label } from "../label";
+import { animationDuration } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   criticalColor,
@@ -17,6 +18,7 @@ import {
 import { spacing } from "../theme/spacing.stylex";
 import { MeterVariant, Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 
 const styles = stylex.create({
   wrapper: {
@@ -74,7 +76,7 @@ const styles = stylex.create({
   fill: {
     height: "100%",
     transform: "translateX(-100%)",
-    transitionDuration: "10ms",
+    transitionDuration: animationDuration.default,
     transitionProperty: "transform",
     transitionTimingFunction: "linear",
     width: "100%",

@@ -116,10 +116,14 @@ export function ComboBox<T extends object>({
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
+          {...stylex.props(
+            popoverStyles.wrapper,
+            popoverStyles.animation,
+            styles.matchWidth,
+          )}
         >
           <ListBox
             items={items}
-            style={[popoverStyles, styles.matchWidth]}
             renderEmptyState={renderEmptyState || EmptyState}
           >
             {children}

@@ -3,7 +3,6 @@ import * as stylex from "@stylexjs/stylex";
 import {
   ArrowLeft,
   ArrowRight,
-  Check,
   ChevronLeft,
   ChevronRight,
   Ellipsis,

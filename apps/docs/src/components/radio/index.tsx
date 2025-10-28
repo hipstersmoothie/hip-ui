@@ -14,11 +14,13 @@ import {
 
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
+import { animationDuration } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 
 const scaleIn = stylex.keyframes({
   "0%": {
@@ -54,8 +56,11 @@ const styles = stylex.create({
     position: "relative",
     width: spacing["4"],
 
-    transitionDuration: "100ms",
-    transitionProperty: "background-color, border-color, color",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "background-color, border-color, color",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
   },
   selectionIndicator: {
@@ -69,9 +74,12 @@ const styles = stylex.create({
     top: "50%",
     transform: "translate(-50%, -50%)",
 
-    animationDuration: "100ms",
+    animationDuration: animationDuration.fast,
     animationFillMode: "forwards",
-    animationName: scaleIn,
+    animationName: {
+      default: scaleIn,
+      [mediaQueries.reducedMotion]: "none",
+    },
     animationTimingFunction: "ease-in-out",
   },
   checked: {

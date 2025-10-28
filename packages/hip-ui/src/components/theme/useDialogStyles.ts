@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
-import { animations } from "../theme/animations.stylex";
+import { animationDuration, animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { Size } from "../theme/types";
@@ -18,7 +18,7 @@ const styles = stylex.create({
     width: "100vw",
     zIndex: 100,
 
-    animationDuration: "200ms",
+    animationDuration: animationDuration.slow,
     animationName: {
       ":is([data-entering])": animations.fadeIn,
     },
@@ -28,7 +28,7 @@ const styles = stylex.create({
       ":is([data-exiting])": 0,
     },
     transitionDuration: {
-      ":is([data-exiting])": "100ms",
+      ":is([data-exiting])": animationDuration.fast,
     },
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",

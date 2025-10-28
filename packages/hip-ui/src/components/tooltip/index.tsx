@@ -9,6 +9,7 @@ import {
   TooltipProps as AriaTooltipProps,
 } from "react-aria-components";
 
+import { animationDuration } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { uiInverted } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
@@ -44,7 +45,7 @@ const tooltipStyle = stylex.create({
       ":is([data-entering])": "scale(0.9) var(--origin)",
       ":is([data-exiting])": "scale(0.9) var(--origin)",
     },
-    transitionDuration: "150ms",
+    transitionDuration: animationDuration.default,
     transitionProperty: "transform, opacity",
   },
   caret: {

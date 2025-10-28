@@ -118,7 +118,11 @@ export function Select<
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
-          {...stylex.props(popoverStyles, styles.matchWidth)}
+          {...stylex.props(
+            popoverStyles.wrapper,
+            popoverStyles.animation,
+            styles.matchWidth,
+          )}
         >
           {isSearchable ? (
             <Autocomplete filter={contains}>

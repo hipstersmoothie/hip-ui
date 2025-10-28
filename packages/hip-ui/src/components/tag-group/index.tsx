@@ -11,6 +11,8 @@ import {
 } from "react-aria-components";
 
 import { Description, ErrorMessage, Label } from "../label";
+import { animationDuration } from "../theme/animations.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -84,8 +86,11 @@ const styles = stylex.create({
     justifyContent: "center",
     margin: 0,
     padding: 0,
-    transitionDuration: "100ms",
-    transitionProperty: "background-color",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "background-color",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
     width: spacing["4"],
   },

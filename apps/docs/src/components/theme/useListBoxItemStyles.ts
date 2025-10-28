@@ -10,6 +10,7 @@ import {
   lineHeight,
   typeramp,
 } from "../theme/typography.stylex";
+import { animationDuration } from "./animations.stylex";
 import { criticalColor, primaryColor, uiColor } from "./semantic-color.stylex";
 
 const styles = stylex.create({
@@ -54,7 +55,7 @@ const styles = stylex.create({
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
     paddingTop: spacing["2"],
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },

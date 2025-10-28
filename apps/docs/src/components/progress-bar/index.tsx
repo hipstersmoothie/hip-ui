@@ -6,6 +6,7 @@ import { ProgressBar as AriaProgressBar } from "react-aria-components";
 
 import { SizeContext } from "../context";
 import { Label } from "../label";
+import { animationDuration } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
@@ -66,8 +67,8 @@ const styles = stylex.create({
     backgroundColor: primaryColor.solid1,
     height: "100%",
     transform: "translateX(-100%)",
-    transitionDuration: "150ms",
-    transitionProperty: "transform",
+    transitionDuration: animationDuration.default,
+    transitionProperty: "none",
     transitionTimingFunction: "linear",
     width: "100%",
   },
@@ -85,10 +86,7 @@ const styles = stylex.create({
     )`,
     backgroundSize: "20%",
     height: "100%",
-    animationName: {
-      default: IndeterminateAnimation,
-      [mediaQueries.reducedMotion]: "none",
-    },
+    animationName: "none",
     animationDuration: "1s",
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",

@@ -31,8 +31,33 @@ export const config = defineConfig([
     rules: {
       ...pluginReactHooks.configs.recommended.rules,
 
-      "@stylexjs/valid-styles": "error",
-      "@stylexjs/valid-styles": "error",
+      "@stylexjs/valid-styles": [
+        "error",
+        {
+          propLimits: {
+            transitionDuration: {
+              reason:
+                "Use the animationDuration tokens from the animations.stylex.tsx file",
+              limit: [
+                "animationDuration.fast",
+                "animationDuration.default",
+                "animationDuration.slow",
+                "animationDuration.verySlow",
+              ],
+            },
+            animationDuration: {
+              reason:
+                "Use the animationDuration tokens from the animations.stylex.tsx file",
+              limit: [
+                "animationDuration.fast",
+                "animationDuration.default",
+                "animationDuration.slow",
+                "animationDuration.verySlow",
+              ],
+            },
+          },
+        },
+      ],
       "@stylexjs/sort-keys": ["error", { allowLineSeparatedGroups: true }],
       "@stylexjs/valid-shorthands": "error",
       "@stylexjs/enforce-extension": "error",

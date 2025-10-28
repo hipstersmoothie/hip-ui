@@ -174,8 +174,13 @@ export function ContextMenu<T extends object>({
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
+          {...stylex.props(
+            popoverStyles.wrapper,
+            popoverStyles.animation,
+            style,
+          )}
         >
-          <AriaMenu {...props} {...stylex.props(popoverStyles, style)} />
+          <AriaMenu {...props} />
         </Popover>
       </ContextMenuRoot>
     </SizeContext>

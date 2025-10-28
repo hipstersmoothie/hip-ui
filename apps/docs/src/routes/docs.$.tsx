@@ -43,6 +43,8 @@ import { Text } from "@/components/typography/text";
 import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
 import { TableOfContents } from "@/lib/TableOfContents";
 
+import { animationDuration } from "../components/theme/animations.stylex";
+import { mediaQueries } from "../components/theme/media-queries.stylex";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
@@ -135,8 +137,11 @@ const styles = stylex.create({
       ":is([data-heading-link]:hover *)": 1,
       ":is([data-focus-visible])": 1,
     },
-    transitionDuration: "100ms",
-    transitionProperty: "opacity",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "opacity",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
   },
 });
@@ -300,7 +305,11 @@ function RouteComponent() {
   const toc = tableOfContents[location.pathname];
 
   return (
-    <Grid columns="max-content 240px" columnGap="4" style={styles.root}>
+    <Grid
+      columns="minmax(0, max-content) 240px"
+      columnGap="4"
+      style={styles.root}
+    >
       <div {...stylex.props(styles.main)}>
         <Flex direction="column" gap="4" style={styles.header}>
           <Heading1>{doc.title}</Heading1>

@@ -90,7 +90,7 @@ export function Menu<T extends object>({
           shouldFlip={shouldFlip}
           shouldUpdatePosition={shouldUpdatePosition}
           placement={placement}
-          {...stylex.props(popoverStyles)}
+          {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
         >
           {Boolean(header) && (
             <>
@@ -152,9 +152,10 @@ export function SubMenu<T extends object>({
         placement={placement}
         containerPadding={8}
         offset={-8}
+        {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
       >
         {header}
-        <AriaMenu {...props} {...stylex.props(popoverStyles)} />
+        <AriaMenu {...props} />
         {footer}
       </Popover>
     </SubmenuTrigger>

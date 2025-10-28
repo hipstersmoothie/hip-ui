@@ -9,6 +9,7 @@ import {
 } from "react-aria-components";
 
 import { Flex } from "../flex";
+import { animationDuration } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
@@ -69,8 +70,11 @@ const styles = stylex.create({
     listStyle: "none",
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
-    transitionDuration: "100ms",
-    transitionProperty: "background-color",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "background-color",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
   },
   sidebarItemActive: {

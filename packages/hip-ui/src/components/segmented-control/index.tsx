@@ -11,6 +11,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
+import { animationDuration } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
@@ -75,7 +76,7 @@ const styles = stylex.create({
     left: 0,
     position: "absolute",
     top: 0,
-    transitionDuration: "200ms",
+    transitionDuration: animationDuration.slow,
     transitionProperty: {
       default: "translate, width",
       [mediaQueries.reducedMotion]: "none",
