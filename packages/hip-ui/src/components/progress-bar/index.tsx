@@ -40,9 +40,9 @@ const styles = stylex.create({
     width: "100%",
 
     height: {
-      ":is([data-size=sm])": spacing["1"],
-      ":is([data-size=md])": spacing["2"],
-      ":is([data-size=lg])": spacing["3"],
+      ":is([data-size=sm] *)": spacing["1"],
+      ":is([data-size=md] *)": spacing["2"],
+      ":is([data-size=lg] *)": spacing["3"],
     },
   },
   valueLabel: {
@@ -52,21 +52,21 @@ const styles = stylex.create({
     justifySelf: "flex-end",
 
     fontSize: {
-      ":is([data-size=sm])": fontSize["xs"],
-      ":is([data-size=md])": fontSize["sm"],
-      ":is([data-size=lg])": fontSize["base"],
+      ":is([data-size=sm] *)": fontSize["xs"],
+      ":is([data-size=md] *)": fontSize["sm"],
+      ":is([data-size=lg] *)": fontSize["base"],
     },
     lineHeight: {
-      ":is([data-size=sm])": lineHeight["xs"],
-      ":is([data-size=md])": lineHeight["sm"],
-      ":is([data-size=lg])": lineHeight["base"],
+      ":is([data-size=sm] *)": lineHeight["xs"],
+      ":is([data-size=md] *)": lineHeight["sm"],
+      ":is([data-size=lg] *)": lineHeight["base"],
     },
   },
   fill: {
     backgroundColor: primaryColor.solid1,
     height: "100%",
     transform: "translateX(-100%)",
-    transitionDuration: "10ms",
+    transitionDuration: "150ms",
     transitionProperty: "transform",
     transitionTimingFunction: "linear",
     width: "100%",
