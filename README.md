@@ -35,7 +35,6 @@
 
 - [ ] Color Picker
 - [ ] Color Swatch Picker
-- [ ] Color Wheel
 
 - [ ] Calendar
 - [ ] Date Picker
@@ -58,6 +57,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Color Wheel
 - [x] Color Slider
 - [x] Color Area
 - [x] Sidebar

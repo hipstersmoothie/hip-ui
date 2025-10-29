@@ -20,6 +20,7 @@ import { colorAreaConfig } from "../components/color-area/color-area-config.js";
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
 import { colorSliderConfig } from "../components/color-slider/color-slider-config.js";
 import { colorSwatchConfig } from "../components/color-swatch/link-config.js";
+import { colorWheelConfig } from "../components/color-wheel/color-wheel-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
@@ -114,6 +115,7 @@ const COMPONENT_CONFIGS = [
   sidebarConfig,
   colorAreaConfig,
   colorSliderConfig,
+  colorWheelConfig,
 ];
 
 function StringSetting({

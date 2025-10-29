@@ -1,0 +1,46 @@
+---
+title: Color Wheel
+description: A circular color picker for selecting hue with a draggable thumb.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/color-wheel/basic'
+import { Sizes } from '../../examples/color-wheel/sizes'
+import { Disabled } from '../../examples/color-wheel/disabled'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the color wheel component to your project.
+
+```bash
+pnpm hip install color-wheel
+```
+
+## Props
+
+This component is built using the [React Aria ColorWheel](https://react-spectrum.adobe.com/react-aria/ColorWheel.html).
+
+<PropDocs components={["ColorWheel"]} />
+
+## Features
+
+### Sizes
+
+The color wheel supports three sizes via the `size` prop (sm, md, lg), which adjust the ring thickness and overall radius.
+
+<Example src={Sizes} />
+
+### Disabled
+
+The color wheel can be disabled using the `isDisabled` prop.
+
+<Example src={Disabled} />
+
+## Related Components
+
+- [ColorSlider](/docs/components/color-slider) - 1D channel adjustment
+- [ColorArea](/docs/components/color-area) - 2D color selection
+- [ColorField](/docs/components/color-field) - Entering color values
