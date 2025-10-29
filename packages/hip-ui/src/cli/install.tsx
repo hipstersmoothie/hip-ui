@@ -16,6 +16,7 @@ import { buttonGroupConfig } from "../components/button-group/button-group-confi
 import { buttonConfig } from "../components/button/button-config.js";
 import { cardConfig } from "../components/card/card-config.js";
 import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
+import { colorAreaConfig } from "../components/color-area/color-area-config.js";
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
 import { colorSwatchConfig } from "../components/color-swatch/link-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
@@ -110,6 +111,7 @@ const COMPONENT_CONFIGS = [
   paginationConfig,
   kbdConfig,
   sidebarConfig,
+  colorAreaConfig,
 ];
 
 function StringSetting({

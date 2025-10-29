@@ -1,0 +1,45 @@
+---
+title: Color Area
+description: A 2D color selection area for choosing colors across two channels.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/color-area/basic'
+import { AspectRatio } from '../../examples/color-area/aspect-ratio'
+import { Disabled } from '../../examples/color-area/disabled'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the color area component to your project.
+
+```bash
+pnpm hip install color-area
+```
+
+## Props
+
+This component is built using the [React Aria ColorArea](https://react-spectrum.adobe.com/react-aria/ColorArea.html).
+
+<PropDocs components={["ColorArea"]} />
+
+## Features
+
+### Aspect Ratio
+
+Control the rendered dimensions by setting a custom aspect ratio.
+
+<Example src={AspectRatio} />
+
+## Disabled
+
+The color area can be disabled by setting the `disabled` prop to true.
+
+<Example src={Disabled} />
+
+## Related Components
+
+- [ColorField](/docs/components/color-field) - For entering color values
+- [ColorSwatch](/docs/components/color-swatch) - For displaying selected colors

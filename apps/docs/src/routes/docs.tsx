@@ -20,6 +20,10 @@ import {
 import { Text } from "@/components/typography/text";
 
 import { uiColor } from "../components/theme/semantic-color.stylex";
+import { IconButton } from "@/components/icon-button";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Moon, Sun } from "lucide-react";
 
 const SidebarItemLink = createLink(SidebarItem);
 
@@ -95,6 +99,35 @@ const flatItems = sidebarItems
   .flatMap((item) => ("items" in item ? item.items : [item]))
   .filter((item): item is SidebarItem => item !== undefined);
 
+function DarkModeToggle() {
+  const [colorScheme, setColorScheme] = useState<"light" | "dark">("light");
+  const toggleColorScheme = () => {
+    const newColorScheme = colorScheme === "light" ? "dark" : "light";
+
+    setColorScheme(newColorScheme);
+    localStorage.setItem("hip-ui-color-scheme", newColorScheme);
+    document.body.style.colorScheme = newColorScheme;
+  };
+
+  useEffect(() => {
+    const localColorScheme = localStorage.getItem("hip-ui-color-scheme");
+
+    if (localColorScheme) {
+      setColorScheme(localColorScheme as "light" | "dark");
+    }
+  }, []);
+
+  return (
+    <IconButton
+      variant="secondary"
+      label="Toggle Dark Mode"
+      onPress={toggleColorScheme}
+    >
+      {colorScheme === "dark" ? <Moon /> : <Sun />}
+    </IconButton>
+  );
+}
+
 function DocSidebar() {
   const location = useLocation();
   const matches = useMatches();
@@ -109,7 +142,7 @@ function DocSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader>
+      <SidebarHeader action={<DarkModeToggle />}>
         <Text font="serif" size="4xl" weight="bold">
           Hip UI
         </Text>

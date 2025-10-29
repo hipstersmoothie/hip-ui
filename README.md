@@ -23,7 +23,6 @@
 - [ ] Input Group
 - [ ] Input OTP
 - [ ] Resizable
-- [ ] Sidebar
 - [ ] Skeleton
 
 #### OTher Wrappers
@@ -34,7 +33,6 @@
 
 #### react-aria wrappers
 
-- [ ] Color Area
 - [ ] Color Picker
 - [ ] Color Swatch Picker
 - [ ] Color Wheel
@@ -60,6 +58,8 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Color Area
+- [x] Sidebar
 - [x] Kbd
 - [x] Data Table
 - [x] Table

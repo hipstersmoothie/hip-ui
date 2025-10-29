@@ -50,6 +50,13 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
+      <script>{`
+        const localtColorScheme = localStorage.getItem("hip-ui-color-scheme");
+
+        if (localtColorScheme) {
+          document.body.style.colorScheme = localtColorScheme;
+        }
+      `}</script>
       <body {...stylex.props(ui.bg, ui.text, styles.body)}>
         {children}
         <TanStackDevtools

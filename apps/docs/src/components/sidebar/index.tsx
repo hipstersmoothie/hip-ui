@@ -41,6 +41,9 @@ const styles = stylex.create({
   sidebarHeader: {
     marginBottom: spacing["4"],
     padding: spacing["3"],
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   sidebarHeaderLink: {
     textDecoration: "none",
@@ -69,6 +72,7 @@ const styles = stylex.create({
     color: uiColor.text2,
     display: "flex",
     height: spacing["8"],
+    fontSize: fontSize["sm"],
     listStyle: "none",
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
@@ -159,6 +163,7 @@ export interface SidebarHeaderProps
   children: React.ReactNode;
   href?: string;
   linkComponent?: React.ComponentType<React.ComponentProps<"a">>;
+  action?: React.ReactNode;
 }
 
 export function SidebarHeader({
@@ -166,6 +171,7 @@ export function SidebarHeader({
   style,
   href,
   linkComponent,
+  action,
   ...props
 }: SidebarHeaderProps) {
   const { headerId } = use(SidebarContext);
@@ -187,6 +193,7 @@ export function SidebarHeader({
       ) : (
         children
       )}
+      {action}
     </header>
   );
 }

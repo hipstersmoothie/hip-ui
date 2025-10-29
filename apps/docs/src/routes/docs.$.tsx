@@ -58,7 +58,7 @@ const styles = stylex.create({
   },
   main: {
     flexGrow: 1,
-    maxWidth: "80ch",
+    maxWidth: "100ch",
     minWidth: 0,
     paddingBottom: spacing["20"],
     paddingLeft: spacing["16"],
