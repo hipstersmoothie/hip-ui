@@ -18,6 +18,7 @@ import { cardConfig } from "../components/card/card-config.js";
 import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
 import { colorAreaConfig } from "../components/color-area/color-area-config.js";
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
+import { colorSliderConfig } from "../components/color-slider/color-slider-config.js";
 import { colorSwatchConfig } from "../components/color-swatch/link-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
@@ -112,6 +113,7 @@ const COMPONENT_CONFIGS = [
   kbdConfig,
   sidebarConfig,
   colorAreaConfig,
+  colorSliderConfig,
 ];
 
 function StringSetting({

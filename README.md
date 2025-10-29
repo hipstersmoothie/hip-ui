@@ -58,6 +58,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Color Slider
 - [x] Color Area
 - [x] Sidebar
 - [x] Kbd

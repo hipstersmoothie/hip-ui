@@ -1,7 +1,13 @@
-import type { ColorAreaProps as AriaColorAreaProps } from "react-aria-components";
+import type {
+  ColorAreaProps as AriaColorAreaProps,
+  ColorThumbProps as AriaColorThumbProps,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
-import { ColorArea as AriaColorArea, ColorThumb } from "react-aria-components";
+import {
+  ColorArea as AriaColorArea,
+  ColorThumb as AriaColorThumb,
+} from "react-aria-components";
 
 import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
@@ -17,7 +23,7 @@ const styles = stylex.create({
     flexShrink: 0,
   },
   thumb: {
-    borderColor: uiColor.border1,
+    borderColor: "white",
     borderRadius: radius["full"],
     borderStyle: "solid",
     borderWidth: 2,
@@ -29,16 +35,29 @@ const styles = stylex.create({
     height: {
       default: spacing["4"],
       ":is([data-focus-visible])": spacing["6"],
+      ":is([data-size=sm] *)": spacing["3"],
+      ":is([data-size=md] *)": spacing["4"],
+      ":is([data-size=lg] *)": spacing["6"],
     },
     width: {
       default: spacing["4"],
       ":is([data-focus-visible])": spacing["6"],
+      ":is([data-size=sm] *)": spacing["3"],
+      ":is([data-size=md] *)": spacing["4"],
+      ":is([data-size=lg] *)": spacing["6"],
     },
   },
   aspectRatio: (aspectRatio: number) => ({
     aspectRatio,
   }),
 });
+
+export function ColorThumb({
+  style,
+  ...props
+}: StyleXComponentProps<Omit<AriaColorThumbProps, "children">>) {
+  return <AriaColorThumb {...props} {...stylex.props(styles.thumb, style)} />;
+}
 
 export interface ColorAreaProps
   extends StyleXComponentProps<Omit<AriaColorAreaProps, "children">> {
@@ -60,7 +79,7 @@ export function ColorArea({
         styles.aspectRatio(aspectRatio),
       )}
     >
-      <ColorThumb {...stylex.props(styles.thumb)} />
+      <ColorThumb />
     </AriaColorArea>
   );
 }

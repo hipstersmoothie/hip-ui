@@ -86,7 +86,10 @@ const styles = stylex.create({
     )`,
     backgroundSize: "20%",
     height: "100%",
-    animationName: "none",
+    animationName: {
+      default: IndeterminateAnimation,
+      [mediaQueries.reducedMotion]: "none",
+    },
     animationDuration: "1s",
     animationIterationCount: "infinite",
     animationTimingFunction: "linear",
