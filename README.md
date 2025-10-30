@@ -33,8 +33,6 @@
 
 #### react-aria wrappers
 
-- [ ] Range Date Picker
-
 - [ ] Drawer
 - [ ] Sheet
 
@@ -52,6 +50,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Range Date Picker
 - [x] Date Picker
 - [x] Calendar
 - [x] Range Calendar

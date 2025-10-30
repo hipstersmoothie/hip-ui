@@ -29,6 +29,7 @@ import { commandMenuConfig } from "../components/command-menu/command-menu-confi
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { datePickerConfig } from "../components/date-picker/date-picker-config.js";
+import { dateRangePickerConfig } from "../components/date-range-picker/date-range-picker-config.js";
 import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
@@ -94,6 +95,7 @@ const COMPONENT_CONFIGS = [
   timeFieldConfig,
   dateFieldConfig,
   datePickerConfig,
+  dateRangePickerConfig,
   searchFieldConfig,
   colorFieldConfig,
   numberFieldConfig,

@@ -12,7 +12,7 @@ import {
   FieldError,
 } from "react-aria-components";
 
-import Calendar, { CalendarProps } from "../calendar";
+import { Calendar, CalendarProps } from "../calendar";
 import { SizeContext } from "../context";
 import { DateField } from "../date-field";
 import { IconButton } from "../icon-button";

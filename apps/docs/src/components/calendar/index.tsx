@@ -93,5 +93,3 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     </AriaCalendar>
   );
 }
-
-export default Calendar;
