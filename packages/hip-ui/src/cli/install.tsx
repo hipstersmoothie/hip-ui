@@ -19,6 +19,7 @@ import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
 import { colorAreaConfig } from "../components/color-area/color-area-config.js";
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
 import { colorSliderConfig } from "../components/color-slider/color-slider-config.js";
+import { colorSwatchPickerConfig } from "../components/color-swatch-picker/color-swatch-picker-config.js";
 import { colorSwatchConfig } from "../components/color-swatch/link-config.js";
 import { colorWheelConfig } from "../components/color-wheel/color-wheel-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
@@ -116,6 +117,7 @@ const COMPONENT_CONFIGS = [
   colorAreaConfig,
   colorSliderConfig,
   colorWheelConfig,
+  colorSwatchPickerConfig,
 ];
 
 function StringSetting({

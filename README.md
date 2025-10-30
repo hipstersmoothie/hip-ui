@@ -34,7 +34,6 @@
 #### react-aria wrappers
 
 - [ ] Color Picker
-- [ ] Color Swatch Picker
 
 - [ ] Calendar
 - [ ] Date Picker
@@ -57,6 +56,7 @@
 - [ ] Toolbar
 - [ ] Toast
 
+- [x] Color Swatch Picker
 - [x] Color Wheel
 - [x] Color Slider
 - [x] Color Area
