@@ -12,3 +12,8 @@ To create a new hip component follow these steps:
 1. Run the build
 1. Run `pnpm hip install --all` in the apps/docs dir
 1. Generate and .mdx page with example in apps/docs
+
+## Rules
+
+- Prefer using packages/hip-ui/src/components/flex and packages/hip-ui/src/components/grid over css
+- Use icon from lucide-react

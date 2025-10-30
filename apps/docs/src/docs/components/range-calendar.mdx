@@ -1,0 +1,55 @@
+---
+title: Range Calendar
+description: A range calendar lets users select a start and end date from one or more month grids.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { DefaultRangeCalendar } from '../../examples/range-calendar/default'
+import { UnavailableRangeDates } from '../../examples/range-calendar/unavailable-dates'
+import { MultipleMonthsRange } from '../../examples/range-calendar/multiple-months'
+
+Select a date range using a calendar grid with previous/next navigation.
+Supports marking dates unavailable and showing multiple months.
+
+<Example src={DefaultRangeCalendar} />
+
+## Installation
+
+Run the following command to add the range calendar to your project.
+
+```bash
+pnpm hip install range-calendar
+```
+
+## Props
+
+This component is built using the React Aria RangeCalendar.
+See the official guide for full behavior and API details.
+
+- Docs: [React Aria RangeCalendar](https://react-spectrum.adobe.com/react-aria/RangeCalendar.html#reusable-wrappers)
+
+<PropDocs components={["RangeCalendar"]} />
+
+## Examples
+
+### Unavailable Dates
+
+Disable dates via `isDateUnavailable`.
+
+<Example src={UnavailableRangeDates} />
+
+### Multiple Months
+
+Show multiple months with `visibleDuration`.
+
+<Example src={MultipleMonthsRange} />
+
+## Related Components
+
+- [DateRangePicker](/docs/components/date-range-picker)
+- [Calendar](/docs/components/calendar)
+- [DateField](/docs/components/date-field)
+- [DateRangeField](/docs/components/date-range-field)
+
+

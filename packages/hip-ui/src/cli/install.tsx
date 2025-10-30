@@ -14,15 +14,16 @@ import { avatarConfig } from "../components/avatar/avatar-config.js";
 import { badgeConfig } from "../components/badge/badge-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
 import { buttonConfig } from "../components/button/button-config.js";
+import { calendarConfig } from "../components/calendar/calendar-config.js";
 import { cardConfig } from "../components/card/card-config.js";
 import { checkboxConfig } from "../components/checkbox/checkbox-config.js";
 import { colorAreaConfig } from "../components/color-area/color-area-config.js";
 import { colorFieldConfig } from "../components/color-field/color-field-config.js";
+import { colorPickerConfig } from "../components/color-picker/color-picker-config.js";
 import { colorSliderConfig } from "../components/color-slider/color-slider-config.js";
 import { colorSwatchPickerConfig } from "../components/color-swatch-picker/color-swatch-picker-config.js";
 import { colorSwatchConfig } from "../components/color-swatch/link-config.js";
 import { colorWheelConfig } from "../components/color-wheel/color-wheel-config.js";
-import { colorPickerConfig } from "../components/color-picker/color-picker-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
@@ -44,6 +45,7 @@ import { paginationConfig } from "../components/pagination/pagination-config.js"
 import { popoverConfig } from "../components/popover/popover-config.js";
 import { progressBarConfig } from "../components/progress-bar/progress-bar-config.js";
 import { radioConfig } from "../components/radio/radio-config.js";
+import { rangeCalendarConfig } from "../components/range-calendar/range-calendar-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
 import { segmentedControlConfig } from "../components/segmented-control/segmented-control-config.js";
 import { selectConfig } from "../components/select/select-config.js";
@@ -120,6 +122,8 @@ const COMPONENT_CONFIGS = [
   colorWheelConfig,
   colorSwatchPickerConfig,
   colorPickerConfig,
+  calendarConfig,
+  rangeCalendarConfig,
 ];
 
 function StringSetting({
