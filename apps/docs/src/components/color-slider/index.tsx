@@ -22,7 +22,10 @@ const styles = stylex.create({
     display: "grid",
     flexDirection: "column",
     gap: spacing["2"],
-    gridTemplateAreas: "'label value-label' 'track track'",
+    gridTemplateAreas: {
+      default: "'track'",
+      ":has(label,[data-slider-output])": "'label value-label' 'track track'",
+    },
   },
   label: {
     gridArea: "label",
@@ -84,7 +87,10 @@ export function ColorSlider({
       >
         {label && <Label style={styles.label}>{label}</Label>}
         {showValueLabel && (
-          <SliderOutput {...stylex.props(styles.valueLabel)} />
+          <SliderOutput
+            data-slider-output
+            {...stylex.props(styles.valueLabel)}
+          />
         )}
         <SliderTrack
           {...stylex.props(styles.track)}

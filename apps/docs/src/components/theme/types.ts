@@ -21,14 +21,10 @@ export type MeterVariant =
   | "warning"
   | "critical";
 
-export type StyleXComponentProps<
-  T extends {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    className?: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    style?: any;
-  },
-> = Omit<T, "className" | "style"> & {
+export type StyleXComponentProps<T extends object> = Omit<
+  T,
+  "className" | "style"
+> & {
   className?: never;
   /**
    * The style to apply to the component.

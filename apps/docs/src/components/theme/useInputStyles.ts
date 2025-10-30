@@ -121,7 +121,7 @@ export function useInputStyles({
     field: [styles.field],
     wrapper: [
       styles.inputWrapper,
-      variant === "primary" && [ui.bgUi, styles.primary],
+      variant === "primary" && [ui.bgGhost, styles.primary],
       variant === "secondary" && [ui.bgUi],
       variant === "tertiary" && [ui.bgGhost],
       ui.text,

@@ -22,6 +22,7 @@ import { colorSliderConfig } from "../components/color-slider/color-slider-confi
 import { colorSwatchPickerConfig } from "../components/color-swatch-picker/color-swatch-picker-config.js";
 import { colorSwatchConfig } from "../components/color-swatch/link-config.js";
 import { colorWheelConfig } from "../components/color-wheel/color-wheel-config.js";
+import { colorPickerConfig } from "../components/color-picker/color-picker-config.js";
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
@@ -118,6 +119,7 @@ const COMPONENT_CONFIGS = [
   colorSliderConfig,
   colorWheelConfig,
   colorSwatchPickerConfig,
+  colorPickerConfig,
 ];
 
 function StringSetting({
@@ -288,18 +290,18 @@ async function installDependencies(
 
     console.log(`🔄 Installing ${packageName}@${version}`);
 
-    await new Promise((resolve) =>
-      exec(`${config.packageManager} i ${packageName}@${version}`, (error) => {
-        if (error) {
-          console.error(
-            `❌ Error installing ${packageName}@${version}:`,
-            error,
-          );
-        }
+    // await new Promise((resolve) =>
+    //   exec(`${config.packageManager} i ${packageName}@${version}`, (error) => {
+    //     if (error) {
+    //       console.error(
+    //         `❌ Error installing ${packageName}@${version}:`,
+    //         error,
+    //       );
+    //     }
 
-        resolve(true);
-      }),
-    );
+    //     resolve(true);
+    //   }),
+    // );
   }
 }
 
