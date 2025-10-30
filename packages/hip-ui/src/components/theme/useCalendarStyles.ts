@@ -118,10 +118,16 @@ const styles = stylex.create({
   heading: {
     fontSize: fontSize["lg"],
     fontWeight: fontWeight["semibold"],
+    margin: 0,
     textAlign: "center",
   },
   grid: {
     borderCollapse: "collapse",
+  },
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    gap: spacing["3"],
   },
 });
 
@@ -132,6 +138,7 @@ export function useCalendarStyles({
   type: "calendar" | "range-calendar";
 }) {
   return {
+    wrapper: [styles.wrapper],
     grid: [styles.grid],
     heading: [styles.heading],
     headerCell: [styles.headerCell],

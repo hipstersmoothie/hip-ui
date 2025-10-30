@@ -1,4 +1,7 @@
-import { ColorSwatchPicker, ColorSwatchPickerItem } from "@/components/color-swatch-picker";
+import {
+  ColorSwatchPicker,
+  ColorSwatchPickerItem,
+} from "@/components/color-swatch-picker";
 
 const COLORS = ["#A00", "#f80", "#080", "#08f", "#088", "#008"] as const;
 
@@ -25,5 +28,3 @@ export function Size() {
     </div>
   );
 }
-
-

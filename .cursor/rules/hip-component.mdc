@@ -5,15 +5,16 @@ alwaysApply: false
 To create a new hip component follow these steps:
 
 1. First ask if there is some docs for a headless component to look at
-1. create a component in packages/hip-ui/src/components
-1. Create a config for that component
-1. Write it's config in the new component's dir
-1. Add the config to packages/hip-ui/src/cli/install
-1. Run the build
-1. Run `pnpm hip install --all` in the apps/docs dir
-1. Generate and .mdx page with example in apps/docs
+2. create a component in packages/hip-ui/src/components
+3. Create a config for that component
+4. Write it's config in the new component's dir
+5. Add the config to packages/hip-ui/src/cli/install
+6. Run the build
+7. Run `pnpm hip install --all` in the apps/docs dir
+8. Generate and .mdx page with example in apps/docs
 
 ## Rules
 
 - Prefer using packages/hip-ui/src/components/flex and packages/hip-ui/src/components/grid over css
 - Use icon from lucide-react
+- Prefer re-using existing component rather than redefining them inside each component

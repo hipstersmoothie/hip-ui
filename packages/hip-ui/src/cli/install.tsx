@@ -28,6 +28,7 @@ import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
+import { datePickerConfig } from "../components/date-picker/date-picker-config.js";
 import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
@@ -92,6 +93,7 @@ const COMPONENT_CONFIGS = [
   contextMenuConfig,
   timeFieldConfig,
   dateFieldConfig,
+  datePickerConfig,
   searchFieldConfig,
   colorFieldConfig,
   numberFieldConfig,

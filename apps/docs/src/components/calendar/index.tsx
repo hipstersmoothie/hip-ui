@@ -28,11 +28,6 @@ export interface CalendarProps<T extends DateValue>
 }
 
 const styles = stylex.create({
-  root: {
-    display: "flex",
-    flexDirection: "column",
-    gap: spacing["3"],
-  },
   header: {
     alignItems: "center",
     display: "flex",
@@ -51,7 +46,7 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
     <AriaCalendar
       visibleDuration={visibleDuration}
       {...rest}
-      {...stylex.props(styles.root, style)}
+      {...stylex.props(calendarStyles.wrapper, style)}
     >
       <header {...stylex.props(styles.header)}>
         <IconButton
