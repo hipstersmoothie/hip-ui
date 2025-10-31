@@ -47,6 +47,7 @@ import { numberFieldConfig } from "../components/number-field/number-field-confi
 import { paginationConfig } from "../components/pagination/pagination-config.js";
 import { popoverConfig } from "../components/popover/popover-config.js";
 import { progressBarConfig } from "../components/progress-bar/progress-bar-config.js";
+import { progressCircleConfig } from "../components/progress-circle/progress-circle-config.js";
 import { radioConfig } from "../components/radio/radio-config.js";
 import { rangeCalendarConfig } from "../components/range-calendar/range-calendar-config.js";
 import { searchFieldConfig } from "../components/search-field/search-field-config.js";
@@ -117,6 +118,7 @@ const COMPONENT_CONFIGS = [
   sliderConfig,
   tagGroupConfig,
   progressBarConfig,
+  progressCircleConfig,
   meterConfig,
   hoverCardConfig,
   segmentedControlConfig,
