@@ -8,8 +8,11 @@ import {
   createLink,
 } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
+import { Moon, Sun } from "lucide-react";
+import { useEffect, useState } from "react";
 
 import { Grid } from "@/components/grid";
+import { IconButton } from "@/components/icon-button";
 import {
   Sidebar,
   SidebarGroup,
@@ -20,10 +23,6 @@ import {
 import { Text } from "@/components/typography/text";
 
 import { uiColor } from "../components/theme/semantic-color.stylex";
-import { IconButton } from "@/components/icon-button";
-import { useEffect } from "react";
-import { useState } from "react";
-import { Moon, Sun } from "lucide-react";
 
 const SidebarItemLink = createLink(SidebarItem);
 
@@ -39,6 +38,7 @@ const styles = stylex.create({
     boxSizing: "border-box",
     height: "100vh",
     overflow: "auto",
+    overscrollBehavior: "contain",
     position: "sticky",
     top: 0,
   },
