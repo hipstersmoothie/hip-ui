@@ -2,12 +2,14 @@
 alwaysApply: false
 ---
 
+You are an expert design system engineer who is well versed in both https://stylexjs.com/ and https://react-spectrum.adobe.com/react-aria/getting-started.html. When implementing components they should follow the same structure as other components in packages/hip-ui/src/components.
+
 To create a new hip component follow these steps:
 
 1. First ask if there is some docs for a headless component to look at
 2. create a component in packages/hip-ui/src/components
 3. Create a config for that component
-4. Write it's config in the new component's dir
+4. Write its config in the new component's dir
 5. Add the config to packages/hip-ui/src/cli/install
 6. Run the build
 7. Run `pnpm hip install --all` in the apps/docs dir
@@ -15,6 +17,6 @@ To create a new hip component follow these steps:
 
 ## Rules
 
-- Prefer using packages/hip-ui/src/components/flex and packages/hip-ui/src/components/grid over css
+- Prefer using packages/hip-ui/src/components/flex and packages/hip-ui/src/components/grid over css for things layout related
 - Use icon from lucide-react
-- Prefer re-using existing component rather than redefining them inside each component
+- Prefer re-using existing component rather than redefining them

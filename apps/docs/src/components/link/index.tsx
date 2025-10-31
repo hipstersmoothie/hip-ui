@@ -5,21 +5,31 @@ import {
   Link as AriaLink,
 } from "react-aria-components";
 
-import { primaryColor } from "../theme/semantic-color.stylex";
+import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 import { LinkContext } from "./link-context";
 
 const styles = stylex.create({
   link: {
-    color: primaryColor.text2,
-    cursor: "pointer",
+    color: {
+      default: primaryColor.text2,
+      ":is([data-breadcrumb] *)": uiColor.text1,
+      ":is([data-breadcrumb][data-current] *)": uiColor.text2,
+    },
+    cursor: {
+      default: "default",
+      ":is([data-hovered])": "pointer",
+    },
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],
     textDecoration: {
       default: "none",
-      ":hover": "underline",
+      ":is([data-hovered])": "underline",
+      ":is([data-breadcrumb] *)": "none",
     },
+    textUnderlineOffset: spacing["1"],
   },
 });
 

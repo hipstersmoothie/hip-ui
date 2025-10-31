@@ -12,6 +12,7 @@ import { alertDialogConfig } from "../components/alert-dialog/alert-dialog-confi
 import { aspectRatioConfig } from "../components/aspect-ratio/aspect-ratio-config.js";
 import { avatarConfig } from "../components/avatar/avatar-config.js";
 import { badgeConfig } from "../components/badge/badge-config.js";
+import { breadcrumbsConfig } from "../components/breadcrumbs/breadcrumbs-config.js";
 import { buttonGroupConfig } from "../components/button-group/button-group-config.js";
 import { buttonConfig } from "../components/button/button-config.js";
 import { calendarConfig } from "../components/calendar/calendar-config.js";
@@ -106,6 +107,7 @@ const COMPONENT_CONFIGS = [
   dialogConfig,
   avatarConfig,
   badgeConfig,
+  breadcrumbsConfig,
   gridConfig,
   switchConfig,
   aspectRatioConfig,

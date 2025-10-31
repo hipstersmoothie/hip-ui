@@ -20,7 +20,6 @@
 - [ ] Alert / Callout
 - [ ] Carousel
 - [ ] Empty
-- [ ] Input Group
 - [ ] Input OTP
 - [ ] Resizable
 - [ ] Skeleton
@@ -36,13 +35,10 @@
 - [ ] Drawer
 - [ ] Sheet
 
-- [ ] Breadcrumb
 - [ ] Disclosure
 - [ ] Disclosure Group
-- [ ] Field
 - [ ] Form
 - [ ] Grid List
-- [ ] Item
 - [ ] Menubar
 - [ ] Navigation Menu
 - [ ] Spinner
@@ -50,6 +46,15 @@
 - [ ] Toolbar
 - [ ] Toast
 
+### Maybe
+
+- [ ] Field
+- [ ] Item
+
+### Done
+
+- [x] Input Group
+- [x] Breadcrumb
 - [x] Range Date Picker
 - [x] Date Picker
 - [x] Calendar
