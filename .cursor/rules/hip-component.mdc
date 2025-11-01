@@ -4,20 +4,212 @@ alwaysApply: false
 
 You are an expert design system engineer who is well versed in both https://stylexjs.com/ and https://react-spectrum.adobe.com/react-aria/getting-started.html. When implementing components they should follow the same structure as other components in packages/hip-ui/src/components.
 
+## Component Creation Process
+
 To create a new hip component follow these steps:
 
-1. First ask if there is some docs for a headless component to look at
-2. create a component in packages/hip-ui/src/components
-3. Create a config for that component
-4. Write its config in the new component's dir
-5. Add the config to packages/hip-ui/src/cli/install
-6. Run the build
-7. Run `pnpm hip install --all` in the apps/docs dir
-8. Generate and .mdx page with example in apps/docs
+1. **Research phase**: First ask if there is documentation for a headless component to look at (e.g., React Aria Components docs)
+2. **Component implementation**: Create the component in `packages/hip-ui/src/components/[component-name]/index.tsx`
+3. **Config creation**: Create a config file `[component-name]-config.ts` in the same directory
+4. **Register config**: Import and add the config to `packages/hip-ui/src/cli/install.tsx` in the `COMPONENT_CONFIGS` array
+5. **Build**: Run the build command to compile the component
+6. **Install**: Run `pnpm hip install --all` in the apps/docs directory
+7. **Documentation**: Generate an `.mdx` page with examples in `apps/docs/src/docs/components/[component-name].mdx`
+8. **Examples**: Create example files in `apps/docs/src/examples/[component-name]/` directory
 
-## Rules for Components
+## Component Structure
 
-- Prefer using packages/hip-ui/src/components/flex and packages/hip-ui/src/components/grid over css for things layout related
-- Use icon from lucide-react
-- Prefer re-using existing component rather than redefining them
-- For composite components use the size prop only on the root element. otherwise use css to stylex for different sizes
+### File Organization
+
+- Each component lives in its own directory: `packages/hip-ui/src/components/[component-name]/`
+- Main component file: `index.tsx`
+- Config file: `[component-name]-config.ts`
+- Optional context file: `context.ts` (for shared state like SizeContext)
+
+### Component File Structure
+
+```typescript
+"use client"; // Add this for client components that use React hooks or interactivity
+
+import * as stylex from "@stylexjs/stylex";
+import { ComponentFromAria } from "react-aria-components";
+// Import theme tokens and utilities
+import { ui, uiColor } from "../theme/semantic-color.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { radius } from "../theme/radius.stylex";
+import { shadow } from "../theme/shadow.stylex";
+import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
+import { animationDuration } from "../theme/animations.stylex";
+import { Size, StyleXComponentProps } from "../theme/types";
+// Import other hip components if needed
+import { Flex } from "../flex";
+import { Grid } from "../grid";
+
+// Define styles using stylex.create
+const styles = stylex.create({
+  base: {
+    // Use theme tokens, not hardcoded values
+    padding: spacing["4"],
+    borderRadius: radius["md"],
+    backgroundColor: ui.bg,
+    color: ui.text,
+  },
+});
+
+// Export interface extending StyleXComponentProps
+export interface ComponentProps extends StyleXComponentProps<AriaComponentProps> {
+  size?: Size;
+  variant?: ComponentVariant;
+}
+
+// Export component
+export const Component = ({ style, size, variant, ...props }: ComponentProps) => {
+  return (
+    <AriaComponent
+      {...stylex.props(styles.base, style)}
+      data-size={size}
+      {...props}
+    />
+  );
+};
+```
+
+### Config File Structure
+
+```typescript
+import { ComponentConfig } from "../../types";
+
+export const componentConfig: ComponentConfig = {
+  name: "component-name",
+  filepath: "./index.tsx",
+  hipDependencies: [
+    // List ALL theme files and other hip components used
+    "../theme/spacing.stylex.tsx",
+    "../theme/radius.stylex.tsx",
+    "../theme/semantic-color.stylex.tsx",
+    "../theme/typography.stylex.tsx",
+    "../theme/shadow.stylex.tsx",
+    "../theme/animations.stylex.tsx",
+    "../theme/types.ts",
+    // Other hip components if imported
+    "../flex/index.tsx",
+  ],
+  dependencies: {
+    // External npm packages required
+    "react-aria-components": "^1.13.0",
+  },
+};
+```
+
+## Component Rules
+
+### Styling
+
+- **Always use theme tokens** - Never hardcode colors, spacing, radius, shadows, or typography values
+- Use `semantic-color.stylex.tsx` for colors (`ui.*`, `uiColor.*`, `uiInverted.*`)
+- Use `spacing.stylex.tsx` for all spacing values
+- Use `radius.stylex.tsx` for border radius values
+- Use `shadow.stylex.tsx` for box shadows
+- Use `typography.stylex.tsx` for font styles
+- Use `animations.stylex.tsx` for transitions and animations
+- **Layout components**: Prefer `Flex` and `Grid` components over CSS for layout
+- **Size handling**: For composite components, use `SizeContext` to propagate size to child components. Only apply `size` prop to the root element
+
+### TypeScript
+
+- Always extend `StyleXComponentProps<BaseProps>` for component props
+- Use `stylex.StyleXStyles` for style props (never `className` or React `style`)
+- Export clear TypeScript interfaces with JSDoc comments for complex props
+- Use `data-*` attributes for conditional styling based on props (e.g., `data-size={size}`)
+
+### React Aria Components
+
+- When using React Aria Components, extend the appropriate Aria component props
+- Preserve accessibility features from React Aria Components
+- Use React Aria's built-in hooks and state management when appropriate
+- Follow React Aria Component patterns for composition (e.g., `DialogTrigger`, `Dialog`, `Modal`, `ModalOverlay`)
+
+### Icons
+
+- Use icons from `lucide-react` exclusively
+- Import icons as needed: `import { IconName } from "lucide-react";`
+
+### Component Composition
+
+- **Reuse existing components** - Prefer composing with existing hip components rather than redefining functionality
+- For composite components with multiple parts (e.g., Card, CardHeader, CardBody), export all related components from the same file
+- Use React Context (like `SizeContext`) for sharing props down the component tree when appropriate
+
+### Client Components
+
+- Add `"use client"` directive at the top of files that:
+  - Use React hooks (`useState`, `useEffect`, etc.)
+  - Handle user interactions
+  - Use React Context
+  - Import from `react-aria-components` (most components need this)
+
+## Documentation Structure
+
+### MDX File Template
+
+```mdx
+---
+title: ComponentName
+description: Brief description of what the component does.
+---
+
+import { PropDocs } from "../../lib/PropDocs";
+import { Example } from "../../lib/Example";
+import { Basic } from "../../examples/component-name/basic";
+import { FeatureExample } from "../../examples/component-name/feature";
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the component to your project.
+
+(Use triple backticks with bash language tag for the installation command)
+
+## Props
+
+This component is built using [React Aria ComponentName](link-to-docs).
+
+<PropDocs components={["ComponentName", "SubComponent"]} />
+
+## Features
+
+### Feature Name
+
+Description of the feature.
+
+<Example src={FeatureExample} />
+
+## Related Components
+
+- [RelatedComponent](/docs/components/related-component) - Description
+```
+
+### Example Files
+
+- Create example files in `apps/docs/src/examples/[component-name]/`
+- Start with `basic.tsx` showing the simplest usage
+- Create additional examples for each major feature (variants, sizes, states, etc.)
+- Use imports from `@/components/[component-name]`
+- Keep examples focused and minimal
+
+## Testing Checklist
+
+Before considering a component complete:
+
+- [ ] Component follows StyleX patterns with theme tokens
+- [ ] TypeScript interfaces are properly defined
+- [ ] All dependencies listed in config file
+- [ ] Config added to `install.tsx` COMPONENT_CONFIGS array
+- [ ] `"use client"` directive added if needed
+- [ ] Component works with `SizeContext` if size is supported
+- [ ] Basic example created
+- [ ] MDX documentation file created with proper structure
+- [ ] Related components listed in documentation
+- [ ] Component builds successfully
+- [ ] Component installs via `pnpm hip install`

@@ -35,7 +35,6 @@
 - [ ] Drawer
 - [ ] Sheet
 
-- [ ] Disclosure Group
 - [ ] Form
 - [ ] Grid List
 - [ ] Menubar
@@ -51,6 +50,7 @@
 
 ### Done
 
+- [x] Disclosure Group
 - [x] Disclosure
 - [x] Spinner
 - [x] Input Group

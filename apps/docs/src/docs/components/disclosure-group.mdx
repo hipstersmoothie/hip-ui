@@ -1,0 +1,54 @@
+---
+title: Disclosure Group
+description: A grouping of related disclosures, sometimes called an accordion. It supports both single and multiple expanded items.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/disclosure-group/basic'
+import { DefaultExpanded } from '../../examples/disclosure-group/default-expanded'
+import { MultipleExpanded } from '../../examples/disclosure-group/multiple-expanded'
+import { Sizes } from '../../examples/disclosure-group/sizes'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the disclosure-group component to your project.
+
+```bash
+pnpm hip install disclosure-group
+```
+
+## Props
+
+This component is built using [React Aria DisclosureGroup](https://react-spectrum.adobe.com/react-aria/DisclosureGroup.html).
+
+<PropDocs components={["DisclosureGroup"]} />
+
+## Features
+
+### Default Expanded
+
+A DisclosureGroup can have one or more disclosures expanded by default using the `defaultExpandedKeys` prop. The keys must match the `id` props on the child Disclosure components.
+
+<Example src={DefaultExpanded} />
+
+### Multiple Expanded
+
+By default, DisclosureGroup allows only one disclosure to be expanded at a time (accordion behavior). You can enable multiple expanded items by setting `allowsMultipleExpanded` to `true`.
+
+<Example src={MultipleExpanded} />
+
+### Sizes
+
+DisclosureGroup supports three different sizes: small, medium, and large. The size prop is passed down to all child Disclosure components via SizeContext.
+
+<Example src={Sizes} />
+
+## Related Components
+
+- [Disclosure](/docs/components/disclosure) - For single collapsible sections
+- [Dialog](/docs/components/dialog) - For modal content
+- [Popover](/docs/components/popover) - For overlay content
+

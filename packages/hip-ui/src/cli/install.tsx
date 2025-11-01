@@ -33,6 +33,7 @@ import { datePickerConfig } from "../components/date-picker/date-picker-config.j
 import { dateRangePickerConfig } from "../components/date-range-picker/date-range-picker-config.js";
 import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { disclosureConfig } from "../components/disclosure/disclosure-config.js";
+import { disclosureGroupConfig } from "../components/disclosure-group/disclosure-group-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
@@ -108,6 +109,7 @@ const COMPONENT_CONFIGS = [
   alertDialogConfig,
   dialogConfig,
   disclosureConfig,
+  disclosureGroupConfig,
   avatarConfig,
   badgeConfig,
   breadcrumbsConfig,
