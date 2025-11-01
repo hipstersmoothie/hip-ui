@@ -204,36 +204,33 @@ function propDocs() {
         path.join(process.cwd(), "src/components/**/*.tsx"),
       );
 
-      for (const file of files) {
-        const doc = parser.parse(file);
-        const docsWithPropsHihglighted = await Promise.all(
-          doc.map(async (doc) => {
-            await Promise.all(
-              Object.entries(doc.props).map(async ([key, p]) => {
-                doc.props[key].type.name = await highlightCode(
-                  p.type.name,
+      const docsWithPropsHighlighted = await Promise.all(
+        parser.parseWithProgramProvider(files).map(async (doc) => {
+          await Promise.all(
+            Object.entries(doc.props).map(async ([key, p]) => {
+              doc.props[key].type.name = await highlightCode(
+                p.type.name,
+                "typescript",
+              );
+
+              if (doc.props[key].defaultValue) {
+                const defaultValue = doc.props[key].defaultValue as {
+                  value: string;
+                };
+                defaultValue.value = await highlightCode(
+                  // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
+                  defaultValue.value.toString(),
                   "typescript",
                 );
+              }
+            }),
+          );
 
-                if (doc.props[key].defaultValue) {
-                  const defaultValue = doc.props[key].defaultValue as {
-                    value: string;
-                  };
-                  defaultValue.value = await highlightCode(
-                    // eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
-                    defaultValue.value.toString(),
-                    "typescript",
-                  );
-                }
-              }),
-            );
+          return doc;
+        }),
+      );
 
-            return doc;
-          }),
-        );
-
-        docs.push(...docsWithPropsHihglighted);
-      }
+      docs.push(...docsWithPropsHighlighted);
     },
 
     resolveId(id) {
