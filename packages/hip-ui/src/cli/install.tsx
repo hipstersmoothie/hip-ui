@@ -66,6 +66,7 @@ import { textFieldConfig } from "../components/text-field/text-field-config.js";
 import { timeFieldConfig } from "../components/time-field/time-field-config.js";
 import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggle-button-group-config.js";
 import { toggleButtonConfig } from "../components/toggle-button/toggle-button-config.js";
+import { toolbarConfig } from "../components/toolbar/toolbar-config.js";
 import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
 import { treeConfig } from "../components/tree/tree-config.js";
 import { typographyConfig } from "../components/typography/typography-config.js";
@@ -93,6 +94,7 @@ const COMPONENT_CONFIGS = [
   selectConfig,
   toggleButtonConfig,
   toggleButtonGroupConfig,
+  toolbarConfig,
   menuConfig,
   listboxConfig,
   contextMenuConfig,

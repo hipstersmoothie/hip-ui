@@ -40,7 +40,6 @@
 - [ ] Menubar
 - [ ] Navigation Menu
 - [ ] Tabs
-- [ ] Toolbar
 - [ ] Toast
 
 ### Maybe
@@ -50,6 +49,7 @@
 
 ### Done
 
+- [x] Toolbar
 - [x] Disclosure Group
 - [x] Disclosure
 - [x] Spinner

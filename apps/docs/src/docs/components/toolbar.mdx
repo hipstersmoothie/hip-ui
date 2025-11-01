@@ -1,0 +1,48 @@
+---
+title: Toolbar
+description: A toolbar is a container for a set of interactive controls, such as buttons, dropdown menus, or checkboxes, with arrow key navigation.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/toolbar/basic'
+import { Vertical } from '../../examples/toolbar/vertical'
+import { WithCheckbox } from '../../examples/toolbar/with-checkbox'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the toolbar component to your project.
+
+```bash
+pnpm hip install toolbar
+```
+
+## Props
+
+This component is built using [React Aria Toolbar](https://react-spectrum.adobe.com/react-aria/Toolbar.html).
+
+<PropDocs components={["Toolbar", "ToolbarGroup", "ToolbarSeparator"]} />
+
+## Features
+
+### Vertical Orientation
+
+Toolbars can be oriented vertically for vertical layouts. The arrow key navigation behavior adapts accordingly.
+
+<Example src={Vertical} />
+
+### Interactive Controls
+
+Toolbars can contain various interactive controls including buttons, toggle buttons, checkboxes, and more.
+Use the `ToolbarGroup` component to group related controls together.
+
+<Example src={WithCheckbox} />
+
+## Related Components
+
+- [Button](/docs/components/button) - For clickable actions in toolbars
+- [ToggleButton](/docs/components/toggle-button) - For toggleable buttons in toolbars
+- [ButtonGroup](/docs/components/button-group) - For grouping buttons together
+- [ToggleButtonGroup](/docs/components/toggle-button-group) - For grouping toggle buttons together

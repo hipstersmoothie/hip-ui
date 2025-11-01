@@ -133,6 +133,7 @@ export const componentConfig: ComponentConfig = {
 
 - Use icons from `lucide-react` exclusively
 - Import icons as needed: `import { IconName } from "lucide-react";`
+- When used in a hip component the size does not need to be set
 
 ### Component Composition
 
