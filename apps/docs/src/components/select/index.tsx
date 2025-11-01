@@ -10,13 +10,12 @@ import {
   SelectValue,
   PopoverProps,
   Select as AriaSelect,
-  FieldError,
   Autocomplete,
   useFilter,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { Description, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { ListBox, ListBoxSeparator } from "../listbox";
 import { SearchField } from "../search-field";
 import { spacing } from "../theme/spacing.stylex";
@@ -90,7 +89,7 @@ export function Select<
         {...stylex.props(inputStyles.field, style)}
         placeholder={placeholder}
       >
-        {label && <Label size={size}>{label}</Label>}
+        <Label>{label}</Label>
         <Button {...stylex.props(inputStyles.wrapper)}>
           {prefix != null && (
             <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
@@ -110,8 +109,8 @@ export function Select<
             <ChevronDown size={16} aria-hidden="true" />
           </div>
         </Button>
-        {description && <Description size={size}>{description}</Description>}
-        <FieldError>{errorMessage}</FieldError>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
         <Popover
           containerPadding={8}
           shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}

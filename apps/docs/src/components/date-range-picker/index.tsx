@@ -9,14 +9,13 @@ import {
   Group,
   Dialog,
   Popover as AriaPopover,
-  FieldError,
   DateInput,
   DateSegment,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
-import { Description, ErrorMessage, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { RangeCalendar, RangeCalendarProps } from "../range-calendar";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -88,7 +87,7 @@ export function DateRangePicker<T extends DateValue>({
         {...props}
         {...stylex.props(inputStyles.field, style)}
       >
-        {label != null && <Label size={size}>{label}</Label>}
+        <Label>{label}</Label>
         <Group
           data-size={size}
           {...stylex.props(inputStyles.wrapper, styles.group)}
@@ -123,12 +122,8 @@ export function DateRangePicker<T extends DateValue>({
             <CalendarIcon />
           </IconButton>
         </Group>
-        {description && <Description size={size}>{description}</Description>}
-        {errorMessage && (
-          <ErrorMessage>
-            <FieldError>{errorMessage}</FieldError>
-          </ErrorMessage>
-        )}
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
         <AriaPopover
           {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
         >

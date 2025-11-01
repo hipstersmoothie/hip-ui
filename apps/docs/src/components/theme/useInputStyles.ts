@@ -4,7 +4,7 @@ import { use } from "react";
 import { SizeContext } from "../context";
 import { InputVariant, Size } from "../theme/types";
 import { radius } from "./radius.stylex";
-import { ui, uiColor } from "./semantic-color.stylex";
+import { criticalColor, ui, uiColor } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
 import { lineHeight, fontSize } from "./typography.stylex";
 
@@ -69,8 +69,27 @@ const styles = stylex.create({
   primary: {
     borderColor: {
       default: uiColor.border2,
-      ":hover": uiColor.border3,
+      ":has([data-hovered]:not([data-invalid])": uiColor.border3,
       ":focus": uiColor.solid1,
+      ":has([data-invalid])": criticalColor.border2,
+    },
+    borderStyle: "solid",
+    borderWidth: 1,
+    transitionProperty: "background-color, border-color",
+  },
+  secondary: {
+    borderColor: {
+      default: uiColor.component1,
+      ":has([data-invalid])": criticalColor.border2,
+    },
+    borderStyle: "solid",
+    borderWidth: 1,
+    transitionProperty: "background-color, border-color",
+  },
+  tertiary: {
+    borderColor: {
+      default: "transparent",
+      ":has([data-invalid])": criticalColor.border2,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -122,8 +141,8 @@ export function useInputStyles({
     wrapper: [
       styles.inputWrapper,
       variant === "primary" && [ui.bgGhost, styles.primary],
-      variant === "secondary" && [ui.bgUi],
-      variant === "tertiary" && [ui.bgGhost],
+      variant === "secondary" && [ui.bgUi, styles.secondary],
+      variant === "tertiary" && [ui.bgGhost, styles.tertiary],
       ui.text,
       styles.wrapperSize(size),
     ],

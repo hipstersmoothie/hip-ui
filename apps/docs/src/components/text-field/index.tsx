@@ -6,13 +6,13 @@ import {
   InputContext,
   InputProps,
   ValidationResult,
-  FieldError,
   Input,
   TextField as AriaTextField,
 } from "react-aria-components";
 
+import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
-import { Description, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
@@ -62,13 +62,14 @@ export function TextField({
   description,
   errorMessage,
   style,
-  size,
+  size: sizeProp,
   variant,
   prefix,
   suffix,
   placeholder,
   ...props
 }: TextFieldProps) {
+  const size = sizeProp || use(SizeContext);
   const inputRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState<TextFieldProps["type"]>(
     props.type || "text",
@@ -77,42 +78,44 @@ export function TextField({
   const inputStyles = useInputStyles({ size, variant });
 
   return (
-    <AriaTextField
-      {...props}
-      type={type}
-      {...stylex.props(inputStyles.field, style)}
-    >
-      {label != null && <Label size={size}>{label}</Label>}
-      {/* 
+    <SizeContext value={size}>
+      <AriaTextField
+        {...props}
+        type={type}
+        {...stylex.props(inputStyles.field, style)}
+      >
+        <Label>{label}</Label>
+        {/* 
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <div
-        {...stylex.props(inputStyles.wrapper)}
-        onClick={() => inputRef.current?.focus()}
-      >
-        {prefix != null && (
-          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
-        )}
-        <Input
-          {...stylex.props(inputStyles.input)}
-          ref={inputRef}
-          placeholder={placeholder}
-        />
-        {suffix != null && (
-          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
-        )}
-        {isPasswordInput && (
-          <PasswordToggle
-            type={type}
-            setType={setType}
-            style={inputStyles.addon}
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+        <div
+          {...stylex.props(inputStyles.wrapper)}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {prefix != null && (
+            <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+          )}
+          <Input
+            {...stylex.props(inputStyles.input)}
+            ref={inputRef}
+            placeholder={placeholder}
           />
-        )}
-      </div>
-      {description && <Description size={size}>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaTextField>
+          {suffix != null && (
+            <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+          )}
+          {isPasswordInput && (
+            <PasswordToggle
+              type={type}
+              setType={setType}
+              style={inputStyles.addon}
+            />
+          )}
+        </div>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      </AriaTextField>
+    </SizeContext>
   );
 }

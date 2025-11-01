@@ -1,18 +1,18 @@
 import * as stylex from "@stylexjs/stylex";
 import { Minus, Plus } from "lucide-react";
-import { useRef } from "react";
+import { use, useRef } from "react";
 import {
   NumberFieldProps as AriaNumberFieldProps,
   Input,
   InputProps,
   ValidationResult,
-  FieldError,
   NumberField as AriaNumberField,
   Group,
   Button,
 } from "react-aria-components";
 
-import { Description, Label } from "../label";
+import { SizeContext } from "../context";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
@@ -68,7 +68,7 @@ export function NumberField({
   description,
   errorMessage,
   style,
-  size,
+  size: sizeProp,
   variant,
   prefix,
   suffix,
@@ -76,6 +76,7 @@ export function NumberField({
   hideStepper = false,
   ...props
 }: NumberFieldProps) {
+  const size = sizeProp || use(SizeContext);
   const inputRef = useRef<HTMLInputElement>(null);
   const inputStyles = useInputStyles({ size, variant });
   const buttonStyles = stylex.props(
@@ -85,41 +86,43 @@ export function NumberField({
   );
 
   return (
-    <AriaNumberField {...props} {...stylex.props(inputStyles.field, style)}>
-      <Label size={size}>{label}</Label>
-      {/* 
+    <SizeContext value={size}>
+      <AriaNumberField {...props} {...stylex.props(inputStyles.field, style)}>
+        <Label>{label}</Label>
+        {/* 
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <div
-        {...stylex.props(inputStyles.wrapper)}
-        onClick={() => inputRef.current?.focus()}
-      >
-        {prefix != null && (
-          <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
-        )}
-        <Input
-          placeholder={placeholder}
-          ref={inputRef}
-          {...stylex.props(inputStyles.input)}
-        />
-        {suffix != null && (
-          <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
-        )}
-        {!hideStepper && (
-          <Group {...stylex.props(styles.buttons)}>
-            <Button slot="decrement" {...buttonStyles}>
-              <Minus />
-            </Button>
-            <Button slot="increment" {...buttonStyles}>
-              <Plus />
-            </Button>
-          </Group>
-        )}
-      </div>
-      {description && <Description size={size}>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaNumberField>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+        <div
+          {...stylex.props(inputStyles.wrapper)}
+          onClick={() => inputRef.current?.focus()}
+        >
+          {prefix != null && (
+            <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
+          )}
+          <Input
+            placeholder={placeholder}
+            ref={inputRef}
+            {...stylex.props(inputStyles.input)}
+          />
+          {suffix != null && (
+            <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
+          )}
+          {!hideStepper && (
+            <Group {...stylex.props(styles.buttons)}>
+              <Button slot="decrement" {...buttonStyles}>
+                <Minus />
+              </Button>
+              <Button slot="increment" {...buttonStyles}>
+                <Plus />
+              </Button>
+            </Group>
+          )}
+        </div>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      </AriaNumberField>
+    </SizeContext>
   );
 }

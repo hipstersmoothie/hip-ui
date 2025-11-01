@@ -129,7 +129,6 @@ export function ProgressCircle({
       {...stylex.props(styles.wrapper, style)}
     >
       {({ percentage = 0, isIndeterminate }) => {
-        console.log({ percentage }, Math.min(0.5, percentage / 100));
         const rotateFirstHalf = Math.min(0.5, percentage / 100) * 360 - 180;
         const rotateSecondHalf = (1 - Math.max(0.5, percentage / 100)) * -360;
 

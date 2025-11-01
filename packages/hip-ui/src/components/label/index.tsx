@@ -5,6 +5,9 @@ import {
   Text,
   TextProps,
   Label as AriaLabel,
+  FieldError,
+  FieldErrorProps,
+  ValidationResult,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
@@ -52,6 +55,8 @@ export interface LabelProps extends StyleXComponentProps<AriaLabelProps> {
 }
 
 export function Label({ style, size: sizeProp, ...props }: LabelProps) {
+  if (!props.children) return null;
+
   const size = sizeProp || use(SizeContext);
 
   return (
@@ -72,6 +77,8 @@ export function Description({
   size: sizeProp,
   ...props
 }: DescriptionProps) {
+  if (!props.children) return null;
+
   const size = sizeProp || use(SizeContext);
 
   return (
@@ -110,5 +117,33 @@ export function ErrorMessage({
       )}
       {...props}
     />
+  );
+}
+
+export interface FieldErrorMessageProps
+  extends StyleXComponentProps<Omit<FieldErrorProps, "children">> {
+  children?: string | ((validation: ValidationResult) => string) | undefined;
+}
+
+export function FieldErrorMessage({
+  style,
+  children,
+  ...props
+}: FieldErrorMessageProps) {
+  return (
+    <FieldError {...props} {...stylex.props(style)}>
+      {(validationResult) => {
+        if (validationResult.isInvalid) {
+          return (
+            <ErrorMessage>
+              {typeof children === "function"
+                ? children(validationResult)
+                : children || validationResult.validationErrors.join(", ")}
+            </ErrorMessage>
+          );
+        }
+        return null;
+      }}
+    </FieldError>
   );
 }

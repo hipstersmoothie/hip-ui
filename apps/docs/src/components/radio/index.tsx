@@ -5,22 +5,23 @@ import type {
 } from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 import {
   Radio as AriaRadio,
   RadioGroup as AriaRadioGroup,
-  FieldError,
   SelectionIndicator,
 } from "react-aria-components";
 
+import { SizeContext } from "../context";
 import { Flex } from "../flex";
-import { Description, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 
 const scaleIn = stylex.keyframes({
   "0%": {
@@ -106,19 +107,23 @@ export function RadioGroup({
   description,
   errorMessage,
   children,
-  size,
+  size: sizeProp,
   style,
   ...props
 }: RadioGroupProps) {
+  const size = sizeProp || use(SizeContext);
+
   return (
-    <AriaRadioGroup {...props} {...stylex.props(styles.group, style)}>
-      {label != null && <Label size={size}>{label}</Label>}
-      <Flex direction="column" gap="2">
-        {children}
-      </Flex>
-      {description && <Description size={size}>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaRadioGroup>
+    <SizeContext value={size}>
+      <AriaRadioGroup {...props} {...stylex.props(styles.group, style)}>
+        <Label>{label}</Label>
+        <Flex direction="column" gap="2">
+          {children}
+        </Flex>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      </AriaRadioGroup>
+    </SizeContext>
   );
 }
 

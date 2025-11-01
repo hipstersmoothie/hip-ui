@@ -6,14 +6,15 @@ import type {
 
 import * as stylex from "@stylexjs/stylex";
 import { Check, Minus } from "lucide-react";
+import { use } from "react";
 import {
   Checkbox as AriaCheckbox,
   CheckboxGroup as AriaCheckboxGroup,
-  FieldError,
 } from "react-aria-components";
 
+import { SizeContext } from "../context";
 import { Flex } from "../flex";
-import { Description, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -68,19 +69,23 @@ export function CheckboxGroup({
   description,
   errorMessage,
   children,
-  size,
+  size: sizeProp,
   style,
   ...props
 }: CheckboxGroupProps) {
+  const size = sizeProp || use(SizeContext);
+
   return (
-    <AriaCheckboxGroup {...props} {...stylex.props(styles.group, style)}>
-      {label != null && <Label size={size}>{label}</Label>}
-      <Flex direction="column" gap="2">
-        {children}
-      </Flex>
-      {description && <Description size={size}>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaCheckboxGroup>
+    <SizeContext value={size}>
+      <AriaCheckboxGroup {...props} {...stylex.props(styles.group, style)}>
+        <Label>{label}</Label>
+        <Flex direction="column" gap="2">
+          {children}
+        </Flex>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      </AriaCheckboxGroup>
+    </SizeContext>
   );
 }
 

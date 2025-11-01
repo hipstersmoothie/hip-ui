@@ -10,12 +10,11 @@ import {
   ComboBox as AriaComboBox,
   ComboBoxProps as AriaComboBoxProps,
   Input,
-  FieldError,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
-import { Description, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { ListBox } from "../listbox";
 import { spacing } from "../theme/spacing.stylex";
 import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
@@ -90,7 +89,7 @@ export function ComboBox<T extends object>({
   return (
     <SizeContext value={size}>
       <AriaComboBox {...props} {...stylex.props(inputStyles.field, style)}>
-        {label && <Label size={size}>{label}</Label>}
+        <Label>{label}</Label>
         <Button {...stylex.props(inputStyles.wrapper)}>
           {prefix != null && (
             <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
@@ -108,8 +107,8 @@ export function ComboBox<T extends object>({
             </IconButton>
           </div>
         </Button>
-        {description && <Description size={size}>{description}</Description>}
-        <FieldError>{errorMessage}</FieldError>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
         <Popover
           containerPadding={8}
           shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}

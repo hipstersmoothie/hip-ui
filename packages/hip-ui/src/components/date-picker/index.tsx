@@ -9,14 +9,13 @@ import {
   Group,
   Dialog,
   Popover as AriaPopover,
-  FieldError,
 } from "react-aria-components";
 
 import { Calendar, CalendarProps } from "../calendar";
 import { SizeContext } from "../context";
 import { DateField } from "../date-field";
 import { IconButton } from "../icon-button";
-import { Description, ErrorMessage, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { spacing } from "../theme/spacing.stylex";
 import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
@@ -56,7 +55,7 @@ export function DatePicker<T extends DateValue>({
   return (
     <SizeContext value={size}>
       <AriaDatePicker {...props} {...stylex.props(inputStyles.field, style)}>
-        {label != null && <Label size={size}>{label}</Label>}
+        <Label>{label}</Label>
         <Group>
           <DateField
             variant={variant}
@@ -71,12 +70,8 @@ export function DatePicker<T extends DateValue>({
             }
           />
         </Group>
-        {description && <Description size={size}>{description}</Description>}
-        {errorMessage && (
-          <ErrorMessage>
-            <FieldError>{errorMessage}</FieldError>
-          </ErrorMessage>
-        )}
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
         <AriaPopover
           {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
         >

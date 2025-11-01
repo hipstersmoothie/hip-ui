@@ -6,12 +6,11 @@ import {
   InputProps,
   TextFieldProps,
   ValidationResult,
-  FieldError,
   TextField as AriaTextField,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { Description, Label } from "../label";
+import { Description, FieldErrorMessage, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -145,29 +144,35 @@ export function TextArea({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
-      {label != null && <Label size={size}>{label}</Label>}
-      {/* 
+    <SizeContext value={size}>
+      <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
+        <Label>{label}</Label>
+        {/* 
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}
-      {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-      <div
-        {...stylex.props(styles.inputWrapper, ui.bgUi, ui.text)}
-        onClick={() => textAreaRef.current?.focus()}
-      >
-        {prefix != null && <div {...stylex.props(styles.addon)}>{prefix}</div>}
-        <AriaTextArea
-          data-size={size}
-          {...stylex.props(styles.input, isResizable && styles.resizable)}
-          ref={textAreaRef}
-          placeholder={placeholder}
-          rows={rows}
-        />
-        {suffix != null && <div {...stylex.props(styles.addon)}>{suffix}</div>}
-      </div>
-      {description && <Description size={size}>{description}</Description>}
-      <FieldError>{errorMessage}</FieldError>
-    </AriaTextField>
+        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
+        <div
+          {...stylex.props(styles.inputWrapper, ui.bgUi, ui.text)}
+          onClick={() => textAreaRef.current?.focus()}
+        >
+          {prefix != null && (
+            <div {...stylex.props(styles.addon)}>{prefix}</div>
+          )}
+          <AriaTextArea
+            data-size={size}
+            {...stylex.props(styles.input, isResizable && styles.resizable)}
+            ref={textAreaRef}
+            placeholder={placeholder}
+            rows={rows}
+          />
+          {suffix != null && (
+            <div {...stylex.props(styles.addon)}>{suffix}</div>
+          )}
+        </div>
+        <Description>{description}</Description>
+        <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      </AriaTextField>
+    </SizeContext>
   );
 }
