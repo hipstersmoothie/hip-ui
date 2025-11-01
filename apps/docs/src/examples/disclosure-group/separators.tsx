@@ -5,15 +5,21 @@ import {
   DisclosurePanel,
   DisclosureTitle,
 } from "@/components/disclosure";
-import { DisclosureGroup } from "@/components/disclosure-group";
+import {
+  DisclosureGroup,
+  DisclosureGroupSeparator,
+} from "@/components/disclosure-group";
+
+import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   root: {
+    gap: spacing["2"],
     width: "100%",
   },
 });
 
-export function Basic() {
+export function Separators() {
   return (
     <DisclosureGroup style={styles.root}>
       <Disclosure id="personal">
@@ -23,6 +29,7 @@ export function Basic() {
           contact details.
         </DisclosurePanel>
       </Disclosure>
+      <DisclosureGroupSeparator />
       <Disclosure id="billing">
         <DisclosureTitle>Billing Address</DisclosureTitle>
         <DisclosurePanel>
@@ -30,6 +37,7 @@ export function Basic() {
           information.
         </DisclosurePanel>
       </Disclosure>
+      <DisclosureGroupSeparator />
       <Disclosure id="preferences">
         <DisclosureTitle>Preferences</DisclosureTitle>
         <DisclosurePanel>

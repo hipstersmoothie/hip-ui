@@ -8,12 +8,20 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
+import { uiColor } from "../theme/semantic-color.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   group: {
     display: "flex",
     flexDirection: "column",
+  },
+  separator: {
+    backgroundColor: uiColor.border2,
+    borderWidth: 0,
+    height: "1px",
+    margin: 0,
+    width: "100%",
   },
 });
 
@@ -38,4 +46,11 @@ export function DisclosureGroup({
       />
     </SizeContext>
   );
+}
+
+export interface SeparatorProps
+  extends StyleXComponentProps<React.HTMLAttributes<HTMLDivElement>> {}
+
+export function DisclosureGroupSeparator({ style, ...props }: SeparatorProps) {
+  return <div {...props} {...stylex.props(styles.separator, style)} />;
 }

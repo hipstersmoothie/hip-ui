@@ -9,6 +9,7 @@ import { Basic } from '../../examples/disclosure-group/basic'
 import { DefaultExpanded } from '../../examples/disclosure-group/default-expanded'
 import { MultipleExpanded } from '../../examples/disclosure-group/multiple-expanded'
 import { Sizes } from '../../examples/disclosure-group/sizes'
+import { Separators } from '../../examples/disclosure-group/separators'
 
 <Example src={Basic} />
 
@@ -24,7 +25,7 @@ pnpm hip install disclosure-group
 
 This component is built using [React Aria DisclosureGroup](https://react-spectrum.adobe.com/react-aria/DisclosureGroup.html).
 
-<PropDocs components={["DisclosureGroup"]} />
+<PropDocs components={["DisclosureGroup", "DisclosureGroupSeparator"]} />
 
 ## Features
 
@@ -45,6 +46,12 @@ By default, DisclosureGroup allows only one disclosure to be expanded at a time 
 DisclosureGroup supports three different sizes: small, medium, and large. The size prop is passed down to all child Disclosure components via SizeContext.
 
 <Example src={Sizes} />
+
+### Separators
+
+You can add separators between each disclosure by using the `DisclosureGroupSeparator` component.
+
+<Example src={Separators} />
 
 ## Related Components
 
