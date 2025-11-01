@@ -31,10 +31,48 @@ function content() {
 
   let files: string[] = [];
 
+  async function getFiles() {
+    files = await glob("src/docs/**/*.mdx");
+  }
+
   return {
-    name: "my-plugin", // required, will show up in warnings and errors
+    name: "my-plugin",
     buildStart: async () => {
-      files = await glob("src/docs/**/*.mdx");
+      await getFiles();
+    },
+    configureServer(server) {
+      server.watcher.add("src/docs/**/*.mdx");
+      server.watcher.on("add", (file) => {
+        if (file.endsWith(".mdx") && file.includes("docs/src/docs/")) {
+          // Invalidate module cache
+          const mod = server.moduleGraph.getModuleById(resolvedVirtualModuleId);
+
+          getFiles()
+            .then(() => {
+              if (mod) {
+                server.moduleGraph.invalidateModule(mod);
+                server.ws.send({
+                  type: "full-reload",
+                  path: "*",
+                });
+              }
+            })
+            .catch(console.error);
+        }
+      });
+      server.watcher.on("unlink", (file) => {
+        if (file.endsWith(".mdx") && file.includes("docs/src/docs/")) {
+          const mod = server.moduleGraph.getModuleById(resolvedVirtualModuleId);
+
+          getFiles()
+            .then(() => {
+              if (mod) {
+                server.moduleGraph.invalidateModule(mod);
+              }
+            })
+            .catch(console.error);
+        }
+      });
     },
     resolveId(id) {
       if (id === virtualModuleId) {
