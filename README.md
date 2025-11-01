@@ -35,13 +35,11 @@
 - [ ] Drawer
 - [ ] Sheet
 
-- [ ] Disclosure
 - [ ] Disclosure Group
 - [ ] Form
 - [ ] Grid List
 - [ ] Menubar
 - [ ] Navigation Menu
-- [ ] Spinner
 - [ ] Tabs
 - [ ] Toolbar
 - [ ] Toast
@@ -53,6 +51,8 @@
 
 ### Done
 
+- [x] Disclosure
+- [x] Spinner
 - [x] Input Group
 - [x] Breadcrumb
 - [x] Range Date Picker
