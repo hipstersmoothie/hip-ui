@@ -40,7 +40,6 @@ export function AspectRatio({
   rounded = true,
   ...props
 }: AspectRatioProps) {
-  console.log(style);
   return (
     <div
       {...props}

@@ -19,8 +19,15 @@ declare global {
 import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
 import { LinkIcon } from "lucide-react";
-import { createContext, use, useEffect, useRef, useState } from "react";
-import { pages, tableOfContents } from "virtual:content";
+import {
+  createContext,
+  Suspense,
+  use,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
+import { modules, pages } from "virtual:content";
 
 import { Flex } from "@/components/flex";
 import { Grid } from "@/components/grid";
@@ -284,11 +291,17 @@ const components: MDXComponents = {
 
 export const Route = createFileRoute("/docs/$")({
   component: RouteComponent,
+  loader: async ({ location }) => {
+    return {
+      toc: await modules[location.pathname].then((mod) => mod.toc),
+    };
+  },
 });
 
 function RouteComponent() {
   const { _splat } = Route.useParams();
   const location = useLocation();
+  const { toc } = Route.useLoaderData();
   const doc = allDocs.find((d) => location.pathname.includes(d._meta.path));
 
   if (!doc) {
@@ -296,13 +309,16 @@ function RouteComponent() {
   }
 
   const Content = pages[location.pathname];
+
+  if (!Content) {
+    throw new Error(`Content not found: ${location.pathname}`);
+  }
+
   const isShowcase = location.pathname.includes("showcase");
 
   if (isShowcase) {
     return <Content components={components} />;
   }
-
-  const toc = tableOfContents[location.pathname];
 
   return (
     <Grid
@@ -317,7 +333,9 @@ function RouteComponent() {
             {doc.description}
           </Text>
         </Flex>
-        <Content components={components} />
+        <Suspense fallback={<div>Loading...</div>}>
+          <Content components={components} />
+        </Suspense>
       </div>
       <TableOfContents toc={toc} />
     </Grid>

@@ -3,12 +3,12 @@ declare module "virtual:content" {
 
   import { Toc } from "@stefanprobst/rehype-extract-toc";
 
-  export const pages: Record<
-    string,
-    React.ComponentType<{ components: MDXComponents }>
-  >;
+  type Page = React.ComponentType<{
+    components: MDXComponents;
+  }>;
 
-  export const tableOfContents: Record<string, Toc>;
+  export const pages: Partial<Record<string, React.LazyExoticComponent<Page>>>;
+  export const modules: Record<string, Promise<{ default: Page; toc: Toc }>>;
 }
 
 declare module "virtual:propDocs" {

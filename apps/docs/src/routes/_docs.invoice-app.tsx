@@ -35,17 +35,17 @@ import { Menu, MenuItem, MenuSeparator } from "@/components/menu";
 import { Separator } from "@/components/separator";
 import { Switch } from "@/components/switch";
 import { TextField } from "@/components/text-field";
-import {
-  ui,
-  primary,
-  successColor,
-  primaryColor,
-} from "@/components/theme/semantic-color.stylex";
 import { ToggleButton } from "@/components/toggle-button";
 import { Body, Heading5, SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
 import { radius } from "../components/theme/radius.stylex";
+import {
+  ui,
+  primary,
+  successColor,
+  primaryColor,
+} from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontFamily, typeramp } from "../components/theme/typography.stylex";
 

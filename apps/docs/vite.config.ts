@@ -20,6 +20,10 @@ import stylexPlugin from "unplugin-stylex/vite";
 import { defineConfig, PluginOption } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
+function toSlug(file: string) {
+  return file.replace("src/", "/").replace(".mdx", "");
+}
+
 /** Generate a virtual model that imports all the content files. */
 function content() {
   const virtualModuleId = "virtual:content";
@@ -40,34 +44,20 @@ function content() {
     load(id) {
       if (id === resolvedVirtualModuleId) {
         return dedent`
-          ${files
-            .map((file) => {
-              const slug = file.replace("src/", "/").replace(".mdx", "");
-              return `import ${camelCase(slug)} from "${path.resolve(file)}";`;
-            })
-            .join("\n")}
-          ${files
-            .map((file) => {
-              const slug = file.replace("src/", "/").replace(".mdx", "");
-              return `import { toc as ${camelCase(`${slug}-toc`)} } from "${path.resolve(file)}";`;
-            })
-            .join("\n")}
+          import { lazy } from "react";
 
-          export const pages = {
+          export const modules = {
             ${files
-              .map((file) => {
-                const slug = file.replace("src/", "/").replace(".mdx", "");
-                return `"${slug}": ${camelCase(slug)},`;
-              })
+              .map((file) => `"${toSlug(file)}": import("/${file}"),`)
               .join("\n")}
           };
 
-          export const tableOfContents = {
+          export const pages = {
             ${files
-              .map((file) => {
-                const slug = file.replace("src/", "/").replace(".mdx", "");
-                return `"${slug}": ${camelCase(`${slug}-toc`)},`;
-              })
+              .map(
+                (file) =>
+                  `"${toSlug(file)}": lazy(() => modules["${toSlug(file)}"]),`,
+              )
               .join("\n")}
           };
         `;
