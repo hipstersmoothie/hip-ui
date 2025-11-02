@@ -32,8 +32,8 @@ import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { datePickerConfig } from "../components/date-picker/date-picker-config.js";
 import { dateRangePickerConfig } from "../components/date-range-picker/date-range-picker-config.js";
 import { dialogConfig } from "../components/dialog/dialog-config.js";
-import { disclosureConfig } from "../components/disclosure/disclosure-config.js";
 import { disclosureGroupConfig } from "../components/disclosure-group/disclosure-group-config.js";
+import { disclosureConfig } from "../components/disclosure/disclosure-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { formConfig } from "../components/form/form-config.js";
@@ -62,6 +62,7 @@ import { sidebarConfig } from "../components/sidebar/sidebar-config.js";
 import { sliderConfig } from "../components/slider/slider-config.js";
 import { switchConfig } from "../components/switch/switch-config.js";
 import { tableConfig } from "../components/table/table-config.js";
+import { tabsConfig } from "../components/tabs/tabs-config.js";
 import { tagGroupConfig } from "../components/tag-group/tag-group-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
 import { textFieldConfig } from "../components/text-field/text-field-config.js";
@@ -142,6 +143,7 @@ const COMPONENT_CONFIGS = [
   colorPickerConfig,
   calendarConfig,
   rangeCalendarConfig,
+  tabsConfig,
 ];
 
 function StringSetting({

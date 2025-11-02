@@ -36,7 +36,6 @@
 - [ ] Sheet
 - [ ] Grid List
 - [ ] Navigation Menu
-- [ ] Tabs
 - [ ] Toast
 
 ### Maybe
@@ -46,6 +45,7 @@
 
 ### Done
 
+- [x] Tabs
 - [x] Menubar
 - [x] Form
 - [x] Toolbar
