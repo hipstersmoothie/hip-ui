@@ -45,6 +45,7 @@ import { labelConfig } from "../components/label/label-config.js";
 import { linkConfig } from "../components/link/link-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
+import { menubarConfig } from "../components/menubar/menubar-config.js";
 import { meterConfig } from "../components/meter/meter-config.js";
 import { numberFieldConfig } from "../components/number-field/number-field-config.js";
 import { paginationConfig } from "../components/pagination/pagination-config.js";
@@ -97,6 +98,7 @@ const COMPONENT_CONFIGS = [
   toggleButtonGroupConfig,
   toolbarConfig,
   menuConfig,
+  menubarConfig,
   listboxConfig,
   contextMenuConfig,
   timeFieldConfig,

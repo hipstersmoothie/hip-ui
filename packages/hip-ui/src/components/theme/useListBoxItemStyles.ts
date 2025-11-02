@@ -76,6 +76,8 @@ const styles = stylex.create({
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
+    marginBottom: `calc(${spacing["2"]} * -1)`,
+    marginTop: `calc(${spacing["2"]} * -1)`,
     minWidth: spacing["4"],
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles

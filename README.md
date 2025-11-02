@@ -34,10 +34,7 @@
 
 - [ ] Drawer
 - [ ] Sheet
-
-- [ ] Form
 - [ ] Grid List
-- [ ] Menubar
 - [ ] Navigation Menu
 - [ ] Tabs
 - [ ] Toast
@@ -49,6 +46,8 @@
 
 ### Done
 
+- [x] Menubar
+- [x] Form
 - [x] Toolbar
 - [x] Disclosure Group
 - [x] Disclosure

@@ -34,7 +34,6 @@ const styles = stylex.create({
     borderRadius: radius["md"],
     borderWidth: 0,
     color: uiColor.text1,
-    cursor: "pointer",
     display: "flex",
     fontFamily: fontFamily["sans"],
     fontSize: {

@@ -302,7 +302,9 @@ function RouteComponent() {
   const { _splat } = Route.useParams();
   const location = useLocation();
   const { toc } = Route.useLoaderData();
-  const doc = allDocs.find((d) => location.pathname.includes(d._meta.path));
+  const doc = allDocs.find((d) =>
+    location.pathname.match(new RegExp(`${d._meta.path}$`)),
+  );
 
   if (!doc) {
     throw new Error(`Doc not found: ${_splat ?? "unknown"}`);
