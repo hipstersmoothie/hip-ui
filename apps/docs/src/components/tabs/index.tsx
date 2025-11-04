@@ -17,6 +17,7 @@ import {
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
+import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -36,12 +37,30 @@ const styles = stylex.create({
       ":is([data-orientation=horizontal])": "flex-start",
       ":is([data-orientation=vertical])": "stretch",
     },
-    borderImageSlice: {
-      ":is([data-orientation=horizontal])": "0 0 1",
-      ":is([data-orientation=vertical])": "0 1 0 0",
+    borderBottomColor: {
+      ":is([data-orientation=horizontal])": uiColor.border2,
+      ":is([data-orientation=vertical])": "transparent",
     },
-    borderImageSource: `conic-gradient(${uiColor.border2} 0 0)`,
-    borderImageWidth: "1px",
+    borderBottomStyle: {
+      ":is([data-orientation=horizontal])": "solid",
+      ":is([data-orientation=vertical])": "none",
+    },
+    borderBottomWidth: {
+      ":is([data-orientation=horizontal])": 1,
+      ":is([data-orientation=vertical])": 0,
+    },
+    borderRightColor: {
+      ":is([data-orientation=horizontal])": "transparent",
+      ":is([data-orientation=vertical])": uiColor.border2,
+    },
+    borderRightStyle: {
+      ":is([data-orientation=horizontal])": "none",
+      ":is([data-orientation=vertical])": "solid",
+    },
+    borderRightWidth: {
+      ":is([data-orientation=horizontal])": 0,
+      ":is([data-orientation=vertical])": 1,
+    },
     display: "flex",
     flexDirection: {
       ":is([data-orientation=horizontal])": "row",
@@ -149,10 +168,18 @@ const styles = stylex.create({
     },
     outline: "none",
     padding: {
-      ":is([data-size=sm] *)": spacing["2.5"],
+      ":is([data-size=sm] *)": spacing["3"],
       ":is([data-size=md] *)": spacing["4"],
       ":is([data-size=lg] *)": spacing["5"],
     },
+  },
+  focusRing: {
+    borderRadius: radius["sm"],
+    outline: {
+      default: "none",
+      ":is([data-focus-visible] *)": `2px solid ${uiColor.solid1}`,
+    },
+    outlineOffset: "2px",
   },
 });
 
@@ -210,7 +237,7 @@ export interface TabProps
 
 export function Tab({ children, style, ...props }: TabProps) {
   return (
-    <AriaTab {...props} {...stylex.props(styles.tab, style)}>
+    <AriaTab {...props} {...stylex.props(styles.tab, styles.focusRing, style)}>
       <SelectionIndicator {...stylex.props(styles.selectionIndicator)} />
       {children}
     </AriaTab>
@@ -224,7 +251,10 @@ export interface TabPanelProps
 
 export function TabPanel({ children, style, ...props }: TabPanelProps) {
   return (
-    <AriaTabPanel {...props} {...stylex.props(styles.tabPanel, style)}>
+    <AriaTabPanel
+      {...props}
+      {...stylex.props(styles.tabPanel, styles.focusRing, style)}
+    >
       {children}
     </AriaTabPanel>
   );

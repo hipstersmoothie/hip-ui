@@ -1,0 +1,56 @@
+---
+title: Drawer
+description: A modal drawer component that slides in from the side for displaying content in an overlay.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/drawer/basic'
+import { DrawerSizes } from '../../examples/drawer/sizes'
+import { DrawerDirections } from '../../examples/drawer/directions'
+import { DrawerNonModal } from '../../examples/drawer/non-modal'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the drawer component to your project.
+
+```bash
+pnpm hip install drawer
+```
+
+## Props
+
+This component is built using the [React Aria Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html).
+
+<PropDocs components={["Drawer", "DrawerHeader", "DrawerDescription", "DrawerBody", "DrawerFooter"]} />
+
+## Features
+
+### Sizes
+
+Drawers support different sizes to accommodate various content types.
+
+<Example src={DrawerSizes} />
+
+### Directions
+
+Drawers can be positioned in four different directions: left, right, top, and bottom.
+
+<Example src={DrawerDirections} />
+
+### Non-Modal
+
+If you need the page to be interactive while the drawer is open, you can set the `isNonModal` prop to `true`.
+
+<Example src={DrawerNonModal} />
+
+## Related Components
+
+- [Dialog](/docs/components/dialog) - For centered modal dialogs
+- [AlertDialog](/docs/components/alert-dialog) - For critical actions and confirmations
+- [Popover](/docs/components/popover) - For non-modal overlays
+- [Button](/docs/components/button) - For drawer action buttons
+- [Form](/docs/components/form) - For forms within drawers
+

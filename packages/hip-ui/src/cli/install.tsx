@@ -34,6 +34,7 @@ import { dateRangePickerConfig } from "../components/date-range-picker/date-rang
 import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { disclosureGroupConfig } from "../components/disclosure-group/disclosure-group-config.js";
 import { disclosureConfig } from "../components/disclosure/disclosure-config.js";
+import { drawerConfig } from "../components/drawer/drawer-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { formConfig } from "../components/form/form-config.js";
@@ -144,6 +145,7 @@ const COMPONENT_CONFIGS = [
   calendarConfig,
   rangeCalendarConfig,
   tabsConfig,
+  drawerConfig,
 ];
 
 function StringSetting({

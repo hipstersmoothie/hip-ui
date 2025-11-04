@@ -68,14 +68,7 @@ export function useDialogStyles({ size: sizeProp }: { size?: Size }) {
 
   return {
     overlay: styles.overlay,
-    modal: [
-      styles.modal,
-      styles.modal,
-      ui.bg,
-      ui.text,
-      ui.border,
-      styles.size(size),
-    ],
+    modal: [styles.modal, ui.bg, ui.text, ui.border, styles.size(size)],
     dialog: styles.dialog,
   };
 }

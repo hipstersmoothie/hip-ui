@@ -32,7 +32,6 @@
 
 #### react-aria wrappers
 
-- [ ] Drawer
 - [ ] Sheet
 - [ ] Grid List
 - [ ] Navigation Menu
@@ -45,6 +44,7 @@
 
 ### Done
 
+- [x] Drawer
 - [x] Tabs
 - [x] Menubar
 - [x] Form

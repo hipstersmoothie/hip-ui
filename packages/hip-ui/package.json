@@ -31,6 +31,7 @@
     "@react-aria/utils": "^3.31.0",
     "@react-stately/utils": "catalog:",
     "@react-types/overlays": "catalog:",
+    "@react-types/shared": "^3.32.1",
     "@stylexjs/stylex": "catalog:",
     "change-case": "catalog:",
     "command-line-application": "^0.10.1",

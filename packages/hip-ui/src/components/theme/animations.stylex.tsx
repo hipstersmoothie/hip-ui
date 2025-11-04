@@ -18,9 +18,89 @@ const zoomIn = stylex.keyframes({
   },
 });
 
+const slideInRight = stylex.keyframes({
+  from: {
+    transform: "translateX(100%)",
+  },
+  to: {
+    transform: "translateX(0)",
+  },
+});
+
+const slideOutRight = stylex.keyframes({
+  from: {
+    transform: "translateX(0)",
+  },
+  to: {
+    transform: "translateX(100%)",
+  },
+});
+
+const slideInLeft = stylex.keyframes({
+  from: {
+    transform: "translateX(-100%)",
+  },
+  to: {
+    transform: "translateX(0)",
+  },
+});
+
+const slideOutLeft = stylex.keyframes({
+  from: {
+    transform: "translateX(0)",
+  },
+  to: {
+    transform: "translateX(-100%)",
+  },
+});
+
+const slideInTop = stylex.keyframes({
+  from: {
+    transform: "translateY(-100%)",
+  },
+  to: {
+    transform: "translateY(0)",
+  },
+});
+
+const slideOutTop = stylex.keyframes({
+  from: {
+    transform: "translateY(0)",
+  },
+  to: {
+    transform: "translateY(-100%)",
+  },
+});
+
+const slideInBottom = stylex.keyframes({
+  from: {
+    transform: "translateY(100%)",
+  },
+  to: {
+    transform: "translateY(0)",
+  },
+});
+
+const slideOutBottom = stylex.keyframes({
+  from: {
+    transform: "translateY(0)",
+  },
+  to: {
+    transform: "translateY(100%)",
+  },
+});
+
 export const animations = stylex.defineVars({
   fadeIn,
   zoomIn,
+  slideInRight,
+  slideOutRight,
+  slideInLeft,
+  slideOutLeft,
+  slideInTop,
+  slideOutTop,
+  slideInBottom,
+  slideOutBottom,
 });
 
 export const animationDuration = stylex.defineVars({

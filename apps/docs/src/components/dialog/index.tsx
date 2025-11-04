@@ -88,10 +88,7 @@ export const Dialog = ({
     >
       {trigger}
 
-      <ModalOverlay
-        isKeyboardDismissDisabled
-        {...stylex.props(dialogStyles.overlay)}
-      >
+      <ModalOverlay {...stylex.props(dialogStyles.overlay)} isDismissable>
         <Modal {...stylex.props(dialogStyles.modal)}>
           <AriaDialog {...stylex.props(dialogStyles.dialog, styles.dialog)}>
             {children}

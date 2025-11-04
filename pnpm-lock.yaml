@@ -377,6 +377,9 @@ importers:
       '@react-types/overlays':
         specifier: 'catalog:'
         version: 3.9.2(react@19.2.0)
+      '@react-types/shared':
+        specifier: ^3.32.1
+        version: 3.32.1(react@19.2.0)
       '@stylexjs/stylex':
         specifier: 'catalog:'
         version: 0.16.2
