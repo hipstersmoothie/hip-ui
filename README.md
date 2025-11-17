@@ -26,7 +26,6 @@
 
 #### OTher Wrappers
 
-- [ ] Canvas (tldraw)
 - [ ] RichTextEditor (lexical)
 - [ ] Window Splitter
 

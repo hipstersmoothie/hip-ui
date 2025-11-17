@@ -13,6 +13,7 @@ export const numberFieldConfig: ComponentConfig = {
     "../theme/useInputStyles.ts",
   ],
   dependencies: {
+    "@react-aria/overlays": "^3.30.0",
     "lucide-react": "^0.545.0",
   },
 };

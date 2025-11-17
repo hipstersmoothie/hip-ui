@@ -1,6 +1,8 @@
+import { useUNSAFE_PortalContext } from "@react-aria/overlays";
 import * as stylex from "@stylexjs/stylex";
-import { Minus, Plus } from "lucide-react";
+import { Minus, MoveHorizontal, Plus } from "lucide-react";
 import { use, useRef } from "react";
+import { mergeProps } from "react-aria";
 import {
   NumberFieldProps as AriaNumberFieldProps,
   Input,
@@ -9,7 +11,9 @@ import {
   NumberField as AriaNumberField,
   Group,
   Button,
+  NumberFieldStateContext,
 } from "react-aria-components";
+import { createPortal } from "react-dom";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
@@ -17,8 +21,62 @@ import { ui, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { InputVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
+import { usePointerLock } from "./usePointerLock";
+
+interface NumberInputWrapperProps {
+  style: stylex.StyleXStyles;
+  onClick: () => void;
+  children: React.ReactNode;
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function NumberInputWrapper({
+  style,
+  onClick,
+  children,
+}: NumberInputWrapperProps) {
+  const state = use(NumberFieldStateContext);
+  const { lockProps, isLocked, cursorProps } = usePointerLock({
+    onMove(e) {
+      if (!state) return;
+      state.setNumberValue(
+        clamp(
+          state.numberValue + e.deltaX,
+          state.minValue ?? -Infinity,
+          state.maxValue ?? Infinity,
+        ),
+      );
+    },
+  });
+  const { getContainer } = useUNSAFE_PortalContext();
+
+  return (
+    <div
+      {...stylex.props(styles.wrapper, style)}
+      {...mergeProps(lockProps, { onClick })}
+    >
+      {children}
+      {isLocked &&
+        createPortal(
+          <div {...cursorProps}>
+            <MoveHorizontal size={16} />
+          </div>,
+          getContainer?.() ?? document.body,
+        )}
+    </div>
+  );
+}
 
 const styles = stylex.create({
+  wrapper: {
+    cursor: "ew-resize",
+  },
+  input: {
+    cursor: "text",
+  },
   buttons: {
     display: "flex",
   },
@@ -93,9 +151,8 @@ export function NumberField({
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}
-        {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
-        <div
-          {...stylex.props(inputStyles.wrapper)}
+        <NumberInputWrapper
+          style={inputStyles.wrapper}
           onClick={() => inputRef.current?.focus()}
         >
           {prefix != null && (
@@ -104,7 +161,7 @@ export function NumberField({
           <Input
             placeholder={placeholder}
             ref={inputRef}
-            {...stylex.props(inputStyles.input)}
+            {...stylex.props(styles.input, inputStyles.input)}
           />
           {suffix != null && (
             <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
@@ -119,7 +176,7 @@ export function NumberField({
               </Button>
             </Group>
           )}
-        </div>
+        </NumberInputWrapper>
         <Description>{description}</Description>
         <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
       </AriaNumberField>

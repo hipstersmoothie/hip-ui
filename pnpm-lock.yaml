@@ -83,6 +83,9 @@ importers:
       '@mdx-js/rollup':
         specifier: ^3.1.1
         version: 3.1.1(rollup@4.52.5)
+      '@react-aria/overlays':
+        specifier: ^3.30.0
+        version: 3.30.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-aria/utils':
         specifier: ^3.31.0
         version: 3.31.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -374,6 +377,9 @@ importers:
       '@radix-ui/colors':
         specifier: ^3.0.0
         version: 3.0.0
+      '@react-aria/overlays':
+        specifier: ^3.30.0
+        version: 3.30.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       '@react-aria/utils':
         specifier: ^3.31.0
         version: 3.31.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)

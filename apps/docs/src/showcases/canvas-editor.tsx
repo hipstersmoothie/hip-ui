@@ -970,6 +970,7 @@ function DimensionsProperties() {
                   hideStepper
                   style={styles.grow}
                   value={shape.props.w}
+                  minValue={1}
                   prefix={
                     <Text size="xs" weight="semibold" variant="secondary">
                       W
@@ -988,6 +989,7 @@ function DimensionsProperties() {
                   hideStepper
                   style={styles.grow}
                   value={shape.props.h}
+                  minValue={1}
                   prefix={
                     <Text size="xs" weight="semibold" variant="secondary">
                       H
@@ -1249,7 +1251,7 @@ export function CanvasEditor() {
           components={{
             Toolbar: null,
             NavigationPanel: null,
-            // MenuPanel: null,
+            MenuPanel: null,
             StylePanel: null,
           }}
         >
