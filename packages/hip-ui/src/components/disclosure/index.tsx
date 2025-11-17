@@ -45,9 +45,9 @@ const styles = stylex.create({
     gap: spacing["2"],
     justifyContent: "space-between",
     padding: {
-      ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["3"]}`,
-      ":is([data-size=md] *)": `${spacing["3"]} ${spacing["4"]}`,
-      ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["5"]}`,
+      ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["2"]}`,
+      ":is([data-size=md] *)": `${spacing["3"]} ${spacing["3"]}`,
+      ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["4"]}`,
     },
     textAlign: "left",
     transitionDuration: animationDuration.fast,
@@ -91,9 +91,9 @@ const styles = stylex.create({
   },
   panelContent: {
     padding: {
-      ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["3"]}`,
-      ":is([data-size=md] *)": `${spacing["3"]} ${spacing["4"]}`,
-      ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["5"]}`,
+      ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["2"]}`,
+      ":is([data-size=md] *)": `${spacing["3"]} ${spacing["3"]}`,
+      ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["4"]}`,
     },
   },
 });
@@ -113,15 +113,13 @@ export function Disclosure({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext value={size}>
-      <AriaDisclosure
-        {...props}
-        data-size={size}
-        {...stylex.props(styles.disclosure, style)}
-      >
-        {children}
-      </AriaDisclosure>
-    </SizeContext>
+    <AriaDisclosure
+      {...props}
+      data-size={size}
+      {...stylex.props(styles.disclosure, style)}
+    >
+      {children}
+    </AriaDisclosure>
   );
 }
 

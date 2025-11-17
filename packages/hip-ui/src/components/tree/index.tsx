@@ -15,7 +15,7 @@ import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
-import { ui } from "../theme/semantic-color.stylex";
+import { primaryColor, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
@@ -26,9 +26,13 @@ const styles = stylex.create({
   },
   itemInner: {
     gap: spacing["1"],
+    paddingLeft: spacing["0.5"],
+  },
+  selected: {
+    backgroundColor: primaryColor.component2,
   },
   spacer: {
-    width: `calc((var(--tree-item-level, 0) - 1) * ${spacing["4"]})`,
+    width: `calc((var(--tree-item-level, 0) - 1) * ${spacing["3"]})`,
   },
   content: {
     alignItems: "center",
@@ -50,6 +54,12 @@ const styles = stylex.create({
     transform: {
       default: "rotate(0deg)",
       ":is([aria-expanded=true] *)": "rotate(90deg)",
+    },
+
+    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
+    ":is(*) svg": {
+      height: spacing["3"],
+      width: spacing["3"],
     },
   },
   addon: {
@@ -98,8 +108,15 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
         selectionBehavior,
         selectionMode,
         allowsDragging,
+        isSelected,
       }) => (
-        <div {...stylex.props(listBoxItemStyles.inner, styles.itemInner)}>
+        <div
+          {...stylex.props(
+            listBoxItemStyles.inner,
+            styles.itemInner,
+            isSelected && selectionBehavior === "replace" && styles.selected,
+          )}
+        >
           {allowsDragging && (
             <div {...stylex.props(styles.dragButtonWrapper)}>
               <Button
@@ -117,13 +134,13 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
           <Button
             slot="chevron"
             {...stylex.props(
-              styles.chevron,
               ui.textDim,
               listBoxItemStyles.addon,
+              styles.chevron,
               !hasChildItems && styles.hidden,
             )}
           >
-            <ChevronRight size={16} />
+            <ChevronRight />
           </Button>
 
           <div {...stylex.props(styles.content)}>
@@ -145,27 +162,41 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
   );
 }
 
-interface TreeItemProps<T extends object>
+interface TreeItemBaseProps<T extends object>
   extends StyleXComponentProps<
       Omit<AriaTreeItemProps<T>, "textValue" | "children">
     >,
     Pick<TreeItemContentProps, "prefix" | "suffix"> {
-  title: string;
   children?: React.ReactNode;
 }
+
+interface TreeItemTextProps<T extends object> extends TreeItemBaseProps<T> {
+  title: string;
+  textValue?: string;
+}
+
+interface TreeItemNodeProps<T extends object> extends TreeItemBaseProps<T> {
+  title: React.ReactNode;
+  textValue: string;
+}
+
+type TreeItemProps<T extends object> =
+  | TreeItemTextProps<T>
+  | TreeItemNodeProps<T>;
 
 export function TreeItem<T extends object>({
   style,
   title,
   prefix,
   suffix,
+  textValue,
   ...props
 }: TreeItemProps<T>) {
   const listBoxItemStyles = useListBoxItemStyles();
 
   return (
     <AriaTreeItem
-      textValue={title}
+      textValue={textValue ?? (typeof title === "string" ? title : "")}
       {...props}
       data-react-aria-pressable
       {...stylex.props(

@@ -20,6 +20,7 @@ export type MeterVariant =
   | "success"
   | "warning"
   | "critical";
+export type ToastVariant = "neuthral" | "success" | "warning" | "critical";
 
 export type StyleXComponentProps<T extends object> = Omit<
   T,

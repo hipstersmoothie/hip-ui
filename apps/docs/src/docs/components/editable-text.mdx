@@ -1,0 +1,40 @@
+---
+title: Editable Text
+description: An inline editable text component that switches between display and edit modes. By default the component will enter edit mode for a long press.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/editable-text/basic'
+import { Composition } from '../../examples/editable-text/composition'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the editable text component to your project.
+
+```bash
+pnpm hip install editable-text
+```
+
+## Props
+
+This component is built using [React Aria Components](https://react-spectrum.adobe.com/react-aria/).
+
+<PropDocs components={["EditableText"]} />
+
+## Features
+
+### Composition
+
+The editable text component can be composed with other components.
+
+<Example src={Composition} />
+
+## Related Components
+
+- [TextField](/docs/components/text-field) - For standard text input fields
+- [TextArea](/docs/components/text-area) - For multi-line text input
+- [Text](/docs/components/text) - For displaying static text
+

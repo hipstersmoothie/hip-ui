@@ -18,10 +18,7 @@ import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
-import {
-  NonModalDrawer,
-  ModalOverlay as NonModalModalOverlay,
-} from "./NonModalDrawer";
+import { NonModalDrawer } from "./NonModalDrawer";
 
 const styles = stylex.create({
   overlay: {

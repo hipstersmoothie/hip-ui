@@ -35,6 +35,7 @@ import { dialogConfig } from "../components/dialog/dialog-config.js";
 import { disclosureGroupConfig } from "../components/disclosure-group/disclosure-group-config.js";
 import { disclosureConfig } from "../components/disclosure/disclosure-config.js";
 import { drawerConfig } from "../components/drawer/drawer-config.js";
+import { editableTextConfig } from "../components/editable-text/editable-text-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { formConfig } from "../components/form/form-config.js";
@@ -68,6 +69,7 @@ import { tagGroupConfig } from "../components/tag-group/tag-group-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
 import { textFieldConfig } from "../components/text-field/text-field-config.js";
 import { timeFieldConfig } from "../components/time-field/time-field-config.js";
+import { toastConfig } from "../components/toast/toast-config.js";
 import { toggleButtonGroupConfig } from "../components/toggle-button-group/toggle-button-group-config.js";
 import { toggleButtonConfig } from "../components/toggle-button/toggle-button-config.js";
 import { toolbarConfig } from "../components/toolbar/toolbar-config.js";
@@ -146,6 +148,8 @@ const COMPONENT_CONFIGS = [
   rangeCalendarConfig,
   tabsConfig,
   drawerConfig,
+  editableTextConfig,
+  toastConfig,
 ];
 
 function StringSetting({

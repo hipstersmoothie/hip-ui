@@ -26,6 +26,7 @@
     "@tanstack/react-router-ssr-query": "^1.133.27",
     "@tanstack/react-start": "^1.133.27",
     "@tanstack/router-plugin": "^1.133.27",
+    "@tldraw/editor": "^4.1.2",
     "change-case": "catalog:",
     "dedent": "catalog:",
     "glob": "^11.0.3",
@@ -42,6 +43,7 @@
     "remark-frontmatter": "^5.0.0",
     "shiki": "^3.13.0",
     "tailwindcss": "^4.1.16",
+    "tldraw": "^4.1.2",
     "unplugin-stylex": "^0.5.5",
     "vite-tsconfig-paths": "^5.1.4"
   },

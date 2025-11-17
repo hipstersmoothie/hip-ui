@@ -19,7 +19,11 @@ const styles = stylex.create({
     userSelect: "none",
 
     boxSizing: "border-box",
-    fontWeight: fontWeight["medium"],
+    fontWeight: {
+      default: fontWeight["normal"],
+      [":is([data-react-aria-pressable=true][data-selected=true])"]:
+        fontWeight["medium"],
+    },
     outline: {
       default: "none",
       ":focus": "none",

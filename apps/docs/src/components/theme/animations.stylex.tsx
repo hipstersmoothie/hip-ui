@@ -9,6 +9,15 @@ const fadeIn = stylex.keyframes({
   },
 });
 
+const fadeOut = stylex.keyframes({
+  from: {
+    opacity: 1,
+  },
+  to: {
+    opacity: 0,
+  },
+});
+
 const zoomIn = stylex.keyframes({
   from: {
     transform: "scale(0.8)",
@@ -92,6 +101,7 @@ const slideOutBottom = stylex.keyframes({
 
 export const animations = stylex.defineVars({
   fadeIn,
+  fadeOut,
   zoomIn,
   slideInRight,
   slideOutRight,

@@ -6,6 +6,7 @@ description: A tree component for displaying hierarchical data with expandable n
 import { PropDocs } from '../../lib/PropDocs'
 import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/tree/basic'
+import { DragAndDrop } from '../../examples/tree/drag-and-drop'
 
 <Example src={Basic} />
 
@@ -22,6 +23,15 @@ pnpm hip install tree
 This component is built using the [React Aria Tree](https://react-spectrum.adobe.com/react-aria/Tree.html).
 
 <PropDocs components={["Tree", "TreeItem"]} />
+
+### Features
+
+#### Drag and Drop
+
+The tree supports drag and drop by providing the `dragAndDropHooks` prop to the `Tree` component.
+React more about it [here](https://react-spectrum.adobe.com/react-aria/Tree.html#drag-and-drop).
+
+<Example src={DragAndDrop} />       
 
 ## Related Components
 

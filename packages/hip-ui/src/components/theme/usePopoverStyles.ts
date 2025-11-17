@@ -10,12 +10,8 @@ const styles = stylex.create({
   popover: {
     borderRadius: radius["md"],
     boxShadow: shadow["md"],
-    minWidth: spacing["40"],
     outline: "none",
     overflow: "auto",
-
-    paddingBottom: spacing["1"],
-    paddingTop: spacing["1"],
   },
   animation: {
     "--origin-x": {
