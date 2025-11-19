@@ -95,6 +95,9 @@ importers:
       '@react-types/overlays':
         specifier: ^3.9.2
         version: 3.9.2(react@19.2.0)
+      '@react-types/shared':
+        specifier: ^3.32.1
+        version: 3.32.1(react@19.2.0)
       '@shikijs/rehype':
         specifier: ^3.13.0
         version: 3.13.0
@@ -131,6 +134,9 @@ importers:
       '@tldraw/editor':
         specifier: ^4.1.2
         version: 4.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@window-splitter/react':
+        specifier: ^1.1.2
+        version: 1.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       change-case:
         specifier: 'catalog:'
         version: 5.4.4
@@ -395,6 +401,9 @@ importers:
       '@stylexjs/stylex':
         specifier: 'catalog:'
         version: 0.16.2
+      '@window-splitter/react':
+        specifier: ^1.0.0
+        version: 1.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
       change-case:
         specifier: 'catalog:'
         version: 5.4.4
@@ -3741,6 +3750,21 @@ packages:
   '@webassemblyjs/wast-printer@1.14.1':
     resolution: {integrity: sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw==}
 
+  '@window-splitter/interface@1.1.2':
+    resolution: {integrity: sha512-WyQITTxVbeWEvmXg4hYAyIOFv+6DYgtEHdmk3UXdE1jfknKKC7FACoXf2ORbe6iurWScofktJLzv7QpIvQyUWg==}
+    engines: {node: '>=18.0.0'}
+
+  '@window-splitter/react@1.1.2':
+    resolution: {integrity: sha512-swD6R2dswg5YFn3wVgGIdXcoycKy2lMTesIaanoz4HquXRUF8AhRnCR902AWS3e+RkiF3TGKr8JT2VGYof3Jeg==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: '>=16'
+      react-dom: '>=16'
+
+  '@window-splitter/state@1.1.2':
+    resolution: {integrity: sha512-R047BIp298PFakzaT2V57PePbGiNkjtJwqbgsRBAhitcS/3hsuYQtYVEvmw9U7gP1l8P3rUCg5l5/ZlAQ9earQ==}
+    engines: {node: '>=18.0.0'}
+
   '@xtuc/ieee754@1.2.0':
     resolution: {integrity: sha512-DX8nKgqcGwsc0eJSqYt5lwP4DH5FlHnmuWWBRy7X0NcaGR0ZtuyeESgMwTYVEtxmsNGY+qit4QYT/MIYTOTPeA==}
 
@@ -3978,6 +4002,9 @@ packages:
 
   bidi-js@1.0.3:
     resolution: {integrity: sha512-RKshQI1R3YQ+n9YJz2QQ147P66ELpa1FQEg20Dk8oW9t2KgLbpDLLp9aGZ7y8WHSshDknG0bknqGw5/tyCs5tw==}
+
+  big.js@6.2.2:
+    resolution: {integrity: sha512-y/ie+Faknx7sZA5MfGA2xKlu0GDv8RWrXGsmlteyJQ2lvoKv9GBK/fpRMc2qlSoBAgNxrixICFCBefIq8WCQpQ==}
 
   binary-extensions@2.3.0:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
@@ -11961,6 +11988,22 @@ snapshots:
       '@webassemblyjs/ast': 1.14.1
       '@xtuc/long': 4.2.2
 
+  '@window-splitter/interface@1.1.2':
+    dependencies:
+      '@window-splitter/state': 1.1.2
+
+  '@window-splitter/react@1.1.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)':
+    dependencies:
+      '@react-aria/utils': 3.31.0(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@window-splitter/interface': 1.1.2
+      '@window-splitter/state': 1.1.2
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+
+  '@window-splitter/state@1.1.2':
+    dependencies:
+      big.js: 6.2.2
+
   '@xtuc/ieee754@1.2.0': {}
 
   '@xtuc/long@4.2.2': {}
@@ -12197,6 +12240,8 @@ snapshots:
   bidi-js@1.0.3:
     dependencies:
       require-from-string: 2.0.2
+
+  big.js@6.2.2: {}
 
   binary-extensions@2.3.0: {}
 

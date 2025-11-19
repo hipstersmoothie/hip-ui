@@ -76,6 +76,7 @@ import { toolbarConfig } from "../components/toolbar/toolbar-config.js";
 import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
 import { treeConfig } from "../components/tree/tree-config.js";
 import { typographyConfig } from "../components/typography/typography-config.js";
+import { windowSplitterConfig } from "../components/window-splitter/window-splitter-config.js";
 import { ComponentConfig } from "../types.js";
 import { ConfigOptions, getConfig, setConfig } from "./config.js";
 
@@ -150,6 +151,7 @@ const COMPONENT_CONFIGS = [
   drawerConfig,
   editableTextConfig,
   toastConfig,
+  windowSplitterConfig,
 ];
 
 function StringSetting({

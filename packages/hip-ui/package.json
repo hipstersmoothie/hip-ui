@@ -34,6 +34,7 @@
     "@react-types/overlays": "catalog:",
     "@react-types/shared": "^3.32.1",
     "@stylexjs/stylex": "catalog:",
+    "@window-splitter/react": "^1.0.0",
     "change-case": "catalog:",
     "command-line-application": "^0.10.1",
     "dedent": "catalog:",

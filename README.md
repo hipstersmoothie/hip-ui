@@ -27,7 +27,6 @@
 #### OTher Wrappers
 
 - [ ] RichTextEditor (lexical)
-- [ ] Window Splitter
 
 #### react-aria wrappers
 
@@ -42,6 +41,7 @@
 
 ### Done
 
+- [x] Window Splitter
 - [x] Toast
 - [x] Drawer
 - [x] Tabs
