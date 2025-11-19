@@ -48,7 +48,11 @@ const styles = stylex.create({
     },
   },
   inputWrapper: {
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["2xl"],
+    },
+    cornerShape: "squircle",
     boxSizing: "border-box",
     display: "flex",
     flexGrow: 1,

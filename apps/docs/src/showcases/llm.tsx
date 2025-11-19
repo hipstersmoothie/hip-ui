@@ -46,7 +46,11 @@ const styles = stylex.create({
   main: {
     backgroundColor: uiColor.bg,
     borderColor: uiColor.border1,
-    borderRadius: radius.lg,
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["2xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     boxShadow: shadow.md,
@@ -101,7 +105,11 @@ const styles = stylex.create({
   copyBox: {
     backgroundColor: uiColor.bgSubtle,
     borderColor: uiColor.border1,
-    borderRadius: radius.md,
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     paddingBottom: spacing["1"],
@@ -112,7 +120,11 @@ const styles = stylex.create({
   preview: {
     backgroundColor: uiColor.component3,
     borderColor: uiColor.border2,
-    borderRadius: radius.md,
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     padding: spacing["4"],

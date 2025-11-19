@@ -38,6 +38,8 @@ const styles = stylex.create({
   },
   menu: {
     outline: "none",
+    paddingTop: spacing["0.5"],
+    paddingBottom: spacing["0.5"],
   },
 });
 
@@ -155,7 +157,7 @@ export function SubMenu<T extends object>({
         {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
       >
         {header}
-        <AriaMenu {...props} />
+        <AriaMenu {...props} {...stylex.props(styles.menu)} />
         {footer}
       </Popover>
     </SubmenuTrigger>

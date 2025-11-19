@@ -10,7 +10,6 @@ import {
   Dialog,
 } from "react-aria-components";
 
-import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
@@ -22,7 +21,6 @@ const styles = stylex.create({
   },
   wrapper: {
     borderColor: uiColor.border2,
-    borderRadius: radius["md"],
     borderStyle: "solid",
     borderWidth: 1,
   },

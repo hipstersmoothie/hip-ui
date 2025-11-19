@@ -45,7 +45,11 @@ const styles = stylex.create({
       [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
         uiColor.component3,
     },
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     boxSizing: "border-box",
     color: {
       default: uiColor.text2,
@@ -84,7 +88,7 @@ const styles = stylex.create({
     marginTop: `calc(${spacing["2"]} * -1)`,
     minWidth: spacing["4"],
 
-    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
+    // eslint-disa le-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
       height: spacing["4"],

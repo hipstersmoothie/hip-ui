@@ -24,7 +24,11 @@ const styles = stylex.create({
   },
   base: {
     alignItems: "center",
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["full"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     boxSizing: "border-box",
@@ -144,7 +148,6 @@ export const useButtonStyles = ({
   const group = use(ButtonGroupContext);
 
   return [
-    styles.base,
     group?.orientation === "horizontal" &&
       group.variant === "grouped" &&
       styles.groupHorizontal,
@@ -201,5 +204,6 @@ export const useButtonStyles = ({
     size === "md" && styles.medium,
     size === "lg" && styles.large,
     group?.variant === "separate" && styles.separate,
+    styles.base,
   ];
 };

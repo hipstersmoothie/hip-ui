@@ -12,10 +12,23 @@ const styles = stylex.create({
     position: "relative",
   },
   rounded: {
-    borderBottomLeftRadius: radius["md"],
-    borderBottomRightRadius: radius["md"],
-    borderTopLeftRadius: radius["md"],
-    borderTopRightRadius: radius["md"],
+    borderBottomLeftRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    borderBottomRightRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    borderTopLeftRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    borderTopRightRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
   },
   imageContainer: {
     inset: 0,

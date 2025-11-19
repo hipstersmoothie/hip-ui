@@ -18,10 +18,20 @@ const styles = stylex.create({
     boxSizing: "border-box",
 
     borderRadius: {
-      ":is([data-size=sm])": radius.sm,
-      ":is([data-size=md])": radius.md,
-      ":is([data-size=lg])": radius.lg,
+      ":is([data-size=sm])": {
+        default: radius["sm"],
+        "@supports (corner-shape: squircle)": radius["3xl"],
+      },
+      ":is([data-size=md])": {
+        default: radius["md"],
+        "@supports (corner-shape: squircle)": radius["3xl"],
+      },
+      ":is([data-size=lg])": {
+        default: radius["lg"],
+        "@supports (corner-shape: squircle)": radius["3xl"],
+      },
     },
+    cornerShape: "squircle",
     height: {
       ":is([data-size=sm])": spacing["4"],
       ":is([data-size=md])": spacing["6"],

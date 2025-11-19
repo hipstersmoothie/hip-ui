@@ -26,6 +26,14 @@ import { useMenuTriggerState } from "react-stately";
 import { SizeContext } from "../context";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { spacing } from "../theme/spacing.stylex";
+
+const styles = stylex.create({
+  menu: {
+    paddingTop: spacing["0.5"],
+    paddingBottom: spacing["0.5"],
+  },
+});
 
 const ContextMenuTriggerPropsContext = createContext<
   AriaButtonProps & { ref?: React.Ref<HTMLDivElement> }
@@ -176,6 +184,7 @@ export function ContextMenu<T extends object>({
           placement={placement}
           {...stylex.props(
             popoverStyles.wrapper,
+            styles.menu,
             popoverStyles.animation,
             style,
           )}

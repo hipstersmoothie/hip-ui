@@ -16,7 +16,11 @@ import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   colorArea: {
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     filter: {
       ":is([data-disabled])": "grayscale(1)",
     },
@@ -24,7 +28,11 @@ const styles = stylex.create({
   },
   thumb: {
     borderColor: "white",
-    borderRadius: radius["full"],
+    borderRadius: {
+      default: radius["full"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 2,
     boxShadow: " 0 0 0 1px black, inset 0 0 0 1px black",

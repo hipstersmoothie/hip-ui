@@ -80,12 +80,20 @@ const styles = stylex.create({
     color: successColor.solid2,
   },
   creditCardWrapper: {
-    borderRadius: radius["lg"],
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
+    cornerShape: "squircle",
     padding: spacing["8"],
   },
   creditCard: {
     backgroundImage: `linear-gradient(135deg, ${primaryColor.solid2} 0%, ${primaryColor.text1} 100%)`,
-    borderRadius: radius["lg"],
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
+    cornerShape: "squircle",
     fontFamily: fontFamily["mono"],
     height: spacing["40"],
     padding: spacing["4"],

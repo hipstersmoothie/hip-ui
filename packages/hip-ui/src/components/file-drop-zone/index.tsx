@@ -27,17 +27,21 @@ const styles = stylex.create({
       ":is([data-drop-target])": primaryColor.component1,
     },
     borderColor: {
-      default: uiColor.border2,
+      default: uiColor.border3,
       ":is([data-drop-target])": primaryColor.solid1,
     },
-    borderRadius: radius.md,
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: {
       default: "dashed",
       ":is([data-drop-target])": "solid",
     },
-    borderWidth: 1,
+    borderWidth: 2,
     boxSizing: "border-box",
-    padding: spacing["2"],
+    padding: spacing["4"],
 
     alignItems: "center",
     display: "flex",
@@ -82,16 +86,7 @@ export const FileDropZone = ({
     >
       {({ isDropTarget }) => {
         if (isDropTarget) {
-          return (
-            <Text
-              size="xs"
-              variant="secondary"
-              weight="medium"
-              style={styles.message}
-            >
-              Drop to upload
-            </Text>
-          );
+          return "Drop to upload";
         }
 
         return (

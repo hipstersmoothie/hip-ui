@@ -34,7 +34,11 @@ const styles = stylex.create({
     transitionTimingFunction: "ease-in-out",
   },
   modal: {
-    borderRadius: radius["lg"],
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
+    cornerShape: "squircle",
     boxShadow: shadow["lg"],
     display: "flex",
     flexDirection: "column",

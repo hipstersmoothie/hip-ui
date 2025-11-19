@@ -51,7 +51,11 @@ const styles = stylex.create({
     borderRadius: radius.full,
   },
   rectangle: {
-    borderRadius: radius.md,
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
+    cornerShape: "squircle",
   },
   sizeSm: {
     height: spacing["8"],

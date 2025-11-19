@@ -12,7 +12,11 @@ import { CopyToClipboardButton } from "./CopyToClipboardButton";
 
 const styles = stylex.create({
   card: {
-    borderRadius: radius["lg"],
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
+    cornerShape: "squircle",
     marginBottom: spacing["8"],
     marginTop: spacing["8"],
     overflow: "hidden",

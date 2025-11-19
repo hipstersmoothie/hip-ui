@@ -19,7 +19,11 @@ import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 const tooltipStyle = stylex.create({
   content: {
     backgroundColor: uiInverted.bg,
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["full"],
+    },
+    cornerShape: "squircle",
     boxShadow: shadow["sm"],
     color: uiInverted.text1,
     fontFamily: fontFamily["sans"],

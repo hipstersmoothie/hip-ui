@@ -24,9 +24,13 @@ const styles = stylex.create({
     fontWeight: fontWeight["semibold"],
     overflow: "hidden",
     width: "fit-content",
+    cornerShape: "squircle",
   },
   sm: {
-    borderRadius: radius["sm"],
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
     fontSize: fontSize["xs"],
     gap: spacing["1.5"],
     height: spacing["5"],
@@ -42,7 +46,10 @@ const styles = stylex.create({
     },
   },
   md: {
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
     fontSize: fontSize["sm"],
     gap: spacing["1.5"],
     height: spacing["6"],

@@ -37,6 +37,7 @@ import { Text } from "@/components/typography/text";
 
 import { primaryColor } from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
+import { radius } from "../components/theme/radius.stylex";
 
 const styles = stylex.create({
   main: {
@@ -67,7 +68,11 @@ const styles = stylex.create({
     backgroundColor: {
       ":hover": primaryColor.component2,
     },
-    borderRadius: spacing["2"],
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     cursor: "pointer",
     marginLeft: `calc(${spacing["3"]} * -1)`,
     marginRight: `calc(${spacing["3"]} * -1)`,
@@ -86,7 +91,11 @@ const styles = stylex.create({
   priceBox: {
     backgroundColor: primaryColor.bgSubtle,
     borderColor: primaryColor.border2,
-    borderRadius: spacing["1"],
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     color: primaryColor.text1,

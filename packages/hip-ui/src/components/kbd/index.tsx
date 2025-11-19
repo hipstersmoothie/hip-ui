@@ -9,8 +9,12 @@ import { fontFamily, fontSize, tracking } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   kbd: {
-    backgroundColor: uiColor.component1,
-    borderRadius: radius.sm,
+    backgroundColor: uiColor.component2,
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     color: uiColor.text1,
     fontFamily: fontFamily["sans"],
     fontSize: fontSize.sm,

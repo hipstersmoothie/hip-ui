@@ -21,6 +21,7 @@ import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
+import { radius } from "../theme/radius.stylex";
 
 const OpenContext = createContext<string>("");
 const SetOpenContext = createContext<(value: string) => void>(() => {});
@@ -42,7 +43,11 @@ const styles = stylex.create({
       ":is([data-pressed])": uiColor.component2,
     },
     borderColor: "transparent",
-    borderRadius: spacing["1"],
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     display: "flex",

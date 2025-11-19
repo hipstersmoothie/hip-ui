@@ -31,7 +31,11 @@ const styles = stylex.create({
       ":is([data-hovered=true])": uiColor.component2,
       ":is([data-pressed=true])": uiColor.component3,
     },
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["2xl"],
+    },
+    cornerShape: "squircle",
     borderWidth: 0,
     color: uiColor.text1,
     display: "flex",

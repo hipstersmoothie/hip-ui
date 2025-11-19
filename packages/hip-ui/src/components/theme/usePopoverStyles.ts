@@ -8,7 +8,11 @@ import { spacing } from "./spacing.stylex";
 
 const styles = stylex.create({
   popover: {
-    borderRadius: radius["md"],
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     boxShadow: shadow["md"],
     outline: "none",
     overflow: "auto",

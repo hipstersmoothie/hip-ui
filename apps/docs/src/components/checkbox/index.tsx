@@ -40,7 +40,11 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "center",
 
-    borderRadius: radius["sm"],
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["full"],
+    },
+    cornerShape: "squircle",
     borderWidth: 2,
     height: spacing["4"],
     width: spacing["4"],

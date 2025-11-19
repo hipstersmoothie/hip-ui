@@ -47,7 +47,11 @@ const styles = stylex.create({
     /* eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
       borderColor: uiColor.border1,
-      borderRadius: radius["md"],
+      borderRadius: {
+        default: radius["md"],
+        "@supports (corner-shape: squircle)": radius["3xl"],
+      },
+      cornerShape: "squircle",
       borderStyle: "solid",
       borderWidth: 1,
       margin: 0,

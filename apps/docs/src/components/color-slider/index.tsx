@@ -48,7 +48,11 @@ const styles = stylex.create({
     },
   },
   track: {
-    borderRadius: radius.full,
+    borderRadius: {
+      default: radius["full"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     gridArea: "track",
     height: {
       ":is([data-size=sm] *)": spacing["3"],

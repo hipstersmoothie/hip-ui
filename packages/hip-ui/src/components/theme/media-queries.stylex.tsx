@@ -12,4 +12,5 @@ export const breakpoints = stylex.defineConsts({
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const mediaQueries = stylex.defineConsts({
   reducedMotion: "@media (prefers-reduced-motion: reduce)",
+  supportsSquircle: "@supports (corner-shape: squircle)",
 });

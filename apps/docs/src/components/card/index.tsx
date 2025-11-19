@@ -11,7 +11,11 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   card: {
-    borderRadius: radius["lg"],
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    cornerShape: "squircle",
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
