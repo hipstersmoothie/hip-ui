@@ -1,0 +1,53 @@
+---
+title: Skeleton
+description: A loading placeholder component with circle and rectangle variants.
+---
+
+import { PropDocs } from '../../lib/PropDocs'
+import { Example } from '../../lib/Example'
+import { Basic } from '../../examples/skeleton/basic'
+import { Variants } from '../../examples/skeleton/variants'
+import { CircleSizes } from '../../examples/skeleton/circle-sizes'
+import { RectangleHeight } from '../../examples/skeleton/rectangle-height'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the skeleton component to your project.
+
+```bash
+pnpm hip install skeleton
+```
+
+## Props
+
+This is a custom component built for loading placeholders.
+
+<PropDocs components={["Skeleton", "SkeletonGroup"]} />
+
+## Features
+
+### Variants
+
+The skeleton supports two variants: circle and rectangle.
+
+<Example src={Variants} />
+
+### Circle Sizes
+
+When using the circle variant, you must provide a size prop. The skeleton supports three sizes: sm, md, and lg.
+
+<Example src={CircleSizes} />
+
+### Rectangle Height
+
+When using the rectangle variant, you can optionally specify a height. If no height is provided, the skeleton will take the full width of its container.
+
+<Example src={RectangleHeight} />
+
+## Related Components
+
+- [Spinner](/docs/components/spinner) - For loading indicators
+- [ProgressBar](/docs/components/progress-bar) - For progress indicators
+

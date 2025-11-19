@@ -60,6 +60,7 @@ import { searchFieldConfig } from "../components/search-field/search-field-confi
 import { segmentedControlConfig } from "../components/segmented-control/segmented-control-config.js";
 import { selectConfig } from "../components/select/select-config.js";
 import { separatorConfig } from "../components/separator/separator-config.js";
+import { skeletonConfig } from "../components/skeleton/skeleton-config.js";
 import { sidebarConfig } from "../components/sidebar/sidebar-config.js";
 import { sliderConfig } from "../components/slider/slider-config.js";
 import { switchConfig } from "../components/switch/switch-config.js";
@@ -97,6 +98,7 @@ const COMPONENT_CONFIGS = [
   checkboxConfig,
   radioConfig,
   separatorConfig,
+  skeletonConfig,
   textAreaConfig,
   selectConfig,
   toggleButtonConfig,

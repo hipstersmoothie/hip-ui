@@ -7,6 +7,7 @@ alwaysApply: true
 - Use components from @apps/docs/src/components/
 - Prefer to use the @apps/docs/src/components/flex/index.tsx or @apps/docs/src/components/grid/index.tsx for layout
 - Dont write custom styles for text, instead use the @apps/docs/src/components/typography/text.tsx component.
+- Always document props interfaces with jsdoc
 
 ## Custom styles
 

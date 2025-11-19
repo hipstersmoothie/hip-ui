@@ -6,7 +6,6 @@
 
 - [ ] Add Virtualizer
 - [ ] add borderless variant for input fields
-- [ ] Field erros
 - [ ] perfect inset border radii
 
 ### Components
@@ -22,7 +21,6 @@
 - [ ] Empty
 - [ ] Input OTP
 - [ ] Resizable
-- [ ] Skeleton
 
 #### OTher Wrappers
 
@@ -41,6 +39,8 @@
 
 ### Done
 
+- [x] Skeleton
+- [x] Field errors
 - [x] Window Splitter
 - [x] Toast
 - [x] Drawer
