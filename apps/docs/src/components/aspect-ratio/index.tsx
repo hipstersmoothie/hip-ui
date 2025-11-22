@@ -12,6 +12,8 @@ const styles = stylex.create({
     position: "relative",
   },
   rounded: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderBottomLeftRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
@@ -28,15 +30,14 @@ const styles = stylex.create({
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
   },
   imageContainer: {
     inset: 0,
     position: "absolute",
   },
   image: {
-    height: "100%",
     objectFit: "cover",
+    height: "100%",
     width: "100%",
   },
 });

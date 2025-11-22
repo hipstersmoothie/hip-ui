@@ -113,7 +113,7 @@ export const animations = stylex.defineVars({
   slideOutBottom,
 });
 
-export const animationDuration = stylex.defineVars({
+export const animationDuration = stylex.defineConsts({
   fast: "100ms",
   default: "150ms",
   slow: "200ms",

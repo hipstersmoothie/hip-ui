@@ -24,14 +24,14 @@ const styles = stylex.create({
   },
   header: {
     alignItems: "center",
-    display: "flex",
     gap: spacing["2"],
-    height: spacing["8"],
+    display: "flex",
     justifyContent: "space-between",
+    height: spacing["8"],
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
-    paddingRight: spacing["4"],
     fontSize: fontSize["lg"],
+    paddingRight: spacing["4"],
 
     borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
@@ -51,8 +51,8 @@ const styles = stylex.create({
     paddingTop: spacing["4"],
   },
   footer: {
-    display: "flex",
     gap: spacing["2"],
+    display: "flex",
     justifyContent: "flex-end",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],

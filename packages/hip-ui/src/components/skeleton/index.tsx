@@ -20,9 +20,9 @@ const shimmer = stylex.keyframes({
 const styles = stylex.create({
   group: {},
   base: {
+    overflow: "hidden",
     backgroundColor: uiColor.component1,
     boxShadow: shadow["insetSm"],
-    overflow: "hidden",
     position: "relative",
   },
   shimmer: {
@@ -40,9 +40,9 @@ const styles = stylex.create({
       transparent 100%
     )`,
     backgroundSize: "100%",
+    position: "absolute",
     bottom: 0,
     left: 0,
-    position: "absolute",
     right: 0,
     top: 0,
     width: "300%",
@@ -51,11 +51,12 @@ const styles = stylex.create({
     borderRadius: radius.full,
   },
   rectangle: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
-    cornerShape: "squircle",
   },
   sizeSm: {
     height: spacing["8"],

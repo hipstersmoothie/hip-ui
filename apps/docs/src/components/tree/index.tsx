@@ -35,26 +35,26 @@ const styles = stylex.create({
     width: `calc((var(--tree-item-level, 0) - 1) * ${spacing["3"]})`,
   },
   content: {
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
     flexGrow: 1,
-    gap: spacing["2"],
   },
   hidden: {
     opacity: 0,
     visibility: "hidden",
   },
   chevron: {
-    backgroundColor: "transparent",
     borderWidth: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
+    backgroundColor: "transparent",
     transform: {
       default: "rotate(0deg)",
       ":is([aria-expanded=true] *)": "rotate(90deg)",
     },
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
@@ -67,22 +67,27 @@ const styles = stylex.create({
     marginTop: `calc(${spacing["2"]} * -1)`,
   },
   dragButtonWrapper: {
-    left: 0,
     opacity: {
       default: 0,
-      ":hover": 1,
       ":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)": 1,
+      ":hover": 1,
     },
     position: "absolute",
-    top: "50%",
     transform: "translate(-100%, -50%)",
     transitionDuration: animationDuration.fast,
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",
+    left: 0,
+    top: "50%",
   },
   dragButton: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["2xl"],
+    },
     alignItems: "center",
-    borderRadius: radius["sm"],
     display: "flex",
     justifyContent: "center",
 

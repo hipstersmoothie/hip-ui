@@ -19,9 +19,9 @@ import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["2"],
   },
   addon: {
     color: ui.textDim,
@@ -30,29 +30,30 @@ const styles = stylex.create({
     minWidth: spacing["8"],
     paddingLeft: { ":first-child": spacing["0.5"] },
     paddingRight: {
-      ":last-child": spacing["2"],
       ":last-child:has(svg)": spacing["0.5"],
+      ":last-child": spacing["2"],
     },
 
+    gap: spacing["0.5"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["0.5"],
     justifyContent: "center",
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   inputWrapper: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["2xl"],
     },
-    cornerShape: "squircle",
     boxSizing: "border-box",
     display: "flex",
     flexGrow: 1,
@@ -66,51 +67,51 @@ const styles = stylex.create({
     borderWidth: 1,
   },
   input: {
-    backgroundColor: "transparent",
     borderWidth: 0,
+    outline: "none",
+    backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {
       "::placeholder": uiColor.text1,
     },
     flexGrow: 1,
     fontFamily: fontFamily["sans"],
-    outline: "none",
     resize: "none",
 
     fontSize: {
-      ":is([data-size=sm])": fontSize["xs"],
-      ":is([data-size=md])": fontSize["sm"],
       ":is([data-size=lg])": fontSize["base"],
+      ":is([data-size=md])": fontSize["sm"],
+      ":is([data-size=sm])": fontSize["xs"],
     },
     lineHeight: {
-      ":is([data-size=sm])": lineHeight["xs"],
-      ":is([data-size=md])": lineHeight["sm"],
       ":is([data-size=lg])": lineHeight["base"],
+      ":is([data-size=md])": lineHeight["sm"],
+      ":is([data-size=sm])": lineHeight["xs"],
     },
     minHeight: {
-      ":is([data-size=sm])": spacing["6"],
-      ":is([data-size=md])": spacing["8"],
       ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=sm])": spacing["6"],
     },
     paddingBottom: {
-      ":is([data-size=sm])": spacing["1"],
-      ":is([data-size=md])": spacing["2"],
       ":is([data-size=lg])": spacing["3"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=sm])": spacing["1"],
     },
     paddingLeft: {
-      ":is([data-size=sm])": spacing["1"],
-      ":is([data-size=md])": spacing["2"],
       ":is([data-size=lg])": spacing["3"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=sm])": spacing["1"],
     },
     paddingRight: {
-      ":is([data-size=sm])": spacing["1"],
-      ":is([data-size=md])": spacing["2"],
       ":is([data-size=lg])": spacing["3"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=sm])": spacing["1"],
     },
     paddingTop: {
-      ":is([data-size=sm])": spacing["1"],
-      ":is([data-size=md])": spacing["2"],
       ":is([data-size=lg])": spacing["3"],
+      ":is([data-size=md])": spacing["2"],
+      ":is([data-size=sm])": spacing["1"],
     },
   },
   resizable: {

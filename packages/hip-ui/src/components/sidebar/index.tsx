@@ -60,7 +60,12 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   sidebarItem: {
-    borderRadius: radius["md"],
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
     listStyle: "none",
     textDecoration: "none",
     alignItems: "center",

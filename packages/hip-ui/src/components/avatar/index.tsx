@@ -15,26 +15,28 @@ import {
 
 const styles = stylex.create({
   wrapper: {
-    alignItems: "center",
-    backgroundColor: uiColor.component1,
     borderColor: uiColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
+    overflow: "hidden",
+    alignItems: "center",
+    backgroundColor: uiColor.component1,
     display: "flex",
     justifyContent: "center",
-    overflow: "hidden",
 
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
-      ":is([data-size=sm])": {
-        default: radius["sm"],
+      ":is([data-size=lg])": {
+        default: radius["lg"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
       ":is([data-size=md])": {
         default: radius["md"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
-      ":is([data-size=lg])": {
-        default: radius["lg"],
+      ":is([data-size=sm])": {
+        default: radius["sm"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
       ":is([data-size=xl])": {
@@ -42,24 +44,23 @@ const styles = stylex.create({
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
     },
-    cornerShape: "squircle",
     height: {
-      ":is([data-size=sm])": spacing["6"],
-      ":is([data-size=md])": spacing["8"],
       ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=sm])": spacing["6"],
       ":is([data-size=xl])": spacing["14"],
     },
     width: {
-      ":is([data-size=sm])": spacing["6"],
-      ":is([data-size=md])": spacing["8"],
       ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=sm])": spacing["6"],
       ":is([data-size=xl])": spacing["14"],
     },
   },
   image: {
-    height: "100%",
     objectFit: "cover",
     objectPosition: "center",
+    height: "100%",
     width: "100%",
   },
   fallback: {
@@ -69,9 +70,9 @@ const styles = stylex.create({
     lineHeight: lineHeight["none"],
 
     fontSize: {
-      ":is([data-size=sm] *)": fontSize["sm"],
-      ":is([data-size=md] *)": fontSize["base"],
       ":is([data-size=lg] *)": fontSize["lg"],
+      ":is([data-size=md] *)": fontSize["base"],
+      ":is([data-size=sm] *)": fontSize["sm"],
       ":is([data-size=xl] *)": fontSize["xl"],
     },
   },

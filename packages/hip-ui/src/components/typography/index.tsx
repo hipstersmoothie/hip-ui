@@ -15,11 +15,11 @@ import {
 
 const styles = stylex.create({
   blockquote: {
+    color: ui.textDim,
+    fontFamily: fontFamily["serif"],
     borderLeftColor: ui.borderDim,
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    color: ui.textDim,
-    fontFamily: fontFamily["serif"],
     marginBottom: 0,
     marginLeft: spacing["2"],
     marginRight: 0,
@@ -27,19 +27,19 @@ const styles = stylex.create({
     paddingLeft: spacing["4"],
   },
   unorderedList: {
+    margin: 0,
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
     listStyleType: "disc",
-    margin: 0,
     paddingLeft: spacing["8"],
   },
   orderedList: {
+    margin: 0,
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
     listStyleType: "decimal",
-    margin: 0,
     paddingLeft: spacing["8"],
   },
   listItem: {
@@ -49,13 +49,18 @@ const styles = stylex.create({
     paddingLeft: spacing["1"],
   },
   inlineCode: {
-    borderRadius: radius["sm"],
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["2xl"],
+    },
     fontSize: "0.95em",
+    position: "relative",
     paddingBottom: spacing["1"],
     paddingLeft: spacing["1"],
     paddingRight: spacing["1"],
     paddingTop: spacing["1"],
-    position: "relative",
     top: "-0.01em",
   },
   underline: {

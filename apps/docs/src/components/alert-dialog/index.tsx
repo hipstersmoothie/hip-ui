@@ -28,14 +28,14 @@ const styles = stylex.create({
   },
   header: {
     alignItems: "center",
-    display: "flex",
     gap: spacing["2"],
-    height: spacing["8"],
+    display: "flex",
     justifyContent: "space-between",
+    height: spacing["8"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
-    paddingTop: spacing["2"],
     fontSize: fontSize["lg"],
+    paddingTop: spacing["2"],
   },
   description: {
     paddingBottom: spacing["4"],
@@ -44,8 +44,8 @@ const styles = stylex.create({
     paddingTop: spacing["4"],
   },
   footer: {
-    display: "flex",
     gap: spacing["2"],
+    display: "flex",
     justifyContent: "flex-end",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],

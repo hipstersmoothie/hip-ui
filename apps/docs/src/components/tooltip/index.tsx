@@ -18,12 +18,13 @@ import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const tooltipStyle = stylex.create({
   content: {
-    backgroundColor: uiInverted.bg,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["full"],
     },
-    cornerShape: "squircle",
+    backgroundColor: uiInverted.bg,
     boxShadow: shadow["sm"],
     color: uiInverted.text1,
     fontFamily: fontFamily["sans"],
@@ -35,10 +36,10 @@ const tooltipStyle = stylex.create({
     paddingTop: spacing["1"],
 
     "--origin": {
-      ":is([data-placement=top])": "translateY(4px)",
       ":is([data-placement=bottom])": "translateY(-4px)",
       ":is([data-placement=left])": "translateX(4px)",
       ":is([data-placement=right])": "translateX(-4px)",
+      ":is([data-placement=top])": "translateY(4px)",
     },
     opacity: {
       default: 1,
@@ -53,15 +54,15 @@ const tooltipStyle = stylex.create({
     transitionProperty: "transform, opacity",
   },
   caret: {
-    display: "flex",
     fill: uiInverted.bg,
+    display: "flex",
   },
   arrow: {
     transform: {
       [":is([data-placement=bottom] *)"]: "rotate(180deg)",
-      [":is([data-placement=top] *)"]: "rotate(0deg)",
       [":is([data-placement=left] *)"]: "rotate(90deg)",
       [":is([data-placement=right] *)"]: "rotate(-90deg)",
+      [":is([data-placement=top] *)"]: "rotate(0deg)",
     },
   },
 });

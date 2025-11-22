@@ -11,7 +11,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { animationDuration } from "../theme/animations.stylex";
+import { animationDuration } from "../theme/animations-duration.stylex";
 import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
@@ -20,8 +20,13 @@ import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   group: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     padding: spacing["1"],
-    borderRadius: radius.lg,
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
     gap: spacing["2"],
     alignItems: "center",
     backgroundColor: uiColor.component1,
@@ -35,7 +40,12 @@ const styles = stylex.create({
     },
   },
   item: {
-    borderRadius: radius.md,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
     borderWidth: 0,
     alignItems: "center",
     backgroundColor: "transparent",
@@ -68,7 +78,12 @@ const styles = stylex.create({
     },
   },
   selectionIndicator: {
-    borderRadius: radius.md,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
     backgroundColor: uiColor.bgSubtle,
     boxShadow: shadow.sm,
     position: "absolute",
