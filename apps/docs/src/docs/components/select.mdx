@@ -8,6 +8,9 @@ import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/select/basic'
 import { SelectWithDescription } from '../../examples/select/with-description'
 import { SelectSizes } from '../../examples/select/sizes'
+import { Validation } from '../../examples/select/validation'
+import { ValidationWarning } from '../../examples/select/validation-warning'
+import { ValidationSuccess } from '../../examples/select/validation-success'
 
 <Example src={Basic} />
 
@@ -38,6 +41,21 @@ Select components can include descriptive text to provide additional context.
 Select components support different sizes for various use cases.
 
 <Example src={SelectSizes} />
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
 
 ## Related Components
 

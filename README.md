@@ -7,6 +7,7 @@
 - [ ] Add Virtualizer
 - [ ] add borderless variant for input fields
 - [ ] perfect inset border radii
+- [ ] Number field validation state styling
 
 ### Components
 

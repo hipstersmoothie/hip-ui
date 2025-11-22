@@ -6,6 +6,9 @@ description: A date input component for selecting dates with proper formatting.
 import { PropDocs } from '../../lib/PropDocs'
 import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/date-field/basic'
+import { Validation } from '../../examples/date-field/validation'
+import { ValidationWarning } from '../../examples/date-field/validation-warning'
+import { ValidationSuccess } from '../../examples/date-field/validation-success'
 
 <Example src={Basic} />
 
@@ -22,6 +25,23 @@ pnpm hip install date-field
 This component is built using the [React Aria DateField](https://react-spectrum.adobe.com/react-aria/DateField.html).
 
 <PropDocs components={["DateField"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
 
 ## Related Components
 

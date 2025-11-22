@@ -12,6 +12,7 @@ export type ButtonVariant =
   | "critical"
   | "critical-outline";
 export type InputVariant = "primary" | "secondary" | "tertiary";
+export type InputValidationState = "valid" | "invalid" | "warning";
 export type ButtonGroupVariant = "grouped" | "separate";
 export type TextVariant = "primary" | "secondary" | "critical";
 export type MeterVariant =

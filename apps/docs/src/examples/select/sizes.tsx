@@ -1,5 +1,5 @@
 import { Flex } from "@/components/flex";
-import { Select } from "@/components/select";
+import { Select, SelectItem } from "@/components/select";
 
 const sizes = [
   { id: "xs", name: "Extra Small" },
@@ -12,29 +12,14 @@ const sizes = [
 export function SelectSizes() {
   return (
     <Flex direction="column" gap="4">
-      <Select 
-        label="Small"
-        size="sm"
-        placeholder="Select size"
-        items={sizes}
-      >
-        {(item) => item.name}
+      <Select label="Small" size="sm" placeholder="Select size" items={sizes}>
+        {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
       </Select>
-      <Select 
-        label="Medium"
-        size="md"
-        placeholder="Select size"
-        items={sizes}
-      >
-        {(item) => item.name}
+      <Select label="Medium" size="md" placeholder="Select size" items={sizes}>
+        {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
       </Select>
-      <Select 
-        label="Large"
-        size="lg"
-        placeholder="Select size"
-        items={sizes}
-      >
-        {(item) => item.name}
+      <Select label="Large" size="lg" placeholder="Select size" items={sizes}>
+        {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
       </Select>
     </Flex>
   );

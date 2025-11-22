@@ -10,6 +10,9 @@ import { Sizes } from '../../examples/time-field/sizes'
 import { Variants } from '../../examples/time-field/variants'
 import { Description } from '../../examples/time-field/description'
 import { PrefixAndSuffix } from '../../examples/time-field/prefix-and-suffix'
+import { Validation } from '../../examples/time-field/validation'
+import { ValidationWarning } from '../../examples/time-field/validation-warning'
+import { ValidationSuccess } from '../../examples/time-field/validation-success'
 
 <Example src={Basic} />
 
@@ -46,6 +49,21 @@ The time field component comes in three variants: primary, secondary, and tertia
 The time field component supports a description.
 
 <Example src={Description} />
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
 
 ## Props
 

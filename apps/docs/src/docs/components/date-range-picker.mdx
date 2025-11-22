@@ -6,6 +6,9 @@ description: A date range picker combines date inputs and a RangeCalendar popove
 import { PropDocs } from '../../lib/PropDocs'
 import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/date-range-picker/basic'
+import { Validation } from '../../examples/date-range-picker/validation'
+import { ValidationWarning } from '../../examples/date-range-picker/validation-warning'
+import { ValidationSuccess } from '../../examples/date-range-picker/validation-success'
 
 <Example src={Basic} />
 
@@ -22,6 +25,23 @@ pnpm hip install date-range-picker
 This component is built using the [React Aria DateRangePicker](https://react-spectrum.adobe.com/react-aria/DateRangePicker.html).
 
 <PropDocs components={["DateRangePicker"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
 
 ## Related Components
 

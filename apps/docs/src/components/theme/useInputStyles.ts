@@ -2,9 +2,16 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
-import { InputVariant, Size } from "../theme/types";
+import { InputValidationState, InputVariant, Size } from "../theme/types";
+import { animationDuration } from "./animations-duration.stylex";
 import { radius } from "./radius.stylex";
-import { criticalColor, ui, uiColor } from "./semantic-color.stylex";
+import {
+  criticalColor,
+  successColor,
+  ui,
+  uiColor,
+  warningColor,
+} from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
 import { lineHeight, fontSize } from "./typography.stylex";
 
@@ -15,17 +22,17 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   addon: {
+    boxSizing: "border-box",
     color: ui.textDim,
     flexShrink: 0,
     height: "100%",
-    minWidth: spacing["8"],
-    paddingLeft: { ":first-child": spacing["0.5"] },
+    paddingLeft: { ":first-child": spacing["2.5"] },
     paddingRight: {
-      ":last-child:has(svg)": spacing["0.5"],
-      ":last-child": spacing["2"],
+      ":first-child": spacing["2"],
+      ":last-child": spacing["2.5"],
     },
 
-    gap: spacing["0.5"],
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
@@ -37,6 +44,20 @@ const styles = stylex.create({
       height: spacing["4"],
       width: spacing["4"],
     },
+  },
+  validationIcon: {
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+  },
+  invalidIcon: {
+    color: criticalColor.text1,
+  },
+  validIcon: {
+    color: successColor.text1,
+  },
+  warningIcon: {
+    color: warningColor.text1,
   },
   inputWrapper: {
     // eslint-disable-next-line @stylexjs/valid-styles
@@ -59,6 +80,7 @@ const styles = stylex.create({
     backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {
+      default: "inherit",
       ":is(::placeholder,[data-placeholder])": uiColor.text1,
     },
     display: "flex",
@@ -74,32 +96,203 @@ const styles = stylex.create({
   primary: {
     borderColor: {
       default: uiColor.border2,
-      ":has([data-hovered]):not([data-invalid])": uiColor.border3,
-      ":has([data-invalid])": criticalColor.border2,
+      ":has([data-hovered]):not(:has([data-invalid]))": uiColor.border3,
       ":focus": uiColor.solid1,
     },
     borderStyle: "solid",
     borderWidth: 1,
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": "transparent",
+    },
+    boxShadow: {
+      ":has([data-invalid])": `0 0 0 2px ${criticalColor.component1}`,
+    },
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  primaryInvalid: {
+    borderColor: {
+      default: criticalColor.border2,
+      ":has([data-hovered])": criticalColor.border3,
+      ":focus": uiColor.solid1,
+    },
+    backgroundColor: {
+      default: criticalColor.bgSubtle,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component2,
+      ":disabled": "transparent",
+    },
+    boxShadow: `0 0 0 2px ${criticalColor.component1}`,
+    color: criticalColor.text2,
+  },
+  primaryWarning: {
+    borderColor: {
+      default: warningColor.border2,
+      ":has([data-hovered])": warningColor.border3,
+      ":focus": uiColor.solid1,
+    },
+    backgroundColor: {
+      default: warningColor.bgSubtle,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component2,
+      ":disabled": "transparent",
+    },
+    boxShadow: `0 0 0 2px ${warningColor.component1}`,
+    color: warningColor.text2,
+  },
+  primaryValid: {
+    borderColor: {
+      default: successColor.border2,
+      ":has([data-hovered])": successColor.border3,
+      ":focus": uiColor.solid1,
+    },
+    backgroundColor: {
+      default: successColor.bgSubtle,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component2,
+      ":disabled": "transparent",
+    },
+    boxShadow: `0 0 0 2px ${successColor.component1}`,
+    color: successColor.text2,
   },
   secondary: {
     borderColor: {
       default: uiColor.component1,
-      ":has([data-invalid])": criticalColor.border2,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": uiColor.component1,
     },
     borderStyle: "solid",
     borderWidth: 1,
+    backgroundColor: {
+      default: uiColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": uiColor.component1,
+    },
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
+  },
+  secondaryInvalid: {
+    borderColor: {
+      default: criticalColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component2,
+    },
+    backgroundColor: {
+      default: criticalColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component2,
+    },
+  },
+  secondaryWarning: {
+    borderColor: {
+      default: warningColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component2,
+    },
+    backgroundColor: {
+      default: warningColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component2,
+    },
+    color: warningColor.text2,
+  },
+  secondaryValid: {
+    borderColor: {
+      default: successColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component2,
+    },
+    backgroundColor: {
+      default: successColor.component1,
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component2,
+    },
+    color: successColor.text2,
   },
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":has([data-invalid])": criticalColor.border2,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": "transparent",
     },
     borderStyle: "solid",
     borderWidth: 1,
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":disabled": "transparent",
+    },
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
+    transitionTimingFunction: "ease-in-out",
   },
+  tertiaryInvalid: {
+    borderColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        criticalColor.component2,
+      ":disabled": "transparent",
+    },
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        criticalColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        criticalColor.component2,
+      ":disabled": "transparent",
+    },
+    color: criticalColor.text2,
+  },
+  tertiaryWarning: {
+    borderColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        warningColor.component2,
+      ":disabled": "transparent",
+    },
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        warningColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        warningColor.component2,
+      ":disabled": "transparent",
+    },
+    color: warningColor.text1,
+  },
+  tertiaryValid: {
+    borderColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        successColor.component2,
+      ":disabled": "transparent",
+    },
+    backgroundColor: {
+      default: "transparent",
+      ":hover:not(:has(* button:hover)):not(:disabled)":
+        successColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)":
+        successColor.component2,
+      ":disabled": "transparent",
+    },
+    color: successColor.text1,
+  },
+
   inputSize: (size: Size) => ({
     fontSize:
       size === "sm"
@@ -113,14 +306,14 @@ const styles = stylex.create({
           ? spacing["1"]
           : size === "md"
             ? spacing["2"]
-            : spacing["1"],
+            : spacing["3"],
     },
     paddingRight:
       size === "sm"
         ? spacing["1"]
         : size === "md"
           ? spacing["2"]
-          : spacing["2"],
+          : spacing["3"],
   }),
   wrapperSize: (size: Size) => ({
     height:
@@ -135,9 +328,11 @@ const styles = stylex.create({
 export function useInputStyles({
   size: sizeProp,
   variant = "primary",
+  validationState,
 }: {
   size: Size | undefined;
   variant: InputVariant | undefined;
+  validationState: InputValidationState | undefined;
 }) {
   const size = sizeProp || use(SizeContext);
 
@@ -145,13 +340,34 @@ export function useInputStyles({
     field: [styles.field],
     wrapper: [
       styles.inputWrapper,
-      variant === "primary" && [ui.bgGhost, styles.primary],
-      variant === "secondary" && [ui.bgUi, styles.secondary],
-      variant === "tertiary" && [ui.bgGhost, styles.tertiary],
       ui.text,
+      variant === "primary" && [
+        styles.primary,
+        validationState === "invalid" && [styles.primaryInvalid],
+        validationState === "warning" && [styles.primaryWarning],
+        validationState === "valid" && [styles.primaryValid],
+      ],
+      variant === "secondary" && [
+        styles.secondary,
+        validationState === "invalid" && [styles.secondaryInvalid],
+        validationState === "warning" && [styles.secondaryWarning],
+        validationState === "valid" && [styles.secondaryValid],
+      ],
+      variant === "tertiary" && [
+        styles.tertiary,
+        validationState === "invalid" && [styles.tertiaryInvalid],
+        validationState === "warning" && [styles.tertiaryWarning],
+        validationState === "valid" && [styles.tertiaryValid],
+      ],
       styles.wrapperSize(size),
     ],
     input: [styles.input, styles.inputSize(size)],
     addon: styles.addon as unknown as stylex.StyleXStyles,
+    validationIcon: [
+      styles.validationIcon,
+      validationState === "invalid" && [styles.invalidIcon],
+      validationState === "valid" && [styles.validIcon],
+      validationState === "warning" && [styles.warningIcon],
+    ],
   };
 }

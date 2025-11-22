@@ -6,6 +6,9 @@ description: A search input component with built-in search icon and clear functi
 import { PropDocs } from '../../lib/PropDocs'
 import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/search-field/basic'
+import { Validation } from '../../examples/search-field/validation'
+import { ValidationWarning } from '../../examples/search-field/validation-warning'
+import { ValidationSuccess } from '../../examples/search-field/validation-success'
 
 <Example src={Basic} />
 
@@ -22,6 +25,23 @@ pnpm hip install search-field
 This component is built using the [React Aria SearchField](https://react-spectrum.adobe.com/react-aria/SearchField.html).
 
 <PropDocs components={["SearchField"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
 
 ## Related Components
 

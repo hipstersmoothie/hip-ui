@@ -11,5 +11,6 @@ export const selectConfig: ComponentConfig = {
     "../theme/shadow.stylex.tsx",
     "../theme/useInputStyles.ts",
     "../theme/usePopoverStyles.ts",
+    "../suffix-icon/index.tsx",
   ],
 };

@@ -6,6 +6,9 @@ description: A combo box component that combines a text input with a dropdown li
 import { PropDocs } from '../../lib/PropDocs'
 import { Example } from '../../lib/Example'
 import { Basic } from '../../examples/combobox/basic'
+import { Validation } from '../../examples/combobox/validation'
+import { ValidationWarning } from '../../examples/combobox/validation-warning'
+import { ValidationSuccess } from '../../examples/combobox/validation-success'
 
 <Example src={Basic} />
 
@@ -22,6 +25,23 @@ pnpm hip install combobox
 This component is built using the [React Aria ComboBox](https://react-spectrum.adobe.com/react-aria/ComboBox.html).
 
 <PropDocs components={["ComboBox", "ComboBoxItem", "ComboBoxSection", "ComboBoxSectionHeader", "ComboBoxSeparator"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
 
 ## Related Components
 

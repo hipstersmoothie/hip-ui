@@ -1,4 +1,4 @@
-import { Select } from "@/components/select";
+import { Select, SelectItem } from "@/components/select";
 
 const options = [
   { id: "option1", name: "Option 1" },
@@ -13,7 +13,7 @@ export function Basic() {
       placeholder="Select an option"
       items={options}
     >
-      {(item) => item.name}
+      {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
     </Select>
   );
 }

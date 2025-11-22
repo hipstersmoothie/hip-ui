@@ -1,5 +1,5 @@
 import { Flex } from "@/components/flex";
-import { Select } from "@/components/select";
+import { Select, SelectItem } from "@/components/select";
 
 const countries = [
   { id: "us", name: "United States", code: "US" },
@@ -12,20 +12,13 @@ const countries = [
 export function SelectWithDescription() {
   return (
     <Flex direction="column" gap="4">
-      <Select 
+      <Select
         label="Country"
         placeholder="Select your country"
         description="Choose the country where you live"
         items={countries}
       >
-        {(item) => (
-          <div>
-            <div>{item.name}</div>
-            <div style={{ fontSize: "0.875rem", color: "#666" }}>
-              {item.code}
-            </div>
-          </div>
-        )}
+        {(item) => <SelectItem id={item.id}>{item.name}</SelectItem>}
       </Select>
     </Flex>
   );
