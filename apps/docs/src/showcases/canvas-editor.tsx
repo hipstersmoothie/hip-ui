@@ -37,7 +37,7 @@ import {
   TriangleRight,
 } from "lucide-react";
 import { createContext, memo, use, useState } from "react";
-import { useDragAndDrop } from "react-aria-components";
+import { Key, useDragAndDrop } from "react-aria-components";
 import {
   ArrowShapeUtil,
   Editor,
@@ -75,6 +75,10 @@ import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
+import {
+  ColorSwatchPicker,
+  ColorSwatchPickerItem,
+} from "@/components/color-swatch-picker";
 
 const styles = stylex.create({
   main: {
@@ -618,6 +622,39 @@ function GeometricShapeProperties() {
   );
 }
 
+const tldrawColors = [
+  "black",
+  "grey",
+  "light-violet",
+  "violet",
+  "blue",
+  "light-blue",
+  "yellow",
+  "orange",
+  "green",
+  "light-green",
+  "light-red",
+  "red",
+  "white",
+] as const;
+type TldrawColor = (typeof tldrawColors)[number];
+
+const tldrawColorMap: Record<TldrawColor, string> = {
+  black: "#000000",
+  grey: "#808080",
+  "light-violet": "#800080",
+  violet: "#800080",
+  blue: "#0000FF",
+  "light-blue": "#0000FF",
+  yellow: "#FFFF00",
+  orange: "#FFA500",
+  green: "#00FF00",
+  "light-green": "#00FF00",
+  "light-red": "#FF0000",
+  red: "#FF0000",
+  white: "#FFFFFF",
+};
+
 function AppearanceProperties() {
   const editor = useEditorContext();
   const shape = useValue("shape", () => editor.getSelectedShapes()[0], [
@@ -626,7 +663,12 @@ function AppearanceProperties() {
 
   if (
     !shape ||
-    !("size" in shape.props && "fill" in shape.props && "dash" in shape.props)
+    !(
+      "size" in shape.props ||
+      "fill" in shape.props ||
+      "dash" in shape.props ||
+      "color" in shape.props
+    )
   ) {
     return null;
   }
@@ -640,121 +682,156 @@ function AppearanceProperties() {
           </Text>
         </DisclosureTitle>
         <DisclosurePanel>
-          <Flex direction="column" gap="2">
-            <ToggleButtonGroup
-              variant="separate"
-              itemsPerRow={4}
-              selectedKeys={[shape.props.size]}
-              onSelectionChange={(keys) => {
-                const newSize = [...keys][0];
-                if (newSize) {
-                  editor.updateShape({
-                    id: shape.id,
-                    type: shape.type,
-                    props: {
-                      size: newSize,
-                    },
-                  });
-                }
-              }}
-            >
-              <Tooltip text="Small">
-                <ToggleButton id="s" variant="outline">
-                  S
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Medium">
-                <ToggleButton id="m" variant="outline">
-                  M
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Large">
-                <ToggleButton id="l" variant="outline">
-                  L
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Solid">
-                <ToggleButton id="xl" variant="outline">
-                  XL
-                </ToggleButton>
-              </Tooltip>
-            </ToggleButtonGroup>
-            <ToggleButtonGroup
-              variant="separate"
-              itemsPerRow={4}
-              selectedKeys={[shape.props.fill]}
-              onSelectionChange={(keys) => {
-                const newFill = [...keys][0];
-                if (newFill) {
-                  editor.updateShape({
-                    id: shape.id,
-                    type: shape.type,
-                    props: {
-                      fill: newFill,
-                    },
-                  });
-                }
-              }}
-            >
-              <Tooltip text="Fill: None">
-                <ToggleButton id="none" variant="outline">
-                  <Blend />
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Fill: Partial">
-                <ToggleButton id="semi" variant="outline">
-                  <Layers2 />
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Fill: Solid">
-                <ToggleButton id="solid" variant="outline">
-                  <Layers />
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Fill: Pattern">
-                <ToggleButton id="pattern" variant="outline">
-                  <SquareAsterisk />
-                </ToggleButton>
-              </Tooltip>
-            </ToggleButtonGroup>
-            <ToggleButtonGroup
-              variant="separate"
-              itemsPerRow={4}
-              selectedKeys={[shape.props.dash]}
-              onSelectionChange={(keys) => {
-                const newStroke = [...keys][0];
-                if (newStroke) {
-                  editor.updateShape({
-                    id: shape.id,
-                    type: shape.type,
-                    props: {
-                      dash: newStroke,
-                    },
-                  });
-                }
-              }}
-            >
-              <Tooltip text="Stroke: Dashed">
-                <ToggleButton id="dashed" variant="outline">
-                  <PanelBottomDashed />
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Stroke: Draw">
-                <ToggleButton id="draw" variant="outline">
-                  <Scan />
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Stroke: Dotted">
-                <ToggleButton id="dotted" variant="outline">
-                  <SquareDashed />
-                </ToggleButton>
-              </Tooltip>
-              <Tooltip text="Stroke: Solid">
-                <ToggleButton id="solid" variant="outline">
-                  <Square />
-                </ToggleButton>
-              </Tooltip>
-            </ToggleButtonGroup>
+          <Flex direction="column" gap="4">
+            <Flex direction="column" gap="2">
+              {"size" in shape.props && (
+                <ToggleButtonGroup
+                  variant="separate"
+                  itemsPerRow={4}
+                  selectedKeys={[shape.props.size]}
+                  onSelectionChange={(keys) => {
+                    const newSize = [...keys][0];
+                    if (newSize) {
+                      editor.updateShape({
+                        id: shape.id,
+                        type: shape.type,
+                        props: {
+                          size: newSize,
+                        },
+                      });
+                    }
+                  }}
+                >
+                  <Tooltip text="Small">
+                    <ToggleButton id="s" variant="outline">
+                      S
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Medium">
+                    <ToggleButton id="m" variant="outline">
+                      M
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Large">
+                    <ToggleButton id="l" variant="outline">
+                      L
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Solid">
+                    <ToggleButton id="xl" variant="outline">
+                      XL
+                    </ToggleButton>
+                  </Tooltip>
+                </ToggleButtonGroup>
+              )}
+              {"fill" in shape.props && (
+                <ToggleButtonGroup
+                  variant="separate"
+                  itemsPerRow={4}
+                  selectedKeys={[shape.props.fill as Key]}
+                  onSelectionChange={(keys) => {
+                    const newFill = [...keys][0];
+                    if (newFill) {
+                      editor.updateShape({
+                        id: shape.id,
+                        type: shape.type,
+                        props: {
+                          fill: newFill,
+                        },
+                      });
+                    }
+                  }}
+                >
+                  <Tooltip text="Fill: None">
+                    <ToggleButton id="none" variant="outline">
+                      <Blend />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Fill: Partial">
+                    <ToggleButton id="semi" variant="outline">
+                      <Layers2 />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Fill: Solid">
+                    <ToggleButton id="solid" variant="outline">
+                      <Layers />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Fill: Pattern">
+                    <ToggleButton id="pattern" variant="outline">
+                      <SquareAsterisk />
+                    </ToggleButton>
+                  </Tooltip>
+                </ToggleButtonGroup>
+              )}
+              {"dash" in shape.props && (
+                <ToggleButtonGroup
+                  variant="separate"
+                  itemsPerRow={4}
+                  selectedKeys={[shape.props.dash as Key]}
+                  onSelectionChange={(keys) => {
+                    const newStroke = [...keys][0];
+                    if (newStroke) {
+                      editor.updateShape({
+                        id: shape.id,
+                        type: shape.type,
+                        props: {
+                          dash: newStroke,
+                        },
+                      });
+                    }
+                  }}
+                >
+                  <Tooltip text="Stroke: Dashed">
+                    <ToggleButton id="dashed" variant="outline">
+                      <PanelBottomDashed />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Stroke: Draw">
+                    <ToggleButton id="draw" variant="outline">
+                      <Scan />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Stroke: Dotted">
+                    <ToggleButton id="dotted" variant="outline">
+                      <SquareDashed />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Stroke: Solid">
+                    <ToggleButton id="solid" variant="outline">
+                      <Square />
+                    </ToggleButton>
+                  </Tooltip>
+                </ToggleButtonGroup>
+              )}
+            </Flex>
+            {"color" in shape.props && (
+              <ColorSwatchPicker
+                value={tldrawColorMap[shape.props.color as TldrawColor]}
+                onChange={(color) => {
+                  const tldrawColor = Object.keys(tldrawColorMap).find(
+                    (key) =>
+                      tldrawColorMap[key as TldrawColor] ===
+                      color.toString("hex"),
+                  );
+
+                  if (tldrawColor) {
+                    editor.updateShape({
+                      id: shape.id,
+                      type: shape.type,
+                      props: { color: tldrawColor as TldrawColor },
+                    });
+                  }
+                }}
+              >
+                {tldrawColors.map((color) => (
+                  <ColorSwatchPickerItem
+                    key={color}
+                    color={tldrawColorMap[color]}
+                  />
+                ))}
+              </ColorSwatchPicker>
+            )}
           </Flex>
         </DisclosurePanel>
       </Disclosure>
@@ -803,8 +880,18 @@ function FontSettingsProperties() {
     },
     [editor],
   );
+  const labelColor = useValue(
+    "labelColor",
+    () => {
+      if (!shapeId) return null;
+      const shape = editor.getShape(shapeId);
+      if (!shape || !("labelColor" in shape.props)) return null;
+      return shape.props.labelColor;
+    },
+    [editor],
+  );
 
-  if (!fontFamily || !shapeId || !shapeType) {
+  if (!fontFamily || !shapeId || !shapeType || !labelColor) {
     return null;
   }
 
@@ -817,90 +904,119 @@ function FontSettingsProperties() {
           </Text>
         </DisclosureTitle>
         <DisclosurePanel>
-          <Flex direction="column" gap="2">
-            <Select
-              label="Family"
-              placeholder="Select font family"
-              value={fontFamily}
-              onChange={(value) => {
-                editor.updateShape({
-                  id: shapeId,
-                  type: shapeType,
-                  props: { font: value },
-                });
+          <Flex direction="column" gap="4">
+            <Flex direction="column" gap="2">
+              <Select
+                label="Family"
+                placeholder="Select font family"
+                value={fontFamily}
+                onChange={(value) => {
+                  editor.updateShape({
+                    id: shapeId,
+                    type: shapeType,
+                    props: { font: value },
+                  });
+                }}
+              >
+                <SelectItem id="draw">Draw</SelectItem>
+                <SelectItem id="sans">Sans</SelectItem>
+                <SelectItem id="serif">Serif</SelectItem>
+                <SelectItem id="mono">Mono</SelectItem>
+              </Select>
+              {align && (
+                <ToggleButtonGroup
+                  variant="separate"
+                  itemsPerRow={4}
+                  selectedKeys={[align]}
+                  onSelectionChange={(keys) => {
+                    const newAlign = [...keys][0];
+                    if (newAlign) {
+                      editor.updateShape({
+                        id: shapeId,
+                        type: shapeType,
+                        props: { align: newAlign },
+                      });
+                    }
+                  }}
+                >
+                  <Tooltip text="Align: Start">
+                    <ToggleButton id="start" variant="outline">
+                      <TextAlignStart />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Align: Middle">
+                    <ToggleButton id="middle" variant="outline">
+                      <TextAlignCenter />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Align: End">
+                    <ToggleButton id="end" variant="outline">
+                      <TextAlignEnd />
+                    </ToggleButton>
+                  </Tooltip>
+                </ToggleButtonGroup>
+              )}
+              {verticalAlign && (
+                <ToggleButtonGroup
+                  variant="separate"
+                  itemsPerRow={4}
+                  selectedKeys={[verticalAlign]}
+                  onSelectionChange={(keys) => {
+                    const newAlign = [...keys][0];
+                    if (newAlign) {
+                      editor.updateShape({
+                        id: shapeId,
+                        type: shapeType,
+                        props: { verticalAlign: newAlign },
+                      });
+                    }
+                  }}
+                >
+                  <Tooltip text="Vertical Align: Start">
+                    <ToggleButton id="start" variant="outline">
+                      <AlignStartHorizontal />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Vertical Align: Middle">
+                    <ToggleButton id="middle" variant="outline">
+                      <AlignCenterHorizontal />
+                    </ToggleButton>
+                  </Tooltip>
+                  <Tooltip text="Vertical Align: End">
+                    <ToggleButton id="end" variant="outline">
+                      <AlignEndHorizontal />
+                    </ToggleButton>
+                  </Tooltip>
+                </ToggleButtonGroup>
+              )}
+            </Flex>
+
+            <Separator />
+            <ColorSwatchPicker
+              value={tldrawColorMap[labelColor as TldrawColor]}
+              onChange={(color) => {
+                const tldrawColor = Object.keys(tldrawColorMap).find(
+                  (key) =>
+                    tldrawColorMap[key as TldrawColor] ===
+                    color.toString("hex"),
+                );
+
+                if (tldrawColor) {
+                  editor.updateShape({
+                    id: shapeId,
+                    type: shapeType,
+                    props: { labelColor: tldrawColor as TldrawColor },
+                  });
+                }
               }}
             >
-              <SelectItem id="draw">Draw</SelectItem>
-              <SelectItem id="sans">Sans</SelectItem>
-              <SelectItem id="serif">Serif</SelectItem>
-              <SelectItem id="mono">Mono</SelectItem>
-            </Select>
-            {align && (
-              <ToggleButtonGroup
-                variant="separate"
-                itemsPerRow={4}
-                selectedKeys={[align]}
-                onSelectionChange={(keys) => {
-                  const newAlign = [...keys][0];
-                  if (newAlign) {
-                    editor.updateShape({
-                      id: shapeId,
-                      type: shapeType,
-                      props: { align: newAlign },
-                    });
-                  }
-                }}
-              >
-                <Tooltip text="Align: Start">
-                  <ToggleButton id="start" variant="outline">
-                    <TextAlignStart />
-                  </ToggleButton>
-                </Tooltip>
-                <Tooltip text="Align: Middle">
-                  <ToggleButton id="middle" variant="outline">
-                    <TextAlignCenter />
-                  </ToggleButton>
-                </Tooltip>
-                <Tooltip text="Align: End">
-                  <ToggleButton id="end" variant="outline">
-                    <TextAlignEnd />
-                  </ToggleButton>
-                </Tooltip>
-              </ToggleButtonGroup>
-            )}
-            {verticalAlign && (
-              <ToggleButtonGroup
-                variant="separate"
-                itemsPerRow={4}
-                selectedKeys={[verticalAlign]}
-                onSelectionChange={(keys) => {
-                  const newAlign = [...keys][0];
-                  if (newAlign) {
-                    editor.updateShape({
-                      id: shapeId,
-                      type: shapeType,
-                      props: { verticalAlign: newAlign },
-                    });
-                  }
-                }}
-              >
-                <Tooltip text="Vertical Align: Start">
-                  <ToggleButton id="start" variant="outline">
-                    <AlignStartHorizontal />
-                  </ToggleButton>
-                </Tooltip>
-                <Tooltip text="Vertical Align: Middle">
-                  <ToggleButton id="middle" variant="outline">
-                    <AlignCenterHorizontal />
-                  </ToggleButton>
-                </Tooltip>
-                <Tooltip text="Vertical Align: End">
-                  <ToggleButton id="end" variant="outline">
-                    <AlignEndHorizontal />
-                  </ToggleButton>
-                </Tooltip>
-              </ToggleButtonGroup>
-            )}
+              {tldrawColors.map((color) => (
+                <ColorSwatchPickerItem
+                  key={color}
+                  color={tldrawColorMap[color]}
+                />
+              ))}
+            </ColorSwatchPicker>
           </Flex>
         </DisclosurePanel>
       </Disclosure>
