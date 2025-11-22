@@ -1,0 +1,47 @@
+---
+title: Radio
+description: A radio button component for selecting a single option from a group.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/radio/basic'
+import { RadioWithDescription } from '../../../examples/radio/with-description'
+import { RadioHorizontal } from '../../../examples/radio/horizontal'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the radio component to your project.
+
+```bash
+pnpm hip install radio
+```
+
+## Props
+
+This component is built using the [React Aria Radio](https://react-spectrum.adobe.com/react-aria/Radio.html).
+
+<PropDocs components={["Radio", "RadioGroup"]} />
+
+## Features
+
+### With Description
+
+Radio buttons can include descriptive text to provide additional context.
+
+<Example src={RadioWithDescription} />
+
+### Horizontal Layout
+
+Radio groups can be displayed horizontally for compact layouts.
+
+<Example src={RadioHorizontal} />
+
+## Related Components
+
+- [Checkbox](/docs/components/checkbox) - For multiple selection options
+- [Switch](/docs/components/switch) - For binary toggle choices
+- [Select](/docs/components/select) - For dropdown selection
+- [Label](/docs/components/label) - For form labels and descriptions

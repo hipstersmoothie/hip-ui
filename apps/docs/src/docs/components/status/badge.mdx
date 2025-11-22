@@ -1,0 +1,61 @@
+---
+title: Badge
+description: A small status indicator component for highlighting information.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/badge/basic'
+import { BadgeVariants } from '../../../examples/badge/variants'
+import { BadgeSizes } from '../../../examples/badge/sizes'
+import { BadgeWithIcons } from '../../../examples/badge/with-icons'
+import { BadgeDismissible } from '../../../examples/badge/dismissible'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the badge component to your project.
+
+```bash
+pnpm hip install badge
+```
+
+## Props
+
+This is a custom component built for status indicators.
+
+<PropDocs components={["Badge"]} />
+
+## Features
+
+### Variants
+
+The badge comes in five different variants to convey different types of information.
+
+<Example src={BadgeVariants} />
+
+### Sizes
+
+The badge supports two different sizes.
+
+<Example src={BadgeSizes} />
+
+### With Icons
+
+Badges can include icons to enhance their visual meaning.
+
+<Example src={BadgeWithIcons} />
+
+### Dismissible
+
+Badges can be made dismissible for user interaction.
+
+<Example src={BadgeDismissible} />
+
+## Related Components
+
+- [Avatar](/docs/components/avatar) - For user avatars with status badges
+- [Card](/docs/components/card) - For cards with status badges
+- [Table](/docs/components/table) - For table cells with status badges
+- [Button](/docs/components/button) - For buttons with notification badges

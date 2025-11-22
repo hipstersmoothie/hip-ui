@@ -1,0 +1,31 @@
+---
+title: List Box
+description: A list box component for displaying a list of selectable items.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/listbox/basic'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the list box component to your project.
+
+```bash
+pnpm hip install listbox
+```
+
+## Props
+
+This component is built using the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/ListBox.html).
+
+<PropDocs components={["ListBox", "ListBoxItem", "ListBoxSection", "ListBoxSeparator", "ListBoxSectionHeader"]} />
+
+## Related Components
+
+- [Select](/docs/components/select) - For dropdown selection using ListBox
+- [ComboBox](/docs/components/combobox) - For searchable selection using ListBox
+- [Tree](/docs/components/tree) - For hierarchical data display
+- [Table](/docs/components/table) - For structured data display

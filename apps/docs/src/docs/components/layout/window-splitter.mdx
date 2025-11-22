@@ -1,0 +1,47 @@
+---
+title: Window Splitter
+description: A flexible window splitter component for creating resizable panel layouts.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/window-splitter/basic'
+import { Vertical } from '../../../examples/window-splitter/vertical'
+import { ThreePanels } from '../../../examples/window-splitter/three-panels'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the window-splitter component to your project.
+
+```bash
+pnpm hip install window-splitter
+```
+
+## Props
+
+This component is built using [@window-splitter/react](https://react-window-splitter-six.vercel.app/docs/install), which follows the [WAI-ARIA Window Splitter pattern](https://www.w3.org/WAI/ARIA/apg/patterns/windowsplitter/).
+
+<PropDocs components={["PanelGroup", "Panel", "PanelResizer"]} />
+
+## Features
+
+### Vertical Layout
+
+Panels can be arranged vertically by setting the `direction` prop on `PanelGroup`.
+
+<Example src={Vertical} />
+
+### Multiple Panels
+
+You can create layouts with three or more panels by adding multiple `Panel` and `PanelResizer` components.
+
+<Example src={ThreePanels} />
+
+## Related Components
+
+- [Flex](/docs/components/flex) - For flexible layouts without resizing
+- [Grid](/docs/components/grid) - For two-dimensional layouts
+- [Separator](/docs/components/separator) - For visual separation
+

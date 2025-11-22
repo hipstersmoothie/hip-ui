@@ -1,0 +1,40 @@
+---
+title: Separator
+description: A visual divider component for separating content sections.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/separator/basic'
+import { SeparatorOrientation } from '../../../examples/separator/orientation'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the separator component to your project.
+
+```bash
+pnpm hip install separator
+```
+
+## Props
+
+This component is built using the [React Aria Separator](https://react-spectrum.adobe.com/react-aria/useSeparator.html#useseparator).
+
+<PropDocs components={["Separator"]} />
+
+## Features
+
+### Orientation
+
+Separators can be oriented horizontally or vertically.
+
+<Example src={SeparatorOrientation} />
+
+## Related Components
+
+- [Flex](/docs/components/flex) - For layouts that use separators
+- [Card](/docs/components/card) - For cards that use separators
+- [Menu](/docs/components/menu) - For menu items with separators
+- [Typography](/docs/components/typography) - For text sections with separators

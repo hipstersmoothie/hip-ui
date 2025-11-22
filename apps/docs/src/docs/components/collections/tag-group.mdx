@@ -1,0 +1,55 @@
+---
+title: Tag Group
+description: A tag group component for displaying and managing collections of tags.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/tag-group/basic'
+import { Removable } from '../../../examples/tag-group/removable'
+import { Selected } from '../../../examples/tag-group/selected'
+import { WithError } from '../../../examples/tag-group/with-error'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the tag group component to your project.
+
+```bash
+pnpm hip install tag-group
+```
+
+## Props
+
+This component is built using the [React Aria TagGroup](https://react-spectrum.adobe.com/react-aria/TagGroup.html).
+
+<PropDocs components={["TagGroup", "Tag"]} />
+
+## Features
+
+### Removable Tags
+
+Tags can be made removable with a remove button.
+
+<Example src={Removable} />
+
+### Selection
+
+Tags can be selectable in single or multiple selection modes.
+
+<Example src={Selected} />
+
+### Error State
+
+Tag groups can display error messages for validation feedback.
+
+<Example src={WithError} />
+
+## Related Components
+
+- [Badge](/docs/components/badge) - For displaying status indicators
+- [Label](/docs/components/label) - For form labels and descriptions
+- [Button](/docs/components/button) - For actions on tags
+- [Select](/docs/components/select) - For single item selection
+

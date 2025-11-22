@@ -1,0 +1,31 @@
+---
+title: Alert Dialog
+description: A modal dialog component specifically designed for critical actions and confirmations.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/alert-dialog/basic'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the alert dialog component to your project.
+
+```bash
+pnpm hip install alert-dialog
+```
+
+## Props
+
+This component is built using the [React Aria Dialog](https://react-spectrum.adobe.com/react-aria/Dialog.html) with the `alertdialog` role.
+
+<PropDocs components={["AlertDialog", "AlertDialogHeader", "AlertDialogDescription", "AlertDialogFooter", "AlertDialogCancelButton", "AlertDialogActionButton"]} />
+
+## Related Components
+
+- [Dialog](/docs/components/dialog) - For general modal dialogs
+- [Button](/docs/components/button) - For dialog action buttons
+- [Popover](/docs/components/popover) - For non-modal overlays
+- [Tooltip](/docs/components/tooltip) - For contextual help

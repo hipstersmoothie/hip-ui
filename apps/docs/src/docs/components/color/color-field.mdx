@@ -1,0 +1,51 @@
+---
+title: Color Field
+description: A color input component for selecting colors with a color picker.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/color-field/basic'
+import { Validation } from '../../../examples/color-field/validation'
+import { ValidationWarning } from '../../../examples/color-field/validation-warning'
+import { ValidationSuccess } from '../../../examples/color-field/validation-success'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the color field component to your project.
+
+```bash
+pnpm hip install color-field
+```
+
+## Props
+
+This component is built using the [React Aria ColorField](https://react-spectrum.adobe.com/react-aria/ColorField.html).
+
+<PropDocs components={["ColorField"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
+
+## Related Components
+
+- [ColorSwatch](/docs/components/color-swatch) - For displaying color values
+- [TextField](/docs/components/text-field) - For general text input
+- [NumberField](/docs/components/number-field) - For numeric input
+- [Label](/docs/components/label) - For form labels and descriptions

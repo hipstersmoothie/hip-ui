@@ -1,0 +1,51 @@
+---
+title: Date Field
+description: A date input component for selecting dates with proper formatting.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/date-field/basic'
+import { Validation } from '../../../examples/date-field/validation'
+import { ValidationWarning } from '../../../examples/date-field/validation-warning'
+import { ValidationSuccess } from '../../../examples/date-field/validation-success'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the date field component to your project.
+
+```bash
+pnpm hip install date-field
+```
+
+## Props
+
+This component is built using the [React Aria DateField](https://react-spectrum.adobe.com/react-aria/DateField.html).
+
+<PropDocs components={["DateField"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
+
+## Related Components
+
+- [TimeField](/docs/components/time-field) - For time input
+- [TextField](/docs/components/text-field) - For general text input
+- [NumberField](/docs/components/number-field) - For numeric input
+- [Label](/docs/components/label) - For form labels and descriptions

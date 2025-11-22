@@ -1,0 +1,48 @@
+---
+title: Menubar
+description: A menubar component that displays a horizontal row of menu items, typically used for application navigation.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/menubar/basic'
+import { Disabled } from '../../../examples/menubar/disabled'
+import { Size } from '../../../examples/menubar/size'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the menubar component to your project.
+
+```bash
+pnpm hip install menubar
+```
+
+## Props
+
+This a custom component that is built using React Aria's [DialogTrigger](https://react-spectrum.adobe.com/react-aria/DialogTrigger.html), [Menu](https://react-spectrum.adobe.com/react-aria/Menu.html), and [Popover](https://react-spectrum.adobe.com/react-aria/Popover.html).
+
+<PropDocs components={["Menubar", "MenubarItem"]} />
+
+## Features
+
+### Disabled State
+
+Menubar items can be disabled to prevent interaction.
+
+<Example src={Disabled} />
+
+### Size
+
+The menubar component supports three sizes: `sm`, `md`, and `lg`.
+
+<Example src={Size} />
+
+## Related Components
+
+- [Menu](/docs/components/menu) - The underlying menu component used in menubar items
+- [Popover](/docs/components/popover) - For positioning the menu popovers
+- [MenuItem](/docs/components/menu) - Menu items displayed in the menubar menus
+- [SubMenu](/docs/components/menu) - For nested submenus in menubar items
+

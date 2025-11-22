@@ -1,0 +1,61 @@
+---
+title: Progress Bar
+description: A progress indicator component for showing completion status.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/progress-bar/basic'
+import { WithoutValueLabel } from '../../../examples/progress-bar/without-value-label'
+import { WithoutLabel } from '../../../examples/progress-bar/without-label'
+import { Indeterminate } from '../../../examples/progress-bar/indeterminate'
+import { Sizes } from '../../../examples/progress-bar/sizes'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the progress bar component to your project.
+
+```bash
+pnpm hip install progress-bar
+```
+
+## Props
+
+This component is built using the [React Aria ProgressBar](https://react-spectrum.adobe.com/react-aria/ProgressBar.html).
+
+<PropDocs components={["ProgressBar"]} />
+
+## Features
+
+### Without Value Label
+
+The value label can be hidden by setting the `showValueLabel` prop to false.
+
+<Example src={WithoutValueLabel} />
+
+### Without Labels
+
+The label is optional and can be omitted for a minimal progress indicator.
+
+<Example src={WithoutLabel} />
+
+### Indeterminate
+
+If your progress is not known, you can omit the `value` prop and provide the `isIndeterminate` prop to true.
+
+<Example src={Indeterminate} />
+
+### Sizes
+
+The progress bar supports three different sizes.
+
+<Example src={Sizes} />
+
+## Related Components
+
+- [Slider](/docs/components/slider) - For interactive value selection
+- [Badge](/docs/components/badge) - For status indicators
+- [Label](/docs/components/label) - For form labels
+

@@ -1,0 +1,60 @@
+---
+title: Color Slider
+description: A 1D color selection slider for adjusting a single color channel.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/color-slider/basic'
+import { Channels } from '../../../examples/color-slider/channels'
+import { HideValueLabel } from '../../../examples/color-slider/hide-value-label'
+import { Disabled } from '../../../examples/color-slider/disabled'
+import { Size } from '../../../examples/color-slider/size'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the color slider component to your project.
+
+```bash
+pnpm hip install color-slider
+```
+
+## Props
+
+This component is built using the [React Aria ColorSlider](https://react-spectrum.adobe.com/react-aria/ColorSlider.html).
+
+<PropDocs components={["ColorSlider"]} />
+
+## Features
+
+### Channels
+
+Adjust different channels such as hue, saturation, lightness, and brightness.
+
+<Example src={Channels} />
+
+### Hide Value Label
+
+The value label can be hidden by setting the `showValueLabel` prop to false.
+
+<Example src={HideValueLabel} />
+
+### Disabled
+
+The color slider can be disabled by setting the `isDisabled` prop to true.
+
+<Example src={Disabled} />
+
+### Size
+
+The color slider can be sized by setting the `size` prop to "sm", "md", or "lg".
+
+<Example src={Size} />
+
+## Related Components
+
+- [ColorArea](/docs/components/color-area) - 2D color selection
+- [ColorField](/docs/components/color-field) - Entering color values
+- [Slider](/docs/components/slider) - Generic numeric slider

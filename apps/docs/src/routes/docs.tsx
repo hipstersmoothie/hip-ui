@@ -62,6 +62,37 @@ const showcaseDocs = allDocs.filter((doc) =>
   doc._meta.directory.startsWith("showcase"),
 );
 
+// Group component docs by folder name
+const componentGroups = componentDocs.reduce(
+  (acc, doc) => {
+    // Extract folder name from path like "components/form/select" -> "form"
+    const pathParts = doc._meta.path.split("/");
+    const folderName =
+      pathParts.length > 2 && pathParts[1] ? pathParts[1] : "components";
+    if (!acc[folderName]) {
+      acc[folderName] = [];
+    }
+    acc[folderName]!.push(doc);
+    return acc;
+  },
+  {} as Record<string, typeof componentDocs>,
+);
+
+const componentItems: SidebarItem[] = Object.entries(componentGroups)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([folderName, docs]) => ({
+    id: `components-${folderName}`,
+    label: folderName.charAt(0).toUpperCase() + folderName.slice(1),
+    items: docs
+      .sort((a, b) => a.title.localeCompare(b.title))
+      .map((doc) => ({
+        id: doc._meta.path,
+        label: doc.title,
+        to: "/docs/$",
+        params: { _splat: doc._meta.path },
+      })),
+  }));
+
 const sidebarItems: SidebarItem[] = [
   {
     id: "foundations",
@@ -76,12 +107,7 @@ const sidebarItems: SidebarItem[] = [
   {
     id: "components",
     label: "Components",
-    items: componentDocs.map((doc) => ({
-      id: doc._meta.path,
-      label: doc.title,
-      to: "/docs/$",
-      params: { _splat: doc._meta.path },
-    })),
+    items: componentItems,
   },
   {
     id: "showcases",
@@ -96,7 +122,18 @@ const sidebarItems: SidebarItem[] = [
 ];
 
 const flatItems = sidebarItems
-  .flatMap((item) => ("items" in item ? item.items : [item]))
+  .flatMap((item) => {
+    if (!("items" in item) || !item.items) {
+      return [item];
+    }
+    // Flatten nested items (for components with folder groups)
+    return item.items.flatMap((subItem) => {
+      if (subItem.items) {
+        return subItem.items;
+      }
+      return [subItem];
+    });
+  })
   .filter((item): item is SidebarItem => item !== undefined);
 
 function DarkModeToggle() {
@@ -154,18 +191,37 @@ function DocSidebar() {
 
         return (
           <SidebarGroup title={item.label} key={item.id}>
-            <SidebarSection>
-              {item.items.map((item) => (
-                <SidebarItemLink
-                  key={item.id}
-                  to={item.to}
-                  params={item.params}
-                  isActive={currentItem?.id === item.id}
-                >
-                  {item.label}
-                </SidebarItemLink>
-              ))}
-            </SidebarSection>
+            {item.items.map((subItem) => {
+              // If subItem has nested items, it's a group (like component folders)
+              if (subItem.items) {
+                return (
+                  <SidebarSection key={subItem.id} title={subItem.label}>
+                    {subItem.items.map((leafItem) => (
+                      <SidebarItemLink
+                        key={leafItem.id}
+                        to={leafItem.to}
+                        params={leafItem.params}
+                        isActive={currentItem?.id === leafItem.id}
+                      >
+                        {leafItem.label}
+                      </SidebarItemLink>
+                    ))}
+                  </SidebarSection>
+                );
+              }
+              // Otherwise, it's a leaf item (like foundation/showcase docs)
+              return (
+                <SidebarSection key={subItem.id}>
+                  <SidebarItemLink
+                    to={subItem.to}
+                    params={subItem.params}
+                    isActive={currentItem?.id === subItem.id}
+                  >
+                    {subItem.label}
+                  </SidebarItemLink>
+                </SidebarSection>
+              );
+            })}
           </SidebarGroup>
         );
       })}

@@ -1,0 +1,47 @@
+---
+title: Checkbox
+description: A checkbox component for selecting one or more options from a set.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/checkbox/basic'
+import { CheckboxStates } from '../../../examples/checkbox/states'
+import { CheckboxWithDescription } from '../../../examples/checkbox/with-description'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the checkbox component to your project.
+
+```bash
+pnpm hip install checkbox
+```
+
+## Props
+
+This component is built using the [React Aria Checkbox](https://react-spectrum.adobe.com/react-aria/Checkbox.html).
+
+<PropDocs components={["Checkbox", "CheckboxGroup"]} />
+
+## Features
+
+### States
+
+Checkboxes support different states including checked, unchecked, indeterminate, and disabled.
+
+<Example src={CheckboxStates} />
+
+### With Description
+
+Checkboxes can include descriptive text to provide additional context.
+
+<Example src={CheckboxWithDescription} />
+
+## Related Components
+
+- [Radio](/docs/components/radio) - For single selection from multiple options
+- [Switch](/docs/components/switch) - For binary toggle choices
+- [Select](/docs/components/select) - For dropdown selection
+- [Label](/docs/components/label) - For form labels and descriptions

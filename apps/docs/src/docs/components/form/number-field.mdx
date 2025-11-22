@@ -1,0 +1,51 @@
+---
+title: Number Field
+description: A number input component with increment/decrement buttons and validation.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/number-field/basic'
+import { Validation } from '../../../examples/number-field/validation'
+import { ValidationWarning } from '../../../examples/number-field/validation-warning'
+import { ValidationSuccess } from '../../../examples/number-field/validation-success'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the number field component to your project.
+
+```bash
+pnpm hip install number-field
+```
+
+## Props
+
+This component is built using the [React Aria NumberField](https://react-spectrum.adobe.com/react-aria/NumberField.html).
+
+<PropDocs components={["NumberField"]} />
+
+## Features
+
+### Validation
+
+Use the `validationState` prop to indicate when a field has validation errors.
+Set `validationState="invalid"` along with an `errorMessage` to display error states.
+
+<Example src={Validation} />
+
+Set `validationState="warning"` to show a warning state with a description.
+
+<Example src={ValidationWarning} />
+
+Set `validationState="valid"` to show a success state with a description.
+
+<Example src={ValidationSuccess} />
+
+## Related Components
+
+- [TextField](/docs/components/text-field) - For general text input
+- [TextArea](/docs/components/text-area) - For multi-line text input
+- [SearchField](/docs/components/search-field) - For search input with clear button
+- [Label](/docs/components/label) - For form labels and descriptions

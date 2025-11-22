@@ -1,0 +1,47 @@
+---
+title: Segmented Control
+description: A segmented control displays a set of mutually exclusive options, allowing users to select one option at a time.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/segmented-control/basic'
+import { Size } from '../../../examples/segmented-control/size'
+import { WithIcons } from '../../../examples/segmented-control/with-icons'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the segmented control component to your project.
+
+```bash
+pnpm hip install segmented-control
+```
+
+## Props
+
+This component is built using [React Aria ToggleButtonGroup](https://react-spectrum.adobe.com/react-aria/ToggleButtonGroup.html).
+
+<PropDocs components={["SegmentedControl", "SegmentedControlItem"]} />
+
+## Features
+
+### Sizes
+
+Segmented controls support three different sizes: small, medium, and large.
+
+<Example src={Size} />
+
+### With Icons
+
+Segmented control items can include icons alongside text labels.
+
+<Example src={WithIcons} />
+
+## Related Components
+
+- [Tabs](/docs/components/tabs) - For organizing content into multiple sections
+- [ToggleButtonGroup](/docs/components/toggle-button-group) - For grouping toggle buttons together
+- [Radio](/docs/components/radio) - For single-selection from multiple options
+

@@ -1,0 +1,55 @@
+---
+title: Disclosure
+description: A collapsible section of content composed of a heading that expands and collapses a panel.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/disclosure/basic'
+import { Expanded } from '../../../examples/disclosure/expanded'
+import { Disabled } from '../../../examples/disclosure/disabled'
+import { Sizes } from '../../../examples/disclosure/sizes'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the disclosure component to your project.
+
+```bash
+pnpm hip install disclosure
+```
+
+## Props
+
+This component is built using the [React Aria Disclosure](https://react-spectrum.adobe.com/react-aria/Disclosure.html).
+
+<PropDocs components={["Disclosure", "DisclosureTitle", "DisclosurePanel"]} />
+
+## Features
+
+### Expanded
+
+Disclosure can be expanded by default using the `defaultExpanded` prop.
+
+<Example src={Expanded} />
+
+### Disabled State
+
+Disclosure can be disabled to prevent interaction.
+
+<Example src={Disabled} />
+
+
+### Sizes
+
+Disclosure supports three different sizes: small, medium, and large.
+
+<Example src={Sizes} />
+
+## Related Components
+
+- [Accordion](/docs/components/accordion) - For multiple collapsible sections
+- [Dialog](/docs/components/dialog) - For modal content
+- [Popover](/docs/components/popover) - For overlay content
+

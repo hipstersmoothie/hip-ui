@@ -1,0 +1,48 @@
+---
+title: Color Swatch Picker
+description: A list of color swatches that allows selecting one color.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/color-swatch-picker/basic'
+import { Size } from '../../../examples/color-swatch-picker/size'
+import { Layout } from '../../../examples/color-swatch-picker/layout'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the color swatch picker to your project.
+
+```bash
+pnpm hip install color-swatch-picker
+```
+
+## Props
+
+This component is built using [React Aria ColorSwatchPicker](https://react-spectrum.adobe.com/react-aria/ColorSwatchPicker.html).
+
+<PropDocs components={["ColorSwatchPicker", "ColorSwatchPickerItem"]} />
+
+## Features
+
+### Size
+
+The `ColorSwatchPicker` supports the `size` prop to adjust the size of the swatches.
+
+<Example src={Size} />
+
+### Layout
+
+The swatches can be laid out in a stack with `layout="stack"`
+
+<Example src={Layout} />
+
+## Related Components
+
+- [ColorSwatch](/docs/components/color-swatch) - For individual color previews
+- [ColorField](/docs/components/color-field) - For color input
+- [Grid](/docs/components/grid) - For arranging swatches
+
+

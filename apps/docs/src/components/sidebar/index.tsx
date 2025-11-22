@@ -1,6 +1,7 @@
+import { useLayoutEffect } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
 import { ChevronRight } from "lucide-react";
-import { createContext, use, useId, useMemo } from "react";
+import { createContext, use, useEffect, useId, useMemo } from "react";
 import { mergeProps, useHover, usePress } from "react-aria";
 import {
   Button,
@@ -51,6 +52,7 @@ const styles = stylex.create({
     height: spacing["6"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
+    paddingTop: spacing["4"],
   },
   sidebarSectionList: {
     margin: 0,
@@ -59,6 +61,9 @@ const styles = stylex.create({
     display: "flex",
     flexDirection: "column",
   },
+  sidebarItemWrapper: {
+    listStyle: "none",
+  },
   sidebarItem: {
     // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
@@ -66,7 +71,7 @@ const styles = stylex.create({
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    listStyle: "none",
+    borderWidth: 0,
     textDecoration: "none",
     alignItems: "center",
     backgroundColor: {
@@ -94,6 +99,7 @@ const styles = stylex.create({
       ":is([data-pressed=true])": primaryColor.component3,
     },
     color: primaryColor.text2,
+    scrollMarginTop: spacing["4"],
   },
   sidebarGroupHeading: {
     margin: 0,
@@ -133,10 +139,10 @@ const styles = stylex.create({
     height: "var(--disclosure-panel-height)",
   },
   sidebarGroupPanelContent: {
-    gap: spacing["4"],
+    gap: spacing["1"],
     display: "flex",
     flexDirection: "column",
-    paddingTop: spacing["5"],
+    paddingTop: spacing["4"],
   },
 });
 
@@ -148,6 +154,18 @@ export interface SidebarProps
 export function Sidebar({ children, style, ...props }: SidebarProps) {
   const headerId = useId();
   const contextValue = useMemo(() => ({ headerId }), [headerId]);
+
+  useLayoutEffect(() => {
+    const focusActiveItem = () => {
+      const activeItem =
+        document.querySelector<HTMLLIElement>("[data-active=true]");
+      console.log(activeItem);
+      activeItem?.scrollIntoView({ behavior: "instant" });
+    };
+
+    document.addEventListener("keydown", focusActiveItem, { once: true });
+    return () => document.removeEventListener("keydown", focusActiveItem);
+  }, []);
 
   return (
     <SidebarContext value={contextValue}>
@@ -243,7 +261,7 @@ export function SidebarSection({ children, title }: SidebarSectionProps) {
     <Flex direction="column" gap="1">
       {title && (
         <div {...stylex.props(styles.sidebarSectionTitle)}>
-          <Text id={headerId} size="sm" weight="medium" variant="secondary">
+          <Text id={headerId} size="xs" weight="semibold" variant="secondary">
             {title}
           </Text>
         </div>
@@ -275,11 +293,16 @@ export function SidebarItem({
   const Component = "href" in props ? "a" : "button";
 
   return (
-    <li>
+    <li {...stylex.props(styles.sidebarItemWrapper)}>
       <Component
-        {...mergeProps(props as any, hoverProps, pressProps)}
+        {...mergeProps(
+          props as React.ComponentProps<typeof Component>,
+          hoverProps,
+          pressProps,
+        )}
         data-hovered={isHovered}
         data-pressed={isPressed}
+        data-active={isActive}
         {...stylex.props(
           styles.sidebarItem,
           isActive && styles.sidebarItemActive,

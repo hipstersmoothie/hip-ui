@@ -1,0 +1,41 @@
+---
+title: Tree
+description: A tree component for displaying hierarchical data with expandable nodes.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/tree/basic'
+import { DragAndDrop } from '../../../examples/tree/drag-and-drop'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the tree component to your project.
+
+```bash
+pnpm hip install tree
+```
+
+## Props
+
+This component is built using the [React Aria Tree](https://react-spectrum.adobe.com/react-aria/Tree.html).
+
+<PropDocs components={["Tree", "TreeItem"]} />
+
+### Features
+
+#### Drag and Drop
+
+The tree supports drag and drop by providing the `dragAndDropHooks` prop to the `Tree` component.
+React more about it [here](https://react-spectrum.adobe.com/react-aria/Tree.html#drag-and-drop).
+
+<Example src={DragAndDrop} />       
+
+## Related Components
+
+- [ListBox](/docs/components/listbox) - For flat list data
+- [Table](/docs/components/table) - For structured data display
+- [Card](/docs/components/card) - For displaying tree data in cards
+- [Menu](/docs/components/menu) - For hierarchical menu structures

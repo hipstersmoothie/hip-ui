@@ -1,0 +1,76 @@
+---
+title: Meter
+description: A gauge component for displaying scalar measurements within a known range.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/meter/basic'
+import { WithoutValueLabel } from '../../../examples/meter/without-value-label'
+import { Sizes } from '../../../examples/meter/sizes'
+import { Variants } from '../../../examples/meter/variants'
+import { CustomRange } from '../../../examples/meter/custom-range'
+import { ValueFormatting } from '../../../examples/meter/value-formatting'
+import { CustomValueLabel } from '../../../examples/meter/custom-value-label'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the meter component to your project.
+
+```bash
+pnpm hip install meter
+```
+
+## Props
+
+This component is built using the [React Aria Meter](https://react-spectrum.adobe.com/react-aria/Meter.html).
+
+<PropDocs components={["Meter"]} />
+
+## Features
+
+### Sizes
+
+The meter supports three different sizes that affect both the bar height and label font size.
+
+<Example src={Sizes} />
+
+### Variants
+
+The meter supports five different variants that affect the color of the bar.
+
+<Example src={Variants} />
+
+### Custom Range
+
+Specify custom min and max values to represent any range of measurements.
+
+<Example src={CustomRange} />
+
+### Without Value Label
+
+The value label can be hidden by setting the `showValueLabel` prop to false.
+
+<Example src={WithoutValueLabel} />
+
+### Value Formatting
+
+The value label can be formatted using the `formatOptions` prop.
+This prop is passed to the `Intl.NumberFormat` constructor.
+
+<Example src={ValueFormatting} />
+
+### Custom Value Label
+
+The value label can be customized by passing a custom component to the `valueLabel` prop.
+
+<Example src={CustomValueLabel} />
+
+## Related Components
+
+- [ProgressBar](/docs/components/progress-bar) - For showing completion status
+- [Slider](/docs/components/slider) - For interactive value selection
+- [Label](/docs/components/label) - For form labels
+
