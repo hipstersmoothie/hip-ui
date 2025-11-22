@@ -23,20 +23,21 @@ const styles = stylex.create({
     boxShadow: shadow["xs"],
   },
   base: {
-    alignItems: "center",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["full"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    gap: spacing["1"],
+    alignItems: "center",
     boxSizing: "border-box",
     display: "inline-flex",
     flexShrink: 0,
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["medium"],
-    gap: spacing["1"],
     justifyContent: "center",
     opacity: {
       ":disabled": 0.5,
@@ -52,15 +53,15 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   small: {
     fontSize: fontSize["xs"],
-    height: spacing["7"],
     lineHeight: lineHeight["xs"],
+    height: spacing["7"],
     paddingLeft: {
       default: spacing["2"],
     },
@@ -69,16 +70,16 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["3.5"],
       pointerEvents: "none",
+      height: spacing["3.5"],
       width: spacing["3.5"],
     },
   },
   medium: {
-    fontSize: fontSize["sm"],
     gap: spacing["1.5"],
-    height: spacing["8"],
+    fontSize: fontSize["sm"],
     lineHeight: lineHeight["xs"],
+    height: spacing["8"],
     paddingLeft: {
       default: spacing["3"],
       ":has(svg+*)": spacing["2.5"],

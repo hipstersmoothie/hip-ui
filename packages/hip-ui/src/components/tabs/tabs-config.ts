@@ -9,7 +9,6 @@ export const tabsConfig: ComponentConfig = {
     "../theme/spacing.stylex.tsx",
     "../theme/typography.stylex.tsx",
     "../theme/radius.stylex.tsx",
-    "../theme/media-queries.stylex.tsx",
     "../theme/types.ts",
     "../context.ts",
   ],

@@ -8,7 +8,6 @@ export const tooltipConfig: ComponentConfig = {
     "../theme/radius.stylex.tsx",
     "../theme/semantic-color.stylex.tsx",
     "../theme/typography.stylex.tsx",
-    "../theme/media-queries.stylex.tsx",
     "../theme/shadow.stylex.tsx",
   ],
   dependencies: {

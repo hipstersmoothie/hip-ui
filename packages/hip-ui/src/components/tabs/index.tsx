@@ -16,7 +16,6 @@ import {
 
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -33,10 +32,17 @@ const styles = stylex.create({
     flexDirection: "row",
   },
   tabList: {
+    gap: spacing["1"],
     alignItems: {
       ":is([data-orientation=horizontal])": "flex-start",
       ":is([data-orientation=vertical])": "stretch",
     },
+    display: "flex",
+    flexDirection: {
+      ":is([data-orientation=horizontal])": "row",
+      ":is([data-orientation=vertical])": "column",
+    },
+    position: "relative",
     borderBottomColor: {
       ":is([data-orientation=horizontal])": uiColor.border2,
       ":is([data-orientation=vertical])": "transparent",
@@ -61,18 +67,17 @@ const styles = stylex.create({
       ":is([data-orientation=horizontal])": 0,
       ":is([data-orientation=vertical])": 1,
     },
-    display: "flex",
-    flexDirection: {
-      ":is([data-orientation=horizontal])": "row",
-      ":is([data-orientation=vertical])": "column",
-    },
-    gap: spacing["1"],
-    position: "relative",
   },
   tab: {
+    padding: {
+      ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["5"]}`,
+      ":is([data-size=md] *)": `${spacing["3"]} ${spacing["4"]}`,
+      ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["2.5"]}`,
+    },
+    borderWidth: 0,
+    outline: "none",
     alignItems: "center",
     backgroundColor: "transparent",
-    borderWidth: 0,
     color: {
       default: uiColor.text1,
       ":is([data-hovered],[data-focused],[data-selected])": uiColor.text2,
@@ -81,31 +86,32 @@ const styles = stylex.create({
     display: "flex",
     fontFamily: fontFamily["sans"],
     fontSize: {
-      ":is([data-size=sm] *)": fontSize["sm"],
-      ":is([data-size=md] *)": fontSize["base"],
       ":is([data-size=lg] *)": fontSize["lg"],
+      ":is([data-size=md] *)": fontSize["base"],
+      ":is([data-size=sm] *)": fontSize["sm"],
     },
     justifyContent: "center",
     opacity: {
       default: 1,
       ":is([data-disabled])": 0.5,
     },
-    outline: "none",
-    padding: {
-      ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["2.5"]}`,
-      ":is([data-size=md] *)": `${spacing["3"]} ${spacing["4"]}`,
-      ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["5"]}`,
-    },
     position: "relative",
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "color",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
   },
   selectionIndicator: {
     backgroundColor: "transparent",
+    position: "absolute",
+    transitionDuration: animationDuration.slow,
+    transitionProperty: {
+      default: "translate, width, height",
+      "@media (prefers-reduced-motion: reduce)": "none",
+    },
+    transitionTimingFunction: "ease-in-out",
     borderBottomColor: {
       default: "transparent",
       ":is([data-orientation=horizontal] > [data-selected] > *)":
@@ -140,7 +146,6 @@ const styles = stylex.create({
       ":is([data-orientation=horizontal] *)": 0,
       ":is([data-orientation=vertical] *)": "unset",
     },
-    position: "absolute",
     right: {
       ":is([data-orientation=horizontal] *)": 0,
       ":is([data-orientation=vertical] *)": "0",
@@ -149,28 +154,22 @@ const styles = stylex.create({
       ":is([data-orientation=horizontal] *)": "auto",
       ":is([data-orientation=vertical] *)": 0,
     },
-    transitionDuration: animationDuration.slow,
-    transitionProperty: {
-      default: "translate, width, height",
-      [mediaQueries.reducedMotion]: "none",
-    },
-    transitionTimingFunction: "ease-in-out",
     width: {
       ":is([data-orientation=horizontal] *)": "100%",
       ":is([data-orientation=vertical] *)": "auto",
     },
   },
   tabPanel: {
-    fontSize: {
-      ":is([data-size=sm] *)": fontSize["sm"],
-      ":is([data-size=md] *)": fontSize["base"],
-      ":is([data-size=lg] *)": fontSize["lg"],
+    padding: {
+      ":is([data-size=lg] *)": spacing["5"],
+      ":is([data-size=md] *)": spacing["4"],
+      ":is([data-size=sm] *)": spacing["3"],
     },
     outline: "none",
-    padding: {
-      ":is([data-size=sm] *)": spacing["3"],
-      ":is([data-size=md] *)": spacing["4"],
-      ":is([data-size=lg] *)": spacing["5"],
+    fontSize: {
+      ":is([data-size=lg] *)": fontSize["lg"],
+      ":is([data-size=md] *)": fontSize["base"],
+      ":is([data-size=sm] *)": fontSize["sm"],
     },
   },
   focusRing: {

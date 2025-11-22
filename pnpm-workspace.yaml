@@ -5,7 +5,7 @@ packages:
 catalog:
   "@react-stately/utils": 3.10.8
   "@react-types/overlays": 3.9.2
-  "@stylexjs/stylex": 0.16.2
+  "@stylexjs/stylex": 0.17.0
   "@types/node": 24.9.1
   "@types/react": 19.2.0
   "@types/react-dom": 19.2.0

@@ -16,7 +16,6 @@ import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -34,13 +33,12 @@ const scaleIn = stylex.keyframes({
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2.5"],
     alignItems: {
       default: "center",
       ":has(p)": "flex-start",
     },
     display: "flex",
-    gap: spacing["2.5"],
-
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
     lineHeight: lineHeight["sm"],
@@ -53,33 +51,33 @@ const styles = stylex.create({
 
     borderRadius: radius["full"],
     borderWidth: 2,
-    height: spacing["4"],
     position: "relative",
+    height: spacing["4"],
     width: spacing["4"],
 
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color, border-color, color",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
   },
   selectionIndicator: {
-    backgroundColor: "white",
     borderRadius: radius["full"],
+    backgroundColor: "white",
     height: spacing["2"],
     width: spacing["2"],
 
-    left: "50%",
     position: "absolute",
-    top: "50%",
     transform: "translate(-50%, -50%)",
+    left: "50%",
+    top: "50%",
 
     animationDuration: animationDuration.fast,
     animationFillMode: "forwards",
     animationName: {
       default: scaleIn,
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     animationTimingFunction: "ease-in-out",
   },
@@ -87,9 +85,9 @@ const styles = stylex.create({
     color: "white",
   },
   group: {
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
   },
 });
 

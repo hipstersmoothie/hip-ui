@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 import { ChevronRight } from "lucide-react";
 import { createContext, use, useId, useMemo } from "react";
+import { mergeProps, useHover, usePress } from "react-aria";
 import {
   Button,
   Disclosure,
@@ -10,14 +11,12 @@ import {
 
 import { Flex } from "../flex";
 import { animationDuration } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 import { Text } from "../typography/text";
-import { mergeProps, useHover, usePress } from "react-aria";
 
 interface SidebarContextType {
   headerId: string;
@@ -29,9 +28,9 @@ const SidebarContext = createContext<SidebarContextType>({
 
 const styles = stylex.create({
   sidebar: {
+    gap: spacing["6"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["6"],
     paddingBottom: spacing["12"],
     paddingLeft: spacing["8"],
     paddingRight: spacing["8"],
@@ -39,11 +38,11 @@ const styles = stylex.create({
     width: spacing["64"],
   },
   sidebarHeader: {
-    marginBottom: spacing["4"],
     padding: spacing["3"],
+    alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
-    alignItems: "center",
+    marginBottom: spacing["4"],
   },
   sidebarHeaderLink: {
     textDecoration: "none",
@@ -54,13 +53,15 @@ const styles = stylex.create({
     paddingRight: spacing["3"],
   },
   sidebarSectionList: {
-    display: "flex",
-    flexDirection: "column",
-    gap: spacing["1"],
     margin: 0,
     padding: 0,
+    gap: spacing["1"],
+    display: "flex",
+    flexDirection: "column",
   },
   sidebarItem: {
+    borderRadius: radius["md"],
+    listStyle: "none",
     textDecoration: "none",
     alignItems: "center",
     backgroundColor: {
@@ -68,20 +69,18 @@ const styles = stylex.create({
       ":is([data-hovered=true])": uiColor.component2,
       ":is([data-pressed=true])": uiColor.component3,
     },
-    borderRadius: radius["md"],
     color: uiColor.text2,
     display: "flex",
-    height: spacing["8"],
     fontSize: fontSize["sm"],
-    listStyle: "none",
-    paddingLeft: spacing["3"],
-    paddingRight: spacing["3"],
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
+    height: spacing["8"],
+    paddingLeft: spacing["3"],
+    paddingRight: spacing["3"],
   },
   sidebarItemActive: {
     backgroundColor: {
@@ -99,39 +98,39 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   sidebarGroupButton: {
+    padding: 0,
+    borderWidth: 0,
+    gap: spacing["1.5"],
     alignItems: "center",
     backgroundColor: "transparent",
-    borderWidth: 0,
     color: uiColor.text2,
     display: "flex",
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["base"],
     fontWeight: fontWeight["medium"],
-    gap: spacing["1.5"],
-    marginLeft: `calc(${spacing["2.5"]} * -1)`,
-    padding: 0,
     textAlign: "left",
+    marginLeft: `calc(${spacing["2.5"]} * -1)`,
     width: "100%",
   },
   chevronIcon: {
+    transition: "rotate 250ms",
     rotate: {
       default: "0deg",
       ":is([aria-expanded=true] *)": "90deg",
     },
-    transition: "rotate 250ms",
   },
   sidebarGroupPanel: {
-    height: "var(--disclosure-panel-height)",
     overflow: "clip",
     transition: {
       default: "height 250ms",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
+    height: "var(--disclosure-panel-height)",
   },
   sidebarGroupPanelContent: {
+    gap: spacing["4"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["4"],
     paddingTop: spacing["5"],
   },
 });

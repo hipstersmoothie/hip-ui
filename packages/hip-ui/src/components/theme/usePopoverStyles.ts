@@ -8,14 +8,15 @@ import { spacing } from "./spacing.stylex";
 
 const styles = stylex.create({
   popover: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
-    boxShadow: shadow["md"],
     outline: "none",
     overflow: "auto",
+    boxShadow: shadow["md"],
   },
   animation: {
     "--origin-x": {
@@ -23,8 +24,8 @@ const styles = stylex.create({
       ":is([data-placement=right],[data-placement=right] > *)": `calc(${spacing["4"]} * -1)`,
     },
     "--origin-y": {
-      ":is([data-placement=top],[data-placement=top] > *)": spacing["4"],
       ":is([data-placement=bottom],[data-placement=bottom] > *)": `calc(${spacing["4"]} * -1)`,
+      ":is([data-placement=top],[data-placement=top] > *)": spacing["4"],
     },
     opacity: {
       ":is([data-entering], [data-entering] > *)": 0,

@@ -7,7 +7,6 @@ import { ProgressBar as AriaProgressBar } from "react-aria-components";
 import { SizeContext } from "../context";
 import { Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -25,58 +24,64 @@ const IndeterminateAnimation = stylex.keyframes({
 
 const styles = stylex.create({
   wrapper: {
-    alignItems: "center",
-    display: "grid",
     gap: spacing["2"],
     gridTemplateAreas: "'label value-label' 'bar bar'",
+    alignItems: "center",
+    display: "grid",
   },
   label: {
     gridArea: "label",
   },
   bar: {
-    backgroundColor: uiColor.component2,
-    borderRadius: radius.full,
     gridArea: "bar",
+    borderRadius: radius.full,
     overflow: "hidden",
+    backgroundColor: uiColor.component2,
     width: "100%",
 
     height: {
-      ":is([data-size=sm] *)": spacing["1"],
-      ":is([data-size=md] *)": spacing["2"],
       ":is([data-size=lg] *)": spacing["3"],
+      ":is([data-size=md] *)": spacing["2"],
+      ":is([data-size=sm] *)": spacing["1"],
     },
   },
   valueLabel: {
+    gridArea: "value-label",
     color: uiColor.text1,
     fontVariantNumeric: "tabular-nums",
-    gridArea: "value-label",
     justifySelf: "flex-end",
 
     fontSize: {
-      ":is([data-size=sm] *)": fontSize["xs"],
-      ":is([data-size=md] *)": fontSize["sm"],
       ":is([data-size=lg] *)": fontSize["base"],
+      ":is([data-size=md] *)": fontSize["sm"],
+      ":is([data-size=sm] *)": fontSize["xs"],
     },
     lineHeight: {
-      ":is([data-size=sm] *)": lineHeight["xs"],
-      ":is([data-size=md] *)": lineHeight["sm"],
       ":is([data-size=lg] *)": lineHeight["base"],
+      ":is([data-size=md] *)": lineHeight["sm"],
+      ":is([data-size=sm] *)": lineHeight["xs"],
     },
   },
   fill: {
     backgroundColor: primaryColor.solid1,
-    height: "100%",
     transform: "translateX(-100%)",
     transitionDuration: animationDuration.default,
     transitionProperty: "none",
     transitionTimingFunction: "linear",
+    height: "100%",
     width: "100%",
   },
   progress: (percentage: number) => ({
     transform: `translateX(calc(${percentage.toString()}% - 100%))`,
   }),
   indeterminateFill: {
-    backgroundRepeat: "no-repeat",
+    animationDuration: "1s",
+    animationIterationCount: "infinite",
+    animationName: {
+      default: IndeterminateAnimation,
+      "@media (prefers-reduced-motion: reduce)": "none",
+    },
+    animationTimingFunction: "linear",
     backgroundImage: `repeating-linear-gradient(
       45deg,
       ${primaryColor.solid1},
@@ -84,17 +89,11 @@ const styles = stylex.create({
       ${primaryColor.border2} 20px,
       ${primaryColor.border2} 40px
     )`,
+    backgroundRepeat: "no-repeat",
     backgroundSize: "20%",
-    height: "100%",
-    animationName: {
-      default: IndeterminateAnimation,
-      [mediaQueries.reducedMotion]: "none",
-    },
-    animationDuration: "1s",
-    animationIterationCount: "infinite",
-    animationTimingFunction: "linear",
-    width: "1000%",
     transformOrigin: "right",
+    height: "100%",
+    width: "1000%",
   },
 });
 

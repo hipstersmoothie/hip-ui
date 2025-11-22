@@ -5,7 +5,6 @@ import {
 } from "react-aria-components";
 
 import { animationDuration } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
@@ -15,18 +14,17 @@ import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["2"],
   },
   indicator: {
+    borderRadius: radius.full,
     backgroundColor: {
       default: uiColor.component3,
       ":is([data-selected=true] *)": primaryColor.solid1,
     },
-    borderRadius: radius.full,
     boxShadow: "inset 0 0 8px 1px rgba(0, 0, 0, 0.2)",
-    height: spacing["6"],
     opacity: {
       default: 1,
       ":is([data-disabled=true] *)": 0.5,
@@ -35,22 +33,18 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
+    height: spacing["6"],
     width: spacing["10"],
   },
   thumb: {
-    backgroundColor: uiColor.bgSubtle,
     borderRadius: radius.full,
+    backgroundColor: uiColor.bgSubtle,
     boxShadow: shadow.lg,
     content: "''",
-    height: spacing["4"],
-    left: 0,
-    marginLeft: spacing["1"],
-    marginRight: spacing["1"],
     position: "absolute",
-    top: "50%",
     transform: {
       default: "translateY(-50%)",
       ":is([data-selected=true] *)": "translate(100%, -50%)",
@@ -58,6 +52,11 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: "transform",
     transitionTimingFunction: "ease-in-out",
+    height: spacing["4"],
+    left: 0,
+    marginLeft: spacing["1"],
+    marginRight: spacing["1"],
+    top: "50%",
     width: spacing["4"],
   },
 });

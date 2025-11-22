@@ -132,11 +132,11 @@ const styles = stylex.create({
     height: {
       ":is([data-orientation=horizontal] *)": spacing["1"],
       ":is([data-orientation=vertical] *)":
-        "calc(attr(data-progress type(<number>)) * 1%)",
+        "calc(attr(data-progress number) * 1%)",
     },
     width: {
       ":is([data-orientation=horizontal] *)":
-        "calc(attr(data-progress type(<number>)) * 1%)",
+        "calc(attr(data-progress number) * 1%)",
       ":is([data-orientation=vertical] *)": spacing["1"],
     },
   },
@@ -144,21 +144,21 @@ const styles = stylex.create({
     height: {
       ":is([data-orientation=horizontal] *)": spacing["1"],
       ":is([data-orientation=vertical] *)":
-        "calc(attr(data-progress-end type(<number>)) * 1% - attr(data-progress-start type(<number>)) * 1%)",
+        "calc(attr(data-progress-end number) * 1% - attr(data-progress-start number) * 1%)",
     },
     left: {
       ":is([data-orientation=horizontal] *)":
-        "calc(attr(data-progress-start type(<number>)) * 1%)",
+        "calc(attr(data-progress-start number) * 1%)",
       ":is([data-orientation=vertical] *)": "50%",
     },
     top: {
       ":is([data-orientation=horizontal] *)": "50%",
       ":is([data-orientation=vertical] *)":
-        "calc(100% - attr(data-progress-end type(<number>)) * 1%)",
+        "calc(100% - attr(data-progress-end number) * 1%)",
     },
     width: {
       ":is([data-orientation=horizontal] *)":
-        "calc(attr(data-progress-end type(<number>)) * 1% - attr(data-progress-start type(<number>)) * 1%)",
+        "calc(attr(data-progress-end number) * 1% - attr(data-progress-start number) * 1%)",
       ":is([data-orientation=vertical] *)": spacing["1"],
     },
   },

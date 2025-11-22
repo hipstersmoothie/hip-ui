@@ -4,36 +4,36 @@ import { Fragment } from "react/jsx-runtime";
 import { Grid } from "@/components/grid";
 
 import { Flex } from "../../components/flex";
-import { amber } from "../../components/theme/colors/amber.stylex";
-import { blue } from "../../components/theme/colors/blue.stylex";
-import { bronze } from "../../components/theme/colors/bronze.stylex";
-import { brown } from "../../components/theme/colors/brown.stylex";
-import { crimson } from "../../components/theme/colors/crimson.stylex";
-import { cyan } from "../../components/theme/colors/cyan.stylex";
-import { gold } from "../../components/theme/colors/gold.stylex";
-import { grass } from "../../components/theme/colors/grass.stylex";
-import { gray } from "../../components/theme/colors/gray.stylex";
+// import { amber } from "../../components/theme/colors/amber.stylex";
+// import { blue } from "../../components/theme/colors/blue.stylex";
+// import { bronze } from "../../components/theme/colors/bronze.stylex";
+// import { brown } from "../../components/theme/colors/brown.stylex";
+// import { crimson } from "../../components/theme/colors/crimson.stylex";
+// import { cyan } from "../../components/theme/colors/cyan.stylex";
+// import { gold } from "../../components/theme/colors/gold.stylex";
+// import { grass } from "../../components/theme/colors/grass.stylex";
+// import { gray } from "../../components/theme/colors/gray.stylex";
 import { green } from "../../components/theme/colors/green.stylex";
-import { indigo } from "../../components/theme/colors/indigo.stylex";
-import { iris } from "../../components/theme/colors/iris.stylex";
-import { jade } from "../../components/theme/colors/jade.stylex";
-import { lime } from "../../components/theme/colors/lime.stylex";
-import { mauve } from "../../components/theme/colors/mauve.stylex";
-import { mint } from "../../components/theme/colors/mint.stylex";
-import { olive } from "../../components/theme/colors/olive.stylex";
+// import { indigo } from "../../components/theme/colors/indigo.stylex";
+// import { iris } from "../../components/theme/colors/iris.stylex";
+// import { jade } from "../../components/theme/colors/jade.stylex";
+// import { lime } from "../../components/theme/colors/lime.stylex";
+// import { mauve } from "../../components/theme/colors/mauve.stylex";
+// import { mint } from "../../components/theme/colors/mint.stylex";
+// import { olive } from "../../components/theme/colors/olive.stylex";
 import { orange } from "../../components/theme/colors/orange.stylex";
-import { pink } from "../../components/theme/colors/pink.stylex";
-import { plum } from "../../components/theme/colors/plum.stylex";
-import { purple } from "../../components/theme/colors/purple.stylex";
+// import { pink } from "../../components/theme/colors/pink.stylex";
+// import { plum } from "../../components/theme/colors/plum.stylex";
+// import { purple } from "../../components/theme/colors/purple.stylex";
 import { red } from "../../components/theme/colors/red.stylex";
-import { ruby } from "../../components/theme/colors/ruby.stylex";
-import { sage } from "../../components/theme/colors/sage.stylex";
-import { sand } from "../../components/theme/colors/sand.stylex";
-import { sky } from "../../components/theme/colors/sky.stylex";
+// import { ruby } from "../../components/theme/colors/ruby.stylex";
+// import { sage } from "../../components/theme/colors/sage.stylex";
+// import { sand } from "../../components/theme/colors/sand.stylex";
+// import { sky } from "../../components/theme/colors/sky.stylex";
 import { slate } from "../../components/theme/colors/slate.stylex";
-import { teal } from "../../components/theme/colors/teal.stylex";
-import { tomato } from "../../components/theme/colors/tomato.stylex";
-import { violet } from "../../components/theme/colors/violet.stylex";
+// import { teal } from "../../components/theme/colors/teal.stylex";
+// import { tomato } from "../../components/theme/colors/tomato.stylex";
+// import { violet } from "../../components/theme/colors/violet.stylex";
 import { yellow } from "../../components/theme/colors/yellow.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 import { Text } from "../../components/typography/text";
@@ -51,40 +51,40 @@ const styles = stylex.create({
 });
 
 const grays = [
-  { name: "gray", value: gray },
-  { name: "mauve", value: mauve },
+  // { name: "gray", value: gray },
+  // { name: "mauve", value: mauve },
   { name: "slate", value: slate },
-  { name: "sage", value: sage },
-  { name: "olive", value: olive },
-  { name: "sand", value: sand },
+  // { name: "sage", value: sage },
+  // { name: "olive", value: olive },
+  // { name: "sand", value: sand },
 ];
 
 const uiColors = [
-  { name: "tomato", value: tomato },
+  // { name: "tomato", value: tomato },
   { name: "red", value: red },
-  { name: "ruby", value: ruby },
-  { name: "crimson", value: crimson },
-  { name: "pink", value: pink },
-  { name: "plum", value: plum },
-  { name: "purple", value: purple },
-  { name: "violet", value: violet },
-  { name: "iris", value: iris },
-  { name: "indigo", value: indigo },
-  { name: "blue", value: blue },
-  { name: "cyan", value: cyan },
-  { name: "teal", value: teal },
-  { name: "jade", value: jade },
+  // { name: "ruby", value: ruby },
+  // { name: "crimson", value: crimson },
+  // { name: "pink", value: pink },
+  // { name: "plum", value: plum },
+  // { name: "purple", value: purple },
+  // { name: "violet", value: violet },
+  // { name: "iris", value: iris },
+  // { name: "indigo", value: indigo },
+  // { name: "blue", value: blue },
+  // { name: "cyan", value: cyan },
+  // { name: "teal", value: teal },
+  // { name: "jade", value: jade },
   { name: "green", value: green },
-  { name: "grass", value: grass },
-  { name: "bronze", value: bronze },
-  { name: "gold", value: gold },
-  { name: "brown", value: brown },
+  // { name: "grass", value: grass },
+  // { name: "bronze", value: bronze },
+  // { name: "gold", value: gold },
+  // { name: "brown", value: brown },
   { name: "orange", value: orange },
-  { name: "amber", value: amber },
+  // { name: "amber", value: amber },
   { name: "yellow", value: yellow },
-  { name: "lime", value: lime },
-  { name: "mint", value: mint },
-  { name: "sky", value: sky },
+  // { name: "lime", value: lime },
+  // { name: "mint", value: mint },
+  // { name: "sky", value: sky },
 ];
 
 export function GrayColors() {

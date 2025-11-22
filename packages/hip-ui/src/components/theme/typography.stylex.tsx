@@ -1,6 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { breakpoints } from "./media-queries.stylex";
 import { spacing } from "./spacing.stylex";
 
 export const fontFamily = stylex.defineVars({
@@ -10,15 +9,15 @@ export const fontFamily = stylex.defineVars({
 });
 
 export const fontWeight = stylex.defineVars({
-  thin: "100",
-  extralight: "200",
-  light: "300",
-  normal: "400",
-  medium: "500",
-  semibold: "600",
-  bold: "700",
-  extrabold: "800",
-  black: "900",
+  thin: stylex.types.number(100),
+  extralight: stylex.types.number(200),
+  light: stylex.types.number(300),
+  normal: stylex.types.number(400),
+  medium: stylex.types.number(500),
+  semibold: stylex.types.number(600),
+  bold: stylex.types.number(700),
+  extrabold: stylex.types.number(800),
+  black: stylex.types.number(900),
 });
 
 export const fontSize = stylex.defineVars({
@@ -60,35 +59,36 @@ export const tracking = stylex.defineVars({
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const typeramp = stylex.create({
   heading1: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: {
       default: fontSize["4xl"],
-      [breakpoints["md"]]: fontSize["5xl"],
+      "@media (min-width: 48rem)": fontSize["5xl"],
     },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["extrabold"],
     letterSpacing: tracking["tight"],
     lineHeight: lineHeight.base,
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   heading2: {
-    borderBottomWidth: 1,
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: {
       default: fontSize["3xl"],
-      [breakpoints["md"]]: fontSize["4xl"],
+      "@media (min-width: 48rem)": fontSize["4xl"],
     },
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontWeight: fontWeight["semibold"],
+    fontWeight: fontWeight.semibold,
     letterSpacing: tracking["tight"],
     lineHeight: lineHeight.sm,
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
+    borderBottomWidth: 1,
   },
   heading3: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["2xl"] },
@@ -96,10 +96,10 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: lineHeight.sm,
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   heading4: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["xl"] },
@@ -107,10 +107,10 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: lineHeight.sm,
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   heading5: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["lg"] },
@@ -118,24 +118,24 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: lineHeight.sm,
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   body: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["base"] },
     lineHeight: lineHeight.base,
-    margin: 0,
   },
   smallBody: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["sm"] },
     lineHeight: lineHeight.base,
-    margin: 0,
   },
   label: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["sm"] },
@@ -143,15 +143,14 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: lineHeight.sm,
-    margin: 0,
   },
   sublabel: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["xs"] },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["medium"],
     lineHeight: lineHeight.sm,
-    margin: 0,
   },
 });

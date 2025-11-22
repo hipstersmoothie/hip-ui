@@ -18,15 +18,15 @@ const styles = stylex.create({
     display: "flex",
     userSelect: "none",
 
+    outline: {
+      default: "none",
+      ":focus": "none",
+    },
     boxSizing: "border-box",
     fontWeight: {
       default: fontWeight["normal"],
       [":is([data-react-aria-pressable=true][data-selected=true])"]:
         fontWeight["medium"],
-    },
-    outline: {
-      default: "none",
-      ":focus": "none",
     },
     paddingBottom: spacing["0.5"],
     paddingLeft: spacing["1"],
@@ -37,6 +37,13 @@ const styles = stylex.create({
   md: { minHeight: spacing["9"] },
   lg: { minHeight: spacing["12"] },
   itemInner: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    gap: spacing["3"],
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
@@ -45,11 +52,6 @@ const styles = stylex.create({
       [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
         uiColor.component3,
     },
-    borderRadius: {
-      default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
-    },
-    cornerShape: "squircle",
     boxSizing: "border-box",
     color: {
       default: uiColor.text2,
@@ -58,18 +60,17 @@ const styles = stylex.create({
     },
     display: "flex",
     flexGrow: 1,
-    gap: spacing["3"],
+    transitionDuration: animationDuration.fast,
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
     paddingTop: spacing["2"],
-    transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color",
-    transitionTimingFunction: "ease-in-out",
   },
   smItemInner: {
-    fontSize: fontSize["xs"],
     gap: spacing["2"],
+    fontSize: fontSize["xs"],
     lineHeight: lineHeight["xs"],
     paddingBottom: spacing["1"],
     paddingTop: spacing["1"],
@@ -88,22 +89,22 @@ const styles = stylex.create({
     marginTop: `calc(${spacing["2"]} * -1)`,
     minWidth: spacing["4"],
 
-    // eslint-disa le-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
+    // eslint-disable-next-line @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   label: {
+    gap: spacing["1.5"],
     color: {
       [":is([data-variant=destructive] *)"]: criticalColor.text1,
     },
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    gap: spacing["1.5"],
   },
 });
 

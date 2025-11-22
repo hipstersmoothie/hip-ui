@@ -19,3 +19,7 @@ declare module "virtual:propDocs" {
 declare module "virtual:examples" {
   export const examples: Record<string, string>;
 }
+
+declare module "virtual:stylex:runtime" {
+  // Side-effect only module for StyleX runtime in development
+}

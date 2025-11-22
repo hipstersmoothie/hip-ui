@@ -51,7 +51,6 @@ import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
 import { TableOfContents } from "@/lib/TableOfContents";
 
 import { animationDuration } from "../components/theme/animations.stylex";
-import { mediaQueries } from "../components/theme/media-queries.stylex";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
@@ -151,7 +150,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "opacity",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
   },
@@ -297,7 +296,7 @@ export const Route = createFileRoute("/docs/$")({
   component: RouteComponent,
   loader: async ({ location }) => {
     return {
-      toc: await modules[location.pathname].then((mod) => mod.toc),
+      toc: await modules[location.pathname]?.then((mod) => mod.toc),
     };
   },
 });
@@ -343,7 +342,7 @@ function RouteComponent() {
           <Content components={components} />
         </Suspense>
       </div>
-      <TableOfContents toc={toc} />
+      {toc && <TableOfContents toc={toc} />}
     </Grid>
   );
 }

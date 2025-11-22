@@ -15,7 +15,7 @@ import { IconButton } from "../icon-button";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
-import { typeramp } from "../theme/typography.stylex";
+import { fontSize, typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
 const styles = stylex.create({
   dialog: {
@@ -31,6 +31,7 @@ const styles = stylex.create({
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
+    fontSize: fontSize["lg"],
 
     borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
@@ -47,7 +48,7 @@ const styles = stylex.create({
     paddingBottom: spacing["4"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
-    paddingTop: { default: 0, ":first-child": spacing["4"] },
+    paddingTop: spacing["4"],
   },
   footer: {
     display: "flex",
@@ -104,7 +105,7 @@ export interface DialogHeaderProps
 
 export const DialogHeader = ({ children, style }: DialogHeaderProps) => {
   return (
-    <div {...stylex.props(styles.header, typeramp.heading5, style)}>
+    <div {...stylex.props(styles.header, style)}>
       <Heading>{children}</Heading>
       <IconButton label="Close" size="sm" variant="tertiary" slot="close">
         <X />

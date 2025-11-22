@@ -1,9 +1,15 @@
+import "@/styles/styles.css";
+
 import * as stylex from "@stylexjs/stylex";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 
 import { ui } from "@/components/theme/semantic-color.stylex";
+
+if (import.meta.env.DEV) {
+  import("virtual:stylex:runtime");
+}
 
 const styles = stylex.create({
   body: {
@@ -38,7 +44,13 @@ export const Route = createRootRoute({
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
       },
-    ],
+      import.meta.env.DEV
+        ? {
+            rel: "stylesheet",
+            href: "/virtual:stylex.css",
+          }
+        : null,
+    ].filter((i): i is NonNullable<typeof i> => i !== null),
   }),
 
   shellComponent: RootDocument,
@@ -50,14 +62,14 @@ function RootDocument({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
       </head>
-      <script>{`
-        const localtColorScheme = localStorage.getItem("hip-ui-color-scheme");
-
-        if (localtColorScheme) {
-          document.body.style.colorScheme = localtColorScheme;
-        }
-      `}</script>
       <body {...stylex.props(ui.bg, ui.text, styles.body)}>
+        <script>{`
+          const localtColorScheme = localStorage.getItem("hip-ui-color-scheme");
+
+          if (localtColorScheme) {
+            document.body.style.colorScheme = localtColorScheme;
+          }
+        `}</script>
         {children}
         <TanStackDevtools
           config={{

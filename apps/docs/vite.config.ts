@@ -1,4 +1,5 @@
 import contentCollections from "@content-collections/vite";
+import browserslist from "browserslist";
 import mdx from "@mdx-js/rollup";
 import rehypeShiki, { RehypeShikiOptions } from "@shikijs/rehype";
 import withToc from "@stefanprobst/rehype-extract-toc";
@@ -6,6 +7,7 @@ import withTocExport from "@stefanprobst/rehype-extract-toc/mdx";
 import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
+import { browserslistToTargets } from "lightningcss";
 import { camelCase } from "change-case";
 import dedent from "dedent";
 import { glob } from "glob";
@@ -16,7 +18,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkFrontmatter from "remark-frontmatter";
 import { codeToHtml } from "shiki";
-import stylexPlugin from "unplugin-stylex/vite";
+import stylexPlugin from "@stylexjs/unplugin";
 import { defineConfig, PluginOption } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
@@ -291,7 +293,11 @@ function propDocs() {
 const config = defineConfig({
   plugins: [
     shiki(),
-    stylexPlugin(),
+    stylexPlugin.vite({
+      lightningcssOptions: {
+        targets: browserslistToTargets(browserslist("baseline 2024")),
+      },
+    }),
     nitroV2Plugin(),
     // this is the plugin that enables path aliases
     viteTsConfigPaths({

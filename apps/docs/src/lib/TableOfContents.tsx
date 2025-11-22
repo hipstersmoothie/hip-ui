@@ -2,10 +2,7 @@ import { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
 import * as stylex from "@stylexjs/stylex";
 import { createContext, use, useEffect, useState } from "react";
 
-import { Flex } from "@/components/flex";
-
 import { animationDuration } from "../components/theme/animations.stylex";
-import { mediaQueries } from "../components/theme/media-queries.stylex";
 import {
   primaryColor,
   uiColor,
@@ -60,7 +57,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "color, border-left-color",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
 

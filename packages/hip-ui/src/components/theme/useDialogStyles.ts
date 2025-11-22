@@ -10,44 +10,44 @@ import { ui } from "./semantic-color.stylex";
 
 const styles = stylex.create({
   overlay: {
-    backgroundColor: "rgba(0, 0, 0, 0.5)",
-    height: "var(--page-height)",
-    left: 0,
-    position: "absolute",
-    top: 0,
-    width: "100vw",
-    zIndex: 100,
-
     animationDuration: animationDuration.slow,
     animationName: {
       ":is([data-entering])": animations.fadeIn,
     },
     animationTimingFunction: "ease-in",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
     opacity: {
       default: 1,
       ":is([data-exiting])": 0,
     },
+    position: "absolute",
     transitionDuration: {
       ":is([data-exiting])": animationDuration.fast,
     },
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",
+    zIndex: 100,
+    height: "var(--page-height)",
+    left: 0,
+    top: 0,
+    width: "100vw",
   },
   modal: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
-    cornerShape: "squircle",
+    outline: "none",
     boxShadow: shadow["lg"],
     display: "flex",
     flexDirection: "column",
+    position: "fixed",
+    translate: "-50% -50%",
     left: "50%",
     maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
-    outline: "none",
-    position: "fixed",
     top: "calc(var(--visual-viewport-height) / 2)",
-    translate: "-50% -50%",
 
     animationDuration: { ":is([data-entering])": "300ms" },
     animationName: { ":is([data-entering])": animations.zoomIn },
@@ -56,11 +56,11 @@ const styles = stylex.create({
     },
   },
   dialog: {
+    outline: "none",
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
     minHeight: 0,
-    outline: "none",
   },
   size: (size: Size) => ({
     width: size === "sm" ? 400 : size === "md" ? 600 : 800,

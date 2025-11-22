@@ -10,9 +10,9 @@ import { lineHeight, fontSize } from "./typography.stylex";
 
 const styles = stylex.create({
   field: {
+    gap: spacing["2"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["2"],
   },
   addon: {
     color: ui.textDim,
@@ -21,40 +21,42 @@ const styles = stylex.create({
     minWidth: spacing["8"],
     paddingLeft: { ":first-child": spacing["0.5"] },
     paddingRight: {
-      ":last-child": spacing["2"],
       ":last-child:has(svg)": spacing["0.5"],
+      ":last-child": spacing["2"],
     },
 
+    gap: spacing["0.5"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["0.5"],
     justifyContent: "center",
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   inputWrapper: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    padding: 0,
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
     borderWidth: 0,
+    overflow: "hidden",
     boxSizing: "border-box",
     display: "flex",
     lineHeight: lineHeight["none"],
-    overflow: "hidden",
-    padding: 0,
   },
   input: {
+    borderWidth: 0,
+    outline: "none",
     alignItems: "center",
     backgroundColor: "transparent",
-    borderWidth: 0,
     boxSizing: "border-box",
     color: {
       ":is(::placeholder,[data-placeholder])": uiColor.text1,
@@ -63,7 +65,6 @@ const styles = stylex.create({
     flexGrow: 1,
     lineHeight: lineHeight["none"],
     minWidth: 0,
-    outline: "none",
 
     appearance: {
       "::-webkit-search-cancel-button": "none",
@@ -73,9 +74,9 @@ const styles = stylex.create({
   primary: {
     borderColor: {
       default: uiColor.border2,
-      ":has([data-hovered]:not([data-invalid])": uiColor.border3,
-      ":focus": uiColor.solid1,
+      ":has([data-hovered]):not([data-invalid])": uiColor.border3,
       ":has([data-invalid])": criticalColor.border2,
+      ":focus": uiColor.solid1,
     },
     borderStyle: "solid",
     borderWidth: 1,

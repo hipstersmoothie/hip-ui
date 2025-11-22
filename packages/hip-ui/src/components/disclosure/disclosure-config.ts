@@ -9,7 +9,6 @@ export const disclosureConfig: ComponentConfig = {
     "../theme/typography.stylex.tsx",
     "../theme/radius.stylex.tsx",
     "../theme/animations.stylex.tsx",
-    "../theme/media-queries.stylex.tsx",
     "../context.ts",
   ],
   dependencies: {
@@ -17,4 +16,3 @@ export const disclosureConfig: ComponentConfig = {
     "lucide-react": "^0.263.1",
   },
 };
-

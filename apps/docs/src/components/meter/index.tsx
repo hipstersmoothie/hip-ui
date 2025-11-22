@@ -18,75 +18,74 @@ import {
 import { spacing } from "../theme/spacing.stylex";
 import { MeterVariant, Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    alignItems: "center",
-    display: "grid",
     gap: spacing["2"],
     gridTemplateAreas: "'label value-label' 'bar bar'",
+    alignItems: "center",
+    display: "grid",
   },
   label: {
     gridArea: "label",
   },
   bar: {
+    gridArea: "bar",
+    borderRadius: radius.full,
+    overflow: "hidden",
     backgroundColor: {
+      ":is([data-variant=critical] *)": criticalColor.component2,
       ":is([data-variant=primary] *)": primaryColor.component2,
       ":is([data-variant=secondary] *)": uiColor.component2,
       ":is([data-variant=success] *)": successColor.component2,
       ":is([data-variant=warning] *)": warningColor.component2,
-      ":is([data-variant=critical] *)": criticalColor.component2,
     },
-    borderRadius: radius.full,
     boxShadow: {
+      ":is([data-variant=critical] *)": `inset 0 0 2px 1px rgba(0,0,0,0.2)`,
       ":is([data-variant=primary] *)": `inset 0 0 2px 1px rgba(0,0,0,0.2)`,
       ":is([data-variant=secondary] *)": `inset 0 0 2px 1px rgba(0,0,0,0.2)`,
       ":is([data-variant=success] *)": `inset 0 0 2px 1px rgba(0,0,0,0.2)`,
       ":is([data-variant=warning] *)": `inset 0 0 2px 1px rgba(0,0,0,0.2)`,
-      ":is([data-variant=critical] *)": `inset 0 0 2px 1px rgba(0,0,0,0.2)`,
     },
-    gridArea: "bar",
     height: {
-      ":is([data-size=sm] *)": spacing["1"],
-      ":is([data-size=md] *)": spacing["2"],
       ":is([data-size=lg] *)": spacing["3"],
+      ":is([data-size=md] *)": spacing["2"],
+      ":is([data-size=sm] *)": spacing["1"],
     },
-    overflow: "hidden",
     width: "100%",
   },
 
   valueLabel: {
+    gridArea: "value-label",
     color: uiColor.text1,
     fontVariantNumeric: "tabular-nums",
-    gridArea: "value-label",
     justifySelf: "flex-end",
 
     fontSize: {
-      ":is([data-size=sm] *)": fontSize["xs"],
-      ":is([data-size=md] *)": fontSize["sm"],
       ":is([data-size=lg] *)": fontSize["base"],
+      ":is([data-size=md] *)": fontSize["sm"],
+      ":is([data-size=sm] *)": fontSize["xs"],
     },
     lineHeight: {
-      ":is([data-size=sm] *)": lineHeight["xs"],
-      ":is([data-size=md] *)": lineHeight["sm"],
       ":is([data-size=lg] *)": lineHeight["base"],
+      ":is([data-size=md] *)": lineHeight["sm"],
+      ":is([data-size=sm] *)": lineHeight["xs"],
     },
   },
   fill: {
-    height: "100%",
     transform: "translateX(-100%)",
     transitionDuration: animationDuration.default,
     transitionProperty: "transform",
     transitionTimingFunction: "linear",
+    height: "100%",
     width: "100%",
 
     backgroundColor: {
+      ":is([data-variant=critical] *)": criticalColor.solid1,
       ":is([data-variant=primary] *)": primaryColor.solid1,
       ":is([data-variant=secondary] *)": uiColor.solid1,
       ":is([data-variant=success] *)": successColor.solid1,
       ":is([data-variant=warning] *)": warningColor.solid2,
-      ":is([data-variant=critical] *)": criticalColor.solid1,
     },
   },
   progress: (percentage: number) => ({

@@ -12,7 +12,6 @@ import {
 
 import { Description, ErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -21,9 +20,9 @@ import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   group: {
+    gap: spacing["2"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["2"],
   },
   list: {
     alignItems: "center",
@@ -33,13 +32,6 @@ const styles = stylex.create({
     rowGap: spacing["2.5"],
   },
   tag: {
-    alignItems: "center",
-    backgroundColor: {
-      default: uiColor.component1,
-      ":is([data-hovered])": uiColor.component2,
-      ":is([data-pressed])": uiColor.component3,
-      ":is([data-selected])": primaryColor.component1,
-    },
     borderColor: {
       default: uiColor.border2,
       ":is([data-hovered])": uiColor.border3,
@@ -48,6 +40,14 @@ const styles = stylex.create({
     borderRadius: radius.full,
     borderStyle: "solid",
     borderWidth: 1,
+    gap: spacing["1.5"],
+    alignItems: "center",
+    backgroundColor: {
+      default: uiColor.component1,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
+      ":is([data-selected])": primaryColor.component1,
+    },
     color: {
       default: uiColor.text1,
       ":is([data-hovered])": uiColor.text2,
@@ -55,7 +55,6 @@ const styles = stylex.create({
     },
     cursor: "default",
     display: "flex",
-    gap: spacing["1.5"],
     justifyContent: "center",
     opacity: {
       ":is([data-disabled])": 0.5,
@@ -69,29 +68,29 @@ const styles = stylex.create({
     paddingTop: spacing["1"],
   },
   removeButton: {
+    margin: 0,
+    padding: 0,
+    borderRadius: radius.full,
+    borderWidth: 0,
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
       ":hover": uiColor.component2,
       ":active": uiColor.component3,
     },
-    borderRadius: radius.full,
-    borderWidth: 0,
     color: {
       default: uiColor.text1,
       ":hover": uiColor.text2,
     },
     display: "flex",
-    height: spacing["4"],
     justifyContent: "center",
-    margin: 0,
-    padding: 0,
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color",
-      [mediaQueries.reducedMotion]: "none",
+      "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
+    height: spacing["4"],
     width: spacing["4"],
   },
 });

@@ -21,7 +21,11 @@ export interface CalendarProps<T extends DateValue>
 
 const styles = stylex.create({
   cell: {
+    padding: spacing["1"],
     borderRadius: radius.md,
+    textDecoration: {
+      ":is([data-unavailable])": "line-through",
+    },
     color: {
       default: uiColor.text1,
       ":is([data-hovered]):not([data-unavailable])": uiColor.text2,
@@ -32,21 +36,17 @@ const styles = stylex.create({
     opacity: {
       ":is([data-outside-visible-range],[data-unavailable])": 0.5,
     },
-    padding: spacing["1"],
     position: "relative",
     textAlign: "center",
-    textDecoration: {
-      ":is([data-unavailable])": "line-through",
-    },
     transitionDuration: animationDuration.fast,
     transitionProperty: "color",
     transitionTimingFunction: "ease-in-out",
-    width: spacing["8"],
     zIndex: 0,
+    width: spacing["8"],
 
     "::before": {
-      content: "''",
       inset: spacing["1"],
+      content: "''",
       position: "absolute",
       transitionDuration: animationDuration.fast,
       transitionProperty: "background-color",
@@ -55,6 +55,9 @@ const styles = stylex.create({
     },
   },
   nonRangeCell: {
+    borderRadius: {
+      "::before": radius.md,
+    },
     backgroundColor: {
       ":is(*)::before": "transparent",
       ":is([data-hovered]):not([data-unavailable])::before": uiColor.component2,
@@ -63,9 +66,6 @@ const styles = stylex.create({
         primaryColor.component2,
       ":is([data-selected]):not([data-unavailable]):hover::before":
         primaryColor.component3,
-    },
-    borderRadius: {
-      "::before": radius.md,
     },
     color: {
       default: uiColor.text1,
@@ -85,6 +85,11 @@ const styles = stylex.create({
       ":is([data-selection-start],[data-selection-end]):not([data-unavailable]):hover::before":
         primaryColor.component3,
     },
+    color: {
+      default: uiColor.text1,
+      ":is([data-hovered]):not([data-unavailable])": uiColor.text2,
+      ":is([data-selection-start],[data-selection-end])": primaryColor.text2,
+    },
     borderBottomLeftRadius: {
       ":is([data-selection-start],td:first-child > *)::before": radius.md,
     },
@@ -97,11 +102,6 @@ const styles = stylex.create({
     borderTopRightRadius: {
       ":is([data-selection-end],td:last-child > *)::before": radius.md,
     },
-    color: {
-      default: uiColor.text1,
-      ":is([data-hovered]):not([data-unavailable])": uiColor.text2,
-      ":is([data-selection-start],[data-selection-end])": primaryColor.text2,
-    },
     marginLeft: {
       ":is(td:not(:first-child) > [data-selected]):not([data-selection-start],[data-selection-end])::before": `calc(${spacing["2"]} * -1)`,
     },
@@ -112,22 +112,22 @@ const styles = stylex.create({
   headerCell: {
     fontSize: fontSize["sm"],
     fontWeight: fontWeight["medium"],
-    paddingBottom: spacing["1"],
     textAlign: "center",
+    paddingBottom: spacing["1"],
   },
   heading: {
+    margin: 0,
     fontSize: fontSize["lg"],
     fontWeight: fontWeight["semibold"],
-    margin: 0,
     textAlign: "center",
   },
   grid: {
     borderCollapse: "collapse",
   },
   wrapper: {
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
   },
 });
 
