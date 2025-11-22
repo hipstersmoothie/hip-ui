@@ -16,70 +16,71 @@ import {
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { animationDuration } from "../theme/animations.stylex";
+import { radius } from "../theme/radius.stylex";
 import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { radius } from "../theme/radius.stylex";
 
 const OpenContext = createContext<string>("");
 const SetOpenContext = createContext<(value: string) => void>(() => {});
 
 const styles = stylex.create({
   container: {
+    gap: spacing["1"],
     display: "flex",
     flexDirection: "row",
-    gap: spacing["1"],
   },
   item: {
     position: "relative",
   },
   button: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    borderColor: "transparent",
+    borderRadius: {
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    borderStyle: "solid",
+    borderWidth: 1,
+    gap: spacing["1"],
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
       ":is([data-hovered])": uiColor.component1,
       ":is([data-pressed])": uiColor.component2,
     },
-    borderColor: "transparent",
-    borderRadius: {
-      default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
-    },
-    cornerShape: "squircle",
-    borderStyle: "solid",
-    borderWidth: 1,
     display: "flex",
     flexDirection: "row",
     fontSize: {
-      ":is([data-size=sm] *)": fontSize["xs"],
-      ":is([data-size=md] *)": fontSize["sm"],
       ":is([data-size=lg] *)": fontSize["base"],
-    },
-    gap: spacing["1"],
-    height: {
-      ":is([data-size=sm] *)": spacing["6"],
-      ":is([data-size=md] *)": spacing["8"],
-      ":is([data-size=lg] *)": spacing["10"],
+      ":is([data-size=md] *)": fontSize["sm"],
+      ":is([data-size=sm] *)": fontSize["xs"],
     },
     justifyContent: "center",
     opacity: {
       default: 1,
       ":is([disabled])": 0.3,
     },
-    paddingLeft: {
-      ":is([data-size=sm] *)": spacing["2"],
-      ":is([data-size=md] *)": spacing["2.5"],
-      ":is([data-size=lg] *)": spacing["3"],
-    },
-    paddingRight: {
-      ":is([data-size=sm] *)": spacing["2"],
-      ":is([data-size=md] *)": spacing["2.5"],
-      ":is([data-size=lg] *)": spacing["3"],
-    },
     transitionDuration: animationDuration.fast,
     transitionProperty: "background-color",
+    height: {
+      ":is([data-size=lg] *)": spacing["10"],
+      ":is([data-size=md] *)": spacing["8"],
+      ":is([data-size=sm] *)": spacing["6"],
+    },
+    paddingLeft: {
+      ":is([data-size=lg] *)": spacing["3"],
+      ":is([data-size=md] *)": spacing["2.5"],
+      ":is([data-size=sm] *)": spacing["2"],
+    },
+    paddingRight: {
+      ":is([data-size=lg] *)": spacing["3"],
+      ":is([data-size=md] *)": spacing["2.5"],
+      ":is([data-size=sm] *)": spacing["2"],
+    },
   },
 });
 

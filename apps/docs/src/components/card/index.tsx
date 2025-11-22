@@ -11,31 +11,32 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   card: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
+    gap: "var(--card-gap)",
+    overflow: "hidden",
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
-    gap: "var(--card-gap)",
-    overflow: "hidden",
 
     "--card-gap": {
-      ":is([data-card-size=sm])": spacing["2"],
-      ":is([data-card-size=md])": spacing["6"],
       ":is([data-card-size=lg])": spacing["9"],
+      ":is([data-card-size=md])": spacing["6"],
+      ":is([data-card-size=sm])": spacing["2"],
     },
     "--card-x-padding": {
-      ":is([data-card-size=sm])": spacing["2"],
-      ":is([data-card-size=md])": spacing["6"],
       ":is([data-card-size=lg])": spacing["9"],
+      ":is([data-card-size=md])": spacing["6"],
+      ":is([data-card-size=sm])": spacing["2"],
     },
     "--card-y-padding": {
-      ":is([data-card-size=sm])": spacing["2"],
-      ":is([data-card-size=md])": spacing["7"],
       ":is([data-card-size=lg])": spacing["10"],
+      ":is([data-card-size=md])": spacing["7"],
+      ":is([data-card-size=sm])": spacing["2"],
     },
   },
   cardSection: {
@@ -46,9 +47,6 @@ const styles = stylex.create({
     paddingTop: { ":first-child": "var(--card-y-padding)" },
   },
   cardHeader: {
-    alignItems: "center",
-    display: "grid",
-    gap: "var(--card-gap)",
     gridTemplate: {
       default: `'title action'`,
       ":has([data-card-header-description])": `
@@ -56,44 +54,47 @@ const styles = stylex.create({
         'description action'
       `,
     },
+    gap: "var(--card-gap)",
+    alignItems: "center",
+    display: "grid",
   },
   cardHeaderAction: {
-    display: "flex",
-    gap: spacing["1"],
     gridArea: "action",
+    gap: spacing["1"],
+    display: "flex",
     justifyContent: "flex-end",
   },
   cardTitle: {
+    gridArea: "title",
     fontSize: {
-      ":is([data-card-size='sm'] *)": fontSize["lg"],
-      ":is([data-card-size='md'] *)": fontSize["xl"],
       ":is([data-card-size='lg'] *)": fontSize["2xl"],
+      ":is([data-card-size='md'] *)": fontSize["xl"],
+      ":is([data-card-size='sm'] *)": fontSize["lg"],
     },
     fontWeight: fontWeight["bold"],
-    gridArea: "title",
   },
   cardDescription: {
-    fontSize: fontSize["sm"],
-    fontWeight: fontWeight["normal"],
     gridArea: "description",
     margin: 0,
+    fontSize: fontSize["sm"],
+    fontWeight: fontWeight["normal"],
   },
   cardBody: {
+    gap: "var(--card-gap)",
     display: "flex",
     flexDirection: "column",
-    gap: "var(--card-gap)",
   },
   cardFooter: {
-    display: "flex",
     gap: spacing["2"],
+    display: "flex",
     justifyContent: "flex-end",
   },
   cardImage: {
+    overflow: "hidden",
     borderBottomLeftRadius: { default: 0, ":last-child": radius.md },
     borderBottomRightRadius: { default: 0, ":last-child": radius.md },
     borderTopLeftRadius: { default: 0, ":first-child": radius.md },
     borderTopRightRadius: { default: 0, ":first-child": radius.md },
-    overflow: "hidden",
   },
 });
 

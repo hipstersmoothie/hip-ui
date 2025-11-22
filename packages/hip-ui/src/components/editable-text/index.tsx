@@ -26,19 +26,19 @@ const focusClosestFocusableElement = () => {
 
 const styles = stylex.create({
   input: {
-    backgroundColor: "transparent",
     borderRadius: radius["sm"],
     borderWidth: 0,
+    textDecoration: "inherit",
+    backgroundColor: "transparent",
     display: "inline-block",
     fontFamily: "inherit",
     fontSize: "inherit",
     fontWeight: "inherit",
     letterSpacing: "inherit",
     lineHeight: "inherit",
-    minWidth: 0,
     textAlign: "inherit",
-    textDecoration: "inherit",
     textTransform: "inherit",
+    minWidth: 0,
 
     outlineColor: "blue",
     outlineStyle: "solid",

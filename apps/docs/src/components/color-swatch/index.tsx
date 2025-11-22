@@ -17,30 +17,31 @@ const styles = stylex.create({
     borderWidth: 1,
     boxSizing: "border-box",
 
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
-      ":is([data-size=sm])": {
-        default: radius["sm"],
+      ":is([data-size=lg])": {
+        default: radius["lg"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
       ":is([data-size=md])": {
         default: radius["md"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
-      ":is([data-size=lg])": {
-        default: radius["lg"],
+      ":is([data-size=sm])": {
+        default: radius["sm"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
     },
-    cornerShape: "squircle",
     height: {
-      ":is([data-size=sm])": spacing["4"],
-      ":is([data-size=md])": spacing["6"],
       ":is([data-size=lg])": spacing["8"],
+      ":is([data-size=md])": spacing["6"],
+      ":is([data-size=sm])": spacing["4"],
     },
     width: {
-      ":is([data-size=sm])": spacing["4"],
-      ":is([data-size=md])": spacing["6"],
       ":is([data-size=lg])": spacing["8"],
+      ":is([data-size=md])": spacing["6"],
+      ":is([data-size=sm])": spacing["4"],
     },
   },
 });

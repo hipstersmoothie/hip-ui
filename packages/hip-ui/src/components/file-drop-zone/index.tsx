@@ -12,7 +12,6 @@ import {
 import { radius } from "../theme/radius.stylex";
 import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Text } from "../typography/text";
 
 async function getFiles(items: DropItem[]): Promise<File[]> {
   return Promise.all(
@@ -22,10 +21,9 @@ async function getFiles(items: DropItem[]): Promise<File[]> {
 
 const styles = stylex.create({
   dropZone: {
-    backgroundColor: {
-      default: uiColor.bgSubtle,
-      ":is([data-drop-target])": primaryColor.component1,
-    },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    padding: spacing["4"],
     borderColor: {
       default: uiColor.border3,
       ":is([data-drop-target])": primaryColor.solid1,
@@ -34,22 +32,21 @@ const styles = stylex.create({
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
     borderStyle: {
       default: "dashed",
       ":is([data-drop-target])": "solid",
     },
     borderWidth: 2,
+    backgroundColor: {
+      default: uiColor.bgSubtle,
+      ":is([data-drop-target])": primaryColor.component1,
+    },
     boxSizing: "border-box",
-    padding: spacing["4"],
 
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-  },
-  message: {
-    textAlign: "center",
   },
 });
 

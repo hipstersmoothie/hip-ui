@@ -19,45 +19,46 @@ import { fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   colorSlider: {
-    display: "grid",
-    flexDirection: "column",
     gap: spacing["2"],
     gridTemplateAreas: {
       default: "'track'",
       ":has(label,[data-slider-output])": "'label value-label' 'track track'",
     },
+    display: "grid",
+    flexDirection: "column",
   },
   label: {
     gridArea: "label",
   },
   valueLabel: {
+    gridArea: "value-label",
     color: uiColor.text1,
     fontVariantNumeric: "tabular-nums",
-    gridArea: "value-label",
     justifySelf: "flex-end",
 
     fontSize: {
-      ":is([data-size=sm] *)": fontSize["xs"],
-      ":is([data-size=md] *)": fontSize["sm"],
       ":is([data-size=lg] *)": fontSize["base"],
+      ":is([data-size=md] *)": fontSize["sm"],
+      ":is([data-size=sm] *)": fontSize["xs"],
     },
     lineHeight: {
-      ":is([data-size=sm] *)": lineHeight["xs"],
-      ":is([data-size=md] *)": lineHeight["sm"],
       ":is([data-size=lg] *)": lineHeight["base"],
+      ":is([data-size=md] *)": lineHeight["sm"],
+      ":is([data-size=sm] *)": lineHeight["xs"],
     },
   },
   track: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    gridArea: "track",
     borderRadius: {
       default: radius["full"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
-    gridArea: "track",
     height: {
-      ":is([data-size=sm] *)": spacing["3"],
-      ":is([data-size=md] *)": spacing["4"],
       ":is([data-size=lg] *)": spacing["6"],
+      ":is([data-size=md] *)": spacing["4"],
+      ":is([data-size=sm] *)": spacing["3"],
     },
     width: "100%",
   },

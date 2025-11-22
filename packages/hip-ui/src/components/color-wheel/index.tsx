@@ -16,12 +16,12 @@ import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   track: {
-    borderRadius: radius.full,
     gridArea: "track",
+    borderRadius: radius.full,
     height: {
-      ":is([data-size=sm] *)": spacing["3"],
-      ":is([data-size=md] *)": spacing["4"],
       ":is([data-size=lg] *)": spacing["6"],
+      ":is([data-size=md] *)": spacing["4"],
+      ":is([data-size=sm] *)": spacing["3"],
     },
     width: "100%",
 

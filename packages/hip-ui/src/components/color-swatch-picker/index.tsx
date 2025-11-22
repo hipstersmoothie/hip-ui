@@ -10,32 +10,32 @@ import {
 import { ColorSwatch } from "../color-swatch";
 import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   picker: {
+    gap: {
+      default: spacing["2"],
+      ":is([data-size=sm])": spacing["1"],
+    },
     display: "flex",
     flexDirection: {
       default: "row",
       ":is([data-layout=stack])": "column",
     },
     flexWrap: "wrap",
-    gap: {
-      default: spacing["2"],
-      ":is([data-size=sm])": spacing["1"],
-    },
   },
   item: {
     borderRadius: {
-      ":is([data-size=sm] *)": radius.sm,
-      ":is([data-size=md] *)": radius.md,
       ":is([data-size=lg] *)": radius.lg,
+      ":is([data-size=md] *)": radius.md,
+      ":is([data-size=sm] *)": radius.sm,
     },
+    outline: "none",
     boxSizing: "border-box",
     forcedColorAdjust: "none",
-    outline: "none",
     position: "relative",
     width: "fit-content",
 
@@ -47,10 +47,10 @@ const styles = stylex.create({
     outlineStyle: { ":is([data-selected])::after": "solid" },
     outlineWidth: { ":is([data-selected])::after": "2px" },
     "::after": {
+      inset: 0,
       borderRadius: "inherit",
       boxSizing: "border-box",
       content: "",
-      inset: 0,
       position: "absolute",
     },
   },

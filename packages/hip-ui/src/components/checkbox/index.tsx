@@ -23,12 +23,12 @@ import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2.5"],
     alignItems: {
       default: "center",
       ":has(p)": "flex-start",
     },
     display: "flex",
-    gap: spacing["2.5"],
 
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
@@ -40,11 +40,12 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "center",
 
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
       "@supports (corner-shape: squircle)": radius["full"],
     },
-    cornerShape: "squircle",
     borderWidth: 2,
     height: spacing["4"],
     width: spacing["4"],
@@ -53,9 +54,9 @@ const styles = stylex.create({
     color: "white",
   },
   group: {
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
   },
 });
 

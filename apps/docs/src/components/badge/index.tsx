@@ -16,23 +16,24 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    alignItems: "center",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    overflow: "hidden",
+    alignItems: "center",
     display: "flex",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["semibold"],
-    overflow: "hidden",
     width: "fit-content",
-    cornerShape: "squircle",
   },
   sm: {
     borderRadius: {
       default: radius["sm"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    fontSize: fontSize["xs"],
     gap: spacing["1.5"],
+    fontSize: fontSize["xs"],
     height: spacing["5"],
     paddingLeft: spacing["1.5"],
     paddingRight: spacing["1.5"],
@@ -40,8 +41,8 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["3"],
       pointerEvents: "none",
+      height: spacing["3"],
       width: spacing["3"],
     },
   },
@@ -50,8 +51,8 @@ const styles = stylex.create({
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    fontSize: fontSize["sm"],
     gap: spacing["1.5"],
+    fontSize: fontSize["sm"],
     height: spacing["6"],
     paddingLeft: spacing["2"],
     paddingRight: spacing["2"],
@@ -59,8 +60,8 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["3.5"],
       pointerEvents: "none",
+      height: spacing["3.5"],
       width: spacing["3.5"],
     },
   },

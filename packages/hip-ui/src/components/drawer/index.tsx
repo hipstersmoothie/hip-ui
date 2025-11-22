@@ -25,28 +25,30 @@ const styles = stylex.create({
     zIndex: 0,
   },
   drawerWrapper: {
+    position: "fixed",
     bottom: {
       ":is([data-direction=bottom])": 0,
       ":is([data-direction=left])": 0,
       ":is([data-direction=right])": 0,
     },
     left: {
+      ":is([data-direction=bottom])": 0,
       ":is([data-direction=left])": 0,
       ":is([data-direction=top])": 0,
-      ":is([data-direction=bottom])": 0,
     },
-    position: "fixed",
     right: {
+      ":is([data-direction=bottom])": 0,
       ":is([data-direction=right])": 0,
       ":is([data-direction=top])": 0,
-      ":is([data-direction=bottom])": 0,
     },
     top: {
-      ":is([data-direction=top])": 0,
       ":is([data-direction=left])": 0,
       ":is([data-direction=right])": 0,
+      ":is([data-direction=top])": 0,
     },
 
+    borderRadius: 0,
+    translate: "unset",
     borderBottomWidth: {
       default: 0,
       ":is([data-direction=top])": 1,
@@ -55,7 +57,6 @@ const styles = stylex.create({
       default: 0,
       ":is([data-direction=right])": 1,
     },
-    borderRadius: 0,
     borderRightWidth: {
       default: 0,
       ":is([data-direction=left])": 1,
@@ -65,43 +66,42 @@ const styles = stylex.create({
       ":is([data-direction=bottom])": 1,
     },
     height: {
-      ":is([data-direction=top], [data-direction=bottom]):is([data-size=sm])":
-        "320px",
-      ":is([data-direction=top], [data-direction=bottom]):is([data-size=md])":
-        "600px",
+      ":is([data-direction=right], [data-direction=left])": "100vh",
       ":is([data-direction=top], [data-direction=bottom]):is([data-size=lg])":
         "800px",
-      ":is([data-direction=right], [data-direction=left])": "100vh",
+      ":is([data-direction=top], [data-direction=bottom]):is([data-size=md])":
+        "600px",
+      ":is([data-direction=top], [data-direction=bottom]):is([data-size=sm])":
+        "320px",
     },
     maxHeight: {
-      ":is([data-direction=top], [data-direction=bottom])": `calc(100vh - ${spacing["8"]})`,
       ":is([data-direction=right], [data-direction=left])": "100vh",
+      ":is([data-direction=top], [data-direction=bottom])": `calc(100vh - ${spacing["8"]})`,
     },
     maxWidth: {
-      ":is([data-direction=top], [data-direction=bottom])": "100vw",
       ":is([data-direction=right], [data-direction=left])": `calc(100vw - ${spacing["8"]})`,
+      ":is([data-direction=top], [data-direction=bottom])": "100vw",
     },
-    translate: "unset",
     width: {
-      ":is([data-direction=left], [data-direction=right]):is([data-size=sm])":
-        "320px",
-      ":is([data-direction=left], [data-direction=right]):is([data-size=md])":
-        "600px",
       ":is([data-direction=left], [data-direction=right]):is([data-size=lg])":
         "800px",
+      ":is([data-direction=left], [data-direction=right]):is([data-size=md])":
+        "600px",
+      ":is([data-direction=left], [data-direction=right]):is([data-size=sm])":
+        "320px",
       ":is([data-direction=top], [data-direction=bottom])": "100vw",
     },
 
     animationDuration: animationDuration.default,
     animationName: {
-      ":is([data-direction=right][data-entering])": animations.slideInRight,
-      ":is([data-direction=right][data-exiting])": animations.slideOutRight,
-      ":is([data-direction=left][data-entering])": animations.slideInLeft,
-      ":is([data-direction=left][data-exiting])": animations.slideOutLeft,
-      ":is([data-direction=top][data-entering])": animations.slideInTop,
-      ":is([data-direction=top][data-exiting])": animations.slideOutTop,
       ":is([data-direction=bottom][data-entering])": animations.slideInBottom,
       ":is([data-direction=bottom][data-exiting])": animations.slideOutBottom,
+      ":is([data-direction=left][data-entering])": animations.slideInLeft,
+      ":is([data-direction=left][data-exiting])": animations.slideOutLeft,
+      ":is([data-direction=right][data-entering])": animations.slideInRight,
+      ":is([data-direction=right][data-exiting])": animations.slideOutRight,
+      ":is([data-direction=top][data-entering])": animations.slideInTop,
+      ":is([data-direction=top][data-exiting])": animations.slideOutTop,
     },
     animationTimingFunction: "ease-in-out",
   },
@@ -110,11 +110,11 @@ const styles = stylex.create({
     paddingTop: spacing["2"],
   },
   header: {
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["2"],
-    height: spacing["8"],
     justifyContent: "space-between",
+    height: spacing["8"],
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
@@ -134,8 +134,8 @@ const styles = stylex.create({
     paddingTop: { default: 0, ":first-child": spacing["4"] },
   },
   footer: {
-    display: "flex",
     gap: spacing["2"],
+    display: "flex",
     justifyContent: "flex-end",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
