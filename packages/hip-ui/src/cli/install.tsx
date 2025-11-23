@@ -36,6 +36,7 @@ import { disclosureGroupConfig } from "../components/disclosure-group/disclosure
 import { disclosureConfig } from "../components/disclosure/disclosure-config.js";
 import { drawerConfig } from "../components/drawer/drawer-config.js";
 import { editableTextConfig } from "../components/editable-text/editable-text-config.js";
+import { emptyStateConfig } from "../components/empty-state/empty-state-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
 import { formConfig } from "../components/form/form-config.js";
@@ -152,6 +153,7 @@ const COMPONENT_CONFIGS = [
   tabsConfig,
   drawerConfig,
   editableTextConfig,
+  emptyStateConfig,
   toastConfig,
   windowSplitterConfig,
 ];

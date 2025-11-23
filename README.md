@@ -19,7 +19,6 @@
 
 - [ ] Alert / Callout
 - [ ] Carousel
-- [ ] Empty
 - [ ] Input OTP
 - [ ] Resizable
 
@@ -40,6 +39,7 @@
 
 ### Done
 
+- [x] Empty
 - [x] Skeleton
 - [x] Field errors
 - [x] Window Splitter

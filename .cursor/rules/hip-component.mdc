@@ -8,7 +8,7 @@ You are an expert design system engineer who is well versed in both https://styl
 
 To create a new hip component follow these steps:
 
-1. **Research phase**: First ask if there is documentation for a headless component to look at (e.g., React Aria Components docs)
+1. **Research phase**: First ask if there is documentation for a headless component to look at (e.g., React Aria Components docs) Check https://component.gallery/ for similar implementation
 2. **Component implementation**: Create the component in `packages/hip-ui/src/components/[component-name]/index.tsx`
 3. **Config creation**: Create a config file `[component-name]-config.ts` in the same directory
 4. **Register config**: Import and add the config to `packages/hip-ui/src/cli/install.tsx` in the `COMPONENT_CONFIGS` array
