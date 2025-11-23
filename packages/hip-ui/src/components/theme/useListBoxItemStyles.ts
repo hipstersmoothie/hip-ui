@@ -11,7 +11,7 @@ import {
   typeramp,
 } from "../theme/typography.stylex";
 import { animationDuration } from "./animations.stylex";
-import { criticalColor, primaryColor, uiColor } from "./semantic-color.stylex";
+import { criticalColor, primaryColor, uiColor } from "./color.stylex";
 
 const styles = stylex.create({
   item: {

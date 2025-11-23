@@ -10,7 +10,7 @@ import {
   Dialog,
 } from "react-aria-components";
 
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
@@ -26,24 +26,24 @@ const styles = stylex.create({
   },
   content: {
     boxShadow: "none",
+    position: "relative",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["2"],
     paddingRight: spacing["2"],
     paddingTop: spacing["2"],
-    position: "relative",
   },
   caret: {},
   arrow: {
     backgroundColor: uiColor.bgSubtle,
-    height: spacing["2"],
     transform: {
       [":is([data-placement=bottom] *)"]: "rotate(180deg)",
-      [":is([data-placement=top] *)"]: "tranuiColorY(-50%) rotate(-45deg)",
       [":is([data-placement=left] *)"]: "rotate(90deg)",
       [":is([data-placement=right] *)"]: "rotate(-90deg)",
+      [":is([data-placement=top] *)"]: "tranuiColorY(-50%) rotate(-45deg)",
     },
-    width: spacing["2"],
     zIndex: 0,
+    height: spacing["2"],
+    width: spacing["2"],
   },
 });
 interface PopoverProps

@@ -12,4 +12,3 @@ export const windowSplitterConfig: ComponentConfig = {
     "@window-splitter/react": "^1.0.0",
   },
 };
-

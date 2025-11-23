@@ -11,9 +11,9 @@ import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   form: {
+    gap: spacing["4"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["4"],
   },
 });
 

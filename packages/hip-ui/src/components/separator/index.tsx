@@ -4,18 +4,18 @@ import {
   Separator as AriaSeparator,
 } from "react-aria-components";
 
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   separator: {
-    backgroundColor: uiColor.border2,
+    margin: 0,
     borderWidth: 0,
+    backgroundColor: uiColor.border2,
     height: {
       default: "1px",
       ":is([aria-orientation=vertical])": "100%",
     },
-    margin: 0,
     width: {
       default: "100%",
       ":is([aria-orientation=vertical])": "1px",

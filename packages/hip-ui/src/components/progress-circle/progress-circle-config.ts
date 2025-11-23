@@ -14,4 +14,3 @@ export const progressCircleConfig: ComponentConfig = {
     "react-aria-components": "^1.13.0",
   },
 };
-

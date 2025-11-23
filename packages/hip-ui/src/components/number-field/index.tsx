@@ -18,7 +18,8 @@ import { createPortal } from "react-dom";
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
-import { ui, uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import {
   InputVariant,

@@ -15,4 +15,3 @@ export const menubarConfig: ComponentConfig = {
     "react-aria-components": "^1.13.0",
   },
 };
-

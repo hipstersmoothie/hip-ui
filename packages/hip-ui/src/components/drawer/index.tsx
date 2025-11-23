@@ -13,7 +13,7 @@ import {
 
 import { IconButton } from "../icon-button";
 import { animationDuration, animations } from "../theme/animations.stylex";
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";

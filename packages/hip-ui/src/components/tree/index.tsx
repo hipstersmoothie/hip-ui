@@ -14,8 +14,9 @@ import {
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
+import { primaryColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { primaryColor, ui } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";

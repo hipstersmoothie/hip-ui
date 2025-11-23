@@ -11,59 +11,59 @@ import {
   QueuedToast,
 } from "react-aria-components";
 
+import { Button } from "../button";
 import { IconButton } from "../icon-button";
 import {
   criticalColor,
   successColor,
   uiColor,
   warningColor,
-} from "../theme/semantic-color.stylex";
+} from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { lineHeight, typeramp } from "../theme/typography.stylex";
-import { toasts, ToastContentType } from "./queue";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Button } from "../button";
+import { toasts, ToastContentType } from "./queue";
 
 const styles = stylex.create({
   region: {
-    bottom: spacing["4"],
-    display: "flex",
-    flexDirection: "column-reverse",
     gap: spacing["2"],
     outline: "none",
+    display: "flex",
+    flexDirection: "column-reverse",
     position: "fixed",
-    right: spacing["4"],
     zIndex: 9999,
+    bottom: spacing["4"],
+    right: spacing["4"],
   },
   toast: {
+    gap: spacing["4"],
+    alignItems: "center",
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
-    gap: spacing["4"],
+    minWidth: spacing["60"],
+    paddingBottom: spacing["3"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
     paddingTop: spacing["3"],
-    paddingBottom: spacing["3"],
-    minWidth: spacing["60"],
   },
   content: {
-    display: "flex",
     flex: "1 1 auto",
-    flexDirection: "column",
     gap: spacing["2.5"],
+    display: "flex",
+    flexDirection: "column",
     minWidth: 0,
   },
   title: {
-    fontWeight: 600,
-    lineHeight: lineHeight["none"],
     color: {
       default: uiColor.text1,
       ":is([data-variant=critical] *)": criticalColor.textContrast,
       ":is([data-variant=success] *)": successColor.textContrast,
       ":is([data-variant=warning] *)": warningColor.text2,
     },
+    fontWeight: 600,
+    lineHeight: lineHeight["none"],
   },
   description: {
     color: {
@@ -74,36 +74,36 @@ const styles = stylex.create({
     },
   },
   icon: {
-    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    display: "flex",
     flexShrink: 0,
+    justifyContent: "center",
 
     ":is(*) svg": {
-      flexShrink: 0,
-      height: spacing["4"],
-      pointerEvents: "none",
-      width: spacing["4"],
       color: {
         ":is([data-variant=critical] *)": criticalColor.solid1,
         ":is([data-variant=success] *)": successColor.solid1,
         ":is([data-variant=warning] *)": warningColor.solid1,
       },
+      flexShrink: 0,
+      pointerEvents: "none",
+      height: spacing["4"],
+      width: spacing["4"],
     },
   },
   critical: {
-    backgroundColor: criticalColor.component1,
     borderColor: criticalColor.border2,
+    backgroundColor: criticalColor.component1,
     color: criticalColor.text2,
   },
   success: {
-    backgroundColor: successColor.component1,
     borderColor: successColor.border2,
+    backgroundColor: successColor.component1,
     color: successColor.text2,
   },
   warning: {
-    backgroundColor: warningColor.component1,
     borderColor: warningColor.border2,
+    backgroundColor: warningColor.component1,
     color: warningColor.text2,
   },
 });
@@ -123,7 +123,7 @@ function ToastItem({ toast }: { toast: QueuedToast<ToastContentType> }) {
         toast.content.variant === "warning" && styles.warning,
       )}
     >
-      {toast.content.icon && (
+      {Boolean(toast.content.icon) && (
         <div {...stylex.props(styles.icon)}>{toast.content.icon}</div>
       )}
       <ToastContent {...stylex.props(styles.content)}>

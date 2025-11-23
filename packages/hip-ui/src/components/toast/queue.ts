@@ -1,5 +1,6 @@
 import { flushSync } from "react-dom";
 import { ToastQueue } from "react-stately";
+
 import { ButtonVariant, ToastVariant } from "../theme/types";
 
 export interface ToastContentType {
@@ -19,6 +20,7 @@ export const toasts = new ToastQueue<ToastContentType>({
   wrapUpdate(fn) {
     if ("startViewTransition" in document) {
       document.startViewTransition(() => {
+        // eslint-disable-next-line @eslint-react/dom/no-flush-sync
         flushSync(fn);
       });
     } else {

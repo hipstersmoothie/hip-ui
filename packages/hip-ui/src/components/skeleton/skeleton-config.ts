@@ -10,4 +10,3 @@ export const skeletonConfig: ComponentConfig = {
     "../theme/types.ts",
   ],
 };
-

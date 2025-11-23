@@ -10,7 +10,7 @@ import {
   type PanelResizerProps,
 } from "@window-splitter/react";
 
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 
@@ -37,14 +37,14 @@ const styles = stylex.create({
     },
     position: "absolute",
 
-    bottom: { ":is([data-handle-orientation='horizontal'] *)": 0 },
-    left: { ":is([data-handle-orientation='vertical'] *)": 0 },
-    right: { ":is([data-handle-orientation='vertical'] *)": 0 },
-    top: { ":is([data-handle-orientation='horizontal'] *)": 0 },
     transform: {
       ":is([data-handle-orientation='horizontal'] *)": "translateX(-50%)",
       ":is([data-handle-orientation='vertical'] *)": "translateY(-50%)",
     },
+    bottom: { ":is([data-handle-orientation='horizontal'] *)": 0 },
+    left: { ":is([data-handle-orientation='vertical'] *)": 0 },
+    right: { ":is([data-handle-orientation='vertical'] *)": 0 },
+    top: { ":is([data-handle-orientation='horizontal'] *)": 0 },
 
     height: {
       ":is([data-handle-orientation='horizontal'] *)": "100%",

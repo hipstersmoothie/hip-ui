@@ -13,14 +13,14 @@ import { Tooltip } from "../tooltip";
 const styles = stylex.create({
   button: {
     height: {
-      ":is([data-size=sm])": spacing["7"],
-      ":is([data-size=md])": spacing["8"],
       ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=sm])": spacing["7"],
     },
     width: {
-      ":is([data-size=sm])": spacing["7"],
-      ":is([data-size=md])": spacing["8"],
       ":is([data-size=lg])": spacing["10"],
+      ":is([data-size=md])": spacing["8"],
+      ":is([data-size=sm])": spacing["7"],
     },
   },
 });

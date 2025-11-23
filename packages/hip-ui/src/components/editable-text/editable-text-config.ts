@@ -17,4 +17,3 @@ export const editableTextConfig: ComponentConfig = {
     "react-aria-components": "^1.13.0",
   },
 };
-

@@ -24,14 +24,14 @@ import {
 import { useMenuTriggerState } from "react-stately";
 
 import { SizeContext } from "../context";
+import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
   menu: {
-    paddingTop: spacing["0.5"],
     paddingBottom: spacing["0.5"],
+    paddingTop: spacing["0.5"],
   },
 });
 

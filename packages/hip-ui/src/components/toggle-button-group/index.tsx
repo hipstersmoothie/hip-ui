@@ -45,8 +45,8 @@ const styles = stylex.create({
   separate: (itemsPerRow?: number) => ({
     "--items-per-row": itemsPerRow,
     "--toggle-button-group-gap": spacing["2"],
-    flexWrap: "wrap",
     gap: "var(--toggle-button-group-gap)",
+    flexWrap: "wrap",
   }),
 });
 

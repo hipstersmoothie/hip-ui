@@ -7,14 +7,14 @@ import { Meter as AriaMeter } from "react-aria-components";
 import { SizeContext } from "../context";
 import { Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
-import { radius } from "../theme/radius.stylex";
 import {
   criticalColor,
   primaryColor,
   successColor,
   uiColor,
   warningColor,
-} from "../theme/semantic-color.stylex";
+} from "../theme/color.stylex";
+import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { MeterVariant, Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";

@@ -1,7 +1,7 @@
 import { useLayoutEffect } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
 import { ChevronRight } from "lucide-react";
-import { createContext, use, useEffect, useId, useMemo } from "react";
+import { createContext, use, useId, useMemo } from "react";
 import { mergeProps, useHover, usePress } from "react-aria";
 import {
   Button,
@@ -12,8 +12,8 @@ import {
 
 import { Flex } from "../flex";
 import { animationDuration } from "../theme/animations.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";

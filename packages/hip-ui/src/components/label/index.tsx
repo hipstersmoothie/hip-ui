@@ -20,14 +20,14 @@ const styles = stylex.create({
     fontWeight: fontWeight["semibold"],
 
     fontSize: {
-      ":is([data-size=sm])": fontSize["xs"],
-      ":is([data-size=md])": fontSize["sm"],
       ":is([data-size=lg])": fontSize["base"],
+      ":is([data-size=md])": fontSize["sm"],
+      ":is([data-size=sm])": fontSize["xs"],
     },
     lineHeight: {
-      ":is([data-size=sm])": lineHeight["xs"],
-      ":is([data-size=md])": lineHeight["sm"],
       ":is([data-size=lg])": lineHeight["base"],
+      ":is([data-size=md])": lineHeight["sm"],
+      ":is([data-size=sm])": lineHeight["xs"],
     },
   },
   description: {

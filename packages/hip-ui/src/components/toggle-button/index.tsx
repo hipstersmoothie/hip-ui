@@ -6,7 +6,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useButtonStyles } from "../theme/useButtonStyles";
@@ -21,36 +21,36 @@ const styles = stylex.create({
     color: "light-dark(white, black)",
   },
   secondarySelected: {
-    backgroundColor: {
+    borderColor: {
       default: uiColor.border1,
       ":hover": uiColor.border2,
       ":active": uiColor.border3,
     },
-    borderColor: {
+    backgroundColor: {
       default: uiColor.border1,
       ":hover": uiColor.border2,
       ":active": uiColor.border3,
     },
   },
   tertiarySelected: {
-    backgroundColor: {
+    borderColor: {
       default: uiColor.border1,
       ":hover": uiColor.border2,
       ":active": uiColor.border3,
     },
-    borderColor: {
+    backgroundColor: {
       default: uiColor.border1,
       ":hover": uiColor.border2,
       ":active": uiColor.border3,
     },
   },
   outlineSelected: {
-    backgroundColor: {
+    borderColor: {
       default: uiColor.border1,
       ":hover": uiColor.border2,
       ":active": uiColor.border3,
     },
-    borderColor: {
+    backgroundColor: {
       default: uiColor.border1,
       ":hover": uiColor.border2,
       ":active": uiColor.border3,

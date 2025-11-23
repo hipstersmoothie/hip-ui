@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { criticalColor, uiColor } from "../theme/semantic-color.stylex";
+import { criticalColor, uiColor } from "../theme/color.stylex";
 import { TextVariant, ThemeKeys } from "../theme/types";
 import {
   fontFamily,

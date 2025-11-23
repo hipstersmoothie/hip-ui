@@ -12,8 +12,8 @@ import {
 
 import { Description, ErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";

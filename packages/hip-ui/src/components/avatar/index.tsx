@@ -2,8 +2,8 @@ import * as stylex from "@stylexjs/stylex";
 import { use, useLayoutEffect, useState } from "react";
 
 import { SizeContext } from "../context";
+import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import {

@@ -11,13 +11,6 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   emptyState: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    fontFamily: fontFamily["sans"],
-    gap: "var(--empty-state-gap)",
-    textAlign: "center",
     "--empty-state-gap": {
       ":is([data-empty-state-size=lg])": spacing["8"],
       ":is([data-empty-state-size=md])": spacing["6"],
@@ -28,28 +21,35 @@ const styles = stylex.create({
       ":is([data-empty-state-size=md])": "180px",
       ":is([data-empty-state-size=sm])": "120px",
     },
+    gap: "var(--empty-state-gap)",
+    alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    fontFamily: fontFamily["sans"],
+    justifyContent: "center",
+    textAlign: "center",
   },
   image: {
-    width: "var(--empty-state-image-size)",
-    height: "var(--empty-state-image-size)",
-    objectFit: "contain",
-    display: "flex",
     alignItems: "center",
+    display: "flex",
     justifyContent: "center",
+    objectFit: "contain",
+    height: "var(--empty-state-image-size)",
+    width: "var(--empty-state-image-size)",
   },
   title: {
+    margin: 0,
     fontSize: {
       ":is([data-empty-state-size='lg'] *)": fontSize["2xl"],
       ":is([data-empty-state-size='md'] *)": fontSize["xl"],
       ":is([data-empty-state-size='sm'] *)": fontSize["lg"],
     },
     fontWeight: fontWeight["semibold"],
-    margin: 0,
   },
   description: {
+    margin: 0,
     fontSize: fontSize["sm"],
     fontWeight: fontWeight["normal"],
-    margin: 0,
     maxWidth: {
       ":is([data-empty-state-size=lg])": "480px",
       ":is([data-empty-state-size=md])": "400px",
@@ -57,12 +57,12 @@ const styles = stylex.create({
     },
   },
   actions: {
-    display: "flex",
-    flexDirection: "row",
     gap: spacing["2"],
     alignItems: "center",
-    justifyContent: "center",
+    display: "flex",
+    flexDirection: "row",
     flexWrap: "wrap",
+    justifyContent: "center",
   },
 });
 
@@ -117,13 +117,7 @@ export const EmptyStateImage = ({
   ...props
 }: EmptyStateImageProps) => {
   if (src) {
-    return (
-      <img
-        src={src}
-        alt={alt}
-        {...stylex.props(styles.image, style)}
-      />
-    );
+    return <img src={src} alt={alt} {...stylex.props(styles.image, style)} />;
   }
 
   return (
@@ -136,16 +130,8 @@ export const EmptyStateImage = ({
 export interface EmptyStateTitleProps
   extends StyleXComponentProps<React.ComponentProps<"h2">> {}
 
-export const EmptyStateTitle = ({
-  style,
-  ...props
-}: EmptyStateTitleProps) => {
-  return (
-    <h2
-      {...props}
-      {...stylex.props(styles.title, ui.text, style)}
-    />
-  );
+export const EmptyStateTitle = ({ style, ...props }: EmptyStateTitleProps) => {
+  return <div {...props} {...stylex.props(styles.title, ui.text, style)} />;
 };
 
 export interface EmptyStateDescriptionProps
@@ -156,10 +142,7 @@ export const EmptyStateDescription = ({
   ...props
 }: EmptyStateDescriptionProps) => {
   return (
-    <p
-      {...props}
-      {...stylex.props(styles.description, ui.textDim, style)}
-    />
+    <p {...props} {...stylex.props(styles.description, ui.textDim, style)} />
   );
 };
 
@@ -170,11 +153,5 @@ export const EmptyStateActions = ({
   style,
   ...props
 }: EmptyStateActionsProps) => {
-  return (
-    <div
-      {...props}
-      {...stylex.props(styles.actions, style)}
-    />
-  );
+  return <div {...props} {...stylex.props(styles.actions, style)} />;
 };
-

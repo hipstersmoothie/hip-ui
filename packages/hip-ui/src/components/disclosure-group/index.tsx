@@ -8,7 +8,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
@@ -17,10 +17,10 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   separator: {
-    backgroundColor: uiColor.border2,
-    borderWidth: 0,
-    height: "1px",
     margin: 0,
+    borderWidth: 0,
+    backgroundColor: uiColor.border2,
+    height: "1px",
     width: "100%",
   },
 });

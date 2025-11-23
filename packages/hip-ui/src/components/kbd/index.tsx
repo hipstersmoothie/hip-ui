@@ -1,8 +1,8 @@
 import { isMac as getIsMac } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
 
+import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, tracking } from "../theme/typography.stylex";

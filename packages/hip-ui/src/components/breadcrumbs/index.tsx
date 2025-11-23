@@ -7,21 +7,22 @@ import {
   BreadcrumbProps as AriaBreadcrumbProps,
 } from "react-aria-components";
 
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   breadcrumbs: {
-    alignItems: "center",
-    display: "flex",
-    gap: spacing["1"],
-    listStyle: "none",
     margin: 0,
     padding: 0,
+    gap: spacing["1"],
+    listStyle: "none",
+    alignItems: "center",
+    display: "flex",
   },
   breadcrumb: {
+    gap: spacing["1"],
     alignItems: "center",
     color: {
       default: uiColor.text2,
@@ -32,7 +33,6 @@ const styles = stylex.create({
       default: fontWeight.normal,
       ":is([data-current])": fontWeight.medium,
     },
-    gap: spacing["1"],
   },
   separator: {
     alignItems: "center",
