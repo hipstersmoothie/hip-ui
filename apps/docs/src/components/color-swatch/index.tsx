@@ -5,8 +5,8 @@ import { use } from "react";
 import { ColorSwatch as AriaColorSwatch } from "react-aria-components";
 
 import { SizeContext } from "../context";
+import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 
@@ -19,30 +19,30 @@ const styles = stylex.create({
 
     // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
+  },
+  swatchSm: {
     borderRadius: {
-      ":is([data-size=lg])": {
-        default: radius["lg"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
-      ":is([data-size=md])": {
-        default: radius["md"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
-      ":is([data-size=sm])": {
-        default: radius["sm"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    height: {
-      ":is([data-size=lg])": spacing["8"],
-      ":is([data-size=md])": spacing["6"],
-      ":is([data-size=sm])": spacing["4"],
+    height: spacing["4"],
+    width: spacing["4"],
+  },
+  swatchMd: {
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    width: {
-      ":is([data-size=lg])": spacing["8"],
-      ":is([data-size=md])": spacing["6"],
-      ":is([data-size=sm])": spacing["4"],
+    height: spacing["6"],
+    width: spacing["6"],
+  },
+  swatchLg: {
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
     },
+    height: spacing["8"],
+    width: spacing["8"],
   },
 });
 
@@ -62,8 +62,13 @@ export function ColorSwatch({
   return (
     <AriaColorSwatch
       {...props}
-      {...stylex.props(styles.swatch, style)}
-      data-size={size}
+      {...stylex.props(
+        styles.swatch,
+        size === "sm" && styles.swatchSm,
+        size === "md" && styles.swatchMd,
+        size === "lg" && styles.swatchLg,
+        style,
+      )}
       style={({ color }) => ({
         background: `linear-gradient(${color.toString()}, ${color.toString()}),
           repeating-conic-gradient(#CCC 0% 25%, white 0% 50%) 50% / 16px 16px`,

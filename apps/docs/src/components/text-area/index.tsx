@@ -11,8 +11,9 @@ import {
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
+import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { ui, uiColor } from "../theme/semantic-color.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";

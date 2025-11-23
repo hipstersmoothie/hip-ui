@@ -29,9 +29,9 @@ export interface RangeCalendarProps<T extends DateValue>
 
 const styles = stylex.create({
   root: {
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
   },
   header: {
     alignItems: "center",

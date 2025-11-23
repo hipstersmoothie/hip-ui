@@ -22,7 +22,7 @@ import {
 } from "@/components/sidebar";
 import { Text } from "@/components/typography/text";
 
-import { uiColor } from "../components/theme/semantic-color.stylex";
+import { uiColor } from "../components/theme/color.stylex";
 
 const SidebarItemLink = createLink(SidebarItem);
 

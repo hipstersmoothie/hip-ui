@@ -72,7 +72,7 @@ import { Tree, TreeItem } from "@/components/tree";
 import { Text } from "@/components/typography/text";
 
 import { radius } from "../components/theme/radius.stylex";
-import { uiColor } from "../components/theme/semantic-color.stylex";
+import { uiColor } from "../components/theme/color.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import {

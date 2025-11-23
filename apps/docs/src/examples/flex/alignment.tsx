@@ -2,7 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 
 import { Flex } from "@/components/flex";
 
-import { uiColor } from "../../components/theme/semantic-color.stylex";
+import { uiColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
   container: {

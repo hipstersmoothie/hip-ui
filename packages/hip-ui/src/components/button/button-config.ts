@@ -4,6 +4,7 @@ export const buttonConfig: ComponentConfig = {
   name: "button",
   filepath: "./index.tsx",
   hipDependencies: [
+    "../theme/color.stylex.tsx",
     "../theme/spacing.stylex.tsx",
     "../theme/radius.stylex.tsx",
     "../theme/semantic-color.stylex.tsx",

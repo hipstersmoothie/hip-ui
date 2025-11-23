@@ -11,7 +11,7 @@ import {
   typeramp,
 } from "../theme/typography.stylex";
 import { animationDuration } from "./animations.stylex";
-import { criticalColor, primaryColor, uiColor } from "./semantic-color.stylex";
+import { criticalColor, primaryColor, uiColor } from "./color.stylex";
 
 const styles = stylex.create({
   item: {
@@ -89,7 +89,7 @@ const styles = stylex.create({
     marginTop: `calc(${spacing["2"]} * -1)`,
     minWidth: spacing["4"],
 
-    // eslint-disable-next-line @stylexjs/valid-styles
+    // eslint-disable-next-line @stylexjs/valid-styles, @stylexjs/no-legacy-contextual-styles
     ":is(*) svg": {
       flexShrink: 0,
       pointerEvents: "none",

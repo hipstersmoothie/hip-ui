@@ -1,45 +1,17 @@
-/* eslint-disable @stylexjs/valid-styles */
-
 import * as stylex from "@stylexjs/stylex";
 
+import { animationDuration } from "./animations-duration.stylex";
+import {
+  criticalColor,
+  primaryColor,
+  successColor,
+  uiColor,
+  warningColor,
+} from "./color.stylex";
 import { green } from "./colors/green.stylex";
-import { orange } from "./colors/orange.stylex";
 import { red } from "./colors/red.stylex";
-import { slate, slateInverted } from "./colors/slate.stylex";
 import { yellow } from "./colors/yellow.stylex";
 import { fontFamily } from "./typography.stylex";
-
-export const uiColor = stylex.defineVars({
-  bg: slate.bg,
-  bgSubtle: slate.bgSubtle,
-  component1: slate.component1,
-  component2: slate.component2,
-  component3: slate.component3,
-  border1: slate.border1,
-  border2: slate.border2,
-  border3: slate.border3,
-  solid1: slate.solid1,
-  solid2: slate.solid2,
-  text1: slate.text1,
-  text2: slate.text2,
-  textContrast: "white",
-});
-
-export const uiInverted = stylex.defineVars({
-  bg: slateInverted.bg,
-  bgSubtle: slateInverted.bgSubtle,
-  component1: slateInverted.component1,
-  component2: slateInverted.component2,
-  component3: slateInverted.component3,
-  border1: slateInverted.border1,
-  border2: slateInverted.border2,
-  border3: slateInverted.border3,
-  solid1: slateInverted.solid1,
-  solid2: slateInverted.solid2,
-  text1: slateInverted.text1,
-  text2: slateInverted.text2,
-  textContrast: "white",
-});
 
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const ui = stylex.create({
@@ -66,7 +38,7 @@ export const ui = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
 
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -83,7 +55,7 @@ export const ui = stylex.create({
       ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": "transparent",
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -94,7 +66,7 @@ export const ui = stylex.create({
       ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": uiColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -105,7 +77,7 @@ export const ui = stylex.create({
       ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": uiColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -115,27 +87,10 @@ export const ui = stylex.create({
       ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.solid2,
       ":disabled": uiColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-});
-
-// eslint-disable-next-line @stylexjs/enforce-extension
-export const primaryColor = stylex.defineVars({
-  bg: orange.bg,
-  bgSubtle: orange.bgSubtle,
-  component1: orange.component1,
-  component2: orange.component2,
-  component3: orange.component3,
-  border1: orange.border1,
-  border2: orange.border2,
-  border3: orange.border3,
-  solid1: orange.solid1,
-  solid2: orange.solid2,
-  text1: orange.text1,
-  text2: orange.text2,
-  textContrast: "white",
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -163,7 +118,7 @@ export const primary = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
 
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -182,7 +137,7 @@ export const primary = stylex.create({
         primaryColor.component3,
       ":disabled": primaryColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -194,7 +149,7 @@ export const primary = stylex.create({
       ":is(:active,[data-pressed=true])": primaryColor.component3,
       ":disabled": primaryColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -207,7 +162,7 @@ export const primary = stylex.create({
         primaryColor.component3,
       ":disabled": primaryColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -217,27 +172,10 @@ export const primary = stylex.create({
       ":hover:not(:has(* button:hover)):not(:disabled)": primaryColor.solid2,
       ":disabled": primaryColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-});
-
-// eslint-disable-next-line @stylexjs/enforce-extension
-export const criticalColor = stylex.defineVars({
-  bg: red.bg,
-  bgSubtle: red.bgSubtle,
-  component1: red.component1,
-  component2: red.component2,
-  component3: red.component3,
-  border1: red.border1,
-  border2: red.border2,
-  border3: red.border3,
-  solid1: red.solid1,
-  solid2: red.solid2,
-  text1: red.text1,
-  text2: red.text2,
-  textContrast: "white",
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -264,7 +202,7 @@ export const critical = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -283,7 +221,7 @@ export const critical = stylex.create({
         criticalColor.component3,
       ":disabled": criticalColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -296,7 +234,7 @@ export const critical = stylex.create({
         criticalColor.component3,
       ":disabled": criticalColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -309,7 +247,7 @@ export const critical = stylex.create({
         criticalColor.component3,
       ":disabled": criticalColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -319,27 +257,10 @@ export const critical = stylex.create({
       ":hover:not(:has(* button:hover)):not(:disabled)": criticalColor.solid2,
       ":disabled": criticalColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-});
-
-// eslint-disable-next-line @stylexjs/enforce-extension
-export const warningColor = stylex.defineVars({
-  bg: yellow.bg,
-  bgSubtle: yellow.bgSubtle,
-  component1: yellow.component1,
-  component2: yellow.component2,
-  component3: yellow.component3,
-  border1: yellow.border1,
-  border2: yellow.border2,
-  border3: yellow.border3,
-  solid1: yellow.solid1,
-  solid2: yellow.solid2,
-  text1: yellow.text1,
-  text2: yellow.text2,
-  textContrast: "black",
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -380,7 +301,7 @@ export const warning = stylex.create({
         warningColor.component3,
       ":disabled": warningColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -392,7 +313,7 @@ export const warning = stylex.create({
       ":is(:active,[data-pressed=true]):not(:disabled)": yellow.component3,
       ":disabled": warningColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -405,7 +326,7 @@ export const warning = stylex.create({
         warningColor.component3,
       ":disabled": warningColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -415,27 +336,10 @@ export const warning = stylex.create({
       ":hover:not(:has(* button:hover)):not(:disabled)": warningColor.solid2,
       ":disabled": warningColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
-});
-
-// eslint-disable-next-line @stylexjs/enforce-extension
-export const successColor = stylex.defineVars({
-  bg: green.bg,
-  bgSubtle: green.bgSubtle,
-  component1: green.component1,
-  component2: green.component2,
-  component3: green.component3,
-  border1: green.border1,
-  border2: green.border2,
-  border3: green.border3,
-  solid1: green.solid1,
-  solid2: green.solid2,
-  text1: green.text1,
-  text2: green.text2,
-  textContrast: "white",
 });
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -462,7 +366,7 @@ export const success = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -481,7 +385,7 @@ export const success = stylex.create({
         successColor.component3,
       ":disabled": successColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -494,7 +398,7 @@ export const success = stylex.create({
         successColor.component3,
       ":disabled": successColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -507,7 +411,7 @@ export const success = stylex.create({
         successColor.component3,
       ":disabled": successColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -517,10 +421,8 @@ export const success = stylex.create({
       ":hover:not(:has(* button:hover)):not(:disabled)": successColor.solid2,
       ":disabled": successColor.component1,
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color",
     transitionTimingFunction: "ease-in-out",
   },
 });
-
-/* eslint-enable @stylexjs/valid-styles */

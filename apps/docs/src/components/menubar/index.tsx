@@ -16,8 +16,8 @@ import {
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { animationDuration } from "../theme/animations.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";

@@ -18,7 +18,6 @@ import type { StyleXComponentProps } from "../theme/types";
 import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { ErrorMessage } from "../label";
-import { spacing } from "../theme/spacing.stylex";
 import { useCalendarStyles } from "../theme/useCalendarStyles";
 
 export interface CalendarProps<T extends DateValue>

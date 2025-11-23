@@ -8,7 +8,7 @@ import {
   SidebarSection,
 } from "@/components/sidebar";
 
-import { uiColor } from "../../components/theme/semantic-color.stylex";
+import { uiColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
   wrapper: {

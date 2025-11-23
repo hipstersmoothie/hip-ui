@@ -6,7 +6,7 @@ import { shadow } from "@/components/theme/shadow.stylex";
 import { Text } from "@/components/typography/text";
 
 import { radius } from "../../components/theme/radius.stylex";
-import { uiColor } from "../../components/theme/semantic-color.stylex";
+import { uiColor } from "../../components/theme/color.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({

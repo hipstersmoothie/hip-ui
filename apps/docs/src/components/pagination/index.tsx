@@ -18,10 +18,10 @@ import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   list: {
+    gap: spacing["4"],
     alignItems: "center",
     containerType: "inline-size",
     display: "flex",
-    gap: spacing["4"],
   },
   pages: {
     flexGrow: 1,

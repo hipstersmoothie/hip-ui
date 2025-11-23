@@ -89,7 +89,7 @@ const styles = stylex.create({
     marginTop: `calc(${spacing["2"]} * -1)`,
     minWidth: spacing["4"],
 
-    // eslint-disable-next-line @stylexjs/valid-styles
+    // eslint-disable-next-line @stylexjs/valid-styles, @stylexjs/no-legacy-contextual-styles
     ":is(*) svg": {
       flexShrink: 0,
       pointerEvents: "none",

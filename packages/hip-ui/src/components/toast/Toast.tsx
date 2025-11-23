@@ -79,6 +79,7 @@ const styles = stylex.create({
     flexShrink: 0,
     justifyContent: "center",
 
+    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       color: {
         ":is([data-variant=critical] *)": criticalColor.solid1,

@@ -36,7 +36,7 @@ import {
 import { Slider } from "../components/slider";
 import { TextArea } from "../components/text-area";
 import { radius } from "../components/theme/radius.stylex";
-import { uiColor } from "../components/theme/semantic-color.stylex";
+import { uiColor } from "../components/theme/color.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontSize, fontWeight } from "../components/theme/typography.stylex";

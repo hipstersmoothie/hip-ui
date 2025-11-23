@@ -27,14 +27,14 @@ const styles = stylex.create({
     paddingTop: spacing["2"],
   },
   header: {
-    alignItems: "center",
     gap: spacing["2"],
+    alignItems: "center",
     display: "flex",
+    fontSize: fontSize["lg"],
     justifyContent: "space-between",
     height: spacing["8"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
-    fontSize: fontSize["lg"],
     paddingTop: spacing["2"],
   },
   description: {

@@ -38,8 +38,8 @@ const styles = stylex.create({
   },
   menu: {
     outline: "none",
-    paddingTop: spacing["0.5"],
     paddingBottom: spacing["0.5"],
+    paddingTop: spacing["0.5"],
   },
 });
 

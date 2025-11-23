@@ -9,8 +9,8 @@ import {
   DropZoneProps,
 } from "react-aria-components";
 
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 
 async function getFiles(items: DropItem[]): Promise<File[]> {

@@ -2,7 +2,7 @@ import { ComponentConfig } from "../../types";
 
 export const toastConfig: ComponentConfig = {
   name: "toast",
-  filepath: "./index.tsx",
+  filepath: "./index.ts",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
     "../theme/radius.stylex.tsx",

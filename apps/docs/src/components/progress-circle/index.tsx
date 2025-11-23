@@ -10,8 +10,8 @@ import type { Size, StyleXComponentProps } from "../theme/types";
 import { SizeContext } from "../context";
 import { Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 
 const IndeterminateFillAnimation = stylex.keyframes({
@@ -25,11 +25,11 @@ const IndeterminateFillAnimation = stylex.keyframes({
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2"],
     alignItems: "center",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
-    gap: spacing["2"],
   },
   circleWrapper: {
     justifyContent: "center",
@@ -37,9 +37,9 @@ const styles = stylex.create({
 
     "--progress-border-width": spacing["1"],
     "--progress-size": {
-      ":is([data-size=sm] *)": spacing["4"],
-      ":is([data-size=md] *)": spacing["8"],
       ":is([data-size=lg] *)": spacing["10"],
+      ":is([data-size=md] *)": spacing["8"],
+      ":is([data-size=sm] *)": spacing["4"],
     },
   },
   track: {
@@ -52,18 +52,18 @@ const styles = stylex.create({
     width: "var(--progress-size)",
   },
   fills: {
+    position: "absolute",
     height: "100%",
     left: 0,
-    position: "absolute",
     top: 0,
     width: "100%",
   },
   fillMask: {
-    boxSizing: "border-box",
-    height: "100%",
     overflow: "hidden",
+    boxSizing: "border-box",
     position: "absolute",
     transformOrigin: "100%",
+    height: "100%",
     width: "50%",
   },
   fillMask1: {
@@ -73,13 +73,13 @@ const styles = stylex.create({
     transform: "rotate(180deg)",
   },
   fillSubmask: {
-    boxSizing: "border-box",
-    height: "100%",
     overflow: "hidden",
+    boxSizing: "border-box",
     transformOrigin: "100%",
     transitionDuration: animationDuration.default,
     transitionProperty: "transform",
     transitionTimingFunction: "linear",
+    height: "100%",
     width: "100%",
   },
   fill: {
@@ -92,10 +92,10 @@ const styles = stylex.create({
     width: "var(--progress-size)",
   },
   check: {
-    left: "50%",
     position: "absolute",
-    top: "50%",
     transform: "translate(-50%, -50%)",
+    left: "50%",
+    top: "50%",
   },
   completed: {
     backgroundColor: primaryColor.solid1,

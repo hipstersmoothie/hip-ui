@@ -4,7 +4,7 @@ import { Upload } from "lucide-react";
 import { AspectRatio } from "@/components/aspect-ratio";
 import { Button } from "@/components/button";
 
-import { uiColor } from "../../components/theme/semantic-color.stylex";
+import { uiColor } from "../../components/theme/color.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({

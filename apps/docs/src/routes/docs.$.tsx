@@ -52,7 +52,7 @@ import { TableOfContents } from "@/lib/TableOfContents";
 
 import { animationDuration } from "../components/theme/animations.stylex";
 import { radius } from "../components/theme/radius.stylex";
-import { uiColor } from "../components/theme/semantic-color.stylex";
+import { uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { lineHeight } from "../components/theme/typography.stylex";
 

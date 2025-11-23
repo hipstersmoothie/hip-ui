@@ -25,7 +25,7 @@ import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
-import { primaryColor, uiColor } from "../theme/semantic-color.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { LabelText } from "../typography";
@@ -42,10 +42,10 @@ const styles = stylex.create({
     },
   },
   column: {
+    padding: 0,
     borderBottomColor: uiColor.border2,
     borderBottomStyle: "solid",
     borderBottomWidth: 1,
-    padding: 0,
   },
   columnHeader: {
     alignItems: "center",
@@ -59,46 +59,46 @@ const styles = stylex.create({
   },
   tableBody: {},
   cell: {
+    overflow: "auto",
     borderBottomColor: uiColor.border2,
     borderBottomStyle: "solid",
     borderBottomWidth: {
       default: 1,
       ":is([role=row]:last-child *)": 0,
     },
-    overflow: "auto",
   },
   cellContent: {
     boxSizing: "border-box",
-    minHeight: {
-      default: spacing["8"],
-      ":is([data-table-size=md] *)": spacing["10"],
-      ":is([data-table-size=lg] *)": spacing["12"],
-    },
     opacity: {
       default: 1,
       ":is([aria-disabled=true] *)": 0.5,
     },
+    textAlign: "left",
+    minHeight: {
+      default: spacing["8"],
+      ":is([data-table-size=lg] *)": spacing["12"],
+      ":is([data-table-size=md] *)": spacing["10"],
+    },
     paddingBottom: {
       default: spacing["1"],
-      ":is([data-table-size=md] *)": spacing["2"],
       ":is([data-table-size=lg] *)": spacing["3"],
+      ":is([data-table-size=md] *)": spacing["2"],
     },
     paddingLeft: {
       default: spacing["2"],
-      ":is([data-table-size=md] *:not(:first-child))": spacing["3"],
       ":is([data-table-size=lg] *:not(:first-child))": spacing["4"],
+      ":is([data-table-size=md] *:not(:first-child))": spacing["3"],
     },
     paddingRight: {
       default: spacing["2"],
-      ":is([data-table-size=md] *:not(:last-child))": spacing["3"],
       ":is([data-table-size=lg] *:not(:last-child))": spacing["4"],
+      ":is([data-table-size=md] *:not(:last-child))": spacing["3"],
     },
     paddingTop: {
       default: spacing["1"],
-      ":is([data-table-size=md] *)": spacing["2"],
       ":is([data-table-size=lg] *)": spacing["3"],
+      ":is([data-table-size=md] *)": spacing["2"],
     },
-    textAlign: "left",
   },
   textEllipsis: {
     overflow: "hidden",
@@ -115,23 +115,23 @@ const styles = stylex.create({
     flexBasis: "auto",
     flexGrow: 0,
     flexShrink: 0,
+    position: "relative",
+    touchAction: "none",
     marginBottom: {
       default: `calc(${spacing["1"]} * -1)`,
-      ":is([data-table-size=md] *)": `calc(${spacing["2"]} * -1)`,
       ":is([data-table-size=lg] *)": `calc(${spacing["3"]} * -1)`,
+      ":is([data-table-size=md] *)": `calc(${spacing["2"]} * -1)`,
     },
     marginTop: {
       default: `calc(${spacing["1"]} * -1)`,
-      ":is([data-table-size=md] *)": `calc(${spacing["2"]} * -1)`,
       ":is([data-table-size=lg] *)": `calc(${spacing["3"]} * -1)`,
+      ":is([data-table-size=md] *)": `calc(${spacing["2"]} * -1)`,
     },
     minHeight: {
       default: spacing["8"],
-      ":is([data-table-size=md] *)": spacing["10"],
       ":is([data-table-size=lg] *)": spacing["12"],
+      ":is([data-table-size=md] *)": spacing["10"],
     },
-    position: "relative",
-    touchAction: "none",
     width: spacing["3"],
   },
   resizerLine: {
@@ -140,12 +140,12 @@ const styles = stylex.create({
       ":is([data-hovered=true] *)": uiColor.border2,
       ":is([data-resizing=true] *)": uiColor.border3,
     },
-    bottom: 0,
     display: "block",
-    left: "50%",
     position: "absolute",
-    top: 0,
     transform: "translateX(-50%)",
+    bottom: 0,
+    left: "50%",
+    top: 0,
     width: spacing["0.5"],
   },
   dropIndicator: {

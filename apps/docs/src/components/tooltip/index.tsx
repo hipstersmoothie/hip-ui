@@ -10,8 +10,8 @@ import {
 } from "react-aria-components";
 
 import { animationDuration } from "../theme/animations.stylex";
+import { uiInverted } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { uiInverted } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";

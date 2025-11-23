@@ -12,7 +12,7 @@ import {
 } from "react-aria-components";
 
 import { IconButton } from "../icon-button";
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, typeramp } from "../theme/typography.stylex";
@@ -23,14 +23,14 @@ const styles = stylex.create({
     paddingTop: spacing["2"],
   },
   header: {
-    alignItems: "center",
     gap: spacing["2"],
+    alignItems: "center",
     display: "flex",
+    fontSize: fontSize["lg"],
     justifyContent: "space-between",
     height: spacing["8"],
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
-    fontSize: fontSize["lg"],
     paddingRight: spacing["4"],
 
     borderBottomColor: uiColor.border1,

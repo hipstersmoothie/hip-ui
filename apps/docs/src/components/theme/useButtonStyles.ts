@@ -7,8 +7,9 @@ import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
 import { Size, ButtonVariant } from "../theme/types";
 import { animationDuration } from "./animations.stylex";
+import { uiColor } from "./color.stylex";
 import { radius } from "./radius.stylex";
-import { critical, ui, primary, uiColor } from "./semantic-color.stylex";
+import { critical, ui, primary } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
 import {

@@ -26,36 +26,38 @@ const styles = stylex.create({
 
     // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
+  },
+  wrapperSm: {
     borderRadius: {
-      ":is([data-size=lg])": {
-        default: radius["lg"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
-      ":is([data-size=md])": {
-        default: radius["md"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
-      ":is([data-size=sm])": {
-        default: radius["sm"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
-      ":is([data-size=xl])": {
-        default: radius["xl"],
-        "@supports (corner-shape: squircle)": radius["3xl"],
-      },
+      default: radius["sm"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    height: {
-      ":is([data-size=lg])": spacing["10"],
-      ":is([data-size=md])": spacing["8"],
-      ":is([data-size=sm])": spacing["6"],
-      ":is([data-size=xl])": spacing["14"],
+    height: spacing["6"],
+    width: spacing["6"],
+  },
+  wrapperMd: {
+    borderRadius: {
+      default: radius["md"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    width: {
-      ":is([data-size=lg])": spacing["10"],
-      ":is([data-size=md])": spacing["8"],
-      ":is([data-size=sm])": spacing["6"],
-      ":is([data-size=xl])": spacing["14"],
+    height: spacing["8"],
+    width: spacing["8"],
+  },
+  wrapperLg: {
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
     },
+    height: spacing["10"],
+    width: spacing["10"],
+  },
+  wrapperXl: {
+    borderRadius: {
+      default: radius["xl"],
+      "@supports (corner-shape: squircle)": radius["3xl"],
+    },
+    height: spacing["14"],
+    width: spacing["14"],
   },
   image: {
     objectFit: "cover",
@@ -68,13 +70,18 @@ const styles = stylex.create({
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["medium"],
     lineHeight: lineHeight["none"],
-
-    fontSize: {
-      ":is([data-size=lg] *)": fontSize["lg"],
-      ":is([data-size=md] *)": fontSize["base"],
-      ":is([data-size=sm] *)": fontSize["sm"],
-      ":is([data-size=xl] *)": fontSize["xl"],
-    },
+  },
+  fallbackSm: {
+    fontSize: fontSize["sm"],
+  },
+  fallbackMd: {
+    fontSize: fontSize["base"],
+  },
+  fallbackLg: {
+    fontSize: fontSize["lg"],
+  },
+  fallbackXl: {
+    fontSize: fontSize["xl"],
   },
 });
 
@@ -123,12 +130,32 @@ export function Avatar({
   }, [src]);
 
   return (
-    <div {...props} data-size={size} {...stylex.props(styles.wrapper, style)}>
+    <div
+      {...props}
+      {...stylex.props(
+        styles.wrapper,
+        size === "sm" && styles.wrapperSm,
+        size === "md" && styles.wrapperMd,
+        size === "lg" && styles.wrapperLg,
+        size === "xl" && styles.wrapperXl,
+        style,
+      )}
+    >
       {imageLoaded === "loaded" && (
         <img {...stylex.props(styles.image)} src={src} alt={alt} />
       )}
       {(!src || imageLoaded === "error") && (
-        <div {...stylex.props(styles.fallback)}>{fallback}</div>
+        <div
+          {...stylex.props(
+            styles.fallback,
+            size === "sm" && styles.fallbackSm,
+            size === "md" && styles.fallbackMd,
+            size === "lg" && styles.fallbackLg,
+            size === "xl" && styles.fallbackXl,
+          )}
+        >
+          {fallback}
+        </div>
       )}
     </div>
   );

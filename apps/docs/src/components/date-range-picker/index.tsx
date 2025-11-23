@@ -18,7 +18,7 @@ import { IconButton } from "../icon-button";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { RangeCalendar, RangeCalendarProps } from "../range-calendar";
 import { SuffixIcon } from "../suffix-icon";
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import {
   InputVariant,

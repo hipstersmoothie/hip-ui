@@ -10,15 +10,15 @@ import {
   SeparatorProps as AriaSeparatorProps,
 } from "react-aria-components";
 
-import { uiColor } from "../theme/semantic-color.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   toolbar: {
+    gap: spacing["1"],
     display: "flex",
     flexWrap: "wrap",
-    gap: spacing["1"],
   },
   horizontal: {
     flexDirection: "row",
@@ -30,8 +30,8 @@ const styles = stylex.create({
     display: "contents",
   },
   separator: {
-    backgroundColor: uiColor.border2,
     borderWidth: 0,
+    backgroundColor: uiColor.border2,
     height: {
       ":is([data-orientation=vertical] *)": "1px",
     },
