@@ -1,6 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { animationDuration } from "./animations.stylex";
+import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
@@ -12,7 +13,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     outline: "none",
     overflow: "auto",

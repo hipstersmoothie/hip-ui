@@ -11,6 +11,7 @@ import {
 
 import { animationDuration } from "../theme/animations.stylex";
 import { uiInverted } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -22,7 +23,7 @@ const tooltipStyle = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["full"],
+      [mediaQueries.supportsSquircle]: radius["full"],
     },
     backgroundColor: uiInverted.bg,
     boxShadow: shadow["sm"],

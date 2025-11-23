@@ -10,6 +10,7 @@ import {
   uiColor,
   warningColor,
 } from "./color.stylex";
+import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
@@ -65,7 +66,7 @@ const styles = stylex.create({
     padding: 0,
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
     overflow: "hidden",

@@ -15,6 +15,7 @@ import {
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -44,7 +45,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["full"],
+      [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderWidth: 2,
     height: spacing["4"],

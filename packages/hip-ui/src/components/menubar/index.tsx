@@ -17,6 +17,7 @@ import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -41,7 +42,7 @@ const styles = stylex.create({
     borderColor: "transparent",
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderStyle: "solid",
     borderWidth: 1,

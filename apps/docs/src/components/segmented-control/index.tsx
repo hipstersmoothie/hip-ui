@@ -13,6 +13,7 @@ import {
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -25,7 +26,7 @@ const styles = stylex.create({
     padding: spacing["1"],
     borderRadius: {
       default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["4xl"],
+      [mediaQueries.supportsSquircle]: radius["4xl"],
     },
     gap: spacing["2"],
     alignItems: "center",
@@ -44,7 +45,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
     alignItems: "center",
@@ -82,7 +83,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     backgroundColor: uiColor.bgSubtle,
     boxShadow: shadow.sm,
@@ -90,7 +91,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.slow,
     transitionProperty: {
       default: "translate, width",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     zIndex: -1,
     height: "100%",

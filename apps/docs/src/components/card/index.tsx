@@ -3,6 +3,7 @@ import { use } from "react";
 
 import { AspectRatio, AspectRatioImage } from "../aspect-ratio";
 import { SizeContext } from "../context";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -15,7 +16,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     gap: "var(--card-gap)",
     overflow: "hidden",

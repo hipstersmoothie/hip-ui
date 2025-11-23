@@ -3,6 +3,7 @@ import { use } from "react";
 
 import { SizeContext } from "../context";
 import { animationDuration, animations } from "../theme/animations.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { Size } from "../theme/types";
@@ -37,7 +38,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["4xl"],
+      [mediaQueries.supportsSquircle]: radius["4xl"],
     },
     outline: "none",
     boxShadow: shadow["lg"],

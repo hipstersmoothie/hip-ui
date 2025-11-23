@@ -12,6 +12,7 @@ import { use } from "react";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
+import { maxBreakpoints, mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
@@ -30,14 +31,14 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderStyle: "solid",
     borderWidth: 1,
     gap: spacing["2.5"],
     gridTemplateAreas: {
       default: "'icon content'",
-      "@media (max-width: 640px)": "'icon content'",
+      [maxBreakpoints.sm]: "'icon content'",
     },
     alignItems: "center",
     boxSizing: "border-box",
@@ -45,7 +46,7 @@ const styles = stylex.create({
     fontFamily: fontFamily["sans"],
     gridTemplateColumns: {
       default: "auto 1fr",
-      "@media (max-width: 640px)": "auto 1fr",
+      [maxBreakpoints.sm]: "auto 1fr",
     },
     position: "relative",
     minHeight: spacing["10"],
@@ -63,34 +64,33 @@ const styles = stylex.create({
   alertWithClose: {
     gridTemplateAreas: {
       default: "'icon content close'",
-      "@media (max-width: 640px)": "'icon content close'",
+      [maxBreakpoints.sm]: "'icon content close'",
     },
     gridTemplateColumns: {
       default: "auto 1fr auto",
-      "@media (max-width: 640px)": "auto 1fr auto",
+      [maxBreakpoints.sm]: "auto 1fr auto",
     },
     paddingRight: spacing["2"],
   },
   alertWithAction: {
     gridTemplateAreas: {
       default: "'icon content action'",
-      "@media (max-width: 640px)": "'icon content' 'action action action'",
+      [maxBreakpoints.sm]: "'icon content' 'action action action'",
     },
     gridTemplateColumns: {
       default: "auto 1fr auto",
-      "@media (max-width: 640px)": "auto 1fr",
+      [maxBreakpoints.sm]: "auto 1fr",
     },
     paddingRight: spacing["2"],
   },
   alertWithActionAndClose: {
     gridTemplateAreas: {
       default: "'icon content action close'",
-      "@media (max-width: 640px)":
-        "'icon content close' 'action action action'",
+      [maxBreakpoints.sm]: "'icon content close' 'action action action'",
     },
     gridTemplateColumns: {
       default: "auto 1fr auto auto",
-      "@media (max-width: 640px)": "auto 1fr auto",
+      [maxBreakpoints.sm]: "auto 1fr auto",
     },
     paddingRight: spacing["2"],
   },

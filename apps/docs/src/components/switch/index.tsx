@@ -6,6 +6,7 @@ import {
 
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -33,7 +34,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",
     height: spacing["6"],

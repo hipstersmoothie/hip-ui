@@ -1,5 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
+import { breakpoints } from "./media-queries.stylex";
 import { spacing } from "./spacing.stylex";
 
 export const fontFamily = stylex.defineVars({
@@ -64,7 +65,7 @@ export const typeramp = stylex.create({
     fontFamily: fontFamily["sans"],
     fontSize: {
       default: fontSize["4xl"],
-      "@media (min-width: 48rem)": fontSize["5xl"],
+      [breakpoints.md]: fontSize["5xl"],
     },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["extrabold"],
@@ -78,7 +79,7 @@ export const typeramp = stylex.create({
     fontFamily: fontFamily["sans"],
     fontSize: {
       default: fontSize["3xl"],
-      "@media (min-width: 48rem)": fontSize["4xl"],
+      [breakpoints.md]: fontSize["4xl"],
     },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight.semibold,

@@ -6,6 +6,7 @@ import { ColorSwatch as AriaColorSwatch } from "react-aria-components";
 
 import { SizeContext } from "../context";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -23,7 +24,7 @@ const styles = stylex.create({
   swatchSm: {
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["4"],
     width: spacing["4"],
@@ -31,7 +32,7 @@ const styles = stylex.create({
   swatchMd: {
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["6"],
     width: spacing["6"],
@@ -39,7 +40,7 @@ const styles = stylex.create({
   swatchLg: {
     borderRadius: {
       default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["8"],
     width: spacing["8"],

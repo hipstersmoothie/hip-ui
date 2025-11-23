@@ -13,6 +13,7 @@ import {
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -33,7 +34,7 @@ const styles = stylex.create({
     },
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["2xl"],
+      [mediaQueries.supportsSquircle]: radius["2xl"],
     },
     borderWidth: 0,
     gap: spacing["2"],
@@ -57,7 +58,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",
     width: "100%",
@@ -69,7 +70,7 @@ const styles = stylex.create({
   chevron: {
     transition: {
       default: "rotate 200ms ease-in-out",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     color: uiColor.text2,
     flexShrink: 0,
@@ -87,7 +88,7 @@ const styles = stylex.create({
     },
     transitionDuration: {
       default: animationDuration.default,
-      "@media (prefers-reduced-motion: reduce)": null,
+      [mediaQueries.reducedMotion]: null,
     },
     transitionProperty: "height",
     transitionTimingFunction: "ease-in-out",

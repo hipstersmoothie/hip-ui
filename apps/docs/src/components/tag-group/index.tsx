@@ -13,6 +13,7 @@ import {
 import { Description, ErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
@@ -87,7 +88,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",
     height: spacing["4"],

@@ -12,6 +12,7 @@ import { ColorThumb } from "../color-area";
 import { SizeContext } from "../context";
 import { Label } from "../label";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -53,7 +54,7 @@ const styles = stylex.create({
     gridArea: "track",
     borderRadius: {
       default: radius["full"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: {
       ":is([data-size=lg] *)": spacing["6"],

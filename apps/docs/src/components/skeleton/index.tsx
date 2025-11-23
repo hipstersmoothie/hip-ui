@@ -3,6 +3,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -55,7 +56,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["4xl"],
+      [mediaQueries.supportsSquircle]: radius["4xl"],
     },
   },
   sizeSm: {

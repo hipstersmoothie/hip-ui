@@ -17,6 +17,7 @@ import {
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -99,7 +100,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "color",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",
   },
@@ -109,7 +110,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.slow,
     transitionProperty: {
       default: "translate, width, height",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",
     borderBottomColor: {

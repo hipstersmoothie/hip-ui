@@ -16,6 +16,7 @@ import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -58,7 +59,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "background-color, border-color, color",
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",
   },
@@ -77,7 +78,7 @@ const styles = stylex.create({
     animationFillMode: "forwards",
     animationName: {
       default: scaleIn,
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     animationTimingFunction: "ease-in-out",
   },

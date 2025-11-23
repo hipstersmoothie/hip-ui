@@ -9,6 +9,7 @@ import {
   ColorThumb as AriaColorThumb,
 } from "react-aria-components";
 
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
@@ -19,7 +20,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     filter: {
       ":is([data-disabled])": "grayscale(1)",
@@ -32,7 +33,7 @@ const styles = stylex.create({
     borderColor: "white",
     borderRadius: {
       default: radius["full"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderStyle: "solid",
     borderWidth: 2,

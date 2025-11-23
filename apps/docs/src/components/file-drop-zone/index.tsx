@@ -10,6 +10,7 @@ import {
 } from "react-aria-components";
 
 import { primaryColor, uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 
@@ -30,7 +31,7 @@ const styles = stylex.create({
     },
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderStyle: {
       default: "dashed",

@@ -8,6 +8,7 @@ import { SizeContext } from "../context";
 import { Size, ButtonVariant } from "../theme/types";
 import { animationDuration } from "./animations.stylex";
 import { uiColor } from "./color.stylex";
+import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { critical, ui, primary } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
@@ -28,7 +29,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["full"],
+      [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderStyle: "solid",
     borderWidth: 1,

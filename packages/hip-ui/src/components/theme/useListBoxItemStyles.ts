@@ -12,6 +12,7 @@ import {
 } from "../theme/typography.stylex";
 import { animationDuration } from "./animations.stylex";
 import { criticalColor, primaryColor, uiColor } from "./color.stylex";
+import { mediaQueries } from "./media-queries.stylex";
 
 const styles = stylex.create({
   item: {
@@ -41,7 +42,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     gap: spacing["3"],
     alignItems: "center",

@@ -2,6 +2,7 @@ import { isMac as getIsMac } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
 
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
@@ -13,7 +14,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     backgroundColor: uiColor.component2,
     color: uiColor.text1,

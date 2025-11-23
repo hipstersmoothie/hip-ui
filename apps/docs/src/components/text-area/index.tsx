@@ -12,6 +12,7 @@ import {
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -53,7 +54,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["2xl"],
+      [mediaQueries.supportsSquircle]: radius["2xl"],
     },
     boxSizing: "border-box",
     display: "flex",

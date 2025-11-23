@@ -3,6 +3,7 @@ import { use, useLayoutEffect, useState } from "react";
 
 import { SizeContext } from "../context";
 import { uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -30,7 +31,7 @@ const styles = stylex.create({
   wrapperSm: {
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["6"],
     width: spacing["6"],
@@ -38,7 +39,7 @@ const styles = stylex.create({
   wrapperMd: {
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["8"],
     width: spacing["8"],
@@ -46,7 +47,7 @@ const styles = stylex.create({
   wrapperLg: {
     borderRadius: {
       default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["10"],
     width: spacing["10"],
@@ -54,7 +55,7 @@ const styles = stylex.create({
   wrapperXl: {
     borderRadius: {
       default: radius["xl"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["14"],
     width: spacing["14"],

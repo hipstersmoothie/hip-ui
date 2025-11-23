@@ -8,6 +8,7 @@ import { SizeContext } from "../context";
 import { Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -79,7 +80,7 @@ const styles = stylex.create({
     animationIterationCount: "infinite",
     animationName: {
       default: IndeterminateAnimation,
-      "@media (prefers-reduced-motion: reduce)": "none",
+      [mediaQueries.reducedMotion]: "none",
     },
     animationTimingFunction: "linear",
     backgroundImage: `repeating-linear-gradient(

@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
@@ -30,7 +31,7 @@ const styles = stylex.create({
   sm: {
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     gap: spacing["1.5"],
     fontSize: fontSize["xs"],
@@ -49,7 +50,7 @@ const styles = stylex.create({
   md: {
     borderRadius: {
       default: radius["md"],
-      "@supports (corner-shape: squircle)": radius["3xl"],
+      [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     gap: spacing["1.5"],
     fontSize: fontSize["sm"],

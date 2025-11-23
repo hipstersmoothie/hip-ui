@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { useMemo } from "react";
 
 import { LinkContext } from "../link/link-context";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { critical, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -53,7 +54,7 @@ const styles = stylex.create({
     cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
-      "@supports (corner-shape: squircle)": radius["2xl"],
+      [mediaQueries.supportsSquircle]: radius["2xl"],
     },
     fontSize: "0.95em",
     position: "relative",
