@@ -11,7 +11,7 @@ import {
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
-import { animationDuration } from "../theme/animations-duration.stylex";
+import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";

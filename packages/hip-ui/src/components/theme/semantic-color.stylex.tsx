@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { animationDuration } from "./animations-duration.stylex";
+import { animationDuration } from "./animations.stylex";
 import {
   criticalColor,
   primaryColor,

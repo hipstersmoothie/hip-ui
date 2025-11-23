@@ -3,7 +3,7 @@ import { use } from "react";
 
 import { SizeContext } from "../context";
 import { InputValidationState, InputVariant, Size } from "../theme/types";
-import { animationDuration } from "./animations-duration.stylex";
+import { animationDuration } from "./animations.stylex";
 import {
   criticalColor,
   successColor,
