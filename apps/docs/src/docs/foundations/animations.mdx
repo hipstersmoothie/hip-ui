@@ -2,3 +2,67 @@
 title: Animations
 description: A shared set of animations for the UI.
 ---
+
+import { AnimationDurations, AnimationTimingFunctions, AllAnimations } from "../../examples/foundations/animations";
+
+Animations provide smooth transitions and visual feedback throughout the UI.
+Our animation system includes predefined keyframe animations, duration tokens, and timing function tokens that ensure consistent motion across your application.
+
+## Usage
+
+To use animations, import them from the animations theme file:
+
+```tsx
+import { animations, animationDuration, animationTimingFunction } from "@/components/theme/animations.stylex";
+
+const styles = stylex.create({
+  animated: {
+    animationName: animations.fadeIn,
+    animationDuration: animationDuration.default,
+    animationTimingFunction: animationTimingFunction.easeInOut,
+  },
+});
+```
+
+## Animation Duration
+
+Animation duration tokens control how long an animation takes to complete.
+Use these tokens to maintain consistent timing across your application.
+
+- **fast**: 100ms - For quick, subtle animations
+- **default**: 150ms - The standard duration for most animations
+- **slow**: 200ms - For more noticeable transitions
+- **verySlow**: 300ms - For prominent, attention-grabbing animations
+- **extremelySlow**: 500ms - For very slow animations
+
+<AnimationDurations />
+
+## Animation Timing Functions
+
+Timing functions control the acceleration and deceleration of animations, creating different motion feels.
+
+- **linear**: Constant speed throughout the animation
+- **easeIn**: Starts slow and accelerates (cubic-bezier curve)
+- **easeOut**: Starts fast and decelerates (cubic-bezier curve)
+- **easeInOut**: Slow start, fast middle, slow end (cubic-bezier curve)
+- **easeElasticOut**: Elastic out (cubic-bezier curve)
+- **easeElasticIn**: Elastic in (cubic-bezier curve)
+- **easeElasticInOut**: Elastic in and out (cubic-bezier curve)
+- **easeSpring**: Spring-like easing (linear curve)
+
+<AnimationTimingFunctions />
+
+## Animations
+
+The following keyframe animations are available for use in your components.
+Click on any animation box to see it in action.
+
+- **fadeIn/fadeOut**: Fades an element in from transparent to opaque
+- **zoomIn/zoomOut**: Scales an element from 80% to 100% size
+- **slideInRight/slideOutRight**: Slides in from the right
+- **slideInLeft/slideOutLeft**: Slides in from the left
+- **slideInTop/slideOutTop**: Slides in from the top
+- **slideInBottom/slideOutBottom**: Slides in from the bottom
+
+<AllAnimations />
+    

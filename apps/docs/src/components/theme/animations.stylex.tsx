@@ -27,6 +27,15 @@ const zoomIn = stylex.keyframes({
   },
 });
 
+const zoomOut = stylex.keyframes({
+  from: {
+    transform: "scale(1)",
+  },
+  to: {
+    transform: "scale(0.8)",
+  },
+});
+
 const slideInRight = stylex.keyframes({
   from: {
     transform: "translateX(100%)",
@@ -103,6 +112,7 @@ export const animations = stylex.defineVars({
   fadeIn,
   fadeOut,
   zoomIn,
+  zoomOut,
   slideInRight,
   slideOutRight,
   slideInLeft,
@@ -118,4 +128,37 @@ export const animationDuration = stylex.defineConsts({
   default: "150ms",
   slow: "200ms",
   verySlow: "300ms",
+  extremelySlow: "500ms",
+});
+
+export const animationTimingFunction = stylex.defineConsts({
+  linear: "linear",
+  ease: "cubic-bezier(0.25, 0, 0.3, 1)",
+  easeIn: "cubic-bezier(0.7, 0, 1, 1)",
+  easeOut: "cubic-bezier(0, 0, 0.3, 1)",
+  easeInOut: "cubic-bezier(0.5, 0, 0.5, 1)",
+  easeElasticOut: "cubic-bezier(0.5, 1, 0.75, 1.25)",
+  easeElasticIn: "cubic-bezier(.5, -0.5, 0.75, 1)",
+  easeElasticInOut: "cubic-bezier(0.5, -0.3, 0.1, 1.5)",
+  easeSpring: `
+    linear(
+      0,
+      0.007,
+      0.029 2.2%,
+      0.118 4.7%,
+      0.625 14.4%,
+      0.826 19%,
+      0.902,
+      0.962,
+      1.008 26.1%,
+      1.041 28.7%,
+      1.064 32.1%,
+      1.07 36%,
+      1.061 40.5%,
+      1.015 53.4%,
+      0.999 61.6%,
+      0.995 71.2%,
+      1
+    )
+  `,
 });

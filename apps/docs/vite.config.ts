@@ -117,6 +117,11 @@ async function highlightCode(code: string, lang: string) {
   });
 }
 
+async function getExamples() {
+  const files = await glob("src/examples/**/*.tsx");
+  return files.filter((f) => !f.includes("foundations/animations.tsx"));
+}
+
 /** Highlight the code using shiki */
 function shiki() {
   return {
@@ -142,7 +147,7 @@ function examples() {
   return {
     name: "my-plugin", // required, will show up in warnings and errors
     buildStart: async () => {
-      files = await glob("src/examples/**/*.tsx");
+      files = await getExamples();
     },
     resolveId(id) {
       if (id === virtualModuleId) {
@@ -181,7 +186,7 @@ function annotateExamples() {
     enforce: "pre",
     name: "my-plugin", // required, will show up in warnings and errors
     buildStart: async () => {
-      examples = await glob("src/examples/**/*.tsx");
+      examples = await getExamples();
     },
 
     transform(code, id) {
@@ -294,6 +299,10 @@ const config = defineConfig({
   plugins: [
     shiki(),
     stylexPlugin.vite({
+      treeshakeCompensation: true,
+      enableDebugClassNames: false,
+      dev: process.env.NODE_ENV !== "production",
+      enableDevClassNames: process.env.NODE_ENV !== "production",
       lightningcssOptions: {
         targets: browserslistToTargets(browserslist("baseline 2024")),
       },
