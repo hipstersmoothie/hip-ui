@@ -6,7 +6,7 @@ import { useTreeData } from "react-stately";
 import { DropIndicator, DropIndicatorProps } from "react-aria-components";
 
 import { Tree, TreeItem } from "@/components/tree";
-import { primaryColor } from "../../components/theme/semantic-color.stylex";
+import { primaryColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
   root: {

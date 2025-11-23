@@ -40,12 +40,8 @@ import { Body, Heading5, SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
 import { radius } from "../components/theme/radius.stylex";
-import {
-  ui,
-  primary,
-  successColor,
-  primaryColor,
-} from "../components/theme/semantic-color.stylex";
+import { ui, primary } from "../components/theme/semantic-color.stylex";
+import { primaryColor, successColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontFamily, typeramp } from "../components/theme/typography.stylex";
 

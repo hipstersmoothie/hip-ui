@@ -35,7 +35,7 @@ import { ToggleButton } from "@/components/toggle-button";
 import { Body } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
-import { primaryColor } from "../components/theme/semantic-color.stylex";
+import { primaryColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { radius } from "../components/theme/radius.stylex";
 

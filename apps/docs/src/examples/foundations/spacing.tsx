@@ -6,7 +6,7 @@ import { Grid } from "@/components/grid";
 import { Text } from "@/components/typography/text";
 
 import { radius } from "../../components/theme/radius.stylex";
-import { primaryColor } from "../../components/theme/semantic-color.stylex";
+import { primaryColor } from "../../components/theme/color.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({

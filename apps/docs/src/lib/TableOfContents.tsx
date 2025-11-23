@@ -3,10 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 import { createContext, use, useEffect, useState } from "react";
 
 import { animationDuration } from "../components/theme/animations.stylex";
-import {
-  primaryColor,
-  uiColor,
-} from "../components/theme/semantic-color.stylex";
+import { primaryColor, uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontSize } from "../components/theme/typography.stylex";
 
