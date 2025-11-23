@@ -12,7 +12,15 @@ import { use } from "react";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
-import { maxBreakpoints, mediaQueries } from "../theme/media-queries.stylex";
+import {
+  criticalColor,
+  primaryColor,
+  successColor,
+  uiColor,
+  warningColor,
+} from "../theme/color.stylex";
+import { maxBreakpoints } from "../theme/media-queries.stylex";
+import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
@@ -133,6 +141,108 @@ const styles = stylex.create({
   actionAndClose: {
     alignSelf: "center",
   },
+  info: {
+    [uiColor.bg]: primaryColor.bg,
+    [uiColor.bgSubtle]: primaryColor.bgSubtle,
+    [uiColor.component1]: primaryColor.component1,
+    [uiColor.component2]: primaryColor.component2,
+    [uiColor.component3]: primaryColor.component3,
+    [uiColor.border1]: primaryColor.border1,
+    [uiColor.border2]: primaryColor.border2,
+    [uiColor.border3]: primaryColor.border3,
+    [uiColor.solid1]: primaryColor.solid1,
+    [uiColor.solid2]: primaryColor.solid2,
+    [uiColor.text1]: primaryColor.text1,
+    [uiColor.text2]: primaryColor.text2,
+    [uiColor.textContrast]: primaryColor.textContrast,
+  },
+  success: {
+    [uiColor.bg]: successColor.bg,
+    [uiColor.bgSubtle]: successColor.bgSubtle,
+    [uiColor.component1]: successColor.component1,
+    [uiColor.component2]: successColor.component2,
+    [uiColor.component3]: successColor.component3,
+    [uiColor.border1]: successColor.border1,
+    [uiColor.border2]: successColor.border2,
+    [uiColor.border3]: successColor.border3,
+    [uiColor.solid1]: successColor.solid1,
+    [uiColor.solid2]: successColor.solid2,
+    [uiColor.text1]: successColor.text1,
+    [uiColor.text2]: successColor.text2,
+    [uiColor.textContrast]: successColor.textContrast,
+
+    [primaryColor.bg]: successColor.bg,
+    [primaryColor.bgSubtle]: successColor.bgSubtle,
+    [primaryColor.component1]: successColor.component1,
+    [primaryColor.component2]: successColor.component2,
+    [primaryColor.component3]: successColor.component3,
+    [primaryColor.border1]: successColor.border1,
+    [primaryColor.border2]: successColor.border2,
+    [primaryColor.border3]: successColor.border3,
+    [primaryColor.solid1]: successColor.solid1,
+    [primaryColor.solid2]: successColor.solid2,
+    [primaryColor.text1]: successColor.text1,
+    [primaryColor.text2]: successColor.text2,
+    [primaryColor.textContrast]: successColor.textContrast,
+  },
+  warning: {
+    [uiColor.bg]: warningColor.bg,
+    [uiColor.bgSubtle]: warningColor.bgSubtle,
+    [uiColor.component1]: warningColor.component1,
+    [uiColor.component2]: warningColor.component2,
+    [uiColor.component3]: warningColor.component3,
+    [uiColor.border1]: warningColor.border1,
+    [uiColor.border2]: warningColor.border2,
+    [uiColor.border3]: warningColor.border3,
+    [uiColor.solid1]: warningColor.solid1,
+    [uiColor.solid2]: warningColor.solid2,
+    [uiColor.text1]: warningColor.text1,
+    [uiColor.text2]: warningColor.text2,
+    [uiColor.textContrast]: warningColor.textContrast,
+
+    [primaryColor.bg]: warningColor.bg,
+    [primaryColor.bgSubtle]: warningColor.bgSubtle,
+    [primaryColor.component1]: warningColor.component1,
+    [primaryColor.component2]: warningColor.component2,
+    [primaryColor.component3]: warningColor.component3,
+    [primaryColor.border1]: warningColor.border1,
+    [primaryColor.border2]: warningColor.border2,
+    [primaryColor.border3]: warningColor.border3,
+    [primaryColor.solid1]: warningColor.solid1,
+    [primaryColor.solid2]: warningColor.solid2,
+    [primaryColor.text1]: warningColor.text1,
+    [primaryColor.text2]: warningColor.text2,
+    [primaryColor.textContrast]: warningColor.textContrast,
+  },
+  critical: {
+    [uiColor.bg]: criticalColor.bg,
+    [uiColor.bgSubtle]: criticalColor.bgSubtle,
+    [uiColor.component1]: criticalColor.component1,
+    [uiColor.component2]: criticalColor.component2,
+    [uiColor.component3]: criticalColor.component3,
+    [uiColor.border1]: criticalColor.border1,
+    [uiColor.border2]: criticalColor.border2,
+    [uiColor.border3]: criticalColor.border3,
+    [uiColor.solid1]: criticalColor.solid1,
+    [uiColor.solid2]: criticalColor.solid2,
+    [uiColor.text1]: criticalColor.text1,
+    [uiColor.text2]: criticalColor.text2,
+    [uiColor.textContrast]: criticalColor.textContrast,
+
+    [primaryColor.bg]: criticalColor.bg,
+    [primaryColor.bgSubtle]: criticalColor.bgSubtle,
+    [primaryColor.component1]: criticalColor.component1,
+    [primaryColor.component2]: criticalColor.component2,
+    [primaryColor.component3]: criticalColor.component3,
+    [primaryColor.border1]: criticalColor.border1,
+    [primaryColor.border2]: criticalColor.border2,
+    [primaryColor.border3]: criticalColor.border3,
+    [primaryColor.solid1]: criticalColor.solid1,
+    [primaryColor.solid2]: criticalColor.solid2,
+    [primaryColor.text1]: criticalColor.text1,
+    [primaryColor.text2]: criticalColor.text2,
+    [primaryColor.textContrast]: criticalColor.textContrast,
+  },
 });
 
 export type AlertVariant = "info" | "success" | "warning" | "critical";
@@ -194,6 +304,12 @@ export const Alert = ({
   const displayIcon = icon === undefined ? defaultIcon : icon;
   const hasAction = action != null;
   const hasCloseButton = onDismiss != null;
+  const actionStyles = [
+    variant === "info" && styles.info,
+    variant === "success" && styles.success,
+    variant === "warning" && styles.warning,
+    variant === "critical" && styles.critical,
+  ];
 
   return (
     <div
@@ -241,14 +357,20 @@ export const Alert = ({
           </Text>
         )}
       </div>
-      {hasAction && <div {...stylex.props(styles.action)}>{action}</div>}
+      {hasAction && (
+        <div {...stylex.props(styles.action, actionStyles)}>{action}</div>
+      )}
       {hasCloseButton && (
         <IconButton
           aria-label="Dismiss alert"
           size={size}
           variant="tertiary"
           onPress={onDismiss}
-          style={[styles.closeButton, hasAction && styles.actionAndClose]}
+          style={[
+            actionStyles,
+            styles.closeButton,
+            hasAction && styles.actionAndClose,
+          ]}
         >
           <X />
         </IconButton>

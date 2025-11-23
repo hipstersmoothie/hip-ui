@@ -21,7 +21,7 @@ export function WithActionTitleOnly() {
         onDismiss={() => {}}
         action={
           <Flex gap="2">
-            <Button variant="critical">Retry</Button>
+            <Button>Retry</Button>
           </Flex>
         }
       />

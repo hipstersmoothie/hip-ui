@@ -35,7 +35,7 @@ export function WithAction() {
         variant="critical"
         title="Error"
         onDismiss={() => {}}
-        action={<Button variant="critical">Retry</Button>}
+        action={<Button>Retry</Button>}
       >
         Something went wrong. Please try again.
       </Alert>

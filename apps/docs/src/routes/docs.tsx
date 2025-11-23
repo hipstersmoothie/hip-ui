@@ -23,6 +23,8 @@ import {
 import { Text } from "@/components/typography/text";
 
 import { uiColor } from "../components/theme/color.stylex";
+import { Flex } from "@/components/flex";
+import { ThemePicker } from "@/lib/ThemePicker";
 
 const SidebarItemLink = createLink(SidebarItem);
 
@@ -179,7 +181,14 @@ function DocSidebar() {
 
   return (
     <Sidebar>
-      <SidebarHeader action={<DarkModeToggle />}>
+      <SidebarHeader
+        action={
+          <Flex gap="0.5" align="center">
+            <ThemePicker />
+            <DarkModeToggle />
+          </Flex>
+        }
+      >
         <Text font="serif" size="4xl" weight="bold">
           Hip UI
         </Text>
