@@ -8,6 +8,7 @@ import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import * as React from "react";
 
+import { alertConfig } from "../components/alert/alert-config.js";
 import { alertDialogConfig } from "../components/alert-dialog/alert-dialog-config.js";
 import { aspectRatioConfig } from "../components/aspect-ratio/aspect-ratio-config.js";
 import { avatarConfig } from "../components/avatar/avatar-config.js";
@@ -119,6 +120,7 @@ const COMPONENT_CONFIGS = [
   comboboxConfig,
   treeConfig,
   commandMenuConfig,
+  alertConfig,
   alertDialogConfig,
   dialogConfig,
   disclosureConfig,

@@ -17,7 +17,6 @@
 
 #### Custom
 
-- [ ] Alert / Callout
 - [ ] Carousel
 - [ ] Input OTP
 - [ ] Resizable
@@ -39,6 +38,7 @@
 
 ### Done
 
+- [x] Alert / Callout
 - [x] Empty
 - [x] Skeleton
 - [x] Field errors

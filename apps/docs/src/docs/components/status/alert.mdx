@@ -1,0 +1,83 @@
+---
+title: Alert
+description: An Alert displays important information to users in a prominent way, typically used for notifications, warnings, or feedback.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/alert/basic'
+import { Variants } from '../../../examples/alert/variants'
+import { TitleOnly } from '../../../examples/alert/title-only'
+import { WithAction } from '../../../examples/alert/with-action'
+import { WithActionTitleOnly } from '../../../examples/alert/with-action-title-only'
+import { Dismissible } from '../../../examples/alert/dismissible'
+import { TitleOnlyDismissible } from '../../../examples/alert/title-only-dismissible'
+import { CustomIcon } from '../../../examples/alert/custom-icon'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the alert component to your project.
+
+```bash
+pnpm hip install alert
+```
+
+## Props
+
+<PropDocs components={["Alert"]} />
+
+## Features
+
+### Variants
+
+Alerts can be one of the following variants:
+
+- `info` (default) - For informational messages
+- `success` - For successful operations or positive feedback
+- `warning` - For warnings that need attention
+- `critical` - For errors or critical issues
+
+Each variant has a distinct color scheme and default icon.
+
+<Example src={Variants} />
+
+### Title Only
+
+Alerts can be displayed with just a title, without a description.
+
+<Example src={TitleOnly} />
+
+### With Actions
+
+Alerts can include action elements such as buttons. On smaller screens, the action area moves to a separate row below the content.
+
+<Example src={WithAction} />
+
+Title-only alerts can also include actions.
+
+<Example src={WithActionTitleOnly} />
+
+### Dismissible
+
+Alerts can be made dismissible by providing an `onDismiss` callback. When `onDismiss` is provided, a close button will automatically be displayed.
+
+<Example src={Dismissible} />
+
+Title-only alerts can also be dismissible.
+
+<Example src={TitleOnlyDismissible} />
+
+### Custom Icons
+
+You can provide a custom icon to override the default icon for each variant.
+
+<Example src={CustomIcon} />
+
+## Related Components
+
+- [Badge](/docs/components/badge) - For small status indicators
+- [Toast](/docs/components/status/toast) - For temporary notifications
+- [AlertDialog](/docs/components/alert-dialog) - For critical actions and confirmations
+
