@@ -15,7 +15,10 @@ import {
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
-import { animationDuration } from "../theme/animations.stylex";
+import {
+  animationDuration,
+  animationTimingFunction,
+} from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui, primary } from "../theme/semantic-color.stylex";
@@ -80,7 +83,7 @@ const styles = stylex.create({
       default: scaleIn,
       [mediaQueries.reducedMotion]: "none",
     },
-    animationTimingFunction: "ease-in-out",
+    animationTimingFunction: animationTimingFunction.easeInOut,
   },
   checked: {
     color: "white",

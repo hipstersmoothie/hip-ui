@@ -391,7 +391,7 @@ export function useInputStyles({
       size === "sm" && styles.addonSm,
       size === "md" && styles.addonMd,
       size === "lg" && styles.addonLg,
-    ],
+    ] as unknown as stylex.StyleXStyles,
     validationIcon: [
       styles.validationIcon,
       validationState === "invalid" && [styles.invalidIcon],

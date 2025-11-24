@@ -33,8 +33,8 @@ const columns = [
 
 const rows = Array.from({ length: 1000 }, (_, i) => ({
   id: i + 1,
-  name: `User ${i + 1}`,
-  email: `user${i + 1}@example.com`,
+  name: "User " + (i + 1),
+  email: "user" + (i + 1) + "@example.com",
   role: i % 3 === 0 ? "Admin" : i % 3 === 1 ? "Moderator" : "User",
 }));
 

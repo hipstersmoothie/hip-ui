@@ -34,11 +34,12 @@ import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
   matchWidth: {
-    width: "var(--trigger-width)",
+    minWidth: "var(--trigger-width)",
   },
   searchField: {
     paddingLeft: spacing["1"],
     paddingRight: spacing["1"],
+    paddingTop: spacing["1"],
   },
 });
 

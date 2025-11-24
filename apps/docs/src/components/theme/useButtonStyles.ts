@@ -50,6 +50,7 @@ const styles = stylex.create({
     transitionDuration: animationDuration.fast,
     transitionProperty: "all",
     transitionTimingFunction: "ease-in-out",
+    userSelect: "none",
     whiteSpace: "nowrap",
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles

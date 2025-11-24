@@ -1,6 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { animationDuration } from "./animations.stylex";
+import {
+  animationDuration,
+  animationTimingFunction,
+} from "./animations.stylex";
 import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
@@ -29,6 +32,7 @@ const styles = stylex.create({
       ":is([data-placement=top],[data-placement=top] > *)": spacing["4"],
     },
     opacity: {
+      default: 1,
       ":is([data-entering], [data-entering] > *)": 0,
       ":is([data-exiting], [data-exiting] > *)": 0,
     },
@@ -40,8 +44,10 @@ const styles = stylex.create({
       ":is([data-exiting], [data-exiting] > *)":
         "scale(0.95) translate(var(--origin-x, 0), var(--origin-y, 0))",
     },
-    transitionDuration: animationDuration.fast,
+    transitionDuration: animationDuration.verySlow,
+    transitionTimingFunction: animationTimingFunction.easeSpring,
     transitionProperty: "transform, opacity",
+    willChange: "transform, opacity",
   },
 });
 

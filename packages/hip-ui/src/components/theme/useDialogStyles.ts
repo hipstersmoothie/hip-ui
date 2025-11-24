@@ -2,7 +2,11 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
-import { animationDuration, animations } from "../theme/animations.stylex";
+import {
+  animationDuration,
+  animations,
+  animationTimingFunction,
+} from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
@@ -11,11 +15,9 @@ import { ui } from "./semantic-color.stylex";
 
 const styles = stylex.create({
   overlay: {
-    animationDuration: animationDuration.slow,
-    animationName: {
-      ":is([data-entering])": animations.fadeIn,
-    },
-    animationTimingFunction: "ease-in",
+    animationDuration: animationDuration.default,
+    animationName: animations.fadeIn,
+    animationTimingFunction: animationTimingFunction.easeIn,
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     opacity: {
       default: 1,
@@ -50,11 +52,9 @@ const styles = stylex.create({
     maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
     top: "calc(var(--visual-viewport-height) / 2)",
 
-    animationDuration: { ":is([data-entering])": "300ms" },
+    animationDuration: animationDuration.slow,
     animationName: { ":is([data-entering])": animations.zoomIn },
-    animationTimingFunction: {
-      ":is([data-entering])": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",
-    },
+    animationTimingFunction: animationTimingFunction.easeElasticInOut,
   },
   dialog: {
     outline: "none",

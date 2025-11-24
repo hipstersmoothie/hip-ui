@@ -12,7 +12,11 @@ import {
 } from "react-aria-components";
 
 import { IconButton } from "../icon-button";
-import { animationDuration, animations } from "../theme/animations.stylex";
+import {
+  animationDuration,
+  animations,
+  animationTimingFunction,
+} from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -92,7 +96,7 @@ const styles = stylex.create({
       ":is([data-direction=top], [data-direction=bottom])": "100vw",
     },
 
-    animationDuration: animationDuration.default,
+    animationDuration: animationDuration.slow,
     animationName: {
       ":is([data-direction=bottom][data-entering])": animations.slideInBottom,
       ":is([data-direction=bottom][data-exiting])": animations.slideOutBottom,
@@ -103,7 +107,7 @@ const styles = stylex.create({
       ":is([data-direction=top][data-entering])": animations.slideInTop,
       ":is([data-direction=top][data-exiting])": animations.slideOutTop,
     },
-    animationTimingFunction: "ease-in-out",
+    animationTimingFunction: animationTimingFunction.easeInOut,
   },
   dialog: {
     paddingBottom: spacing["2"],

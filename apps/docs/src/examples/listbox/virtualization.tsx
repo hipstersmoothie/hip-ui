@@ -14,8 +14,8 @@ const styles = stylex.create({
 });
 
 const items = Array.from({ length: 1000 }, (_, i) => ({
-  id: `item-${i + 1}`,
-  name: `Item ${i + 1}`,
+  id: "item" + (i + 1),
+  name: "Item " + (i + 1),
 }));
 
 export function Virtualization() {

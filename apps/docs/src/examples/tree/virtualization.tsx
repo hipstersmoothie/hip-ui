@@ -14,11 +14,11 @@ const styles = stylex.create({
 });
 
 const treeData = Array.from({ length: 100 }, (_, i) => ({
-  id: `folder-${i + 1}`,
-  name: `Folder ${i + 1}`,
+  id: "folder" + (i + 1),
+  name: "Folder " + (i + 1),
   children: Array.from({ length: 20 }, (_, j) => ({
-    id: `folder-${i + 1}-file-${j + 1}`,
-    name: `File ${j + 1}`,
+    id: "file" + (j + 1),
+    name: "File " + (j + 1),
   })),
 }));
 
@@ -37,4 +37,3 @@ export function Virtualization() {
     </Tree>
   );
 }
-

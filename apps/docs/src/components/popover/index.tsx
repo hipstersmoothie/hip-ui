@@ -27,10 +27,10 @@ const styles = stylex.create({
   content: {
     boxShadow: "none",
     position: "relative",
-    paddingBottom: spacing["2"],
-    paddingLeft: spacing["2"],
-    paddingRight: spacing["2"],
-    paddingTop: spacing["2"],
+    paddingBottom: spacing["4"],
+    paddingLeft: spacing["4"],
+    paddingRight: spacing["4"],
+    paddingTop: spacing["4"],
   },
   caret: {},
   arrow: {
