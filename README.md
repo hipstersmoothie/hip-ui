@@ -4,8 +4,6 @@
 
 ### Imprrovements
 
-- [ ] Add Virtualizer
-- [ ] add borderless variant for input fields
 - [ ] perfect inset border radii
 - [ ] Number field validation state styling
 
@@ -19,7 +17,14 @@
 
 - [ ] Carousel
 - [ ] Input OTP
-- [ ] Resizable
+- [ ] Stepper
+- [ ] Lightbox
+- [ ] Video
+- [ ] [Skip Link](https://component.gallery/components/skip-link/)
+- [ ] Page
+  - [ ] Footer
+  - [ ] NavBar
+  - [ ] Hero
 
 #### OTher Wrappers
 
@@ -28,7 +33,10 @@
 #### react-aria wrappers
 
 - [ ] Grid List
+- [ ] Virtual Grid
+- [ ] Waterfall Layout
 - [ ] Navigation Menu
+- [ ] Rating
 
 ### Maybe
 
@@ -38,6 +46,8 @@
 
 ### Done
 
+- [x] add borderless variant for input fields
+- [x] Add Virtualizer
 - [x] Alert / Callout
 - [x] Empty
 - [x] Skeleton

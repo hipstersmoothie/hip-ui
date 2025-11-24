@@ -11,44 +11,82 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   emptyState: {
-    "--empty-state-gap": {
-      ":is([data-empty-state-size=lg])": spacing["8"],
-      ":is([data-empty-state-size=md])": spacing["6"],
+    display: "grid",
+    gridTemplateAreas: {
+      ":is([data-empty-state-size=md],[data-empty-state-size=lg])": {
+        default: `
+          "image"
+          "title"
+          "description"
+        `,
+        ":has([data-empty-state-actions])": `
+          "image"
+          "title"
+          "description"
+          "actions"
+        `,
+      },
+      ":is([data-empty-state-size=sm])": {
+        default: `
+          "image title"
+          "image description"
+        `,
+        ":has([data-empty-state-actions])": `
+          "image title actions"
+          "image description actions"
+        `,
+      },
+    },
+    gridTemplateColumns: {
+      ":is([data-empty-state-size=sm])": {
+        ":has([data-empty-state-actions])": "min-content 1fr max-content",
+        default: "min-content 1fr",
+      },
+    },
+    alignItems: "center",
+    fontFamily: fontFamily["sans"],
+    justifyItems: {
+      ":is([data-empty-state-size=md],[data-empty-state-size=lg])": "center",
+      ":is([data-empty-state-size=sm])": "start",
+    },
+    columnGap: {
       ":is([data-empty-state-size=sm])": spacing["4"],
     },
-    "--empty-state-image-size": {
-      ":is([data-empty-state-size=lg])": "240px",
-      ":is([data-empty-state-size=md])": "180px",
-      ":is([data-empty-state-size=sm])": "120px",
-    },
-    gap: "var(--empty-state-gap)",
-    alignItems: "center",
-    display: "flex",
-    flexDirection: "column",
-    fontFamily: fontFamily["sans"],
-    justifyContent: "center",
     textAlign: "center",
+    "--empty-state-image-size": {
+      ":is([data-empty-state-size=lg])": spacing["20"],
+      ":is([data-empty-state-size=md])": spacing["14"],
+      ":is([data-empty-state-size=sm])": spacing["10"],
+    },
+    rowGap: {
+      ":is([data-empty-state-size=lg])": spacing["6"],
+      ":is([data-empty-state-size=md])": spacing["4"],
+      ":is([data-empty-state-size=sm])": spacing["2"],
+    },
   },
   image: {
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-    objectFit: "contain",
+    gridArea: "image",
     height: "var(--empty-state-image-size)",
     width: "var(--empty-state-image-size)",
+    display: "flex",
+    objectFit: "contain",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
-    margin: 0,
+    gridArea: "title",
     fontSize: {
       ":is([data-empty-state-size='lg'] *)": fontSize["2xl"],
       ":is([data-empty-state-size='md'] *)": fontSize["xl"],
       ":is([data-empty-state-size='sm'] *)": fontSize["lg"],
     },
+    margin: 0,
     fontWeight: fontWeight["semibold"],
   },
   description: {
-    margin: 0,
+    gridArea: "description",
     fontSize: fontSize["sm"],
+    margin: 0,
     fontWeight: fontWeight["normal"],
     maxWidth: {
       ":is([data-empty-state-size=lg])": "480px",
@@ -57,12 +95,17 @@ const styles = stylex.create({
     },
   },
   actions: {
-    gap: spacing["2"],
-    alignItems: "center",
+    gridArea: "actions",
     display: "flex",
+    gap: spacing["2"],
     flexDirection: "row",
+    alignItems: "center",
     flexWrap: "wrap",
     justifyContent: "center",
+
+    paddingLeft: {
+      ":is([data-empty-state-size=sm] *)": spacing["4"],
+    },
   },
 });
 
@@ -83,13 +126,11 @@ export const EmptyState = ({
   const size = sizeProp || use(SizeContext);
 
   return (
-    <SizeContext value={size}>
-      <div
-        {...props}
-        data-empty-state-size={size}
-        {...stylex.props(styles.emptyState, style)}
-      />
-    </SizeContext>
+    <div
+      {...props}
+      data-empty-state-size={size}
+      {...stylex.props(styles.emptyState, style)}
+    />
   );
 };
 
@@ -131,7 +172,7 @@ export interface EmptyStateTitleProps
   extends StyleXComponentProps<React.ComponentProps<"h2">> {}
 
 export const EmptyStateTitle = ({ style, ...props }: EmptyStateTitleProps) => {
-  return <div {...props} {...stylex.props(styles.title, ui.text, style)} />;
+  return <h2 {...props} {...stylex.props(styles.title, ui.text, style)} />;
 };
 
 export interface EmptyStateDescriptionProps
@@ -153,5 +194,11 @@ export const EmptyStateActions = ({
   style,
   ...props
 }: EmptyStateActionsProps) => {
-  return <div {...props} {...stylex.props(styles.actions, style)} />;
+  return (
+    <div
+      {...props}
+      data-empty-state-actions
+      {...stylex.props(styles.actions, style)}
+    />
+  );
 };

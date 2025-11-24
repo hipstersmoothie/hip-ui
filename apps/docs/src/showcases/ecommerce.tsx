@@ -16,6 +16,13 @@ import {
   CardImage,
   CardTitle,
 } from "@/components/card";
+import {
+  EmptyState,
+  EmptyStateImage,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateActions,
+} from "@/components/empty-state";
 import { ColorSwatch } from "@/components/color-swatch";
 import { FileDropZone } from "@/components/file-drop-zone";
 import { Flex } from "@/components/flex";
@@ -30,7 +37,7 @@ import { TextArea } from "@/components/text-area";
 import { TextField } from "@/components/text-field";
 import { ToggleButton } from "@/components/toggle-button";
 import { ToggleButtonGroup } from "@/components/toggle-button-group";
-import { LabelText, SmallBody } from "@/components/typography";
+import { LabelText } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
 import { spacing } from "../components/theme/spacing.stylex";
@@ -512,19 +519,19 @@ function DiscardedCard() {
   return (
     <Card>
       <CardBody>
-        <Flex direction="column" gap="4" align="center">
-          <Shredder size={48} />
-          <Text weight="semibold" size="lg">
-            Product discarded
-          </Text>
-          <SmallBody variant="secondary">
+        <EmptyState>
+          <EmptyStateImage>
+            <Shredder />
+          </EmptyStateImage>
+          <EmptyStateTitle>Product discarded</EmptyStateTitle>
+          <EmptyStateDescription>
             It's still available in the <Link>archive.</Link>
-          </SmallBody>
-          <Flex gap="2">
+          </EmptyStateDescription>
+          <EmptyStateActions>
             <Button variant="secondary">Undo</Button>
             <Button>Done</Button>
-          </Flex>
-        </Flex>
+          </EmptyStateActions>
+        </EmptyState>
       </CardBody>
     </Card>
   );

@@ -3,12 +3,14 @@ import { ChevronRight, GripVertical } from "lucide-react";
 import { use } from "react";
 import {
   Button,
+  Virtualizer,
   Tree as AriaTree,
   TreeProps as AriaTreeProps,
   TreeItemContent as AriaTreeItemContent,
   TreeItem as AriaTreeItem,
   TreeItemProps as AriaTreeItemProps,
   TreeItemContentProps as AriaTreeItemContentProps,
+  ListLayout,
 } from "react-aria-components";
 
 import { Checkbox } from "../checkbox";
@@ -20,7 +22,10 @@ import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
-import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
+import {
+  estimatedRowHeights,
+  useListBoxItemStyles,
+} from "../theme/useListBoxItemStyles";
 
 const styles = stylex.create({
   wrapper: {
@@ -225,18 +230,28 @@ export interface TreeProps<T extends object>
   extends StyleXComponentProps<Omit<AriaTreeProps<T>, "children">> {
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
+  isVirtualized?: boolean;
 }
 
 export function Tree<T extends object>({
   style,
   size: sizeProp,
+  isVirtualized = false,
   ...props
 }: TreeProps<T>) {
   const size = sizeProp || use(SizeContext);
+  let tree = <AriaTree {...props} {...stylex.props(style)} />;
 
-  return (
-    <SizeContext value={size}>
-      <AriaTree {...props} {...stylex.props(style)} />
-    </SizeContext>
-  );
+  if (isVirtualized) {
+    tree = (
+      <Virtualizer
+        layout={ListLayout}
+        layoutOptions={{ estimatedRowHeight: estimatedRowHeights[size] }}
+      >
+        {tree}
+      </Virtualizer>
+    );
+  }
+
+  return <SizeContext value={size}>{tree}</SizeContext>;
 }

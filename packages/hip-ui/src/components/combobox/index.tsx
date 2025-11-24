@@ -10,6 +10,8 @@ import {
   ComboBox as AriaComboBox,
   ComboBoxProps as AriaComboBoxProps,
   Input,
+  Virtualizer,
+  ListLayout,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
@@ -24,6 +26,7 @@ import {
   StyleXComponentProps,
 } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
+import { estimatedRowHeights } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { SmallBody } from "../typography";
 
@@ -64,6 +67,7 @@ interface ComboBoxContentProps<T extends object> {
   shouldUpdatePosition?: boolean;
   placement?: PopoverProps["placement"];
   renderEmptyState?: ListBoxProps<T>["renderEmptyState"];
+  isVirtualized?: boolean;
 }
 
 function ComboBoxContent<T extends object>({
@@ -84,6 +88,7 @@ function ComboBoxContent<T extends object>({
   shouldUpdatePosition,
   placement,
   renderEmptyState,
+  isVirtualized,
 }: ComboBoxContentProps<T>) {
   const inputStyles = useInputStyles({
     size,
@@ -91,6 +96,23 @@ function ComboBoxContent<T extends object>({
     validationState: _isInvalid ? "invalid" : validationState,
   });
   const popoverStyles = usePopoverStyles();
+
+  let listbox = (
+    <ListBox items={items} renderEmptyState={renderEmptyState || EmptyState}>
+      {children}
+    </ListBox>
+  );
+
+  if (isVirtualized) {
+    listbox = (
+      <Virtualizer
+        layout={ListLayout}
+        layoutOptions={{ estimatedRowHeight: estimatedRowHeights[size] }}
+      >
+        {listbox}
+      </Virtualizer>
+    );
+  }
 
   return (
     <>
@@ -126,12 +148,7 @@ function ComboBoxContent<T extends object>({
           styles.matchWidth,
         )}
       >
-        <ListBox
-          items={items}
-          renderEmptyState={renderEmptyState || EmptyState}
-        >
-          {children}
-        </ListBox>
+        {listbox}
       </Popover>
     </>
   );
@@ -160,6 +177,7 @@ export interface ComboBoxProps<T extends object>
   placeholder?: string;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
+  isVirtualized?: boolean;
 }
 
 export function ComboBox<T extends object>({
@@ -180,6 +198,7 @@ export function ComboBox<T extends object>({
   prefix,
   suffix,
   renderEmptyState,
+  isVirtualized = false,
   ...props
 }: ComboBoxProps<T>) {
   const size = sizeProp || use(SizeContext);
@@ -210,6 +229,7 @@ export function ComboBox<T extends object>({
             shouldUpdatePosition={shouldUpdatePosition}
             placement={placement}
             renderEmptyState={renderEmptyState}
+            isVirtualized={isVirtualized}
           >
             {children}
           </ComboBoxContent>

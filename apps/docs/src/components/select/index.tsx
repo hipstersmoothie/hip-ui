@@ -12,6 +12,8 @@ import {
   Select as AriaSelect,
   Autocomplete,
   useFilter,
+  ListLayout,
+  Virtualizer,
 } from "react-aria-components";
 
 import { SizeContext } from "../context";
@@ -27,6 +29,7 @@ import {
   StyleXComponentProps,
 } from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
+import { estimatedRowHeights } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
@@ -57,9 +60,11 @@ interface SelectContentProps<T extends object> {
   shouldFlip?: boolean;
   shouldUpdatePosition?: boolean;
   placement?: PopoverProps["placement"];
+  isVirtualized?: boolean;
 }
 
 function SelectContent<T extends object>({
+  isVirtualized,
   label,
   description,
   errorMessage,
@@ -85,6 +90,31 @@ function SelectContent<T extends object>({
   });
   const popoverStyles = usePopoverStyles();
   const { contains } = useFilter({ sensitivity: "base" });
+
+  let listbox = <ListBox items={items}>{children}</ListBox>;
+
+  if (isVirtualized) {
+    listbox = (
+      <Virtualizer
+        layout={ListLayout}
+        layoutOptions={{ estimatedRowHeight: estimatedRowHeights[size] }}
+      >
+        {listbox}
+      </Virtualizer>
+    );
+  }
+
+  if (isSearchable) {
+    listbox = (
+      <Autocomplete filter={contains}>
+        <div {...stylex.props(styles.searchField)}>
+          <SearchField placeholder="Search" variant="secondary" />
+        </div>
+        <ListBoxSeparator />
+        {listbox}
+      </Autocomplete>
+    );
+  }
 
   return (
     <>
@@ -127,17 +157,7 @@ function SelectContent<T extends object>({
           styles.matchWidth,
         )}
       >
-        {isSearchable ? (
-          <Autocomplete filter={contains}>
-            <div {...stylex.props(styles.searchField)}>
-              <SearchField placeholder="Search" variant="secondary" />
-            </div>
-            <ListBoxSeparator />
-            <ListBox items={items}>{children}</ListBox>
-          </Autocomplete>
-        ) : (
-          <ListBox items={items}>{children}</ListBox>
-        )}
+        {listbox}
       </Popover>
     </>
   );
@@ -166,6 +186,7 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   isSearchable?: boolean;
+  isVirtualized?: boolean;
 }
 
 export function Select<
@@ -189,6 +210,7 @@ export function Select<
   prefix,
   suffix,
   isSearchable = false,
+  isVirtualized = false,
   ...props
 }: SelectProps<T, M>) {
   const size = sizeProp || use(SizeContext);
@@ -204,6 +226,7 @@ export function Select<
       >
         {({ isInvalid }) => (
           <SelectContent
+            isVirtualized={isVirtualized}
             label={label}
             description={description}
             errorMessage={errorMessage}

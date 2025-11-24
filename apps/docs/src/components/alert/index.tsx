@@ -12,6 +12,13 @@ import { use } from "react";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
+import {
+  criticalColor,
+  primaryColor,
+  successColor,
+  uiColor,
+  warningColor,
+} from "../theme/color.stylex";
 import { maxBreakpoints } from "../theme/media-queries.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
@@ -25,13 +32,6 @@ import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily } from "../theme/typography.stylex";
 import { Text } from "../typography/text";
-import {
-  criticalColor,
-  primaryColor,
-  successColor,
-  uiColor,
-  warningColor,
-} from "../theme/color.stylex";
 
 const styles = stylex.create({
   alert: {

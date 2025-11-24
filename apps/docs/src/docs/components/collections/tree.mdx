@@ -7,6 +7,7 @@ import { PropDocs } from '../../../lib/PropDocs'
 import { Example } from '../../../lib/Example'
 import { Basic } from '../../../examples/tree/basic'
 import { DragAndDrop } from '../../../examples/tree/drag-and-drop'
+import { Virtualization } from '../../../examples/tree/virtualization'
 
 <Example src={Basic} />
 
@@ -24,14 +25,21 @@ This component is built using the [React Aria Tree](https://react-spectrum.adobe
 
 <PropDocs components={["Tree", "TreeItem"]} />
 
-### Features
+## Features
 
-#### Drag and Drop
+### Drag and Drop
 
 The tree supports drag and drop by providing the `dragAndDropHooks` prop to the `Tree` component.
 React more about it [here](https://react-spectrum.adobe.com/react-aria/Tree.html#drag-and-drop).
 
 <Example src={DragAndDrop} />       
+
+### Virtualization
+
+The tree supports virtualization by providing the `isVirtualized` prop.
+The container must have a fixed height and `overflow: auto`.
+
+<Example src={Virtualization} />
 
 ## Related Components
 

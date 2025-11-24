@@ -11,6 +11,7 @@ import { ResizableColumns } from '../../../examples/table/resizable-columns'
 import { DisabledRows } from '../../../examples/table/disabled-rows'
 import { Sorting } from '../../../examples/table/sorting'
 import { DragAndDrop } from '../../../examples/table/drag-and-drop'
+import { Virtualization } from '../../../examples/table/virtualization'
 
 <Example src={Basic} />
 
@@ -83,6 +84,13 @@ React more about it [here](https://react-spectrum.adobe.com/react-aria/Table.htm
 A row can be disabled by setting the `isDisabled` prop to true.
 
 <Example src={DisabledRows} />
+
+### Virtualization
+
+The table supports virtualization by providing the `isVirtualized` prop.
+The container must have a fixed height and `overflow: auto`.
+
+<Example src={Virtualization} />
 
 ## Related Components
 

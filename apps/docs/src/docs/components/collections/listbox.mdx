@@ -6,6 +6,7 @@ description: A list box component for displaying a list of selectable items.
 import { PropDocs } from '../../../lib/PropDocs'
 import { Example } from '../../../lib/Example'
 import { Basic } from '../../../examples/listbox/basic'
+import { Virtualization } from '../../../examples/listbox/virtualization'
 
 <Example src={Basic} />
 
@@ -22,6 +23,15 @@ pnpm hip install listbox
 This component is built using the [React Aria ListBox](https://react-spectrum.adobe.com/react-aria/ListBox.html).
 
 <PropDocs components={["ListBox", "ListBoxItem", "ListBoxSection", "ListBoxSeparator", "ListBoxSectionHeader"]} />
+
+## Features
+
+### Virtualization
+
+The list box supports virtualization by providing the `isVirtualized` prop.
+The container must have a fixed height and `overflow: auto`.
+
+<Example src={Virtualization} />
 
 ## Related Components
 

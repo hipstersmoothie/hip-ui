@@ -19,6 +19,8 @@ import {
   ColumnResizer,
   DropIndicatorProps,
   DropIndicator,
+  TableLayout,
+  Virtualizer,
 } from "react-aria-components";
 
 import { Checkbox } from "../checkbox";
@@ -155,22 +157,41 @@ const styles = stylex.create({
   },
 });
 
+const estimatedRowHeights: Record<Size, number> = {
+  sm: 24,
+  md: 32,
+  lg: 40,
+};
+
 export interface TableProps extends StyleXComponentProps<AriaTableProps> {
   size?: Size;
+  isVirtualized?: boolean;
 }
 
-export const Table = ({ style, size: sizeProp, ...props }: TableProps) => {
+export const Table = ({
+  style,
+  size: sizeProp,
+  isVirtualized = false,
+  ...props
+}: TableProps) => {
   const size = sizeProp || use(SizeContext);
+  let table = <AriaTable {...props} {...stylex.props(styles.table, style)} />;
 
-  return (
-    <SizeContext value={size}>
-      <AriaTable
-        data-table-size={size}
-        {...stylex.props(styles.table, style)}
-        {...props}
-      />
-    </SizeContext>
-  );
+  if (isVirtualized) {
+    table = (
+      <Virtualizer
+        layout={TableLayout}
+        layoutOptions={{
+          estimatedRowHeight: estimatedRowHeights[size],
+          headingHeight: estimatedRowHeights[size],
+        }}
+      >
+        {table}
+      </Virtualizer>
+    );
+  }
+
+  return <SizeContext value={size}>{table}</SizeContext>;
 };
 
 export interface TableColumnProps

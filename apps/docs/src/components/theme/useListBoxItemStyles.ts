@@ -13,6 +13,7 @@ import {
 import { animationDuration } from "./animations.stylex";
 import { criticalColor, primaryColor, uiColor } from "./color.stylex";
 import { mediaQueries } from "./media-queries.stylex";
+import { Size } from "./types";
 
 const styles = stylex.create({
   item: {
@@ -108,6 +109,12 @@ const styles = stylex.create({
     flexGrow: 1,
   },
 });
+
+export const estimatedRowHeights: Record<Size, number> = {
+  sm: 24,
+  md: 32,
+  lg: 40,
+};
 
 export function useListBoxItemStyles() {
   const size = use(SizeContext);

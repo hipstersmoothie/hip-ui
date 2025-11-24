@@ -11,6 +11,8 @@ import {
   Header,
   SeparatorProps,
   ListStateContext,
+  Virtualizer,
+  ListLayout,
 } from "react-aria-components";
 
 import { Checkbox, CheckboxProps } from "../checkbox";
@@ -20,7 +22,10 @@ import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
-import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
+import {
+  estimatedRowHeights,
+  useListBoxItemStyles,
+} from "../theme/useListBoxItemStyles";
 
 const styles = stylex.create({
   listBox: {
@@ -57,20 +62,34 @@ export interface ListBoxProps<T extends object>
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
   variant?: ListBoxVariant;
+  isVirtualized?: boolean;
 }
 
 export function ListBox<T extends object>({
   size: sizeProp,
   style,
   variant = "default",
+  isVirtualized = false,
   ...props
 }: ListBoxProps<T>) {
   const size = sizeProp || use(SizeContext);
+  const listbox = (
+    <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
+  );
 
   return (
     <ListboxVariantContext value={variant}>
       <SizeContext value={size}>
-        <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
+        {isVirtualized ? (
+          <Virtualizer
+            layout={ListLayout}
+            layoutOptions={{ estimatedRowHeight: estimatedRowHeights[size] }}
+          >
+            {listbox}
+          </Virtualizer>
+        ) : (
+          listbox
+        )}
       </SizeContext>
     </ListboxVariantContext>
   );

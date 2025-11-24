@@ -12,8 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as DocsRouteImport } from './routes/docs'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DocsSplatRouteImport } from './routes/docs.$'
-import { Route as DocsInvoiceAppRouteImport } from './routes/_docs.invoice-app'
-import { Route as DocsEcommerceAppRouteImport } from './routes/_docs.ecommerce-app'
 
 const DocsRoute = DocsRouteImport.update({
   id: '/docs',
@@ -30,58 +28,34 @@ const DocsSplatRoute = DocsSplatRouteImport.update({
   path: '/$',
   getParentRoute: () => DocsRoute,
 } as any)
-const DocsInvoiceAppRoute = DocsInvoiceAppRouteImport.update({
-  id: '/_docs/invoice-app',
-  path: '/invoice-app',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DocsEcommerceAppRoute = DocsEcommerceAppRouteImport.update({
-  id: '/_docs/ecommerce-app',
-  path: '/ecommerce-app',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
-  '/ecommerce-app': typeof DocsEcommerceAppRoute
-  '/invoice-app': typeof DocsInvoiceAppRoute
   '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
-  '/ecommerce-app': typeof DocsEcommerceAppRoute
-  '/invoice-app': typeof DocsInvoiceAppRoute
   '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/docs': typeof DocsRouteWithChildren
-  '/_docs/ecommerce-app': typeof DocsEcommerceAppRoute
-  '/_docs/invoice-app': typeof DocsInvoiceAppRoute
   '/docs/$': typeof DocsSplatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/docs' | '/ecommerce-app' | '/invoice-app' | '/docs/$'
+  fullPaths: '/' | '/docs' | '/docs/$'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/docs' | '/ecommerce-app' | '/invoice-app' | '/docs/$'
-  id:
-    | '__root__'
-    | '/'
-    | '/docs'
-    | '/_docs/ecommerce-app'
-    | '/_docs/invoice-app'
-    | '/docs/$'
+  to: '/' | '/docs' | '/docs/$'
+  id: '__root__' | '/' | '/docs' | '/docs/$'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DocsRoute: typeof DocsRouteWithChildren
-  DocsEcommerceAppRoute: typeof DocsEcommerceAppRoute
-  DocsInvoiceAppRoute: typeof DocsInvoiceAppRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -107,20 +81,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DocsSplatRouteImport
       parentRoute: typeof DocsRoute
     }
-    '/_docs/invoice-app': {
-      id: '/_docs/invoice-app'
-      path: '/invoice-app'
-      fullPath: '/invoice-app'
-      preLoaderRoute: typeof DocsInvoiceAppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_docs/ecommerce-app': {
-      id: '/_docs/ecommerce-app'
-      path: '/ecommerce-app'
-      fullPath: '/ecommerce-app'
-      preLoaderRoute: typeof DocsEcommerceAppRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -137,8 +97,6 @@ const DocsRouteWithChildren = DocsRoute._addFileChildren(DocsRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DocsRoute: DocsRouteWithChildren,
-  DocsEcommerceAppRoute: DocsEcommerceAppRoute,
-  DocsInvoiceAppRoute: DocsInvoiceAppRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

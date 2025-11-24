@@ -11,6 +11,7 @@ import { SelectSizes } from '../../../examples/select/sizes'
 import { Validation } from '../../../examples/select/validation'
 import { ValidationWarning } from '../../../examples/select/validation-warning'
 import { ValidationSuccess } from '../../../examples/select/validation-success'
+import { Virtualization } from '../../../examples/select/virtualization'
 
 <Example src={Basic} />
 
@@ -56,6 +57,13 @@ Set `validationState="warning"` to show a warning state with a description.
 Set `validationState="valid"` to show a success state with a description.
 
 <Example src={ValidationSuccess} />
+
+### Virtualization
+
+The select supports virtualization by providing the `isVirtualized` prop.
+The container must have a fixed height and `overflow: auto`.
+
+<Example src={Virtualization} />
 
 ## Related Components
 
