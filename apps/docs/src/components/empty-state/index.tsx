@@ -12,12 +12,6 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 const styles = stylex.create({
   emptyState: {
     display: "grid",
-    gridTemplateColumns: {
-      ":is([data-empty-state-size=sm])": {
-        ":has([data-empty-state-actions])": "min-content 1fr max-content",
-        default: "min-content 1fr",
-      },
-    },
     gridTemplateAreas: {
       ":is([data-empty-state-size=md],[data-empty-state-size=lg])": {
         default: `
@@ -43,33 +37,39 @@ const styles = stylex.create({
         `,
       },
     },
+    gridTemplateColumns: {
+      ":is([data-empty-state-size=sm])": {
+        ":has([data-empty-state-actions])": "min-content 1fr max-content",
+        default: "min-content 1fr",
+      },
+    },
     alignItems: "center",
+    fontFamily: fontFamily["sans"],
     justifyItems: {
       ":is([data-empty-state-size=md],[data-empty-state-size=lg])": "center",
       ":is([data-empty-state-size=sm])": "start",
     },
-    fontFamily: fontFamily["sans"],
-    textAlign: "center",
     columnGap: {
       ":is([data-empty-state-size=sm])": spacing["4"],
+    },
+    textAlign: "center",
+    "--empty-state-image-size": {
+      ":is([data-empty-state-size=lg])": spacing["20"],
+      ":is([data-empty-state-size=md])": spacing["14"],
+      ":is([data-empty-state-size=sm])": spacing["10"],
     },
     rowGap: {
       ":is([data-empty-state-size=lg])": spacing["6"],
       ":is([data-empty-state-size=md])": spacing["4"],
       ":is([data-empty-state-size=sm])": spacing["2"],
     },
-    "--empty-state-image-size": {
-      ":is([data-empty-state-size=lg])": spacing["20"],
-      ":is([data-empty-state-size=md])": spacing["14"],
-      ":is([data-empty-state-size=sm])": spacing["10"],
-    },
   },
   image: {
     gridArea: "image",
-    width: "var(--empty-state-image-size)",
     height: "var(--empty-state-image-size)",
-    objectFit: "contain",
+    width: "var(--empty-state-image-size)",
     display: "flex",
+    objectFit: "contain",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -80,14 +80,14 @@ const styles = stylex.create({
       ":is([data-empty-state-size='md'] *)": fontSize["xl"],
       ":is([data-empty-state-size='sm'] *)": fontSize["lg"],
     },
-    fontWeight: fontWeight["semibold"],
     margin: 0,
+    fontWeight: fontWeight["semibold"],
   },
   description: {
     gridArea: "description",
     fontSize: fontSize["sm"],
-    fontWeight: fontWeight["normal"],
     margin: 0,
+    fontWeight: fontWeight["normal"],
     maxWidth: {
       ":is([data-empty-state-size=lg])": "480px",
       ":is([data-empty-state-size=md])": "400px",
@@ -97,11 +97,11 @@ const styles = stylex.create({
   actions: {
     gridArea: "actions",
     display: "flex",
-    flexDirection: "row",
     gap: spacing["2"],
+    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "center",
     flexWrap: "wrap",
+    justifyContent: "center",
 
     paddingLeft: {
       ":is([data-empty-state-size=sm] *)": spacing["4"],

@@ -84,9 +84,6 @@
 @property --x-width { syntax: "*"; inherits: false;}
 @property --x-paddingLeft { syntax: "*"; inherits: false;}
 @property --x---items-per-row { syntax: "*"; inherits: false;}
-@property --x-fontSize { syntax: "*"; inherits: false;}
-@property --x-1gfbyet { syntax: "*"; inherits: false;}
-@property --x-paddingRight { syntax: "*"; inherits: false;}
 @property --x-height { syntax: "*"; inherits: false;}
 @property --x-transform { syntax: "*"; inherits: false;}
 @property --x-backgroundColor { syntax: "*"; inherits: false;}
@@ -816,7 +813,6 @@
 .xhycywm:not(#\#):not(#\#):not(#\#){font-family:var(--x9eavc5)}
 .x9wccx5:not(#\#):not(#\#):not(#\#){font-size:.95em}
 .x1qlqyl8:not(#\#):not(#\#):not(#\#){font-size:inherit}
-.xdmh292:not(#\#):not(#\#):not(#\#){font-size:var(--x-fontSize)}
 .x1vden:not(#\#):not(#\#):not(#\#){font-size:var(--x17lnkj2)}
 .x1y844x8:not(#\#):not(#\#):not(#\#){font-size:var(--x1hevvyd)}
 .x12va9g9:not(#\#):not(#\#):not(#\#){font-size:var(--x1lstm7v)}
@@ -1316,7 +1312,6 @@
 .x1hlhdeh:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--xyoqvup)}
 .x1xpa7k:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:0}
 .x1u8e7yt:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--card-x-padding)}
-.xwsd3xy:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x-paddingRight)}
 .xzt4wlk:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x109877l)}
 .x1lp5gly:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x1a1riub)}
 .x1ufczr9:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x1do95gr)}
@@ -1623,15 +1618,20 @@
 .x5djnb4:has(svg:only-child):not(#\#):not(#\#):not(#\#):not(#\#){width:var(--xyoqvup)}
 .x1buj52v:first-child:not(#\#):not(#\#):not(#\#):not(#\#){border-top-left-radius:var(--x1o51v3i)}
 .x1nzaapa:first-child:not(#\#):not(#\#):not(#\#):not(#\#){border-top-right-radius:var(--x1o51v3i)}
-.xok9p14:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--x-1gfbyet)}
+.x1l904qm:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--x1a1riub)}
 .x1jkz7iv:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--x1bnlq1y)}
+.x1by7681:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--x1llymyc)}
 .x5sub40:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--xmuc480)}
+.x1mmj0bo:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-left:var(--xsow7ju)}
+.x13u8uvr:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x1plbop)}
 .x12ix96l:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--xsow7ju)}
 .xzc7y64:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-top:var(--card-y-padding)}
 .x1jtp6tc:first-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-top:var(--xgvn2um)}
 .xmys6wu:last-child:not(#\#):not(#\#):not(#\#):not(#\#){border-bottom-left-radius:var(--x1o51v3i)}
 .x1502yzn:last-child:not(#\#):not(#\#):not(#\#):not(#\#){border-bottom-right-radius:var(--x1o51v3i)}
 .xmampw0:last-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-bottom:var(--card-y-padding)}
+.xwtmqz1:last-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x1a1riub)}
+.x15xh87z:last-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--x1llymyc)}
 .xjaxm57:last-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--xmuc480)}
 .xq6kpti:last-child:not(#\#):not(#\#):not(#\#):not(#\#){padding-right:var(--xsow7ju)}
 @supports (corner-shape: squircle){.x1cocqi3.x1cocqi3:not(#\#):not(#\#):not(#\#):not(#\#):not(#\#){border-radius:var(--x1bwjc12)}}

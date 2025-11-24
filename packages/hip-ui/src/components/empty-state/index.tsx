@@ -11,8 +11,13 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   emptyState: {
-    display: "grid",
+    "--empty-state-image-size": {
+      ":is([data-empty-state-size=lg])": spacing["20"],
+      ":is([data-empty-state-size=md])": spacing["14"],
+      ":is([data-empty-state-size=sm])": spacing["10"],
+    },
     gridTemplateAreas: {
+      // eslint-disable-next-line @stylexjs/valid-styles
       ":is([data-empty-state-size=md],[data-empty-state-size=lg])": {
         default: `
           "image"
@@ -26,6 +31,7 @@ const styles = stylex.create({
           "actions"
         `,
       },
+      // eslint-disable-next-line @stylexjs/valid-styles
       ":is([data-empty-state-size=sm])": {
         default: `
           "image title"
@@ -37,56 +43,53 @@ const styles = stylex.create({
         `,
       },
     },
-    gridTemplateColumns: {
-      ":is([data-empty-state-size=sm])": {
-        ":has([data-empty-state-actions])": "min-content 1fr max-content",
-        default: "min-content 1fr",
-      },
-    },
     alignItems: "center",
-    fontFamily: fontFamily["sans"],
-    justifyItems: {
-      ":is([data-empty-state-size=md],[data-empty-state-size=lg])": "center",
-      ":is([data-empty-state-size=sm])": "start",
-    },
     columnGap: {
       ":is([data-empty-state-size=sm])": spacing["4"],
     },
-    textAlign: "center",
-    "--empty-state-image-size": {
-      ":is([data-empty-state-size=lg])": spacing["20"],
-      ":is([data-empty-state-size=md])": spacing["14"],
-      ":is([data-empty-state-size=sm])": spacing["10"],
+    display: "grid",
+    fontFamily: fontFamily["sans"],
+    gridTemplateColumns: {
+      // eslint-disable-next-line @stylexjs/valid-styles
+      ":is([data-empty-state-size=sm])": {
+        default: "min-content 1fr",
+        ":has([data-empty-state-actions])": "min-content 1fr max-content",
+      },
+    },
+    justifyItems: {
+      ":is([data-empty-state-size=md],[data-empty-state-size=lg])": "center",
+      ":is([data-empty-state-size=sm])": "start",
     },
     rowGap: {
       ":is([data-empty-state-size=lg])": spacing["6"],
       ":is([data-empty-state-size=md])": spacing["4"],
       ":is([data-empty-state-size=sm])": spacing["2"],
     },
+    textAlign: "center",
   },
   image: {
     gridArea: "image",
+    alignItems: "center",
+    display: "flex",
+    justifyContent: "center",
+    objectFit: "contain",
     height: "var(--empty-state-image-size)",
     width: "var(--empty-state-image-size)",
-    display: "flex",
-    objectFit: "contain",
-    alignItems: "center",
-    justifyContent: "center",
   },
   title: {
     gridArea: "title",
+    margin: 0,
     fontSize: {
       ":is([data-empty-state-size='lg'] *)": fontSize["2xl"],
       ":is([data-empty-state-size='md'] *)": fontSize["xl"],
       ":is([data-empty-state-size='sm'] *)": fontSize["lg"],
     },
-    margin: 0,
     fontWeight: fontWeight["semibold"],
   },
   description: {
     gridArea: "description",
-    fontSize: fontSize["sm"],
     margin: 0,
+    fontSize: fontSize["sm"],
     fontWeight: fontWeight["normal"],
     maxWidth: {
       ":is([data-empty-state-size=lg])": "480px",
@@ -96,10 +99,10 @@ const styles = stylex.create({
   },
   actions: {
     gridArea: "actions",
-    display: "flex",
     gap: spacing["2"],
-    flexDirection: "row",
     alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
     flexWrap: "wrap",
     justifyContent: "center",
 
@@ -169,10 +172,10 @@ export const EmptyStateImage = ({
 };
 
 export interface EmptyStateTitleProps
-  extends StyleXComponentProps<React.ComponentProps<"h2">> {}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const EmptyStateTitle = ({ style, ...props }: EmptyStateTitleProps) => {
-  return <h2 {...props} {...stylex.props(styles.title, ui.text, style)} />;
+  return <div {...props} {...stylex.props(styles.title, ui.text, style)} />;
 };
 
 export interface EmptyStateDescriptionProps

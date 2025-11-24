@@ -27,11 +27,6 @@ const styles = stylex.create({
     color: ui.textDim,
     flexShrink: 0,
     height: "100%",
-    paddingLeft: { ":first-child": spacing["2.5"] },
-    paddingRight: {
-      ":first-child": spacing["2"],
-      ":last-child": spacing["2.5"],
-    },
 
     gap: spacing["2"],
     alignItems: "center",
@@ -44,6 +39,27 @@ const styles = stylex.create({
       pointerEvents: "none",
       height: spacing["4"],
       width: spacing["4"],
+    },
+  },
+  addonSm: {
+    paddingLeft: { ":first-child": spacing["1.5"] },
+    paddingRight: {
+      ":first-child": spacing["1"],
+      ":last-child": spacing["1.5"],
+    },
+  },
+  addonMd: {
+    paddingLeft: { ":first-child": spacing["2.5"] },
+    paddingRight: {
+      ":first-child": spacing["2"],
+      ":last-child": spacing["2.5"],
+    },
+  },
+  addonLg: {
+    paddingLeft: { ":first-child": spacing["3"] },
+    paddingRight: {
+      ":first-child": spacing["2"],
+      ":last-child": spacing["3"],
     },
   },
   validationIcon: {
@@ -294,36 +310,36 @@ const styles = stylex.create({
     color: successColor.text1,
   },
 
-  inputSize: (size: Size) => ({
-    fontSize:
-      size === "sm"
-        ? fontSize["xs"]
-        : size === "md"
-          ? fontSize["sm"]
-          : fontSize["base"],
+  inputSizeSm: {
+    fontSize: fontSize["xs"],
     paddingLeft: {
-      ":first-child":
-        size === "sm"
-          ? spacing["1"]
-          : size === "md"
-            ? spacing["2"]
-            : spacing["3"],
+      ":first-child": spacing["2"],
     },
-    paddingRight:
-      size === "sm"
-        ? spacing["1"]
-        : size === "md"
-          ? spacing["2"]
-          : spacing["3"],
-  }),
-  wrapperSize: (size: Size) => ({
-    height:
-      size === "sm"
-        ? spacing["6"]
-        : size === "md"
-          ? spacing["8"]
-          : spacing["10"],
-  }),
+    paddingRight: spacing["1"],
+  },
+  inputSizeMd: {
+    fontSize: fontSize["sm"],
+    paddingLeft: {
+      ":first-child": spacing["2"],
+    },
+    paddingRight: spacing["2"],
+  },
+  inputSizeLg: {
+    fontSize: fontSize["base"],
+    paddingLeft: {
+      ":first-child": spacing["3"],
+    },
+    paddingRight: spacing["3"],
+  },
+  wrapperSizeSm: {
+    height: spacing["6"],
+  },
+  wrapperSizeMd: {
+    height: spacing["8"],
+  },
+  wrapperSizeLg: {
+    height: spacing["10"],
+  },
 });
 
 export function useInputStyles({
@@ -360,10 +376,22 @@ export function useInputStyles({
         validationState === "warning" && [styles.tertiaryWarning],
         validationState === "valid" && [styles.tertiaryValid],
       ],
-      styles.wrapperSize(size),
+      size === "sm" && styles.wrapperSizeSm,
+      size === "md" && styles.wrapperSizeMd,
+      size === "lg" && styles.wrapperSizeLg,
     ],
-    input: [styles.input, styles.inputSize(size)],
-    addon: styles.addon as unknown as stylex.StyleXStyles,
+    input: [
+      styles.input,
+      size === "sm" && styles.inputSizeSm,
+      size === "md" && styles.inputSizeMd,
+      size === "lg" && styles.inputSizeLg,
+    ],
+    addon: [
+      styles.addon,
+      size === "sm" && styles.addonSm,
+      size === "md" && styles.addonMd,
+      size === "lg" && styles.addonLg,
+    ],
     validationIcon: [
       styles.validationIcon,
       validationState === "invalid" && [styles.invalidIcon],
