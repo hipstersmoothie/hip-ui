@@ -39,7 +39,7 @@ export const ui = stylex.create({
     borderWidth: 1,
 
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolid: { backgroundColor: uiColor.solid1 },
@@ -56,7 +56,7 @@ export const ui = stylex.create({
       ":disabled": "transparent",
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgUi: {
@@ -67,7 +67,7 @@ export const ui = stylex.create({
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
@@ -78,7 +78,7 @@ export const ui = stylex.create({
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolidAction: {
@@ -88,7 +88,7 @@ export const ui = stylex.create({
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
 });
@@ -118,8 +118,8 @@ export const primary = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
 
-    transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionDuration: animationDuration.slow,
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolid: { backgroundColor: primaryColor.solid1 },
@@ -138,7 +138,7 @@ export const primary = stylex.create({
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgUi: {
@@ -150,7 +150,7 @@ export const primary = stylex.create({
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
@@ -163,7 +163,7 @@ export const primary = stylex.create({
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolidAction: {
@@ -173,7 +173,7 @@ export const primary = stylex.create({
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
 });
@@ -203,7 +203,7 @@ export const critical = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolid: { backgroundColor: criticalColor.solid1 },
@@ -222,7 +222,7 @@ export const critical = stylex.create({
       ":disabled": criticalColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgUi: {
@@ -235,7 +235,7 @@ export const critical = stylex.create({
       ":disabled": criticalColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
@@ -248,7 +248,7 @@ export const critical = stylex.create({
       ":disabled": criticalColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolidAction: {
@@ -258,7 +258,7 @@ export const critical = stylex.create({
       ":disabled": criticalColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
 });
@@ -302,7 +302,7 @@ export const warning = stylex.create({
       ":disabled": warningColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgUi: {
@@ -314,7 +314,7 @@ export const warning = stylex.create({
       ":disabled": warningColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
@@ -327,7 +327,7 @@ export const warning = stylex.create({
       ":disabled": warningColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolidAction: {
@@ -337,7 +337,7 @@ export const warning = stylex.create({
       ":disabled": warningColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
 });
@@ -367,7 +367,7 @@ export const success = stylex.create({
     borderStyle: "solid",
     borderWidth: 1,
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolid: { backgroundColor: successColor.solid1 },
@@ -386,7 +386,7 @@ export const success = stylex.create({
       ":disabled": successColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgUi: {
@@ -399,7 +399,7 @@ export const success = stylex.create({
       ":disabled": successColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgAction: {
@@ -412,7 +412,7 @@ export const success = stylex.create({
       ":disabled": successColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   bgSolidAction: {
@@ -422,7 +422,7 @@ export const success = stylex.create({
       ":disabled": successColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
 });

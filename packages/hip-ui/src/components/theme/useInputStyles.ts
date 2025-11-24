@@ -128,7 +128,7 @@ const styles = stylex.create({
       ":has([data-invalid])": `0 0 0 2px ${criticalColor.component1}`,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   primaryInvalid: {
@@ -192,7 +192,7 @@ const styles = stylex.create({
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   secondaryInvalid: {
@@ -249,7 +249,7 @@ const styles = stylex.create({
       ":disabled": "transparent",
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "background-color, border-color",
+    transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
   },
   tertiaryInvalid: {

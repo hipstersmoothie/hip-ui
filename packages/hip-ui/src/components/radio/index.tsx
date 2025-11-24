@@ -61,7 +61,7 @@ const styles = stylex.create({
 
     transitionDuration: animationDuration.fast,
     transitionProperty: {
-      default: "background-color, border-color, color",
+      default: "background-color, color",
       [mediaQueries.reducedMotion]: "none",
     },
     transitionTimingFunction: "ease-in-out",

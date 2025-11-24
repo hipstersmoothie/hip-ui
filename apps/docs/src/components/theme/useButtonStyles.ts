@@ -48,7 +48,7 @@ const styles = stylex.create({
       ":disabled": "none",
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "all",
+    transitionProperty: "background-color, color",
     transitionTimingFunction: "ease-in-out",
     userSelect: "none",
     whiteSpace: "nowrap",

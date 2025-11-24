@@ -45,8 +45,8 @@ const styles = stylex.create({
         "scale(0.95) translate(var(--origin-x, 0), var(--origin-y, 0))",
     },
     transitionDuration: animationDuration.verySlow,
-    transitionTimingFunction: animationTimingFunction.easeSpring,
     transitionProperty: "transform, opacity",
+    transitionTimingFunction: animationTimingFunction.easeSpring,
     willChange: "transform, opacity",
   },
 });

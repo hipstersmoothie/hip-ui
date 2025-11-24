@@ -33,7 +33,7 @@ const styles = stylex.create({
       default: radius["sm"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    gap: spacing["1.5"],
+    gap: spacing["1"],
     fontSize: fontSize["xs"],
     height: spacing["5"],
     paddingLeft: spacing["1.5"],
