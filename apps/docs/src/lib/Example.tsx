@@ -22,6 +22,7 @@ const styles = stylex.create({
     overflow: "hidden",
   },
   preview: {
+    containerType: "inline-size",
     alignItems: "center",
     backgroundColor: uiColor.bgSubtle,
     display: "flex",
@@ -29,6 +30,9 @@ const styles = stylex.create({
     justifyContent: "center",
     minHeight: spacing["40"],
     padding: spacing["4"],
+  },
+  noPadding: {
+    padding: 0,
   },
   codeWrapper: {
     borderTopColor: uiColor.border2,
@@ -59,8 +63,10 @@ const styles = stylex.create({
 
 export function Example({
   src: Component,
+  noPadding = false,
 }: {
   src: (() => React.JSX.Element) & { slug: string };
+  noPadding?: boolean;
 }) {
   const code = examples[Component.slug];
   const ref = useRef<HTMLDivElement>(null);
@@ -74,7 +80,7 @@ export function Example({
   return (
     <Card style={styles.card}>
       <Flex direction="column">
-        <div {...stylex.props(styles.preview)}>
+        <div {...stylex.props(styles.preview, noPadding && styles.noPadding)}>
           <Component />
         </div>
 

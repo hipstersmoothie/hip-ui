@@ -108,7 +108,9 @@ function HoverCardInner({
   );
 }
 
-interface HoverCardProps extends DialogTriggerProps, HoverCardInnerProps {}
+export interface HoverCardProps
+  extends DialogTriggerProps,
+    HoverCardInnerProps {}
 
 export const HoverCard = ({
   defaultOpen,

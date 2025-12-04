@@ -1,0 +1,73 @@
+---
+title: Navbar
+description: A responsive navigation bar component with logo, navigation, and action sections. On mobile, navigation and actions are automatically contained in a hamburger menu overlay.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/navbar/basic'
+import { Justify } from '../../../examples/navbar/justify'
+import { WithActions } from '../../../examples/navbar/with-actions'
+import { AlwaysVisibleActions } from '../../../examples/navbar/always-visible-actions'
+import { WithMenus } from '../../../examples/navbar/with-menus'
+import { ActiveLink } from '../../../examples/navbar/active-link'
+
+<Example src={Basic} noPadding />
+
+## Installation
+
+Run the following command to add the navbar component to your project.
+
+```bash
+pnpm hip install navbar
+```
+
+## Props
+
+This component is built using [React Aria Components](https://react-spectrum.adobe.com/react-aria/index.html).
+
+<PropDocs components={["Navbar", "NavbarLogo", "NavbarNavigation", "NavbarAction"]} />
+
+## Features
+
+### Active Link
+
+You can mark a link as active by setting the `isActive` prop to `true`.
+
+<Example src={ActiveLink} />
+
+### Navigation Alignment
+
+The `NavbarNavigation` component supports different alignment options using the `justify` prop.
+
+<Example src={Justify} />
+
+### With Actions
+
+Navbars can include action buttons that are automatically moved to the mobile menu.
+
+<Example src={WithActions} />
+
+### With Menus
+
+Navbars can include menus that are displayed when hovering over a button.
+
+<Example src={WithMenus} />
+
+## Mobile Behavior
+
+On mobile devices (below the `md` breakpoint), the `NavbarNavigation` and `NavbarAction` components are automatically hidden and shown in a hamburger menu overlay. When the hamburger menu is clicked, it overlays the available space and renders the navigation and actions in a vertical stack with a separator between them.
+
+### Always Visible Actions
+
+The `NavbarAction` component can be made always visible on mobile by setting the `alwaysVisible` prop to `true`.
+
+<Example src={AlwaysVisibleActions} />
+
+## Related Components
+
+- [Link](/docs/components/link) - For navigation links in NavbarNavigation
+- [Button](/docs/components/button) - For action buttons in NavbarAction
+- [IconButton](/docs/components/icon-button) - For icon-based actions
+- [Flex](/docs/components/flex) - For layout within navbar sections
+

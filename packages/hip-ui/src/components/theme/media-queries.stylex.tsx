@@ -8,6 +8,14 @@ export const breakpoints = stylex.defineConsts({
   "2xl": "@media (min-width: 96rem)",
 });
 
+export const containerBreakpoints = stylex.defineConsts({
+  sm: "@container (min-width: 40rem)",
+  md: "@container (min-width: 48rem)",
+  lg: "@container (min-width: 64rem)",
+  xl: "@container (min-width: 80rem)",
+  "2xl": "@container (min-width: 96rem)",
+});
+
 export const maxBreakpoints = stylex.defineConsts({
   sm: "@media (max-width: 40rem)",
 });

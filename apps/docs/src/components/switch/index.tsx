@@ -25,7 +25,7 @@ const styles = stylex.create({
       default: uiColor.component3,
       ":is([data-selected=true] *)": primaryColor.solid1,
     },
-    boxShadow: "inset 0 0 6px 1px rgba(0, 0, 0, 0.2)",
+    boxShadow: "inset 0 0 6px 1px rgba(0, 0, 0, 0.13)",
     opacity: {
       default: 1,
       ":is([data-disabled=true] *)": 0.5,

@@ -6,6 +6,10 @@
 
 - [ ] perfect inset border radii
 - [ ] Number field validation state styling
+- [ ] Switch to [logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values/Margins_borders_padding)
+  - will need a type aware eslint rule for this
+- [ ] Switch all px to rem
+- [ ] cursor pointer not working in links (and nav links)
 
 ### Components
 

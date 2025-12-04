@@ -13,23 +13,45 @@ import { LinkContext } from "./link-context";
 
 const styles = stylex.create({
   link: {
-    textDecoration: {
-      default: "none",
-      ":is([data-breadcrumb] *)": "none",
-      ":is([data-hovered])": "underline",
+    "--underline-opacity": {
+      default: 0,
+      ":is([aria-expanded=true])": 1,
+      ":is([data-breadcrumb] *)": 0,
+      ":is([data-hovered])": 1,
     },
+    gap: spacing["2"],
+    textDecoration: "none",
+    alignItems: "center",
     color: {
       default: primaryColor.text2,
       ":is([data-breadcrumb] *)": uiColor.text1,
       ":is([data-breadcrumb][data-current] *)": uiColor.text2,
     },
-    cursor: {
-      default: "default",
-      ":is([data-hovered])": "pointer",
-    },
+    cursor: "pointer",
+    display: "inline-flex",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],
-    textUnderlineOffset: spacing["1"],
+    position: "relative",
+
+    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
+    ":is(*) svg": {
+      height: "1.2em",
+      width: "1.2em",
+    },
+
+    "::after": {
+      backgroundColor: "currentColor",
+      content: '""',
+      display: "block",
+      opacity: "var(--underline-opacity)",
+      pointerEvents: "none",
+      position: "absolute",
+      bottom: `calc(${spacing["1"]} * -1)`,
+      height: "2px",
+      left: 0,
+      right: 0,
+      width: "100%",
+    },
   },
 });
 
