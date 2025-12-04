@@ -76,14 +76,14 @@ const styles = stylex.create({
   rangeCell: {
     backgroundColor: {
       ":is(*)::before": "transparent",
-      ":is([data-hovered]):not([data-unavailable])::before": uiColor.component2,
-      ":is([data-pressed]):not([data-unavailable])::before": uiColor.component3,
+      ":is([data-hovered]):not([data-unavailable])::before": uiColor.component3,
+      ":is([data-pressed]):not([data-unavailable])::before": uiColor.border1,
       ":is([data-selected]):not([data-selection-start],[data-selection-end]):not([data-unavailable])::before":
         primaryColor.component1,
       ":is([data-selection-start],[data-selection-end]):not([data-unavailable])::before":
-        primaryColor.component2,
-      ":is([data-selection-start],[data-selection-end]):not([data-unavailable]):hover::before":
         primaryColor.component3,
+      ":is([data-selection-start],[data-selection-end]):not([data-unavailable]):hover::before":
+        primaryColor.border1,
     },
     color: {
       default: uiColor.text1,
