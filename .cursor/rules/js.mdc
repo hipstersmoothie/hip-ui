@@ -1,0 +1,7 @@
+---
+description: Typescript authoring rules
+globs: ["**/*.js", "**/*.ts", "**/*.js"]
+alwaysApply: true
+---
+
+- Avoid nesting functions if you dont need to

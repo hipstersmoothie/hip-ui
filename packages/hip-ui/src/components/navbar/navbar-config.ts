@@ -12,10 +12,13 @@ export const navbarConfig: ComponentConfig = {
     "../icon-button/index.tsx",
     "../flex/index.tsx",
     "../separator/index.tsx",
+    "./useAnimatedNavbar.tsx",
+    "./Navbar.tsx",
+    "./NavbarMenu.tsx",
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",
     "lucide-react": "^0.263.1",
+    "raf-throttle": "^2.0.6",
   },
 };
-

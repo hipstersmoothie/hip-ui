@@ -38,6 +38,8 @@
     "lightningcss": "^1.30.2",
     "lucide-react": "^0.554.0",
     "magic-string": "^0.30.21",
+    "match-container": "^0.1.0",
+    "raf-throttle": "^2.0.6",
     "react": "catalog:",
     "react-aria": "^3.44.0",
     "react-aria-components": "^1.13.0",

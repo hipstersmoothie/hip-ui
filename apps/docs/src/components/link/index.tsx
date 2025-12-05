@@ -10,47 +10,47 @@ import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 import { LinkContext } from "./link-context";
-import { pointInPolygon } from "tldraw";
 
 const styles = stylex.create({
   link: {
-    textDecoration: "none",
-    position: "relative",
-    display: "inline-flex",
-    alignItems: "center",
-    gap: spacing["2"],
     "--underline-opacity": {
       default: 0,
+      ":is([aria-expanded=true])": 1,
       ":is([data-breadcrumb] *)": 0,
       ":is([data-hovered])": 1,
-      ":is([aria-expanded=true])": 1,
     },
+    gap: spacing["2"],
+    textDecoration: "none",
+    alignItems: "center",
     color: {
       default: primaryColor.text2,
       ":is([data-breadcrumb] *)": uiColor.text1,
       ":is([data-breadcrumb][data-current] *)": uiColor.text2,
     },
     cursor: "pointer",
+    display: "inline-flex",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],
+    position: "relative",
 
+    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
-      width: "1.2em",
       height: "1.2em",
+      width: "1.2em",
     },
 
     "::after": {
-      opacity: "var(--underline-opacity)",
+      backgroundColor: "currentColor",
       content: '""',
       display: "block",
-      width: "100%",
-      height: "2px",
-      backgroundColor: "currentColor",
+      opacity: "var(--underline-opacity)",
+      pointerEvents: "none",
       position: "absolute",
       bottom: `calc(${spacing["1"]} * -1)`,
+      height: "2px",
       left: 0,
       right: 0,
-      pointerEvents: "none",
+      width: "100%",
     },
   },
 });

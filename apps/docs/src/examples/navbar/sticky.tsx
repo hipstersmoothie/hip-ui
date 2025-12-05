@@ -10,6 +10,8 @@ import { uiColor } from "../../components/theme/color.stylex";
 import * as stylex from "@stylexjs/stylex";
 import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
+import { useRef } from "react";
+import { useAnimatedNavbar } from "@/components/navbar/useAnimatedNavbar";
 
 const styles = stylex.create({
   wrapper: {
@@ -42,10 +44,16 @@ function Logo() {
   );
 }
 
-export function Basic() {
+export function Sticky() {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const { sentinel, navBarProps } = useAnimatedNavbar({
+    scrollContainer: scrollContainerRef,
+  });
+
   return (
-    <div {...stylex.props(styles.wrapper)}>
-      <Navbar>
+    <div ref={scrollContainerRef} {...stylex.props(styles.wrapper)}>
+      {sentinel}
+      <Navbar {...navBarProps}>
         <NavbarLogo>
           <Logo />
         </NavbarLogo>

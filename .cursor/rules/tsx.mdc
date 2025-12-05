@@ -1,0 +1,8 @@
+---
+description: Typescript authoring rules
+globs: ["**/*.tsx"]
+alwaysApply: true
+---
+
+- When there are linter errors first run eslint --fix
+- Make sure to never cause reflow if you can. Check this resource to determine what does cause reflow https://gist.github.com/paulirish/5d52fb081b3570c81e3a

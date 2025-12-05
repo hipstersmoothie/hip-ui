@@ -11,6 +11,7 @@ import { WithActions } from '../../../examples/navbar/with-actions'
 import { AlwaysVisibleActions } from '../../../examples/navbar/always-visible-actions'
 import { WithMenus } from '../../../examples/navbar/with-menus'
 import { ActiveLink } from '../../../examples/navbar/active-link'
+import { Sticky } from '../../../examples/navbar/sticky'
 
 <Example src={Basic} noPadding />
 
@@ -29,6 +30,12 @@ This component is built using [React Aria Components](https://react-spectrum.ado
 <PropDocs components={["Navbar", "NavbarLogo", "NavbarNavigation", "NavbarAction"]} />
 
 ## Features
+
+### Sticky Behavior
+
+The `Navbar` component can be made sticky by using the `useAnimatedNavbar` hook.
+
+<Example src={Sticky} />
 
 ### Active Link
 
