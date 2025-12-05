@@ -8,6 +8,7 @@ import {
   animationDuration,
   animationTimingFunction,
 } from "../theme/animations.stylex";
+import { shadow } from "../theme/shadow.stylex";
 
 const SCROLL_THRESHOLD = 16;
 
@@ -18,6 +19,7 @@ const styles = stylex.create({
     top: 0,
   },
   navbarRevealed: {
+    boxShadow: shadow.lg,
     position: "sticky",
     transform: "translateY(0)",
     transitionDuration: animationDuration.slow,
@@ -87,6 +89,7 @@ export const useAnimatedNavbar = ({
           currentScrollY <= SCROLL_THRESHOLD
         ) {
           setShouldAnimateIn(true);
+          setShouldAnimateOut(false);
         }
       }
       // Animate navbar out when scrolling down past threshold
