@@ -40,6 +40,7 @@ import { editableTextConfig } from "../components/editable-text/editable-text-co
 import { emptyStateConfig } from "../components/empty-state/empty-state-config.js";
 import { fileDropZoneConfig } from "../components/file-drop-zone/file-drop-zone-config.js";
 import { flexConfig } from "../components/flex/flex-config.js";
+import { footerConfig } from "../components/footer/footer-config.js";
 import { formConfig } from "../components/form/form-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
 import { hoverCardConfig } from "../components/hover-card/hover-card-config.js";
@@ -135,6 +136,7 @@ const COMPONENT_CONFIGS = [
   aspectRatioConfig,
   colorSwatchConfig,
   fileDropZoneConfig,
+  footerConfig,
   formConfig,
   tableConfig,
   sliderConfig,

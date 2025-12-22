@@ -1,0 +1,75 @@
+---
+title: Footer
+description: A flexible footer component for displaying site information, navigation links, and social media links.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/footer/basic'
+import { WithSocialLinks } from '../../../examples/footer/with-social-links'
+import { WithSections } from '../../../examples/footer/with-sections'
+import { Centered } from '../../../examples/footer/centered'
+import { WithSubscribeVertical } from '../../../examples/footer/with-subscribe-vertical'
+import { WithSubscribeHorizontal } from '../../../examples/footer/with-subscribe-horizontal'
+import { Comprehensive } from '../../../examples/footer/comprehensive'
+
+<Example src={Comprehensive} noPadding />
+
+## Installation
+
+Run the following command to add the footer component to your project.
+
+```bash
+pnpm hip install footer
+```
+
+## Props
+
+This is a custom component built for footer layouts.
+
+<PropDocs components={["FooterRoot", "FooterSection", "FooterNavSection", "FooterNavGroup", "FooterCopyright", "FooterSocialLinkList", "FooterSocialLinkItem", "FooterSubscribe", "FooterSubscribeTitle", "FooterSubscribeDescription", "FooterSubscribeInput"]} />
+
+## Features
+
+### Minimal
+
+A simple footer with just copyright information.
+
+<Example src={Basic} noPadding />
+
+### With Sections
+
+Organize footer content into sections with optional titles.
+
+<Example src={WithSections} noPadding />
+
+### With Social Links
+
+Add social media links with icons to your footer.
+
+<Example src={WithSocialLinks} noPadding />
+
+### Centered
+
+Use the `isCentered` prop to center all footer content.
+
+<Example src={Centered} noPadding />
+
+### With Subscribe (Vertical)
+
+Add a newsletter subscription form with vertical layout.
+
+<Example src={WithSubscribeVertical} noPadding />
+
+### With Subscribe (Horizontal)
+
+Add a newsletter subscription form with horizontal layout.
+
+<Example src={WithSubscribeHorizontal} noPadding />
+
+## Related Components
+
+- [Link](/docs/components/link) - For navigation links in footer sections
+- [Navbar](/docs/components/navbar) - For site navigation
+- [Grid](/docs/components/grid) - For multi-column footer layouts
+- [Flex](/docs/components/flex) - For flexible footer layouts
