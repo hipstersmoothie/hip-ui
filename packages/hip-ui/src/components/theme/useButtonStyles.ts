@@ -114,21 +114,21 @@ const styles = stylex.create({
   },
 
   groupHorizontal: {
-    borderBottomLeftRadius: { ":not(:first-child)": 0 },
-    borderBottomRightRadius: { ":not(:last-child)": 0 },
-    borderLeftWidth: { ":not(:first-child)": 0 },
-    borderTopLeftRadius: { ":not(:first-child)": 0 },
-    borderTopRightRadius: { ":not(:last-child)": 0 },
+    borderBottomLeftRadius: { ":not(:first-child)": `0 !important` },
+    borderBottomRightRadius: { ":not(:last-child)": `0 !important` },
+    borderLeftWidth: { ":not(:first-child)": `0 !important` },
+    borderTopLeftRadius: { ":not(:first-child)": `0 !important` },
+    borderTopRightRadius: { ":not(:last-child)": `0 !important` },
   },
   secondaryGroupedHorizontal: {
     borderRightColor: { ":not(:last-child)": uiColor.border2 },
   },
   groupVertical: {
-    borderBottomLeftRadius: { ":not(:last-child)": 0 },
-    borderBottomRightRadius: { ":not(:last-child)": 0 },
-    borderTopLeftRadius: { ":not(:first-child)": 0 },
-    borderTopRightRadius: { ":not(:first-child)": 0 },
-    borderTopWidth: { ":not(:first-child)": 0 },
+    borderBottomLeftRadius: { ":not(:last-child)": `0 !important` },
+    borderBottomRightRadius: { ":not(:last-child)": `0 !important` },
+    borderTopLeftRadius: { ":not(:first-child)": `0 !important` },
+    borderTopRightRadius: { ":not(:first-child)": `0 !important` },
+    borderTopWidth: { ":not(:first-child)": `0 !important` },
   },
   secondaryGroupedVertical: {
     borderBottomColor: { ":not(:last-child)": uiColor.border2 },
