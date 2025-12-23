@@ -1,0 +1,47 @@
+---
+title: HeaderLayout
+description: A flexible page layout component with unstyled slots for header, page content, and footer.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/header-layout/basic'
+import { WithFooter } from '../../../examples/header-layout/with-footer'
+import { Styled } from '../../../examples/header-layout/styled'
+
+<Example src={Styled} noPadding />
+
+## Installation
+
+Run the following command to add the header layout component to your project.
+
+```bash
+pnpm hip install header-layout
+```
+
+## Props
+
+This is a custom component built for page layouts with header, content, and footer slots.
+
+<PropDocs components={["HeaderLayoutRoot", "HeaderLayoutHeader", "HeaderLayoutPage", "HeaderLayoutFooter"]} />
+
+## Features
+
+### Basic
+
+A simple page layout with header and page content slots.
+
+<Example src={Basic} noPadding />
+
+### With Footer
+
+Add a footer slot to your page layout.
+
+<Example src={WithFooter} noPadding />
+
+## Related Components
+
+- [Flex](/docs/components/flex) - For flexible layouts within slots
+- [Grid](/docs/components/grid) - For two-dimensional layouts within slots
+- [Navbar](/docs/components/navbar) - For navigation in the header slot
+- [Footer](/docs/components/footer) - For footer content in the footer slot

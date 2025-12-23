@@ -8,10 +8,7 @@ import {
 
 import { Button } from "../button";
 import { TextField } from "../text-field";
-import {
-  breakpoints,
-  containerBreakpoints,
-} from "../theme/media-queries.stylex";
+import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
@@ -28,18 +25,18 @@ const styles = stylex.create({
     containerType: "inline-size",
   },
   footerSection: {
-    maxWidth: "1280px",
+    maxWidth: "var(--page-content-max-width)",
     marginLeft: "auto",
     marginRight: "auto",
     paddingTop: spacing["6"],
     paddingBottom: spacing["6"],
     paddingLeft: {
-      default: spacing["6"],
-      [breakpoints.sm]: spacing["8"],
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
     },
     paddingRight: {
-      default: spacing["6"],
-      [breakpoints.sm]: spacing["8"],
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
     },
     display: "flex",
     flexDirection: {

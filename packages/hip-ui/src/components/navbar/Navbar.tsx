@@ -9,7 +9,10 @@ import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
 import { Separator } from "../separator";
 import { primaryColor, uiColor } from "../theme/color.stylex";
-import { containerBreakpoints } from "../theme/media-queries.stylex";
+import {
+  breakpoints,
+  containerBreakpoints,
+} from "../theme/media-queries.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
@@ -17,9 +20,10 @@ import { fontFamily, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   navbar: {
+    maxWidth: "var(--page-content-max-width)",
     "--separator-visibility": {
       default: "none",
-      ":is([data-navbar-open])": "flex",
+      ":is([data-navbar-open]):has([data-navbar-action])": "flex",
       ":has([data-always-visible])": "none",
       [containerBreakpoints.sm]: "none",
     },
@@ -34,6 +38,10 @@ const styles = stylex.create({
       ":is([data-navbar-open])": `
         "logo hamburger"
         "navigation navigation"
+      `,
+      ":is([data-navbar-open]):has([data-navbar-action])": `
+        "logo hamburger"
+        "navigation navigation"
         "separator separator"
         "action action"
       `,
@@ -45,9 +53,14 @@ const styles = stylex.create({
         "navigation navigation navigation"
         "separator separator separator"
       `,
-      [containerBreakpoints.sm]: `
-        "logo navigation action"
-      `,
+      [containerBreakpoints.sm]: {
+        default: `
+          "logo navigation"
+        `,
+        ":has([data-navbar-action])": `
+          "logo navigation action"
+        `,
+      },
     },
     overflow: {
       ":is([data-navbar-open])": "auto",
@@ -61,11 +74,16 @@ const styles = stylex.create({
     display: "grid",
     gridTemplateColumns: {
       default: "1fr auto",
-      ":has([data-always-visible])": "1fr min-content min-content",
-      [containerBreakpoints.sm]: "auto 1fr auto",
+      ":has([data-always-visible]):not([data-navbar-action])":
+        "1fr min-content min-content",
+      [containerBreakpoints.sm]: {
+        default: "1fr auto",
+        ":has([data-navbar-action])": "auto 1fr auto",
+      },
     },
     gridTemplateRows: {
-      ":is([data-navbar-open])": `min-content min-content min-content min-content`,
+      ":is([data-navbar-open])": `min-content min-content min-content`,
+      ":is([data-navbar-open]):has([data-navbar-action])": `min-content min-content min-content min-content`,
     },
     rowGap: spacing["8"],
     zIndex: 1000,
@@ -77,9 +95,18 @@ const styles = stylex.create({
       ":is([data-navbar-open])": "100%",
       [containerBreakpoints.sm]: spacing["14"],
     },
-    paddingBottom: spacing["3"],
-    paddingLeft: spacing["4"],
-    paddingRight: spacing["4"],
+    paddingBottom: {
+      default: spacing["3"],
+      ":is([data-navbar-open]):has([data-navbar-action])": spacing["4"],
+    },
+    paddingLeft: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
+    paddingRight: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
     paddingTop: spacing["3"],
     top: 0,
     width: "100%",

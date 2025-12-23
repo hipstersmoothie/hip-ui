@@ -67,13 +67,7 @@ export function Comprehensive() {
           <Footer.SubscribeDescription>
             The latest news, articles, and resources, sent to your inbox weekly.
           </Footer.SubscribeDescription>
-          <Footer.SubscribeInput
-            onSubmit={(e) => {
-              const formData = new FormData(e.currentTarget);
-              const email = formData.get("email");
-              alert(`Subscribed with: ${email}`);
-            }}
-          />
+          <Footer.SubscribeInput />
         </Footer.Subscribe>
       </Footer.Section>
       <Footer.Section>
@@ -106,4 +100,3 @@ export function Comprehensive() {
     </Footer.Root>
   );
 }
-

@@ -1,0 +1,58 @@
+import { HeaderLayout } from "@/components/header-layout";
+import {
+  Navbar,
+  NavbarLogo,
+  NavbarNavigation,
+  NavbarLink,
+} from "@/components/navbar";
+import { Footer } from "@/components/footer";
+
+function Logo() {
+  return (
+    <svg
+      width="32"
+      height="32"
+      viewBox="0 0 120 120"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="60" cy="60" r="50" stroke="currentColor" strokeWidth="2" />
+    </svg>
+  );
+}
+
+export function Styled() {
+  return (
+    <HeaderLayout.Root>
+      <HeaderLayout.Header>
+        <Navbar>
+          <NavbarLogo>
+            <Logo />
+          </NavbarLogo>
+          <NavbarNavigation justify="right">
+            <NavbarLink href="/dashboard">Dashboard</NavbarLink>
+            <NavbarLink href="/projects">Projects</NavbarLink>
+            <NavbarLink href="/settings">Settings</NavbarLink>
+          </NavbarNavigation>
+        </Navbar>
+      </HeaderLayout.Header>
+      <HeaderLayout.Page>
+        <h1>Page Content</h1>
+        <p>This is the main page content area with default styling applied.</p>
+        <p>
+          The HeaderLayout component provides styled slots that work out of the
+          box, but you can override styles as needed.
+        </p>
+      </HeaderLayout.Page>
+      <HeaderLayout.Footer>
+        <Footer.Root isCentered>
+          <Footer.Section>
+            <Footer.Copyright>
+              © 2025 Company Name. All rights reserved.
+            </Footer.Copyright>
+          </Footer.Section>
+        </Footer.Root>
+      </HeaderLayout.Footer>
+    </HeaderLayout.Root>
+  );
+}
