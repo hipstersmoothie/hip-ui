@@ -24,7 +24,13 @@ const styles = stylex.create({
     backgroundColor: uiColor.bgSubtle,
     containerType: "inline-size",
   },
+  footerSectionWrapper: {
+    borderTopWidth: 1,
+    borderTopStyle: "solid",
+    borderTopColor: uiColor.border1,
+  },
   footerSection: {
+    borderWidth: 0,
     maxWidth: "var(--page-content-max-width)",
     marginLeft: "auto",
     marginRight: "auto",
@@ -55,9 +61,6 @@ const styles = stylex.create({
       ":is([data-footer-centered] *)": "center",
       [containerBreakpoints.sm]: "center",
     },
-    borderTopWidth: 1,
-    borderTopStyle: "solid",
-    borderTopColor: uiColor.border1,
   },
   navSection: {
     display: "grid",
@@ -222,8 +225,16 @@ export const FooterLogo = ({ style, children, ...props }: FooterLogoProps) => {
 export interface FooterSectionProps
   extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
-export const FooterSection = ({ style, ...props }: FooterSectionProps) => {
-  return <div {...props} {...stylex.props(styles.footerSection, style)} />;
+export const FooterSection = ({
+  style,
+  children,
+  ...props
+}: FooterSectionProps) => {
+  return (
+    <div {...props} {...stylex.props(styles.footerSectionWrapper, style)}>
+      <div {...stylex.props(styles.footerSection)}>{children}</div>
+    </div>
+  );
 };
 
 /**

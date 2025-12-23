@@ -1,6 +1,6 @@
 ---
 description: Typescript authoring rules
-globs: ["**/*.js", "**/*.ts", "**/*.js"]
+globs: ["**/*.js", "**/*.ts", "**/*.js", "**/*.tsx"]
 alwaysApply: true
 ---
 

@@ -327,26 +327,42 @@ async function installDependencies(
     string
   >;
 
+  const packagesToInstall: string[] = [];
+
   for (const [packageName, version] of Object.entries(dependencies)) {
     if (packageDependencies[packageName] === version) {
       continue;
     }
 
-    console.log(`🔄 Installing ${packageName}@${version}`);
-
-    // await new Promise((resolve) =>
-    //   exec(`${config.packageManager} i ${packageName}@${version}`, (error) => {
-    //     if (error) {
-    //       console.error(
-    //         `❌ Error installing ${packageName}@${version}:`,
-    //         error,
-    //       );
-    //     }
-
-    //     resolve(true);
-    //   }),
-    // );
+    packagesToInstall.push(`${packageName}@${version}`);
   }
+
+  if (packagesToInstall.length === 0) {
+    return;
+  }
+
+  console.log(`🔄 Installing ${packagesToInstall.length} dependencies...`);
+
+  await new Promise((resolve, reject) =>
+    exec(
+      `${config.packageManager} i ${packagesToInstall.join(" ")}`,
+      { cwd: process.cwd() },
+      (error, stdout, stderr) => {
+        if (error) {
+          console.error(`❌ Error installing dependencies:`, error);
+          console.error(stderr);
+          reject(error);
+          return;
+        }
+
+        if (stdout) {
+          console.log(stdout);
+        }
+
+        resolve(true);
+      },
+    ),
+  );
 }
 
 async function outputFile(
@@ -434,9 +450,30 @@ export async function installComponent({
 
   const config = await setup();
 
+  // Gather all dependencies from all components
+  const allDependencies: { [key: string]: string } = {};
+  for (const componentConfig of componentConfigs) {
+    if (componentConfig.dependencies) {
+      for (const [packageName, version] of Object.entries(
+        componentConfig.dependencies,
+      )) {
+        // If a package appears multiple times, keep the first version encountered
+        if (!allDependencies[packageName]) {
+          allDependencies[packageName] = version;
+        }
+      }
+    }
+  }
+
+  // Install all dependencies at once
+  if (Object.keys(allDependencies).length > 0) {
+    console.log(`🔄 Installing all dependencies...`);
+    await installDependencies(config, allDependencies);
+  }
+
+  // Install hip dependencies and copy files for each component
   for (const componentConfig of componentConfigs) {
     console.log(`🔄 Installing ${componentConfig.name}`);
-    await installDependencies(config, componentConfig.dependencies);
     await installHipDependencies(config, componentConfig);
     await copyFiles(config, componentConfig);
     console.log(`✅ Installed ${componentConfig.name}\n`);

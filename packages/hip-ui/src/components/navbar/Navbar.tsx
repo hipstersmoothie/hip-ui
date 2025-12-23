@@ -9,17 +9,25 @@ import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
 import { Separator } from "../separator";
 import { primaryColor, uiColor } from "../theme/color.stylex";
-import {
-  breakpoints,
-  containerBreakpoints,
-} from "../theme/media-queries.stylex";
+import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
+  wrapper: {
+    borderBottomColor: uiColor.border1,
+    borderBottomStyle: "solid",
+    borderBottomWidth: 1,
+    zIndex: 1000,
+    width: "100%",
+    top: 0,
+  },
   navbar: {
+    marginLeft: "auto",
+    marginRight: "auto",
+    borderWidth: 0,
     maxWidth: "var(--page-content-max-width)",
     "--separator-visibility": {
       default: "none",
@@ -86,11 +94,7 @@ const styles = stylex.create({
       ":is([data-navbar-open]):has([data-navbar-action])": `min-content min-content min-content min-content`,
     },
     rowGap: spacing["8"],
-    zIndex: 1000,
-    borderBottomColor: uiColor.border1,
-    borderBottomStyle: "solid",
-    borderBottomWidth: 1,
-    height: {
+    minHeight: {
       default: spacing["14"],
       ":is([data-navbar-open])": "100%",
       [containerBreakpoints.sm]: spacing["14"],
@@ -108,7 +112,6 @@ const styles = stylex.create({
       [containerBreakpoints.sm]: spacing["8"],
     },
     paddingTop: spacing["3"],
-    top: 0,
     width: "100%",
   },
   logo: {
@@ -306,7 +309,7 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
 }
 
 export interface NavbarProps
-  extends StyleXComponentProps<React.ComponentProps<"nav">> {
+  extends StyleXComponentProps<React.ComponentProps<"div">> {
   size?: Size;
 }
 
@@ -325,22 +328,25 @@ export const Navbar = ({
 
   return (
     <SizeContext value={size}>
-      <nav
-        {...props}
-        data-navbar-open={isMobileMenuOpen || undefined}
-        {...stylex.props(styles.navbar, ui.bg, style)}
-      >
-        {children}
-        <Separator style={styles.separator as unknown as stylex.StyleXStyles} />
-        <IconButton
-          aria-label="Open menu"
-          variant="tertiary"
-          style={styles.hamburgerButton}
-          onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      <div {...props} {...stylex.props(styles.wrapper, style)}>
+        <nav
+          data-navbar-open={isMobileMenuOpen || undefined}
+          {...stylex.props(styles.navbar, ui.bg, style)}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
-        </IconButton>
-      </nav>
+          {children}
+          <Separator
+            style={styles.separator as unknown as stylex.StyleXStyles}
+          />
+          <IconButton
+            aria-label="Open menu"
+            variant="tertiary"
+            style={styles.hamburgerButton}
+            onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X /> : <Menu />}
+          </IconButton>
+        </nav>
+      </div>
     </SizeContext>
   );
 };
