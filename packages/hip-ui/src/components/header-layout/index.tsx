@@ -4,7 +4,8 @@ import * as stylex from "@stylexjs/stylex";
 
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
-import { uiColor } from "../theme/color.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
+import { primary } from "../theme/semantic-color.stylex";
 import { containerBreakpoints } from "../theme/media-queries.stylex";
 
 const styles = stylex.create({
@@ -47,6 +48,35 @@ const styles = stylex.create({
   },
   footer: {
     flexShrink: 0,
+  },
+  hero: {
+    width: "100%",
+    boxSizing: "border-box",
+    backgroundColor: primaryColor.solid1,
+    color: primaryColor.textContrast,
+    paddingTop: {
+      default: spacing["6"],
+      [containerBreakpoints.sm]: spacing["12"],
+    },
+    paddingBottom: {
+      default: spacing["6"],
+      [containerBreakpoints.sm]: spacing["12"],
+    },
+    paddingLeft: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
+    paddingRight: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
+  },
+  heroContent: {
+    maxWidth: "var(--page-content-max-width)",
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    boxSizing: "border-box",
   },
 });
 
@@ -93,13 +123,32 @@ export const HeaderLayoutPage = ({
  * Header layout footer component. Slot for footer content.
  */
 export interface HeaderLayoutFooterProps
-  extends StyleXComponentProps<React.ComponentProps<"footer">> {}
+  extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export const HeaderLayoutFooter = ({
   style,
   ...props
 }: HeaderLayoutFooterProps) => {
-  return <footer {...props} {...stylex.props(styles.footer, style)} />;
+  return <div {...props} {...stylex.props(styles.footer, style)} />;
+};
+
+/**
+ * Header layout hero component. Full-width section with primary background color.
+ * Content follows the max-width constraint.
+ */
+export interface HeaderLayoutHeroProps
+  extends StyleXComponentProps<React.ComponentProps<"section">> {}
+
+export const HeaderLayoutHero = ({
+  style,
+  children,
+  ...props
+}: HeaderLayoutHeroProps) => {
+  return (
+    <section {...props} {...stylex.props(styles.hero, style)}>
+      <div {...stylex.props(styles.heroContent)}>{children}</div>
+    </section>
+  );
 };
 
 /**
@@ -110,4 +159,5 @@ export const HeaderLayout = {
   Header: HeaderLayoutHeader,
   Page: HeaderLayoutPage,
   Footer: HeaderLayoutFooter,
+  Hero: HeaderLayoutHero,
 };

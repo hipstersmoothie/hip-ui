@@ -7,6 +7,7 @@ import { PropDocs } from '../../../lib/PropDocs'
 import { Example } from '../../../lib/Example'
 import { Basic } from '../../../examples/header-layout/basic'
 import { WithFooter } from '../../../examples/header-layout/with-footer'
+import { WithHero } from '../../../examples/header-layout/with-hero'
 import { Styled } from '../../../examples/header-layout/styled'
 
 <Example src={Styled} noPadding />
@@ -23,7 +24,7 @@ pnpm hip install header-layout
 
 This is a custom component built for page layouts with header, content, and footer slots.
 
-<PropDocs components={["HeaderLayoutRoot", "HeaderLayoutHeader", "HeaderLayoutPage", "HeaderLayoutFooter"]} />
+<PropDocs components={["HeaderLayoutRoot", "HeaderLayoutHeader", "HeaderLayoutPage", "HeaderLayoutFooter", "HeaderLayoutHero"]} />
 
 ## Features
 
@@ -38,6 +39,12 @@ A simple page layout with header and page content slots.
 Add a footer slot to your page layout.
 
 <Example src={WithFooter} noPadding />
+
+### With Hero
+
+Add a hero section with primary color background.
+
+<Example src={WithHero} noPadding />
 
 ## Related Components
 
