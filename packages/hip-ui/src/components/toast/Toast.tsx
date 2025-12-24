@@ -59,7 +59,7 @@ const styles = stylex.create({
     color: {
       default: uiColor.text1,
       ":is([data-variant=critical] *)": criticalColor.textContrast,
-      ":is([data-variant=success] *)": successColor.textContrast,
+      ":is([data-variant=success] *)": successColor.text2,
       ":is([data-variant=warning] *)": warningColor.text2,
     },
     fontWeight: 600,

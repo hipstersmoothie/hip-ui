@@ -1,9 +1,8 @@
 "use client";
 
-import type { ComponentProps } from "react";
-
 import { Cropper as OriginCropper } from "@origin-space/image-cropper";
 import * as stylex from "@stylexjs/stylex";
+import { useEffect, useRef, type ComponentProps } from "react";
 
 import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
@@ -75,13 +74,13 @@ export type CropArea = {
 export interface ImageCropperRootProps extends StyleXComponentProps<
   Omit<
     ComponentProps<typeof OriginCropper.Root>,
-    "className" | "style" | "children"
+    "className" | "style" | "children" | "onCropChange" | "image"
   >
 > {
   /**
    * URL of the image to crop.
    */
-  image: string;
+  image: string | Blob;
   /**
    * The desired width/height aspect ratio (e.g., 1, 1.5, 4/3, 16/9).
    * @default 1
@@ -120,7 +119,7 @@ export interface ImageCropperRootProps extends StyleXComponentProps<
    * Callback function triggered whenever the crop area changes.
    * Receives pixel data or null if invalid.
    */
-  onCropChange?: (pixels: CropArea | null) => void;
+  onCropChange?: (pixels: Blob | null) => void;
   /**
    * Callback function triggered when the zoom level changes interactively.
    * Essential for controlled zoom prop.
@@ -163,10 +162,31 @@ export function ImageCropperRoot({
   children,
   ...props
 }: ImageCropperRootProps) {
+  const imageUrlRef = useRef<string | null>(null);
+  const imageUrl =
+    typeof image === "string" ? image : URL.createObjectURL(image);
+
+  const handleError = () => {
+    onCropChange?.(null);
+  };
+
+  // Store the object URL for cleanup
+  useEffect(() => {
+    if (typeof image !== "string") {
+      imageUrlRef.current = imageUrl;
+    }
+    return () => {
+      if (imageUrlRef.current) {
+        URL.revokeObjectURL(imageUrlRef.current);
+        imageUrlRef.current = null;
+      }
+    };
+  }, [image, imageUrl]);
+
   return (
     <OriginCropper.Root
       {...props}
-      image={image}
+      image={imageUrl}
       aspectRatio={aspectRatio}
       cropPadding={cropPadding}
       minZoom={minZoom}
@@ -174,7 +194,54 @@ export function ImageCropperRoot({
       zoomSensitivity={zoomSensitivity}
       keyboardStep={keyboardStep}
       zoom={zoom}
-      onCropChange={onCropChange}
+      onCropChange={(crop) => {
+        if (!crop) {
+          onCropChange?.(null);
+          return;
+        }
+
+        // Load the image and crop it in a canvas
+        const img = new Image();
+        img.crossOrigin = "anonymous";
+
+        const handleLoad = () => {
+          const canvas = document.createElement("canvas");
+          canvas.width = crop.width;
+          canvas.height = crop.height;
+
+          const ctx = canvas.getContext("2d");
+          if (!ctx) {
+            onCropChange?.(null);
+            return;
+          }
+
+          // Draw the cropped portion of the image
+          ctx.drawImage(
+            img,
+            crop.x,
+            crop.y,
+            crop.width,
+            crop.height,
+            0,
+            0,
+            crop.width,
+            crop.height,
+          );
+
+          // Convert canvas to blob
+          canvas.toBlob(
+            (blob) => {
+              onCropChange?.(blob);
+            },
+            "image/png",
+            1,
+          );
+        };
+
+        img.addEventListener("load", handleLoad);
+        img.addEventListener("error", handleError);
+        img.src = imageUrl;
+      }}
       onZoomChange={onZoomChange}
       {...stylex.props(styles.root, style)}
     >

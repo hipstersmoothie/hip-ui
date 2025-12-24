@@ -7,6 +7,7 @@ import { PropDocs } from '../../../lib/PropDocs'
 import { Example } from '../../../lib/Example'
 import { Basic } from '../../../examples/image-cropper/basic'
 import { DialogExample } from '../../../examples/image-cropper/dialog'
+import { BlobExample } from '../../../examples/image-cropper/blob'
 
 <Example src={Basic} />
 
@@ -24,34 +25,18 @@ pnpm hip install image-cropper
 
 ## Example
 
+### Blob Data
+
+You can also use the image-cropper component with blob data.
+This is useful when you want to crop an image that is already loaded into the browser.
+
+<Example src={BlobExample} />
+
 ### In a Dialog
 
 <Example src={DialogExample} />
 
 ## Features
-
-### Interactive Cropping
-
-The ImageCropper component provides a fully interactive cropping experience:
-
-- **Zoom**: Use mouse wheel or pinch gestures to zoom in/out
-- **Pan**: Drag with mouse or touch to move the image
-- **Keyboard Navigation**: Use arrow keys to pan the image
-- **Aspect Ratio**: Enforce a specific aspect ratio for the crop area
-- **Controlled/Uncontrolled**: Manage zoom state internally or control it via props
-
-### Crop Data
-
-The `onCropChange` callback provides precise pixel coordinates of the cropped area relative to the original image:
-
-```typescript
-type CropArea = {
-  x: number;      // X coordinate of top-left corner
-  y: number;      // Y coordinate of top-left corner
-  width: number;  // Width of cropped area
-  height: number; // Height of cropped area
-}
-```
 
 ### Accessibility
 
