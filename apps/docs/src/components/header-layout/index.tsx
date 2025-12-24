@@ -62,6 +62,13 @@ const styles = stylex.create({
       default: spacing["6"],
       [containerBreakpoints.sm]: spacing["12"],
     },
+  },
+  heroContent: {
+    maxWidth: "var(--page-content-max-width)",
+    width: "100%",
+    marginLeft: "auto",
+    marginRight: "auto",
+    boxSizing: "border-box",
     paddingLeft: {
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
@@ -70,13 +77,6 @@ const styles = stylex.create({
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
     },
-  },
-  heroContent: {
-    maxWidth: "var(--page-content-max-width)",
-    width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    boxSizing: "border-box",
   },
 });
 

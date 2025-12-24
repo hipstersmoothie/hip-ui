@@ -1,27 +1,32 @@
+import type {
+  CellProps as AriaCellProps,
+  ColumnProps as AriaColumnProps,
+  RowProps as AriaRowProps,
+  TableBodyProps as AriaTableBodyProps,
+  TableHeaderProps as AriaTableHeaderProps,
+  TableProps as AriaTableProps,
+  DropIndicatorProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { ArrowDown, ArrowUp, GripVertical } from "lucide-react";
 import { use } from "react";
 import {
-  TableBodyProps as AriaTableBodyProps,
-  TableBody as AriaTableBody,
-  TableProps as AriaTableProps,
-  Table as AriaTable,
-  TableHeader as AriaTableHeader,
-  TableHeaderProps as AriaTableHeaderProps,
-  useTableOptions,
-  Column as AriaColumn,
-  Collection,
-  Row as AriaRow,
-  RowProps as AriaRowProps,
   Cell as AriaCell,
-  ColumnProps as AriaColumnProps,
-  CellProps as AriaCellProps,
+  Column as AriaColumn,
+  Row as AriaRow,
+  Table as AriaTable,
+  TableBody as AriaTableBody,
+  TableHeader as AriaTableHeader,
+  Collection,
   ColumnResizer,
-  DropIndicatorProps,
   DropIndicator,
   TableLayout,
   Virtualizer,
+  useTableOptions,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
@@ -29,7 +34,6 @@ import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { LabelText } from "../typography";
 
 const styles = stylex.create({
@@ -41,6 +45,9 @@ const styles = stylex.create({
     backgroundColor: {
       default: uiColor.bg,
       ":has(td:hover)": uiColor.bgSubtle,
+    },
+    cursor: {
+      ":is([data-href])": "pointer",
     },
   },
   column: {
@@ -56,7 +63,7 @@ const styles = stylex.create({
     justifyContent: "space-between",
     paddingLeft: {
       default: spacing["2"],
-      ":is(:first-child)": 0,
+      ":is(:first-child > *)": spacing["2"],
     },
   },
   tableBody: {},
@@ -87,12 +94,12 @@ const styles = stylex.create({
       ":is([data-table-size=md] *)": spacing["2"],
     },
     paddingLeft: {
-      default: spacing["2"],
+      default: spacing["4"],
       ":is([data-table-size=lg] *:not(:first-child))": spacing["4"],
       ":is([data-table-size=md] *:not(:first-child))": spacing["3"],
     },
     paddingRight: {
-      default: spacing["2"],
+      default: spacing["4"],
       ":is([data-table-size=lg] *:not(:last-child))": spacing["4"],
       ":is([data-table-size=md] *:not(:last-child))": spacing["3"],
     },
@@ -175,7 +182,13 @@ export const Table = ({
   ...props
 }: TableProps) => {
   const size = sizeProp || use(SizeContext);
-  let table = <AriaTable {...props} {...stylex.props(styles.table, style)} />;
+  let table = (
+    <AriaTable
+      {...props}
+      {...stylex.props(styles.table, style)}
+      data-table-size={size}
+    />
+  );
 
   if (isVirtualized) {
     table = (
@@ -212,29 +225,31 @@ export function TableColumn({
   return (
     <AriaColumn {...props} {...stylex.props(styles.column, style)}>
       {({ allowsSorting, sortDirection }) => (
-        <div {...stylex.props(styles.columnHeader, styles.cellContent)}>
-          <Flex align="center" gap="1">
-            <LabelText
-              tabIndex={hasResizer ? -1 : undefined}
-              hasEllipsis={hasEllipsis}
-            >
-              {children}
-            </LabelText>
-            {allowsSorting && (
-              <span aria-hidden="true" className="sort-indicator">
-                {sortDirection === "ascending" ? (
-                  <ArrowUp size={14} />
-                ) : sortDirection === "descending" ? (
-                  <ArrowDown size={14} />
-                ) : null}
-              </span>
+        <div {...stylex.props(styles.columnHeader)}>
+          <div {...stylex.props(styles.cellContent, styles.columnHeader)}>
+            <Flex align="center" gap="1">
+              <LabelText
+                tabIndex={hasResizer ? -1 : undefined}
+                hasEllipsis={hasEllipsis}
+              >
+                {children}
+              </LabelText>
+              {allowsSorting && (
+                <span aria-hidden="true" className="sort-indicator">
+                  {sortDirection === "ascending" ? (
+                    <ArrowUp size={14} />
+                  ) : sortDirection === "descending" ? (
+                    <ArrowDown size={14} />
+                  ) : null}
+                </span>
+              )}
+            </Flex>
+            {hasResizer && (
+              <ColumnResizer {...stylex.props(styles.resizer)}>
+                <div {...stylex.props(styles.resizerLine)} />
+              </ColumnResizer>
             )}
-          </Flex>
-          {hasResizer && (
-            <ColumnResizer {...stylex.props(styles.resizer)}>
-              <div {...stylex.props(styles.resizerLine)} />
-            </ColumnResizer>
-          )}
+          </div>
         </div>
       )}
     </AriaColumn>

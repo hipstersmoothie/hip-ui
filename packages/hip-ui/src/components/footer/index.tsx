@@ -1,56 +1,37 @@
 "use client";
 
+import type { LinkProps as AriaLinkProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
-import {
-  LinkProps as AriaLinkProps,
-  Link as AriaLink,
-} from "react-aria-components";
+import { Link as AriaLink } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { Button } from "../button";
 import { TextField } from "../text-field";
+import { animationDuration } from "../theme/animations.stylex";
+import { uiColor } from "../theme/color.stylex";
 import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
-import { uiColor } from "../theme/color.stylex";
 
 const styles = stylex.create({
   root: {
+    backgroundColor: uiColor.bgSubtle,
+    boxSizing: "border-box",
+    containerType: "inline-size",
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
     width: "100%",
-    boxSizing: "border-box",
-    backgroundColor: uiColor.bgSubtle,
-    containerType: "inline-size",
   },
   footerSectionWrapper: {
-    borderTopWidth: 1,
-    borderTopStyle: "solid",
     borderTopColor: uiColor.border1,
+    borderTopStyle: "solid",
+    borderTopWidth: 1,
   },
   footerSection: {
     borderWidth: 0,
-    maxWidth: "var(--page-content-max-width)",
-    marginLeft: "auto",
-    marginRight: "auto",
-    paddingTop: spacing["6"],
-    paddingBottom: spacing["6"],
-    paddingLeft: {
-      default: spacing["4"],
-      [containerBreakpoints.sm]: spacing["8"],
-    },
-    paddingRight: {
-      default: spacing["4"],
-      [containerBreakpoints.sm]: spacing["8"],
-    },
-    display: "flex",
-    flexDirection: {
-      default: "column",
-      [containerBreakpoints.sm]: "row",
-      ":is([data-footer-centered] *)": "column !important",
-    },
-    justifyContent: "space-between",
     gap: {
       default: spacing["8"],
       [containerBreakpoints.sm]: spacing["4"],
@@ -61,79 +42,100 @@ const styles = stylex.create({
       ":is([data-footer-centered] *)": "center",
       [containerBreakpoints.sm]: "center",
     },
+    display: "flex",
+    flexDirection: {
+      default: "column",
+      [containerBreakpoints.sm]: "row",
+      // eslint-disable-next-line @stylexjs/valid-styles
+      ":is([data-footer-centered] *)": "column !important",
+    },
+    justifyContent: "space-between",
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "var(--page-content-max-width)",
+    paddingBottom: spacing["6"],
+    paddingLeft: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
+    paddingRight: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
+    paddingTop: spacing["6"],
   },
   navSection: {
+    columnGap: spacing["8"],
     display: "grid",
     gridTemplateColumns: {
       default: "repeat(2, 1fr)",
       [containerBreakpoints.sm]: "repeat(4, 1fr)",
     },
-    columnGap: spacing["8"],
     rowGap: spacing["6"],
   },
   section: {
-    display: "flex",
-    flexDirection: "column",
     gap: spacing["2"],
     alignItems: {
       ":is([data-footer-centered] *)": "center",
     },
-  },
-  sectionTitle: {
-    fontSize: fontSize["sm"],
-    fontWeight: fontWeight["semibold"],
-    textTransform: "uppercase",
-    letterSpacing: "0.05em",
-    margin: 0,
-  },
-  sectionContent: {
     display: "flex",
     flexDirection: "column",
+  },
+  sectionTitle: {
+    margin: 0,
+    fontSize: fontSize["sm"],
+    fontWeight: fontWeight["semibold"],
+    letterSpacing: "0.05em",
+    textTransform: "uppercase",
+  },
+  sectionContent: {
     gap: spacing["1.5"],
     alignItems: {
       ":is([data-footer-centered] *)": "center",
     },
+    display: "flex",
+    flexDirection: "column",
   },
   copyright: {
-    fontSize: fontSize["xs"],
     margin: 0,
+    fontSize: fontSize["xs"],
   },
   socialLinkList: {
-    display: "flex",
-    flexDirection: "row",
     gap: spacing["4"],
     alignItems: "center",
+    display: "flex",
+    flexDirection: "row",
   },
   socialLinkItem: {
-    display: "inline-flex",
-    alignItems: "center",
-    justifyContent: "center",
-    color: {
-      default: uiColor.text1,
-      ":hover": uiColor.text2,
-    },
-    transitionProperty: "color",
-    transitionDuration: "150ms",
-    transitionTimingFunction: "ease-in-out",
-    cursor: "pointer",
-    textDecoration: "none",
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       height: spacing["5"],
       width: spacing["5"],
     },
+    textDecoration: "none",
+    alignItems: "center",
+    color: {
+      default: uiColor.text1,
+      ":hover": uiColor.text2,
+    },
+    cursor: "pointer",
+    display: "inline-flex",
+    justifyContent: "center",
+    transitionDuration: animationDuration.fast,
+    transitionProperty: "color",
+    transitionTimingFunction: "ease-in-out",
   },
   logo: {
-    display: "flex",
     alignItems: "center",
-    justifyContent: "center",
     alignSelf: {
       default: "start",
       ":is([data-footer-centered] *)": "center",
     },
+    display: "flex",
+    justifyContent: "center",
   },
   subscribe: {
-    display: "grid",
+    gap: spacing["2"],
     gridTemplateAreas: {
       default: `
         "title"
@@ -145,34 +147,34 @@ const styles = stylex.create({
         "description input"
       `,
     },
-    gridTemplateColumns: {
-      default: "1fr",
-      ":is([data-subscribe-variant=horizontal])": "1fr auto",
-    },
-    gap: spacing["2"],
     alignItems: {
       default: "stretch",
       ":is([data-subscribe-variant=horizontal])": "center",
     },
+    display: "grid",
+    gridTemplateColumns: {
+      default: "1fr",
+      ":is([data-subscribe-variant=horizontal])": "1fr auto",
+    },
   },
   subscribeTitle: {
     gridArea: "title",
+    margin: 0,
     fontSize: fontSize["sm"],
     fontWeight: fontWeight["semibold"],
-    margin: 0,
   },
   subscribeDescription: {
     gridArea: "description",
-    fontSize: fontSize["sm"],
     margin: 0,
+    fontSize: fontSize["sm"],
     marginBottom: spacing["2"],
   },
   subscribeInput: {
     gridArea: "input",
-    display: "flex",
-    flexDirection: "row",
     gap: spacing["2"],
     alignItems: "flex-start",
+    display: "flex",
+    flexDirection: "row",
   },
   subscribeInputField: {
     flex: "1",
@@ -481,9 +483,7 @@ export const FooterSubscribeInput = ({
   );
 };
 
-/**
- * Footer component with subcomponents.
- */
+// eslint-disable-next-line react-refresh/only-export-components
 export const Footer = {
   Root: FooterRoot,
   Logo: FooterLogo,

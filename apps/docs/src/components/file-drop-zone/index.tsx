@@ -4,15 +4,23 @@ import * as stylex from "@stylexjs/stylex";
 import {
   FileTrigger as AriaFileTrigger,
   FileTriggerProps as AriaFileTriggerProps,
+  Button,
+  ButtonProps,
   DropItem,
   DropZone,
   DropZoneProps,
 } from "react-aria-components";
 
+import {
+  animationDuration,
+  animationTimingFunction,
+} from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
+import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
 
 async function getFiles(items: DropItem[]): Promise<File[]> {
   return Promise.all(
@@ -38,16 +46,31 @@ const styles = stylex.create({
       ":is([data-drop-target])": "solid",
     },
     borderWidth: 2,
+    overflow: "hidden",
     backgroundColor: {
       default: uiColor.bgSubtle,
       ":is([data-drop-target])": primaryColor.component1,
     },
     boxSizing: "border-box",
+    position: "relative",
 
     alignItems: "center",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+  },
+  defaultTrigger: {
+    inset: 0,
+    borderWidth: 0,
+    backgroundColor: "transparent",
+    opacity: {
+      default: 0,
+      ":is([data-hovered])": 0.5,
+    },
+    position: "absolute",
+    transitionDuration: animationDuration.default,
+    transitionProperty: "opacity",
+    transitionTimingFunction: animationTimingFunction.easeInOut,
   },
 });
 
@@ -102,5 +125,22 @@ export const FileDropZone = ({
         );
       }}
     </DropZone>
+  );
+};
+
+interface FileDropDefaultTriggerProps extends StyleXComponentProps<ButtonProps> {}
+
+export const FileDropDefaultTrigger = ({
+  children,
+  style,
+  ...props
+}: FileDropDefaultTriggerProps) => {
+  return (
+    <Button
+      {...stylex.props(styles.defaultTrigger, ui.bgGhost, style)}
+      {...props}
+    >
+      {children}
+    </Button>
   );
 };

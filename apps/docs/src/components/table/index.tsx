@@ -42,6 +42,9 @@ const styles = stylex.create({
       default: uiColor.bg,
       ":has(td:hover)": uiColor.bgSubtle,
     },
+    cursor: {
+      ":is([data-href])": "pointer",
+    },
   },
   column: {
     padding: 0,

@@ -1,7 +1,15 @@
 import * as stylex from "@stylexjs/stylex";
 import { use, useLayoutEffect, useState } from "react";
+import {
+  Button as AriaButton,
+  ButtonProps as AriaButtonProps,
+} from "react-aria-components";
 
 import { SizeContext } from "../context";
+import {
+  animationDuration,
+  animationTimingFunction,
+} from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
@@ -24,6 +32,7 @@ const styles = stylex.create({
     backgroundColor: uiColor.component1,
     display: "flex",
     justifyContent: "center",
+    position: "relative",
 
     // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
@@ -83,6 +92,30 @@ const styles = stylex.create({
   },
   fallbackXl: {
     fontSize: fontSize["xl"],
+  },
+  buttonWrapper: {
+    margin: 0,
+    padding: 0,
+    borderWidth: 0,
+    backgroundColor: "transparent",
+    cursor: "pointer",
+    display: "inline-block",
+  },
+  overlay: {
+    backgroundColor: uiColor.solid2,
+    opacity: {
+      default: 0,
+      ":is([data-avatar-button][data-hovered] *)": 0.5,
+    },
+    pointerEvents: "none",
+    position: "absolute",
+    transitionDuration: animationDuration.default,
+    transitionProperty: "opacity",
+    transitionTimingFunction: animationTimingFunction.easeOut,
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: 0,
   },
 });
 
@@ -159,6 +192,43 @@ export function Avatar({
           {fallback}
         </div>
       )}
+      <div {...stylex.props(styles.overlay)} />
     </div>
+  );
+}
+
+export interface AvatarButtonProps
+  extends
+    StyleXComponentProps<AriaButtonProps>,
+    Pick<AvatarProps, "size" | "src" | "alt" | "fallback"> {
+  /** The style for the avatar. */
+  avatarStyle?: AvatarProps["style"];
+}
+
+export function AvatarButton({
+  avatarStyle,
+  style,
+  size: sizeProp,
+  src,
+  alt,
+  fallback,
+  ...buttonProps
+}: AvatarButtonProps) {
+  const size = sizeProp || use(SizeContext);
+  const avatarProps: AvatarProps = {
+    src,
+    alt,
+    fallback,
+    size,
+  };
+
+  return (
+    <AriaButton
+      data-avatar-button
+      {...buttonProps}
+      {...stylex.props(styles.buttonWrapper, style)}
+    >
+      <Avatar {...avatarProps} size={size} style={avatarStyle} />
+    </AriaButton>
   );
 }

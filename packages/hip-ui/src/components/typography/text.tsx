@@ -1,7 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 
+import type { TextVariant, ThemeKeys } from "../theme/types";
+
 import { criticalColor, uiColor } from "../theme/color.stylex";
-import { TextVariant, ThemeKeys } from "../theme/types";
 import {
   fontFamily,
   fontSize,
@@ -76,7 +77,7 @@ interface TextProps extends Omit<
   React.ComponentProps<"span">,
   "style" | "className"
 > {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  style?: stylex.StyleXStyles | Array<stylex.StyleXStyles>;
   font?: ThemeKeys<typeof fontFamily>;
   weight?: ThemeKeys<typeof fontWeight>;
   size?: ThemeKeys<typeof fontSize>;
@@ -94,7 +95,7 @@ export const Text = ({
   weight,
   size,
   leading,
-  tracking,
+  tracking: trackingProp,
   variant,
   strikethrough = false,
   align,
@@ -109,7 +110,7 @@ export const Text = ({
         weight && styles[weight],
         size && styles[`font-${size}`],
         leading && styles[`leading-${leading}`],
-        tracking && styles[`tracking-${tracking}`],
+        trackingProp && styles[`tracking-${trackingProp}`],
         variant && styles[`variant-${variant}`],
         strikethrough && styles.strikethrough,
         align && styles[align],

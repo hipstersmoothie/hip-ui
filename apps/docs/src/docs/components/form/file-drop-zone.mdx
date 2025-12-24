@@ -6,6 +6,7 @@ description: A file drop zone component for drag and drop file uploads.
 import { PropDocs } from '../../../lib/PropDocs'
 import { Example } from '../../../lib/Example'
 import { Basic } from '../../../examples/file-drop-zone/basic'
+import { DefaultTrigger } from '../../../examples/file-drop-zone/default-trigger'
 
 <Example src={Basic} />
 
@@ -22,6 +23,14 @@ pnpm hip install file-drop-zone
 This component is built using the [React Aria DropZone](https://react-spectrum.adobe.com/react-aria/DropZone.html) and [React Aria FileTrigger](https://react-spectrum.adobe.com/react-spectrum/FileTrigger.html#filetrigger).
 
 <PropDocs components={["FileDropZone"]} />
+
+## Features
+
+### Default Trigger
+
+Use `FileDropDefaultTrigger` to make the entire drop zone area clickable. The trigger button is positioned absolutely to cover the entire drop zone.
+
+<Example src={DefaultTrigger} />
 
 ## Related Components
 
