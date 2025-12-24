@@ -120,8 +120,9 @@ export function ErrorMessage({
   );
 }
 
-export interface FieldErrorMessageProps
-  extends StyleXComponentProps<Omit<FieldErrorProps, "children">> {
+export interface FieldErrorMessageProps extends StyleXComponentProps<
+  Omit<FieldErrorProps, "children">
+> {
   children?: string | ((validation: ValidationResult) => string) | undefined;
 }
 

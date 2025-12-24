@@ -68,8 +68,9 @@ const styles = stylex.create({
   },
 });
 
-export interface BadgeProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface BadgeProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   size?: Extract<Size, "sm" | "md">;
   variant?: "primary" | "default" | "warning" | "critical" | "success";
 }

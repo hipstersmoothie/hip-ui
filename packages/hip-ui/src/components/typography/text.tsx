@@ -72,8 +72,10 @@ const styles = stylex.create({
   },
 });
 
-interface TextProps
-  extends Omit<React.ComponentProps<"span">, "style" | "className"> {
+interface TextProps extends Omit<
+  React.ComponentProps<"span">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   font?: ThemeKeys<typeof fontFamily>;
   weight?: ThemeKeys<typeof fontWeight>;

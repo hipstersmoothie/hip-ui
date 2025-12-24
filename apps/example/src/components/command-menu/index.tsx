@@ -40,7 +40,8 @@ const styles = stylex.create({
 });
 
 export interface CommandMenuProps<T extends object>
-  extends OverlayTriggerProps,
+  extends
+    OverlayTriggerProps,
     Pick<InputProps, "placeholder">,
     AriaAutocompleteProps<T> {
   children: React.ReactNode;
@@ -66,7 +67,7 @@ export function CommandMenu<T extends object>({
   const [isOpen, setIsOpen] = useControlledState(
     isOpenProp,
     defaultOpen ?? false,
-    onOpenChange
+    onOpenChange,
   );
   const onClose = useEffectEvent(() => {
     setIsOpen(false);

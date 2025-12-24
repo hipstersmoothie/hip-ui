@@ -84,8 +84,10 @@ const styles = stylex.create({
   },
 });
 
-interface RadioGroupProps
-  extends Omit<AriaRadioGroupProps, "children" | "style" | "className"> {
+interface RadioGroupProps extends Omit<
+  AriaRadioGroupProps,
+  "children" | "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children?: React.ReactNode;
   label?: React.ReactNode;
@@ -115,8 +117,10 @@ export function RadioGroup({
   );
 }
 
-export interface RadioProps
-  extends Omit<AriaRadioProps, "className" | "style" | "children"> {
+export interface RadioProps extends Omit<
+  AriaRadioProps,
+  "className" | "style" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children?: React.ReactNode;
 }

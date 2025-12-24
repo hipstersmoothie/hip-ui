@@ -52,7 +52,8 @@ const styles = stylex.create({
 });
 
 interface FileDropZoneProps
-  extends Omit<AriaFileTriggerProps, "className" | "style">,
+  extends
+    Omit<AriaFileTriggerProps, "className" | "style">,
     Pick<DropZoneProps, "isDisabled"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   onAddFiles?: (files: File[]) => void;

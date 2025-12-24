@@ -9,8 +9,10 @@ import {
 import { useButtonStyles } from "../theme/useButtonStyles";
 import { Size, ButtonVariant } from "../types";
 
-export interface ButtonProps
-  extends Omit<AriaButtonProps, "className" | "style"> {
+export interface ButtonProps extends Omit<
+  AriaButtonProps,
+  "className" | "style"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: ButtonVariant;
   size?: Size;

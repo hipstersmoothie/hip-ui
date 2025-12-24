@@ -108,8 +108,9 @@ const styles = stylex.create({
   },
 });
 
-export interface ProgressCircleProps
-  extends StyleXComponentProps<Omit<AriaProgressBarProps, "children">> {
+export interface ProgressCircleProps extends StyleXComponentProps<
+  Omit<AriaProgressBarProps, "children">
+> {
   label?: string;
   size?: Size;
 }

@@ -56,8 +56,9 @@ type ListBoxVariant = "default" | "checkbox";
 
 const ListboxVariantContext = createContext<ListBoxVariant>("default");
 
-export interface ListBoxProps<T extends object>
-  extends StyleXComponentProps<AriaListBoxProps<T>> {
+export interface ListBoxProps<T extends object> extends StyleXComponentProps<
+  AriaListBoxProps<T>
+> {
   size?: Size;
   items?: Iterable<T>;
   children: React.ReactNode | ((item: T) => React.ReactNode);
@@ -95,8 +96,9 @@ export function ListBox<T extends object>({
   );
 }
 
-export interface ListBoxItemProps
-  extends StyleXComponentProps<Omit<AriaListBoxItemProps, "children">> {
+export interface ListBoxItemProps extends StyleXComponentProps<
+  Omit<AriaListBoxItemProps, "children">
+> {
   children: React.ReactNode;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -165,8 +167,9 @@ export function ListBoxItem({
   );
 }
 
-export interface ListBoxSectionProps<T extends object>
-  extends StyleXComponentProps<AriaListBoxSectionProps<T>> {
+export interface ListBoxSectionProps<
+  T extends object,
+> extends StyleXComponentProps<AriaListBoxSectionProps<T>> {
   children: React.ReactNode;
 }
 
@@ -177,15 +180,15 @@ export function ListBoxSection<T extends object>({
   return <AriaListBoxSection {...props} {...stylex.props(style)} />;
 }
 
-export interface ListBoxSeparatorProps
-  extends StyleXComponentProps<SeparatorProps> {}
+export interface ListBoxSeparatorProps extends StyleXComponentProps<SeparatorProps> {}
 
 export function ListBoxSeparator({ style, ...props }: ListBoxSeparatorProps) {
   return <Separator {...props} style={[styles.separator, style]} />;
 }
 
-export interface ListBoxSectionHeaderProps
-  extends StyleXComponentProps<React.HTMLAttributes<HTMLElement>> {}
+export interface ListBoxSectionHeaderProps extends StyleXComponentProps<
+  React.HTMLAttributes<HTMLElement>
+> {}
 
 export function ListBoxSectionHeader({
   style,

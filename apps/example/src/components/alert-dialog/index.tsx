@@ -89,8 +89,10 @@ export const AlertDialog = ({
   );
 };
 
-export interface AlertDialogHeaderProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface AlertDialogHeaderProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -108,8 +110,10 @@ export const AlertDialogHeader = ({
   );
 };
 
-export interface AlertDialogDescriptionProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface AlertDialogDescriptionProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -124,8 +128,10 @@ export const AlertDialogDescription = ({
   );
 };
 
-export interface AlertDialogFooterProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface AlertDialogFooterProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 

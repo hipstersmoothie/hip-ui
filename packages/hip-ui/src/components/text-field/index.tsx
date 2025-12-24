@@ -129,7 +129,8 @@ function TextFieldContent({
 }
 
 export interface TextFieldProps
-  extends StyleXComponentProps<Omit<AriaTextFieldProps, "isInvalid">>,
+  extends
+    StyleXComponentProps<Omit<AriaTextFieldProps, "isInvalid">>,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;
   description?: string;

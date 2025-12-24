@@ -165,9 +165,8 @@ function SelectContent<T extends object>({
 }
 
 export interface SelectProps<T extends object, M extends "single" | "multiple">
-  extends StyleXComponentProps<
-      Omit<AriaSelectProps<T, M>, "children" | "isInvalid">
-    >,
+  extends
+    StyleXComponentProps<Omit<AriaSelectProps<T, M>, "children" | "isInvalid">>,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"

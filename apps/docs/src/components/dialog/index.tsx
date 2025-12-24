@@ -100,8 +100,9 @@ export const Dialog = ({
   );
 };
 
-export interface DialogHeaderProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DialogHeaderProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DialogHeader = ({ children, style }: DialogHeaderProps) => {
   return (
@@ -114,8 +115,9 @@ export const DialogHeader = ({ children, style }: DialogHeaderProps) => {
   );
 };
 
-export interface DialogDescriptionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DialogDescriptionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DialogDescription = ({
   children,
@@ -128,15 +130,17 @@ export const DialogDescription = ({
   );
 };
 
-export interface DialogBodyProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DialogBodyProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DialogBody = ({ children, style }: DialogBodyProps) => {
   return <div {...stylex.props(styles.body, style)}>{children}</div>;
 };
 
-export interface DialogFooterProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DialogFooterProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DialogFooter = ({ children, style }: DialogFooterProps) => {
   return <div {...stylex.props(styles.footer, style)}>{children}</div>;

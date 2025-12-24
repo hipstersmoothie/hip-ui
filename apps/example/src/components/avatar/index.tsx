@@ -70,11 +70,10 @@ const styles = stylex.create({
   },
 });
 
-export interface AvatarProps
-  extends Omit<
-    React.ComponentProps<"div">,
-    "style" | "className" | "children"
-  > {
+export interface AvatarProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   src: string;
   alt?: string;

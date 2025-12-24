@@ -17,4 +17,3 @@ export const alertConfig: ComponentConfig = {
     "lucide-react": "^0.263.1",
   },
 };
-

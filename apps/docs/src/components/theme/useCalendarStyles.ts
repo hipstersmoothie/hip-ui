@@ -14,7 +14,8 @@ import { spacing } from "../theme/spacing.stylex";
 import { fontSize, fontWeight } from "./typography.stylex";
 
 export interface CalendarProps<T extends DateValue>
-  extends StyleXComponentProps<AriaCalendarProps<T>>,
+  extends
+    StyleXComponentProps<AriaCalendarProps<T>>,
     Pick<CalendarGridProps, "weekdayStyle"> {
   errorMessage?: string;
 }

@@ -155,9 +155,8 @@ function ComboBoxContent<T extends object>({
 }
 
 export interface ComboBoxProps<T extends object>
-  extends StyleXComponentProps<
-      Omit<AriaComboBoxProps<T>, "children" | "isInvalid">
-    >,
+  extends
+    StyleXComponentProps<Omit<AriaComboBoxProps<T>, "children" | "isInvalid">>,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"

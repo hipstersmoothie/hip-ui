@@ -14,8 +14,10 @@ import { Description, Label } from "../label";
 import { useInputStyles } from "../theme/useInputStyles";
 import { Size } from "../types";
 
-export interface TimeFieldProps<T extends TimeValue>
-  extends Omit<AriaTimeFieldProps<T>, "style" | "className"> {
+export interface TimeFieldProps<T extends TimeValue> extends Omit<
+  AriaTimeFieldProps<T>,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;
   description?: string;

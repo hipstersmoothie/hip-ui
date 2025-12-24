@@ -98,8 +98,9 @@ export const AlertDialog = ({
   );
 };
 
-export interface AlertDialogHeaderProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface AlertDialogHeaderProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const AlertDialogHeader = ({
   children,
@@ -115,8 +116,9 @@ export const AlertDialogHeader = ({
   );
 };
 
-export interface AlertDialogDescriptionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface AlertDialogDescriptionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const AlertDialogDescription = ({
   children,
@@ -129,8 +131,9 @@ export const AlertDialogDescription = ({
   );
 };
 
-export interface AlertDialogFooterProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface AlertDialogFooterProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const AlertDialogFooter = ({
   children,

@@ -1,5 +1,10 @@
 import { HeaderLayout } from "@/components/header-layout";
-import { Navbar, NavbarLogo, NavbarNavigation, NavbarLink } from "@/components/navbar";
+import {
+  Navbar,
+  NavbarLogo,
+  NavbarNavigation,
+  NavbarLink,
+} from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
 function Logo() {
@@ -47,4 +52,3 @@ export function WithFooter() {
     </HeaderLayout.Root>
   );
 }
-

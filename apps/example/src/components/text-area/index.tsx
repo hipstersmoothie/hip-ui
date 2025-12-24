@@ -112,7 +112,8 @@ const styles = stylex.create({
 });
 
 export interface TextAreaProps
-  extends Omit<TextFieldProps, "style" | "className">,
+  extends
+    Omit<TextFieldProps, "style" | "className">,
     Pick<AriaTextAreaProps, "rows">,
     Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];

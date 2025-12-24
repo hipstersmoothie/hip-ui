@@ -34,10 +34,9 @@ const styles = stylex.create({
   },
 });
 
-export interface ColorWheelProps
-  extends StyleXComponentProps<
-    Omit<AriaColorWheelProps, "children" | "outerRadius" | "innerRadius">
-  > {
+export interface ColorWheelProps extends StyleXComponentProps<
+  Omit<AriaColorWheelProps, "children" | "outerRadius" | "innerRadius">
+> {
   size?: Size;
   width: number;
 }

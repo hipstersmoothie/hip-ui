@@ -74,48 +74,54 @@ const styles = stylex.create({
   },
 });
 
-export interface Heading1Props
-  extends StyleXComponentProps<React.ComponentProps<"h1">> {}
+export interface Heading1Props extends StyleXComponentProps<
+  React.ComponentProps<"h1">
+> {}
 
 export const Heading1 = ({ style, ...props }: Heading1Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h1 {...props} {...stylex.props(typeramp.heading1, style)} />;
 };
 
-export interface Heading2Props
-  extends StyleXComponentProps<React.ComponentProps<"h2">> {}
+export interface Heading2Props extends StyleXComponentProps<
+  React.ComponentProps<"h2">
+> {}
 
 export const Heading2 = ({ style, ...props }: Heading2Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h2 {...props} {...stylex.props(typeramp.heading2, style)} />;
 };
 
-export interface Heading3Props
-  extends StyleXComponentProps<React.ComponentProps<"h3">> {}
+export interface Heading3Props extends StyleXComponentProps<
+  React.ComponentProps<"h3">
+> {}
 
 export const Heading3 = ({ style, ...props }: Heading3Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h3 {...props} {...stylex.props(typeramp.heading3, style)} />;
 };
 
-export interface Heading4Props
-  extends StyleXComponentProps<React.ComponentProps<"h4">> {}
+export interface Heading4Props extends StyleXComponentProps<
+  React.ComponentProps<"h4">
+> {}
 
 export const Heading4 = ({ style, ...props }: Heading4Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h4 {...props} {...stylex.props(typeramp.heading4, style)} />;
 };
 
-export interface Heading5Props
-  extends StyleXComponentProps<React.ComponentProps<"h5">> {}
+export interface Heading5Props extends StyleXComponentProps<
+  React.ComponentProps<"h5">
+> {}
 
 export const Heading5 = ({ style, ...props }: Heading5Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
   return <h5 {...props} {...stylex.props(typeramp.heading5, style)} />;
 };
 
-export interface BodyProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {
+export interface BodyProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {
   variant?: TextVariant;
 }
 
@@ -146,8 +152,9 @@ export const Body = ({ style, variant = "primary", ...props }: BodyProps) => {
   );
 };
 
-export interface SmallBodyProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {
+export interface SmallBodyProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {
   variant?: TextVariant;
 }
 
@@ -182,8 +189,9 @@ export const SmallBody = ({
   );
 };
 
-interface LabelTextProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {
+interface LabelTextProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {
   variant?: TextVariant;
   hasEllipsis?: boolean;
 }
@@ -208,8 +216,9 @@ export const LabelText = ({
   );
 };
 
-interface SubLabelProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {
+interface SubLabelProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {
   variant?: TextVariant;
 }
 
@@ -244,29 +253,33 @@ export const SubLabel = ({
   );
 };
 
-export interface BlockquoteProps
-  extends StyleXComponentProps<React.ComponentProps<"blockquote">> {}
+export interface BlockquoteProps extends StyleXComponentProps<
+  React.ComponentProps<"blockquote">
+> {}
 
 export const Blockquote = ({ style, ...props }: BlockquoteProps) => {
   return <blockquote {...props} {...stylex.props(styles.blockquote, style)} />;
 };
 
-export interface UnorderedListProps
-  extends StyleXComponentProps<React.ComponentProps<"ul">> {}
+export interface UnorderedListProps extends StyleXComponentProps<
+  React.ComponentProps<"ul">
+> {}
 
 export const UnorderedList = ({ style, ...props }: UnorderedListProps) => {
   return <ul {...props} {...stylex.props(styles.unorderedList, style)} />;
 };
 
-export interface OrderedListProps
-  extends StyleXComponentProps<React.ComponentProps<"ol">> {}
+export interface OrderedListProps extends StyleXComponentProps<
+  React.ComponentProps<"ol">
+> {}
 
 export const OrderedList = ({ style, ...props }: OrderedListProps) => {
   return <ol {...props} {...stylex.props(styles.orderedList, style)} />;
 };
 
-export interface ListItemProps
-  extends StyleXComponentProps<React.ComponentProps<"li">> {}
+export interface ListItemProps extends StyleXComponentProps<
+  React.ComponentProps<"li">
+> {}
 
 export const ListItem = ({ style, children, ...props }: ListItemProps) => {
   return (
@@ -276,8 +289,9 @@ export const ListItem = ({ style, children, ...props }: ListItemProps) => {
   );
 };
 
-export interface InlineCodeProps
-  extends StyleXComponentProps<React.ComponentProps<"code">> {}
+export interface InlineCodeProps extends StyleXComponentProps<
+  React.ComponentProps<"code">
+> {}
 
 export const InlineCode = ({ style, ...props }: InlineCodeProps) => {
   return (

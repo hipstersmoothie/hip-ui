@@ -48,8 +48,10 @@ const styles = stylex.create({
   },
 });
 
-export interface ListBoxProps<T extends object>
-  extends Omit<AriaListBoxProps<T>, "style" | "className"> {
+export interface ListBoxProps<T extends object> extends Omit<
+  AriaListBoxProps<T>,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   size?: Size;
   items?: Iterable<T>;
@@ -70,8 +72,10 @@ export function ListBox<T extends object>({
   );
 }
 
-export interface ListBoxItemProps
-  extends Omit<AriaListBoxItemProps, "style" | "className" | "children"> {
+export interface ListBoxItemProps extends Omit<
+  AriaListBoxItemProps,
+  "style" | "className" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode;
   prefix?: React.ReactNode;
@@ -114,8 +118,10 @@ export function ListBoxItem({
   );
 }
 
-export interface ListBoxSectionProps<T extends object>
-  extends Omit<AriaListBoxSectionProps<T>, "style" | "className"> {
+export interface ListBoxSectionProps<T extends object> extends Omit<
+  AriaListBoxSectionProps<T>,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode;
 }
@@ -127,8 +133,10 @@ export function ListBoxSection<T extends object>({
   return <AriaListBoxSection {...props} {...stylex.props(style)} />;
 }
 
-export interface ListBoxSeparatorProps
-  extends Omit<SeparatorProps, "style" | "className"> {
+export interface ListBoxSeparatorProps extends Omit<
+  SeparatorProps,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -136,8 +144,10 @@ export function ListBoxSeparator({ style, ...props }: ListBoxSeparatorProps) {
   return <Separator {...props} style={[styles.separator, style]} />;
 }
 
-export interface ListBoxSectionHeaderProps
-  extends Omit<React.HTMLAttributes<HTMLElement>, "style" | "className"> {
+export interface ListBoxSectionHeaderProps extends Omit<
+  React.HTMLAttributes<HTMLElement>,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 

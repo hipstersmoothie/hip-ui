@@ -179,8 +179,9 @@ const styles = stylex.create({
 /**
  * Footer root component. Main container for footer content.
  */
-export interface FooterRootProps
-  extends StyleXComponentProps<React.ComponentProps<"footer">> {
+export interface FooterRootProps extends StyleXComponentProps<
+  React.ComponentProps<"footer">
+> {
   /**
    * Centers all footer content.
    */
@@ -204,8 +205,9 @@ export const FooterRoot = ({
 /**
  * Footer logo component. Displays a logo in the footer.
  */
-export interface FooterLogoProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface FooterLogoProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const FooterLogo = ({ style, children, ...props }: FooterLogoProps) => {
   return (
@@ -219,8 +221,9 @@ export const FooterLogo = ({ style, children, ...props }: FooterLogoProps) => {
  * Footer section component. Generic container for footer content with max-width, margin, and padding.
  * Automatically adds a dim bottom border if it's not the last section.
  */
-export interface FooterSectionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface FooterSectionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const FooterSection = ({ style, ...props }: FooterSectionProps) => {
   return <div {...props} {...stylex.props(styles.footerSection, style)} />;
@@ -229,8 +232,9 @@ export const FooterSection = ({ style, ...props }: FooterSectionProps) => {
 /**
  * Footer navigation section component. Responsive grid container that displays 2 columns on smaller screens and 4 columns on larger screens.
  */
-export interface FooterNavSectionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface FooterNavSectionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const FooterNavSection = ({
   style,
@@ -242,8 +246,9 @@ export const FooterNavSection = ({
 /**
  * Footer navigation group component. Container for grouping related footer content.
  */
-export interface FooterNavGroupProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface FooterNavGroupProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * Optional title for the group.
    */
@@ -269,8 +274,9 @@ export const FooterNavGroup = ({
 /**
  * Footer copyright component. Displays copyright information.
  */
-export interface FooterCopyrightProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {}
+export interface FooterCopyrightProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {}
 
 export const FooterCopyright = ({
   style,
@@ -287,8 +293,9 @@ export const FooterCopyright = ({
 /**
  * Footer social link list component. Container for social media links.
  */
-export interface FooterSocialLinkListProps
-  extends StyleXComponentProps<React.ComponentProps<"nav">> {}
+export interface FooterSocialLinkListProps extends StyleXComponentProps<
+  React.ComponentProps<"nav">
+> {}
 
 export const FooterSocialLinkList = ({
   style,
@@ -309,8 +316,9 @@ export const FooterSocialLinkList = ({
 /**
  * Footer social link item component. Individual social media link.
  */
-export interface FooterSocialLinkItemProps
-  extends StyleXComponentProps<Omit<AriaLinkProps, "children">> {
+export interface FooterSocialLinkItemProps extends StyleXComponentProps<
+  Omit<AriaLinkProps, "children">
+> {
   /**
    * Icon to display in the link. Typically from lucide-react.
    */
@@ -347,8 +355,9 @@ export const FooterSocialLinkItem = ({
 /**
  * Footer subscribe component. Container for newsletter subscription section.
  */
-export interface FooterSubscribeProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface FooterSubscribeProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * Layout variant. "horizontal" displays title/description on left and input on right. "vertical" stacks everything.
    */
@@ -375,8 +384,9 @@ export const FooterSubscribe = ({
 /**
  * Footer subscribe title component. Displays the subscription section title.
  */
-export interface FooterSubscribeTitleProps
-  extends StyleXComponentProps<React.ComponentProps<"h3">> {}
+export interface FooterSubscribeTitleProps extends StyleXComponentProps<
+  React.ComponentProps<"h3">
+> {}
 
 export const FooterSubscribeTitle = ({
   style,
@@ -393,8 +403,9 @@ export const FooterSubscribeTitle = ({
 /**
  * Footer subscribe description component. Displays the subscription section description.
  */
-export interface FooterSubscribeDescriptionProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {}
+export interface FooterSubscribeDescriptionProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {}
 
 export const FooterSubscribeDescription = ({
   style,
@@ -414,8 +425,9 @@ export const FooterSubscribeDescription = ({
 /**
  * Footer subscribe input component. Contains an email input field and subscribe button.
  */
-export interface FooterSubscribeInputProps
-  extends StyleXComponentProps<React.ComponentProps<"form">> {
+export interface FooterSubscribeInputProps extends StyleXComponentProps<
+  React.ComponentProps<"form">
+> {
   /**
    * Callback function called when the form is submitted.
    */

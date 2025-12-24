@@ -62,7 +62,8 @@ const tooltipStyle = stylex.create({
 });
 
 interface TooltipProps
-  extends TooltipTriggerComponentProps,
+  extends
+    TooltipTriggerComponentProps,
     Pick<AriaTooltipProps, "crossOffset" | "placement" | "shouldFlip"> {
   text: string;
   children: React.ReactNode;

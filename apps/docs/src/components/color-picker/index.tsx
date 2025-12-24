@@ -80,7 +80,8 @@ const styles = stylex.create({
 });
 
 export interface ColorPickerProps
-  extends StyleXComponentProps<Omit<AriaColorPickerProps, "children">>,
+  extends
+    StyleXComponentProps<Omit<AriaColorPickerProps, "children">>,
     Pick<PopoverProps, "placement"> {
   children?: React.ReactNode;
   size?: Size;

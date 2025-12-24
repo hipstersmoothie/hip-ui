@@ -62,8 +62,9 @@ const styles = stylex.create({
   },
 });
 
-interface SwitchBaseProps
-  extends StyleXComponentProps<Omit<AriaSwitchProps, "children">> {}
+interface SwitchBaseProps extends StyleXComponentProps<
+  Omit<AriaSwitchProps, "children">
+> {}
 
 interface SwitchWithChildrenProps extends SwitchBaseProps {
   children: React.ReactNode;

@@ -85,7 +85,8 @@ function ColorFieldContent({
 }
 
 export interface ColorFieldProps
-  extends StyleXComponentProps<Omit<AriaColorFieldProps, "isInvalid">>,
+  extends
+    StyleXComponentProps<Omit<AriaColorFieldProps, "isInvalid">>,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;
   description?: string;

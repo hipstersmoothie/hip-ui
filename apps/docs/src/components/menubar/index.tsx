@@ -85,8 +85,9 @@ const styles = stylex.create({
   },
 });
 
-export interface MenubarProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface MenubarProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   size?: Size;
   value?: string;
   defaultValue?: string;
@@ -126,7 +127,8 @@ export function Menubar({
 }
 
 export interface MenubarItemProps
-  extends StyleXComponentProps<React.ComponentProps<"div">>,
+  extends
+    StyleXComponentProps<React.ComponentProps<"div">>,
     Pick<ButtonProps, "isDisabled"> {
   label: string;
 }

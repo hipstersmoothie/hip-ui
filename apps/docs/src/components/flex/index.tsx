@@ -58,8 +58,9 @@ const styles = stylex.create({
   "gap-96": { gap: spacing["96"] },
 });
 
-export interface FlexProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface FlexProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * The direction of the flex container.
    * @default "row"

@@ -98,8 +98,7 @@ const styles = stylex.create({
   },
 });
 
-export interface ProgressBarProps
-  extends StyleXComponentProps<AriaProgresBarProps> {
+export interface ProgressBarProps extends StyleXComponentProps<AriaProgresBarProps> {
   label?: string;
   showValueLabel?: boolean;
   size?: Size;

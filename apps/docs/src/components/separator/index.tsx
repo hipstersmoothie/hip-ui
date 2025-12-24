@@ -23,8 +23,7 @@ const styles = stylex.create({
   },
 });
 
-export interface SeparatorProps
-  extends StyleXComponentProps<AriaSeparatorProps> {}
+export interface SeparatorProps extends StyleXComponentProps<AriaSeparatorProps> {}
 
 export function Separator({ style, ...props }: SeparatorProps) {
   return (

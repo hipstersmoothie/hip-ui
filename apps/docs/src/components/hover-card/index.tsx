@@ -31,8 +31,9 @@ const styles = stylex.create({
   },
 });
 
-interface HoverCardInnerProps
-  extends StyleXComponentProps<Omit<AriaPopoverProps, "trigger">> {
+interface HoverCardInnerProps extends StyleXComponentProps<
+  Omit<AriaPopoverProps, "trigger">
+> {
   trigger: React.ComponentProps<typeof Pressable>["children"];
   triggerName?: AriaPopoverProps["trigger"];
   children: React.ReactNode;
@@ -109,8 +110,7 @@ function HoverCardInner({
 }
 
 export interface HoverCardProps
-  extends DialogTriggerProps,
-    HoverCardInnerProps {}
+  extends DialogTriggerProps, HoverCardInnerProps {}
 
 export const HoverCard = ({
   defaultOpen,

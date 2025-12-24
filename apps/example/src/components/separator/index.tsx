@@ -22,8 +22,10 @@ const styles = stylex.create({
   },
 });
 
-export interface SeparatorProps
-  extends Omit<AriaSeparatorProps, "style" | "className"> {
+export interface SeparatorProps extends Omit<
+  AriaSeparatorProps,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 

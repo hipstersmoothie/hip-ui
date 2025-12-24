@@ -97,7 +97,8 @@ const styles = stylex.create({
 });
 
 interface TagGroupBaseProps<T>
-  extends StyleXComponentProps<Omit<AriaTagGroupProps, "children">>,
+  extends
+    StyleXComponentProps<Omit<AriaTagGroupProps, "children">>,
     Pick<TagListProps<T>, "items" | "children" | "renderEmptyState"> {
   label?: string;
   description?: string;
@@ -132,8 +133,9 @@ export function TagGroup<T extends object>({
   );
 }
 
-export interface TagProps
-  extends StyleXComponentProps<Omit<AriaTagProps, "children">> {
+export interface TagProps extends StyleXComponentProps<
+  Omit<AriaTagProps, "children">
+> {
   children?: React.ReactNode;
 }
 

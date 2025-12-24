@@ -42,8 +42,10 @@ const styles = stylex.create({
   },
 });
 
-export interface BadgeProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface BadgeProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   size?: Extract<Size, "sm" | "md">;
   variant?: "primary" | "default" | "warning" | "critical" | "success";

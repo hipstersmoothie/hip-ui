@@ -208,8 +208,9 @@ export const Drawer = ({
   );
 };
 
-export interface DrawerHeaderProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DrawerHeaderProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DrawerHeader = ({ children, style }: DrawerHeaderProps) => {
   return (
@@ -222,8 +223,9 @@ export const DrawerHeader = ({ children, style }: DrawerHeaderProps) => {
   );
 };
 
-export interface DrawerDescriptionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DrawerDescriptionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DrawerDescription = ({
   children,
@@ -236,15 +238,17 @@ export const DrawerDescription = ({
   );
 };
 
-export interface DrawerBodyProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DrawerBodyProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DrawerBody = ({ children, style }: DrawerBodyProps) => {
   return <div {...stylex.props(styles.body, style)}>{children}</div>;
 };
 
-export interface DrawerFooterProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface DrawerFooterProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const DrawerFooter = ({ children, style }: DrawerFooterProps) => {
   return <div {...stylex.props(styles.footer, style)}>{children}</div>;

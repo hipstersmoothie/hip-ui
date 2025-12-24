@@ -183,8 +183,9 @@ const styles = stylex.create({
   },
 });
 
-export interface TabsProps
-  extends StyleXComponentProps<Omit<AriaTabsProps, "children">> {
+export interface TabsProps extends StyleXComponentProps<
+  Omit<AriaTabsProps, "children">
+> {
   children: React.ReactNode;
   size?: Size;
   orientation?: "horizontal" | "vertical";
@@ -217,8 +218,9 @@ export function Tabs({
   );
 }
 
-export interface TabListProps
-  extends StyleXComponentProps<Omit<AriaTabListProps<object>, "children">> {
+export interface TabListProps extends StyleXComponentProps<
+  Omit<AriaTabListProps<object>, "children">
+> {
   children: React.ReactNode;
 }
 
@@ -230,8 +232,9 @@ export function TabList({ children, style, ...props }: TabListProps) {
   );
 }
 
-export interface TabProps
-  extends StyleXComponentProps<Omit<AriaTabProps, "children">> {
+export interface TabProps extends StyleXComponentProps<
+  Omit<AriaTabProps, "children">
+> {
   children: React.ReactNode;
 }
 
@@ -244,8 +247,9 @@ export function Tab({ children, style, ...props }: TabProps) {
   );
 }
 
-export interface TabPanelProps
-  extends StyleXComponentProps<Omit<AriaTabPanelProps, "children">> {
+export interface TabPanelProps extends StyleXComponentProps<
+  Omit<AriaTabPanelProps, "children">
+> {
   children: React.ReactNode;
 }
 

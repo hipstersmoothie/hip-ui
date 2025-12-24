@@ -217,8 +217,9 @@ const styles = stylex.create({
 });
 
 // Define subcomponents first so they can be referenced in Navbar
-export interface NavbarLogoProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface NavbarLogoProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 /**
  * NavbarLogo component for displaying the logo in the navbar.
@@ -231,8 +232,9 @@ export const NavbarLogo = ({ style, ...props }: NavbarLogoProps) => {
   );
 };
 
-export interface NavbarNavigationProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface NavbarNavigationProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * Justify content alignment for the navigation items.
    * @default "left"
@@ -265,8 +267,9 @@ export const NavbarNavigation = ({
   );
 };
 
-export interface NavbarActionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface NavbarActionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * Whether the action should be always visible on mobile.
    * @default false
@@ -309,8 +312,9 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
   );
 }
 
-export interface NavbarProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface NavbarProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   size?: Size;
 }
 

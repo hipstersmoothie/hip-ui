@@ -69,8 +69,9 @@ export function ColorThumb({
   return <AriaColorThumb {...props} {...stylex.props(styles.thumb, style)} />;
 }
 
-export interface ColorAreaProps
-  extends StyleXComponentProps<Omit<AriaColorAreaProps, "children">> {
+export interface ColorAreaProps extends StyleXComponentProps<
+  Omit<AriaColorAreaProps, "children">
+> {
   children?: React.ReactNode;
   aspectRatio?: number;
 }

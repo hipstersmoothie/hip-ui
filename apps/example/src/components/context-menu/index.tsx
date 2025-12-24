@@ -128,7 +128,8 @@ function ContextMenuTrigger({
 }
 
 export interface ContextMenuProps<T extends object>
-  extends OverlayTriggerProps,
+  extends
+    OverlayTriggerProps,
     Omit<AriaMenuProps<T>, "children" | "className" | "style">,
     Pick<
       PopoverProps,

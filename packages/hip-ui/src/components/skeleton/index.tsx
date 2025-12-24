@@ -79,8 +79,9 @@ const styles = stylex.create({
   }),
 });
 
-export interface SkeletonGroupProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface SkeletonGroupProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   children: React.ReactNode;
 }
 
@@ -98,8 +99,9 @@ export function SkeletonGroup({
 
 export type SkeletonVariant = "circle" | "rectangle";
 
-interface SkeletonBaseProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+interface SkeletonBaseProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 interface SkeletonCircleProps extends SkeletonBaseProps {
   variant: "circle";

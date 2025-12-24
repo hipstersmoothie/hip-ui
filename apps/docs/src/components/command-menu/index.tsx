@@ -40,7 +40,8 @@ const styles = stylex.create({
 });
 
 export interface CommandMenuProps<T extends object>
-  extends OverlayTriggerProps,
+  extends
+    OverlayTriggerProps,
     Pick<InputProps, "placeholder">,
     AriaAutocompleteProps<T> {
   children: React.ReactNode;

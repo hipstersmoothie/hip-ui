@@ -99,8 +99,9 @@ const styles = stylex.create({
   },
 });
 
-export interface CardProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface CardProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   size?: Size;
 }
 
@@ -118,8 +119,9 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
   );
 };
 
-export interface CardHeaderProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface CardHeaderProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   return (
@@ -130,15 +132,17 @@ export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   );
 };
 
-export interface CardTitleProps
-  extends StyleXComponentProps<React.ComponentProps<"h2">> {}
+export interface CardTitleProps extends StyleXComponentProps<
+  React.ComponentProps<"h2">
+> {}
 
 export const CardTitle = ({ style, ...props }: CardTitleProps) => {
   return <div {...props} {...stylex.props(styles.cardTitle, style)} />;
 };
 
-export interface CardDescriptionProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {}
+export interface CardDescriptionProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {}
 
 export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
   return (
@@ -150,8 +154,9 @@ export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
   );
 };
 
-export interface CardHeaderActionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface CardHeaderActionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const CardHeaderAction = ({
   style,
@@ -159,8 +164,9 @@ export const CardHeaderAction = ({
 }: CardHeaderActionProps) => {
   return <div {...props} {...stylex.props(styles.cardHeaderAction, style)} />;
 };
-export interface CardBodyProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface CardBodyProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const CardBody = ({ style, ...props }: CardBodyProps) => {
   return (
@@ -171,8 +177,9 @@ export const CardBody = ({ style, ...props }: CardBodyProps) => {
   );
 };
 
-export interface CardFooterProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface CardFooterProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const CardFooter = ({ style, ...props }: CardFooterProps) => {
   return (
@@ -183,8 +190,9 @@ export const CardFooter = ({ style, ...props }: CardFooterProps) => {
   );
 };
 
-export interface CardImageProps
-  extends StyleXComponentProps<React.ComponentProps<"img">> {
+export interface CardImageProps extends StyleXComponentProps<
+  React.ComponentProps<"img">
+> {
   aspectRatio?: number;
 }
 

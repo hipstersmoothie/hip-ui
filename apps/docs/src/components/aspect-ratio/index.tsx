@@ -43,8 +43,9 @@ const styles = stylex.create({
   },
 });
 
-export interface AspectRatioProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface AspectRatioProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   aspectRatio?: number;
   rounded?: boolean;
 }
@@ -68,8 +69,9 @@ export function AspectRatio({
   );
 }
 
-export interface AspectRatioImageProps
-  extends StyleXComponentProps<React.ComponentProps<"img">> {}
+export interface AspectRatioImageProps extends StyleXComponentProps<
+  React.ComponentProps<"img">
+> {}
 
 export function AspectRatioImage({ style, ...props }: AspectRatioImageProps) {
   return (

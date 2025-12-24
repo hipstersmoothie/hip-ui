@@ -42,8 +42,10 @@ const styles = stylex.create({
   },
 });
 
-interface ToggleButtonGroupProps
-  extends Omit<AriaToggleButtonGroupProps, "className" | "style" | "children"> {
+interface ToggleButtonGroupProps extends Omit<
+  AriaToggleButtonGroupProps,
+  "className" | "style" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   orientation?: "horizontal" | "vertical";
   children?: React.ReactNode;

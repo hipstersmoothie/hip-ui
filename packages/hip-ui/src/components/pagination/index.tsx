@@ -43,8 +43,9 @@ const styles = stylex.create({
   },
 });
 
-export interface PaginationProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface PaginationProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   defaultSelectedPage?: number;
   selectedPage?: number;
   onSelectedPageChange?: (page: number) => void;

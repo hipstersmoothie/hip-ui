@@ -46,7 +46,8 @@ function PasswordToggle({
 }
 
 export interface TextFieldProps
-  extends Omit<AriaTextFieldProps, "style" | "className">,
+  extends
+    Omit<AriaTextFieldProps, "style" | "className">,
     Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;

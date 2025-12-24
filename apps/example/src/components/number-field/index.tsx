@@ -52,7 +52,8 @@ const styles = stylex.create({
 });
 
 export interface NumberFieldProps
-  extends Omit<AriaNumberFieldProps, "style" | "className">,
+  extends
+    Omit<AriaNumberFieldProps, "style" | "className">,
     Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;

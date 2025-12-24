@@ -46,8 +46,10 @@ const styles = stylex.create({
   },
 });
 
-export interface CardProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface CardProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -60,8 +62,10 @@ export const Card = ({ style, ...props }: CardProps) => {
   );
 };
 
-export interface CardHeaderProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface CardHeaderProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -76,8 +80,10 @@ export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
   );
 };
 
-export interface CardTitleProps
-  extends Omit<React.ComponentProps<"h2">, "style" | "className"> {
+export interface CardTitleProps extends Omit<
+  React.ComponentProps<"h2">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -85,8 +91,10 @@ export const CardTitle = ({ style, ...props }: CardTitleProps) => {
   return <div {...props} {...stylex.props(styles.cardTitle, style)} />;
 };
 
-export interface CardDescriptionProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+export interface CardDescriptionProps extends Omit<
+  React.ComponentProps<"p">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -99,8 +107,10 @@ export const CardDescription = ({ style, ...props }: CardDescriptionProps) => {
   );
 };
 
-export interface CardBodyProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface CardBodyProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -108,8 +118,10 @@ export const CardBody = ({ style, ...props }: CardBodyProps) => {
   return <div {...props} {...stylex.props(styles.cardBody, style)} />;
 };
 
-export interface CardFooterProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface CardFooterProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 

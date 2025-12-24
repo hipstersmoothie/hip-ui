@@ -5,7 +5,9 @@ export function ButtonLoading() {
   return (
     <Flex gap="4" wrap>
       <Button isLoading>Loading</Button>
-      <Button variant="secondary" isLoading>Loading Secondary</Button>
+      <Button variant="secondary" isLoading>
+        Loading Secondary
+      </Button>
     </Flex>
   );
 }

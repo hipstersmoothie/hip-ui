@@ -81,8 +81,9 @@ function TimeFieldContent({
   );
 }
 
-export interface TimeFieldProps<T extends TimeValue>
-  extends StyleXComponentProps<Omit<AriaTimeFieldProps<T>, "isInvalid">> {
+export interface TimeFieldProps<
+  T extends TimeValue,
+> extends StyleXComponentProps<Omit<AriaTimeFieldProps<T>, "isInvalid">> {
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

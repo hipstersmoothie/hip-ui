@@ -32,7 +32,8 @@ const styles = stylex.create({
 });
 
 export interface SearchFieldProps
-  extends Omit<AriaSearchFieldProps, "style" | "className">,
+  extends
+    Omit<AriaSearchFieldProps, "style" | "className">,
     Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;

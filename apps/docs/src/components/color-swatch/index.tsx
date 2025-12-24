@@ -47,8 +47,9 @@ const styles = stylex.create({
   },
 });
 
-export interface ColorSwatchProps
-  extends StyleXComponentProps<Omit<AriaColorSwatchProps, "children">> {
+export interface ColorSwatchProps extends StyleXComponentProps<
+  Omit<AriaColorSwatchProps, "children">
+> {
   children?: React.ReactNode;
   size?: Size;
 }

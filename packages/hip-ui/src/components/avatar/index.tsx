@@ -86,8 +86,9 @@ const styles = stylex.create({
   },
 });
 
-export interface AvatarProps
-  extends StyleXComponentProps<Omit<React.ComponentProps<"div">, "children">> {
+export interface AvatarProps extends StyleXComponentProps<
+  Omit<React.ComponentProps<"div">, "children">
+> {
   /** The source of the image. */
   src?: string;
   /** The alt text of the image. */

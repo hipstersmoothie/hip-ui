@@ -80,8 +80,10 @@ const styles = stylex.create({
   },
 });
 
-interface TreeItemContentProps
-  extends Omit<AriaTreeItemContentProps, "children"> {
+interface TreeItemContentProps extends Omit<
+  AriaTreeItemContentProps,
+  "children"
+> {
   children?: React.ReactNode;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -145,7 +147,8 @@ function TreeItemContent({ children, prefix, suffix }: TreeItemContentProps) {
 }
 
 interface TreeItemProps<T extends object>
-  extends Omit<AriaTreeItemProps<T>, "style" | "textValue" | "children">,
+  extends
+    Omit<AriaTreeItemProps<T>, "style" | "textValue" | "children">,
     Pick<TreeItemContentProps, "prefix" | "suffix"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   title: string;
@@ -181,8 +184,10 @@ export function TreeItem<T extends object>({
   );
 }
 
-export interface TreeProps<T extends object>
-  extends Omit<AriaTreeProps<T>, "children" | "style"> {
+export interface TreeProps<T extends object> extends Omit<
+  AriaTreeProps<T>,
+  "children" | "style"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;

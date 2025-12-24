@@ -22,7 +22,8 @@ import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { Size } from "../types";
 
 export interface MenuProps<T extends object>
-  extends Omit<MenuTriggerProps, "trigger" | "children">,
+  extends
+    Omit<MenuTriggerProps, "trigger" | "children">,
     Omit<AriaMenuProps<T>, "children" | "className" | "style">,
     Pick<
       PopoverProps,
@@ -75,7 +76,8 @@ export function Menu<T extends object>({
 }
 
 export interface SubMenuProps<T extends object>
-  extends Omit<SubmenuTriggerProps, "trigger" | "children">,
+  extends
+    Omit<SubmenuTriggerProps, "trigger" | "children">,
     Omit<AriaMenuProps<T>, "children" | "className" | "style">,
     Pick<
       PopoverProps,
@@ -118,8 +120,10 @@ export function SubMenu<T extends object>({
   );
 }
 
-export interface MenuSectionProps<T extends object>
-  extends Omit<AriaMenuSectionProps<T>, "style" | "className"> {
+export interface MenuSectionProps<T extends object> extends Omit<
+  AriaMenuSectionProps<T>,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode;
 }
@@ -131,8 +135,10 @@ export function MenuSection<T extends object>({
   return <AriaMenuSection {...props} {...stylex.props(style)} />;
 }
 
-export interface MenuItemProps
-  extends Omit<AriaMenuItemProps, "style" | "className" | "children"> {
+export interface MenuItemProps extends Omit<
+  AriaMenuItemProps,
+  "style" | "className" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children: React.ReactNode;
   prefix?: React.ReactNode;

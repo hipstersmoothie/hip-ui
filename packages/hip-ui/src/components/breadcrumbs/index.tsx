@@ -51,14 +51,16 @@ const styles = stylex.create({
   },
 });
 
-export interface BreadcrumbsProps<T extends object = object>
-  extends StyleXComponentProps<Omit<AriaBreadcrumbsProps<T>, "children">> {
+export interface BreadcrumbsProps<
+  T extends object = object,
+> extends StyleXComponentProps<Omit<AriaBreadcrumbsProps<T>, "children">> {
   isDisabled?: boolean;
   children?: React.ReactNode;
 }
 
-export interface BreadcrumbProps
-  extends StyleXComponentProps<Omit<AriaBreadcrumbProps, "children">> {
+export interface BreadcrumbProps extends StyleXComponentProps<
+  Omit<AriaBreadcrumbProps, "children">
+> {
   children?: React.ReactNode;
 }
 

@@ -83,8 +83,9 @@ const styles = stylex.create({
 /**
  * Header layout root component. Main container for the page layout.
  */
-export interface HeaderLayoutRootProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface HeaderLayoutRootProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const HeaderLayoutRoot = ({
   style,
@@ -96,8 +97,9 @@ export const HeaderLayoutRoot = ({
 /**
  * Header layout header component. Slot for header content.
  */
-export interface HeaderLayoutHeaderProps
-  extends StyleXComponentProps<React.ComponentProps<"header">> {}
+export interface HeaderLayoutHeaderProps extends StyleXComponentProps<
+  React.ComponentProps<"header">
+> {}
 
 export const HeaderLayoutHeader = ({
   style,
@@ -109,8 +111,9 @@ export const HeaderLayoutHeader = ({
 /**
  * Header layout page component. Slot for main page content.
  */
-export interface HeaderLayoutPageProps
-  extends StyleXComponentProps<React.ComponentProps<"main">> {}
+export interface HeaderLayoutPageProps extends StyleXComponentProps<
+  React.ComponentProps<"main">
+> {}
 
 export const HeaderLayoutPage = ({
   style,
@@ -122,8 +125,9 @@ export const HeaderLayoutPage = ({
 /**
  * Header layout footer component. Slot for footer content.
  */
-export interface HeaderLayoutFooterProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface HeaderLayoutFooterProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const HeaderLayoutFooter = ({
   style,
@@ -136,8 +140,9 @@ export const HeaderLayoutFooter = ({
  * Header layout hero component. Full-width section with primary background color.
  * Content follows the max-width constraint.
  */
-export interface HeaderLayoutHeroProps
-  extends StyleXComponentProps<React.ComponentProps<"section">> {}
+export interface HeaderLayoutHeroProps extends StyleXComponentProps<
+  React.ComponentProps<"section">
+> {}
 
 export const HeaderLayoutHero = ({
   style,

@@ -247,8 +247,10 @@ const styles = stylex.create({
 
 export type AlertVariant = "info" | "success" | "warning" | "critical";
 
-export interface AlertProps
-  extends Omit<StyleXComponentProps<React.ComponentProps<"div">>, "title"> {
+export interface AlertProps extends Omit<
+  StyleXComponentProps<React.ComponentProps<"div">>,
+  "title"
+> {
   /**
    * The variant of the alert.
    * @default "info"

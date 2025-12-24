@@ -47,7 +47,8 @@ const styles = stylex.create({
   },
 });
 interface PopoverProps
-  extends DialogTriggerProps,
+  extends
+    DialogTriggerProps,
     StyleXComponentProps<Omit<AriaPopoverProps, "className" | "trigger">> {
   trigger: React.ReactNode;
   triggerName?: Pick<AriaPopoverProps, "trigger">;

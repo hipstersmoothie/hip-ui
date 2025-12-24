@@ -163,10 +163,9 @@ function ToastItem({ toast }: { toast: QueuedToast<ToastContentType> }) {
   );
 }
 
-export interface ToastRegionProps
-  extends StyleXComponentProps<
-    Omit<AriaToastRegionProps<ToastContentType>, "children" | "queue">
-  > {}
+export interface ToastRegionProps extends StyleXComponentProps<
+  Omit<AriaToastRegionProps<ToastContentType>, "children" | "queue">
+> {}
 
 export function ToastRegion({ style, ...props }: ToastRegionProps) {
   return (

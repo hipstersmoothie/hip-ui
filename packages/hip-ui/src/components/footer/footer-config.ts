@@ -16,4 +16,3 @@ export const footerConfig: ComponentConfig = {
     "react-aria-components": "^1.13.0",
   },
 };
-

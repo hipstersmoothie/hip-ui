@@ -107,8 +107,9 @@ const styles = stylex.create({
   rowEnd: (end: number) => ({ gridRowEnd: end }),
 });
 
-export interface GridProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface GridProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * The grid template rows of the grid container.
    * @default "auto"
@@ -226,8 +227,9 @@ export const Grid = ({
   );
 };
 
-interface GridItemProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+interface GridItemProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   columnStart?: number;
   columnEnd?: number;
   rowStart?: number;

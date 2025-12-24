@@ -31,7 +31,8 @@ import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 export interface DateRangePickerProps<T extends DateValue>
-  extends StyleXComponentProps<Omit<AriaDateRangePickerProps<T>, "isInvalid">>,
+  extends
+    StyleXComponentProps<Omit<AriaDateRangePickerProps<T>, "isInvalid">>,
     Pick<RangeCalendarProps<T>, "weekdayStyle" | "visibleDuration"> {
   label?: React.ReactNode;
   description?: string;

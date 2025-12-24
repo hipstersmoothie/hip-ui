@@ -21,7 +21,8 @@ import { ErrorMessage } from "../label";
 import { useCalendarStyles } from "../theme/useCalendarStyles";
 
 export interface CalendarProps<T extends DateValue>
-  extends StyleXComponentProps<AriaCalendarProps<T>>,
+  extends
+    StyleXComponentProps<AriaCalendarProps<T>>,
     Pick<CalendarGridProps, "weekdayStyle"> {
   errorMessage?: string;
 }

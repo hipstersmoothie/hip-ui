@@ -112,8 +112,9 @@ const styles = stylex.create({
   },
 });
 
-export interface EmptyStateProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface EmptyStateProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * The size of the empty state component.
    * @default "md"
@@ -137,10 +138,9 @@ export const EmptyState = ({
   );
 };
 
-export interface EmptyStateImageProps
-  extends StyleXComponentProps<
-    Omit<React.ComponentProps<"div">, "src" | "alt">
-  > {
+export interface EmptyStateImageProps extends StyleXComponentProps<
+  Omit<React.ComponentProps<"div">, "src" | "alt">
+> {
   /**
    * The source URL of the image.
    * When provided, renders an img element instead of a div.
@@ -171,15 +171,17 @@ export const EmptyStateImage = ({
   );
 };
 
-export interface EmptyStateTitleProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface EmptyStateTitleProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const EmptyStateTitle = ({ style, ...props }: EmptyStateTitleProps) => {
   return <div {...props} {...stylex.props(styles.title, ui.text, style)} />;
 };
 
-export interface EmptyStateDescriptionProps
-  extends StyleXComponentProps<React.ComponentProps<"p">> {}
+export interface EmptyStateDescriptionProps extends StyleXComponentProps<
+  React.ComponentProps<"p">
+> {}
 
 export const EmptyStateDescription = ({
   style,
@@ -190,8 +192,9 @@ export const EmptyStateDescription = ({
   );
 };
 
-export interface EmptyStateActionsProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface EmptyStateActionsProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export const EmptyStateActions = ({
   style,

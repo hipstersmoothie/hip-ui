@@ -96,8 +96,10 @@ export const Dialog = ({
   );
 };
 
-export interface DialogHeaderProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface DialogHeaderProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -112,8 +114,10 @@ export const DialogHeader = ({ children, style }: DialogHeaderProps) => {
   );
 };
 
-export interface DialogDescriptionProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface DialogDescriptionProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -128,8 +132,10 @@ export const DialogDescription = ({
   );
 };
 
-export interface DialogFooterProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface DialogFooterProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 

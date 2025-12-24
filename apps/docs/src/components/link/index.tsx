@@ -55,8 +55,9 @@ const styles = stylex.create({
   },
 });
 
-export interface LinkProps
-  extends StyleXComponentProps<Omit<AriaLinkProps, "children">> {
+export interface LinkProps extends StyleXComponentProps<
+  Omit<AriaLinkProps, "children">
+> {
   children: React.ReactNode;
 }
 

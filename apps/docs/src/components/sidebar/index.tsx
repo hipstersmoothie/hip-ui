@@ -147,8 +147,9 @@ const styles = stylex.create({
   },
 });
 
-export interface SidebarProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface SidebarProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   children: React.ReactNode;
 }
 
@@ -181,8 +182,9 @@ export function Sidebar({ children, style, ...props }: SidebarProps) {
   );
 }
 
-export interface SidebarHeaderProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface SidebarHeaderProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   children: React.ReactNode;
   href?: string;
   linkComponent?: React.ComponentType<React.ComponentProps<"a">>;
@@ -277,8 +279,9 @@ export function SidebarSection({ children, title }: SidebarSectionProps) {
   );
 }
 
-export interface SidebarItemProps
-  extends StyleXComponentProps<React.ComponentProps<"li">> {
+export interface SidebarItemProps extends StyleXComponentProps<
+  React.ComponentProps<"li">
+> {
   children: React.ReactNode;
   isActive?: boolean;
 }

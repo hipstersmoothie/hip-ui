@@ -1,9 +1,5 @@
 import { Button } from "@/components/button";
-import {
-  Drawer,
-  DrawerHeader,
-  DrawerBody,
-} from "@/components/drawer";
+import { Drawer, DrawerHeader, DrawerBody } from "@/components/drawer";
 import { Flex } from "@/components/flex";
 import { Body } from "@/components/typography";
 
@@ -20,9 +16,7 @@ export function DrawerSizes() {
       <Drawer trigger={<Button>Medium Drawer</Button>} size="md">
         <DrawerHeader>Medium Drawer</DrawerHeader>
         <DrawerBody>
-          <Body>
-            This is a medium drawer with more space for content.
-          </Body>
+          <Body>This is a medium drawer with more space for content.</Body>
         </DrawerBody>
       </Drawer>
 
@@ -30,12 +24,11 @@ export function DrawerSizes() {
         <DrawerHeader>Large Drawer</DrawerHeader>
         <DrawerBody>
           <Body>
-            This is a large drawer with even more space for content.
-            Perfect for forms, detailed information, or complex layouts.
+            This is a large drawer with even more space for content. Perfect for
+            forms, detailed information, or complex layouts.
           </Body>
         </DrawerBody>
       </Drawer>
     </Flex>
   );
 }
-

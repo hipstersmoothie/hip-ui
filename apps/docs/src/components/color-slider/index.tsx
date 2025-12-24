@@ -68,8 +68,9 @@ const styles = stylex.create({
   },
 });
 
-export interface ColorAreaProps
-  extends StyleXComponentProps<Omit<AriaColorSliderProps, "children">> {
+export interface ColorAreaProps extends StyleXComponentProps<
+  Omit<AriaColorSliderProps, "children">
+> {
   label?: string;
   showValueLabel?: boolean;
   size?: Size;

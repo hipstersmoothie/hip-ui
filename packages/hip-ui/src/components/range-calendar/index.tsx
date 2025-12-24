@@ -22,7 +22,8 @@ import { spacing } from "../theme/spacing.stylex";
 import { useCalendarStyles } from "../theme/useCalendarStyles";
 
 export interface RangeCalendarProps<T extends DateValue>
-  extends StyleXComponentProps<AriaRangeCalendarProps<T>>,
+  extends
+    StyleXComponentProps<AriaRangeCalendarProps<T>>,
     Pick<CalendarGridProps, "weekdayStyle"> {
   errorMessage?: string;
 }

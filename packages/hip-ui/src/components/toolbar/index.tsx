@@ -90,8 +90,9 @@ export function ToolbarGroup({ style, ...props }: ToolbarGroupProps) {
   return <Group {...props} {...stylex.props(styles.group, style)} />;
 }
 
-export interface ToolbarSeparatorProps
-  extends StyleXComponentProps<Omit<AriaSeparatorProps, "orientation">> {}
+export interface ToolbarSeparatorProps extends StyleXComponentProps<
+  Omit<AriaSeparatorProps, "orientation">
+> {}
 
 export function ToolbarSeparator({ style, ...props }: ToolbarSeparatorProps) {
   return (

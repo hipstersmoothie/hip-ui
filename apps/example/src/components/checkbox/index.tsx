@@ -54,8 +54,10 @@ const styles = stylex.create({
   },
 });
 
-interface CheckboxGroupProps
-  extends Omit<AriaCheckboxGroupProps, "children" | "style" | "className"> {
+interface CheckboxGroupProps extends Omit<
+  AriaCheckboxGroupProps,
+  "children" | "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children?: React.ReactNode;
   label?: React.ReactNode;
@@ -85,8 +87,10 @@ export function CheckboxGroup({
   );
 }
 
-export interface CheckboxProps
-  extends Omit<AriaCheckboxProps, "className" | "style" | "children"> {
+export interface CheckboxProps extends Omit<
+  AriaCheckboxProps,
+  "className" | "style" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   children?: React.ReactNode;
 }
@@ -103,7 +107,7 @@ export function Checkbox({ children, style, ...props }: CheckboxProps) {
                 ? [gray.bgSolid, gray.border, styles.checked]
                 : isSelected
                   ? [primary.bgSolid, primary.borderInteractive, styles.checked]
-                  : [gray.borderInteractive]
+                  : [gray.borderInteractive],
             )}
           >
             {isIndeterminate ? (

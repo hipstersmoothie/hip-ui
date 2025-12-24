@@ -27,7 +27,8 @@ const styles = stylex.create({
 });
 
 export interface SelectProps<T extends object, M extends "single" | "multiple">
-  extends Omit<AriaSelectProps<T, M>, "children" | "style" | "className">,
+  extends
+    Omit<AriaSelectProps<T, M>, "children" | "style" | "className">,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"

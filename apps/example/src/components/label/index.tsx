@@ -39,8 +39,10 @@ const styles = stylex.create({
   },
 });
 
-export interface LabelProps
-  extends Omit<AriaLabelProps, "style" | "className"> {
+export interface LabelProps extends Omit<
+  AriaLabelProps,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   size?: Size;
 }
@@ -56,8 +58,10 @@ export function Label({ style, size: sizeProp, ...props }: LabelProps) {
   );
 }
 
-export interface DescriptionProps
-  extends Omit<TextProps, "style" | "className"> {
+export interface DescriptionProps extends Omit<
+  TextProps,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   size?: Size;
 }

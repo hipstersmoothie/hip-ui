@@ -56,8 +56,10 @@ const styles = stylex.create({
   "gap-96": { gap: spacing["96"] },
 });
 
-export interface FlexProps
-  extends Omit<React.ComponentProps<"div">, "style" | "className"> {
+export interface FlexProps extends Omit<
+  React.ComponentProps<"div">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   /**
    * The direction of the flex container.
@@ -141,7 +143,7 @@ export const Flex = ({
 
         typeof gap === "string" && styles[`gap-${gap}` as keyof typeof styles],
 
-        style
+        style,
       )}
     />
   );

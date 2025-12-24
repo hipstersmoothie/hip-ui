@@ -101,13 +101,12 @@ const styles = stylex.create({
   },
 });
 
-export interface SegmentedControlProps
-  extends StyleXComponentProps<
-    Omit<
-      AriaToggleButtonGroupProps,
-      "children" | "disallowEmptySelection" | "selectionMode"
-    >
-  > {
+export interface SegmentedControlProps extends StyleXComponentProps<
+  Omit<
+    AriaToggleButtonGroupProps,
+    "children" | "disallowEmptySelection" | "selectionMode"
+  >
+> {
   children?: React.ReactNode;
   size?: Size;
 }
@@ -133,8 +132,9 @@ export const SegmentedControl = ({
   );
 };
 
-export interface SegmentedControlItemProps
-  extends StyleXComponentProps<Omit<AriaToggleButtonProps, "children">> {
+export interface SegmentedControlItemProps extends StyleXComponentProps<
+  Omit<AriaToggleButtonProps, "children">
+> {
   children?: React.ReactNode;
 }
 

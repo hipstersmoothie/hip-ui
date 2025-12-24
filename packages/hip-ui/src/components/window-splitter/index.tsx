@@ -57,14 +57,11 @@ const styles = stylex.create({
   },
 });
 
-export interface WindowSplitterPanelGroupProps
-  extends StyleXComponentProps<PanelGroupProps> {}
+export interface WindowSplitterPanelGroupProps extends StyleXComponentProps<PanelGroupProps> {}
 
-export interface WindowSplitterPanelProps
-  extends StyleXComponentProps<PanelProps> {}
+export interface WindowSplitterPanelProps extends StyleXComponentProps<PanelProps> {}
 
-export interface WindowSplitterPanelResizerProps
-  extends StyleXComponentProps<PanelResizerProps> {}
+export interface WindowSplitterPanelResizerProps extends StyleXComponentProps<PanelResizerProps> {}
 
 export function PanelGroup({ style, ...props }: WindowSplitterPanelGroupProps) {
   return <BasePanelGroup {...props} {...stylex.props(style)} />;

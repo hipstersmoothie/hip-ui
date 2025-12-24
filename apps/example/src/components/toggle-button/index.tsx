@@ -91,8 +91,10 @@ const styles = stylex.create({
   },
 });
 
-export interface ToggleButtonProps
-  extends Omit<AriaToggleButtonProps, "style" | "className" | "children"> {
+export interface ToggleButtonProps extends Omit<
+  AriaToggleButtonProps,
+  "style" | "className" | "children"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: Exclude<ButtonVariant, "critical">;
   size?: Size;

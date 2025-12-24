@@ -14,7 +14,8 @@ import { useInputStyles } from "../theme/useInputStyles";
 import { Size } from "../types";
 
 export interface ColorFieldProps
-  extends Omit<AriaColorFieldProps, "style" | "className">,
+  extends
+    Omit<AriaColorFieldProps, "style" | "className">,
     Pick<InputProps, "placeholder"> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   label?: React.ReactNode;

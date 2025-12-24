@@ -58,10 +58,9 @@ const styles = stylex.create({
   },
 });
 
-export interface EditableTextProps
-  extends StyleXComponentProps<
-    Omit<React.ComponentProps<"span">, "children" | "onChange">
-  > {
+export interface EditableTextProps extends StyleXComponentProps<
+  Omit<React.ComponentProps<"span">, "children" | "onChange">
+> {
   /**
    * The current value of the editable text.
    */

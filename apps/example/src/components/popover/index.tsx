@@ -42,7 +42,8 @@ const styles = stylex.create({
   },
 });
 interface TooltipProps
-  extends DialogTriggerProps,
+  extends
+    DialogTriggerProps,
     Pick<AriaPopoverProps, "crossOffset" | "placement" | "shouldFlip"> {
   trigger: React.ReactNode;
   children: React.ReactNode;

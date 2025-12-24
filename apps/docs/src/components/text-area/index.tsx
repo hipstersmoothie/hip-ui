@@ -122,7 +122,8 @@ const styles = stylex.create({
 });
 
 export interface TextAreaProps
-  extends StyleXComponentProps<Omit<TextFieldProps, "children">>,
+  extends
+    StyleXComponentProps<Omit<TextFieldProps, "children">>,
     Pick<AriaTextAreaProps, "rows">,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;

@@ -180,15 +180,17 @@ export function NavbarMenu({ trigger, children, ...props }: NavbarMenuProps) {
   );
 }
 
-export interface NavbarMenuTriggerProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface NavbarMenuTriggerProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 export function NavbarMenuTrigger({ style, ...props }: NavbarMenuTriggerProps) {
   return <div {...props} {...stylex.props(styles.link, style)} />;
 }
 
-interface NavbarMenuItemProps
-  extends StyleXComponentProps<Omit<React.ComponentProps<"div">, "children">> {
+interface NavbarMenuItemProps extends StyleXComponentProps<
+  Omit<React.ComponentProps<"div">, "children">
+> {
   icon?: React.ReactNode;
   label: string;
   description?: string;

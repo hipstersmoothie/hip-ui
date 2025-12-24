@@ -25,8 +25,7 @@ const styles = stylex.create({
   },
 });
 
-export interface DisclosureGroupProps
-  extends StyleXComponentProps<AriaDisclosureGroupProps> {
+export interface DisclosureGroupProps extends StyleXComponentProps<AriaDisclosureGroupProps> {
   size?: Size;
 }
 
@@ -48,8 +47,9 @@ export function DisclosureGroup({
   );
 }
 
-export interface SeparatorProps
-  extends StyleXComponentProps<React.HTMLAttributes<HTMLDivElement>> {}
+export interface SeparatorProps extends StyleXComponentProps<
+  React.HTMLAttributes<HTMLDivElement>
+> {}
 
 export function DisclosureGroupSeparator({ style, ...props }: SeparatorProps) {
   return <div {...props} {...stylex.props(styles.separator, style)} />;

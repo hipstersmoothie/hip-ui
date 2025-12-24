@@ -43,7 +43,8 @@ function EmptyState() {
 }
 
 export interface ComboBoxProps<T extends object>
-  extends Omit<AriaComboBoxProps<T>, "children" | "style" | "className">,
+  extends
+    Omit<AriaComboBoxProps<T>, "children" | "style" | "className">,
     Pick<
       PopoverProps,
       | "shouldCloseOnInteractOutside"

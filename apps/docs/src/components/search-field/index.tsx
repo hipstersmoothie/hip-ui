@@ -115,7 +115,8 @@ function SearchFieldContent({
 }
 
 export interface SearchFieldProps
-  extends StyleXComponentProps<Omit<AriaSearchFieldProps, "isInvalid">>,
+  extends
+    StyleXComponentProps<Omit<AriaSearchFieldProps, "isInvalid">>,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;
   description?: string;

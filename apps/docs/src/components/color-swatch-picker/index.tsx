@@ -56,8 +56,9 @@ const styles = stylex.create({
   },
 });
 
-export interface ColorSwatchPickerProps
-  extends StyleXComponentProps<Omit<AriaColorSwatchPickerProps, "children">> {
+export interface ColorSwatchPickerProps extends StyleXComponentProps<
+  Omit<AriaColorSwatchPickerProps, "children">
+> {
   children?: React.ReactNode;
   layout?: "grid" | "stack";
   size?: Size;
@@ -86,10 +87,9 @@ export function ColorSwatchPicker({
   );
 }
 
-export interface ColorSwatchPickerItemProps
-  extends StyleXComponentProps<
-    Omit<AriaColorSwatchPickerItemProps, "children">
-  > {}
+export interface ColorSwatchPickerItemProps extends StyleXComponentProps<
+  Omit<AriaColorSwatchPickerItemProps, "children">
+> {}
 
 export function ColorSwatchPickerItem({
   style,

@@ -57,8 +57,10 @@ const styles = stylex.create({
   },
 });
 
-export interface Heading1Props
-  extends Omit<React.ComponentProps<"h1">, "style" | "className"> {
+export interface Heading1Props extends Omit<
+  React.ComponentProps<"h1">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -67,8 +69,10 @@ export const Heading1 = ({ style, ...props }: Heading1Props) => {
   return <h1 {...stylex.props(typeramp.heading1, style)} {...props} />;
 };
 
-export interface Heading2Props
-  extends Omit<React.ComponentProps<"h2">, "style" | "className"> {
+export interface Heading2Props extends Omit<
+  React.ComponentProps<"h2">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -77,8 +81,10 @@ export const Heading2 = ({ style, ...props }: Heading2Props) => {
   return <h2 {...stylex.props(typeramp.heading2, style)} {...props} />;
 };
 
-export interface Heading3Props
-  extends Omit<React.ComponentProps<"h3">, "style" | "className"> {
+export interface Heading3Props extends Omit<
+  React.ComponentProps<"h3">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -87,8 +93,10 @@ export const Heading3 = ({ style, ...props }: Heading3Props) => {
   return <h3 {...stylex.props(typeramp.heading3, style)} {...props} />;
 };
 
-export interface Heading4Props
-  extends Omit<React.ComponentProps<"h4">, "style" | "className"> {
+export interface Heading4Props extends Omit<
+  React.ComponentProps<"h4">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -97,8 +105,10 @@ export const Heading4 = ({ style, ...props }: Heading4Props) => {
   return <h4 {...stylex.props(typeramp.heading4, style)} {...props} />;
 };
 
-export interface BodyProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+export interface BodyProps extends Omit<
+  React.ComponentProps<"p">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -106,8 +116,10 @@ export const Body = ({ style, ...props }: BodyProps) => {
   return <p {...stylex.props(typeramp.body, style)} {...props} />;
 };
 
-export interface SmallBodyProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+export interface SmallBodyProps extends Omit<
+  React.ComponentProps<"p">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: "default" | "secondary";
 }
@@ -129,8 +141,10 @@ export const SmallBody = ({
   );
 };
 
-interface SubLabelProps
-  extends Omit<React.ComponentProps<"p">, "style" | "className"> {
+interface SubLabelProps extends Omit<
+  React.ComponentProps<"p">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
   variant?: "default" | "secondary";
 }
@@ -161,8 +175,10 @@ export const SubLabel = ({
   );
 };
 
-export interface BlockquoteProps
-  extends Omit<React.ComponentProps<"blockquote">, "style" | "className"> {
+export interface BlockquoteProps extends Omit<
+  React.ComponentProps<"blockquote">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -170,8 +186,10 @@ export const Blockquote = ({ style, ...props }: BlockquoteProps) => {
   return <blockquote {...stylex.props(styles.blockquote, style)} {...props} />;
 };
 
-export interface UnorderedListProps
-  extends Omit<React.ComponentProps<"ul">, "style" | "className"> {
+export interface UnorderedListProps extends Omit<
+  React.ComponentProps<"ul">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -179,8 +197,10 @@ export const UnorderedList = ({ style, ...props }: UnorderedListProps) => {
   return <ul {...stylex.props(styles.unorderedList, style)} {...props} />;
 };
 
-export interface OrderedListProps
-  extends Omit<React.ComponentProps<"ol">, "style" | "className"> {
+export interface OrderedListProps extends Omit<
+  React.ComponentProps<"ol">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -188,8 +208,10 @@ export const OrderedList = ({ style, ...props }: OrderedListProps) => {
   return <ol {...stylex.props(styles.orderedList, style)} {...props} />;
 };
 
-export interface ListItemProps
-  extends Omit<React.ComponentProps<"li">, "style" | "className"> {
+export interface ListItemProps extends Omit<
+  React.ComponentProps<"li">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 
@@ -197,8 +219,10 @@ export const ListItem = ({ style, ...props }: ListItemProps) => {
   return <li {...stylex.props(styles.listItem, style)} {...props} />;
 };
 
-export interface InlineCodeProps
-  extends Omit<React.ComponentProps<"code">, "style" | "className"> {
+export interface InlineCodeProps extends Omit<
+  React.ComponentProps<"code">,
+  "style" | "className"
+> {
   style?: stylex.StyleXStyles | stylex.StyleXStyles[];
 }
 

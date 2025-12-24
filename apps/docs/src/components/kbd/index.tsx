@@ -28,8 +28,9 @@ const styles = stylex.create({
   },
 });
 
-export interface KbdProps
-  extends StyleXComponentProps<Omit<React.ComponentProps<"kbd">, "children">> {
+export interface KbdProps extends StyleXComponentProps<
+  Omit<React.ComponentProps<"kbd">, "children">
+> {
   children: string;
 }
 

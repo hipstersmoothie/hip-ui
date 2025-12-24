@@ -61,8 +61,9 @@ const styles = stylex.create({
   },
 });
 
-interface CheckboxGroupProps
-  extends StyleXComponentProps<Omit<AriaCheckboxGroupProps, "children">> {
+interface CheckboxGroupProps extends StyleXComponentProps<
+  Omit<AriaCheckboxGroupProps, "children">
+> {
   children?: React.ReactNode;
   label?: React.ReactNode;
   description?: string;
@@ -95,8 +96,9 @@ export function CheckboxGroup({
   );
 }
 
-export interface CheckboxProps
-  extends StyleXComponentProps<Omit<AriaCheckboxProps, "children">> {
+export interface CheckboxProps extends StyleXComponentProps<
+  Omit<AriaCheckboxProps, "children">
+> {
   children?: React.ReactNode;
 }
 

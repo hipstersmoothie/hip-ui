@@ -103,8 +103,9 @@ const styles = stylex.create({
   },
 });
 
-export interface DisclosureProps
-  extends StyleXComponentProps<Omit<AriaDisclosureProps, "children">> {
+export interface DisclosureProps extends StyleXComponentProps<
+  Omit<AriaDisclosureProps, "children">
+> {
   children: React.ReactNode;
   size?: Size;
 }
@@ -128,8 +129,9 @@ export function Disclosure({
   );
 }
 
-export interface DisclosureTitleProps
-  extends StyleXComponentProps<Omit<AriaButtonProps, "slot" | "children">> {
+export interface DisclosureTitleProps extends StyleXComponentProps<
+  Omit<AriaButtonProps, "slot" | "children">
+> {
   children: React.ReactNode;
 }
 
@@ -154,8 +156,9 @@ export function DisclosureTitle({
   );
 }
 
-export interface DisclosurePanelProps
-  extends StyleXComponentProps<Omit<AriaDisclosurePanelProps, "children">> {
+export interface DisclosurePanelProps extends StyleXComponentProps<
+  Omit<AriaDisclosurePanelProps, "children">
+> {
   children: React.ReactNode;
   isQuiet?: boolean;
 }

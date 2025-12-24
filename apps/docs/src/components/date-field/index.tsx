@@ -81,8 +81,9 @@ function DateFieldContent({
   );
 }
 
-export interface DateFieldProps<T extends DateValue>
-  extends StyleXComponentProps<Omit<AriaDateFieldProps<T>, "isInvalid">> {
+export interface DateFieldProps<
+  T extends DateValue,
+> extends StyleXComponentProps<Omit<AriaDateFieldProps<T>, "isInvalid">> {
   label?: React.ReactNode;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);

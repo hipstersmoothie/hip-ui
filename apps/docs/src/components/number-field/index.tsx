@@ -197,9 +197,8 @@ function NumberFieldContent({
 }
 
 export interface NumberFieldProps
-  extends StyleXComponentProps<
-      Omit<AriaNumberFieldProps, "children" | "isInvalid">
-    >,
+  extends
+    StyleXComponentProps<Omit<AriaNumberFieldProps, "children" | "isInvalid">>,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;
   description?: string;
