@@ -1,0 +1,68 @@
+---
+title: ImageCropper
+description: A composable, headless React component for interactive image cropping with zoom, pan, and aspect ratio control.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/image-cropper/basic'
+import { DialogExample } from '../../../examples/image-cropper/dialog'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the image-cropper component to your project.
+
+```bash
+pnpm hip install image-cropper
+```
+
+## Props
+
+<PropDocs components={["ImageCropperRoot", "ImageCropperImage", "ImageCropperCropArea", "ImageCropperDescription"]} />
+
+## Example
+
+### In a Dialog
+
+<Example src={DialogExample} />
+
+## Features
+
+### Interactive Cropping
+
+The ImageCropper component provides a fully interactive cropping experience:
+
+- **Zoom**: Use mouse wheel or pinch gestures to zoom in/out
+- **Pan**: Drag with mouse or touch to move the image
+- **Keyboard Navigation**: Use arrow keys to pan the image
+- **Aspect Ratio**: Enforce a specific aspect ratio for the crop area
+- **Controlled/Uncontrolled**: Manage zoom state internally or control it via props
+
+### Crop Data
+
+The `onCropChange` callback provides precise pixel coordinates of the cropped area relative to the original image:
+
+```typescript
+type CropArea = {
+  x: number;      // X coordinate of top-left corner
+  y: number;      // Y coordinate of top-left corner
+  width: number;  // Width of cropped area
+  height: number; // Height of cropped area
+}
+```
+
+### Accessibility
+
+The ImageCropper component is designed with accessibility in mind:
+
+- **Required Description**: The `ImageCropper.Description` component is required for screen reader users
+- **ARIA Attributes**: Automatically includes proper ARIA attributes
+- **Keyboard Support**: Full keyboard navigation support
+
+## Related Components
+
+- [AspectRatio](/docs/components/content/aspect-ratio) - For maintaining aspect ratios in layouts
+- [Card](/docs/components/content/card) - For grouping content in containers
+

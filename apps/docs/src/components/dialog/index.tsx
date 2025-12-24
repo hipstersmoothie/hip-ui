@@ -17,21 +17,27 @@ import { spacing } from "../theme/spacing.stylex";
 import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
+
 const styles = stylex.create({
   dialog: {
+    overflow: "auto",
     paddingBottom: spacing["2"],
-    paddingTop: spacing["2"],
   },
   header: {
     gap: spacing["2"],
     alignItems: "center",
+    backgroundColor: uiColor.bg,
     display: "flex",
     fontSize: fontSize["lg"],
     justifyContent: "space-between",
+    position: "sticky",
+    zIndex: 1,
     height: spacing["8"],
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
+    paddingTop: spacing["2"],
+    top: 0,
 
     borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
@@ -39,16 +45,16 @@ const styles = stylex.create({
   },
   description: {
     color: uiColor.text1,
-    paddingBottom: spacing["4"],
+    marginBottom: spacing["4"],
+    marginTop: spacing["4"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
-    paddingTop: spacing["4"],
   },
   body: {
-    paddingBottom: spacing["4"],
+    marginBottom: spacing["4"],
+    marginTop: spacing["4"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
-    paddingTop: spacing["4"],
   },
   footer: {
     gap: spacing["2"],

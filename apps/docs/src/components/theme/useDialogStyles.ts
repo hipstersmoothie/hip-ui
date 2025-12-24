@@ -43,6 +43,7 @@ const styles = stylex.create({
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
     outline: "none",
+    overflow: "hidden",
     boxShadow: shadow["lg"],
     display: "flex",
     flexDirection: "column",
@@ -58,8 +59,6 @@ const styles = stylex.create({
   },
   dialog: {
     outline: "none",
-    display: "flex",
-    flexDirection: "column",
     flexGrow: 1,
     minHeight: 0,
   },
