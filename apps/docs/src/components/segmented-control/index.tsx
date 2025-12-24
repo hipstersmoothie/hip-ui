@@ -125,8 +125,8 @@ export const SegmentedControl = ({
       disallowEmptySelection
       selectionMode="single"
       data-size={size}
-      {...stylex.props(styles.group, style)}
       {...props}
+      {...stylex.props(styles.group, style)}
     >
       {children}
     </AriaToggleButtonGroup>
@@ -144,7 +144,7 @@ export const SegmentedControlItem = ({
   ...props
 }: SegmentedControlItemProps) => {
   return (
-    <AriaToggleButton {...stylex.props(styles.item, style)} {...props}>
+    <AriaToggleButton {...props} {...stylex.props(styles.item, style)}>
       <SelectionIndicator {...stylex.props(styles.selectionIndicator)} />
       {children}
     </AriaToggleButton>

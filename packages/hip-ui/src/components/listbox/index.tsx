@@ -74,7 +74,7 @@ export function ListBox<T extends object>({
 }: ListBoxProps<T>) {
   const size = sizeProp || use(SizeContext);
   const listbox = (
-    <AriaListBox {...stylex.props(styles.listBox, style)} {...props} />
+    <AriaListBox {...props} {...stylex.props(styles.listBox, style)} />
   );
 
   return (

@@ -101,6 +101,7 @@ export const Text = ({
 }: TextProps) => {
   return (
     <span
+      {...props}
       {...stylex.props(
         styles[font],
         weight && styles[weight],
@@ -113,7 +114,6 @@ export const Text = ({
         hasEllipsis && styles.textEllipsis,
         style,
       )}
-      {...props}
     />
   );
 };

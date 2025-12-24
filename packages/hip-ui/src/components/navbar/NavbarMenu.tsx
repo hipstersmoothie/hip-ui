@@ -184,7 +184,7 @@ export interface NavbarMenuTriggerProps
   extends StyleXComponentProps<React.ComponentProps<"div">> {}
 
 export function NavbarMenuTrigger({ style, ...props }: NavbarMenuTriggerProps) {
-  return <div {...stylex.props(styles.link, style)} {...props} />;
+  return <div {...props} {...stylex.props(styles.link, style)} />;
 }
 
 interface NavbarMenuItemProps

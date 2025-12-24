@@ -108,7 +108,7 @@ export const ToggleButtonGroup = ({
 
   return (
     <ButtonGroupContext value={contextValue}>
-      <AriaToggleButtonGroup {...stylex.props(stylesToApply, style)} {...props}>
+      <AriaToggleButtonGroup {...props} {...stylex.props(stylesToApply, style)}>
         {children}
       </AriaToggleButtonGroup>
     </ButtonGroupContext>

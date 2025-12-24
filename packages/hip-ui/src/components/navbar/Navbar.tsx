@@ -286,6 +286,7 @@ export const NavbarAction = ({
   return (
     <div
       {...props}
+      data-navbar-action={true}
       data-always-visible={alwaysVisible || undefined}
       {...stylex.props(styles.action, style)}
     >
@@ -302,8 +303,8 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
   return (
     <Link
       data-active={isActive}
-      {...stylex.props(styles.link, style)}
       {...props}
+      {...stylex.props(styles.link, style)}
     />
   );
 }

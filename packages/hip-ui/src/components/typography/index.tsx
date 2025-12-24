@@ -79,7 +79,7 @@ export interface Heading1Props
 
 export const Heading1 = ({ style, ...props }: Heading1Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h1 {...stylex.props(typeramp.heading1, style)} {...props} />;
+  return <h1 {...props} {...stylex.props(typeramp.heading1, style)} />;
 };
 
 export interface Heading2Props
@@ -87,7 +87,7 @@ export interface Heading2Props
 
 export const Heading2 = ({ style, ...props }: Heading2Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h2 {...stylex.props(typeramp.heading2, style)} {...props} />;
+  return <h2 {...props} {...stylex.props(typeramp.heading2, style)} />;
 };
 
 export interface Heading3Props
@@ -95,7 +95,7 @@ export interface Heading3Props
 
 export const Heading3 = ({ style, ...props }: Heading3Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h3 {...stylex.props(typeramp.heading3, style)} {...props} />;
+  return <h3 {...props} {...stylex.props(typeramp.heading3, style)} />;
 };
 
 export interface Heading4Props
@@ -103,7 +103,7 @@ export interface Heading4Props
 
 export const Heading4 = ({ style, ...props }: Heading4Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h4 {...stylex.props(typeramp.heading4, style)} {...props} />;
+  return <h4 {...props} {...stylex.props(typeramp.heading4, style)} />;
 };
 
 export interface Heading5Props
@@ -111,7 +111,7 @@ export interface Heading5Props
 
 export const Heading5 = ({ style, ...props }: Heading5Props) => {
   // eslint-disable-next-line jsx-a11y/heading-has-content
-  return <h5 {...stylex.props(typeramp.heading5, style)} {...props} />;
+  return <h5 {...props} {...stylex.props(typeramp.heading5, style)} />;
 };
 
 export interface BodyProps
@@ -134,13 +134,13 @@ export const Body = ({ style, variant = "primary", ...props }: BodyProps) => {
   return (
     <LinkContext value={contextValue}>
       <p
+        {...props}
         {...stylex.props(
           typeramp.body,
           variant === "secondary" && ui.textDim,
           variant === "critical" && critical.textDim,
           style,
         )}
-        {...props}
       />
     </LinkContext>
   );
@@ -170,13 +170,13 @@ export const SmallBody = ({
   return (
     <LinkContext value={contextValue}>
       <p
+        {...props}
         {...stylex.props(
           typeramp.smallBody,
           variant === "secondary" && ui.textDim,
           variant === "critical" && critical.textDim,
           style,
         )}
-        {...props}
       />
     </LinkContext>
   );
@@ -196,6 +196,7 @@ export const LabelText = ({
 }: LabelTextProps) => {
   return (
     <p
+      {...props}
       {...stylex.props(
         typeramp.label,
         variant === "secondary" && ui.textDim,
@@ -203,7 +204,6 @@ export const LabelText = ({
         hasEllipsis && styles.textEllipsis,
         style,
       )}
-      {...props}
     />
   );
 };
@@ -232,13 +232,13 @@ export const SubLabel = ({
   return (
     <LinkContext value={contextValue}>
       <p
+        {...props}
         {...stylex.props(
           typeramp.sublabel,
           variant === "secondary" && ui.textDim,
           variant === "critical" && critical.textDim,
           style,
         )}
-        {...props}
       />
     </LinkContext>
   );
@@ -248,21 +248,21 @@ export interface BlockquoteProps
   extends StyleXComponentProps<React.ComponentProps<"blockquote">> {}
 
 export const Blockquote = ({ style, ...props }: BlockquoteProps) => {
-  return <blockquote {...stylex.props(styles.blockquote, style)} {...props} />;
+  return <blockquote {...props} {...stylex.props(styles.blockquote, style)} />;
 };
 
 export interface UnorderedListProps
   extends StyleXComponentProps<React.ComponentProps<"ul">> {}
 
 export const UnorderedList = ({ style, ...props }: UnorderedListProps) => {
-  return <ul {...stylex.props(styles.unorderedList, style)} {...props} />;
+  return <ul {...props} {...stylex.props(styles.unorderedList, style)} />;
 };
 
 export interface OrderedListProps
   extends StyleXComponentProps<React.ComponentProps<"ol">> {}
 
 export const OrderedList = ({ style, ...props }: OrderedListProps) => {
-  return <ol {...stylex.props(styles.orderedList, style)} {...props} />;
+  return <ol {...props} {...stylex.props(styles.orderedList, style)} />;
 };
 
 export interface ListItemProps
@@ -270,7 +270,7 @@ export interface ListItemProps
 
 export const ListItem = ({ style, children, ...props }: ListItemProps) => {
   return (
-    <li {...stylex.props(styles.listItem, style)} {...props}>
+    <li {...props} {...stylex.props(styles.listItem, style)}>
       {children}
     </li>
   );
@@ -282,8 +282,8 @@ export interface InlineCodeProps
 export const InlineCode = ({ style, ...props }: InlineCodeProps) => {
   return (
     <code
-      {...stylex.props(styles.inlineCode, ui.bgSecondary, style)}
       {...props}
+      {...stylex.props(styles.inlineCode, ui.bgSecondary, style)}
     />
   );
 };

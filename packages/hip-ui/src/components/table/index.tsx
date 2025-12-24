@@ -253,8 +253,8 @@ export function TableHeader<T extends object>({
 
   return (
     <AriaTableHeader
-      {...stylex.props(styles.tableHeader, style)}
       {...otherProps}
+      {...stylex.props(styles.tableHeader, style)}
     >
       {/* Add extra columns for drag and drop and selection. */}
       {allowsDragging && <TableColumn minWidth={52} width={52} />}
@@ -281,7 +281,7 @@ export function TableRow<T extends object>({
   const { selectionBehavior, allowsDragging } = useTableOptions();
 
   return (
-    <AriaRow id={id} {...stylex.props(styles.row, style)} {...props}>
+    <AriaRow id={id} {...props} {...stylex.props(styles.row, style)}>
       {allowsDragging && (
         <TableCell>
           <IconButton slot="drag" label="Reorder" variant="tertiary">
@@ -306,7 +306,7 @@ export function TableBody<T extends object>({
   style,
   ...prop
 }: TableBodyProps<T>) {
-  return <AriaTableBody {...stylex.props(styles.tableBody, style)} {...prop} />;
+  return <AriaTableBody {...prop} {...stylex.props(styles.tableBody, style)} />;
 }
 
 export interface TableCellProps
@@ -322,7 +322,7 @@ export function TableCell({
   ...props
 }: TableCellProps) {
   return (
-    <AriaCell {...stylex.props(styles.cell, style)} {...props}>
+    <AriaCell {...props} {...stylex.props(styles.cell, style)}>
       <div
         {...stylex.props(
           styles.cellContent,

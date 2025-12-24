@@ -74,13 +74,13 @@ export const Popover = ({
       {trigger}
 
       <AriaPopover
+        offset={8}
+        containerPadding={8}
+        {...popoverProps}
         {...stylex.props(
           popoverStyles.animation,
           hasArrow && styles.wrapperWithArrow,
         )}
-        offset={8}
-        containerPadding={8}
-        {...popoverProps}
       >
         {hasArrow && (
           <OverlayArrow {...stylex.props(styles.caret)}>

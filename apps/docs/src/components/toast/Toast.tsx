@@ -172,8 +172,8 @@ export function ToastRegion({ style, ...props }: ToastRegionProps) {
   return (
     <AriaToastRegion
       queue={toasts}
-      {...stylex.props(styles.region, style)}
       {...props}
+      {...stylex.props(styles.region, style)}
     >
       {({ toast }) => <ToastItem toast={toast} />}
     </AriaToastRegion>
