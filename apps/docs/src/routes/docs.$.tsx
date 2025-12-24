@@ -54,7 +54,7 @@ import { animationDuration } from "../components/theme/animations.stylex";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
-import { lineHeight } from "../components/theme/typography.stylex";
+import { Content } from "@/components/content";
 
 const TypographyRouterLink = createLink(TypographyLink);
 
@@ -89,43 +89,6 @@ const styles = stylex.create({
     position: "absolute",
     right: spacing["3"],
     top: spacing["2.5"],
-  },
-  h1: {
-    marginBottom: spacing["8"],
-    marginTop: spacing["8"],
-  },
-  h2: {
-    marginBottom: spacing["4"],
-    marginTop: spacing["8"],
-  },
-  h3: {
-    marginBottom: spacing["5"],
-    marginTop: spacing["8"],
-  },
-  h4: {
-    marginBottom: spacing["8"],
-    marginTop: spacing["8"],
-  },
-  h5: {
-    marginBottom: spacing["8"],
-    marginTop: spacing["8"],
-  },
-  p: {
-    lineHeight: {
-      default: lineHeight.xl,
-      ":is(li *)": lineHeight.base,
-      ":is(blockquote *)": lineHeight.base,
-    },
-    marginBottom: {
-      default: spacing["5"],
-      ":is(li *)": spacing["0"],
-      ":is(blockquote *)": spacing["0"],
-    },
-    marginTop: {
-      default: spacing["5"],
-      ":is(li *)": spacing["0"],
-      ":is(blockquote *)": spacing["0"],
-    },
   },
   header: {
     marginBottom: spacing["12"],
@@ -249,30 +212,30 @@ function Link({ href, ...props }: LinkProps) {
 const components: MDXComponents = {
   pre: Pre,
   h1: ({ className: _className, style: _style, ...props }) => (
-    <Heading1 {...props} style={styles.h1} />
+    <Heading1 {...props} />
   ),
   h2: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id} style={styles.h2}>
+    <LinkedHeading id={props.id}>
       <Heading2 {...props} />
     </LinkedHeading>
   ),
   h3: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id} style={styles.h3}>
+    <LinkedHeading id={props.id}>
       <Heading3 {...props} />
     </LinkedHeading>
   ),
   h4: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id} style={styles.h4}>
+    <LinkedHeading id={props.id}>
       <Heading4 {...props} />
     </LinkedHeading>
   ),
   h5: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id} style={styles.h5}>
+    <LinkedHeading id={props.id}>
       <Heading5 {...props} />
     </LinkedHeading>
   ),
   p: ({ className: _className, style: _style, ...props }) => (
-    <Body {...props} style={styles.p} />
+    <Body {...props} />
   ),
   a: ({ className: _className, style: _style, ...props }) => (
     <Link {...(props as LinkProps)} />
@@ -313,16 +276,16 @@ function RouteComponent() {
     throw new Error(`Doc not found: ${_splat ?? "unknown"}`);
   }
 
-  const Content = pages[location.pathname];
+  const Page = pages[location.pathname];
 
-  if (!Content) {
+  if (!Page) {
     throw new Error(`Content not found: ${location.pathname}`);
   }
 
   const isShowcase = location.pathname.includes("showcase");
 
   if (isShowcase) {
-    return <Content components={components} />;
+    return <Page components={components} />;
   }
 
   return (
@@ -331,7 +294,7 @@ function RouteComponent() {
       columnGap="4"
       style={styles.root}
     >
-      <div {...stylex.props(styles.main)}>
+      <Content style={styles.main}>
         <Flex direction="column" gap="4" style={styles.header}>
           <Heading1>{doc.title}</Heading1>
           <Text size="xl" variant="secondary">
@@ -339,9 +302,9 @@ function RouteComponent() {
           </Text>
         </Flex>
         <Suspense fallback={<div>Loading...</div>}>
-          <Content components={components} />
+          <Page components={components} />
         </Suspense>
-      </div>
+      </Content>
       {toc && <TableOfContents toc={toc} />}
     </Grid>
   );

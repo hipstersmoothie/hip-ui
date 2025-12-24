@@ -1,0 +1,55 @@
+---
+title: Content
+description: A wrapper component that applies consistent spacing styles to content elements.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/content/basic'
+import { WithLists } from '../../../examples/content/with-lists'
+import { WithBlockquote } from '../../../examples/content/with-blockquote'
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the content component to your project.
+
+```bash
+pnpm hip install content
+```
+
+## Props
+
+<PropDocs components={["Content"]} />
+
+## Features
+
+### Automatic Spacing
+
+The Content component automatically applies consistent margins to child elements:
+
+- **Headings (h1-h5)**: Top and bottom margins for proper vertical rhythm
+- **Paragraphs**: Spacing between paragraphs, with adjusted spacing when nested in lists or blockquotes
+- **Blockquotes**: Left border, padding, and zero margins for proper indentation
+- **Lists**: Proper spacing maintained for list items
+
+### With Lists
+
+The Content component handles spacing for both ordered and unordered lists:
+
+<Example src={WithLists} />
+
+### With Blockquotes
+
+Blockquotes receive special styling with proper indentation and spacing:
+
+<Example src={WithBlockquote} />
+
+
+## Related Components
+
+- [Typography](/docs/components/content/typography) - For semantic typography components
+- [Text](/docs/components/content/text) - For flexible text styling
+- [Card](/docs/components/content/card) - For grouping content in containers
+

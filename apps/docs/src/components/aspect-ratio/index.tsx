@@ -73,11 +73,16 @@ export interface AspectRatioImageProps extends StyleXComponentProps<
   React.ComponentProps<"img">
 > {}
 
-export function AspectRatioImage({ style, ...props }: AspectRatioImageProps) {
+export function AspectRatioImage({
+  style,
+  children,
+  ...props
+}: AspectRatioImageProps) {
   return (
     <div {...stylex.props(styles.imageContainer, style)}>
       {/* eslint-disable-next-line jsx-a11y/alt-text */}
       <img {...props} {...stylex.props(styles.image, style)} />
+      {children}
     </div>
   );
 }
