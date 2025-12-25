@@ -16,23 +16,6 @@ export const containerBreakpoints = stylex.defineConsts({
   "2xl": "@container (min-width: 96rem)",
 });
 
-/**
- * Named container breakpoints that query parent containers only.
- * Use these when you want to query a parent container by name,
- * preventing elements with containerType from querying themselves.
- * 
- * Usage:
- * 1. Set container-name on the parent: containerName: "parent"
- * 2. Use parentContainerBreakpoints in child styles
- */
-export const parentContainerBreakpoints = stylex.defineConsts({
-  sm: "@container parent (min-width: 40rem)",
-  md: "@container parent (min-width: 48rem)",
-  lg: "@container parent (min-width: 64rem)",
-  xl: "@container parent (min-width: 80rem)",
-  "2xl": "@container parent (min-width: 96rem)",
-});
-
 export const maxBreakpoints = stylex.defineConsts({
   sm: "@media (max-width: 40rem)",
 });

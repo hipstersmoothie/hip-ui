@@ -30,18 +30,22 @@ const styles = stylex.create({
     paddingBottom: {
       default: spacing["10"],
       [containerBreakpoints.sm]: spacing["12"],
+      ":has(> [data-sidebar-layout=true])": "0 !important",
     },
     paddingLeft: {
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
+      ":has(> [data-sidebar-layout=true])": "0 !important",
     },
     paddingRight: {
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
+      ":has(> [data-sidebar-layout=true])": "0 !important",
     },
     paddingTop: {
       default: spacing["2"],
       [containerBreakpoints.sm]: spacing["6"],
+      ":has(> [data-sidebar-layout=true])": "0 !important",
     },
     width: "100%",
   },

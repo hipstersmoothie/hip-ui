@@ -98,7 +98,11 @@ export const SidebarLayoutRoot = ({
   ...props
 }: SidebarLayoutRootProps) => {
   return (
-    <div {...props} {...stylex.props(styles.wrapper, style)}>
+    <div
+      {...props}
+      {...stylex.props(styles.wrapper, style)}
+      data-sidebar-layout={true}
+    >
       <div {...stylex.props(styles.root)}>{children}</div>
     </div>
   );
