@@ -1,4 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
+import { LinkIcon } from "lucide-react";
 import {
   createContext,
   use,
@@ -9,7 +10,9 @@ import {
 } from "react";
 
 import { CopyToClipboardButton } from "../copy-to-clipboard-button";
+import { Flex } from "../flex";
 import { LinkContext } from "../link/link-context";
+import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
@@ -100,6 +103,23 @@ const styles = stylex.create({
     overflow: "hidden",
     textOverflow: "ellipsis",
     whiteSpace: "nowrap",
+  },
+  linkedHeadingLink: {
+    textDecoration: "none",
+    color: "inherit",
+  },
+  linkedHeadingLinkButton: {
+    opacity: {
+      default: 0,
+      ":is([data-focus-visible])": 1,
+      ":is([data-heading-link]:hover *)": 1,
+    },
+    transitionDuration: animationDuration.fast,
+    transitionProperty: {
+      default: "opacity",
+      "@media (prefers-reduced-motion: reduce)": "none",
+    },
+    transitionTimingFunction: "ease-in-out",
   },
 });
 
@@ -369,5 +389,59 @@ export const InlineCode = ({ style, ...props }: InlineCodeProps) => {
       {...props}
       {...stylex.props(styles.inlineCode, ui.bgSecondary, style)}
     />
+  );
+};
+
+/**
+ * Props for the LinkedHeading component.
+ */
+export interface LinkedHeadingProps {
+  /**
+   * The ID of the heading, used to create the anchor link.
+   * If not provided, the component will just render the children.
+   */
+  id?: string;
+  /**
+   * The heading content to display.
+   */
+  children: React.ReactNode;
+  /**
+   * Optional style to apply to the container.
+   */
+  style?: stylex.StyleXStyles;
+}
+
+/**
+ * A wrapper component for headings that adds a link and copy-to-clipboard button.
+ * The link allows users to jump to the heading, and the button copies the full URL
+ * with the anchor to the clipboard.
+ */
+export const LinkedHeading = ({ id, children, style }: LinkedHeadingProps) => {
+  if (!id) {
+    return <>{children}</>;
+  }
+
+  const url =
+    globalThis.window === undefined
+      ? `#${id}`
+      : `${globalThis.location.origin}${globalThis.location.pathname}#${id}`;
+
+  return (
+    <Flex
+      direction="row"
+      gap="2"
+      align="center"
+      data-heading-link={true}
+      style={style}
+    >
+      <a href={`#${id}`} {...stylex.props(styles.linkedHeadingLink)}>
+        {children}
+      </a>
+      <CopyToClipboardButton
+        text={url}
+        icon={<LinkIcon />}
+        style={styles.linkedHeadingLinkButton}
+      />
+    </Flex>
   );
 };

@@ -17,6 +17,7 @@ import { LetterSpacing } from '../../../examples/typography/letter-spacing'
 import { Typeramp } from '../../../examples/typography/typeramp'
 import { BlockquoteExample } from '../../../examples/typography/blockquote'
 import { InlineCodeExample } from '../../../examples/typography/inline-code'
+import { LinkedHeadingExample } from '../../../examples/typography/linked-heading'
 import { PreExample } from '../../../examples/typography/pre'
 
 <Example src={Typeramp} />
@@ -33,7 +34,7 @@ pnpm hip install typography
 
 This is a custom component collection built for typography.
 
-<PropDocs components={["Heading1", "Heading2", "Heading3", "Heading4", "Heading5", "Body", "SmallBody", "LabelText", "SubLabel", "Blockquote", "UnorderedList", "OrderedList", "ListItem", "InlineCode", "Pre"]} />
+<PropDocs components={["Heading1", "Heading2", "Heading3", "Heading4", "Heading5", "Body", "SmallBody", "LabelText", "SubLabel", "Blockquote", "UnorderedList", "OrderedList", "ListItem", "InlineCode", "Pre", "LinkedHeading"]} />
 
 ## Typeramp
 
@@ -85,6 +86,12 @@ Typography also includes an inline code component.
 Typography also includes a pre component.
 
 <Example src={PreExample} />
+
+### Linked Heading
+
+Typography also includes a linked heading component that adds anchor links and copy-to-clipboard functionality to headings.
+
+<Example src={LinkedHeadingExample} />
 
 ## Related Components
 

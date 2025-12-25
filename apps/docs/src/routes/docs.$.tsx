@@ -18,7 +18,6 @@ declare global {
 
 import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
-import { LinkIcon } from "lucide-react";
 import { Suspense } from "react";
 import { modules, pages } from "virtual:content";
 
@@ -33,6 +32,7 @@ import {
   Heading4,
   Heading5,
   InlineCode,
+  LinkedHeading,
   ListItem,
   OrderedList,
   Pre,
@@ -40,9 +40,7 @@ import {
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 import { TableOfContents } from "@/components/table-of-contents";
-import { CopyToClipboardButton } from "@/components/copy-to-clipboard-button";
 
-import { animationDuration } from "../components/theme/animations.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { Content } from "@/components/content";
 import { containerBreakpoints } from "../components/theme/media-queries.stylex";
@@ -65,23 +63,6 @@ const styles = stylex.create({
   header: {
     marginBottom: spacing["12"],
   },
-  linkedHeadingLink: {
-    color: "inherit",
-    textDecoration: "none",
-  },
-  linkedHeadingLinkButton: {
-    opacity: {
-      default: 0,
-      ":is([data-heading-link]:hover *)": 1,
-      ":is([data-focus-visible])": 1,
-    },
-    transitionDuration: animationDuration.fast,
-    transitionProperty: {
-      default: "opacity",
-      "@media (prefers-reduced-motion: reduce)": "none",
-    },
-    transitionTimingFunction: "ease-in-out",
-  },
   tableOfContents: {
     display: {
       default: "none",
@@ -89,41 +70,6 @@ const styles = stylex.create({
     },
   },
 });
-
-function LinkedHeading({
-  id,
-  children,
-  style,
-}: {
-  id?: string;
-  children: React.ReactNode;
-  style?: stylex.StyleXStyles;
-}) {
-  const location = useLocation();
-
-  if (!id) {
-    return children;
-  }
-
-  return (
-    <Flex
-      direction="row"
-      gap="2"
-      align="center"
-      data-heading-link={true}
-      style={[style]}
-    >
-      <a href={`#${id}`} {...stylex.props(styles.linkedHeadingLink)}>
-        {children}
-      </a>
-      <CopyToClipboardButton
-        text={`${location.url}#${id}`}
-        icon={<LinkIcon />}
-        style={styles.linkedHeadingLinkButton}
-      />
-    </Flex>
-  );
-}
 
 function Link({ href, ...props }: LinkProps) {
   if (href && href.startsWith("/")) {
@@ -179,7 +125,9 @@ const components: MDXComponents = {
   li: ({ className: _className, style: _style, ...props }) => (
     <ListItem {...props} />
   ),
-  pre: Pre,
+  pre: ({ className: _className, style: _style, ...props }) => (
+    <Pre {...props} />
+  ),
   code: ({ className: _className, style: _style, ...props }) => (
     <InlineCode {...props} />
   ),
