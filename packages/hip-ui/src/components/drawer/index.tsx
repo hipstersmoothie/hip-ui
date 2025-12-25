@@ -110,6 +110,7 @@ const styles = stylex.create({
     animationTimingFunction: animationTimingFunction.easeInOut,
   },
   dialog: {
+    overflow: "auto",
     paddingBottom: spacing["2"],
     paddingTop: spacing["2"],
   },

@@ -30,7 +30,6 @@ import {
 import { modules, pages } from "virtual:content";
 
 import { Flex } from "@/components/flex";
-import { Grid } from "@/components/grid";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
 import {
   Blockquote,
@@ -55,21 +54,22 @@ import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { Content } from "@/components/content";
+import { containerBreakpoints } from "../components/theme/media-queries.stylex";
 
 const TypographyRouterLink = createLink(TypographyLink);
 
 const styles = stylex.create({
   root: {
     width: "100%",
-  },
-  main: {
-    flexGrow: 1,
-    maxWidth: "100ch",
-    minWidth: 0,
-    paddingBottom: spacing["20"],
-    paddingLeft: spacing["16"],
-    paddingRight: spacing["16"],
-    paddingTop: spacing["20"],
+    gap: {
+      default: spacing["4"],
+      [containerBreakpoints.lg]: spacing["8"],
+    },
+    display: "grid",
+    gridTemplateColumns: {
+      default: "minmax(0, 1fr)",
+      [containerBreakpoints.lg]: "minmax(0, 1fr) 240px",
+    },
   },
   pre: {
     borderColor: uiColor.border2,
@@ -116,6 +116,12 @@ const styles = stylex.create({
       "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
+  },
+  tableOfContents: {
+    display: {
+      default: "none",
+      [containerBreakpoints.lg]: "block",
+    },
   },
 });
 
@@ -289,12 +295,8 @@ function RouteComponent() {
   }
 
   return (
-    <Grid
-      columns="minmax(0, max-content) 240px"
-      columnGap="4"
-      style={styles.root}
-    >
-      <Content style={styles.main}>
+    <div {...stylex.props(styles.root)}>
+      <Content>
         <Flex direction="column" gap="4" style={styles.header}>
           <Heading1>{doc.title}</Heading1>
           <Text size="xl" variant="secondary">
@@ -305,7 +307,7 @@ function RouteComponent() {
           <Page components={components} />
         </Suspense>
       </Content>
-      {toc && <TableOfContents toc={toc} />}
-    </Grid>
+      {toc && <TableOfContents toc={toc} style={styles.tableOfContents} />}
+    </div>
   );
 }

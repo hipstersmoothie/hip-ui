@@ -1,0 +1,40 @@
+---
+title: SidebarLayout
+description: A flexible page layout component with unstyled slots for sidebar and page content.
+---
+
+import { PropDocs } from '../../../lib/PropDocs'
+import { Example } from '../../../lib/Example'
+import { Basic } from '../../../examples/sidebar-layout/basic'
+import { WithHeaderLayout } from '../../../examples/sidebar-layout/with-header-layout'
+
+<Example src={Basic} noPadding />
+
+## Installation
+
+Run the following command to add the sidebar layout component to your project.
+
+```bash
+pnpm hip install sidebar-layout
+```
+
+## Props
+
+This is a custom component built for page layouts with sidebar and content slots.
+
+<PropDocs components={["SidebarLayoutRoot", "SidebarLayoutSidebar", "SidebarLayoutPage"]} />
+
+## Features
+
+### With Header Layout
+
+You can combine the sidebar layout with the header layout to create a page layout with a sidebar and header.
+
+<Example src={WithHeaderLayout} noPadding />
+
+## Related Components
+
+- [Flex](/docs/components/flex) - For flexible layouts within slots
+- [Grid](/docs/components/grid) - For two-dimensional layouts within slots
+- [Sidebar](/docs/components/sidebar) - For navigation in the sidebar slot
+

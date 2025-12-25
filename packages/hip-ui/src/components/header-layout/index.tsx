@@ -2,32 +2,31 @@
 
 import * as stylex from "@stylexjs/stylex";
 
+import { primaryColor, uiColor } from "../theme/color.stylex";
+import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { StyleXComponentProps } from "../theme/types";
-import { primaryColor, uiColor } from "../theme/color.stylex";
-import { primary } from "../theme/semantic-color.stylex";
-import { containerBreakpoints } from "../theme/media-queries.stylex";
 
 const styles = stylex.create({
   root: {
     "--page-content-max-width": "1280px",
-    minHeight: "100vh",
-    display: "flex",
-    flexDirection: "column",
     backgroundColor: uiColor.bg,
     containerType: "inline-size",
+    display: "flex",
+    flexDirection: "column",
+    minHeight: "100vh",
     width: "100cqw",
   },
   header: {
     flexShrink: 0,
   },
   page: {
+    boxSizing: "border-box",
     flexGrow: 1,
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "var(--page-content-max-width)",
     minHeight: 0,
-    paddingTop: {
-      default: spacing["2"],
-      [containerBreakpoints.sm]: spacing["6"],
-    },
     paddingBottom: {
       default: spacing["10"],
       [containerBreakpoints.sm]: spacing["12"],
@@ -40,35 +39,34 @@ const styles = stylex.create({
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
     },
-    maxWidth: "var(--page-content-max-width)",
+    paddingTop: {
+      default: spacing["2"],
+      [containerBreakpoints.sm]: spacing["6"],
+    },
     width: "100%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    boxSizing: "border-box",
   },
   footer: {
     flexShrink: 0,
   },
   hero: {
-    width: "100%",
-    boxSizing: "border-box",
     backgroundColor: primaryColor.solid1,
+    boxSizing: "border-box",
     color: primaryColor.textContrast,
-    paddingTop: {
-      default: spacing["6"],
-      [containerBreakpoints.sm]: spacing["12"],
-    },
     paddingBottom: {
       default: spacing["6"],
       [containerBreakpoints.sm]: spacing["12"],
     },
+    paddingTop: {
+      default: spacing["6"],
+      [containerBreakpoints.sm]: spacing["12"],
+    },
+    width: "100%",
   },
   heroContent: {
-    maxWidth: "var(--page-content-max-width)",
-    width: "100%",
+    boxSizing: "border-box",
     marginLeft: "auto",
     marginRight: "auto",
-    boxSizing: "border-box",
+    maxWidth: "var(--page-content-max-width)",
     paddingLeft: {
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
@@ -77,6 +75,7 @@ const styles = stylex.create({
       default: spacing["4"],
       [containerBreakpoints.sm]: spacing["8"],
     },
+    width: "100%",
   },
 });
 
@@ -91,7 +90,13 @@ export const HeaderLayoutRoot = ({
   style,
   ...props
 }: HeaderLayoutRootProps) => {
-  return <div {...props} {...stylex.props(styles.root, style)} />;
+  return (
+    <div
+      {...props}
+      {...stylex.props(styles.root, style)}
+      data-header-layout={true}
+    />
+  );
 };
 
 /**
@@ -159,6 +164,7 @@ export const HeaderLayoutHero = ({
 /**
  * Header layout component with subcomponents.
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export const HeaderLayout = {
   Root: HeaderLayoutRoot,
   Header: HeaderLayoutHeader,

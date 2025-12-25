@@ -6,6 +6,7 @@ import { animationDuration } from "../components/theme/animations.stylex";
 import { primaryColor, uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontSize } from "../components/theme/typography.stylex";
+import { StyleXComponentProps } from "@/components/theme/types";
 
 const ActiveHeaderIdContext = createContext<string | null>(null);
 const LevelContext = createContext(1);
@@ -21,7 +22,6 @@ const styles = stylex.create({
     marginTop: spacing["12"],
     overflow: "auto",
     paddingBottom: spacing["20"],
-    paddingRight: spacing["8"],
     paddingTop: spacing["12"],
     position: "sticky",
     top: 0,
@@ -115,7 +115,10 @@ function TocItem({ id, value, children }: TocEntry) {
   );
 }
 
-export function TableOfContents({ toc }: { toc: Toc }) {
+export function TableOfContents({
+  toc,
+  style,
+}: StyleXComponentProps<{ toc: Toc }>) {
   const [activeHeaderId, setActiveHeaderId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -140,7 +143,7 @@ export function TableOfContents({ toc }: { toc: Toc }) {
 
   return (
     <ActiveHeaderIdContext value={activeHeaderId}>
-      <nav {...stylex.props(styles.wrapper)}>
+      <nav {...stylex.props(styles.wrapper, style)}>
         <LevelContext value={1}>
           <ul {...stylex.props(styles.itemList)}>
             {toc.map((item) => (

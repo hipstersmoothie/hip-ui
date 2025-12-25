@@ -46,6 +46,7 @@ import { formConfig } from "../components/form/form-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
 import { headerLayoutConfig } from "../components/header-layout/header-layout-config.js";
 import { hoverCardConfig } from "../components/hover-card/hover-card-config.js";
+import { sidebarLayoutConfig } from "../components/sidebar-layout/sidebar-layout-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { imageCropperConfig } from "../components/image-cropper/image-cropper-config.js";
 import { kbdConfig } from "../components/kbd/kbd-config.js";
@@ -143,6 +144,7 @@ const COMPONENT_CONFIGS = [
   footerConfig,
   formConfig,
   headerLayoutConfig,
+  sidebarLayoutConfig,
   tableConfig,
   sliderConfig,
   tagGroupConfig,

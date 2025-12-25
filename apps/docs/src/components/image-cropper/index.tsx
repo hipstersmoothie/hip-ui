@@ -1,12 +1,16 @@
 "use client";
 
+import type { ComponentProps } from "react";
+
 import { Cropper as OriginCropper } from "@origin-space/image-cropper";
+import { useEffectEvent } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
-import { useEffect, useRef, type ComponentProps } from "react";
+import { useEffect, useState } from "react";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   root: {
@@ -162,26 +166,31 @@ export function ImageCropperRoot({
   children,
   ...props
 }: ImageCropperRootProps) {
-  const imageUrlRef = useRef<string | null>(null);
-  const imageUrl =
-    typeof image === "string" ? image : URL.createObjectURL(image);
+  const [imageUrl, setImageUrl] = useState<string>(() => "");
 
   const handleError = () => {
     onCropChange?.(null);
   };
 
-  // Store the object URL for cleanup
-  useEffect(() => {
-    if (typeof image !== "string") {
-      imageUrlRef.current = imageUrl;
-    }
+  const createImageUrl = useEffectEvent(() => {
+    // Create new URL for new image
+    const newUrl =
+      typeof image === "string" ? image : URL.createObjectURL(image);
+
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
+    setImageUrl(newUrl);
+
     return () => {
-      if (imageUrlRef.current) {
-        URL.revokeObjectURL(imageUrlRef.current);
-        imageUrlRef.current = null;
+      if (newUrl.startsWith("blob:")) {
+        URL.revokeObjectURL(newUrl);
       }
     };
-  }, [image, imageUrl]);
+  });
+
+  // Update URL when image changes and clean up previous one
+  useEffect(() => {
+    return createImageUrl();
+  }, [image]);
 
   return (
     <OriginCropper.Root

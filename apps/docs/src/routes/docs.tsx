@@ -1,4 +1,3 @@
-import * as stylex from "@stylexjs/stylex";
 import {
   createFileRoute,
   LinkProps,
@@ -11,7 +10,6 @@ import { allDocs } from "content-collections";
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
-import { Grid } from "@/components/grid";
 import { IconButton } from "@/components/icon-button";
 import {
   Sidebar,
@@ -22,29 +20,11 @@ import {
 } from "@/components/sidebar";
 import { Text } from "@/components/typography/text";
 
-import { uiColor } from "../components/theme/color.stylex";
 import { Flex } from "@/components/flex";
 import { ThemePicker } from "@/lib/ThemePicker";
+import { SidebarLayout } from "@/components/sidebar-layout";
 
 const SidebarItemLink = createLink(SidebarItem);
-
-const styles = stylex.create({
-  root: {
-    width: "100%",
-  },
-  aside: {
-    backgroundColor: uiColor.bgSubtle,
-    borderRightColor: uiColor.border2,
-    borderRightStyle: "solid",
-    borderRightWidth: 1,
-    boxSizing: "border-box",
-    height: "100vh",
-    overflow: "auto",
-    overscrollBehavior: "contain",
-    position: "sticky",
-    top: 0,
-  },
-});
 
 interface SidebarItem {
   id: string;
@@ -244,13 +224,13 @@ export const Route = createFileRoute("/docs")({
 
 function RouteComponent() {
   return (
-    <Grid columns="max-content 1fr" columnGap="4" style={styles.root}>
-      <aside {...stylex.props(styles.aside)}>
+    <SidebarLayout.Root>
+      <SidebarLayout.Sidebar>
         <DocSidebar />
-      </aside>
-      <main>
+      </SidebarLayout.Sidebar>
+      <SidebarLayout.Page>
         <Outlet />
-      </main>
-    </Grid>
+      </SidebarLayout.Page>
+    </SidebarLayout.Root>
   );
 }

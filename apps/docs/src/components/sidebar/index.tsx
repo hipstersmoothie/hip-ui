@@ -44,7 +44,6 @@ const styles = stylex.create({
     alignItems: "center",
     display: "flex",
     justifyContent: "space-between",
-    marginBottom: spacing["4"],
   },
   sidebarHeaderLink: {
     textDecoration: "none",
@@ -53,7 +52,9 @@ const styles = stylex.create({
     height: spacing["6"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
-    paddingTop: spacing["4"],
+    paddingTop: {
+      ":is([data-sidebar-group] *)": spacing["4"],
+    },
   },
   sidebarSectionList: {
     margin: 0,
@@ -80,6 +81,7 @@ const styles = stylex.create({
       ":is([data-hovered=true])": uiColor.component2,
       ":is([data-pressed=true])": uiColor.component3,
     },
+    boxSizing: "border-box",
     color: uiColor.text2,
     display: "flex",
     fontSize: fontSize["sm"],
@@ -92,6 +94,7 @@ const styles = stylex.create({
     height: spacing["8"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
+    width: "100%",
   },
   sidebarItemActive: {
     backgroundColor: {
@@ -245,7 +248,10 @@ export function SidebarGroup({
           {title}
         </Button>
       </Heading>
-      <DisclosurePanel {...stylex.props(styles.sidebarGroupPanel)}>
+      <DisclosurePanel
+        {...stylex.props(styles.sidebarGroupPanel)}
+        data-sidebar-group
+      >
         <div {...stylex.props(styles.sidebarGroupPanelContent)}>{children}</div>
       </DisclosurePanel>
     </Disclosure>

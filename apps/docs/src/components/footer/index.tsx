@@ -42,6 +42,7 @@ const styles = stylex.create({
       ":is([data-footer-centered] *)": "center",
       [containerBreakpoints.sm]: "center",
     },
+    boxSizing: "border-box",
     display: "flex",
     flexDirection: {
       default: "column",
@@ -69,7 +70,10 @@ const styles = stylex.create({
     display: "grid",
     gridTemplateColumns: {
       default: "repeat(2, 1fr)",
-      [containerBreakpoints.sm]: "repeat(4, 1fr)",
+      [containerBreakpoints.sm]: {
+        ":has(nth-child(2))": "repeat(3, 1fr)",
+        ":has(nth-child(3))": "repeat(4, 1fr)",
+      },
     },
     rowGap: spacing["6"],
   },
