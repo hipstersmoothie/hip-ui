@@ -19,21 +19,13 @@ declare global {
 import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
 import { LinkIcon } from "lucide-react";
-import {
-  createContext,
-  Suspense,
-  use,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import { Suspense } from "react";
 import { modules, pages } from "virtual:content";
 
 import { Flex } from "@/components/flex";
 import { LinkProps, Link as TypographyLink } from "@/components/link";
 import {
   Blockquote,
-  BlockquoteProps,
   Body,
   Heading1,
   Heading2,
@@ -43,6 +35,7 @@ import {
   InlineCode,
   ListItem,
   OrderedList,
+  Pre,
   UnorderedList,
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
@@ -50,8 +43,6 @@ import { TableOfContents } from "@/components/table-of-contents";
 import { CopyToClipboardButton } from "@/components/copy-to-clipboard-button";
 
 import { animationDuration } from "../components/theme/animations.stylex";
-import { radius } from "../components/theme/radius.stylex";
-import { uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { Content } from "@/components/content";
 import { containerBreakpoints } from "../components/theme/media-queries.stylex";
@@ -71,34 +62,8 @@ const styles = stylex.create({
       [containerBreakpoints.lg]: "minmax(0, 1fr) 240px",
     },
   },
-  pre: {
-    borderColor: uiColor.border2,
-    borderRadius: {
-      default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["4xl"],
-    },
-    cornerShape: "squircle",
-    borderStyle: "solid",
-    borderWidth: 1,
-    marginBottom: spacing["8"],
-    marginTop: spacing["8"],
-    padding: spacing["4"],
-    position: "relative",
-  },
-  copyButton: {
-    position: "absolute",
-    right: spacing["3"],
-    top: spacing["2.5"],
-  },
   header: {
     marginBottom: spacing["12"],
-  },
-  blockquote: {
-    marginBottom: 0,
-    marginLeft: spacing["2"],
-    marginRight: 0,
-    marginTop: 0,
-    paddingLeft: spacing["4"],
   },
   linkedHeadingLink: {
     color: "inherit",
@@ -124,46 +89,6 @@ const styles = stylex.create({
     },
   },
 });
-
-const PreContext = createContext(false);
-
-function Pre({ children, ...props }: React.ComponentProps<"pre">) {
-  const [textContent, setTextContent] = useState("error");
-  const ref = useRef<HTMLPreElement>(null);
-
-  useEffect(() => {
-    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect
-    setTextContent(ref.current?.textContent ?? "error");
-  }, [ref]);
-
-  return (
-    <PreContext value={true}>
-      <pre
-        ref={ref}
-        {...props}
-        {...stylex.props(styles.pre)}
-        data-testid="code"
-      >
-        {children}
-        <CopyToClipboardButton style={styles.copyButton} text={textContent} />
-      </pre>
-    </PreContext>
-  );
-}
-
-function Code({ className, style, ...props }: React.ComponentProps<"code">) {
-  const isPre = use(PreContext);
-
-  if (isPre) {
-    return <code {...props} className={className} style={style} />;
-  }
-
-  return <InlineCode {...props} />;
-}
-
-function DocsBlockquote(props: BlockquoteProps) {
-  return <Blockquote {...props} style={styles.blockquote} />;
-}
 
 function LinkedHeading({
   id,
@@ -216,7 +141,6 @@ function Link({ href, ...props }: LinkProps) {
 }
 
 const components: MDXComponents = {
-  pre: Pre,
   h1: ({ className: _className, style: _style, ...props }) => (
     <Heading1 {...props} />
   ),
@@ -255,9 +179,12 @@ const components: MDXComponents = {
   li: ({ className: _className, style: _style, ...props }) => (
     <ListItem {...props} />
   ),
-  code: Code,
+  pre: Pre,
+  code: ({ className: _className, style: _style, ...props }) => (
+    <InlineCode {...props} />
+  ),
   blockquote: ({ className: _className, style: _style, ...props }) => (
-    <DocsBlockquote {...props} />
+    <Blockquote {...props} />
   ),
 };
 

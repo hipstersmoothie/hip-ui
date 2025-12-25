@@ -1,7 +1,16 @@
 import * as stylex from "@stylexjs/stylex";
-import { useMemo } from "react";
+import {
+  createContext,
+  use,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
+import { CopyToClipboardButton } from "../copy-to-clipboard-button";
 import { LinkContext } from "../link/link-context";
+import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { critical, ui } from "../theme/semantic-color.stylex";
@@ -15,6 +24,26 @@ import {
 } from "../theme/typography.stylex";
 
 const styles = stylex.create({
+  pre: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
+    padding: spacing["4"],
+    borderColor: uiColor.border2,
+    borderRadius: {
+      default: radius["lg"],
+      "@supports (corner-shape: squircle)": radius["4xl"],
+    },
+    borderStyle: "solid",
+    borderWidth: 1,
+    position: "relative",
+    marginBottom: spacing["8"],
+    marginTop: spacing["8"],
+  },
+  copyButton: {
+    position: "absolute",
+    right: spacing["3"],
+    top: spacing["2.5"],
+  },
   blockquote: {
     color: ui.textDim,
     fontFamily: fontFamily["serif"],
@@ -289,11 +318,52 @@ export const ListItem = ({ style, children, ...props }: ListItemProps) => {
   );
 };
 
+const PreContext = createContext(false);
+
+export interface PreProps extends StyleXComponentProps<
+  React.ComponentProps<"pre">
+> {}
+
+export function Pre({ style, children, ...props }: PreProps) {
+  const [textContent, setTextContent] = useState("error");
+  const ref = useRef<HTMLPreElement>(null);
+
+  useEffect(() => {
+    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect
+    setTextContent(ref.current?.textContent ?? "error");
+  }, [ref]);
+
+  return (
+    <PreContext value={true}>
+      <pre
+        ref={ref}
+        {...props}
+        {...stylex.props(styles.pre, style)}
+        data-testid="code"
+      >
+        {children}
+        <CopyToClipboardButton style={styles.copyButton} text={textContent} />
+      </pre>
+    </PreContext>
+  );
+}
+
 export interface InlineCodeProps extends StyleXComponentProps<
   React.ComponentProps<"code">
 > {}
 
 export const InlineCode = ({ style, ...props }: InlineCodeProps) => {
+  const isPre = use(PreContext);
+
+  if (isPre) {
+    return (
+      <code
+        {...props}
+        // className={className} style={style}
+      />
+    );
+  }
+
   return (
     <code
       {...props}
