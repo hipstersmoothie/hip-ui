@@ -34,7 +34,7 @@ function Logo() {
 export function WithHeaderLayout() {
   return (
     <SidebarLayout.Root>
-      <SidebarLayout.Sidebar>
+      <SidebarLayout.NavigationSidebar>
         <Sidebar>
           <SidebarHeader href="/">
             <Logo />
@@ -45,7 +45,7 @@ export function WithHeaderLayout() {
             <SidebarItem>Settings</SidebarItem>
           </SidebarSection>
         </Sidebar>
-      </SidebarLayout.Sidebar>
+      </SidebarLayout.NavigationSidebar>
       <SidebarLayout.Page>
         <HeaderLayout.Root>
           <HeaderLayout.Header>

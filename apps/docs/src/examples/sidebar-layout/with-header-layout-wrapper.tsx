@@ -48,7 +48,7 @@ export function WithHeaderLayoutWrapper() {
       </HeaderLayout.Header>
       <HeaderLayout.Page>
         <SidebarLayout.Root>
-          <SidebarLayout.Sidebar>
+          <SidebarLayout.NavigationSidebar>
             <Sidebar>
               <SidebarSection title="Navigation">
                 <SidebarItem>Dashboard</SidebarItem>
@@ -56,7 +56,7 @@ export function WithHeaderLayoutWrapper() {
                 <SidebarItem>Settings</SidebarItem>
               </SidebarSection>
             </Sidebar>
-          </SidebarLayout.Sidebar>
+          </SidebarLayout.NavigationSidebar>
           <SidebarLayout.Page>
             <Content>
               <Heading1>Page Content</Heading1>

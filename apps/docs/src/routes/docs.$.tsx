@@ -18,7 +18,6 @@ declare global {
 
 import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
-import { Suspense } from "react";
 import { modules, pages } from "virtual:content";
 
 import { Flex } from "@/components/flex";
@@ -43,31 +42,13 @@ import { TableOfContents } from "@/components/table-of-contents";
 
 import { spacing } from "../components/theme/spacing.stylex";
 import { Content } from "@/components/content";
-import { containerBreakpoints } from "../components/theme/media-queries.stylex";
+import { SidebarLayout } from "@/components/sidebar-layout";
 
 const TypographyRouterLink = createLink(TypographyLink);
 
 const styles = stylex.create({
-  root: {
-    width: "100%",
-    gap: {
-      default: spacing["4"],
-      [containerBreakpoints.lg]: spacing["8"],
-    },
-    display: "grid",
-    gridTemplateColumns: {
-      default: "minmax(0, 1fr)",
-      [containerBreakpoints.lg]: "minmax(0, 1fr) 240px",
-    },
-  },
   header: {
     marginBottom: spacing["12"],
-  },
-  tableOfContents: {
-    display: {
-      default: "none",
-      [containerBreakpoints.lg]: "block",
-    },
   },
 });
 
@@ -170,21 +151,24 @@ function RouteComponent() {
   }
 
   return (
-    <div {...stylex.props(styles.root)}>
-      <Content>
-        <Flex direction="column" gap="4" style={styles.header}>
-          <Heading1>{doc.title}</Heading1>
-          <Text size="xl" variant="secondary">
-            {doc.description}
-          </Text>
-        </Flex>
-        <Suspense fallback={<div>Loading...</div>}>
+    <>
+      <SidebarLayout.Page>
+        <Content>
+          <Flex direction="column" gap="4" style={styles.header}>
+            <Heading1>{doc.title}</Heading1>
+            <Text size="xl" variant="secondary">
+              {doc.description}
+            </Text>
+          </Flex>
           <Page components={components} />
-        </Suspense>
-      </Content>
+        </Content>
+      </SidebarLayout.Page>
+
       {toc && (
-        <TableOfContents toc={toc} style={styles.tableOfContents} sticky />
+        <SidebarLayout.InconsequentialSidebar visible="md">
+          <TableOfContents toc={toc} />
+        </SidebarLayout.InconsequentialSidebar>
       )}
-    </div>
+    </>
   );
 }

@@ -31,12 +31,7 @@ const styles = stylex.create({
     flexShrink: 0,
     paddingBottom: spacing["20"],
     paddingTop: spacing["12"],
-  },
-  sticky: {
-    position: "sticky",
-    height: "100vh",
-    marginTop: spacing["12"],
-    top: 0,
+    width: "240px",
   },
   itemList: {
     margin: 0,
@@ -132,15 +127,13 @@ function TocItem({ id, value, children }: TocEntry) {
  */
 export interface TableOfContentsProps extends StyleXComponentProps<{
   toc: Toc;
-}> {
-  sticky?: boolean;
-}
+}> {}
 
 /**
  * A table of contents component that displays a navigation tree based on document headings.
  * Automatically highlights the currently visible heading using IntersectionObserver.
  */
-export function TableOfContents({ toc, style, sticky }: TableOfContentsProps) {
+export function TableOfContents({ toc, style }: TableOfContentsProps) {
   const [activeHeaderId, setActiveHeaderId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -165,7 +158,7 @@ export function TableOfContents({ toc, style, sticky }: TableOfContentsProps) {
 
   return (
     <ActiveHeaderIdContext value={activeHeaderId}>
-      <nav {...stylex.props(styles.wrapper, sticky && styles.sticky, style)}>
+      <nav {...stylex.props(styles.wrapper, style)}>
         <LevelContext value={1}>
           <ul {...stylex.props(styles.itemList)}>
             {toc.map((item) => (

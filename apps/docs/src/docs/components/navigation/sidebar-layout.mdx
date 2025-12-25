@@ -8,6 +8,7 @@ import { Example } from '../../../lib/Example'
 import { Basic } from '../../../examples/sidebar-layout/basic'
 import { WithHeaderLayout } from '../../../examples/sidebar-layout/with-header-layout'
 import { WithHeaderLayoutWrapper } from '../../../examples/sidebar-layout/with-header-layout-wrapper'
+import { InconsequentialSidebar } from '../../../examples/sidebar-layout/inconsequential-sidebar'
 
 <Example src={Basic} noPadding />
 
@@ -23,9 +24,29 @@ pnpm hip install sidebar-layout
 
 This is a custom component built for page layouts with sidebar and content slots.
 
-<PropDocs components={["SidebarLayoutRoot", "SidebarLayoutSidebar", "SidebarLayoutPage"]} />
+<PropDocs components={["SidebarLayoutRoot", "SidebarLayoutNavigationSidebar", "SidebarLayoutPage", "SidebarLayoutInconsequentialSidebar"]} />
 
 ## Features
+
+### InconsequentialSidebar
+
+The `InconsequentialSidebar` component is a secondary sidebar for supplementary content that is not critical for navigation or core functionality.
+
+Unlike `NavigationSidebar`, this component:
+
+- Does not include mobile drawer support
+- Simply hides on smaller screens when space is limited
+- Is designed for content that can be safely hidden without impacting usability
+
+#### Use Cases
+
+- **Table of Contents**: Display document structure and quick navigation
+- **Related Links**: Show related articles, resources, or supplementary content
+- **Filters & Controls**: Secondary filtering options that aren't critical
+- **Metadata**: Additional information like tags, categories, or timestamps
+- **Secondary Navigation**: Additional navigation that complements the main sidebar
+
+<Example src={InconsequentialSidebar} noPadding />
 
 ### With Header Layout
 

@@ -12,7 +12,7 @@ import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   wrapper: {
-    backgroundColor: uiColor.bgSubtle,
+    backgroundImage: `linear-gradient(to right, ${uiColor.bgSubtle} 50%, ${uiColor.bg} 50%)`,
     position: "relative",
     width: "100cqw",
   },
@@ -24,8 +24,17 @@ const styles = stylex.create({
     marginLeft: "auto",
     marginRight: "auto",
     maxWidth: "var(--page-content-max-width)",
-    minHeight: "100vh",
+    minHeight: "100cqh",
     width: "100%",
+  },
+  defaultSidebar: {
+    overflow: "auto",
+    overscrollBehavior: "contain",
+    alignSelf: "start",
+    flexShrink: 0,
+    position: "sticky",
+    maxHeight: "100cqh",
+    top: 0,
   },
   sidebar: {
     overflow: "auto",
@@ -40,10 +49,22 @@ const styles = stylex.create({
     borderRightColor: uiColor.border1,
     borderRightStyle: "solid",
     borderRightWidth: 1,
-    height: "100vh",
+    height: "100cqh",
     overflowX: "hidden",
     overflowY: "auto",
     top: 0,
+  },
+  visibleMd: {
+    display: {
+      default: "none",
+      [containerBreakpoints.md]: "block",
+    },
+  },
+  visibleLg: {
+    display: {
+      default: "none",
+      [containerBreakpoints.lg]: "block",
+    },
   },
   drawer: {
     display: {
@@ -73,8 +94,12 @@ const styles = stylex.create({
     },
     paddingRight: {
       default: spacing["4"],
-      [containerBreakpoints.sm]: spacing["16"],
+      [containerBreakpoints.lg]: spacing["8"],
       ":has(> [data-header-layout=true])": "0 !important",
+      ":last-child": {
+        default: spacing["4"],
+        [containerBreakpoints.sm]: spacing["16"],
+      },
     },
     paddingTop: {
       default: spacing["2"],
@@ -111,15 +136,15 @@ export const SidebarLayoutRoot = ({
 /**
  * Sidebar layout sidebar component. Slot for sidebar content.
  */
-export interface SidebarLayoutSidebarProps extends StyleXComponentProps<
+export interface SidebarLayoutNavigationSidebarProps extends StyleXComponentProps<
   React.ComponentProps<"aside">
 > {}
 
-export const SidebarLayoutSidebar = ({
+export const SidebarLayoutNavigationSidebar = ({
   style,
   children,
   ...props
-}: SidebarLayoutSidebarProps) => {
+}: SidebarLayoutNavigationSidebarProps) => {
   return (
     <>
       <aside {...props} {...stylex.props(styles.sidebar, style)}>
@@ -144,6 +169,39 @@ export const SidebarLayoutSidebar = ({
   );
 };
 
+export interface SidebarLayoutSidebarProps extends StyleXComponentProps<
+  React.ComponentProps<"aside">
+> {
+  /**
+   * At what breakpoint the sidebar should be visible.
+   */
+  visible?: "md" | "lg";
+}
+
+/**
+ * A sidebar that is not part of the main content flow.
+ */
+export const SidebarLayoutInconsequentialSidebar = ({
+  style,
+  children,
+  visible = "md",
+  ...props
+}: SidebarLayoutSidebarProps) => {
+  return (
+    <aside
+      {...props}
+      {...stylex.props(
+        styles.defaultSidebar,
+        visible === "md" && styles.visibleMd,
+        visible === "lg" && styles.visibleLg,
+        style,
+      )}
+    >
+      {children}
+    </aside>
+  );
+};
+
 /**
  * Sidebar layout page component. Slot for main page content.
  */
@@ -164,6 +222,7 @@ export const SidebarLayoutPage = ({
 // eslint-disable-next-line react-refresh/only-export-components
 export const SidebarLayout = {
   Root: SidebarLayoutRoot,
-  Sidebar: SidebarLayoutSidebar,
+  NavigationSidebar: SidebarLayoutNavigationSidebar,
   Page: SidebarLayoutPage,
+  InconsequentialSidebar: SidebarLayoutInconsequentialSidebar,
 };

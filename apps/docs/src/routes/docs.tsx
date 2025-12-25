@@ -225,12 +225,10 @@ export const Route = createFileRoute("/docs")({
 function RouteComponent() {
   return (
     <SidebarLayout.Root>
-      <SidebarLayout.Sidebar>
+      <SidebarLayout.NavigationSidebar>
         <DocSidebar />
-      </SidebarLayout.Sidebar>
-      <SidebarLayout.Page>
-        <Outlet />
-      </SidebarLayout.Page>
+      </SidebarLayout.NavigationSidebar>
+      <Outlet />
     </SidebarLayout.Root>
   );
 }

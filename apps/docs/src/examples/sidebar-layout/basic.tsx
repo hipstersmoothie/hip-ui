@@ -27,7 +27,7 @@ function Logo() {
 export function Basic() {
   return (
     <SidebarLayout.Root>
-      <SidebarLayout.Sidebar>
+      <SidebarLayout.NavigationSidebar>
         <Sidebar>
           <SidebarHeader href="/">
             <Logo />
@@ -38,7 +38,7 @@ export function Basic() {
             <SidebarItem>Settings</SidebarItem>
           </SidebarSection>
         </Sidebar>
-      </SidebarLayout.Sidebar>
+      </SidebarLayout.NavigationSidebar>
       <SidebarLayout.Page>
         <Content>
           <Heading1>Page Content</Heading1>

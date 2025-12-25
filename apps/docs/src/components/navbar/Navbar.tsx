@@ -17,18 +17,14 @@ import { fontFamily, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    zIndex: 1000,
     borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
     borderBottomWidth: 1,
-    zIndex: 1000,
-    width: "100%",
     top: 0,
+    width: "100%",
   },
   navbar: {
-    marginLeft: "auto",
-    marginRight: "auto",
-    borderWidth: 0,
-    maxWidth: "var(--page-content-max-width)",
     "--separator-visibility": {
       default: "none",
       ":is([data-navbar-open]):has([data-navbar-action])": "flex",
@@ -39,6 +35,7 @@ const styles = stylex.create({
       ":is([data-navbar-open])": "flex",
       [containerBreakpoints.sm]: "none",
     },
+    borderWidth: 0,
     gridTemplateAreas: {
       default: `
         "logo hamburger"
@@ -94,6 +91,9 @@ const styles = stylex.create({
       ":is([data-navbar-open]):has([data-navbar-action])": `min-content min-content min-content min-content`,
     },
     rowGap: spacing["8"],
+    marginLeft: "auto",
+    marginRight: "auto",
+    maxWidth: "var(--page-content-max-width)",
     minHeight: {
       default: spacing["14"],
       ":is([data-navbar-open])": "100%",
@@ -175,12 +175,12 @@ const styles = stylex.create({
   link: {
     "--underline-opacity": {
       default: 0,
+      ":is([aria-current=page])": 1,
       ":is([aria-expanded=true])": 1,
       ":is([data-active])": 1,
-      ":is([data-status=active])": 1,
-      ":is([aria-current=page])": 1,
       ":is([data-breadcrumb] *)": 0,
       ":is([data-hovered])": 1,
+      ":is([data-status=active])": 1,
     },
     gap: spacing["2"],
     textDecoration: "none",
@@ -219,8 +219,9 @@ const styles = stylex.create({
 });
 
 // Define subcomponents first so they can be referenced in Navbar
-export interface NavbarLogoProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {}
+export interface NavbarLogoProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {}
 
 /**
  * NavbarLogo component for displaying the logo in the navbar.
@@ -233,8 +234,9 @@ export const NavbarLogo = ({ style, ...props }: NavbarLogoProps) => {
   );
 };
 
-export interface NavbarNavigationProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface NavbarNavigationProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * Justify content alignment for the navigation items.
    * @default "left"
@@ -267,8 +269,9 @@ export const NavbarNavigation = ({
   );
 };
 
-export interface NavbarActionProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface NavbarActionProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   /**
    * Whether the action should be always visible on mobile.
    * @default false
@@ -311,8 +314,9 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
   );
 }
 
-export interface NavbarProps
-  extends StyleXComponentProps<React.ComponentProps<"div">> {
+export interface NavbarProps extends StyleXComponentProps<
+  React.ComponentProps<"div">
+> {
   size?: Size;
 }
 

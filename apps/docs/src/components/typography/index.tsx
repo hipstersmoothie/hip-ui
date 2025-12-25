@@ -105,14 +105,14 @@ const styles = stylex.create({
     whiteSpace: "nowrap",
   },
   linkedHeadingLink: {
-    color: "inherit",
     textDecoration: "none",
+    color: "inherit",
   },
   linkedHeadingLinkButton: {
     opacity: {
       default: 0,
-      ":is([data-heading-link]:hover *)": 1,
       ":is([data-focus-visible])": 1,
+      ":is([data-heading-link]:hover *)": 1,
     },
     transitionDuration: animationDuration.fast,
     transitionProperty: {
@@ -416,18 +416,15 @@ export interface LinkedHeadingProps {
  * The link allows users to jump to the heading, and the button copies the full URL
  * with the anchor to the clipboard.
  */
-export const LinkedHeading = ({
-  id,
-  children,
-  style,
-}: LinkedHeadingProps) => {
+export const LinkedHeading = ({ id, children, style }: LinkedHeadingProps) => {
   if (!id) {
     return <>{children}</>;
   }
 
-  const url = typeof window !== "undefined"
-    ? `${window.location.origin}${window.location.pathname}#${id}`
-    : `#${id}`;
+  const url =
+    globalThis.window === undefined
+      ? `#${id}`
+      : `${globalThis.location.origin}${globalThis.location.pathname}#${id}`;
 
   return (
     <Flex
