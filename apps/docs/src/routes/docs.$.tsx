@@ -47,7 +47,7 @@ import {
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 import { TableOfContents } from "@/components/table-of-contents";
-import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
+import { CopyToClipboardButton } from "@/components/copy-to-clipboard-button";
 
 import { animationDuration } from "../components/theme/animations.stylex";
 import { radius } from "../components/theme/radius.stylex";

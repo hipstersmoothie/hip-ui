@@ -8,7 +8,7 @@ import { Flex } from "@/components/flex";
 import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
-import { CopyToClipboardButton } from "./CopyToClipboardButton";
+import { CopyToClipboardButton } from "@/components/copy-to-clipboard-button";
 
 const styles = stylex.create({
   card: {

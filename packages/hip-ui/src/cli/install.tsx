@@ -29,6 +29,7 @@ import { colorWheelConfig } from "../components/color-wheel/color-wheel-config.j
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contentConfig } from "../components/content/content-config.js";
+import { copyToClipboardButtonConfig } from "../components/copy-to-clipboard-button/copy-to-clipboard-button-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { datePickerConfig } from "../components/date-picker/date-picker-config.js";
@@ -97,6 +98,7 @@ const COMPONENT_CONFIGS = [
   flexConfig,
   typographyConfig,
   contentConfig,
+  copyToClipboardButtonConfig,
   tooltipConfig,
   iconButtonConfig,
   popoverConfig,
