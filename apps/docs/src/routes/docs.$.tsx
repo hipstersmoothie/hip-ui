@@ -46,8 +46,8 @@ import {
   UnorderedList,
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
+import { TableOfContents } from "@/components/table-of-contents";
 import { CopyToClipboardButton } from "@/lib/CopyToClipboardButton";
-import { TableOfContents } from "@/lib/TableOfContents";
 
 import { animationDuration } from "../components/theme/animations.stylex";
 import { radius } from "../components/theme/radius.stylex";
@@ -307,7 +307,9 @@ function RouteComponent() {
           <Page components={components} />
         </Suspense>
       </Content>
-      {toc && <TableOfContents toc={toc} style={styles.tableOfContents} />}
+      {toc && (
+        <TableOfContents toc={toc} style={styles.tableOfContents} sticky />
+      )}
     </div>
   );
 }

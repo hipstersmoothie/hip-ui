@@ -73,6 +73,7 @@ import { skeletonConfig } from "../components/skeleton/skeleton-config.js";
 import { sliderConfig } from "../components/slider/slider-config.js";
 import { switchConfig } from "../components/switch/switch-config.js";
 import { tableConfig } from "../components/table/table-config.js";
+import { tableOfContentsConfig } from "../components/table-of-contents/table-of-contents-config.js";
 import { tabsConfig } from "../components/tabs/tabs-config.js";
 import { tagGroupConfig } from "../components/tag-group/tag-group-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
@@ -146,6 +147,7 @@ const COMPONENT_CONFIGS = [
   headerLayoutConfig,
   sidebarLayoutConfig,
   tableConfig,
+  tableOfContentsConfig,
   sliderConfig,
   tagGroupConfig,
   progressBarConfig,

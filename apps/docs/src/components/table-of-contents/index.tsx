@@ -1,68 +1,80 @@
-import { Toc, TocEntry } from "@stefanprobst/rehype-extract-toc";
+"use client";
+
 import * as stylex from "@stylexjs/stylex";
 import { createContext, use, useEffect, useState } from "react";
 
-import { animationDuration } from "../components/theme/animations.stylex";
-import { primaryColor, uiColor } from "../components/theme/color.stylex";
-import { spacing } from "../components/theme/spacing.stylex";
-import { fontSize } from "../components/theme/typography.stylex";
-import { StyleXComponentProps } from "@/components/theme/types";
+import { animationDuration } from "../theme/animations.stylex";
+import { primaryColor, uiColor } from "../theme/color.stylex";
+import { spacing } from "../theme/spacing.stylex";
+import { StyleXComponentProps } from "../theme/types";
+import { fontSize } from "../theme/typography.stylex";
+
+export interface TocEntry {
+  value: string;
+  depth: number;
+  id?: string;
+  children?: Array<TocEntry>;
+}
+
+export type Toc = Array<TocEntry>;
 
 const ActiveHeaderIdContext = createContext<string | null>(null);
 const LevelContext = createContext(1);
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2"],
+    overflow: "auto",
     boxSizing: "border-box",
     display: "flex",
     flexDirection: "column",
     flexShrink: 0,
-    gap: spacing["2"],
-    height: "100vh",
-    marginTop: spacing["12"],
-    overflow: "auto",
     paddingBottom: spacing["20"],
     paddingTop: spacing["12"],
+  },
+  sticky: {
     position: "sticky",
+    height: "100vh",
+    marginTop: spacing["12"],
     top: 0,
   },
   itemList: {
-    listStyle: "none",
     margin: 0,
+    listStyle: "none",
     paddingLeft: 0,
   },
   item: {
+    textDecoration: "none",
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      ":hover": uiColor.component1,
       ":hover::before": primaryColor.solid1,
+      ":hover": uiColor.component1,
     },
-    borderLeftColor: {
-      default: uiColor.border1,
-    },
-    borderLeftStyle: "solid",
-    borderLeftWidth: 1,
     color: {
       default: uiColor.text1,
     },
     display: "flex",
     fontSize: fontSize["sm"],
-    height: spacing[8],
     position: "relative",
-    textDecoration: "none",
     transitionDuration: animationDuration.fast,
     transitionProperty: {
       default: "color, border-left-color",
       "@media (prefers-reduced-motion: reduce)": "none",
     },
     transitionTimingFunction: "ease-in-out",
+    borderLeftColor: {
+      default: uiColor.border1,
+    },
+    borderLeftStyle: "solid",
+    borderLeftWidth: 1,
+    height: spacing[8],
 
     "::before": {
-      bottom: 0,
       content: "''",
-      left: 0,
       position: "absolute",
+      bottom: 0,
+      left: 0,
       top: 0,
       width: 1,
     },
@@ -75,13 +87,13 @@ const styles = stylex.create({
     borderLeftColor: primaryColor.solid1,
 
     "::before": {
-      content: "''",
-      bottom: 0,
-      position: "absolute",
-      top: 0,
-      left: 0,
-      width: 1,
       backgroundColor: primaryColor.solid1,
+      content: "''",
+      position: "absolute",
+      bottom: 0,
+      left: 0,
+      top: 0,
+      width: 1,
     },
   },
 });
@@ -115,10 +127,20 @@ function TocItem({ id, value, children }: TocEntry) {
   );
 }
 
-export function TableOfContents({
-  toc,
-  style,
-}: StyleXComponentProps<{ toc: Toc }>) {
+/**
+ * TableOfContents component props.
+ */
+export interface TableOfContentsProps extends StyleXComponentProps<{
+  toc: Toc;
+}> {
+  sticky?: boolean;
+}
+
+/**
+ * A table of contents component that displays a navigation tree based on document headings.
+ * Automatically highlights the currently visible heading using IntersectionObserver.
+ */
+export function TableOfContents({ toc, style, sticky }: TableOfContentsProps) {
   const [activeHeaderId, setActiveHeaderId] = useState<string | null>(null);
 
   useEffect(() => {
@@ -143,7 +165,7 @@ export function TableOfContents({
 
   return (
     <ActiveHeaderIdContext value={activeHeaderId}>
-      <nav {...stylex.props(styles.wrapper, style)}>
+      <nav {...stylex.props(styles.wrapper, sticky && styles.sticky, style)}>
         <LevelContext value={1}>
           <ul {...stylex.props(styles.itemList)}>
             {toc.map((item) => (
