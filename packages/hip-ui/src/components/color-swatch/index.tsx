@@ -45,6 +45,14 @@ const styles = stylex.create({
     height: spacing["8"],
     width: spacing["8"],
   },
+  circle: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "unset",
+    borderRadius: {
+      default: "50%",
+      [mediaQueries.supportsSquircle]: "50%",
+    },
+  },
 });
 
 export interface ColorSwatchProps extends StyleXComponentProps<
@@ -52,11 +60,13 @@ export interface ColorSwatchProps extends StyleXComponentProps<
 > {
   children?: React.ReactNode;
   size?: Size;
+  variant?: "default" | "circle";
 }
 
 export function ColorSwatch({
   style,
   size: sizeProp,
+  variant = "default",
   ...props
 }: ColorSwatchProps) {
   const size = sizeProp || use(SizeContext);
@@ -69,6 +79,7 @@ export function ColorSwatch({
         size === "sm" && styles.swatchSm,
         size === "md" && styles.swatchMd,
         size === "lg" && styles.swatchLg,
+        variant === "circle" && styles.circle,
         style,
       )}
       style={({ color }) => ({
