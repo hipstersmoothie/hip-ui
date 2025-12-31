@@ -66,6 +66,9 @@ const styles = stylex.create({
       ":is(:first-child > *)": spacing["2"],
     },
   },
+  columnHeaderSortable: {
+    cursor: "pointer",
+  },
   tableBody: {},
   cell: {
     overflow: "auto",
@@ -225,7 +228,12 @@ export function TableColumn({
   return (
     <AriaColumn {...props} {...stylex.props(styles.column, style)}>
       {({ allowsSorting, sortDirection }) => (
-        <div {...stylex.props(styles.columnHeader)}>
+        <div
+          {...stylex.props(
+            styles.columnHeader,
+            allowsSorting && styles.columnHeaderSortable,
+          )}
+        >
           <div {...stylex.props(styles.cellContent, styles.columnHeader)}>
             <Flex align="center" gap="1">
               <LabelText

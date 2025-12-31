@@ -9,7 +9,6 @@ import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   root: {
-    "--page-content-max-width": "1280px",
     backgroundColor: uiColor.bg,
     containerType: "inline-size",
     display: "flex",
@@ -17,6 +16,9 @@ const styles = stylex.create({
     minHeight: "100vh",
     width: "100cqw",
   },
+  rootMaxWidth: (maxWidth: string | undefined) => ({
+    "--page-content-max-width": maxWidth || "1280px",
+  }),
   header: {
     flexShrink: 0,
   },
@@ -88,16 +90,19 @@ const styles = stylex.create({
  */
 export interface HeaderLayoutRootProps extends StyleXComponentProps<
   React.ComponentProps<"div">
-> {}
+> {
+  maxWidth?: string;
+}
 
 export const HeaderLayoutRoot = ({
   style,
+  maxWidth,
   ...props
 }: HeaderLayoutRootProps) => {
   return (
     <div
       {...props}
-      {...stylex.props(styles.root, style)}
+      {...stylex.props(styles.root, styles.rootMaxWidth(maxWidth), style)}
       data-header-layout={true}
     />
   );
