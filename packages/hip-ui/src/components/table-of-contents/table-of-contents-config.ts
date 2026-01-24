@@ -14,4 +14,3 @@ export const tableOfContentsConfig: ComponentConfig = {
     "@stefanprobst/rehype-extract-toc": "^3.0.0",
   },
 };
-

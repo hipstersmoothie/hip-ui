@@ -3,11 +3,11 @@ title: Empty State
 description: A component for displaying empty states with image, title, description, and actions.
 ---
 
-import { PropDocs } from '../../../lib/PropDocs'
-import { Example } from '../../../lib/Example'
-import { Basic } from '../../../examples/empty-state/basic'
-import { WithActions } from '../../../examples/empty-state/with-actions'
-import { Sizes } from '../../../examples/empty-state/sizes'
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/empty-state/basic";
+import { WithActions } from "../../../examples/empty-state/with-actions";
+import { Sizes } from "../../../examples/empty-state/sizes";
 
 <Example src={Basic} />
 
@@ -23,7 +23,15 @@ pnpm hip install empty-state
 
 This is a custom component built for displaying empty states.
 
-<PropDocs components={["EmptyState", "EmptyStateImage", "EmptyStateTitle", "EmptyStateDescription", "EmptyStateActions"]} />
+<PropDocs
+  components={[
+    "EmptyState",
+    "EmptyStateImage",
+    "EmptyStateTitle",
+    "EmptyStateDescription",
+    "EmptyStateActions",
+  ]}
+/>
 
 ## Features
 
@@ -44,4 +52,3 @@ The empty state supports three different sizes that affect spacing and image siz
 - [Card](/docs/components/card) - For grouping related content
 - [Button](/docs/components/button) - For empty state actions
 - [Text](/docs/components/text) - For custom text styling
-

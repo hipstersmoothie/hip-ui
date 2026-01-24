@@ -4,6 +4,7 @@ export const numberFieldConfig: ComponentConfig = {
   name: "number-field",
   filepath: "./index.tsx",
   hipDependencies: [
+    "./usePointerLock.tsx",
     "../theme/spacing.stylex.tsx",
     "../theme/radius.stylex.tsx",
     "../theme/semantic-color.stylex.tsx",

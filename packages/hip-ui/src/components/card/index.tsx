@@ -5,22 +5,33 @@ import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { AspectRatio, AspectRatioImage } from "../aspect-ratio";
 import { SizeContext } from "../context";
+import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
+import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
+import {
+  fontFamily,
+  fontSize,
+  fontWeight,
+  lineHeight,
+} from "../theme/typography.stylex";
 
 const styles = stylex.create({
   card: {
     // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
+    borderColor: uiColor.component2,
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+    borderStyle: "solid",
+    borderWidth: 1,
     gap: "var(--card-gap)",
     overflow: "hidden",
+    boxShadow: shadow["sm"],
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
@@ -56,7 +67,7 @@ const styles = stylex.create({
         'description action'
       `,
     },
-    gap: "var(--card-gap)",
+    gap: "calc(var(--card-gap) * 0.25)",
     alignItems: "center",
     display: "grid",
   },
@@ -82,9 +93,10 @@ const styles = stylex.create({
     fontWeight: fontWeight["normal"],
   },
   cardBody: {
-    gap: "var(--card-gap)",
+    gap: "calc(var(--card-gap) * 0.5)",
     display: "flex",
     flexDirection: "column",
+    lineHeight: lineHeight["lg"],
   },
   cardFooter: {
     gap: spacing["2"],
@@ -114,7 +126,7 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
       <div
         {...props}
         data-card-size={size}
-        {...stylex.props(styles.card, ui.bgSubtle, ui.border, ui.text, style)}
+        {...stylex.props(styles.card, ui.bg, ui.text, style)}
       />
     </SizeContext>
   );
@@ -195,9 +207,15 @@ export interface CardImageProps extends StyleXComponentProps<
   React.ComponentProps<"img">
 > {
   aspectRatio?: number;
+  imageStyle?: stylex.StyleXStyles;
 }
 
-export const CardImage = ({ style, aspectRatio, ...props }: CardImageProps) => {
+export const CardImage = ({
+  style,
+  aspectRatio,
+  imageStyle,
+  ...props
+}: CardImageProps) => {
   return (
     <AspectRatio
       aspectRatio={aspectRatio}
@@ -207,7 +225,7 @@ export const CardImage = ({ style, aspectRatio, ...props }: CardImageProps) => {
         style,
       ]}
     >
-      <AspectRatioImage {...props} />
+      <AspectRatioImage {...props} style={imageStyle} />
     </AspectRatio>
   );
 };

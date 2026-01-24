@@ -3,11 +3,11 @@ title: Toast
 description: A Toast displays a brief, temporary notification of actions, errors, or other events in an application.
 ---
 
-import { PropDocs } from '../../../lib/PropDocs'
-import { Example } from '../../../lib/Example'
-import { Basic } from '../../../examples/toast/basic'
-import { Actions } from '../../../examples/toast/actions'
-import { Icons } from '../../../examples/toast/icons'
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/toast/basic";
+import { Actions } from "../../../examples/toast/actions";
+import { Icons } from "../../../examples/toast/icons";
 
 <Example src={Basic} />
 
@@ -23,7 +23,16 @@ pnpm hip install toast
 
 This component is built using [React Aria Toast](https://react-spectrum.adobe.com/react-aria/Toast.html).
 
-<PropDocs components={["ToastRegion", "Toast", "ToastContent", "ToastTitle", "ToastDescription", "ToastClose"]} />
+<PropDocs
+  components={[
+    "ToastRegion",
+    "Toast",
+    "ToastContent",
+    "ToastTitle",
+    "ToastDescription",
+    "ToastClose",
+  ]}
+/>
 
 ## Features
 
@@ -51,4 +60,3 @@ Each variant can include an icon to display alongside the title and description.
 - [AlertDialog](/docs/components/alert-dialog) - For critical actions and confirmations
 - [Popover](/docs/components/popover) - For non-modal overlays
 - [Button](/docs/components/button) - For triggering toasts
-

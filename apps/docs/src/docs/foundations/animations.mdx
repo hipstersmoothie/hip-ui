@@ -3,7 +3,11 @@ title: Animations
 description: A shared set of animations for the UI.
 ---
 
-import { AnimationDurations, AnimationTimingFunctions, AllAnimations } from "../../examples/foundations/animations";
+import {
+  AnimationDurations,
+  AnimationTimingFunctions,
+  AllAnimations,
+} from "../../examples/foundations/animations";
 
 Animations provide smooth transitions and visual feedback throughout the UI.
 Our animation system includes predefined keyframe animations, duration tokens, and timing function tokens that ensure consistent motion across your application.
@@ -13,7 +17,11 @@ Our animation system includes predefined keyframe animations, duration tokens, a
 To use animations, import them from the animations theme file:
 
 ```tsx
-import { animations, animationDuration, animationTimingFunction } from "@/components/theme/animations.stylex";
+import {
+  animations,
+  animationDuration,
+  animationTimingFunction,
+} from "@/components/theme/animations.stylex";
 
 const styles = stylex.create({
   animated: {
@@ -65,4 +73,3 @@ Click on any animation box to see it in action.
 - **slideInBottom/slideOutBottom**: Slides in from the bottom
 
 <AllAnimations />
-    

@@ -1,19 +1,29 @@
+import type {
+  NumberFieldProps as AriaNumberFieldProps,
+  InputProps,
+  ValidationResult,
+} from "react-aria-components";
+
 import { useUNSAFE_PortalContext } from "@react-aria/overlays";
 import * as stylex from "@stylexjs/stylex";
 import { Minus, MoveHorizontal, Plus } from "lucide-react";
 import { use, useRef } from "react";
 import { mergeProps } from "react-aria";
 import {
-  NumberFieldProps as AriaNumberFieldProps,
-  Input,
-  InputProps,
-  ValidationResult,
   NumberField as AriaNumberField,
-  Group,
   Button,
+  Group,
+  Input,
   NumberFieldStateContext,
 } from "react-aria-components";
 import { createPortal } from "react-dom";
+
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
@@ -21,12 +31,6 @@ import { SuffixIcon } from "../suffix-icon";
 import { uiColor } from "../theme/color.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import {
-  InputVariant,
-  InputValidationState,
-  Size,
-  StyleXComponentProps,
-} from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePointerLock } from "./usePointerLock";
 
@@ -88,8 +92,10 @@ const styles = stylex.create({
     display: "flex",
   },
   button: {
+    padding: 0,
     borderWidth: 0,
     alignItems: "center",
+    aspectRatio: 1,
     display: "flex",
     flexGrow: 1,
     justifyContent: "center",

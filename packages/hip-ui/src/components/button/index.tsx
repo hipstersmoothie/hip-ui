@@ -25,9 +25,9 @@ export const Button = ({
 
   return (
     <AriaButton
+      {...props}
       {...stylex.props(buttonStyles, style)}
       data-size={size}
-      {...props}
     >
       {children}
     </AriaButton>

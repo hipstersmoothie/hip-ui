@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { Cropper as OriginCropper } from "@origin-space/image-cropper";
 import { useEffectEvent } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import type { StyleXComponentProps } from "../theme/types";
 
@@ -167,6 +167,7 @@ export function ImageCropperRoot({
   ...props
 }: ImageCropperRootProps) {
   const [imageUrl, setImageUrl] = useState<string>(() => "");
+  const rootRef = useRef<HTMLDivElement | null>(null);
 
   const handleError = () => {
     onCropChange?.(null);
@@ -192,9 +193,73 @@ export function ImageCropperRoot({
     return createImageUrl();
   }, [image]);
 
+  // Prevent page scrolling on mobile when dragging
+  useEffect(() => {
+    const rootElement = rootRef.current;
+    if (!rootElement) return;
+
+    let isDragging = false;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      // Only prevent scrolling if the touch starts on the cropper element or its children
+      const target = e.target as Node;
+      if (rootElement.contains(target)) {
+        isDragging = true;
+      }
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    };
+
+    const handleTouchEnd = () => {
+      isDragging = false;
+    };
+
+    // Prevent document scrolling during drag
+    const handleDocumentTouchMove = (e: TouchEvent) => {
+      if (isDragging) {
+        e.preventDefault();
+      }
+    };
+
+    rootElement.addEventListener("touchstart", handleTouchStart, {
+      passive: false,
+    });
+    rootElement.addEventListener("touchmove", handleTouchMove, {
+      passive: false,
+    });
+    rootElement.addEventListener("touchend", handleTouchEnd, {
+      passive: false,
+    });
+    rootElement.addEventListener("touchcancel", handleTouchEnd, {
+      passive: false,
+    });
+
+    // Also prevent scrolling on document level when dragging
+    document.addEventListener("touchmove", handleDocumentTouchMove, {
+      passive: false,
+    });
+
+    return () => {
+      rootElement.removeEventListener("touchstart", handleTouchStart);
+      rootElement.removeEventListener("touchmove", handleTouchMove);
+      rootElement.removeEventListener("touchend", handleTouchEnd);
+      rootElement.removeEventListener("touchcancel", handleTouchEnd);
+      document.removeEventListener("touchmove", handleDocumentTouchMove);
+    };
+  }, []);
+
+  const setRootRef = (element: HTMLDivElement | null) => {
+    rootRef.current = element;
+  };
+
   return (
     <OriginCropper.Root
       {...props}
+      ref={setRootRef}
       image={imageUrl}
       aspectRatio={aspectRatio}
       cropPadding={cropPadding}

@@ -40,6 +40,7 @@ const styles = stylex.create({
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
+    flexShrink: 0,
 
     // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",

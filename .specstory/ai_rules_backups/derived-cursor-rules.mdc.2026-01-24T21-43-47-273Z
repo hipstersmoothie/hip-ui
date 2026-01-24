@@ -1,0 +1,83 @@
+
+## PROJECT OVERVIEW
+- The AI coding assistant is responsible for maintaining and evolving a comprehensive rules file that governs all aspects of the project, including coding standards, workflow, and documentation.
+- The rules file is a "living" document, updated with each new user–AI interaction to reflect new guidelines, clarifications, and decisions.
+- The goal is to ensure consistency, maintainability, and best practices throughout the project.
+
+## CODE STYLE
+- Adhere to established code style guidelines.
+- Use clear, concise, and well-documented code.
+- Prioritize readability and maintainability.
+- Follow StyleX property ordering.
+
+## FOLDER ORGANIZATION
+- Maintain a consistent and logical folder structure.
+- Group related files and components together.
+- Use meaningful names for folders and files.
+
+## TECH STACK
+- JavaScript/TypeScript
+- React
+- StyleX
+- React Aria Components
+- Lucide React
+- MDX
+
+## PROJECT-SPECIFIC STANDARDS
+- When creating new components, follow the hip-ui component structure:
+    - Create a component file (e.g., `index.tsx`).
+    - Create a config file (e.g., `component-config.ts`) that lists dependencies.
+    - Register the component in `packages/hip-ui/src/cli/install.tsx`.
+    - Create a documentation MDX file in `apps/docs/src/docs/components`.
+    - Create basic example file(s) in `apps/docs/src/examples`.
+- Use theme tokens for styling to maintain consistency.
+- When using StyleX, adhere to its conventions, especially regarding property ordering and pseudo-class syntax.
+- Use React Aria components where appropriate for accessibility and behavior.
+- When creating examples, use system components instead of raw HTML elements (e.g., `Heading1` instead of `h1`).
+- When implementing layouts, consider the `Content` component for applying consistent spacing styles.
+- When components require a size prop, it should be handled using the SizeContext.
+- When creating a component with slots, export the component and all of the slots using a namespace pattern (e.g. `SidebarLayout.Root`, `SidebarLayout.Sidebar`, `SidebarLayout.Page`).
+- When working with StyleX, always define style variables at the top of the file.
+
+## WORKFLOW & RELEASE RULES
+- Each new user–AI interaction may result in updates to the rules file.
+- Review new interactions carefully and merge any relevant guidelines, clarifications, or best practices into the appropriate sections of the rules file.
+- If a new rule conflicts with an existing one, resolve the conflict by clarifying the final, decided rule or highlighting that further user confirmation is needed.
+- Before merging changes, ensure that the codebase is free of linting errors.
+- Use pull requests for code reviews and approvals.
+- Increment version numbers appropriately when releasing new versions.
+
+## REFERENCE EXAMPLES
+- Refer to existing components and documentation for guidance on structure, styling, and best practices.
+- Examples:
+    - `packages/hip-ui/src/components/button/index.tsx`
+    - `packages/hip-ui/src/components/card/index.tsx`
+    - `packages/hip-ui/src/components/header-layout/index.tsx`
+    - `packages/hip-ui/src/components/footer/index.tsx`
+- When creating new components, match the structure of composite components such as footer or header-layout which have Root and other sub-components.
+
+## PROJECT DOCUMENTATION & CONTEXT SYSTEM
+- Create clear and concise documentation for all components and features.
+- Use JSDoc comments to document props and component behavior.
+- Follow the existing documentation structure in `apps/docs/src/docs/components`.
+- Include examples of how to use components in different contexts.
+- When creating MDX examples, use system components not HTML ones.
+- Use `PropDocs` component to autogenerate props documentation.
+
+## DEBUGGING
+- Use console logging and debugging tools to identify and fix issues.
+- Write unit tests to ensure code quality and prevent regressions.
+- Verify that changes do not introduce new linting errors.
+- Use `pnpm eslint --fix` to automatically fix linting issues where possible.
+- When debugging StyleX styles, make sure that the StyleX properties are in the correct order.
+
+## FINAL DOs AND DON'Ts
+- **DO** follow established coding standards and best practices.
+- **DO** write clear, concise, and well-documented code.
+- **DO** prioritize readability and maintainability.
+- **DO** create unit tests to ensure code quality.
+- **DO** keep the rules file up-to-date with the latest guidelines and decisions.
+- **DON'T** introduce new linting errors.
+- **DON'T** commit code without proper review and approval.
+- **DON'T** break existing functionality.
+- **DON'T** use raw HTML elements in examples, use system components instead.

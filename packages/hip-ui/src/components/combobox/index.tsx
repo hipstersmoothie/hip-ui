@@ -121,7 +121,18 @@ function ComboBoxContent<T extends object>({
         {prefix != null && (
           <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
         )}
-        <Input {...stylex.props(inputStyles.input)} placeholder={placeholder} />
+        <Input
+          {...stylex.props(inputStyles.input)}
+          placeholder={placeholder}
+          onKeyDown={(e) => {
+            // Prevent form submission when Enter is pressed in the combobox input
+            // React Aria Components handles Enter key for selection when menu is open
+            // We prevent default to stop form submission in all cases
+            if (e.key === "Enter") {
+              e.preventDefault();
+            }
+          }}
+        />
         <SuffixIcon
           suffix={
             <>
@@ -134,8 +145,8 @@ function ComboBoxContent<T extends object>({
           validationState={validationState}
         />
       </Button>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      {description && <Description>{description}</Description>}
+      {errorMessage && <FieldErrorMessage>{errorMessage}</FieldErrorMessage>}
       <Popover
         containerPadding={8}
         shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}

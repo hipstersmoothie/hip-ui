@@ -61,6 +61,7 @@ const styles = stylex.create({
     outline: "none",
     flexGrow: 1,
     minHeight: 0,
+    maxWidth: "90vw",
   },
   size: (size: Size) => ({
     width: size === "sm" ? 400 : size === "md" ? 600 : 800,

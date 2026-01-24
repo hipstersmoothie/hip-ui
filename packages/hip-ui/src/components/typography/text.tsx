@@ -3,6 +3,7 @@ import * as stylex from "@stylexjs/stylex";
 import type { TextVariant, ThemeKeys } from "../theme/types";
 
 import { criticalColor, uiColor } from "../theme/color.stylex";
+import { breakpoints } from "../theme/media-queries.stylex";
 import {
   fontFamily,
   fontSize,
@@ -16,45 +17,69 @@ const styles = stylex.create({
   serif: { fontFamily: fontFamily["serif"] },
   mono: { fontFamily: fontFamily["mono"] },
 
-  thin: { fontWeight: fontWeight["thin"] },
-  extralight: { fontWeight: fontWeight["extralight"] },
-  light: { fontWeight: fontWeight["light"] },
-  normal: { fontWeight: fontWeight["normal"] },
-  medium: { fontWeight: fontWeight["medium"] },
-  semibold: { fontWeight: fontWeight["semibold"] },
-  bold: { fontWeight: fontWeight["bold"] },
-  extrabold: { fontWeight: fontWeight["extrabold"] },
-  black: { fontWeight: fontWeight["black"] },
+  weight: (
+    defaultWeight: keyof typeof fontWeight,
+    smWeight?: keyof typeof fontWeight,
+    mdWeight?: keyof typeof fontWeight,
+    lgWeight?: keyof typeof fontWeight,
+    xlWeight?: keyof typeof fontWeight,
+  ) => ({
+    fontWeight: {
+      default: fontWeight[defaultWeight],
+      [breakpoints.sm]: smWeight ? fontWeight[smWeight] : undefined,
+      [breakpoints.md]: mdWeight ? fontWeight[mdWeight] : undefined,
+      [breakpoints.lg]: lgWeight ? fontWeight[lgWeight] : undefined,
+      [breakpoints.xl]: xlWeight ? fontWeight[xlWeight] : undefined,
+    },
+  }),
 
-  "font-xs": { fontSize: fontSize["xs"] },
-  "font-sm": { fontSize: fontSize["sm"] },
-  "font-base": { fontSize: fontSize["base"] },
-  "font-lg": { fontSize: fontSize["lg"] },
-  "font-xl": { fontSize: fontSize["xl"] },
-  "font-2xl": { fontSize: fontSize["2xl"] },
-  "font-3xl": { fontSize: fontSize["3xl"] },
-  "font-4xl": { fontSize: fontSize["4xl"] },
-  "font-5xl": { fontSize: fontSize["5xl"] },
-  "font-6xl": { fontSize: fontSize["6xl"] },
-  "font-7xl": { fontSize: fontSize["7xl"] },
-  "font-8xl": { fontSize: fontSize["8xl"] },
-  "font-9xl": { fontSize: fontSize["9xl"] },
+  font: (
+    defaultSize: keyof typeof fontSize,
+    smSize?: keyof typeof fontSize,
+    mdSize?: keyof typeof fontSize,
+    lgSize?: keyof typeof fontSize,
+    xlSize?: keyof typeof fontSize,
+  ) => ({
+    fontSize: {
+      default: fontSize[defaultSize],
+      [breakpoints.sm]: smSize ? fontSize[smSize] : undefined,
+      [breakpoints.md]: mdSize ? fontSize[mdSize] : undefined,
+      [breakpoints.lg]: lgSize ? fontSize[lgSize] : undefined,
+      [breakpoints.xl]: xlSize ? fontSize[xlSize] : undefined,
+    },
+  }),
 
-  "leading-none": { lineHeight: lineHeight["none"] },
-  "leading-xs": { lineHeight: lineHeight["xs"] },
-  "leading-sm": { lineHeight: lineHeight["sm"] },
-  "leading-base": { lineHeight: lineHeight["base"] },
-  "leading-lg": { lineHeight: lineHeight["lg"] },
-  "leading-xl": { lineHeight: lineHeight["xl"] },
-  "leading-2xl": { lineHeight: lineHeight["2xl"] },
-  "leading-3xl": { lineHeight: lineHeight["3xl"] },
+  leading: (
+    defaultLeading: keyof typeof lineHeight,
+    smLeading?: keyof typeof lineHeight,
+    mdLeading?: keyof typeof lineHeight,
+    lgLeading?: keyof typeof lineHeight,
+    xlLeading?: keyof typeof lineHeight,
+  ) => ({
+    lineHeight: {
+      default: lineHeight[defaultLeading],
+      [breakpoints.sm]: smLeading ? lineHeight[smLeading] : undefined,
+      [breakpoints.md]: mdLeading ? lineHeight[mdLeading] : undefined,
+      [breakpoints.lg]: lgLeading ? lineHeight[lgLeading] : undefined,
+      [breakpoints.xl]: xlLeading ? lineHeight[xlLeading] : undefined,
+    },
+  }),
 
-  "tracking-tighter": { letterSpacing: tracking["tighter"] },
-  "tracking-tight": { letterSpacing: tracking["tight"] },
-  "tracking-normal": { letterSpacing: tracking["normal"] },
-  "tracking-wide": { letterSpacing: tracking["wide"] },
-  "tracking-wider": { letterSpacing: tracking["wider"] },
-  "tracking-widest": { letterSpacing: tracking["widest"] },
+  tracking: (
+    defaultTracking: keyof typeof tracking,
+    smTracking?: keyof typeof tracking,
+    mdTracking?: keyof typeof tracking,
+    lgTracking?: keyof typeof tracking,
+    xlTracking?: keyof typeof tracking,
+  ) => ({
+    letterSpacing: {
+      default: tracking[defaultTracking],
+      [breakpoints.sm]: smTracking ? tracking[smTracking] : undefined,
+      [breakpoints.md]: mdTracking ? tracking[mdTracking] : undefined,
+      [breakpoints.lg]: lgTracking ? tracking[lgTracking] : undefined,
+      [breakpoints.xl]: xlTracking ? tracking[xlTracking] : undefined,
+    },
+  }),
 
   "variant-primary": { color: uiColor.text2 },
   "variant-secondary": { color: uiColor.text1 },
@@ -73,16 +98,77 @@ const styles = stylex.create({
   },
 });
 
+type ResponsiveValue<TKey extends string> =
+  | TKey
+  | {
+      default: TKey;
+      sm?: TKey;
+      md?: TKey;
+      lg?: TKey;
+      xl?: TKey;
+    };
+
+type FontThemeTypes = "weight" | "font" | "leading" | "tracking";
+type ThemeValue<TKey extends FontThemeTypes> = TKey extends "weight"
+  ? typeof fontWeight
+  : TKey extends "font"
+    ? typeof fontSize
+    : TKey extends "leading"
+      ? typeof lineHeight
+      : TKey extends "tracking"
+        ? typeof tracking
+        : never;
+
+function getResponsiveStyle<TType extends FontThemeTypes>(
+  type: TType,
+  value: ResponsiveValue<ThemeKeys<ThemeValue<TType>>>,
+) {
+  type StyleFn = (
+    defaultVal: keyof ThemeValue<TType>,
+    smVal?: keyof ThemeValue<TType>,
+    mdVal?: keyof ThemeValue<TType>,
+    lgVal?: keyof ThemeValue<TType>,
+    xlVal?: keyof ThemeValue<TType>,
+  ) => stylex.StyleXStyles;
+
+  const styleFn = styles[type] as StyleFn;
+
+  if (typeof value === "string") {
+    return styleFn(value as keyof ThemeValue<TType>);
+  }
+
+  console.log(
+    value,
+    styleFn(
+      value.default as keyof ThemeValue<TType>,
+      value.sm as keyof ThemeValue<TType> | undefined,
+      value.md as keyof ThemeValue<TType> | undefined,
+      value.lg as keyof ThemeValue<TType> | undefined,
+      value.xl as keyof ThemeValue<TType> | undefined,
+    ),
+  );
+
+  return styleFn(
+    value.default as keyof ThemeValue<TType>,
+    value.sm as keyof ThemeValue<TType> | undefined,
+    value.md as keyof ThemeValue<TType> | undefined,
+    value.lg as keyof ThemeValue<TType> | undefined,
+    value.xl as keyof ThemeValue<TType> | undefined,
+  );
+}
+
 interface TextProps extends Omit<
   React.ComponentProps<"span">,
   "style" | "className"
 > {
   style?: stylex.StyleXStyles | Array<stylex.StyleXStyles>;
   font?: ThemeKeys<typeof fontFamily>;
-  weight?: ThemeKeys<typeof fontWeight>;
-  size?: ThemeKeys<typeof fontSize>;
-  leading?: ThemeKeys<typeof lineHeight>;
-  tracking?: ThemeKeys<typeof tracking>;
+
+  weight?: ResponsiveValue<ThemeKeys<typeof fontWeight>>;
+  size?: ResponsiveValue<ThemeKeys<typeof fontSize>>;
+  leading?: ResponsiveValue<ThemeKeys<typeof lineHeight>>;
+  tracking?: ResponsiveValue<ThemeKeys<typeof tracking>>;
+
   variant?: TextVariant;
   strikethrough?: boolean;
   align?: "left" | "center" | "right";
@@ -95,7 +181,7 @@ export const Text = ({
   weight,
   size,
   leading,
-  tracking: trackingProp,
+  tracking,
   variant,
   strikethrough = false,
   align,
@@ -107,10 +193,10 @@ export const Text = ({
       {...props}
       {...stylex.props(
         styles[font],
-        weight && styles[weight],
-        size && styles[`font-${size}`],
-        leading && styles[`leading-${leading}`],
-        trackingProp && styles[`tracking-${trackingProp}`],
+        weight && getResponsiveStyle("weight", weight),
+        size && getResponsiveStyle("font", size),
+        leading && getResponsiveStyle("leading", leading),
+        tracking && getResponsiveStyle("tracking", tracking),
         variant && styles[`variant-${variant}`],
         strikethrough && styles.strikethrough,
         align && styles[align],

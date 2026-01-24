@@ -1,9 +1,14 @@
 "use client";
+
+import type { LinkProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Menu, X } from "lucide-react";
 import * as React from "react";
 import { use, useState } from "react";
-import { Link, LinkProps } from "react-aria-components";
+import { Link } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
@@ -12,7 +17,6 @@ import { primaryColor, uiColor } from "../theme/color.stylex";
 import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -115,8 +119,44 @@ const styles = stylex.create({
     width: "100%",
   },
   logo: {
+    "--underline-opacity": {
+      default: 0,
+      ":is([aria-current=page])": 1,
+      ":is([data-active])": 1,
+      ":is([data-status=active])": 1,
+    },
+    gap: spacing["2"],
+    textDecoration: "none",
     alignItems: "center",
+    color: {
+      default: primaryColor.text2,
+    },
+    cursor: "pointer",
     display: "flex",
+    fontFamily: fontFamily["sans"],
+    fontWeight: fontWeight["normal"],
+    position: "relative",
+    width: {
+      default: "100%",
+      [containerBreakpoints.sm]: "auto",
+    },
+  },
+  logoContent: {
+    position: "relative",
+
+    "::after": {
+      backgroundColor: "currentColor",
+      content: '""',
+      display: "block",
+      opacity: "var(--underline-opacity)",
+      pointerEvents: "none",
+      position: "absolute",
+      bottom: `calc(${spacing["1"]} * -1)`,
+      height: "2px",
+      left: 0,
+      right: 0,
+      width: "100%",
+    },
   },
   separator: {
     gridArea: "separator",
@@ -191,16 +231,26 @@ const styles = stylex.create({
       ":is([data-breadcrumb][data-current] *)": uiColor.text2,
     },
     cursor: "pointer",
-    display: "inline-flex",
+    display: {
+      default: "flex",
+      [containerBreakpoints.sm]: "inline-flex",
+    },
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],
     position: "relative",
+    width: {
+      default: "100%",
+      [containerBreakpoints.sm]: "auto",
+    },
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       height: "1.2em",
       width: "1.2em",
     },
+  },
+  linkContent: {
+    position: "relative",
 
     "::after": {
       backgroundColor: "currentColor",
@@ -218,18 +268,49 @@ const styles = stylex.create({
   },
 });
 
+// =============================================================================
+// Mobile Menu Context
+// =============================================================================
+
+interface MobileMenuContextValue {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  closeMenu: () => void;
+}
+
+const MobileMenuContext = React.createContext<MobileMenuContextValue | null>(
+  null,
+);
+
+function useMobileMenu() {
+  const context = use(MobileMenuContext);
+  if (!context) {
+    throw new Error("useMobileMenu must be used within Navbar");
+  }
+  return context;
+}
+
 // Define subcomponents first so they can be referenced in Navbar
 export interface NavbarLogoProps extends StyleXComponentProps<
   React.ComponentProps<"div">
-> {}
+> {
+  /**
+   * Whether the logo link is currently active.
+   */
+  isActive?: boolean;
+}
 
 /**
  * NavbarLogo component for displaying the logo in the navbar.
  */
-export const NavbarLogo = ({ style, ...props }: NavbarLogoProps) => {
+export const NavbarLogo = ({ style, isActive, ...props }: NavbarLogoProps) => {
   return (
-    <div {...props} {...stylex.props(styles.logo, style)}>
-      {props.children}
+    <div
+      {...props}
+      data-active={isActive}
+      {...stylex.props(styles.logo, style)}
+    >
+      <span {...stylex.props(styles.logoContent)}>{props.children}</span>
     </div>
   );
 };
@@ -305,12 +386,20 @@ export interface NavbarLinkProps extends StyleXComponentProps<LinkProps> {
 }
 
 export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
+  const { closeMenu } = useMobileMenu();
+
   return (
     <Link
       data-active={isActive}
       {...props}
       {...stylex.props(styles.link, style)}
-    />
+      onPress={(e) => {
+        closeMenu();
+        props.onPress?.(e);
+      }}
+    >
+      <span {...stylex.props(styles.linkContent)}>{props.children}</span>
+    </Link>
   );
 }
 
@@ -333,27 +422,42 @@ export const Navbar = ({
   const size = sizeProp || use(SizeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const closeMenu = React.useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const mobileMenuContextValue = React.useMemo<MobileMenuContextValue>(
+    () => ({
+      isOpen: isMobileMenuOpen,
+      setIsOpen: setIsMobileMenuOpen,
+      closeMenu,
+    }),
+    [isMobileMenuOpen, closeMenu],
+  );
+
   return (
     <SizeContext value={size}>
-      <div {...props} {...stylex.props(styles.wrapper, style)}>
-        <nav
-          data-navbar-open={isMobileMenuOpen || undefined}
-          {...stylex.props(styles.navbar, ui.bg, style)}
-        >
-          {children}
-          <Separator
-            style={styles.separator as unknown as stylex.StyleXStyles}
-          />
-          <IconButton
-            aria-label="Open menu"
-            variant="tertiary"
-            style={styles.hamburgerButton}
-            onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      <MobileMenuContext value={mobileMenuContextValue}>
+        <div {...props} {...stylex.props(styles.wrapper, style)}>
+          <nav
+            data-navbar-open={isMobileMenuOpen || undefined}
+            {...stylex.props(styles.navbar, ui.bg, style)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </IconButton>
-        </nav>
-      </div>
+            {children}
+            <Separator
+              style={styles.separator as unknown as stylex.StyleXStyles}
+            />
+            <IconButton
+              aria-label="Open menu"
+              variant="tertiary"
+              style={styles.hamburgerButton}
+              onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </IconButton>
+          </nav>
+        </div>
+      </MobileMenuContext>
     </SizeContext>
   );
 };

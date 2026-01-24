@@ -9,4 +9,3 @@ export const contentConfig: ComponentConfig = {
     "../theme/types.ts",
   ],
 };
-

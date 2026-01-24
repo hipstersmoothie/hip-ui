@@ -3,12 +3,12 @@ title: SidebarLayout
 description: A flexible page layout component with unstyled slots for sidebar and page content.
 ---
 
-import { PropDocs } from '../../../lib/PropDocs'
-import { Example } from '../../../lib/Example'
-import { Basic } from '../../../examples/sidebar-layout/basic'
-import { WithHeaderLayout } from '../../../examples/sidebar-layout/with-header-layout'
-import { WithHeaderLayoutWrapper } from '../../../examples/sidebar-layout/with-header-layout-wrapper'
-import { InconsequentialSidebar } from '../../../examples/sidebar-layout/inconsequential-sidebar'
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/sidebar-layout/basic";
+import { WithHeaderLayout } from "../../../examples/sidebar-layout/with-header-layout";
+import { WithHeaderLayoutWrapper } from "../../../examples/sidebar-layout/with-header-layout-wrapper";
+import { InconsequentialSidebar } from "../../../examples/sidebar-layout/inconsequential-sidebar";
 
 <Example src={Basic} noPadding />
 
@@ -24,7 +24,14 @@ pnpm hip install sidebar-layout
 
 This is a custom component built for page layouts with sidebar and content slots.
 
-<PropDocs components={["SidebarLayoutRoot", "SidebarLayoutNavigationSidebar", "SidebarLayoutPage", "SidebarLayoutInconsequentialSidebar"]} />
+<PropDocs
+  components={[
+    "SidebarLayoutRoot",
+    "SidebarLayoutNavigationSidebar",
+    "SidebarLayoutPage",
+    "SidebarLayoutInconsequentialSidebar",
+  ]}
+/>
 
 ## Features
 
@@ -63,4 +70,3 @@ You can also wrap the sidebar layout in a header layout.
 - [Flex](/docs/components/flex) - For flexible layouts within slots
 - [Grid](/docs/components/grid) - For two-dimensional layouts within slots
 - [Sidebar](/docs/components/sidebar) - For navigation in the sidebar slot
-

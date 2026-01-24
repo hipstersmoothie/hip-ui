@@ -3,11 +3,11 @@ title: ImageCropper
 description: A composable, headless React component for interactive image cropping with zoom, pan, and aspect ratio control.
 ---
 
-import { PropDocs } from '../../../lib/PropDocs'
-import { Example } from '../../../lib/Example'
-import { Basic } from '../../../examples/image-cropper/basic'
-import { DialogExample } from '../../../examples/image-cropper/dialog'
-import { BlobExample } from '../../../examples/image-cropper/blob'
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/image-cropper/basic";
+import { DialogExample } from "../../../examples/image-cropper/dialog";
+import { BlobExample } from "../../../examples/image-cropper/blob";
 
 <Example src={Basic} />
 
@@ -21,7 +21,14 @@ pnpm hip install image-cropper
 
 ## Props
 
-<PropDocs components={["ImageCropperRoot", "ImageCropperImage", "ImageCropperCropArea", "ImageCropperDescription"]} />
+<PropDocs
+  components={[
+    "ImageCropperRoot",
+    "ImageCropperImage",
+    "ImageCropperCropArea",
+    "ImageCropperDescription",
+  ]}
+/>
 
 ## Example
 
@@ -50,4 +57,3 @@ The ImageCropper component is designed with accessibility in mind:
 
 - [AspectRatio](/docs/components/content/aspect-ratio) - For maintaining aspect ratios in layouts
 - [Card](/docs/components/content/card) - For grouping content in containers
-
