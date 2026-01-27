@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const jade = stylex.defineVars({
   bg: {
-    default: "light-dark(#fbfefd, #fbfefd)",
+    default: "light-dark(#fbfefd, #0d1512)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.986 0.996 0.992), color(display-p3 0.059 0.083 0.071))",
   },
   bgSubtle: {
-    default: "light-dark(#f4fbf7, #f4fbf7)",
+    default: "light-dark(#f4fbf7, #121c18)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.962 0.983 0.969), color(display-p3 0.078 0.11 0.094))",
   },
   component1: {
-    default: "light-dark(#e6f7ed, #e6f7ed)",
+    default: "light-dark(#e6f7ed, #0f2e22)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.912 0.965 0.932), color(display-p3 0.091 0.176 0.138))",
   },
   component2: {
-    default: "light-dark(#d6f1e3, #d6f1e3)",
+    default: "light-dark(#d6f1e3, #0b3b2c)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.858 0.941 0.893), color(display-p3 0.102 0.228 0.177))",
   },
   component3: {
-    default: "light-dark(#c3e9d7, #c3e9d7)",
+    default: "light-dark(#c3e9d7, #114837)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.795 0.909 0.847), color(display-p3 0.133 0.279 0.221))",
   },
   border1: {
-    default: "light-dark(#acdec8, #acdec8)",
+    default: "light-dark(#acdec8, #1b5745)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.715 0.864 0.791), color(display-p3 0.174 0.334 0.273))",
   },
   border2: {
-    default: "light-dark(#8bceb6, #8bceb6)",
+    default: "light-dark(#8bceb6, #246854)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.603 0.802 0.718), color(display-p3 0.219 0.402 0.335))",
   },
   border3: {
-    default: "light-dark(#56ba9f, #56ba9f)",
+    default: "light-dark(#56ba9f, #2a7e68)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.44 0.72 0.629), color(display-p3 0.263 0.488 0.411))",
   },
@@ -47,17 +47,17 @@ export const jade = stylex.defineVars({
       "light-dark(color(display-p3 0.319 0.63 0.521), color(display-p3 0.319 0.63 0.521))",
   },
   solid2: {
-    default: "light-dark(#26997b, #26997b)",
+    default: "light-dark(#26997b, #27b08b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.299 0.592 0.488), color(display-p3 0.338 0.68 0.555))",
   },
   text1: {
-    default: "light-dark(#208368, #208368)",
+    default: "light-dark(#208368, #1fd8a4)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.15 0.5 0.37), color(display-p3 0.4 0.835 0.656))",
   },
   text2: {
-    default: "light-dark(#1d3b31, #1d3b31)",
+    default: "light-dark(#1d3b31, #adf0d4)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.142 0.229 0.194), color(display-p3 0.734 0.934 0.838))",
   },

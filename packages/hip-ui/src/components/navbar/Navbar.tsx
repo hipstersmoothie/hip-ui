@@ -158,6 +158,12 @@ const styles = stylex.create({
       width: "100%",
     },
   },
+  logoImage: {
+    display: "block",
+    objectFit: "contain",
+    height: "40px",
+    width: "auto",
+  },
   separator: {
     gridArea: "separator",
     // eslint-disable-next-line @stylexjs/valid-styles
@@ -298,19 +304,32 @@ export interface NavbarLogoProps extends StyleXComponentProps<
    * Whether the logo link is currently active.
    */
   isActive?: boolean;
+  /**
+   * Optional logo image source. If provided, displays the image instead of text.
+   */
+  logoSrc?: string | null;
 }
 
 /**
  * NavbarLogo component for displaying the logo in the navbar.
  */
-export const NavbarLogo = ({ style, isActive, ...props }: NavbarLogoProps) => {
+export const NavbarLogo = ({
+  style,
+  isActive,
+  logoSrc,
+  ...props
+}: NavbarLogoProps) => {
   return (
     <div
       {...props}
       data-active={isActive}
       {...stylex.props(styles.logo, style)}
     >
-      <span {...stylex.props(styles.logoContent)}>{props.children}</span>
+      {logoSrc ? (
+        <img src={logoSrc} alt="kich" {...stylex.props(styles.logoImage)} />
+      ) : (
+        <span {...stylex.props(styles.logoContent)}>{props.children}</span>
+      )}
     </div>
   );
 };
@@ -397,6 +416,11 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
         closeMenu();
         props.onPress?.(e);
       }}
+      onClick={(e) => {
+        // Also handle native click events as a fallback
+        closeMenu();
+        props.onClick?.(e);
+      }}
     >
       <span {...stylex.props(styles.linkContent)}>{props.children}</span>
     </Link>
@@ -421,6 +445,7 @@ export const Navbar = ({
 }: NavbarProps) => {
   const size = sizeProp || use(SizeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = React.useRef<HTMLElement>(null);
 
   const closeMenu = React.useCallback(() => {
     setIsMobileMenuOpen(false);
@@ -435,11 +460,34 @@ export const Navbar = ({
     [isMobileMenuOpen, closeMenu],
   );
 
+  // Use effect to handle click events via event delegation
+  React.useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const handleClick = (e: MouseEvent) => {
+      // Close menu when any link or button inside navbar is clicked
+      // Exclude the hamburger button (it toggles the menu instead)
+      const target = e.target as HTMLElement;
+      const link = target.closest("a, button");
+      const hamburgerButton = target.closest('[aria-label="Open menu"]');
+      if (link && link !== nav && !hamburgerButton) {
+        closeMenu();
+      }
+    };
+
+    nav.addEventListener("click", handleClick);
+    return () => {
+      nav.removeEventListener("click", handleClick);
+    };
+  }, [closeMenu]);
+
   return (
     <SizeContext value={size}>
       <MobileMenuContext value={mobileMenuContextValue}>
         <div {...props} {...stylex.props(styles.wrapper, style)}>
           <nav
+            ref={navRef}
             data-navbar-open={isMobileMenuOpen || undefined}
             {...stylex.props(styles.navbar, ui.bg, style)}
           >

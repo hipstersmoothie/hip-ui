@@ -2,62 +2,62 @@ import * as stylex from "@stylexjs/stylex";
 
 export const gray = stylex.defineVars({
   bg: {
-    default: "light-dark(#fcfcfc, #fcfcfc)",
+    default: "light-dark(#fcfcfc, #111111)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.988 0.988 0.988), color(display-p3 0.067 0.067 0.067))",
   },
   bgSubtle: {
-    default: "light-dark(#f9f9f9, #f9f9f9)",
+    default: "light-dark(#f9f9f9, #191919)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.975 0.975 0.975), color(display-p3 0.098 0.098 0.098))",
   },
   component1: {
-    default: "light-dark(#f0f0f0, #f0f0f0)",
+    default: "light-dark(#f0f0f0, #222222)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.939 0.939 0.939), color(display-p3 0.135 0.135 0.135))",
   },
   component2: {
-    default: "light-dark(#e8e8e8, #e8e8e8)",
+    default: "light-dark(#e8e8e8, #2a2a2a)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.908 0.908 0.908), color(display-p3 0.163 0.163 0.163))",
   },
   component3: {
-    default: "light-dark(#e0e0e0, #e0e0e0)",
+    default: "light-dark(#e0e0e0, #313131)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.88 0.88 0.88), color(display-p3 0.192 0.192 0.192))",
   },
   border1: {
-    default: "light-dark(#d9d9d9, #d9d9d9)",
+    default: "light-dark(#d9d9d9, #3a3a3a)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.849 0.849 0.849), color(display-p3 0.228 0.228 0.228))",
   },
   border2: {
-    default: "light-dark(#cecece, #cecece)",
+    default: "light-dark(#cecece, #484848)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.807 0.807 0.807), color(display-p3 0.283 0.283 0.283))",
   },
   border3: {
-    default: "light-dark(#bbbbbb, #bbbbbb)",
+    default: "light-dark(#bbbbbb, #606060)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.732 0.732 0.732), color(display-p3 0.375 0.375 0.375))",
   },
   solid1: {
-    default: "light-dark(#8d8d8d, #8d8d8d)",
+    default: "light-dark(#8d8d8d, #6e6e6e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.553 0.553 0.553), color(display-p3 0.431 0.431 0.431))",
   },
   solid2: {
-    default: "light-dark(#838383, #838383)",
+    default: "light-dark(#838383, #7b7b7b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.512 0.512 0.512), color(display-p3 0.484 0.484 0.484))",
   },
   text1: {
-    default: "light-dark(#646464, #646464)",
+    default: "light-dark(#646464, #b4b4b4)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.392 0.392 0.392), color(display-p3 0.706 0.706 0.706))",
   },
   text2: {
-    default: "light-dark(#202020, #202020)",
+    default: "light-dark(#202020, #eeeeee)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.125 0.125 0.125), color(display-p3 0.933 0.933 0.933))",
   },
@@ -127,62 +127,62 @@ export const grayA = stylex.defineVars({
 
 export const grayInverted = stylex.defineVars({
   bg: {
-    default: "light-dark(#fcfcfc, #fcfcfc)",
+    default: "light-dark(#111111, #fcfcfc)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.067 0.067 0.067), color(display-p3 0.988 0.988 0.988))",
   },
   bgSubtle: {
-    default: "light-dark(#f9f9f9, #f9f9f9)",
+    default: "light-dark(#191919, #f9f9f9)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.098 0.098 0.098), color(display-p3 0.975 0.975 0.975))",
   },
   component1: {
-    default: "light-dark(#f0f0f0, #f0f0f0)",
+    default: "light-dark(#222222, #f0f0f0)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.135 0.135 0.135), color(display-p3 0.939 0.939 0.939))",
   },
   component2: {
-    default: "light-dark(#e8e8e8, #e8e8e8)",
+    default: "light-dark(#2a2a2a, #e8e8e8)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.163 0.163 0.163), color(display-p3 0.908 0.908 0.908))",
   },
   component3: {
-    default: "light-dark(#e0e0e0, #e0e0e0)",
+    default: "light-dark(#313131, #e0e0e0)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.192 0.192 0.192), color(display-p3 0.88 0.88 0.88))",
   },
   border1: {
-    default: "light-dark(#d9d9d9, #d9d9d9)",
+    default: "light-dark(#3a3a3a, #d9d9d9)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.228 0.228 0.228), color(display-p3 0.849 0.849 0.849))",
   },
   border2: {
-    default: "light-dark(#cecece, #cecece)",
+    default: "light-dark(#484848, #cecece)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.283 0.283 0.283), color(display-p3 0.807 0.807 0.807))",
   },
   border3: {
-    default: "light-dark(#bbbbbb, #bbbbbb)",
+    default: "light-dark(#606060, #bbbbbb)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.375 0.375 0.375), color(display-p3 0.732 0.732 0.732))",
   },
   solid1: {
-    default: "light-dark(#8d8d8d, #8d8d8d)",
+    default: "light-dark(#6e6e6e, #8d8d8d)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.431 0.431 0.431), color(display-p3 0.553 0.553 0.553))",
   },
   solid2: {
-    default: "light-dark(#838383, #838383)",
+    default: "light-dark(#7b7b7b, #838383)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.484 0.484 0.484), color(display-p3 0.512 0.512 0.512))",
   },
   text1: {
-    default: "light-dark(#646464, #646464)",
+    default: "light-dark(#b4b4b4, #646464)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.706 0.706 0.706), color(display-p3 0.392 0.392 0.392))",
   },
   text2: {
-    default: "light-dark(#202020, #202020)",
+    default: "light-dark(#eeeeee, #202020)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.933 0.933 0.933), color(display-p3 0.125 0.125 0.125))",
   },

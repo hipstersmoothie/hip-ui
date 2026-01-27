@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const violet = stylex.defineVars({
   bg: {
-    default: "light-dark(#fdfcfe, #fdfcfe)",
+    default: "light-dark(#fdfcfe, #14121f)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.991 0.988 0.995), color(display-p3 0.077 0.071 0.118))",
   },
   bgSubtle: {
-    default: "light-dark(#faf8ff, #faf8ff)",
+    default: "light-dark(#faf8ff, #1b1525)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.978 0.974 0.998), color(display-p3 0.101 0.084 0.141))",
   },
   component1: {
-    default: "light-dark(#f4f0fe, #f4f0fe)",
+    default: "light-dark(#f4f0fe, #291f43)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.953 0.943 0.993), color(display-p3 0.154 0.123 0.256))",
   },
   component2: {
-    default: "light-dark(#ebe4ff, #ebe4ff)",
+    default: "light-dark(#ebe4ff, #33255b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.916 0.897 1), color(display-p3 0.191 0.148 0.345))",
   },
   component3: {
-    default: "light-dark(#e1d9ff, #e1d9ff)",
+    default: "light-dark(#e1d9ff, #3c2e69)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.876 0.851 1), color(display-p3 0.226 0.182 0.396))",
   },
   border1: {
-    default: "light-dark(#d4cafe, #d4cafe)",
+    default: "light-dark(#d4cafe, #473876)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.825 0.793 0.981), color(display-p3 0.269 0.223 0.449))",
   },
   border2: {
-    default: "light-dark(#c2b5f5, #c2b5f5)",
+    default: "light-dark(#c2b5f5, #56468b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.752 0.712 0.943), color(display-p3 0.326 0.277 0.53))",
   },
   border3: {
-    default: "light-dark(#aa99ec, #aa99ec)",
+    default: "light-dark(#aa99ec, #6958ad)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.654 0.602 0.902), color(display-p3 0.399 0.346 0.656))",
   },
@@ -47,17 +47,17 @@ export const violet = stylex.defineVars({
       "light-dark(color(display-p3 0.417 0.341 0.784), color(display-p3 0.417 0.341 0.784))",
   },
   solid2: {
-    default: "light-dark(#654dc4, #654dc4)",
+    default: "light-dark(#654dc4, #7d66d9)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.381 0.306 0.741), color(display-p3 0.477 0.402 0.823))",
   },
   text1: {
-    default: "light-dark(#6550b9, #6550b9)",
+    default: "light-dark(#6550b9, #baa7ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.383 0.317 0.702), color(display-p3 0.72 0.65 1))",
   },
   text2: {
-    default: "light-dark(#2f265f, #2f265f)",
+    default: "light-dark(#2f265f, #e2ddfe)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.179 0.15 0.359), color(display-p3 0.883 0.867 0.986))",
   },

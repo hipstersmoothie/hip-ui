@@ -100,7 +100,7 @@ function generateDefineVars(
 async function generateColor(name: string) {
   const color = Object.values(colors[name as keyof typeof colors]);
   const colorDark = Object.values(
-    colors[camelCase(name) as keyof typeof colors],
+    colors[camelCase(`${name}Dark`) as keyof typeof colors],
   );
   const colorP3 = Object.values(
     colors[camelCase(`${name}P3`) as keyof typeof colors],
