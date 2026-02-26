@@ -815,7 +815,12 @@ function BadgeExample() {
   return (
     <Flex gap="4">
       {bageVariants.map((variant) => (
-        <Flex key={variant} gap="4" direction="column" style={styles.capitalize}>
+        <Flex
+          key={variant}
+          gap="4"
+          direction="column"
+          style={styles.capitalize}
+        >
           <Badge variant={variant}>{variant}</Badge>
           <Badge variant={variant} size="md">
             {variant}

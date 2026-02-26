@@ -56,6 +56,7 @@ import { iconButtonConfig } from "../components/icon-button/icon-button-config.j
 import { imageCropperConfig } from "../components/image-cropper/image-cropper-config.js";
 import { kbdConfig } from "../components/kbd/kbd-config.js";
 import { labelConfig } from "../components/label/label-config.js";
+import { lightboxConfig } from "../components/lightbox/lightbox-config.js";
 import { linkConfig } from "../components/link/link-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
@@ -111,6 +112,7 @@ const COMPONENT_CONFIGS = [
   cardConfig,
   textFieldConfig,
   labelConfig,
+  lightboxConfig,
   linkConfig,
   checkboxConfig,
   radioConfig,

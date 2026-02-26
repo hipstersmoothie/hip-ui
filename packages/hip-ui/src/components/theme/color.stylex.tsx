@@ -7,6 +7,7 @@ import { slate, slateInverted } from "./colors/slate.stylex";
 import { yellow } from "./colors/yellow.stylex";
 
 export const uiColor = stylex.defineVars({
+  overlayBackdrop: "light-dark(rgba(4, 1, 1, 0.5), rgba(0, 0, 0, 0.75))",
   bg: slate.bg,
   bgSubtle: slate.bgSubtle,
   component1: slate.component1,

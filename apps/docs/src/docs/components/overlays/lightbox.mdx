@@ -1,0 +1,42 @@
+---
+title: Lightbox
+description: A full-screen overlay for viewing images with navigation between multiple images.
+---
+
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/lightbox/basic";
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the lightbox component to your project.
+
+```bash
+pnpm hip install lightbox
+```
+
+## Props
+
+<PropDocs components={["Lightbox"]} />
+
+## Features
+
+### Controlled
+
+The lightbox is controlled via `isOpen` and `onOpenChange`.
+Use a button or other trigger to open it and set `onOpenChange(false)` to close.
+
+### Keyboard navigation
+
+When multiple images are provided, use Arrow Left and Arrow Right to navigate.
+
+### Click to dismiss
+
+Click the backdrop or press Escape to close the lightbox.
+
+## Related Components
+
+- [Dialog](/docs/components/dialog) - For modal content overlays
+- [ImageCropper](/docs/components/image-cropper) - For cropping images

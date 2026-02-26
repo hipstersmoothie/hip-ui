@@ -15,7 +15,11 @@ const styles = stylex.create({
   },
 });
 
-function renderTreeItem(item: { id: string; name: string; children?: Array<{ id: string; name: string }> }) {
+function renderTreeItem(item: {
+  id: string;
+  name: string;
+  children?: Array<{ id: string; name: string }>;
+}) {
   return (
     <TreeItem key={item.id} id={item.id} title={item.name}>
       {item.children?.map((child) => (

@@ -13,6 +13,7 @@ export const toastConfig: ComponentConfig = {
     "../icon-button/index.tsx",
     "./queue.ts",
     "./Toast.tsx",
+    "./index.tsx",
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",

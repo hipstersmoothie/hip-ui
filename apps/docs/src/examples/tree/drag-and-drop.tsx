@@ -65,14 +65,13 @@ const initialItems: Array<TreeItem> = [
 
 function renderTreeItem(item: {
   value: { id: string; name: string };
-  children?: Array<{ value: { id: string; name: string }; children?: Array<unknown> }>;
+  children?: Array<{
+    value: { id: string; name: string };
+    children?: Array<unknown>;
+  }>;
 }): React.ReactNode {
   return (
-    <TreeItem
-      key={item.value.id}
-      id={item.value.id}
-      title={item.value.name}
-    >
+    <TreeItem key={item.value.id} id={item.value.id} title={item.value.name}>
       {item.children?.map((child) => renderTreeItem(child))}
     </TreeItem>
   );

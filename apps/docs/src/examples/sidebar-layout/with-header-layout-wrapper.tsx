@@ -7,11 +7,7 @@ import {
   NavbarLogo,
   NavbarNavigation,
 } from "@/components/navbar";
-import {
-  Sidebar,
-  SidebarItem,
-  SidebarSection,
-} from "@/components/sidebar";
+import { Sidebar, SidebarItem, SidebarSection } from "@/components/sidebar";
 import { SidebarLayout } from "@/components/sidebar-layout";
 import { Body, Heading1 } from "@/components/typography";
 

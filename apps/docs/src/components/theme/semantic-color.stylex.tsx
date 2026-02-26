@@ -46,6 +46,7 @@ export const ui = stylex.create({
   textDim: { color: uiColor.text1, fontFamily: fontFamily["sans"] },
   text: { color: uiColor.text2, fontFamily: fontFamily["sans"] },
   textContrast: { color: uiColor.textContrast },
+  overlay: { backgroundColor: uiColor.overlayBackdrop },
 
   bgGhost: {
     backgroundColor: {
