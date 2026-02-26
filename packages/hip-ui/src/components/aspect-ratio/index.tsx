@@ -1,8 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
 
+import type { StyleXComponentProps } from "../theme/types";
+
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   aspectRatio: (aspectRatio: number) => ({
@@ -13,7 +14,6 @@ const styles = stylex.create({
     position: "relative",
   },
   rounded: {
-    // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
     borderBottomLeftRadius: {
       default: radius["md"],

@@ -1,8 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { InputValidationState, InputVariant, Size } from "../theme/types";
+
 import { SizeContext } from "../context";
-import { InputValidationState, InputVariant, Size } from "../theme/types";
 import { animationDuration } from "./animations.stylex";
 import {
   criticalColor,
@@ -14,7 +15,7 @@ import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
-import { lineHeight, fontSize } from "./typography.stylex";
+import { fontSize, lineHeight } from "./typography.stylex";
 
 const styles = stylex.create({
   field: {
@@ -77,14 +78,14 @@ const styles = stylex.create({
     color: warningColor.text1,
   },
   inputWrapper: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     padding: 0,
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
+
+    cornerShape: "squircle",
     overflow: "hidden",
     boxSizing: "border-box",
     display: "flex",
@@ -112,16 +113,16 @@ const styles = stylex.create({
   },
   primary: {
     borderColor: {
-      default: uiColor.border2,
-      ":has([data-hovered]):not(:has([data-invalid]))": uiColor.border3,
-      ":focus": uiColor.solid1,
+      default: uiColor.border1,
+      ":has([data-hovered]):not(:has([data-invalid]))": uiColor.border2,
+      ":focus": uiColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,
     backgroundColor: {
-      default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      default: uiColor.bg,
+      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component1,
+      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component2,
       ":disabled": "transparent",
     },
     boxShadow: {
@@ -178,10 +179,9 @@ const styles = stylex.create({
   },
   secondary: {
     borderColor: {
-      default: uiColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
-      ":disabled": uiColor.component1,
+      default: uiColor.border1,
+      ":has([data-hovered]):not(:has([data-invalid]))": uiColor.border2,
+      ":focus": uiColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,

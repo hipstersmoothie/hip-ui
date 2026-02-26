@@ -3,36 +3,32 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { ButtonVariant, Size } from "../theme/types";
+
 import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
-import { Size, ButtonVariant } from "../theme/types";
 import { animationDuration } from "./animations.stylex";
 import { uiColor } from "./color.stylex";
 import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
-import { critical, ui, primary } from "./semantic-color.stylex";
+import { critical, primary, ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
-import {
-  fontFamily,
-  fontSize,
-  fontWeight,
-  lineHeight,
-} from "./typography.stylex";
+import { fontFamily, fontSize, fontWeight } from "./typography.stylex";
 
 const styles = stylex.create({
   shadow: {
     boxShadow: shadow["xs"],
   },
   base: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
-      default: radius["md"],
+      default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderStyle: "solid",
     borderWidth: 1,
+
+    cornerShape: "squircle",
     gap: spacing["1"],
     alignItems: "center",
     boxSizing: "border-box",
@@ -63,7 +59,6 @@ const styles = stylex.create({
   },
   small: {
     fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
     height: spacing["7"],
     paddingLeft: {
       default: spacing["2"],
@@ -81,7 +76,6 @@ const styles = stylex.create({
   medium: {
     gap: spacing["1.5"],
     fontSize: fontSize["sm"],
-    lineHeight: lineHeight["xs"],
     height: spacing["8"],
     paddingLeft: {
       default: spacing["3"],
@@ -91,12 +85,23 @@ const styles = stylex.create({
   },
   large: {
     gap: spacing["2"],
+    fontSize: fontSize["sm"],
     height: spacing["10"],
     paddingLeft: {
       default: spacing["4"],
       ":has(svg+*)": spacing["3"],
     },
     paddingRight: spacing["4"],
+  },
+  xl: {
+    gap: spacing["2"],
+    fontSize: fontSize["lg"],
+    height: spacing["12"],
+    paddingLeft: {
+      default: spacing["5"],
+      ":has(svg+*)": spacing["4"],
+    },
+    paddingRight: spacing["5"],
   },
   secondary: {
     borderColor: {
@@ -146,7 +151,7 @@ export const useButtonStyles = ({
   size: sizeProp,
 }: {
   variant?: ButtonVariant;
-  size?: Size;
+  size?: Size | "xl";
 }) => {
   const size = sizeProp || use(SizeContext);
   const group = use(ButtonGroupContext);
@@ -200,13 +205,14 @@ export const useButtonStyles = ({
     ],
     variant === "critical-outline" && [
       critical.borderInteractive,
-      critical.bgGhost,
+      critical.bgUi,
       critical.text,
       styles.shadow,
     ],
     size === "sm" && styles.small,
     size === "md" && styles.medium,
     size === "lg" && styles.large,
+    size === "xl" && styles.xl,
     group?.variant === "separate" && styles.separate,
     styles.base,
   ];

@@ -1,111 +1,49 @@
-import * as stylex from "@stylexjs/stylex";
-import { use, useRef } from "react";
-import {
-  TextArea as AriaTextArea,
+import type {
   TextAreaProps as AriaTextAreaProps,
   InputProps,
   TextFieldProps,
   ValidationResult,
+} from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { use, useLayoutEffect, useRef } from "react";
+import {
+  TextArea as AriaTextArea,
   TextField as AriaTextField,
 } from "react-aria-components";
 
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
+
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
-import { uiColor } from "../theme/color.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
-import { radius } from "../theme/radius.stylex";
-import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
-import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
+import { fontFamily, lineHeight } from "../theme/typography.stylex";
+import { useInputStyles } from "../theme/useInputStyles";
 
 const styles = stylex.create({
   wrapper: {
-    gap: spacing["2"],
-    display: "flex",
-    flexDirection: "column",
+    height: "auto",
   },
-  addon: {
-    color: ui.textDim,
-    flexShrink: 0,
-    height: "100%",
-    minWidth: spacing["8"],
-    paddingLeft: { ":first-child": spacing["0.5"] },
-    paddingRight: {
-      ":last-child:has(svg)": spacing["0.5"],
-      ":last-child": spacing["2"],
-    },
-
-    gap: spacing["0.5"],
-    alignItems: "center",
-    display: "flex",
-    justifyContent: "center",
-
-    // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
-    ":is(*) svg": {
-      flexShrink: 0,
-      pointerEvents: "none",
-      height: spacing["4"],
-      width: spacing["4"],
-    },
-  },
-  inputWrapper: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["2xl"],
-    },
-    boxSizing: "border-box",
-    display: "flex",
-    flexGrow: 1,
-
-    borderColor: {
-      default: uiColor.border2,
-      ":hover": uiColor.border3,
-      ":focus": uiColor.solid1,
-    },
-    borderStyle: "solid",
-    borderWidth: 1,
-  },
-  input: {
-    borderWidth: 0,
-    outline: "none",
-    backgroundColor: "transparent",
-    boxSizing: "border-box",
-    color: {
-      "::placeholder": uiColor.text1,
-    },
-    flexGrow: 1,
+  textarea: {
     fontFamily: fontFamily["sans"],
-    resize: "none",
-
-    fontSize: {
-      ":is([data-size=lg])": fontSize["base"],
-      ":is([data-size=md])": fontSize["sm"],
-      ":is([data-size=sm])": fontSize["xs"],
-    },
     lineHeight: {
       ":is([data-size=lg])": lineHeight["base"],
       ":is([data-size=md])": lineHeight["sm"],
       ":is([data-size=sm])": lineHeight["xs"],
     },
+    resize: "none",
     minHeight: {
       ":is([data-size=lg])": spacing["10"],
       ":is([data-size=md])": spacing["8"],
       ":is([data-size=sm])": spacing["6"],
     },
+    minWidth: 0,
     paddingBottom: {
-      ":is([data-size=lg])": spacing["3"],
-      ":is([data-size=md])": spacing["2"],
-      ":is([data-size=sm])": spacing["1"],
-    },
-    paddingLeft: {
-      ":is([data-size=lg])": spacing["3"],
-      ":is([data-size=md])": spacing["2"],
-      ":is([data-size=sm])": spacing["1"],
-    },
-    paddingRight: {
       ":is([data-size=lg])": spacing["3"],
       ":is([data-size=md])": spacing["2"],
       ":is([data-size=sm])": spacing["1"],
@@ -115,9 +53,14 @@ const styles = stylex.create({
       ":is([data-size=md])": spacing["2"],
       ":is([data-size=sm])": spacing["1"],
     },
+    width: "100%",
   },
   resizable: {
     resize: "both",
+  },
+  autosize: {
+    overflow: "hidden",
+    resize: "none",
   },
 });
 
@@ -133,6 +76,9 @@ export interface TextAreaProps
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
   isResizable?: boolean;
+  autosize?: boolean;
+  variant?: InputVariant;
+  validationState?: InputValidationState;
 }
 
 export function TextArea({
@@ -146,14 +92,66 @@ export function TextArea({
   placeholder,
   rows,
   isResizable = true,
+  autosize = true,
+  variant,
+  validationState,
   ...props
 }: TextAreaProps) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const size = sizeProp || use(SizeContext);
+  const inputStyles = useInputStyles({ size, variant, validationState });
+
+  useLayoutEffect(() => {
+    const textarea = textAreaRef.current;
+    if (!textarea || !autosize) return;
+
+    const adjustHeight = () => {
+      // Reset height to auto to get accurate scrollHeight
+      textarea.style.height = "auto";
+      // Set height to scrollHeight, which will respect minHeight from styles
+      const newHeight = textarea.scrollHeight;
+      textarea.style.height = `${String(newHeight)}px`;
+    };
+
+    // Adjust height immediately
+    adjustHeight();
+
+    // Listen for input events to adjust height dynamically
+    textarea.addEventListener("input", adjustHeight);
+
+    // Also adjust on resize in case container size changes
+    const resizeObserver = new ResizeObserver(adjustHeight);
+    resizeObserver.observe(textarea);
+
+    return () => {
+      textarea.removeEventListener("input", adjustHeight);
+      resizeObserver.disconnect();
+    };
+  }, [autosize, props.value, props.defaultValue]);
+
+  // Handle onChange to trigger resize when value changes programmatically
+  const handleChange = (value: string) => {
+    props.onChange?.(value);
+    // Trigger resize after value update
+    if (autosize && textAreaRef.current) {
+      requestAnimationFrame(() => {
+        const textarea = textAreaRef.current;
+        if (textarea) {
+          textarea.style.height = "auto";
+          textarea.style.height = `${String(textarea.scrollHeight)}px`;
+        }
+      });
+    }
+  };
 
   return (
     <SizeContext value={size}>
-      <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
+      <AriaTextField
+        {...props}
+        onChange={props.onChange ? handleChange : undefined}
+        isInvalid={validationState ? validationState === "invalid" : undefined}
+        {...stylex.props(inputStyles.field, style)}
+      >
         <Label>{label}</Label>
         {/* 
         This onClick is specifically for mouse users not clicking directly on the input.
@@ -161,21 +159,26 @@ export function TextArea({
       */}
         {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-static-element-interactions */}
         <div
-          {...stylex.props(styles.inputWrapper, ui.bgUi, ui.text)}
+          {...stylex.props(inputStyles.wrapper, styles.wrapper)}
           onClick={() => textAreaRef.current?.focus()}
         >
           {prefix != null && (
-            <div {...stylex.props(styles.addon)}>{prefix}</div>
+            <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
           )}
           <AriaTextArea
             data-size={size}
-            {...stylex.props(styles.input, isResizable && styles.resizable)}
+            {...stylex.props(
+              inputStyles.input,
+              styles.textarea,
+              isResizable && !autosize && styles.resizable,
+              autosize && styles.autosize,
+            )}
             ref={textAreaRef}
             placeholder={placeholder}
-            rows={rows}
+            rows={autosize ? 1 : rows}
           />
           {suffix != null && (
-            <div {...stylex.props(styles.addon)}>{suffix}</div>
+            <div {...stylex.props(inputStyles.addon)}>{suffix}</div>
           )}
         </div>
         <Description>{description}</Description>

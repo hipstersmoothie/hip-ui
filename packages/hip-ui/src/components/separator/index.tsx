@@ -1,17 +1,17 @@
+import type { SeparatorProps as AriaSeparatorProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
-import {
-  SeparatorProps as AriaSeparatorProps,
-  Separator as AriaSeparator,
-} from "react-aria-components";
+import { Separator as AriaSeparator } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { uiColor } from "../theme/color.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   separator: {
     margin: 0,
     borderWidth: 0,
-    backgroundColor: uiColor.border2,
+    backgroundColor: uiColor.component3,
     height: {
       default: "1px",
       ":is([aria-orientation=vertical])": "100%",

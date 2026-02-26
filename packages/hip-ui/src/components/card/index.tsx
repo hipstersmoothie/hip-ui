@@ -20,8 +20,6 @@ import {
 
 const styles = stylex.create({
   card: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderColor: uiColor.component2,
     borderRadius: {
       default: radius["lg"],
@@ -29,6 +27,8 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
+
+    cornerShape: "squircle",
     gap: "var(--card-gap)",
     overflow: "hidden",
     boxShadow: shadow["sm"],
@@ -71,6 +71,12 @@ const styles = stylex.create({
     alignItems: "center",
     display: "grid",
   },
+  headerBorder: {
+    borderColor: uiColor.component2,
+    borderBottomStyle: "solid",
+    borderBottomWidth: 1,
+    paddingBottom: spacing["6"],
+  },
   cardHeaderAction: {
     gridArea: "action",
     gap: spacing["1"],
@@ -79,6 +85,9 @@ const styles = stylex.create({
   },
   cardTitle: {
     gridArea: "title",
+    gap: spacing["3"],
+    alignItems: "center",
+    display: "flex",
     fontSize: {
       ":is([data-card-size='lg'] *)": fontSize["2xl"],
       ":is([data-card-size='md'] *)": fontSize["xl"],
@@ -134,13 +143,20 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
 
 export interface CardHeaderProps extends StyleXComponentProps<
   React.ComponentProps<"div">
-> {}
+> {
+  hasBorder?: boolean;
+}
 
-export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
+export const CardHeader = ({ style, hasBorder, ...props }: CardHeaderProps) => {
   return (
     <div
       {...props}
-      {...stylex.props(styles.cardSection, styles.cardHeader, style)}
+      {...stylex.props(
+        styles.cardSection,
+        styles.cardHeader,
+        hasBorder && styles.headerBorder,
+        style,
+      )}
     />
   );
 };

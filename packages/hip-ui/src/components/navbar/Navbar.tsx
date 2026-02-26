@@ -94,7 +94,10 @@ const styles = stylex.create({
       ":is([data-navbar-open])": `min-content min-content min-content`,
       ":is([data-navbar-open]):has([data-navbar-action])": `min-content min-content min-content min-content`,
     },
-    rowGap: spacing["8"],
+    rowGap: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
     marginLeft: "auto",
     marginRight: "auto",
     maxWidth: "var(--page-content-max-width)",
@@ -422,7 +425,11 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
         props.onClick?.(e);
       }}
     >
-      <span {...stylex.props(styles.linkContent)}>{props.children}</span>
+      <span {...stylex.props(styles.linkContent)}>
+        {typeof props.children === "function"
+          ? props.children({} as any)
+          : props.children}
+      </span>
     </Link>
   );
 }
@@ -496,6 +503,7 @@ export const Navbar = ({
               style={styles.separator as unknown as stylex.StyleXStyles}
             />
             <IconButton
+              size="lg"
               aria-label="Open menu"
               variant="tertiary"
               style={styles.hamburgerButton}

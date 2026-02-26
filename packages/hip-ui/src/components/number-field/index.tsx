@@ -88,20 +88,17 @@ const styles = stylex.create({
   input: {
     cursor: "text",
   },
-  buttons: {
-    display: "flex",
-  },
   button: {
     padding: 0,
-    borderWidth: 0,
     alignItems: "center",
     aspectRatio: 1,
     display: "flex",
     flexGrow: 1,
+    flexShrink: 0,
     justifyContent: "center",
     borderBottomWidth: 0,
     borderLeftStyle: "solid",
-    borderLeftWidth: 1,
+    borderLeftWidth: 0,
     borderRightWidth: 0,
     borderTopWidth: 0,
     minHeight: 0,
@@ -118,6 +115,19 @@ const styles = stylex.create({
       default: uiColor.text2,
       ":disabled": uiColor.text1,
     },
+  },
+  buttonLeft: {
+    borderRightStyle: "solid",
+    borderRightWidth: 1,
+  },
+  buttonRight: {
+    borderLeftStyle: "solid",
+    borderLeftWidth: 1,
+  },
+  inputWithStepper: {
+    textAlign: "center",
+    paddingLeft: spacing["2"],
+    paddingRight: spacing["2"],
   },
 });
 
@@ -154,11 +164,6 @@ function NumberFieldContent({
     variant,
     validationState: isInvalid ? "invalid" : validationState,
   });
-  const buttonStyles = stylex.props(
-    styles.button,
-    ui.borderInteractive,
-    ui.bgAction,
-  );
 
   return (
     <>
@@ -171,13 +176,30 @@ function NumberFieldContent({
         style={inputStyles.wrapper}
         onClick={() => inputRef.current?.focus()}
       >
+        {!hideStepper && (
+          <Button
+            slot="decrement"
+            {...stylex.props(
+              styles.button,
+              styles.buttonLeft,
+              ui.borderInteractive,
+              ui.bgAction,
+            )}
+          >
+            <Minus />
+          </Button>
+        )}
         {prefix != null && (
           <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
         )}
         <Input
           placeholder={placeholder}
           ref={inputRef}
-          {...stylex.props(styles.input, inputStyles.input)}
+          {...stylex.props(
+            styles.input,
+            inputStyles.input,
+            !hideStepper && styles.inputWithStepper,
+          )}
         />
         <SuffixIcon
           suffix={suffix}
@@ -186,14 +208,17 @@ function NumberFieldContent({
           validationState={validationState}
         />
         {!hideStepper && (
-          <Group {...stylex.props(styles.buttons)}>
-            <Button slot="decrement" {...buttonStyles}>
-              <Minus />
-            </Button>
-            <Button slot="increment" {...buttonStyles}>
-              <Plus />
-            </Button>
-          </Group>
+          <Button
+            slot="increment"
+            {...stylex.props(
+              styles.button,
+              styles.buttonRight,
+              ui.borderInteractive,
+              ui.bgAction,
+            )}
+          >
+            <Plus />
+          </Button>
         )}
       </NumberInputWrapper>
       <Description>{description}</Description>

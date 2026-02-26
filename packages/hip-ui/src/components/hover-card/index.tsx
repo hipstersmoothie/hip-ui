@@ -1,21 +1,25 @@
 "use client";
 
+import type {
+  PopoverProps as AriaPopoverProps,
+  DialogTriggerProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use, useRef } from "react";
 import { mergeProps, useFocusVisible, useHover, useKeyboard } from "react-aria";
 import {
   Popover as AriaPopover,
-  PopoverProps as AriaPopoverProps,
-  DialogTrigger,
-  DialogTriggerProps,
   Dialog,
-  Pressable,
+  DialogTrigger,
   OverlayTriggerStateContext,
+  Pressable,
 } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
@@ -23,6 +27,7 @@ const styles = stylex.create({
     shadow: shadow.md,
   },
   content: {
+    outline: "none",
     position: "relative",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["2"],
@@ -40,6 +45,9 @@ interface HoverCardInnerProps extends StyleXComponentProps<
   showDelay?: number;
   hideDelay?: number;
 }
+
+/** Ignore leave events for this long after opening to avoid spurious pointerleave from layout shifts when popover mounts */
+const IGNORE_LEAVE_AFTER_OPEN_MS = 150;
 
 function HoverCardInner({
   trigger,
@@ -62,6 +70,7 @@ function HoverCardInner({
   const popoverStyles = usePopoverStyles();
   const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const openedAtRef = useRef<number | null>(null);
   const { hoverProps } = useHover({
     onHoverStart: () => {
       if (showTimeoutRef.current) return;
@@ -71,10 +80,20 @@ function HoverCardInner({
       }
       showTimeoutRef.current = setTimeout(() => {
         overlayTriggerState?.open();
+        openedAtRef.current = Date.now();
         showTimeoutRef.current = null;
       }, showDelay);
     },
     onHoverEnd: () => {
+      // Ignore leave shortly after opening - popover mount can cause spurious pointerleave
+      // (e.g. from scroll lock shifting layout or DOM updates when overlay appears)
+      if (
+        openedAtRef.current &&
+        Date.now() - openedAtRef.current < IGNORE_LEAVE_AFTER_OPEN_MS
+      ) {
+        return;
+      }
+      openedAtRef.current = null;
       if (showTimeoutRef.current) {
         clearTimeout(showTimeoutRef.current);
         showTimeoutRef.current = null;

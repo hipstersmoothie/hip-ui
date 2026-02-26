@@ -8,7 +8,6 @@ import {
   uiColor,
   warningColor,
 } from "./color.stylex";
-import { green } from "./colors/green.stylex";
 import { red } from "./colors/red.stylex";
 import { yellow } from "./colors/yellow.stylex";
 import { fontFamily } from "./typography.stylex";
@@ -26,14 +25,14 @@ export const ui = stylex.create({
     borderWidth: 1,
   },
   border: {
-    borderColor: uiColor.border2,
+    borderColor: uiColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: uiColor.border2,
-      ":hover": uiColor.border3,
+      default: uiColor.border1,
+      ":hover": uiColor.border2,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -106,7 +105,7 @@ export const primary = stylex.create({
     borderWidth: 1,
   },
   border: {
-    borderColor: primaryColor.border2,
+    borderColor: primaryColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
@@ -191,14 +190,14 @@ export const critical = stylex.create({
     borderWidth: 1,
   },
   border: {
-    borderColor: criticalColor.border2,
+    borderColor: criticalColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: criticalColor.border2,
-      ":hover": red.border3,
+      default: criticalColor.border1,
+      ":hover": red.border1,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -276,15 +275,20 @@ export const warning = stylex.create({
     borderWidth: 1,
   },
   border: {
-    borderColor: warningColor.border2,
+    borderColor: warningColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: warningColor.border2,
-      ":hover": warningColor.border3,
+      default: warningColor.border1,
+      ":hover": warningColor.border2,
     },
+    borderStyle: "solid",
+    borderWidth: 1,
+    transitionDuration: animationDuration.fast,
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
   },
   bgSolid: { backgroundColor: warningColor.solid1 },
   bgSolidDark: { backgroundColor: warningColor.solid2 },
@@ -355,14 +359,14 @@ export const success = stylex.create({
     borderWidth: 1,
   },
   border: {
-    borderColor: successColor.border2,
+    borderColor: successColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
   },
   borderInteractive: {
     borderColor: {
-      default: successColor.border2,
-      ":hover": green.border3,
+      default: successColor.border1,
+      ":hover": successColor.border2,
     },
     borderStyle: "solid",
     borderWidth: 1,

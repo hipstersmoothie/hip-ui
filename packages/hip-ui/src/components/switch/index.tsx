@@ -1,8 +1,9 @@
+import type { SwitchProps as AriaSwitchProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
-import {
-  SwitchProps as AriaSwitchProps,
-  Switch as AriaSwitch,
-} from "react-aria-components";
+import { Switch as AriaSwitch } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
@@ -10,12 +11,11 @@ import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    gap: spacing["2"],
+    gap: spacing["3"],
     alignItems: "center",
     display: "flex",
   },
@@ -39,6 +39,7 @@ const styles = stylex.create({
     transitionTimingFunction: "ease-in-out",
     height: spacing["6"],
     width: spacing["10"],
+    flexShrink: 0,
   },
   thumb: {
     borderRadius: radius.full,
