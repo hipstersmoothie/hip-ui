@@ -1,3 +1,6 @@
+import * as stylex from "@stylexjs/stylex";
+import { Bell, Search } from "lucide-react";
+
 import { Button } from "@/components/button";
 import { IconButton } from "@/components/icon-button";
 import {
@@ -7,23 +10,22 @@ import {
   NavbarLogo,
   NavbarNavigation,
 } from "@/components/navbar";
-import { Bell, Search } from "lucide-react";
-import * as stylex from "@stylexjs/stylex";
+
 import { uiColor } from "../../components/theme/color.stylex";
 import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    containerType: "inline-size",
-    height: "400px",
-    width: "90%",
-    borderStyle: "solid",
-    borderWidth: 1,
     borderColor: uiColor.border1,
     borderRadius: radius["lg"],
-    overflow: "hidden",
+    borderStyle: "solid",
     margin: spacing["4"],
+    containerType: "inline-size",
+    borderWidth: 1,
+    height: "400px",
+    overflow: "hidden",
+    width: "90%",
   },
 });
 

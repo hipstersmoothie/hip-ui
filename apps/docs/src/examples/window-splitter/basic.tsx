@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { PanelGroup, Panel, PanelResizer } from "@/components/window-splitter";
+import { Panel, PanelGroup, PanelResizer } from "@/components/window-splitter";
 
 const styles = stylex.create({
   container: {
@@ -8,10 +8,10 @@ const styles = stylex.create({
     width: "100%",
   },
   panelContent: {
+    padding: "16px",
     alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    padding: "16px",
   },
 });
 

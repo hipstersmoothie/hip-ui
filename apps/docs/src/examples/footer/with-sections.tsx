@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 
 import { Footer } from "@/components/footer";
 import { Link } from "@/components/link";
+
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({

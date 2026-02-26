@@ -2,12 +2,13 @@
 
 import * as stylex from "@stylexjs/stylex";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 
 const shimmer = stylex.keyframes({
   "0%": {
@@ -52,12 +53,12 @@ const styles = stylex.create({
     borderRadius: radius.full,
   },
   rectangle: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
   },
   sizeSm: {
     height: spacing["8"],

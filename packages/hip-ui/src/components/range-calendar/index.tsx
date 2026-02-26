@@ -1,16 +1,19 @@
+import type {
+  RangeCalendarProps as AriaRangeCalendarProps,
+  CalendarGridProps,
+  DateValue,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
-  RangeCalendar as AriaRangeCalendar,
+  RangeCalendar as AriaRangeCalendarComponent,
   CalendarCell,
   CalendarGrid,
-  CalendarGridProps,
   CalendarGridBody,
   CalendarGridHeader,
   CalendarHeaderCell,
   Heading,
-  type RangeCalendarProps as AriaRangeCalendarProps,
-  DateValue,
 } from "react-aria-components";
 
 import type { StyleXComponentProps } from "../theme/types";
@@ -51,7 +54,7 @@ export function RangeCalendar<T extends DateValue>(
   const calendarStyles = useCalendarStyles({ type: "range-calendar" });
 
   return (
-    <AriaRangeCalendar
+    <AriaRangeCalendarComponent
       visibleDuration={visibleDuration}
       {...rest}
       {...stylex.props(styles.root, style)}
@@ -98,6 +101,6 @@ export function RangeCalendar<T extends DateValue>(
         ))}
       </Flex>
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-    </AriaRangeCalendar>
+    </AriaRangeCalendarComponent>
   );
 }

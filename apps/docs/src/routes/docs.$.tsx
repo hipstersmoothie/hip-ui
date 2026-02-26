@@ -2,8 +2,8 @@ import type { MDXComponents } from "mdx/types";
 import type { JSX as Jsx } from "react/jsx-runtime";
 
 import {
-  createLink,
   createFileRoute,
+  createLink,
   useLocation,
 } from "@tanstack/react-router";
 
@@ -20,8 +20,13 @@ import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
 import { modules, pages } from "virtual:content";
 
+import type { LinkProps} from "@/components/link";
+
+import { Content } from "@/components/content";
 import { Flex } from "@/components/flex";
-import { LinkProps, Link as TypographyLink } from "@/components/link";
+import { Link as TypographyLink } from "@/components/link";
+import { SidebarLayout } from "@/components/sidebar-layout";
+import { TableOfContents } from "@/components/table-of-contents";
 import {
   Blockquote,
   Body,
@@ -38,11 +43,8 @@ import {
   UnorderedList,
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
-import { TableOfContents } from "@/components/table-of-contents";
 
 import { spacing } from "../components/theme/spacing.stylex";
-import { Content } from "@/components/content";
-import { SidebarLayout } from "@/components/sidebar-layout";
 
 const TypographyRouterLink = createLink(TypographyLink);
 

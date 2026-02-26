@@ -1,16 +1,17 @@
+import type { Key } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  Volume,
-  Volume2,
-  GripVertical,
   BarChart3,
   Box,
-  MoveHorizontal,
+  GripVertical,
   Heart,
+  MoveHorizontal,
   Star,
+  Volume,
+  Volume2,
 } from "lucide-react";
 import { useState } from "react";
-import { Key } from "react-aria-components";
 
 import { AspectRatio, AspectRatioImage } from "@/components/aspect-ratio";
 import { Button } from "@/components/button";
@@ -36,8 +37,8 @@ import { Body } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
 import { primaryColor } from "../components/theme/color.stylex";
-import { spacing } from "../components/theme/spacing.stylex";
 import { radius } from "../components/theme/radius.stylex";
+import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   main: {
@@ -61,18 +62,18 @@ const styles = stylex.create({
     color: primaryColor.solid1,
   },
   filled: {
-    color: primaryColor.solid1,
     fill: primaryColor.solid1,
+    color: primaryColor.solid1,
   },
   membershipTier: {
-    backgroundColor: {
-      ":hover": primaryColor.component2,
-    },
     borderRadius: {
       default: radius["sm"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
     cornerShape: "squircle",
+    backgroundColor: {
+      ":hover": primaryColor.component2,
+    },
     cursor: "pointer",
     marginLeft: `calc(${spacing["3"]} * -1)`,
     marginRight: `calc(${spacing["3"]} * -1)`,
@@ -89,29 +90,29 @@ const styles = stylex.create({
     color: primaryColor.text2,
   },
   priceBox: {
-    backgroundColor: primaryColor.bgSubtle,
     borderColor: primaryColor.border2,
     borderRadius: {
       default: radius["sm"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
-    borderWidth: 1,
-    color: primaryColor.text1,
     padding: spacing["2"],
+    borderWidth: 1,
+    cornerShape: "squircle",
+    backgroundColor: primaryColor.bgSubtle,
+    color: primaryColor.text1,
   },
   selectedPriceBox: {
-    backgroundColor: primaryColor.solid1,
     borderColor: primaryColor.solid2,
+    backgroundColor: primaryColor.solid1,
     color: primaryColor.textContrast,
   },
   membershipCard: {
     gap: spacing["2"],
   },
   lyricsBody: {
-    height: spacing["72"],
     overflow: "auto",
+    height: spacing["72"],
   },
 });
 

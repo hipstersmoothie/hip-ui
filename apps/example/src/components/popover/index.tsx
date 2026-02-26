@@ -1,13 +1,16 @@
 "use client";
 
+import type {
+  PopoverProps as AriaPopoverProps,
+  DialogTriggerProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  OverlayArrow,
   Popover as AriaPopover,
-  PopoverProps as AriaPopoverProps,
-  DialogTrigger,
-  DialogTriggerProps,
   Dialog,
+  DialogTrigger,
+  OverlayArrow,
 } from "react-aria-components";
 
 import { slate } from "../theme/colors.stylex";
@@ -21,24 +24,24 @@ const styles = stylex.create({
   content: {
     borderWidth: 0,
     boxShadow: "none",
+    position: "relative",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["2"],
     paddingRight: spacing["2"],
     paddingTop: spacing["2"],
-    position: "relative",
   },
   caret: {},
   arrow: {
     backgroundColor: slate.bg2,
-    height: spacing["2"],
     transform: {
       [":is([data-placement=bottom] *)"]: "rotate(180deg)",
-      [":is([data-placement=top] *)"]: "translateY(-50%) rotate(-45deg)",
       [":is([data-placement=left] *)"]: "rotate(90deg)",
       [":is([data-placement=right] *)"]: "rotate(-90deg)",
+      [":is([data-placement=top] *)"]: "translateY(-50%) rotate(-45deg)",
     },
-    width: spacing["2"],
     zIndex: 0,
+    height: spacing["2"],
+    width: spacing["2"],
   },
 });
 interface TooltipProps

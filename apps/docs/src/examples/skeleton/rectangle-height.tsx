@@ -1,7 +1,7 @@
 import { Flex } from "@/components/flex";
 import { Skeleton } from "@/components/skeleton";
-import { Text } from "@/components/typography/text";
 import { spacing } from "@/components/theme/spacing.stylex";
+import { Text } from "@/components/typography/text";
 
 export function RectangleHeight() {
   return (

@@ -1,15 +1,17 @@
+import * as stylex from "@stylexjs/stylex";
+import { TriangleAlert } from "lucide-react";
+
+import { Button } from "@/components/button";
 import {
   EmptyState,
+  EmptyStateActions,
+  EmptyStateDescription,
   EmptyStateImage,
   EmptyStateTitle,
-  EmptyStateDescription,
-  EmptyStateActions,
 } from "@/components/empty-state";
-import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
-import * as stylex from "@stylexjs/stylex";
+
 import { spacing } from "../../components/theme/spacing.stylex";
-import { TriangleAlert } from "lucide-react";
 
 const styles = stylex.create({
   wrapper: {

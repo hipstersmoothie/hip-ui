@@ -1,8 +1,9 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { InputValidationState, InputVariant, Size } from "../theme/types";
+
 import { SizeContext } from "../context";
-import { InputValidationState, InputVariant, Size } from "../theme/types";
 import { animationDuration } from "./animations.stylex";
 import {
   criticalColor,
@@ -14,7 +15,7 @@ import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
-import { lineHeight, fontSize } from "./typography.stylex";
+import { fontSize, lineHeight } from "./typography.stylex";
 
 const styles = stylex.create({
   field: {
@@ -77,14 +78,14 @@ const styles = stylex.create({
     color: warningColor.text1,
   },
   inputWrapper: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     padding: 0,
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     overflow: "hidden",
     boxSizing: "border-box",
     display: "flex",

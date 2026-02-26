@@ -9,10 +9,10 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 const styles = stylex.create({
   card: {
     borderRadius: radius["lg"],
+    gap: spacing["6"],
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
-    gap: spacing["6"],
     width: "fit-content",
   },
   cardHeader: {
@@ -26,9 +26,9 @@ const styles = stylex.create({
     fontWeight: fontWeight["bold"],
   },
   cardDescription: {
+    margin: 0,
     fontSize: fontSize["sm"],
     fontWeight: fontWeight["normal"],
-    margin: 0,
   },
   cardBody: {
     paddingBottom: { ":last-child": spacing["4"] },
@@ -40,8 +40,8 @@ const styles = stylex.create({
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
 
-    display: "flex",
     gap: spacing["2"],
+    display: "flex",
     justifyContent: "flex-end",
   },
 });

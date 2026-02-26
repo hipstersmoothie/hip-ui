@@ -1,6 +1,6 @@
 import { useListData } from "react-stately";
 
-import { TagGroup, Tag } from "@/components/tag-group";
+import { Tag, TagGroup } from "@/components/tag-group";
 
 export function Removable() {
   const list = useListData({

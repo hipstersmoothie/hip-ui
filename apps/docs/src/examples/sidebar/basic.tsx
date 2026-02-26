@@ -18,13 +18,13 @@ const styles = stylex.create({
     width: "100%",
   },
   sidebar: {
+    overflow: "auto",
     backgroundColor: uiColor.bgSubtle,
+    boxSizing: "border-box",
     borderRightColor: uiColor.border2,
     borderRightStyle: "solid",
     borderRightWidth: 1,
-    boxSizing: "border-box",
     height: "100%",
-    overflow: "auto",
   },
 });
 

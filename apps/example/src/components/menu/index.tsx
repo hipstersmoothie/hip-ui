@@ -1,25 +1,29 @@
+import type {
+  MenuItemProps as AriaMenuItemProps,
+  MenuProps as AriaMenuProps,
+  MenuSectionProps as AriaMenuSectionProps,
+  MenuTriggerProps,
+  PopoverProps,
+  SubmenuTriggerProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Check, ChevronRight } from "lucide-react";
 import { use } from "react";
 import {
-  MenuTriggerProps,
+  Menu as AriaMenu,
+  MenuItem as AriaMenuItem,
+  MenuSection as AriaMenuSection,
   MenuTrigger,
   Popover,
-  SubmenuTriggerProps,
-  Menu as AriaMenu,
-  MenuProps as AriaMenuProps,
-  MenuSection as AriaMenuSection,
-  MenuSectionProps as AriaMenuSectionProps,
-  MenuItem as AriaMenuItem,
-  MenuItemProps as AriaMenuItemProps,
   SubmenuTrigger,
-  PopoverProps,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { SizeContext } from "../context";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 
 export interface MenuProps<T extends object>
   extends

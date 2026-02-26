@@ -2,22 +2,23 @@ import * as stylex from "@stylexjs/stylex";
 
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableColumn,
-  TableRow,
   TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@/components/table";
+
 import { uiColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    height: "400px",
-    width: "100%",
-    borderWidth: 1,
     borderColor: uiColor.border1,
     borderStyle: "solid",
+    borderWidth: 1,
     overflow: "auto",
+    height: "400px",
+    width: "100%",
   },
   table: {
     width: "100%",

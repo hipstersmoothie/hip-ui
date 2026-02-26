@@ -1,14 +1,19 @@
+import type {
+  ButtonProps as AriaButtonProps,
+  DisclosurePanelProps as AriaDisclosurePanelProps,
+  DisclosureProps as AriaDisclosureProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { ChevronDown } from "lucide-react";
 import { use } from "react";
 import {
   Disclosure as AriaDisclosure,
-  DisclosureProps as AriaDisclosureProps,
   DisclosurePanel as AriaDisclosurePanel,
-  DisclosurePanelProps as AriaDisclosurePanelProps,
   Button,
-  ButtonProps as AriaButtonProps,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
@@ -16,7 +21,6 @@ import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -25,8 +29,6 @@ const styles = stylex.create({
     flexDirection: "column",
   },
   title: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     padding: {
       ":is([data-size=lg] *)": `${spacing["4"]} ${spacing["4"]}`,
       ":is([data-size=md] *)": `${spacing["3"]} ${spacing["3"]}`,
@@ -37,6 +39,8 @@ const styles = stylex.create({
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
     borderWidth: 0,
+
+    cornerShape: "squircle",
     gap: spacing["2"],
     alignItems: "center",
     backgroundColor: {

@@ -12,12 +12,12 @@ import { spacing } from "./spacing.stylex";
 
 const styles = stylex.create({
   popover: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+
+    cornerShape: "squircle",
     outline: "none",
     overflow: "auto",
     boxShadow: shadow["md"],
@@ -51,7 +51,6 @@ const styles = stylex.create({
   },
 });
 
-// eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
 export function usePopoverStyles() {
   return {
     wrapper: [styles.popover, ui.bgSubtle, ui.text, ui.border],

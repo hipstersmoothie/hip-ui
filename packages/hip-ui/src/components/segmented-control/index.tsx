@@ -1,14 +1,19 @@
 "use client";
 
+import type {
+  ToggleButtonGroupProps as AriaToggleButtonGroupProps,
+  ToggleButtonProps as AriaToggleButtonProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 import {
-  ToggleButtonGroupProps as AriaToggleButtonGroupProps,
-  ToggleButtonGroup as AriaToggleButtonGroup,
   ToggleButton as AriaToggleButton,
-  ToggleButtonProps as AriaToggleButtonProps,
+  ToggleButtonGroup as AriaToggleButtonGroup,
   SelectionIndicator,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
@@ -17,17 +22,16 @@ import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   group: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     padding: spacing["1"],
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
+
+    cornerShape: "squircle",
     gap: spacing["2"],
     alignItems: "center",
     backgroundColor: uiColor.component1,
@@ -41,20 +45,20 @@ const styles = stylex.create({
     },
   },
   item: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
+
+    cornerShape: "squircle",
     alignItems: "center",
     backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {
       default: uiColor.text1,
+      ":is([data-hovered])": uiColor.text2,
       ":is([data-selected])": uiColor.text2,
-      ":hover": uiColor.text2,
     },
     display: "flex",
     flexGrow: 1,
@@ -79,12 +83,12 @@ const styles = stylex.create({
     },
   },
   selectionIndicator: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+
+    cornerShape: "squircle",
     backgroundColor: uiColor.bgSubtle,
     boxShadow: shadow.sm,
     position: "absolute",

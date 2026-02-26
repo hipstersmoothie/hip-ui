@@ -1,7 +1,9 @@
 "use client";
 
+import type { GroupProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
-import { Group, GroupProps } from "react-aria-components";
+import { Group } from "react-aria-components";
 
 import { ButtonGroupContext } from "../button/context";
 

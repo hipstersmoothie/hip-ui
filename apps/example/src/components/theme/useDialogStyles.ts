@@ -1,22 +1,23 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size } from "../types";
+
 import { SizeContext } from "../context";
 import { animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
-import { Size } from "../types";
 import { gray } from "./semantic-color.stylex";
 
 const styles = stylex.create({
   overlay: {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
+    position: "absolute",
+    zIndex: 100,
     height: "var(--page-height)",
     left: 0,
-    position: "absolute",
     top: 0,
     width: "100vw",
-    zIndex: 100,
 
     animationDuration: "200ms",
     animationName: {
@@ -35,15 +36,15 @@ const styles = stylex.create({
   },
   modal: {
     borderRadius: radius["lg"],
+    outline: "none",
     boxShadow: shadow["lg"],
     display: "flex",
     flexDirection: "column",
+    position: "fixed",
+    translate: "-50% -50%",
     left: "50%",
     maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
-    outline: "none",
-    position: "fixed",
     top: "calc(var(--visual-viewport-height) / 2)",
-    translate: "-50% -50%",
 
     animationDuration: { ":is([data-entering])": "300ms" },
     animationName: { ":is([data-entering])": animations.zoomIn },
@@ -52,11 +53,11 @@ const styles = stylex.create({
     },
   },
   dialog: {
+    outline: "none",
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
     minHeight: 0,
-    outline: "none",
   },
   sm: {
     width: 400,

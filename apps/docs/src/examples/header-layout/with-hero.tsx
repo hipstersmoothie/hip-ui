@@ -1,21 +1,19 @@
+import * as stylex from "@stylexjs/stylex";
+
+import { Button } from "@/components/button";
+import { Flex } from "@/components/flex";
 import { HeaderLayout } from "@/components/header-layout";
 import {
   Navbar,
+  NavbarLink,
   NavbarLogo,
   NavbarNavigation,
-  NavbarLink,
 } from "@/components/navbar";
-import { Button } from "@/components/button";
 import { Heading1 } from "@/components/typography";
-import { Flex } from "@/components/flex";
-import * as stylex from "@stylexjs/stylex";
 import { Text } from "@/components/typography/text";
 
 const styles = stylex.create({
   heroTitle: {
-    margin: 0,
-  },
-  heroDescription: {
     margin: 0,
   },
 });

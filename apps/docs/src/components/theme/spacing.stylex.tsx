@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { ThemeKeys } from "./types";
+import type { ThemeKeys } from "./types";
 
 export const spacing = stylex.defineVars({
   px: "1px",

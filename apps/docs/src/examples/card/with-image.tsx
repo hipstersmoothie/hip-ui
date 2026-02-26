@@ -1,9 +1,9 @@
 import {
   Card,
-  CardHeader,
-  CardTitle,
   CardBody,
+  CardHeader,
   CardImage,
+  CardTitle,
 } from "@/components/card";
 
 export function CardWithImage() {

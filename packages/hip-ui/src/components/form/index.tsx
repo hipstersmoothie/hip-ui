@@ -1,13 +1,13 @@
 "use client";
 
+import type { FormProps as AriaFormProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
-import {
-  Form as AriaForm,
-  FormProps as AriaFormProps,
-} from "react-aria-components";
+import { Form as AriaForm } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   form: {

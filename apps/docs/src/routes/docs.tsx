@@ -1,15 +1,17 @@
+import type { LinkProps } from "@tanstack/react-router";
+
 import {
-  createFileRoute,
-  LinkProps,
   Outlet,
+  createFileRoute,
+  createLink,
   useLocation,
   useMatches,
-  createLink,
 } from "@tanstack/react-router";
 import { allDocs } from "content-collections";
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
 
+import { Flex } from "@/components/flex";
 import { IconButton } from "@/components/icon-button";
 import {
   Sidebar,
@@ -18,11 +20,9 @@ import {
   SidebarItem,
   SidebarSection,
 } from "@/components/sidebar";
-import { Text } from "@/components/typography/text";
-
-import { Flex } from "@/components/flex";
-import { ThemePicker } from "@/lib/ThemePicker";
 import { SidebarLayout } from "@/components/sidebar-layout";
+import { Text } from "@/components/typography/text";
+import { ThemePicker } from "@/lib/ThemePicker";
 
 const SidebarItemLink = createLink(SidebarItem);
 
@@ -31,7 +31,7 @@ interface SidebarItem {
   label: string;
   to?: LinkProps["to"];
   params?: LinkProps["params"];
-  items?: SidebarItem[];
+  items?: Array<SidebarItem>;
 }
 
 const componentDocs = allDocs.filter((doc) =>
@@ -60,13 +60,13 @@ const componentGroups = componentDocs.reduce(
   {} as Record<string, typeof componentDocs>,
 );
 
-const componentItems: SidebarItem[] = Object.entries(componentGroups)
-  .sort(([a], [b]) => a.localeCompare(b))
+const componentItems: Array<SidebarItem> = Object.entries(componentGroups)
+  .toSorted(([a], [b]) => a.localeCompare(b))
   .map(([folderName, docs]) => ({
     id: `components-${folderName}`,
     label: folderName.charAt(0).toUpperCase() + folderName.slice(1),
     items: docs
-      .sort((a, b) => a.title.localeCompare(b.title))
+      .toSorted((a, b) => a.title.localeCompare(b.title))
       .map((doc) => ({
         id: doc._meta.path,
         label: doc.title,
@@ -75,7 +75,7 @@ const componentItems: SidebarItem[] = Object.entries(componentGroups)
       })),
   }));
 
-const sidebarItems: SidebarItem[] = [
+const sidebarItems: Array<SidebarItem> = [
   {
     id: "foundations",
     label: "Foundations",

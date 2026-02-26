@@ -1,7 +1,6 @@
 declare module "virtual:content" {
+  import type { Toc } from "@stefanprobst/rehype-extract-toc";
   import type { MDXComponents } from "mdx/types";
-
-  import { Toc } from "@stefanprobst/rehype-extract-toc";
 
   type Page = React.ComponentType<{
     components: MDXComponents;
@@ -13,7 +12,7 @@ declare module "virtual:content" {
 
 declare module "virtual:propDocs" {
   import type { ComponentDoc } from "react-docgen-typescript";
-  export const propDocs: ComponentDoc[];
+  export const propDocs: Array<ComponentDoc>;
 }
 
 declare module "virtual:examples" {

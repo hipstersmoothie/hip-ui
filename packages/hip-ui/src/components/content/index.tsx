@@ -1,7 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 
+import type { StyleXComponentProps } from "../theme/types";
+
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({

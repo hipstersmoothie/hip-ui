@@ -1,14 +1,17 @@
-import { allColors, Color } from "./ThemeContext";
-import { spacing } from "../components/theme/spacing.stylex";
-import { radius } from "../components/theme/radius.stylex";
 import * as stylex from "@stylexjs/stylex";
+
+import type { Color } from "./ThemeContext";
+
+import { radius } from "../components/theme/radius.stylex";
+import { spacing } from "../components/theme/spacing.stylex";
+import { allColors } from "./ThemeContext";
 
 const styles = stylex.create({
   dot: {
-    width: spacing["4"],
-    height: spacing["4"],
     borderRadius: radius["full"],
     alignItems: "center",
+    height: spacing["4"],
+    width: spacing["4"],
   },
   preview: (color: Color) => ({
     backgroundColor: allColors[color].solid1,

@@ -1,11 +1,11 @@
 import { Button } from "@/components/button";
 import {
   Card,
+  CardBody,
+  CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
-  CardDescription,
-  CardBody,
-  CardFooter,
 } from "@/components/card";
 
 export function Basic() {

@@ -1,3 +1,5 @@
+import * as stylex from "@stylexjs/stylex";
+
 import { Button } from "@/components/button";
 import {
   Navbar,
@@ -6,22 +8,22 @@ import {
   NavbarLogo,
   NavbarNavigation,
 } from "@/components/navbar";
+
 import { uiColor } from "../../components/theme/color.stylex";
-import * as stylex from "@stylexjs/stylex";
 import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    containerType: "inline-size",
-    height: "400px",
-    width: "90%",
-    borderStyle: "solid",
-    borderWidth: 1,
     borderColor: uiColor.border1,
     borderRadius: radius["lg"],
-    overflow: "auto",
+    borderStyle: "solid",
     margin: spacing["4"],
+    containerType: "inline-size",
+    borderWidth: 1,
+    height: "400px",
+    overflow: "auto",
+    width: "90%",
   },
   content: {
     padding: spacing["4"],

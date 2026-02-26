@@ -1,13 +1,14 @@
+import * as stylex from "@stylexjs/stylex";
+
 import { Button } from "@/components/button";
 import {
   Dialog,
-  DialogHeader,
-  DialogFooter,
   DialogBody,
+  DialogFooter,
+  DialogHeader,
 } from "@/components/dialog";
 import { spacing } from "@/components/theme/spacing.stylex";
 import { Body } from "@/components/typography";
-import * as stylex from "@stylexjs/stylex";
 
 export function Basic() {
   return (

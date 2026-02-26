@@ -1,8 +1,10 @@
+import type { Key } from "react-aria";
+
 import * as stylex from "@stylexjs/stylex";
 import { useState } from "react";
-import { Key } from "react-aria";
 
 import { Button } from "@/components/button";
+import { Card } from "@/components/card";
 import { Flex } from "@/components/flex";
 import { ListBox, ListBoxItem } from "@/components/listbox";
 import { Text } from "@/components/typography/text";
@@ -12,34 +14,30 @@ import {
   animationTimingFunction,
   animations,
 } from "../../components/theme/animations.stylex";
-import { radius } from "../../components/theme/radius.stylex";
 import { primaryColor, uiColor } from "../../components/theme/color.stylex";
+import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
-import { Card } from "@/components/card";
 
 const slideLeftToRight = stylex.keyframes({
   from: {
-    left: spacing["4"],
     transform: "translateY(-50%)",
+    left: spacing["4"],
   },
   to: {
-    left: `calc(100% - ${spacing["32"]} - ${spacing["4"]})`,
     transform: "translateY(-50%)",
+    left: `calc(100% - ${spacing["32"]} - ${spacing["4"]})`,
   },
 });
 
 const styles = stylex.create({
   card: {
-    marginTop: spacing["8"],
     marginBottom: spacing["8"],
+    marginTop: spacing["8"],
   },
   container: {
     padding: spacing["10"],
     boxSizing: "border-box",
     width: "100%",
-  },
-  layout: {
-    gap: spacing["8"],
   },
   listboxContainer: {
     minWidth: 200,
@@ -48,33 +46,33 @@ const styles = stylex.create({
     paddingLeft: spacing["2"],
   },
   centeredPreviewArea: {
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center",
   },
   previewArea: {
-    backgroundColor: uiColor.component2,
     borderColor: uiColor.border2,
     borderRadius: radius["lg"],
     borderStyle: "solid",
-    borderWidth: 1,
-    flexGrow: 1,
-    minHeight: 300,
-    overflow: "hidden",
     padding: spacing["4"],
+    borderWidth: 1,
+    overflow: "hidden",
+    backgroundColor: uiColor.component2,
+    flexGrow: 1,
     position: "relative",
+    minHeight: 300,
   },
   previewBox: (
     animationName: unknown,
     duration: string,
     timingFunction: string,
   ) => ({
+    borderRadius: radius["md"],
     animationDuration: duration,
     animationFillMode: "forwards",
     animationName,
     animationTimingFunction: timingFunction,
     backgroundColor: primaryColor.solid1,
-    borderRadius: radius["md"],
     height: spacing["16"],
     width: spacing["32"],
   }),
@@ -83,26 +81,26 @@ const styles = stylex.create({
     duration: string,
     timingFunction: string,
   ) => ({
+    borderRadius: radius["md"],
     animationDelay: animationDuration.default,
     animationDuration: duration,
     animationFillMode: "forwards",
     animationName: `${slideLeftToRight}, ${animationName as string}`,
     animationTimingFunction: timingFunction,
     backgroundColor: primaryColor.solid1,
-    borderRadius: radius["md"],
-    height: spacing["16"],
-    left: spacing["4"],
+    opacity: 0,
     position: "absolute",
     transform: "translateY(-50%)",
+    height: spacing["16"],
+    left: spacing["4"],
     top: "50%",
-    opacity: 0,
     width: spacing["32"],
   }),
 });
 
 const sortedDurations = Object.entries(animationDuration).filter(
   ([key]) => !key.startsWith("__"),
-) as [string, string][];
+) as Array<[string, string]>;
 
 const durationItems = sortedDurations.map(([key]) => ({
   id: key,
@@ -134,7 +132,7 @@ export function AnimationDurations() {
             items={durationItems}
             selectedKeys={new Set([selectedKey])}
             onSelectionChange={(keys) => {
-              const firstKey = keys === "all" ? null : Array.from(keys)[0];
+              const firstKey = keys === "all" ? null : [...keys][0];
               if (firstKey) setSelectedKey(firstKey);
             }}
             selectionMode="single"
@@ -168,7 +166,7 @@ export function AnimationDurations() {
 
 const sortedTimingFunctions = Object.entries(animationTimingFunction).filter(
   ([key]) => !key.startsWith("__"),
-) as [string, string][];
+) as Array<[string, string]>;
 
 const timingFunctionItems = sortedTimingFunctions.map(([key]) => ({
   id: key,
@@ -198,7 +196,7 @@ export function AnimationTimingFunctions() {
             items={timingFunctionItems}
             selectedKeys={new Set([selectedKey])}
             onSelectionChange={(keys) => {
-              const firstKey = keys === "all" ? null : Array.from(keys)[0];
+              const firstKey = keys === "all" ? null : [...keys][0];
               if (firstKey) setSelectedKey(firstKey);
             }}
             selectionMode="single"
@@ -232,7 +230,7 @@ export function AnimationTimingFunctions() {
 
 const animationList = Object.entries(animations).filter(
   ([key]) => !key.startsWith("__"),
-) as [string, unknown][];
+) as Array<[string, unknown]>;
 
 const animationItems = animationList.map(([key]) => ({
   id: key,
@@ -262,7 +260,7 @@ export function AllAnimations() {
             items={animationItems}
             selectedKeys={new Set([selectedKey])}
             onSelectionChange={(keys) => {
-              const firstKey = keys === "all" ? null : Array.from(keys)[0];
+              const firstKey = keys === "all" ? null : [...keys][0];
               if (firstKey) setSelectedKey(firstKey);
             }}
             selectionMode="single"

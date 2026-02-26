@@ -2,10 +2,11 @@
 
 import * as stylex from "@stylexjs/stylex";
 
+import type { StyleXComponentProps } from "../theme/types";
+
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   root: {

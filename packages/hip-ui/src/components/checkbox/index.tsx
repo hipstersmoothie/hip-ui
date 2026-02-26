@@ -1,6 +1,6 @@
 import type {
-  CheckboxProps as AriaCheckboxProps,
   CheckboxGroupProps as AriaCheckboxGroupProps,
+  CheckboxProps as AriaCheckboxProps,
   ValidationResult,
 } from "react-aria-components";
 
@@ -12,14 +12,15 @@ import {
   CheckboxGroup as AriaCheckboxGroup,
 } from "react-aria-components";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
-import { ui, primary } from "../theme/semantic-color.stylex";
+import { primary, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -39,16 +40,16 @@ const styles = stylex.create({
   checkbox: {
     alignItems: "center",
     display: "flex",
-    justifyContent: "center",
     flexShrink: 0,
+    justifyContent: "center",
 
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
       [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderWidth: 2,
+
+    cornerShape: "squircle",
     height: spacing["4"],
     width: spacing["4"],
   },
@@ -106,9 +107,10 @@ export interface CheckboxProps extends StyleXComponentProps<
 export function Checkbox({ children, style, ...props }: CheckboxProps) {
   return (
     <AriaCheckbox {...props} {...stylex.props(styles.wrapper, style)}>
-      {({ isIndeterminate, isSelected, isDisabled }) => (
+      {({ isIndeterminate, isSelected, isDisabled, isHovered }) => (
         <>
           <div
+            data-hovered={isHovered || undefined}
             {...stylex.props(
               styles.checkbox,
               isDisabled

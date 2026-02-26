@@ -174,7 +174,6 @@ const styles = stylex.create({
   },
   navigation: {
     gridArea: "navigation",
-    flex: "1",
     gap: {
       default: spacing["6"],
       [containerBreakpoints.sm]: spacing["8"],
@@ -192,6 +191,7 @@ const styles = stylex.create({
       default: "column",
       [containerBreakpoints.sm]: "row",
     },
+    flexGrow: 1,
   },
   navigationJustifyLeft: {
     justifyContent: "flex-start",
@@ -427,7 +427,9 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
     >
       <span {...stylex.props(styles.linkContent)}>
         {typeof props.children === "function"
-          ? props.children({} as any)
+          ? props.children(
+              {} as Parameters<NonNullable<typeof props.children>>[0],
+            )
           : props.children}
       </span>
     </Link>

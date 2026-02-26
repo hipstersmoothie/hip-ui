@@ -1,4 +1,5 @@
 import { Lightbulb } from "lucide-react";
+
 import { Alert } from "@/components/alert";
 
 export function CustomIcon() {

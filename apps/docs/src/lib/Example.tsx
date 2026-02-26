@@ -3,12 +3,12 @@ import { useEffect, useRef, useState } from "react";
 import { examples } from "virtual:examples";
 
 import { Card } from "@/components/card";
+import { CopyToClipboardButton } from "@/components/copy-to-clipboard-button";
 import { Flex } from "@/components/flex";
 
-import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
+import { radius } from "../components/theme/radius.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
-import { CopyToClipboardButton } from "@/components/copy-to-clipboard-button";
 
 const styles = stylex.create({
   card: {
@@ -17,41 +17,41 @@ const styles = stylex.create({
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
     cornerShape: "squircle",
+    overflow: "hidden",
     marginBottom: spacing["8"],
     marginTop: spacing["8"],
-    overflow: "hidden",
   },
   preview: {
-    containerType: "inline-size",
     alignItems: "center",
+    padding: spacing["4"],
     backgroundColor: uiColor.bgSubtle,
+    containerType: "inline-size",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     minHeight: spacing["40"],
-    padding: spacing["4"],
   },
   noPadding: {
     padding: 0,
   },
   codeWrapper: {
+    position: "relative",
     borderTopColor: uiColor.border2,
     borderTopStyle: "solid",
     borderTopWidth: 1,
-    position: "relative",
   },
   code: {
+    ":is(*) code": {},
     /* eslint-disable @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
+      margin: 0,
       borderBottomLeftRadius: radius["lg"],
       borderBottomRightRadius: radius["lg"],
-      margin: 0,
       paddingBottom: spacing["4"],
       paddingLeft: spacing["4"],
       paddingRight: spacing["4"],
       paddingTop: spacing["4"],
     },
-    ":is(*) code": {},
     /* eslint-enable @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
   },
   copyButton: {

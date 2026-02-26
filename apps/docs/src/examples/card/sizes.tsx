@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardBody } from "@/components/card";
+import { Card, CardBody, CardHeader, CardTitle } from "@/components/card";
 import { Flex } from "@/components/flex";
 
 export function CardSizes() {

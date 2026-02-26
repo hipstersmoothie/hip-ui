@@ -1,15 +1,20 @@
+import type {
+  TreeItemContentProps as AriaTreeItemContentProps,
+  TreeItemProps as AriaTreeItemProps,
+  TreeProps as AriaTreeProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { ChevronRight, GripVertical } from "lucide-react";
 import { use } from "react";
 import {
-  Button,
   Tree as AriaTree,
-  TreeProps as AriaTreeProps,
-  TreeItemContent as AriaTreeItemContent,
   TreeItem as AriaTreeItem,
-  TreeItemProps as AriaTreeItemProps,
-  TreeItemContentProps as AriaTreeItemContentProps,
+  TreeItemContent as AriaTreeItemContent,
+  Button,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
@@ -17,7 +22,6 @@ import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -30,48 +34,48 @@ const styles = stylex.create({
     width: `calc((var(--tree-item-level, 0) - 1) * ${spacing["4"]})`,
   },
   content: {
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
     flexGrow: 1,
-    gap: spacing["2"],
   },
   hidden: {
     opacity: 0,
     visibility: "hidden",
   },
   chevron: {
-    backgroundColor: "transparent",
     borderWidth: 0,
-    paddingBottom: 0,
-    paddingLeft: 0,
-    paddingRight: 0,
-    paddingTop: 0,
+    backgroundColor: "transparent",
     transform: {
       default: "rotate(0deg)",
       ":is([aria-expanded=true] *)": "rotate(90deg)",
     },
+    paddingBottom: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: 0,
   },
   addon: {
     marginBottom: `calc(${spacing["2"]} * -1)`,
     marginTop: `calc(${spacing["2"]} * -1)`,
   },
   dragButtonWrapper: {
-    left: 0,
     opacity: {
       default: 0,
-      ":hover": 1,
       ":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)": 1,
+      ":hover": 1,
     },
     position: "absolute",
-    top: "50%",
     transform: "translate(-100%, -50%)",
     transitionDuration: "100ms",
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",
+    left: 0,
+    top: "50%",
   },
   dragButton: {
-    alignItems: "center",
     borderRadius: radius["sm"],
+    alignItems: "center",
     display: "flex",
     justifyContent: "center",
 

@@ -224,24 +224,20 @@ export interface CardImageProps extends StyleXComponentProps<
 > {
   aspectRatio?: number;
   imageStyle?: stylex.StyleXStyles;
+  children?: React.ReactNode;
 }
 
 export const CardImage = ({
   style,
   aspectRatio,
   imageStyle,
+  children,
   ...props
 }: CardImageProps) => {
   return (
-    <AspectRatio
-      aspectRatio={aspectRatio}
-      style={[
-        styles.cardSection as unknown as stylex.StyleXStyles,
-        styles.cardImage,
-        style,
-      ]}
-    >
+    <AspectRatio aspectRatio={aspectRatio} style={[styles.cardImage, style]}>
       <AspectRatioImage {...props} style={imageStyle} />
+      {children}
     </AspectRatio>
   );
 };

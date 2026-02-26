@@ -1,5 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
-import { Spacing, spacing } from "../theme/spacing.stylex";
+
+import type { Spacing } from "../theme/spacing.stylex";
+
+import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
   base: { display: "flex" },

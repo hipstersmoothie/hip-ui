@@ -1,7 +1,7 @@
 import { flushSync } from "react-dom";
 import { ToastQueue } from "react-stately";
 
-import { ButtonVariant, ToastVariant } from "../theme/types";
+import type { ButtonVariant, ToastVariant } from "../theme/types";
 
 export interface ToastContentType {
   variant?: ToastVariant;

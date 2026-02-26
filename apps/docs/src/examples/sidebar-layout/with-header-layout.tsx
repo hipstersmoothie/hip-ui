@@ -1,10 +1,5 @@
-import { SidebarLayout } from "@/components/sidebar-layout";
-import {
-  Sidebar,
-  SidebarHeader,
-  SidebarItem,
-  SidebarSection,
-} from "@/components/sidebar";
+import { Content } from "@/components/content";
+import { Footer } from "@/components/footer";
 import { HeaderLayout } from "@/components/header-layout";
 import {
   Navbar,
@@ -12,8 +7,13 @@ import {
   NavbarLogo,
   NavbarNavigation,
 } from "@/components/navbar";
-import { Footer } from "@/components/footer";
-import { Content } from "@/components/content";
+import {
+  Sidebar,
+  SidebarHeader,
+  SidebarItem,
+  SidebarSection,
+} from "@/components/sidebar";
+import { SidebarLayout } from "@/components/sidebar-layout";
 import { Heading1 } from "@/components/typography";
 import { Body } from "@/components/typography";
 

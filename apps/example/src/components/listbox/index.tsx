@@ -1,16 +1,21 @@
+import type {
+  ListBoxItemProps as AriaListBoxItemProps,
+  ListBoxProps as AriaListBoxProps,
+  ListBoxSectionProps as AriaListBoxSectionProps,
+  SeparatorProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Check } from "lucide-react";
 import { use } from "react";
 import {
-  ListBoxProps as AriaListBoxProps,
-  ListBoxItem as AriaListBoxItem,
   ListBox as AriaListBox,
+  ListBoxItem as AriaListBoxItem,
   ListBoxSection as AriaListBoxSection,
-  ListBoxSectionProps as AriaListBoxSectionProps,
-  ListBoxItemProps as AriaListBoxItemProps,
   Header,
-  SeparatorProps,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { SizeContext } from "../context";
 import { Separator } from "../separator";
@@ -18,7 +23,6 @@ import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { typeramp } from "../theme/typography.stylex";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   listBox: {

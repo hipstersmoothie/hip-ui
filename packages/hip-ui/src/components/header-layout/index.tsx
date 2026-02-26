@@ -21,8 +21,8 @@ const styles = stylex.create({
     "--page-content-max-width": maxWidth || "1280px",
   }),
   header: {
-    flexShrink: 0,
     backgroundColor: uiColor.bg,
+    flexShrink: 0,
   },
   page: {
     boxSizing: "border-box",

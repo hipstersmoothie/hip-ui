@@ -1,5 +1,5 @@
 import { Button } from "@/components/button";
-import { Drawer, DrawerHeader, DrawerBody } from "@/components/drawer";
+import { Drawer, DrawerBody, DrawerHeader } from "@/components/drawer";
 import { Flex } from "@/components/flex";
 import { Body } from "@/components/typography";
 

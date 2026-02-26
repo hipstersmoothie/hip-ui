@@ -1,5 +1,8 @@
-import { Button } from "@/components/button";
+import * as stylex from "@stylexjs/stylex";
 import { createLink } from "@tanstack/react-router";
+import { ChevronDownIcon, CodeIcon, PhoneIcon, WebcamIcon } from "lucide-react";
+
+import { Button } from "@/components/button";
 import {
   Navbar,
   NavbarAction,
@@ -7,28 +10,27 @@ import {
   NavbarLogo,
   NavbarMenu,
   NavbarMenuItem,
-  NavbarNavigation,
   NavbarMenuTrigger,
+  NavbarNavigation,
 } from "@/components/navbar";
-import * as stylex from "@stylexjs/stylex";
+
 import { uiColor } from "../../components/theme/color.stylex";
 import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
-import { ChevronDownIcon, CodeIcon, PhoneIcon, WebcamIcon } from "lucide-react";
 
 const NavbarMenuItemLink = createLink(NavbarMenuItem);
 
 const styles = stylex.create({
   wrapper: {
-    containerType: "inline-size",
-    height: "400px",
-    width: "90%",
-    borderStyle: "solid",
-    borderWidth: 1,
     borderColor: uiColor.border1,
     borderRadius: radius["lg"],
-    overflow: "hidden",
+    borderStyle: "solid",
     margin: spacing["4"],
+    containerType: "inline-size",
+    borderWidth: 1,
+    height: "400px",
+    overflow: "hidden",
+    width: "90%",
   },
 });
 

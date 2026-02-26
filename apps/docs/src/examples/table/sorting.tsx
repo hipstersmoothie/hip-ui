@@ -1,14 +1,15 @@
+import type { SortDescriptor } from "react-stately";
+
 import * as stylex from "@stylexjs/stylex";
 import { useMemo, useState } from "react";
-import { SortDescriptor } from "react-stately";
 
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableColumn,
-  TableRow,
   TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@/components/table";
 
 const styles = stylex.create({

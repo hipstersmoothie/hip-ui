@@ -12,7 +12,6 @@ import { mergeProps } from "react-aria";
 import {
   NumberField as AriaNumberField,
   Button,
-  Group,
   Input,
   NumberFieldStateContext,
 } from "react-aria-components";
@@ -168,7 +167,7 @@ function NumberFieldContent({
   return (
     <>
       <Label>{label}</Label>
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

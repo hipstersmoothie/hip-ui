@@ -1,4 +1,4 @@
-import { TagGroup, Tag } from "@/components/tag-group";
+import { Tag, TagGroup } from "@/components/tag-group";
 
 const tags = [
   { id: "react", name: "React" },

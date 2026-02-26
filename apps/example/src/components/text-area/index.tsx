@@ -1,14 +1,19 @@
-import * as stylex from "@stylexjs/stylex";
-import { use, useRef } from "react";
-import {
-  TextArea as AriaTextArea,
+import type {
   TextAreaProps as AriaTextAreaProps,
   InputProps,
   TextFieldProps,
   ValidationResult,
-  FieldError,
-  TextField as AriaTextField,
 } from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { use, useRef } from "react";
+import {
+  TextArea as AriaTextArea,
+  TextField as AriaTextField,
+  FieldError,
+} from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { SizeContext } from "../context";
 import { Description, Label } from "../label";
@@ -16,14 +21,13 @@ import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
-import { Size } from "../types";
+import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["2"],
   },
   addon: {
     color: gray.textDim,
@@ -32,20 +36,20 @@ const styles = stylex.create({
     minWidth: spacing["8"],
     paddingLeft: { ":first-child": spacing["0.5"] },
     paddingRight: {
-      ":last-child": spacing["2"],
       ":last-child:has(svg)": spacing["0.5"],
+      ":last-child": spacing["2"],
     },
 
+    gap: spacing["0.5"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["0.5"],
     justifyContent: "center",
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
@@ -63,15 +67,15 @@ const styles = stylex.create({
     borderWidth: 1,
   },
   input: {
-    backgroundColor: "transparent",
     borderWidth: 0,
+    outline: "none",
+    backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {
       "::placeholder": slate.text1,
     },
     flexGrow: 1,
     fontFamily: fontFamily["sans"],
-    outline: "none",
   },
   smInput: {
     fontSize: fontSize["xs"],
@@ -143,7 +147,7 @@ export function TextArea({
   return (
     <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
       {label !== null && <Label size={size}>{label}</Label>}
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

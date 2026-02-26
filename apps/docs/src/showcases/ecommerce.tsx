@@ -16,14 +16,14 @@ import {
   CardImage,
   CardTitle,
 } from "@/components/card";
+import { ColorSwatch } from "@/components/color-swatch";
 import {
   EmptyState,
+  EmptyStateActions,
+  EmptyStateDescription,
   EmptyStateImage,
   EmptyStateTitle,
-  EmptyStateDescription,
-  EmptyStateActions,
 } from "@/components/empty-state";
-import { ColorSwatch } from "@/components/color-swatch";
 import { FileDropZone } from "@/components/file-drop-zone";
 import { Flex } from "@/components/flex";
 import { Grid } from "@/components/grid";
@@ -66,10 +66,10 @@ const styles = stylex.create({
     position: "relative",
   },
   bottomRight: {
+    position: "absolute",
     bottom: 0,
     marginBottom: spacing["4"],
     marginRight: spacing["4"],
-    position: "absolute",
     right: 0,
   },
   timelineContainer: {
@@ -77,23 +77,23 @@ const styles = stylex.create({
   },
   timelineLine: {
     backgroundColor: "#14b8a6", // teal color
+    position: "absolute",
     bottom: spacing["3"],
     left: spacing["2"],
-    position: "absolute",
     top: spacing["3"],
     width: "2px",
   },
   timelineItem: {
-    paddingLeft: spacing["10"],
     position: "relative",
+    paddingLeft: spacing["10"],
   },
   timelineDot: {
-    backgroundColor: "#14b8a6", // teal color
     borderRadius: "50%",
+    backgroundColor: "#14b8a6", // teal color
     flexShrink: 0,
+    position: "absolute",
     height: spacing["2.5"],
     left: spacing["1"],
-    position: "absolute",
     top: spacing["1"],
     width: spacing["2.5"],
   },

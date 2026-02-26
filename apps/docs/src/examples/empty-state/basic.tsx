@@ -1,11 +1,13 @@
+import * as stylex from "@stylexjs/stylex";
+
 import {
   EmptyState,
+  EmptyStateDescription,
   EmptyStateImage,
   EmptyStateTitle,
-  EmptyStateDescription,
 } from "@/components/empty-state";
+
 import { spacing } from "../../components/theme/spacing.stylex";
-import * as stylex from "@stylexjs/stylex";
 
 const styles = stylex.create({
   wrapper: {

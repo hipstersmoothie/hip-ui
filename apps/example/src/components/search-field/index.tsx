@@ -1,20 +1,24 @@
+import type {
+  SearchFieldProps as AriaSearchFieldProps,
+  InputProps,
+  ValidationResult,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { SearchIcon, X } from "lucide-react";
 import { useRef } from "react";
 import {
-  SearchFieldProps as AriaSearchFieldProps,
-  Input,
-  InputProps,
-  ValidationResult,
-  FieldError,
   SearchField as AriaSearchField,
+  FieldError,
+  Input,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
 import { spacing } from "../theme/spacing.stylex";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
@@ -22,9 +26,9 @@ const styles = stylex.create({
   },
   clearButton: {
     position: "absolute",
+    transform: "translateY(-50%)",
     right: 0,
     top: "50%",
-    transform: "translateY(-50%)",
   },
   clearButtonPadding: {
     paddingRight: spacing["8"],
@@ -66,7 +70,7 @@ export function SearchField({
         return (
           <>
             {label !== null && <Label size={size}>{label}</Label>}
-            {/* 
+            {/*
               This onClick is specifically for mouse users not clicking directly on the input.
               A keyboard user would not encounter the same issue.
             */}

@@ -1,17 +1,20 @@
+import type {
+  AutocompleteProps as AriaAutocompleteProps,
+  InputProps,
+} from "react-aria-components";
+import type { OverlayTriggerProps } from "react-stately";
+
 import { useControlledState } from "@react-stately/utils";
 import * as stylex from "@stylexjs/stylex";
-import { useEffect, useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import {
-  InputProps,
-  Modal,
-  Dialog,
   Autocomplete,
+  Dialog,
   Menu,
-  useFilter,
+  Modal,
   ModalOverlay,
-  AutocompleteProps as AriaAutocompleteProps,
+  useFilter,
 } from "react-aria-components";
-import { OverlayTriggerProps } from "react-stately";
 
 import { SizeContext } from "../context";
 import { SearchField } from "../search-field";

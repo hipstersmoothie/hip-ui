@@ -13,12 +13,12 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   card: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     gap: "var(--card-gap)",
     overflow: "hidden",
     display: "flex",

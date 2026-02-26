@@ -4,12 +4,13 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 import { ColorSwatch as AriaColorSwatch } from "react-aria-components";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { SizeContext } from "../context";
 import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   swatch: {
@@ -18,7 +19,6 @@ const styles = stylex.create({
     borderWidth: 1,
     boxSizing: "border-box",
 
-    // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
   },
   swatchSm: {
@@ -46,12 +46,12 @@ const styles = stylex.create({
     width: spacing["8"],
   },
   circle: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "unset",
     borderRadius: {
       default: "50%",
       [mediaQueries.supportsSquircle]: "50%",
     },
+
+    cornerShape: "unset",
   },
 });
 

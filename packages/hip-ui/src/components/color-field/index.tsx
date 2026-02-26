@@ -1,22 +1,23 @@
-import * as stylex from "@stylexjs/stylex";
-import { use, useRef } from "react";
-import {
+import type {
   ColorFieldProps as AriaColorFieldProps,
-  Input,
   InputProps,
   ValidationResult,
-  ColorField as AriaColorField,
 } from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { use, useRef } from "react";
+import { ColorField as AriaColorField, Input } from "react-aria-components";
+
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
-import {
-  InputVariant,
-  InputValidationState,
-  Size,
-  StyleXComponentProps,
-} from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 interface ColorFieldContentProps {
@@ -54,7 +55,7 @@ function ColorFieldContent({
   return (
     <>
       <Label>{label}</Label>
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

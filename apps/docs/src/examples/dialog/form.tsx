@@ -1,5 +1,5 @@
 import { Button } from "@/components/button";
-import { Dialog, DialogHeader, DialogFooter } from "@/components/dialog";
+import { Dialog, DialogFooter, DialogHeader } from "@/components/dialog";
 import { Flex } from "@/components/flex";
 import { TextField } from "@/components/text-field";
 

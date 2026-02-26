@@ -1,13 +1,13 @@
+import type { LinkProps as AriaLinkProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
-import {
-  LinkProps as AriaLinkProps,
-  Link as AriaLink,
-} from "react-aria-components";
+import { Link as AriaLink } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 import { LinkContext } from "./link-context";
 

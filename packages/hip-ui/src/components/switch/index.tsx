@@ -26,6 +26,7 @@ const styles = stylex.create({
       ":is([data-selected=true] *)": primaryColor.solid1,
     },
     boxShadow: "inset 0 0 6px 1px rgba(0, 0, 0, 0.13)",
+    flexShrink: 0,
     opacity: {
       default: 1,
       ":is([data-disabled=true] *)": 0.5,
@@ -39,7 +40,6 @@ const styles = stylex.create({
     transitionTimingFunction: "ease-in-out",
     height: spacing["6"],
     width: spacing["10"],
-    flexShrink: 0,
   },
   thumb: {
     borderRadius: radius.full,

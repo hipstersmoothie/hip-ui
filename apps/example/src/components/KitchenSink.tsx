@@ -1,11 +1,18 @@
 "use client";
 
 import * as stylex from "@stylexjs/stylex";
-import { Button } from "../components/button";
-import { Flex } from "../components/flex";
-import { Tooltip } from "../components/tooltip";
-import { ButtonGroup } from "../components/button-group";
-import { TextField } from "../components/text-field";
+import {
+  AlertDialog,
+  AlertDialogFooter,
+} from "hip-ui/components/alert-dialog/index";
+import { Avatar } from "hip-ui/components/avatar/index";
+import { Badge } from "hip-ui/components/badge/index";
+import {
+  Dialog,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+} from "hip-ui/components/dialog/index";
 import {
   ArrowDown,
   ArrowLeft,
@@ -27,24 +34,19 @@ import {
   Search,
   Star,
 } from "lucide-react";
+import { DialogTrigger } from "react-aria-components";
+
+import { Button } from "../components/button";
+import { ButtonGroup } from "../components/button-group";
+import { Flex } from "../components/flex";
+import { TextField } from "../components/text-field";
+import { Tooltip } from "../components/tooltip";
 import {
-  Blockquote,
-  Body,
-  SmallBody,
-  InlineCode,
-  Heading1,
-  Heading2,
-  Heading3,
-  Heading4,
-  ListItem,
-  OrderedList,
-  UnorderedList,
-  SubLabel,
-} from "./typography";
-import { gray } from "./theme/semantic-color.stylex";
-import { spacing } from "./theme/spacing.stylex";
-import { IconButton } from "./icon-button";
-import { Popover } from "./popover";
+  AlertDialogActionButton,
+  AlertDialogCancelButton,
+  AlertDialogDescription,
+  AlertDialogHeader,
+} from "./alert-dialog";
 import {
   Card,
   CardBody,
@@ -53,15 +55,9 @@ import {
   CardHeader,
   CardTitle,
 } from "./card";
-import { Link } from "./link";
-import { typeramp } from "./theme/typography.stylex";
 import { Checkbox, CheckboxGroup } from "./checkbox";
-import { Radio, RadioGroup } from "./radio";
-import { Separator } from "./separator";
-import { TextArea } from "./text-area";
-import { Select, SelectItem } from "./select";
-import { ToggleButton } from "./toggle-button";
-import { ToggleButtonGroup } from "./toggle-button-group";
+import { ColorField } from "./color-field";
+import { ComboBox, ComboBoxItem } from "./combobox";
 import {
   CommandMenu,
   CommandMenuItem,
@@ -69,6 +65,10 @@ import {
   CommandMenuSectionHeader,
   CommandMenuSeparator,
 } from "./command-menu";
+import { ContextMenu } from "./context-menu";
+import { DateField } from "./date-field";
+import { IconButton } from "./icon-button";
+import { Link } from "./link";
 import {
   Menu,
   MenuItem,
@@ -77,35 +77,36 @@ import {
   MenuSeparator,
   SubMenu,
 } from "./menu";
-import { ContextMenu } from "./context-menu";
+import { NumberField } from "./number-field";
+import { Popover } from "./popover";
+import { Radio, RadioGroup } from "./radio";
+import { SearchField } from "./search-field";
+import { Select, SelectItem } from "./select";
+import { Separator } from "./separator";
+import { TextArea } from "./text-area";
 import { slate } from "./theme/colors.stylex";
 import { radius } from "./theme/radius.stylex";
+import { gray } from "./theme/semantic-color.stylex";
+import { spacing } from "./theme/spacing.stylex";
+import { typeramp } from "./theme/typography.stylex";
 import { TimeField } from "./time-field";
-import { DateField } from "./date-field";
-import { SearchField } from "./search-field";
-import { ColorField } from "./color-field";
-import { NumberField } from "./number-field";
-import { ComboBox, ComboBoxItem } from "./combobox";
+import { ToggleButton } from "./toggle-button";
+import { ToggleButtonGroup } from "./toggle-button-group";
 import { Tree, TreeItem } from "./tree";
-import { DialogTrigger } from "react-aria-components";
 import {
-  AlertDialog,
-  AlertDialogFooter,
-} from "hip-ui/components/alert-dialog/index";
-import {
-  AlertDialogActionButton,
-  AlertDialogCancelButton,
-  AlertDialogDescription,
-  AlertDialogHeader,
-} from "./alert-dialog";
-import {
-  Dialog,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-} from "hip-ui/components/dialog/index";
-import { Avatar } from "hip-ui/components/avatar/index";
-import { Badge } from "hip-ui/components/badge/index";
+  Blockquote,
+  Body,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  InlineCode,
+  ListItem,
+  OrderedList,
+  SmallBody,
+  SubLabel,
+  UnorderedList,
+} from "./typography";
 
 const styles = stylex.create({
   capitalize: {
@@ -118,28 +119,25 @@ const styles = stylex.create({
     padding: spacing["16"],
   },
   buttonLabel: {
-    width: 80,
     textTransform: "capitalize",
+    width: 80,
   },
   signUpForm: {
-    width: 300,
     padding: spacing["2"],
+    width: 300,
   },
   grow: {
     flexGrow: 1,
   },
   contextMenuArea: {
-    width: "100px",
-    height: "100px",
-    backgroundColor: slate.component1,
     padding: spacing["4"],
     borderRadius: radius["md"],
-    borderWidth: 1,
     borderStyle: "solid",
     borderColor: slate.border2,
-  },
-  tree: {
-    height: "300px",
+    height: "100px",
+    borderWidth: 1,
+    width: "100px",
+    backgroundColor: slate.component1,
   },
 });
 

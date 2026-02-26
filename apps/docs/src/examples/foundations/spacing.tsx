@@ -5,8 +5,8 @@ import { Fragment } from "react/jsx-runtime";
 import { Grid } from "@/components/grid";
 import { Text } from "@/components/typography/text";
 
-import { radius } from "../../components/theme/radius.stylex";
 import { primaryColor } from "../../components/theme/color.stylex";
+import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
@@ -38,7 +38,7 @@ const sortedSpacing = Object.entries(spacing)
     if (a === "px") return -1;
     if (b === "px") return 1;
     return Number.parseFloat(a) - Number.parseFloat(b);
-  }) as [string, string][];
+  }) as Array<[string, string]>;
 
 export function Spacing() {
   return (
@@ -66,7 +66,7 @@ export function Spacing() {
 
 const sortedRadius = Object.entries(radius).filter(
   ([key]) => !key.startsWith("__"),
-) as [string, string][];
+) as Array<[string, string]>;
 
 export function Radius() {
   return (

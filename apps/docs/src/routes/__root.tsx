@@ -4,8 +4,20 @@ import * as stylex from "@stylexjs/stylex";
 import { TanStackDevtools } from "@tanstack/react-devtools";
 import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { useState } from "react";
 
-import { ui } from "../components/theme/semantic-color.stylex";
+import type {
+  Color,
+  Theme,
+  UiColor} from "@/lib/ThemeContext";
+
+import {
+  ThemeContext,
+  allColors,
+  defaultTheme,
+  uiColorsInverted,
+} from "@/lib/ThemeContext";
+
 import {
   criticalColor,
   primaryColor,
@@ -14,17 +26,7 @@ import {
   uiInverted,
   warningColor,
 } from "../components/theme/color.stylex";
-
-import {
-  allColors,
-  Color,
-  defaultTheme,
-  Theme,
-  ThemeContext,
-  UiColor,
-  uiColorsInverted,
-} from "@/lib/ThemeContext";
-import { useState } from "react";
+import { ui } from "../components/theme/semantic-color.stylex";
 
 if (import.meta.env.DEV) {
   import("virtual:stylex:runtime");

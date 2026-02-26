@@ -1,26 +1,27 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { SizeContext } from "../context";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
-  ui,
   primary,
   success,
+  ui,
   warning,
 } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     overflow: "hidden",
     alignItems: "center",
     display: "flex",

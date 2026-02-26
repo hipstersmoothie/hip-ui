@@ -1,13 +1,15 @@
+import * as stylex from "@stylexjs/stylex";
+import { Plus } from "lucide-react";
+
 import { Button } from "@/components/button";
 import {
   EmptyState,
+  EmptyStateActions,
+  EmptyStateDescription,
   EmptyStateImage,
   EmptyStateTitle,
-  EmptyStateDescription,
-  EmptyStateActions,
 } from "@/components/empty-state";
-import { Plus } from "lucide-react";
-import * as stylex from "@stylexjs/stylex";
+
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({

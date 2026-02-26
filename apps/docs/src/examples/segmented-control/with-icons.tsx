@@ -1,5 +1,5 @@
 import * as stylex from "@stylexjs/stylex";
-import { List, Grid, Columns } from "lucide-react";
+import { Columns, Grid, List } from "lucide-react";
 
 import {
   SegmentedControl,

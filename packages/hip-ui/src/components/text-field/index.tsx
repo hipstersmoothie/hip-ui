@@ -95,7 +95,7 @@ function TextFieldContent({
   return (
     <>
       <Label>{label}</Label>
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

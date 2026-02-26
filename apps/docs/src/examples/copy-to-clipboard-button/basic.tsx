@@ -7,10 +7,10 @@ import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   codeBlock: {
-    backgroundColor: "rgba(0, 0, 0, 0.05)",
-    borderRadius: 4,
-    fontFamily: "monospace",
     padding: spacing["2"],
+    borderRadius: 4,
+    backgroundColor: "rgba(0, 0, 0, 0.05)",
+    fontFamily: "monospace",
   },
 });
 

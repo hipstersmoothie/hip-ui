@@ -9,6 +9,8 @@ import {
   useState,
 } from "react";
 
+import type { StyleXComponentProps, TextVariant } from "../theme/types";
+
 import { CopyToClipboardButton } from "../copy-to-clipboard-button";
 import { Flex } from "../flex";
 import { LinkContext } from "../link/link-context";
@@ -18,7 +20,6 @@ import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { critical, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps, TextVariant } from "../theme/types";
 import {
   fontFamily,
   fontSize,
@@ -28,8 +29,6 @@ import {
 
 const styles = stylex.create({
   pre: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     padding: spacing["4"],
     borderColor: uiColor.border2,
     borderRadius: {
@@ -38,6 +37,8 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     position: "relative",
     marginBottom: spacing["8"],
     marginTop: spacing["8"],
@@ -82,12 +83,12 @@ const styles = stylex.create({
     paddingLeft: spacing["1"],
   },
   inlineCode: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     fontSize: "0.95em",
     position: "relative",
     paddingBottom: spacing["1"],

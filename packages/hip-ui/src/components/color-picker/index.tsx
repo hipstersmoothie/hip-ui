@@ -1,18 +1,24 @@
+import type {
+  ColorPickerProps as AriaColorPickerProps,
+  Color,
+  ColorSpace,
+  PopoverProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Pipette } from "lucide-react";
-import { createContext, use } from "react";
+import { createContext, use, useMemo } from "react";
 import {
   ColorPicker as AriaColorPicker,
   Button,
-  Color,
   ColorPickerStateContext,
-  ColorSpace,
   Dialog,
   DialogTrigger,
   Popover,
-  PopoverProps,
-  type ColorPickerProps as AriaColorPickerProps,
 } from "react-aria-components";
+
+import type { FlexProps } from "../flex";
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { ColorArea } from "../color-area";
 import { ColorField } from "../color-field";
@@ -23,12 +29,11 @@ import {
   ColorSwatchPickerItem,
 } from "../color-swatch-picker";
 import { SizeContext } from "../context";
-import { Flex, FlexProps } from "../flex";
+import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { Select, SelectItem } from "../select";
 import { Separator } from "../separator";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
@@ -95,11 +100,9 @@ function ColorSpaceProvider({ children }: { children: React.ReactNode }) {
     throw new Error("Color needs to be a defined value");
   }
 
-  return (
-    <ColorSpaceContext value={state.color.getColorSpace()}>
-      {children}
-    </ColorSpaceContext>
-  );
+  const colorSpace = useMemo(() => state.color.getColorSpace(), [state.color]);
+
+  return <ColorSpaceContext value={colorSpace}>{children}</ColorSpaceContext>;
 }
 
 export function ColorPicker({
@@ -140,7 +143,7 @@ export function ColorPicker({
 }
 
 export interface DefaultColorEditorProps extends FlexProps {
-  swatches?: string[];
+  swatches?: Array<string>;
   onSwatchChange?: (color: Color) => void;
   hasAlpha?: boolean;
 }

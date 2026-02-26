@@ -1,18 +1,12 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
+  "eslint.workingDirectories": [{"mode": "auto"}],
   "search.exclude": {
     "**/routeTree.gen.ts": true,
     "**/apps/docs/src/components/**": true,
     "**/apps/example/src/components/**": true
   },
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  }
+  "files.watcherExclude": {"**/routeTree.gen.ts": true},
+  "files.readonlyInclude": {"**/routeTree.gen.ts": true},
+  "typescript.experimental.useTsgo": false,
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

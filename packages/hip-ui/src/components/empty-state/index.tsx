@@ -3,10 +3,11 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { SizeContext } from "../context";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({

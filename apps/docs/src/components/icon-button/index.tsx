@@ -1,13 +1,15 @@
 "use client";
 
+import type { ButtonProps as AriaButtonProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
-import { ButtonProps as AriaButtonProps } from "react-aria-components";
+
+import type { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 
 import { Button } from "../button";
 import { SizeContext } from "../context";
 import { spacing } from "../theme/spacing.stylex";
-import { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 import { Tooltip } from "../tooltip";
 
 const styles = stylex.create({

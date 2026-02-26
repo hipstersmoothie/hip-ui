@@ -1,11 +1,14 @@
 "use client";
 
+import type { DropIndicatorProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { useDragAndDrop } from "react-aria-components";
+import { DropIndicator } from "react-aria-components";
 import { useTreeData } from "react-stately";
-import { DropIndicator, DropIndicatorProps } from "react-aria-components";
 
 import { Tree, TreeItem } from "@/components/tree";
+
 import { primaryColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
@@ -22,14 +25,14 @@ const styles = stylex.create({
 interface TreeItem {
   id: string;
   name: string;
-  children?: TreeItem[];
+  children?: Array<TreeItem>;
 }
 
 function TreeDropIndicator(props: DropIndicatorProps) {
   return <DropIndicator {...props} {...stylex.props(styles.dropIndicator)} />;
 }
 
-const initialItems: TreeItem[] = [
+const initialItems: Array<TreeItem> = [
   {
     id: "1",
     name: "Documents",
@@ -70,7 +73,7 @@ export function DragAndDrop() {
 
   const { dragAndDropHooks } = useDragAndDrop({
     getItems: (keys) =>
-      Array.from(keys).map((key) => {
+      [...keys].map((key) => {
         const item = tree.getItem(key);
         return {
           "text/plain": item?.value.name ?? "",
@@ -83,12 +86,12 @@ export function DragAndDrop() {
         tree.moveAfter(e.target.key, e.keys);
       } else if (e.target.dropPosition === "on") {
         // Move items to become children of the target
-        let targetNode = tree.getItem(e.target.key);
+        const targetNode = tree.getItem(e.target.key);
         if (targetNode) {
-          let targetIndex = targetNode.children
+          const targetIndex = targetNode.children
             ? targetNode.children.length
             : 0;
-          let keyArray = Array.from(e.keys);
+          const keyArray = [...e.keys];
           for (let i = 0; i < keyArray.length; i++) {
             tree.move(keyArray[i], e.target.key, targetIndex + i);
           }

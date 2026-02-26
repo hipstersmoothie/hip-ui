@@ -1,4 +1,4 @@
-import { Download, Upload, Settings } from "lucide-react";
+import { Download, Settings, Upload } from "lucide-react";
 
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";

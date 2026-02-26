@@ -1,20 +1,24 @@
-import * as stylex from "@stylexjs/stylex";
-import { Eye, EyeOff } from "lucide-react";
-import { useRef, useState, use } from "react";
-import {
+import type {
   TextFieldProps as AriaTextFieldProps,
-  InputContext,
   InputProps,
   ValidationResult,
+} from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { Eye, EyeOff } from "lucide-react";
+import { use, useRef, useState } from "react";
+import {
+  TextField as AriaTextField,
   FieldError,
   Input,
-  TextField as AriaTextField,
+  InputContext,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { IconButton } from "../icon-button";
 import { Description, Label } from "../label";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 function PasswordToggle({
   type,
@@ -83,7 +87,7 @@ export function TextField({
       {...stylex.props(inputStyles.field, style)}
     >
       {label !== null && <Label size={size}>{label}</Label>}
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

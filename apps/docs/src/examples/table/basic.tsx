@@ -2,11 +2,11 @@ import * as stylex from "@stylexjs/stylex";
 
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableColumn,
-  TableRow,
   TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@/components/table";
 
 const styles = stylex.create({

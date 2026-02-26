@@ -12,12 +12,12 @@ import { spacing } from "./spacing.stylex";
 
 const styles = stylex.create({
   popover: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     outline: "none",
     overflow: "auto",
     boxShadow: shadow["md"],

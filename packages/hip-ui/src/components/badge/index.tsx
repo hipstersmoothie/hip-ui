@@ -4,7 +4,6 @@ import { use } from "react";
 import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,

@@ -1,11 +1,11 @@
+import { Footer } from "@/components/footer";
 import { HeaderLayout } from "@/components/header-layout";
 import {
   Navbar,
+  NavbarLink,
   NavbarLogo,
   NavbarNavigation,
-  NavbarLink,
 } from "@/components/navbar";
-import { Footer } from "@/components/footer";
 
 function Logo() {
   return (

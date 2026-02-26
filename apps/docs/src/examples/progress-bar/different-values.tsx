@@ -5,9 +5,9 @@ import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["4"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["4"],
     width: "min(100%, 300px)",
   },
 });

@@ -1,6 +1,6 @@
 import type {
-  CheckboxProps as AriaCheckboxProps,
   CheckboxGroupProps as AriaCheckboxGroupProps,
+  CheckboxProps as AriaCheckboxProps,
   ValidationResult,
 } from "react-aria-components";
 
@@ -12,22 +12,23 @@ import {
   FieldError,
 } from "react-aria-components";
 
+import type { Size } from "../types";
+
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { gray, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2.5"],
     alignItems: {
       default: "center",
       ":has(p)": "flex-start",
     },
     display: "flex",
-    gap: spacing["2.5"],
 
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
@@ -48,9 +49,9 @@ const styles = stylex.create({
     color: "white",
   },
   group: {
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
   },
 });
 

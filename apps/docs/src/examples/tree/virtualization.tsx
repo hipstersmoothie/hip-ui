@@ -1,15 +1,17 @@
-import { Tree, TreeItem } from "@/components/tree";
-import { uiColor } from "../../components/theme/color.stylex";
 import * as stylex from "@stylexjs/stylex";
+
+import { Tree, TreeItem } from "@/components/tree";
+
+import { uiColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
   tree: {
-    height: "300px",
-    width: "300px",
-    borderWidth: 1,
     borderColor: uiColor.border1,
     borderStyle: "solid",
+    borderWidth: 1,
     overflow: "auto",
+    height: "300px",
+    width: "300px",
   },
 });
 

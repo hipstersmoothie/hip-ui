@@ -14,11 +14,11 @@ import {
 
 const styles = stylex.create({
   blockquote: {
+    color: gray.textDim,
+    fontFamily: fontFamily["serif"],
     borderLeftColor: gray.borderDim,
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    color: gray.textDim,
-    fontFamily: fontFamily["serif"],
     marginBottom: 0,
     marginLeft: spacing["2"],
     marginRight: 0,
@@ -26,19 +26,19 @@ const styles = stylex.create({
     paddingLeft: spacing["4"],
   },
   unorderedList: {
+    margin: 0,
+    gap: spacing["1"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["1"],
     listStyleType: "disc",
-    margin: 0,
     paddingLeft: spacing["8"],
   },
   orderedList: {
+    margin: 0,
+    gap: spacing["1"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["1"],
     listStyleType: "decimal",
-    margin: 0,
     paddingLeft: spacing["8"],
   },
   listItem: {
@@ -48,9 +48,9 @@ const styles = stylex.create({
     paddingLeft: spacing["1"],
   },
   inlineCode: {
+    padding: spacing["1"],
     borderRadius: radius["sm"],
     fontSize: "0.9em",
-    padding: spacing["1"],
   },
   underline: {
     textDecorationLine: "underline",

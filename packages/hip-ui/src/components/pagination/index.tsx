@@ -9,12 +9,13 @@ import {
 } from "lucide-react";
 import { use } from "react";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { Button } from "../button";
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   list: {

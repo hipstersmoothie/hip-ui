@@ -9,7 +9,7 @@ import {
   fontSize,
   fontWeight,
   lineHeight,
-  tracking,
+  tracking as trackingStyles,
 } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -66,18 +66,18 @@ const styles = stylex.create({
   }),
 
   tracking: (
-    defaultTracking: keyof typeof tracking,
-    smTracking?: keyof typeof tracking,
-    mdTracking?: keyof typeof tracking,
-    lgTracking?: keyof typeof tracking,
-    xlTracking?: keyof typeof tracking,
+    defaultTracking: keyof typeof trackingStyles,
+    smTracking?: keyof typeof trackingStyles,
+    mdTracking?: keyof typeof trackingStyles,
+    lgTracking?: keyof typeof trackingStyles,
+    xlTracking?: keyof typeof trackingStyles,
   ) => ({
     letterSpacing: {
-      default: tracking[defaultTracking],
-      [breakpoints.sm]: smTracking ? tracking[smTracking] : undefined,
-      [breakpoints.md]: mdTracking ? tracking[mdTracking] : undefined,
-      [breakpoints.lg]: lgTracking ? tracking[lgTracking] : undefined,
-      [breakpoints.xl]: xlTracking ? tracking[xlTracking] : undefined,
+      default: trackingStyles[defaultTracking],
+      [breakpoints.sm]: smTracking ? trackingStyles[smTracking] : undefined,
+      [breakpoints.md]: mdTracking ? trackingStyles[mdTracking] : undefined,
+      [breakpoints.lg]: lgTracking ? trackingStyles[lgTracking] : undefined,
+      [breakpoints.xl]: xlTracking ? trackingStyles[xlTracking] : undefined,
     },
   }),
 
@@ -116,7 +116,7 @@ type ThemeValue<TKey extends FontThemeTypes> = TKey extends "weight"
     : TKey extends "leading"
       ? typeof lineHeight
       : TKey extends "tracking"
-        ? typeof tracking
+        ? typeof trackingStyles
         : never;
 
 function getResponsiveStyle<TType extends FontThemeTypes>(
@@ -137,17 +137,6 @@ function getResponsiveStyle<TType extends FontThemeTypes>(
     return styleFn(value as keyof ThemeValue<TType>);
   }
 
-  console.log(
-    value,
-    styleFn(
-      value.default as keyof ThemeValue<TType>,
-      value.sm as keyof ThemeValue<TType> | undefined,
-      value.md as keyof ThemeValue<TType> | undefined,
-      value.lg as keyof ThemeValue<TType> | undefined,
-      value.xl as keyof ThemeValue<TType> | undefined,
-    ),
-  );
-
   return styleFn(
     value.default as keyof ThemeValue<TType>,
     value.sm as keyof ThemeValue<TType> | undefined,
@@ -167,7 +156,7 @@ interface TextProps extends Omit<
   weight?: ResponsiveValue<ThemeKeys<typeof fontWeight>>;
   size?: ResponsiveValue<ThemeKeys<typeof fontSize>>;
   leading?: ResponsiveValue<ThemeKeys<typeof lineHeight>>;
-  tracking?: ResponsiveValue<ThemeKeys<typeof tracking>>;
+  tracking?: ResponsiveValue<ThemeKeys<typeof trackingStyles>>;
 
   variant?: TextVariant;
   strikethrough?: boolean;

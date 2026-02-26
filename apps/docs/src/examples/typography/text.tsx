@@ -1,4 +1,4 @@
-import { Body, SmallBody, LabelText, SubLabel } from "@/components/typography";
+import { Body, LabelText, SmallBody, SubLabel } from "@/components/typography";
 
 export function Text() {
   return (

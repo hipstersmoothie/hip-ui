@@ -8,10 +8,10 @@ import { spacing } from "./spacing.stylex";
 const styles = stylex.create({
   popover: {
     borderRadius: radius["md"],
-    boxShadow: shadow["md"],
-    minWidth: spacing["40"],
     outline: "none",
     overflow: "auto",
+    boxShadow: shadow["md"],
+    minWidth: spacing["40"],
 
     paddingBottom: spacing["1"],
     paddingTop: spacing["1"],

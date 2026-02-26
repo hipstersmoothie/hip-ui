@@ -1,16 +1,17 @@
+import type {
+  LabelProps as AriaLabelProps,
+  TextProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
-import {
-  LabelProps as AriaLabelProps,
-  Text,
-  TextProps,
-  Label as AriaLabel,
-} from "react-aria-components";
+import { Label as AriaLabel, Text } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { SizeContext } from "../context";
 import { gray } from "../theme/semantic-color.stylex";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   label: {

@@ -1,8 +1,9 @@
+import type { ComponentDoc } from "react-docgen-typescript";
+
 import * as stylex from "@stylexjs/stylex";
 import { Grid } from "lucide-react";
 import { useLayoutEffect, useRef, useState } from "react";
 import { ResizableTableContainer } from "react-aria-components";
-import { ComponentDoc } from "react-docgen-typescript";
 import { propDocs } from "virtual:propDocs";
 
 import { Card } from "@/components/card";
@@ -21,22 +22,22 @@ import { ToggleButtonGroup } from "@/components/toggle-button-group";
 import { InlineCode, SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
-import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
+import { radius } from "../components/theme/radius.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   sticky: {
-    left: 0,
     position: "sticky",
+    left: 0,
   },
   stuck: {
     backgroundColor: uiColor.bg,
+    boxShadow: shadow.lg,
     borderRightColor: uiColor.border2,
     borderRightStyle: "solid",
     borderRightWidth: 1,
-    boxShadow: shadow.lg,
   },
   props: {
     overflow: "auto",
@@ -46,16 +47,16 @@ const styles = stylex.create({
 
     /* eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
+      margin: 0,
+      padding: spacing["1"],
       borderColor: uiColor.border1,
       borderRadius: {
         default: radius["md"],
         "@supports (corner-shape: squircle)": radius["3xl"],
       },
-      cornerShape: "squircle",
       borderStyle: "solid",
       borderWidth: 1,
-      margin: 0,
-      padding: spacing["1"],
+      cornerShape: "squircle",
     },
   },
   fullCodePopover: {
@@ -70,10 +71,10 @@ const styles = stylex.create({
 
     /* eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
-      borderWidth: 0,
-      height: "100%",
       margin: 0,
       padding: spacing["4"],
+      borderWidth: 0,
+      height: "100%",
       width: "100%",
     },
   },
@@ -172,7 +173,7 @@ function PropTable({ doc }: { doc: ComponentDoc }) {
   );
 }
 
-export function PropDocs({ components }: { components: string[] }) {
+export function PropDocs({ components }: { components: Array<string> }) {
   const docs = propDocs
     .filter((doc) => components.includes(doc.displayName))
     .toSorted((a, b) => {

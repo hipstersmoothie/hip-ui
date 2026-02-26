@@ -1,4 +1,4 @@
-import { RadioGroup, Radio } from "@/components/radio";
+import { Radio, RadioGroup } from "@/components/radio";
 
 export function Basic() {
   return (

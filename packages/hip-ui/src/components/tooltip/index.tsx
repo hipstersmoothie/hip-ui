@@ -1,12 +1,15 @@
 "use client";
 
+import type {
+  TooltipProps as AriaTooltipProps,
+  TooltipTriggerComponentProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  OverlayArrow,
   Tooltip as AriaTooltip,
+  OverlayArrow,
   TooltipTrigger,
-  TooltipTriggerComponentProps,
-  TooltipProps as AriaTooltipProps,
 } from "react-aria-components";
 
 import { animationDuration } from "../theme/animations.stylex";
@@ -19,12 +22,12 @@ import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const tooltipStyle = stylex.create({
   content: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["full"],
     },
+
+    cornerShape: "squircle",
     backgroundColor: uiInverted.bg,
     boxShadow: shadow["sm"],
     color: uiInverted.text1,

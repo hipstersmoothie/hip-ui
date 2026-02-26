@@ -1,4 +1,6 @@
-import { TableOfContents, Toc } from "@/components/table-of-contents";
+import type { Toc } from "@/components/table-of-contents";
+
+import { TableOfContents } from "@/components/table-of-contents";
 
 // Mock table of contents data
 const toc: Toc = [

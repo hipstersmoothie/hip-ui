@@ -1,16 +1,19 @@
+import type {
+  CalendarProps as AriaCalendarProps,
+  CalendarGridProps,
+  DateValue,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import {
-  Calendar as AriaCalendar,
+  Calendar as AriaCalendarComponent,
   CalendarCell,
   CalendarGrid,
-  CalendarGridProps,
   CalendarGridBody,
   CalendarGridHeader,
   CalendarHeaderCell,
   Heading,
-  type CalendarProps as AriaCalendarProps,
-  DateValue,
 } from "react-aria-components";
 
 import type { StyleXComponentProps } from "../theme/types";
@@ -43,7 +46,7 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
   const calendarStyles = useCalendarStyles({ type: "calendar" });
 
   return (
-    <AriaCalendar
+    <AriaCalendarComponent
       visibleDuration={visibleDuration}
       {...rest}
       {...stylex.props(calendarStyles.wrapper, style)}
@@ -90,6 +93,6 @@ export function Calendar<T extends DateValue>(props: CalendarProps<T>) {
         ))}
       </Flex>
       {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-    </AriaCalendar>
+    </AriaCalendarComponent>
   );
 }

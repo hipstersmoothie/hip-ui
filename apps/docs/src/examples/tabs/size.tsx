@@ -4,9 +4,9 @@ import { Tab, TabList, TabPanel, Tabs } from "@/components/tabs";
 
 const styles = stylex.create({
   container: {
+    gap: "2rem",
     display: "flex",
     flexDirection: "column",
-    gap: "2rem",
     width: "100%",
   },
 });

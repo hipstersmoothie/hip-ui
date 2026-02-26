@@ -1,6 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size } from "../types";
+
 import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import {
@@ -12,19 +14,18 @@ import {
 } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
-    alignItems: "center",
     borderStyle: "solid",
     borderWidth: 1,
+    gap: spacing["1"],
+    overflow: "hidden",
+    alignItems: "center",
     display: "flex",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["semibold"],
-    gap: spacing["1"],
     justifyContent: "center",
-    overflow: "hidden",
   },
   sm: {
     borderRadius: radius["sm"],

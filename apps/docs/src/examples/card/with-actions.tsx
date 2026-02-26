@@ -1,14 +1,14 @@
-import { MoreHorizontal, Heart, Share } from "lucide-react";
+import { Heart, MoreHorizontal, Share } from "lucide-react";
 
 import { Button } from "@/components/button";
 import {
   Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
   CardBody,
+  CardDescription,
   CardFooter,
+  CardHeader,
   CardHeaderAction,
+  CardTitle,
 } from "@/components/card";
 import { IconButton } from "@/components/icon-button";
 

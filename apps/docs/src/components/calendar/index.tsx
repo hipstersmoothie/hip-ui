@@ -1,17 +1,9 @@
+import type { CalendarGridProps, DateValue } from "react-aria-components";
+import type { CalendarProps as AriaCalendarProps } from 'react-aria-components';
+
 import * as stylex from "@stylexjs/stylex";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import {
-  Calendar as AriaCalendar,
-  CalendarCell,
-  CalendarGrid,
-  CalendarGridProps,
-  CalendarGridBody,
-  CalendarGridHeader,
-  CalendarHeaderCell,
-  Heading,
-  type CalendarProps as AriaCalendarProps,
-  DateValue,
-} from "react-aria-components";
+import { Calendar as AriaCalendar, CalendarCell, CalendarGrid, CalendarGridBody, CalendarGridHeader, CalendarHeaderCell, Heading } from 'react-aria-components';
 
 import type { StyleXComponentProps } from "../theme/types";
 

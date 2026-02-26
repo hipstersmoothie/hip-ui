@@ -1,17 +1,20 @@
 "use client";
 
+import type { ButtonProps } from "react-aria-components";
+
 import { useControlledState } from "@react-stately/utils";
 import * as stylex from "@stylexjs/stylex";
 import { createContext, use, useId, useRef, useState } from "react";
 import { mergeProps, useHover, useKeyboard } from "react-aria";
 import {
   Button as AriaButton,
-  DialogTrigger,
   Menu as AriaMenu,
+  DialogTrigger,
   Popover,
-  ButtonProps,
   Toolbar,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
@@ -20,7 +23,6 @@ import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
@@ -37,8 +39,6 @@ const styles = stylex.create({
     position: "relative",
   },
   button: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderColor: "transparent",
     borderRadius: {
       default: radius["sm"],
@@ -46,6 +46,8 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     gap: spacing["1"],
     alignItems: "center",
     backgroundColor: {

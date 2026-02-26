@@ -1,4 +1,4 @@
-import { CheckCircle, AlertCircle, XCircle, Info } from "lucide-react";
+import { AlertCircle, CheckCircle, Info, XCircle } from "lucide-react";
 
 import { Badge } from "@/components/badge";
 import { Flex } from "@/components/flex";

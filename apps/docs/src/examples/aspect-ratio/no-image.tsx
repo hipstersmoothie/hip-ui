@@ -9,13 +9,13 @@ import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   example: {
-    alignItems: "center",
     borderColor: uiColor.border1,
     borderStyle: "solid",
     borderWidth: 1,
+    alignItems: "center",
     display: "flex",
-    height: spacing["40"],
     justifyContent: "center",
+    height: spacing["40"],
   },
 });
 

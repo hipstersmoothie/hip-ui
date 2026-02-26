@@ -1,18 +1,23 @@
 "use client";
 
+import type {
+  PanelGroupProps,
+  PanelProps,
+  PanelResizerProps,
+} from "@window-splitter/react";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  PanelGroup as BasePanelGroup,
   Panel as BasePanel,
+  PanelGroup as BasePanelGroup,
   PanelResizer as BasePanelResizer,
-  type PanelGroupProps,
-  type PanelProps,
-  type PanelResizerProps,
 } from "@window-splitter/react";
+import { useHover } from "react-aria";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   panel: {
@@ -21,7 +26,7 @@ const styles = stylex.create({
   panelResizer: {
     backgroundColor: {
       default: uiColor.border2,
-      ":hover:not([data-state='dragging'])": uiColor.border3,
+      ":is([data-hovered]):not(:is([data-state='dragging']))": uiColor.border3,
       ":is([data-state='dragging'])": primaryColor.border2,
     },
     cursor: {
@@ -33,7 +38,7 @@ const styles = stylex.create({
   hitArea: {
     display: {
       default: "none",
-      ":is([data-splitter-type='handle']:hover > *)": "block",
+      ":is([data-hovered] [data-splitter-type='handle'] > *)": "block",
     },
     position: "absolute",
 
@@ -75,9 +80,13 @@ export function PanelResizer({
   style,
   ...props
 }: WindowSplitterPanelResizerProps) {
+  const { hoverProps, isHovered } = useHover({});
+
   return (
     <BasePanelResizer
       {...props}
+      {...hoverProps}
+      data-hovered={isHovered || undefined}
       {...stylex.props(styles.panelResizer, style)}
       size="1px"
     >

@@ -1,14 +1,19 @@
+import type {
+  TagGroupProps as AriaTagGroupProps,
+  TagProps as AriaTagProps,
+  TagListProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { X } from "lucide-react";
 import {
-  TagGroupProps as AriaTagGroupProps,
-  TagGroup as AriaTagGroup,
-  TagProps as AriaTagProps,
   Tag as AriaTag,
-  TagListProps,
-  TagList,
+  TagGroup as AriaTagGroup,
   Button,
+  TagList,
 } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { Description, ErrorMessage, Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
@@ -16,7 +21,6 @@ import { primaryColor, uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -76,12 +80,12 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
     },
     color: {
       default: uiColor.text1,
-      ":hover": uiColor.text2,
+      ":is([data-hovered])": uiColor.text2,
     },
     display: "flex",
     justifyContent: "center",

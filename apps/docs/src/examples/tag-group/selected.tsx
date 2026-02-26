@@ -1,7 +1,8 @@
-import { useState } from "react";
-import { Key } from "react-aria";
+import type { Key } from "react-aria";
 
-import { TagGroup, Tag } from "@/components/tag-group";
+import { useState } from "react";
+
+import { Tag, TagGroup } from "@/components/tag-group";
 
 const tags = [
   { id: "react", name: "React" },

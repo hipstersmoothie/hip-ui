@@ -5,9 +5,9 @@ import { ProgressCircle } from "../../components/progress-circle";
 
 const styles = stylex.create({
   wrapper: {
+    gap: "8px",
     display: "flex",
     flexDirection: "column",
-    gap: "8px",
   },
 });
 

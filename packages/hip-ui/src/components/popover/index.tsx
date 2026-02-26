@@ -1,18 +1,22 @@
 "use client";
 
+import type {
+  PopoverProps as AriaPopoverProps,
+  DialogTriggerProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  OverlayArrow,
   Popover as AriaPopover,
-  PopoverProps as AriaPopoverProps,
-  DialogTrigger,
-  DialogTriggerProps,
   Dialog,
+  DialogTrigger,
+  OverlayArrow,
 } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({

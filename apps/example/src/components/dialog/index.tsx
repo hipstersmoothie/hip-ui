@@ -1,22 +1,24 @@
 "use client";
 
+import type { DialogTriggerProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { X } from "lucide-react";
 import {
-  DialogTrigger,
-  DialogTriggerProps,
   Dialog as AriaDialog,
+  DialogTrigger,
+  Heading,
   Modal,
   ModalOverlay,
-  Heading,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { IconButton } from "../icon-button";
 import { slate } from "../theme/colors.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { typeramp } from "../theme/typography.stylex";
 import { useDialogStyles } from "../theme/useDialogStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   dialog: {
@@ -24,11 +26,11 @@ const styles = stylex.create({
     paddingTop: spacing["2"],
   },
   header: {
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["2"],
-    height: spacing["8"],
     justifyContent: "space-between",
+    height: spacing["8"],
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
@@ -44,8 +46,8 @@ const styles = stylex.create({
     paddingTop: spacing["4"],
   },
   footer: {
-    display: "flex",
     gap: spacing["2"],
+    display: "flex",
     justifyContent: "flex-end",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],

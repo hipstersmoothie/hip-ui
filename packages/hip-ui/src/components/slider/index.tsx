@@ -3,17 +3,18 @@ import type { SliderProps as AriaSliderProps } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import {
   Slider as AriaSlider,
-  SliderTrack,
-  SliderThumb,
   SliderOutput,
+  SliderThumb,
+  SliderTrack,
 } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { Label } from "../label";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -87,8 +88,8 @@ const styles = stylex.create({
     borderWidth: 1,
     backgroundColor: {
       default: uiColor.component1,
-      ":is([data-dragging=true]):is([data-dragging=true])": uiColor.component3,
-      ":hover": uiColor.component2,
+      ":is([data-dragging=true])": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
     },
     boxShadow: shadow.md,
     content: "''",
@@ -177,13 +178,13 @@ const styles = stylex.create({
 
 interface SliderProps<T> extends StyleXComponentProps<AriaSliderProps<T>> {
   label?: string;
-  names?: string[];
-  thumbLabels?: string[];
+  names?: Array<string>;
+  thumbLabels?: Array<string>;
   autoFocus?: boolean;
   showValueLabel?: boolean;
 }
 
-export function Slider<T extends number | number[]>({
+export function Slider<T extends number | Array<number>>({
   label,
   thumbLabels,
   style,
@@ -222,7 +223,6 @@ export function Slider<T extends number | number[]>({
             )}
             {state.values.map((_, i) => (
               <SliderThumb
-                // eslint-disable-next-line @eslint-react/no-array-index-key
                 key={i}
                 index={i}
                 aria-label={thumbLabels?.[i]}

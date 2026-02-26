@@ -1,17 +1,22 @@
-import type { ListBoxProps, ValidationResult } from "react-aria-components";
+import type {
+  ComboBoxProps as AriaComboBoxProps,
+  ListBoxProps,
+  PopoverProps,
+  ValidationResult,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
 import { ChevronDown } from "lucide-react";
 import { use } from "react";
 import {
-  Button,
-  Popover,
-  PopoverProps,
   ComboBox as AriaComboBox,
-  ComboBoxProps as AriaComboBoxProps,
-  Input,
+  Button,
   FieldError,
+  Input,
+  Popover,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
@@ -20,7 +25,6 @@ import { ListBox } from "../listbox";
 import { spacing } from "../theme/spacing.stylex";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 import { SmallBody } from "../typography";
 
 const styles = stylex.create({
@@ -28,9 +32,9 @@ const styles = stylex.create({
     width: "var(--trigger-width)",
   },
   emptyState: {
+    padding: spacing["4"],
     display: "flex",
     justifyContent: "center",
-    padding: spacing["4"],
   },
 });
 

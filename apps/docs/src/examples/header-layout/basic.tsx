@@ -1,9 +1,9 @@
 import { HeaderLayout } from "@/components/header-layout";
 import {
   Navbar,
+  NavbarLink,
   NavbarLogo,
   NavbarNavigation,
-  NavbarLink,
 } from "@/components/navbar";
 
 function Logo() {

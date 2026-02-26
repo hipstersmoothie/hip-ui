@@ -3,7 +3,7 @@ import { AlertTriangle, Check, CircleX } from "lucide-react";
 import { use } from "react";
 import { FieldErrorContext } from "react-aria-components";
 
-import { InputValidationState } from "../theme/types";
+import type { InputValidationState } from "../theme/types";
 
 export interface SuffixIconProps {
   suffix: React.ReactNode | undefined;

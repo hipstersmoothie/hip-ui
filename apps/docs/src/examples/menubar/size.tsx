@@ -1,6 +1,6 @@
+import { Flex } from "@/components/flex";
 import { MenuItem, MenuSeparator } from "@/components/menu";
 import { Menubar, MenubarItem } from "@/components/menubar";
-import { Flex } from "@/components/flex";
 
 export function Size() {
   return (

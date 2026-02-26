@@ -32,7 +32,7 @@ export const ui = stylex.create({
   borderInteractive: {
     borderColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
+      ":is([data-hovered])": uiColor.border2,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -50,8 +50,10 @@ export const ui = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component2,
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
+        uiColor.component3,
       ":disabled": "transparent",
     },
     transitionDuration: animationDuration.fast,
@@ -61,8 +63,10 @@ export const ui = stylex.create({
   bgUi: {
     backgroundColor: {
       default: uiColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component2,
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
+        uiColor.component3,
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -72,8 +76,10 @@ export const ui = stylex.create({
   bgAction: {
     backgroundColor: {
       default: uiColor.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component3,
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
+        uiColor.component3,
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -83,7 +89,8 @@ export const ui = stylex.create({
   bgSolidAction: {
     backgroundColor: {
       default: uiColor.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.solid2,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.solid2,
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -112,7 +119,7 @@ export const primary = stylex.create({
   borderInteractive: {
     borderColor: {
       default: primaryColor.border2,
-      ":hover": primaryColor.border3,
+      ":is([data-hovered])": primaryColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -130,9 +137,9 @@ export const primary = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         primaryColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         primaryColor.component3,
       ":disabled": primaryColor.component1,
     },
@@ -143,9 +150,9 @@ export const primary = stylex.create({
   bgUi: {
     backgroundColor: {
       default: primaryColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         primaryColor.component2,
-      ":is(:active,[data-pressed=true])": primaryColor.component3,
+      ":is([data-pressed=true])": primaryColor.component3,
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -155,10 +162,10 @@ export const primary = stylex.create({
   bgAction: {
     backgroundColor: {
       default: primaryColor.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])):not(:disabled))":
         primaryColor.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        primaryColor.component3,
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
+        primaryColor.border1,
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -168,7 +175,8 @@ export const primary = stylex.create({
   bgSolidAction: {
     backgroundColor: {
       default: primaryColor.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": primaryColor.solid2,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        primaryColor.solid2,
       ":disabled": primaryColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -197,7 +205,7 @@ export const critical = stylex.create({
   borderInteractive: {
     borderColor: {
       default: criticalColor.border1,
-      ":hover": red.border1,
+      ":is([data-hovered])": red.border1,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -214,9 +222,9 @@ export const critical = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         criticalColor.component3,
       ":disabled": criticalColor.component1,
     },
@@ -227,11 +235,11 @@ export const critical = stylex.create({
   bgUi: {
     backgroundColor: {
       default: criticalColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         criticalColor.component3,
-      ":disabled": criticalColor.component1,
+      // ":disabled": criticalColor.component1,
     },
     transitionDuration: animationDuration.fast,
     transitionProperty: "background-color",
@@ -240,9 +248,9 @@ export const critical = stylex.create({
   bgAction: {
     backgroundColor: {
       default: criticalColor.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         criticalColor.component3,
       ":disabled": criticalColor.component1,
     },
@@ -253,7 +261,8 @@ export const critical = stylex.create({
   bgSolidAction: {
     backgroundColor: {
       default: criticalColor.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": criticalColor.solid2,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        criticalColor.solid2,
       ":disabled": criticalColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -282,7 +291,7 @@ export const warning = stylex.create({
   borderInteractive: {
     borderColor: {
       default: warningColor.border1,
-      ":hover": warningColor.border2,
+      ":is([data-hovered])": warningColor.border2,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -299,9 +308,9 @@ export const warning = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         warningColor.component3,
       ":disabled": warningColor.component1,
     },
@@ -312,9 +321,10 @@ export const warning = stylex.create({
   bgUi: {
     backgroundColor: {
       default: warningColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": yellow.component3,
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
+        yellow.component3,
       ":disabled": warningColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -324,9 +334,9 @@ export const warning = stylex.create({
   bgAction: {
     backgroundColor: {
       default: warningColor.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         warningColor.component3,
       ":disabled": warningColor.component1,
     },
@@ -337,7 +347,8 @@ export const warning = stylex.create({
   bgSolidAction: {
     backgroundColor: {
       default: warningColor.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": warningColor.solid2,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        warningColor.solid2,
       ":disabled": warningColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -366,7 +377,7 @@ export const success = stylex.create({
   borderInteractive: {
     borderColor: {
       default: successColor.border1,
-      ":hover": successColor.border2,
+      ":is([data-hovered])": successColor.border2,
     },
     borderStyle: "solid",
     borderWidth: 1,
@@ -383,9 +394,9 @@ export const success = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         successColor.component3,
       ":disabled": successColor.component1,
     },
@@ -396,9 +407,9 @@ export const success = stylex.create({
   bgUi: {
     backgroundColor: {
       default: successColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         successColor.component3,
       ":disabled": successColor.component1,
     },
@@ -409,9 +420,9 @@ export const success = stylex.create({
   bgAction: {
     backgroundColor: {
       default: successColor.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component3,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
+      ":is([data-pressed=true]):is([data-pressed=true]):not(:disabled)":
         successColor.component3,
       ":disabled": successColor.component1,
     },
@@ -422,7 +433,8 @@ export const success = stylex.create({
   bgSolidAction: {
     backgroundColor: {
       default: successColor.solid1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": successColor.solid2,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        successColor.solid2,
       ":disabled": successColor.component1,
     },
     transitionDuration: animationDuration.fast,

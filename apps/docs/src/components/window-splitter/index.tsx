@@ -1,18 +1,22 @@
 "use client";
 
+import type {
+  PanelGroupProps,
+  PanelProps,
+  PanelResizerProps,
+} from "@window-splitter/react";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  PanelGroup as BasePanelGroup,
   Panel as BasePanel,
+  PanelGroup as BasePanelGroup,
   PanelResizer as BasePanelResizer,
-  type PanelGroupProps,
-  type PanelProps,
-  type PanelResizerProps,
 } from "@window-splitter/react";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   panel: {

@@ -6,11 +6,11 @@ import { uiColor } from "../../components/theme/color.stylex";
 
 const styles = stylex.create({
   container: {
+    padding: "1rem",
     borderColor: uiColor.border2,
     borderStyle: "solid",
     borderWidth: 1,
     marginBottom: "1rem",
-    padding: "1rem",
   },
 });
 

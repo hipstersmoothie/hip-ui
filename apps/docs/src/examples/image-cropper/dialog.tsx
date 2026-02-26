@@ -1,3 +1,7 @@
+import * as stylex from "@stylexjs/stylex";
+import { ZoomInIcon, ZoomOutIcon } from "lucide-react";
+import { useState } from "react";
+
 import { Button } from "@/components/button";
 import {
   Dialog,
@@ -9,20 +13,18 @@ import {
 import { Flex } from "@/components/flex";
 import { ImageCropper } from "@/components/image-cropper";
 import { Slider } from "@/components/slider";
+
 import { spacing } from "../../components/theme/spacing.stylex";
-import * as stylex from "@stylexjs/stylex";
-import { ZoomInIcon, ZoomOutIcon } from "lucide-react";
-import { useState } from "react";
 
 const styles = stylex.create({
   example: {
     height: "320px",
   },
   sliderWrapper: {
-    width: "100%",
     boxSizing: "border-box",
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
+    width: "100%",
   },
   slider: {
     flexGrow: 1,

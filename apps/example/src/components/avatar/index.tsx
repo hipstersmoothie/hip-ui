@@ -1,28 +1,29 @@
 import * as stylex from "@stylexjs/stylex";
 import { use, useLayoutEffect, useState } from "react";
 
+import type { Size } from "../types";
+
 import { SizeContext } from "../context";
 import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import {
+  fontFamily,
   fontSize,
   fontWeight,
   lineHeight,
-  fontFamily,
 } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const styles = stylex.create({
   wrapper: {
-    alignItems: "center",
-    backgroundColor: slate.component1,
     borderColor: slate.border1,
     borderStyle: "solid",
     borderWidth: 1,
+    overflow: "hidden",
+    alignItems: "center",
+    backgroundColor: slate.component1,
     display: "flex",
     justifyContent: "center",
-    overflow: "hidden",
   },
   sm: {
     borderRadius: radius["sm"],
@@ -45,9 +46,9 @@ const styles = stylex.create({
     width: spacing["14"],
   },
   image: {
-    height: "100%",
     objectFit: "cover",
     objectPosition: "center",
+    height: "100%",
     width: "100%",
   },
   fallback: {

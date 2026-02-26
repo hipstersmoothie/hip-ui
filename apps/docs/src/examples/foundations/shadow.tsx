@@ -5,8 +5,8 @@ import { Grid } from "@/components/grid";
 import { shadow } from "@/components/theme/shadow.stylex";
 import { Text } from "@/components/typography/text";
 
-import { radius } from "../../components/theme/radius.stylex";
 import { uiColor } from "../../components/theme/color.stylex";
+import { radius } from "../../components/theme/radius.stylex";
 import { spacing } from "../../components/theme/spacing.stylex";
 
 const styles = stylex.create({
@@ -20,9 +20,9 @@ const styles = stylex.create({
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    cornerShape: "squircle",
     height: spacing["32"],
     width: spacing["32"],
   },
@@ -33,7 +33,7 @@ const styles = stylex.create({
 
 const sortedShadow = Object.entries(shadow).filter(
   ([key]) => !key.startsWith("__"),
-) as [string, string][];
+) as Array<[string, string]>;
 
 export function Shadow() {
   return (

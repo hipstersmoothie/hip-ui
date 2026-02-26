@@ -5,9 +5,9 @@ import { Pagination } from "@/components/pagination";
 
 const styles = stylex.create({
   wrapper: {
+    gap: "32px",
     display: "flex",
     flexDirection: "column",
-    gap: "32px",
     width: "100%",
   },
 });

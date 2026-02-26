@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
 import { Flex } from "@/components/flex";
-import { UnorderedList, OrderedList, ListItem } from "@/components/typography";
+import { ListItem, OrderedList, UnorderedList } from "@/components/typography";
 
 import { spacing } from "../../components/theme/spacing.stylex";
 

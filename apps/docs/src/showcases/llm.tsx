@@ -1,11 +1,11 @@
 import * as stylex from "@stylexjs/stylex";
 import {
+  Copy,
+  Download,
+  ListCheck,
   MoreVertical,
   RotateCcw,
   TextAlignJustify,
-  Download,
-  ListCheck,
-  Copy,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -35,8 +35,8 @@ import {
 } from "../components/select";
 import { Slider } from "../components/slider";
 import { TextArea } from "../components/text-area";
-import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
+import { radius } from "../components/theme/radius.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontSize, fontWeight } from "../components/theme/typography.stylex";
@@ -44,21 +44,21 @@ import { Text } from "../components/typography/text";
 
 const styles = stylex.create({
   main: {
-    backgroundColor: uiColor.bg,
     borderColor: uiColor.border1,
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["2xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    cornerShape: "squircle",
+    overflow: "hidden",
+    backgroundColor: uiColor.bg,
     boxShadow: shadow.md,
     display: "flex",
     flexDirection: "column",
     height: 700,
     marginTop: spacing["16"],
-    overflow: "hidden",
     width: 1200,
   },
   header: {
@@ -76,23 +76,23 @@ const styles = stylex.create({
     fontWeight: fontWeight["semibold"],
   },
   content: {
-    flexGrow: 1,
     overflow: "hidden",
+    flexGrow: 1,
   },
   mainContent: {
-    flexGrow: 1,
     padding: spacing["6"],
+    flexGrow: 1,
   },
   promptWrapper: {
     flexGrow: 1,
     height: "100%",
   },
   sidebar: {
+    padding: spacing["6"],
     backgroundColor: uiColor.bgSubtle,
     borderLeftColor: uiColor.border1,
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    padding: spacing["6"],
     width: 320,
   },
   shareBox: {
@@ -103,31 +103,31 @@ const styles = stylex.create({
     width: 400,
   },
   copyBox: {
-    backgroundColor: uiColor.bgSubtle,
     borderColor: uiColor.border1,
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    cornerShape: "squircle",
+    backgroundColor: uiColor.bgSubtle,
     paddingBottom: spacing["1"],
     paddingLeft: spacing["2"],
     paddingRight: spacing["2"],
     paddingTop: spacing["1"],
   },
   preview: {
-    backgroundColor: uiColor.component3,
     borderColor: uiColor.border2,
+    padding: spacing["4"],
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
-    padding: spacing["4"],
+    cornerShape: "squircle",
+    backgroundColor: uiColor.component3,
   },
   grow: {
     flexBasis: "0%",

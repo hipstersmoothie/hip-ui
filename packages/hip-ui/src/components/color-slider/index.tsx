@@ -8,6 +8,8 @@ import {
   SliderTrack,
 } from "react-aria-components";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { ColorThumb } from "../color-area";
 import { SizeContext } from "../context";
 import { Label } from "../label";
@@ -15,7 +17,6 @@ import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -49,13 +50,13 @@ const styles = stylex.create({
     },
   },
   track: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     gridArea: "track",
     borderRadius: {
       default: radius["full"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+
+    cornerShape: "squircle",
     height: {
       ":is([data-size=lg] *)": spacing["6"],
       ":is([data-size=md] *)": spacing["4"],

@@ -1,6 +1,6 @@
 import type {
-  RadioProps as AriaRadioProps,
   RadioGroupProps as AriaRadioGroupProps,
+  RadioProps as AriaRadioProps,
   ValidationResult,
 } from "react-aria-components";
 
@@ -12,6 +12,8 @@ import {
   SelectionIndicator,
 } from "react-aria-components";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
@@ -21,9 +23,8 @@ import {
 } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
-import { ui, primary } from "../theme/semantic-color.stylex";
+import { primary, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const scaleIn = stylex.keyframes({

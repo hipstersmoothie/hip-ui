@@ -1,19 +1,20 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size } from "../types";
+
 import { SizeContext } from "../context";
-import { Size } from "../types";
 import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
 import { gray } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
-import { lineHeight, fontSize } from "./typography.stylex";
+import { fontSize, lineHeight } from "./typography.stylex";
 
 const styles = stylex.create({
   field: {
+    gap: spacing["2"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["2"],
   },
   addon: {
     color: gray.textDim,
@@ -22,30 +23,30 @@ const styles = stylex.create({
     minWidth: spacing["8"],
     paddingLeft: { ":first-child": spacing["0.5"] },
     paddingRight: {
-      ":last-child": spacing["2"],
       ":last-child:has(svg)": spacing["0.5"],
+      ":last-child": spacing["2"],
     },
 
+    gap: spacing["0.5"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["0.5"],
     justifyContent: "center",
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   inputWrapper: {
+    padding: 0,
     borderRadius: radius["md"],
+    overflow: "hidden",
     boxSizing: "border-box",
     display: "flex",
     lineHeight: lineHeight["none"],
-    overflow: "hidden",
-    padding: 0,
 
     borderColor: {
       default: slate.border2,
@@ -58,9 +59,10 @@ const styles = stylex.create({
     transitionProperty: "background-color, border-color",
   },
   input: {
-    alignItems: "center",
-    backgroundColor: "transparent",
     borderWidth: 0,
+    alignItems: "center",
+    outline: "none",
+    backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {
       ":is(::placeholder,[data-placeholder])": slate.text1,
@@ -68,7 +70,6 @@ const styles = stylex.create({
     display: "flex",
     flexGrow: 1,
     lineHeight: lineHeight["none"],
-    outline: "none",
 
     appearance: {
       "::-webkit-search-cancel-button": "none",

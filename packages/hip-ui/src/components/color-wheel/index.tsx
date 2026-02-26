@@ -7,13 +7,14 @@ import {
   ColorWheelTrack,
 } from "react-aria-components";
 
+import type { Size, StyleXComponentProps } from "../theme/types";
+
 import { ColorThumb } from "../color-area";
 import { SizeContext } from "../context";
 import { Flex } from "../flex";
 import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   wrapper: {

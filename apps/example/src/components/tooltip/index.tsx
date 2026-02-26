@@ -1,12 +1,15 @@
 "use client";
 
+import type {
+  TooltipProps as AriaTooltipProps,
+  TooltipTriggerComponentProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  OverlayArrow,
   Tooltip as AriaTooltip,
+  OverlayArrow,
   TooltipTrigger,
-  TooltipTriggerComponentProps,
-  TooltipProps as AriaTooltipProps,
 } from "react-aria-components";
 
 import { slateInverted } from "../theme/colors.stylex";
@@ -17,8 +20,8 @@ import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const tooltipStyle = stylex.create({
   content: {
-    backgroundColor: slateInverted.bg1,
     borderRadius: radius["md"],
+    backgroundColor: slateInverted.bg1,
     boxShadow: shadow["sm"],
     color: slateInverted.text1,
     fontFamily: fontFamily["sans"],
@@ -30,10 +33,10 @@ const tooltipStyle = stylex.create({
     paddingTop: spacing["1"],
 
     "--origin": {
-      ":is([data-placement=top])": "translateY(4px)",
       ":is([data-placement=bottom])": "translateY(-4px)",
       ":is([data-placement=left])": "translateX(4px)",
       ":is([data-placement=right])": "translateX(-4px)",
+      ":is([data-placement=top])": "translateY(4px)",
     },
     opacity: {
       default: 1,
@@ -48,15 +51,15 @@ const tooltipStyle = stylex.create({
     transitionProperty: "transform, opacity",
   },
   caret: {
-    display: "flex",
     fill: slateInverted.bg1,
+    display: "flex",
   },
   arrow: {
     transform: {
       [":is([data-placement=bottom] *)"]: "rotate(180deg)",
-      [":is([data-placement=top] *)"]: "rotate(0deg)",
       [":is([data-placement=left] *)"]: "rotate(90deg)",
       [":is([data-placement=right] *)"]: "rotate(-90deg)",
+      [":is([data-placement=top] *)"]: "rotate(0deg)",
     },
   },
 });

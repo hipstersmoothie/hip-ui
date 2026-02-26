@@ -1,6 +1,6 @@
 "use client";
 
-import { CheckCircle, AlertCircle, XCircle, Info } from "lucide-react";
+import { AlertCircle, CheckCircle, Info, XCircle } from "lucide-react";
 
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";

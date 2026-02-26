@@ -1,5 +1,6 @@
-import { ImageCropper } from "@/components/image-cropper";
 import * as stylex from "@stylexjs/stylex";
+
+import { ImageCropper } from "@/components/image-cropper";
 
 const styles = stylex.create({
   example: {

@@ -11,6 +11,7 @@ import type {
 import * as stylex from "@stylexjs/stylex";
 import { ArrowDown, ArrowUp, GripVertical } from "lucide-react";
 import { use } from "react";
+import { mergeProps, useHover } from "react-aria";
 import {
   Cell as AriaCell,
   Column as AriaColumn,
@@ -44,7 +45,7 @@ const styles = stylex.create({
   row: {
     backgroundColor: {
       default: uiColor.bg,
-      ":has(td:hover)": uiColor.bgSubtle,
+      ":is([data-hovered])": uiColor.bgSubtle,
     },
     cursor: {
       ":is([data-href])": "pointer",
@@ -52,7 +53,7 @@ const styles = stylex.create({
   },
   column: {
     padding: 0,
-    borderBottomColor: uiColor.border2,
+    borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
     borderBottomWidth: 1,
   },
@@ -72,7 +73,7 @@ const styles = stylex.create({
   tableBody: {},
   cell: {
     overflow: "auto",
-    borderBottomColor: uiColor.border2,
+    borderBottomColor: uiColor.border1,
     borderBottomStyle: "solid",
     borderBottomWidth: {
       default: 1,
@@ -305,9 +306,15 @@ export function TableRow<T extends object>({
   ...props
 }: TableRowProps<T>) {
   const { selectionBehavior, allowsDragging } = useTableOptions();
+  const { hoverProps, isHovered } = useHover({});
 
   return (
-    <AriaRow id={id} {...props} {...stylex.props(styles.row, style)}>
+    <AriaRow
+      id={id}
+      {...mergeProps(props, hoverProps)}
+      {...stylex.props(styles.row, style)}
+      data-hovered={isHovered || undefined}
+    >
       {allowsDragging && (
         <TableCell>
           <IconButton slot="drag" label="Reorder" variant="tertiary">

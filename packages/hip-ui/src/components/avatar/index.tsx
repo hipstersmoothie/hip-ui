@@ -202,7 +202,7 @@ function AvatarContent({
 
   useLayoutEffect(() => {
     // Enable transitions after initial render (CSS can't detect this)
-    overlayRef.current?.setAttribute("data-overlay-mounted", "");
+    if (overlayRef.current) overlayRef.current.dataset.overlayMounted = "";
   }, []);
 
   const handleStateChange = (loaded: boolean, error: boolean) => {

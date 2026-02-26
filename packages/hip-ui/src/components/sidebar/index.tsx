@@ -10,13 +10,14 @@ import {
   Heading,
 } from "react-aria-components";
 
+import type { StyleXComponentProps } from "../theme/types";
+
 import { Flex } from "../flex";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 import { Text } from "../typography/text";
 
@@ -70,13 +71,13 @@ const styles = stylex.create({
     listStyle: "none",
   },
   sidebarItem: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
+
+    cornerShape: "squircle",
     textDecoration: "none",
     alignItems: "center",
     backgroundColor: {
@@ -167,7 +168,6 @@ export function Sidebar({ children, style, ...props }: SidebarProps) {
     const focusActiveItem = () => {
       const activeItem =
         document.querySelector<HTMLLIElement>("[data-active=true]");
-      console.log(activeItem);
       activeItem?.scrollIntoView({ behavior: "instant" });
     };
 
@@ -313,7 +313,7 @@ export function SidebarItem({
           hoverProps,
           pressProps,
         )}
-        data-hovered={isHovered}
+        data-hovered={isHovered || undefined}
         data-pressed={isPressed}
         data-active={isActive}
         {...stylex.props(

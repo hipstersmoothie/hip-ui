@@ -10,7 +10,7 @@
   },
   "scripts": {
     "build": "tsc --build tsconfig.build.json",
-    "lint": "eslint . --max-warnings 0",
+    "lint": "oxlint .",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
     "generate-colors": "tsx scripts/generate-colors.tsx"

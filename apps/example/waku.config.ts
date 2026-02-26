@@ -1,5 +1,5 @@
-import { defineConfig } from "waku/config";
 import stylexPlugin from "unplugin-stylex/vite";
+import { defineConfig } from "waku/config";
 
 export default defineConfig({
   vite: {

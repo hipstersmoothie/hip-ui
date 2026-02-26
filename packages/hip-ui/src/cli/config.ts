@@ -1,16 +1,18 @@
-import { lilconfig, LilconfigResult } from "lilconfig";
-import { writeFileSync, readFileSync } from "node:fs";
+import type { LilconfigResult } from "lilconfig";
+
+import { lilconfig } from "lilconfig";
+import { readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 
 export const DEFAULT_CONFIG_PATH = "hip.config.json";
 
 // all keys are optional
-const options = {
+const defaultOptions = {
   searchPlaces: ["package.json", DEFAULT_CONFIG_PATH],
   ignoreEmptySearchPlaces: false,
 };
 
-const config = lilconfig("hip-ui", options);
+const config = lilconfig("hip-ui", defaultOptions);
 
 export interface ConfigOptions {
   componentDir: string;

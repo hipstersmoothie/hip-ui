@@ -1,20 +1,21 @@
 "use client";
 
 import * as stylex from "@stylexjs/stylex";
+import { use } from "react";
 
-import { spacing } from "../theme/spacing.stylex";
+import type { ButtonVariant, Size } from "../types";
+
+import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray, primary } from "../theme/semantic-color.stylex";
+import { shadow } from "../theme/shadow.stylex";
+import { spacing } from "../theme/spacing.stylex";
 import {
   fontFamily,
   fontSize,
   fontWeight,
   lineHeight,
 } from "../theme/typography.stylex";
-import { shadow } from "../theme/shadow.stylex";
-import { slate } from "../theme/colors.stylex";
-import { use } from "react";
-import { Size, ButtonVariant } from "../types";
 import { ButtonGroupContext } from "./context";
 
 const styles = stylex.create({
@@ -22,16 +23,16 @@ const styles = stylex.create({
     boxShadow: shadow["xs"],
   },
   base: {
-    alignItems: "center",
     borderRadius: radius["md"],
     borderStyle: "solid",
     borderWidth: 1,
+    gap: spacing["1"],
+    alignItems: "center",
     boxSizing: "border-box",
     display: "inline-flex",
     flexShrink: 0,
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["medium"],
-    gap: spacing["1"],
     justifyContent: "center",
     opacity: {
       ":disabled": 0.5,
@@ -47,15 +48,15 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   small: {
     fontSize: fontSize["xs"],
-    height: spacing["7"],
     lineHeight: lineHeight["xs"],
+    height: spacing["7"],
     paddingLeft: {
       default: spacing["2"],
     },
@@ -64,16 +65,16 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["3.5"],
       pointerEvents: "none",
+      height: spacing["3.5"],
       width: spacing["3.5"],
     },
   },
   medium: {
-    fontSize: fontSize["sm"],
     gap: spacing["1.5"],
-    height: spacing["8"],
+    fontSize: fontSize["sm"],
     lineHeight: lineHeight["xs"],
+    height: spacing["8"],
     paddingLeft: {
       default: spacing["3"],
       ":has(svg+*)": spacing["2.5"],

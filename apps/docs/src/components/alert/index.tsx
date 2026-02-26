@@ -3,12 +3,14 @@
 import * as stylex from "@stylexjs/stylex";
 import {
   AlertCircle,
+  AlertTriangle,
   CheckCircle2,
   Info,
   X,
-  AlertTriangle,
 } from "lucide-react";
 import { use } from "react";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
@@ -29,20 +31,19 @@ import {
   warning,
 } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily } from "../theme/typography.stylex";
 import { Text } from "../typography/text";
 
 const styles = stylex.create({
   alert: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderStyle: "solid",
     borderWidth: 1,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     gap: spacing["2.5"],
     gridTemplateAreas: {
       default: "'icon content'",

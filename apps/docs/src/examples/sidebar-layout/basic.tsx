@@ -1,14 +1,14 @@
-import { SidebarLayout } from "@/components/sidebar-layout";
+import { Content } from "@/components/content";
+import { Link } from "@/components/link";
 import {
   Sidebar,
   SidebarHeader,
   SidebarItem,
   SidebarSection,
 } from "@/components/sidebar";
-import { Link } from "@/components/link";
-import { Text } from "@/components/typography/text";
+import { SidebarLayout } from "@/components/sidebar-layout";
 import { Body, Heading1 } from "@/components/typography";
-import { Content } from "@/components/content";
+import { Text } from "@/components/typography/text";
 
 function Logo() {
   return (

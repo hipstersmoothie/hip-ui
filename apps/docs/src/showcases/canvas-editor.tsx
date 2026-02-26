@@ -1,54 +1,52 @@
 "use client";
 import "tldraw/tldraw.css";
+import type { Key } from "react-aria-components";
+import type { Editor, TLArrowShape, TLGeoShape, TLShapeId } from "tldraw";
+
 import * as stylex from "@stylexjs/stylex";
 import {
-  Plus,
-  MousePointer,
-  Square,
+  AlignCenterHorizontal,
+  AlignEndHorizontal,
+  AlignStartHorizontal,
+  ArrowRight,
+  ArrowUpRight,
+  Blend,
+  CaseSensitive,
+  Copy,
+  Eraser,
+  Folder,
   Hand,
   HelpCircle,
-  Folder,
   ImageIcon,
-  NotebookIcon,
-  Pencil,
-  ArrowRight,
-  CaseSensitive,
-  Eraser,
-  ArrowUpRight,
-  TypeIcon,
-  NotebookText,
-  Undo,
-  Redo,
-  Trash2,
-  Copy,
-  Layers2,
   Layers,
-  Blend,
+  Layers2,
+  MousePointer,
+  NotebookIcon,
+  NotebookText,
+  PanelBottomDashed,
+  Pencil,
+  Plus,
+  Redo,
+  Scan,
+  Square,
   SquareAsterisk,
   SquareDashed,
-  Scan,
-  PanelBottomDashed,
   TextAlignCenter,
   TextAlignEnd,
   TextAlignStart,
-  AlignStartHorizontal,
-  AlignCenterHorizontal,
-  AlignEndHorizontal,
+  Trash2,
   TriangleRight,
+  TypeIcon,
+  Undo,
 } from "lucide-react";
 import { createContext, memo, use, useState } from "react";
-import { Key, useDragAndDrop } from "react-aria-components";
-import {
-  ArrowShapeUtil,
-  Editor,
-  TLArrowShape,
-  Tldraw,
-  TLGeoShape,
-  TLShapeId,
-  useActions,
-  useValue,
-} from "tldraw";
+import { useDragAndDrop } from "react-aria-components";
+import { ArrowShapeUtil, Tldraw, useActions, useValue } from "tldraw";
 
+import {
+  ColorSwatchPicker,
+  ColorSwatchPickerItem,
+} from "@/components/color-swatch-picker";
 import {
   Disclosure,
   DisclosurePanel,
@@ -71,33 +69,29 @@ import { Tooltip } from "@/components/tooltip";
 import { Tree, TreeItem } from "@/components/tree";
 import { Text } from "@/components/typography/text";
 
-import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
+import { radius } from "../components/theme/radius.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
-import {
-  ColorSwatchPicker,
-  ColorSwatchPickerItem,
-} from "@/components/color-swatch-picker";
 
 const styles = stylex.create({
   main: {
-    backgroundColor: uiColor.bg,
     borderColor: uiColor.border2,
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["2xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    cornerShape: "squircle",
+    overflow: "hidden",
+    backgroundColor: uiColor.bg,
     boxShadow: shadow.md,
     display: "flex",
     flexDirection: "column",
+    position: "relative",
     height: 800,
     marginTop: spacing["16"],
-    overflow: "hidden",
-    position: "relative",
     width: 1200,
   },
   editor: {
@@ -105,11 +99,11 @@ const styles = stylex.create({
   },
   leftSidebar: {
     backgroundColor: uiColor.bgSubtle,
+    display: "flex",
+    flexDirection: "column",
     borderRightColor: uiColor.border2,
     borderRightStyle: "solid",
     borderRightWidth: 1,
-    display: "flex",
-    flexDirection: "column",
   },
   sidebarHeader: {
     borderBottomColor: uiColor.border2,
@@ -121,9 +115,9 @@ const styles = stylex.create({
     paddingTop: spacing["3"],
   },
   projectTitle: {
+    gap: spacing["2"],
     alignItems: "center",
     display: "flex",
-    gap: spacing["2"],
   },
 
   bottom: {
@@ -148,35 +142,35 @@ const styles = stylex.create({
     position: "relative",
   },
   rightSidebar: {
+    overflow: "hidden",
     backgroundColor: uiColor.bgSubtle,
+    display: "flex",
+    flexDirection: "column",
     borderLeftColor: uiColor.border2,
     borderLeftStyle: "solid",
     borderLeftWidth: 1,
-    display: "flex",
-    flexDirection: "column",
-    overflow: "hidden",
   },
   rightHeader: {
+    gap: spacing["2"],
     alignItems: "center",
+    display: "flex",
+    justifyContent: "space-between",
     borderBottomColor: uiColor.border2,
     borderBottomStyle: "solid",
     borderBottomWidth: 1,
-    display: "flex",
-    gap: spacing["2"],
-    justifyContent: "space-between",
     paddingBottom: spacing["3"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
     paddingTop: spacing["3"],
   },
   bottomToolbar: {
-    bottom: 0,
     display: "flex",
     justifyContent: "center",
-    left: "50%",
-    marginBottom: spacing["6"],
     position: "absolute",
     transform: "translateX(-50%)",
+    bottom: 0,
+    left: "50%",
+    marginBottom: spacing["6"],
     width: "100%",
   },
   sidebarFooter: {
@@ -284,7 +278,7 @@ function ShapeTree() {
     },
     onMove(e) {
       const targetShape = editor.getShape(e.target.key as TLShapeId);
-      const draggedShapeIds = [...e.keys] as TLShapeId[];
+      const draggedShapeIds = [...e.keys] as Array<TLShapeId>;
 
       if (!targetShape || draggedShapeIds.length === 0) return;
       if (draggedShapeIds.includes(e.target.key as TLShapeId)) return;
@@ -327,7 +321,7 @@ function ShapeTree() {
       selectedKeys={selectedShapeIds}
       onSelectionChange={(keys) => {
         if (keys === "all") return;
-        editor.select(...([...keys] as TLShapeId[]));
+        editor.select(...([...keys] as Array<TLShapeId>));
       }}
     >
       {shapeIds.map((shapeId) => (

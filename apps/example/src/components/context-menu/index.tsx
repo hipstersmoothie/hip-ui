@@ -1,4 +1,10 @@
-import { OverlayTriggerProps } from "@react-types/overlays";
+import type { OverlayTriggerProps } from "@react-types/overlays";
+import type { AriaButtonProps } from "react-aria";
+import type {
+  MenuProps as AriaMenuProps,
+  PopoverProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
   Children,
@@ -9,23 +15,22 @@ import {
   useRef,
   useState,
 } from "react";
-import { AriaButtonProps, useMenuTrigger } from "react-aria";
+import { useMenuTrigger } from "react-aria";
 import {
   Menu as AriaMenu,
-  MenuProps as AriaMenuProps,
   MenuContext,
   OverlayTriggerStateContext,
   Popover,
   PopoverContext,
-  PopoverProps,
   Provider,
   RootMenuTriggerStateContext,
 } from "react-aria-components";
 import { useMenuTriggerState } from "react-stately";
 
+import type { Size } from "../types";
+
 import { SizeContext } from "../context";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 
 const ContextMenuTriggerPropsContext = createContext<
   AriaButtonProps & { ref?: React.Ref<HTMLDivElement> }

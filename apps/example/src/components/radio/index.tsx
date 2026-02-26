@@ -1,6 +1,6 @@
 import type {
-  RadioProps as AriaRadioProps,
   RadioGroupProps as AriaRadioGroupProps,
+  RadioProps as AriaRadioProps,
   ValidationResult,
 } from "react-aria-components";
 
@@ -12,13 +12,14 @@ import {
   SelectionIndicator,
 } from "react-aria-components";
 
+import type { Size } from "../types";
+
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
 import { radius } from "../theme/radius.stylex";
 import { gray, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
-import { Size } from "../types";
 
 const scaleIn = stylex.keyframes({
   "0%": {
@@ -31,12 +32,12 @@ const scaleIn = stylex.keyframes({
 
 const styles = stylex.create({
   wrapper: {
+    gap: spacing["2.5"],
     alignItems: {
       default: "center",
       ":has(p)": "flex-start",
     },
     display: "flex",
-    gap: spacing["2.5"],
 
     fontFamily: fontFamily["sans"],
     fontSize: fontSize["sm"],
@@ -50,8 +51,8 @@ const styles = stylex.create({
 
     borderRadius: radius["full"],
     borderWidth: 2,
-    height: spacing["4"],
     position: "relative",
+    height: spacing["4"],
     width: spacing["4"],
 
     transitionDuration: "100ms",
@@ -59,15 +60,15 @@ const styles = stylex.create({
     transitionTimingFunction: "ease-in-out",
   },
   selectionIndicator: {
-    backgroundColor: "white",
     borderRadius: radius["full"],
+    backgroundColor: "white",
     height: spacing["2"],
     width: spacing["2"],
 
-    left: "50%",
     position: "absolute",
-    top: "50%",
     transform: "translate(-50%, -50%)",
+    left: "50%",
+    top: "50%",
 
     animationDuration: "100ms",
     animationFillMode: "forwards",
@@ -78,9 +79,9 @@ const styles = stylex.create({
     color: "white",
   },
   group: {
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
-    gap: spacing["3"],
   },
 });
 

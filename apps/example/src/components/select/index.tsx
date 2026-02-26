@@ -1,24 +1,27 @@
-import type { ValidationResult } from "react-aria-components";
+import type {
+  SelectProps as AriaSelectProps,
+  PopoverProps,
+  ValidationResult,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
 import { ChevronDown } from "lucide-react";
 import { use } from "react";
 import {
-  SelectProps as AriaSelectProps,
+  Select as AriaSelect,
   Button,
+  FieldError,
   Popover,
   SelectValue,
-  PopoverProps,
-  Select as AriaSelect,
-  FieldError,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { SizeContext } from "../context";
 import { Description, Label } from "../label";
 import { ListBox } from "../listbox";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   matchWidth: {

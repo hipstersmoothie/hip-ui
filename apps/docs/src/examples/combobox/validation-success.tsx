@@ -1,5 +1,5 @@
-import { Flex } from "@/components/flex";
 import { ComboBox, ComboBoxItem } from "@/components/combobox";
+import { Flex } from "@/components/flex";
 
 export function ValidationSuccess() {
   return (

@@ -4,6 +4,8 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 import { Meter as AriaMeter } from "react-aria-components";
 
+import type { MeterVariant, Size, StyleXComponentProps } from "../theme/types";
+
 import { SizeContext } from "../context";
 import { Label } from "../label";
 import { animationDuration } from "../theme/animations.stylex";
@@ -16,7 +18,6 @@ import {
 } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { MeterVariant, Size, StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({

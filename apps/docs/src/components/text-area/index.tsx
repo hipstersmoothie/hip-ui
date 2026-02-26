@@ -1,13 +1,18 @@
-import * as stylex from "@stylexjs/stylex";
-import { use, useRef } from "react";
-import {
-  TextArea as AriaTextArea,
+import type {
   TextAreaProps as AriaTextAreaProps,
   InputProps,
   TextFieldProps,
   ValidationResult,
+} from "react-aria-components";
+
+import * as stylex from "@stylexjs/stylex";
+import { use, useRef } from "react";
+import {
+  TextArea as AriaTextArea,
   TextField as AriaTextField,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
@@ -16,8 +21,7 @@ import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
-import { lineHeight, fontSize, fontFamily } from "../theme/typography.stylex";
+import { fontFamily, fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
@@ -50,12 +54,12 @@ const styles = stylex.create({
     },
   },
   inputWrapper: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     boxSizing: "border-box",
     display: "flex",
     flexGrow: 1,
@@ -155,7 +159,7 @@ export function TextArea({
     <SizeContext value={size}>
       <AriaTextField {...props} {...stylex.props(styles.wrapper, style)}>
         <Label>{label}</Label>
-        {/* 
+        {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

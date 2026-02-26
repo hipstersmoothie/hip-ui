@@ -1,6 +1,6 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { slate, plum, red, yellow, green } from "./colors.stylex";
+import { green, plum, red, slate, yellow } from "./colors.stylex";
 import { fontFamily } from "./typography.stylex";
 
 // eslint-disable-next-line @stylexjs/enforce-extension
@@ -41,8 +41,8 @@ export const gray = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component2,
       ":active:not(:disabled)": slate.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component2,
       ":disabled": slate.component1,
     },
     transitionDuration: "100ms",
@@ -52,8 +52,8 @@ export const gray = stylex.create({
   bgUi: {
     backgroundColor: {
       default: slate.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component2,
       ":active:not(:disabled)": slate.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component2,
       ":disabled": slate.component1,
     },
     transitionDuration: "100ms",
@@ -63,8 +63,8 @@ export const gray = stylex.create({
   bgAction: {
     backgroundColor: {
       default: slate.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component3,
       ":active:not(:disabled)": slate.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": slate.component3,
       ":disabled": slate.component1,
     },
     transitionDuration: "100ms",
@@ -111,8 +111,8 @@ export const primary = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component2,
       ":active:not(:disabled)": plum.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component2,
       ":disabled": plum.component1,
     },
     transitionDuration: "100ms",
@@ -123,8 +123,8 @@ export const primary = stylex.create({
     backgroundColor: {
       default: plum.component1,
       ":hover:not(:has(* button:hover)):not(:disabled)": plum.component2,
-      ":active": plum.component3,
       ":disabled": plum.component1,
+      ":active": plum.component3,
     },
     transitionDuration: "100ms",
     transitionProperty: "background-color, border-color",
@@ -133,8 +133,8 @@ export const primary = stylex.create({
   bgAction: {
     backgroundColor: {
       default: plum.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component3,
       ":active:not(:disabled)": plum.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": plum.component3,
       ":disabled": plum.component1,
     },
     transitionDuration: "100ms",
@@ -180,8 +180,8 @@ export const critical = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.component2,
       ":active:not(:disabled)": red.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": red.component2,
       ":disabled": red.component1,
     },
     transitionDuration: "100ms",
@@ -191,8 +191,8 @@ export const critical = stylex.create({
   bgUi: {
     backgroundColor: {
       default: red.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.component2,
       ":active:not(:disabled)": red.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": red.component2,
       ":disabled": red.component1,
     },
     transitionDuration: "100ms",
@@ -202,8 +202,8 @@ export const critical = stylex.create({
   bgAction: {
     backgroundColor: {
       default: red.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": red.component3,
       ":active:not(:disabled)": red.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": red.component3,
       ":disabled": red.component1,
     },
     transitionDuration: "100ms",
@@ -254,8 +254,8 @@ export const warning = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
       ":active:not(:disabled)": yellow.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
       ":disabled": yellow.component1,
     },
     transitionDuration: "100ms",
@@ -265,8 +265,8 @@ export const warning = stylex.create({
   bgUi: {
     backgroundColor: {
       default: yellow.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
       ":active:not(:disabled)": yellow.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component2,
       ":disabled": yellow.component1,
     },
     transitionDuration: "100ms",
@@ -276,8 +276,8 @@ export const warning = stylex.create({
   bgAction: {
     backgroundColor: {
       default: yellow.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component3,
       ":active:not(:disabled)": yellow.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": yellow.component3,
       ":disabled": yellow.component1,
     },
     transitionDuration: "100ms",
@@ -333,8 +333,8 @@ export const success = stylex.create({
   bgGhost: {
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
       ":active:not(:disabled)": green.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
       ":disabled": green.component1,
     },
     transitionDuration: "100ms",
@@ -344,8 +344,8 @@ export const success = stylex.create({
   bgUi: {
     backgroundColor: {
       default: green.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
       ":active:not(:disabled)": green.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.component2,
       ":disabled": green.component1,
     },
     transitionDuration: "100ms",
@@ -355,8 +355,8 @@ export const success = stylex.create({
   bgAction: {
     backgroundColor: {
       default: green.component2,
-      ":hover:not(:has(* button:hover)):not(:disabled)": green.component3,
       ":active:not(:disabled)": green.component3,
+      ":hover:not(:has(* button:hover)):not(:disabled)": green.component3,
       ":disabled": green.component1,
     },
     transitionDuration: "100ms",

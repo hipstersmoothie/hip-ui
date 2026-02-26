@@ -1,4 +1,4 @@
-import { Breadcrumbs, Breadcrumb } from "@/components/breadcrumbs";
+import { Breadcrumb, Breadcrumbs } from "@/components/breadcrumbs";
 import { Link } from "@/components/link";
 
 export function Basic() {

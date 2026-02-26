@@ -3,10 +3,11 @@
 import * as stylex from "@stylexjs/stylex";
 import { createContext, use, useEffect, useState } from "react";
 
+import type { StyleXComponentProps } from "../theme/types";
+
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";
 
 export interface TocEntry {

@@ -106,15 +106,15 @@ const styles = stylex.create({
   secondary: {
     borderColor: {
       default: uiColor.component1,
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
     },
   },
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
     },
   },
 

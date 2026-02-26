@@ -17,12 +17,12 @@ const styles = stylex.create({
     display: "flex",
     userSelect: "none",
 
-    boxSizing: "border-box",
-    fontWeight: fontWeight["medium"],
     outline: {
       default: "none",
       ":focus": "none",
     },
+    boxSizing: "border-box",
+    fontWeight: fontWeight["medium"],
     paddingBottom: spacing["0.5"],
     paddingLeft: spacing["1"],
     paddingRight: spacing["1"],
@@ -32,19 +32,20 @@ const styles = stylex.create({
   md: { minHeight: spacing["9"] },
   lg: { minHeight: spacing["12"] },
   itemInner: {
+    borderRadius: radius["md"],
+    gap: spacing["3"],
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      [":is([data-react-aria-pressable=true][data-focused] *)"]:
-        slate.component2,
-      [":is([data-react-aria-pressable=true][data-selected=true] *)"]:
-        slate.component2,
       [":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)"]:
         slate.component2,
       [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
         slate.component3,
+      [":is([data-react-aria-pressable=true][data-focused] *)"]:
+        slate.component2,
+      [":is([data-react-aria-pressable=true][data-selected=true] *)"]:
+        slate.component2,
     },
-    borderRadius: radius["md"],
     boxSizing: "border-box",
     color: {
       default: slate.text2,
@@ -52,18 +53,17 @@ const styles = stylex.create({
     },
     display: "flex",
     flexGrow: 1,
-    gap: spacing["3"],
+    transitionDuration: "100ms",
+    transitionProperty: "background-color",
+    transitionTimingFunction: "ease-in-out",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
     paddingTop: spacing["2"],
-    transitionDuration: "100ms",
-    transitionProperty: "background-color",
-    transitionTimingFunction: "ease-in-out",
   },
   smItemInner: {
-    fontSize: fontSize["xs"],
     gap: spacing["2"],
+    fontSize: fontSize["xs"],
     lineHeight: lineHeight["xs"],
     paddingBottom: spacing["1"],
     paddingTop: spacing["1"],
@@ -83,16 +83,16 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
   },
   label: {
+    gap: spacing["1.5"],
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,
-    gap: spacing["1.5"],
   },
 });
 

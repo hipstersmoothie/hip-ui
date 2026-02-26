@@ -15,9 +15,9 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import {
-  ResizableTableContainer,
-  Pressable,
   Autocomplete,
+  Pressable,
+  ResizableTableContainer,
   useFilter,
 } from "react-aria-components";
 
@@ -36,36 +36,36 @@ import { Select, SelectItem } from "@/components/select";
 import { Separator } from "@/components/separator";
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableColumn,
-  TableRow,
   TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
 } from "@/components/table";
 import { Heading2, SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
-import { radius } from "../components/theme/radius.stylex";
 import { uiColor } from "../components/theme/color.stylex";
+import { radius } from "../components/theme/radius.stylex";
 import { shadow } from "../components/theme/shadow.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 
 const styles = stylex.create({
   main: {
-    backgroundColor: uiColor.bg,
     borderColor: uiColor.border1,
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["2xl"],
     },
-    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
+    cornerShape: "squircle",
+    overflow: "hidden",
+    backgroundColor: uiColor.bg,
     boxShadow: shadow.md,
     display: "flex",
     flexDirection: "column",
     marginTop: spacing["16"],
-    overflow: "hidden",
     paddingBottom: spacing["6"],
     paddingLeft: spacing["8"],
     paddingRight: spacing["8"],
@@ -94,7 +94,7 @@ interface Task {
   priority: "Low" | "Medium" | "High";
 }
 
-const tasks: Task[] = [
+const tasks: Array<Task> = [
   {
     id: "TASK-8782",
     title:
@@ -304,8 +304,8 @@ function Filter<T extends string>({
   children,
 }: {
   title: string;
-  selectedKeys: T[];
-  onSelectionChange: (keys: T[]) => void;
+  selectedKeys: Array<T>;
+  onSelectionChange: (keys: Array<T>) => void;
   children: React.ReactNode;
 }) {
   const { contains } = useFilter({ sensitivity: "base" });
@@ -339,7 +339,7 @@ function Filter<T extends string>({
             if (keys === "all") {
               //
             } else {
-              onSelectionChange([...keys] as T[]);
+              onSelectionChange([...keys] as Array<T>);
             }
           }}
         >
@@ -363,10 +363,12 @@ function Filter<T extends string>({
 export function TodoTable() {
   const [search, setSearch] = useState("");
   const [rowsPerPage, setRowsPerPage] = useState(10);
-  const [selectedRows, setSelectedRows] = useState<Task[]>([]);
+  const [selectedRows, setSelectedRows] = useState<Array<Task>>([]);
   const [page, setPage] = useState(1);
-  const [priorityFilter, setPriorityFilter] = useState<Task["priority"][]>([]);
-  const [statusFilter, setStatusFilter] = useState<Task["status"][]>([]);
+  const [priorityFilter, setPriorityFilter] = useState<Array<Task["priority"]>>(
+    [],
+  );
+  const [statusFilter, setStatusFilter] = useState<Array<Task["status"]>>([]);
   const currentPageTasks = tasks
     .filter((task) => task.title.toLowerCase().includes(search.toLowerCase()))
     .filter(
@@ -377,7 +379,7 @@ export function TodoTable() {
     )
     .slice((page - 1) * rowsPerPage, page * rowsPerPage);
   const [visibleColumns, setVisibleColumns] =
-    useState<string[]>(hideableColumns);
+    useState<Array<string>>(hideableColumns);
   const activeColumns = columns.filter(
     (column) =>
       !hideableColumns.includes(column.id) ||
@@ -525,7 +527,7 @@ export function TodoTable() {
               if (keys === "all") {
                 setVisibleColumns(columns.map((column) => column.id));
               } else {
-                setVisibleColumns([...keys] as string[]);
+                setVisibleColumns([...keys] as Array<string>);
               }
             }}
             selectionMode="multiple"

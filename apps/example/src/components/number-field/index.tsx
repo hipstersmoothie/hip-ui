@@ -1,46 +1,50 @@
+import type {
+  NumberFieldProps as AriaNumberFieldProps,
+  InputProps,
+  ValidationResult,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Minus, Plus } from "lucide-react";
 import { useRef } from "react";
 import {
-  NumberFieldProps as AriaNumberFieldProps,
-  Input,
-  InputProps,
-  ValidationResult,
-  FieldError,
   NumberField as AriaNumberField,
-  Group,
   Button,
+  FieldError,
+  Group,
+  Input,
 } from "react-aria-components";
+
+import type { Size } from "../types";
 
 import { Description, Label } from "../label";
 import { slate } from "../theme/colors.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { useInputStyles } from "../theme/useInputStyles";
-import { Size } from "../types";
 
 const styles = stylex.create({
   buttons: {
     display: "flex",
   },
   button: {
+    borderWidth: 0,
     alignItems: "center",
+    display: "flex",
     borderBottomWidth: 0,
+    flexGrow: 1,
     borderLeftStyle: "solid",
+    justifyContent: "center",
     borderLeftWidth: 1,
     borderRightWidth: 0,
     borderTopWidth: 0,
-    borderWidth: 0,
-    display: "flex",
-    flexGrow: 1,
-    justifyContent: "center",
     minHeight: 0,
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       flexShrink: 0,
-      height: spacing["4"],
       pointerEvents: "none",
+      height: spacing["4"],
       width: spacing["4"],
     },
 
@@ -86,7 +90,7 @@ export function NumberField({
   return (
     <AriaNumberField {...props} {...stylex.props(inputStyles.field, style)}>
       <Label size={size}>{label}</Label>
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

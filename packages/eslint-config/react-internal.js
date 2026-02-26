@@ -1,9 +1,9 @@
-import * as stylex from "@stylexjs/eslint-plugin";
-import pluginReactHooks from "eslint-plugin-react-hooks";
 import eslintReact from "@eslint-react/eslint-plugin";
-import { defineConfig } from "eslint/config";
+import * as stylex from "@stylexjs/eslint-plugin";
 import jsxA11y from "eslint-plugin-jsx-a11y";
+import pluginReactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
+import { defineConfig } from "eslint/config";
 
 import { config as baseConfig } from "./base.js";
 

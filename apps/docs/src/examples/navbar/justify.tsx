@@ -1,3 +1,5 @@
+import * as stylex from "@stylexjs/stylex";
+
 import { Button } from "@/components/button";
 import { Flex } from "@/components/flex";
 import {
@@ -7,12 +9,11 @@ import {
   NavbarLogo,
   NavbarNavigation,
 } from "@/components/navbar";
-import * as stylex from "@stylexjs/stylex";
 
 const styles = stylex.create({
   wrapper: {
-    width: "80%",
     boxSizing: "border-box",
+    width: "80%",
   },
 });
 

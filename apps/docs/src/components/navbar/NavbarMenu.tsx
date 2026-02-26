@@ -5,7 +5,10 @@ import * as React from "react";
 import { mergeProps, useHover, usePress } from "react-aria";
 import { Button, Disclosure, DisclosurePanel } from "react-aria-components";
 
-import { HoverCard, HoverCardProps } from "../hover-card";
+import type { HoverCardProps } from "../hover-card";
+import type { StyleXComponentProps } from "../theme/types";
+
+import { HoverCard } from "../hover-card";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import {
@@ -14,7 +17,6 @@ import {
 } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({

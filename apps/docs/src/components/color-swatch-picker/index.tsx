@@ -1,18 +1,22 @@
+import type {
+  ColorSwatchPickerItemProps as AriaColorSwatchPickerItemProps,
+  ColorSwatchPickerProps as AriaColorSwatchPickerProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 import {
   ColorSwatchPicker as AriaColorSwatchPicker,
   ColorSwatchPickerItem as AriaColorSwatchPickerItem,
-  type ColorSwatchPickerItemProps as AriaColorSwatchPickerItemProps,
-  type ColorSwatchPickerProps as AriaColorSwatchPickerProps,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { ColorSwatch } from "../color-swatch";
 import { SizeContext } from "../context";
 import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   picker: {

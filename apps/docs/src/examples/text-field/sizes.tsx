@@ -1,6 +1,7 @@
+import { CheckCircle } from "lucide-react";
+
 import { Flex } from "@/components/flex";
 import { TextField } from "@/components/text-field";
-import { CheckCircle } from "lucide-react";
 
 export function TextFieldSizes() {
   return (

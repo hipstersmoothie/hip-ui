@@ -3,14 +3,14 @@ import * as stylex from "@stylexjs/stylex";
 import { Flex } from "@/components/flex";
 import { Separator } from "@/components/separator";
 import {
-  Heading4,
-  Heading3,
-  Heading2,
-  Heading1,
-  LabelText,
-  Heading5,
-  SmallBody,
   Body,
+  Heading1,
+  Heading2,
+  Heading3,
+  Heading4,
+  Heading5,
+  LabelText,
+  SmallBody,
   SubLabel,
 } from "@/components/typography";
 

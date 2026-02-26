@@ -1,6 +1,8 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size } from "./types";
+
 import { SizeContext } from "../context";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -13,7 +15,6 @@ import {
 import { animationDuration } from "./animations.stylex";
 import { criticalColor, primaryColor, uiColor } from "./color.stylex";
 import { mediaQueries } from "./media-queries.stylex";
-import { Size } from "./types";
 
 const styles = stylex.create({
   item: {
@@ -39,12 +40,12 @@ const styles = stylex.create({
   md: { minHeight: spacing["9"] },
   lg: { minHeight: spacing["12"] },
   itemInner: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     gap: spacing["3"],
     alignItems: "center",
     backgroundColor: {

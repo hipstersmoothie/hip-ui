@@ -1,7 +1,7 @@
 import * as stylex from "@stylexjs/stylex";
 
-import { Flex } from "../../components/flex";
 import { ColorSlider } from "../../components/color-slider";
+import { Flex } from "../../components/flex";
 
 const styles = stylex.create({
   wrapper: {

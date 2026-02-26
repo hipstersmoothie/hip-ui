@@ -120,7 +120,7 @@ const styles = stylex.create({
     alignItems: "center",
     color: {
       default: uiColor.text1,
-      ":hover": uiColor.text2,
+      ":is([data-hovered])": uiColor.text2,
     },
     cursor: "pointer",
     display: "inline-flex",
@@ -181,7 +181,7 @@ const styles = stylex.create({
     flexDirection: "row",
   },
   subscribeInputField: {
-    flex: "1",
+    flexGrow: 1,
   },
 });
 

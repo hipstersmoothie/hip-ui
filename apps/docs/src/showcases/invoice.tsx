@@ -38,9 +38,9 @@ import { ToggleButton } from "@/components/toggle-button";
 import { Body, Heading5, SmallBody } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
-import { radius } from "../components/theme/radius.stylex";
-import { ui, primary } from "../components/theme/semantic-color.stylex";
 import { primaryColor, successColor } from "../components/theme/color.stylex";
+import { radius } from "../components/theme/radius.stylex";
+import { primary, ui } from "../components/theme/semantic-color.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 import { fontFamily, typeramp } from "../components/theme/typography.stylex";
 
@@ -63,9 +63,9 @@ const styles = stylex.create({
     flexShrink: 0,
   },
   pinnedButtons: {
+    position: "absolute",
     marginRight: spacing["4"],
     marginTop: spacing["4"],
-    position: "absolute",
     right: 0,
     top: 0,
   },
@@ -76,23 +76,23 @@ const styles = stylex.create({
     color: successColor.solid2,
   },
   creditCardWrapper: {
+    padding: spacing["8"],
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
     cornerShape: "squircle",
-    padding: spacing["8"],
   },
   creditCard: {
-    backgroundImage: `linear-gradient(135deg, ${primaryColor.solid2} 0%, ${primaryColor.text1} 100%)`,
+    padding: spacing["4"],
     borderRadius: {
       default: radius["lg"],
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
     cornerShape: "squircle",
+    backgroundImage: `linear-gradient(135deg, ${primaryColor.solid2} 0%, ${primaryColor.text1} 100%)`,
     fontFamily: fontFamily["mono"],
     height: spacing["40"],
-    padding: spacing["4"],
   },
   copyCardNumber: {
     backgroundColor: {

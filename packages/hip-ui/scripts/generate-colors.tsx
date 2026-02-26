@@ -38,10 +38,10 @@ const names = [
 
 function generateDefineVars(
   name: string,
-  color: string[],
-  colorDark: string[],
-  colorP3: string[],
-  colorDarkP3: string[],
+  color: Array<string>,
+  colorDark: Array<string>,
+  colorP3: Array<string>,
+  colorDarkP3: Array<string>,
 ) {
   return dedent`
     export const ${name} = stylex.defineVars({

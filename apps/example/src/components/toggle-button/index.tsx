@@ -1,15 +1,15 @@
+import type { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Children, use } from "react";
-import {
-  ToggleButtonProps as AriaToggleButtonProps,
-  ToggleButton as AriaToggleButton,
-} from "react-aria-components";
+import { ToggleButton as AriaToggleButton } from "react-aria-components";
+
+import type { ButtonVariant, Size } from "../types";
 
 import { SizeContext } from "../context";
 import { plum, slate } from "../theme/colors.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { useButtonStyles } from "../theme/useButtonStyles";
-import { ButtonVariant, Size } from "../types";
 
 const styles = stylex.create({
   primarySelected: {
@@ -21,36 +21,36 @@ const styles = stylex.create({
     color: "light-dark(white, black)",
   },
   secondarySelected: {
-    backgroundColor: {
+    borderColor: {
       default: slate.border1,
       ":hover": slate.border2,
       ":active": slate.border3,
     },
-    borderColor: {
+    backgroundColor: {
       default: slate.border1,
       ":hover": slate.border2,
       ":active": slate.border3,
     },
   },
   tertiarySelected: {
-    backgroundColor: {
+    borderColor: {
       default: slate.border1,
       ":hover": slate.border2,
       ":active": slate.border3,
     },
-    borderColor: {
+    backgroundColor: {
       default: slate.border1,
       ":hover": slate.border2,
       ":active": slate.border3,
     },
   },
   outlineSelected: {
-    backgroundColor: {
+    borderColor: {
       default: slate.border1,
       ":hover": slate.border2,
       ":active": slate.border3,
     },
-    borderColor: {
+    backgroundColor: {
       default: slate.border1,
       ":hover": slate.border2,
       ":active": slate.border3,

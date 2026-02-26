@@ -3,14 +3,15 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { ButtonVariant, Size } from "../theme/types";
+
 import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
-import { Size, ButtonVariant } from "../theme/types";
 import { animationDuration } from "./animations.stylex";
 import { uiColor } from "./color.stylex";
 import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
-import { critical, ui, primary } from "./semantic-color.stylex";
+import { critical, primary, ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
 import {
@@ -25,14 +26,14 @@ const styles = stylex.create({
     boxShadow: shadow["xs"],
   },
   base: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderStyle: "solid",
     borderWidth: 1,
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     gap: spacing["1"],
     alignItems: "center",
     boxSizing: "border-box",

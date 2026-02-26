@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 import { Cropper as OriginCropper } from "@origin-space/image-cropper";
 import { useEffectEvent } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 import type { StyleXComponentProps } from "../theme/types";
 
@@ -78,7 +78,12 @@ export type CropArea = {
 export interface ImageCropperRootProps extends StyleXComponentProps<
   Omit<
     ComponentProps<typeof OriginCropper.Root>,
-    "className" | "style" | "children" | "onCropChange" | "image"
+    | "className"
+    | "style"
+    | "children"
+    | "onCropChange"
+    | "image"
+    | "aspectRatio"
   >
 > {
   /**
@@ -87,9 +92,10 @@ export interface ImageCropperRootProps extends StyleXComponentProps<
   image: string | Blob;
   /**
    * The desired width/height aspect ratio (e.g., 1, 1.5, 4/3, 16/9).
+   * Set to `null` or `undefined` for free-form cropping (no aspect ratio constraint).
    * @default 1
    */
-  aspectRatio?: number;
+  aspectRatio?: number | null;
   /**
    * Minimum padding (in pixels) between the crop area edges and the container edges.
    * @default 25
@@ -154,7 +160,7 @@ export interface ImageCropperRootProps extends StyleXComponentProps<
 export function ImageCropperRoot({
   style,
   image,
-  aspectRatio = 1,
+  aspectRatio,
   cropPadding = 25,
   minZoom = 1,
   maxZoom = 3,
@@ -167,7 +173,6 @@ export function ImageCropperRoot({
   ...props
 }: ImageCropperRootProps) {
   const [imageUrl, setImageUrl] = useState<string>(() => "");
-  const rootRef = useRef<HTMLDivElement | null>(null);
 
   const handleError = () => {
     onCropChange?.(null);
@@ -178,7 +183,6 @@ export function ImageCropperRoot({
     const newUrl =
       typeof image === "string" ? image : URL.createObjectURL(image);
 
-    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setImageUrl(newUrl);
 
     return () => {
@@ -193,81 +197,42 @@ export function ImageCropperRoot({
     return createImageUrl();
   }, [image]);
 
-  // Prevent page scrolling on mobile when dragging
-  useEffect(() => {
-    const rootElement = rootRef.current;
-    if (!rootElement) return;
+  // Prepare props for OriginCropper - only include aspectRatio if it's not null/undefined
+  const cropperProps = {
+    ...props,
+    image: imageUrl,
+    cropPadding,
+    minZoom,
+    maxZoom,
+    zoomSensitivity,
+    keyboardStep,
+    zoom,
+  };
 
-    let isDragging = false;
+  // Only add aspectRatio if it's a number (not null/undefined)
+  if (aspectRatio !== null && aspectRatio !== undefined) {
+    (
+      cropperProps as typeof cropperProps & { aspectRatio: number }
+    ).aspectRatio = aspectRatio;
+  }
 
-    const handleTouchStart = (e: TouchEvent) => {
-      // Only prevent scrolling if the touch starts on the cropper element or its children
-      const target = e.target as Node;
-      if (rootElement.contains(target)) {
-        isDragging = true;
-      }
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (isDragging) {
-        e.preventDefault();
-      }
-    };
-
-    const handleTouchEnd = () => {
-      isDragging = false;
-    };
-
-    // Prevent document scrolling during drag
-    const handleDocumentTouchMove = (e: TouchEvent) => {
-      if (isDragging) {
-        e.preventDefault();
-      }
-    };
-
-    rootElement.addEventListener("touchstart", handleTouchStart, {
-      passive: false,
-    });
-    rootElement.addEventListener("touchmove", handleTouchMove, {
-      passive: false,
-    });
-    rootElement.addEventListener("touchend", handleTouchEnd, {
-      passive: false,
-    });
-    rootElement.addEventListener("touchcancel", handleTouchEnd, {
-      passive: false,
-    });
-
-    // Also prevent scrolling on document level when dragging
-    document.addEventListener("touchmove", handleDocumentTouchMove, {
-      passive: false,
-    });
-
-    return () => {
-      rootElement.removeEventListener("touchstart", handleTouchStart);
-      rootElement.removeEventListener("touchmove", handleTouchMove);
-      rootElement.removeEventListener("touchend", handleTouchEnd);
-      rootElement.removeEventListener("touchcancel", handleTouchEnd);
-      document.removeEventListener("touchmove", handleDocumentTouchMove);
-    };
-  }, []);
-
-  const setRootRef = (element: HTMLDivElement | null) => {
-    rootRef.current = element;
+  const stylexProps = stylex.props(styles.root, style);
+  // Extract className and any other props, but exclude style if present to avoid CSSStyleDeclaration conflicts
+  const {
+    className,
+    style: _,
+    ...restStylexProps
+  } = stylexProps as {
+    className?: string;
+    style?: unknown;
+    [key: string]: unknown;
   };
 
   return (
     <OriginCropper.Root
-      {...props}
-      ref={setRootRef}
-      image={imageUrl}
-      aspectRatio={aspectRatio}
-      cropPadding={cropPadding}
-      minZoom={minZoom}
-      maxZoom={maxZoom}
-      zoomSensitivity={zoomSensitivity}
-      keyboardStep={keyboardStep}
-      zoom={zoom}
+      {...cropperProps}
+      className={className}
+      {...restStylexProps}
       onCropChange={(crop) => {
         if (!crop) {
           onCropChange?.(null);
@@ -317,7 +282,6 @@ export function ImageCropperRoot({
         img.src = imageUrl;
       }}
       onZoomChange={onZoomChange}
-      {...stylex.props(styles.root, style)}
     >
       {children}
     </OriginCropper.Root>

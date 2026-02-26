@@ -1,17 +1,16 @@
 import { isMac as getIsMac } from "@react-aria/utils";
 import * as stylex from "@stylexjs/stylex";
 
+import type { StyleXComponentProps } from "../theme/types";
+
 import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontFamily, lineHeight, tracking } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   kbd: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderColor: uiColor.border2,
     borderRadius: {
       default: radius["sm"],
@@ -19,6 +18,8 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: "1px",
+
+    cornerShape: "squircle",
     backgroundColor: uiColor.component2,
     boxShadow: `0 2px 0 1px ${uiColor.border2}`,
     color: uiColor.text1,

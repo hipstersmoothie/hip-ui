@@ -1,17 +1,22 @@
+import type {
+  TreeItemContentProps as AriaTreeItemContentProps,
+  TreeItemProps as AriaTreeItemProps,
+  TreeProps as AriaTreeProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { ChevronRight, GripVertical } from "lucide-react";
 import { use } from "react";
 import {
-  Button,
-  Virtualizer,
   Tree as AriaTree,
-  TreeProps as AriaTreeProps,
-  TreeItemContent as AriaTreeItemContent,
   TreeItem as AriaTreeItem,
-  TreeItemProps as AriaTreeItemProps,
-  TreeItemContentProps as AriaTreeItemContentProps,
+  TreeItemContent as AriaTreeItemContent,
+  Button,
   ListLayout,
+  Virtualizer,
 } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
@@ -21,7 +26,6 @@ import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import {
   estimatedRowHeights,
   useListBoxItemStyles,
@@ -88,12 +92,12 @@ const styles = stylex.create({
     top: "50%",
   },
   dragButton: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["sm"],
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     alignItems: "center",
     display: "flex",
     justifyContent: "center",

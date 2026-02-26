@@ -1,11 +1,10 @@
 "use client";
 
+import type { ToggleButtonGroupProps as AriaToggleButtonGroupProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
-import {
-  ToggleButtonGroupProps as AriaToggleButtonGroupProps,
-  ToggleButtonGroup as AriaToggleButtonGroup,
-} from "react-aria-components";
+import { ToggleButtonGroup as AriaToggleButtonGroup } from "react-aria-components";
 
 import { ButtonGroupContext } from "../button/context";
 

@@ -1,14 +1,14 @@
+import type { ToggleButtonProps as AriaToggleButtonProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Children, use } from "react";
-import {
-  ToggleButtonProps as AriaToggleButtonProps,
-  ToggleButton as AriaToggleButton,
-} from "react-aria-components";
+import { ToggleButton as AriaToggleButton } from "react-aria-components";
+
+import type { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 import { useButtonStyles } from "../theme/useButtonStyles";
 
 const styles = stylex.create({

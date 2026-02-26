@@ -1,5 +1,6 @@
-import { Pre, InlineCode } from "@/components/typography";
 import * as stylex from "@stylexjs/stylex";
+
+import { InlineCode, Pre } from "@/components/typography";
 
 const styles = stylex.create({
   pre: {

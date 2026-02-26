@@ -8,8 +8,8 @@ import { Text } from "@/components/typography/text";
 
 const styles = stylex.create({
   link: {
-    color: "inherit",
     textDecoration: "none",
+    color: "inherit",
   },
 });
 

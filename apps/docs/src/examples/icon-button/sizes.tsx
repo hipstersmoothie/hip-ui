@@ -1,4 +1,4 @@
-import { Plus, Minus, Settings } from "lucide-react";
+import { Minus, Plus, Settings } from "lucide-react";
 
 import { Flex } from "@/components/flex";
 import { IconButton } from "@/components/icon-button";

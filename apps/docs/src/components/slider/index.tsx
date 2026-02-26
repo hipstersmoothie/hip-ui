@@ -3,17 +3,18 @@ import type { SliderProps as AriaSliderProps } from "react-aria-components";
 import * as stylex from "@stylexjs/stylex";
 import {
   Slider as AriaSlider,
-  SliderTrack,
-  SliderThumb,
   SliderOutput,
+  SliderThumb,
+  SliderTrack,
 } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { Label } from "../label";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 import { fontSize, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
@@ -177,8 +178,8 @@ const styles = stylex.create({
 
 interface SliderProps<T> extends StyleXComponentProps<AriaSliderProps<T>> {
   label?: string;
-  names?: string[];
-  thumbLabels?: string[];
+  names?: Array<string>;
+  thumbLabels?: Array<string>;
   autoFocus?: boolean;
   showValueLabel?: boolean;
 }

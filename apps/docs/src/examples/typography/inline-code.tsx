@@ -1,4 +1,4 @@
-import { InlineCode, Body } from "@/components/typography";
+import { Body, InlineCode } from "@/components/typography";
 
 export function InlineCodeExample() {
   return (

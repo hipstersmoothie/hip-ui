@@ -1,4 +1,4 @@
-import { Move, Square, Circle, Paintbrush, Pencil } from "lucide-react";
+import { Circle, Move, Paintbrush, Pencil, Square } from "lucide-react";
 
 import { IconButton } from "@/components/icon-button";
 import { Toolbar, ToolbarGroup, ToolbarSeparator } from "@/components/toolbar";

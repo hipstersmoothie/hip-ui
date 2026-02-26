@@ -1,8 +1,9 @@
-import {
-  FileDropZone,
-  FileDropDefaultTrigger,
-} from "@/components/file-drop-zone";
 import { CameraIcon } from "lucide-react";
+
+import {
+  FileDropDefaultTrigger,
+  FileDropZone,
+} from "@/components/file-drop-zone";
 
 export function DefaultTrigger() {
   return (

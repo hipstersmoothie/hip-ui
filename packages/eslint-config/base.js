@@ -1,14 +1,14 @@
-import eslintJs from "@eslint/js";
-import { defineConfig } from "eslint/config";
-import eslintConfigPrettier from "eslint-config-prettier";
-import turboPlugin from "eslint-plugin-turbo";
-import tseslint from "typescript-eslint";
 import comments from "@eslint-community/eslint-plugin-eslint-comments/configs";
+import eslintJs from "@eslint/js";
 import gitignore from "eslint-config-flat-gitignore";
-import { importX } from "eslint-plugin-import-x";
+import eslintConfigPrettier from "eslint-config-prettier";
 import { createTypeScriptImportResolver } from "eslint-import-resolver-typescript";
+import { importX } from "eslint-plugin-import-x";
 import perfectionist from "eslint-plugin-perfectionist";
+import turboPlugin from "eslint-plugin-turbo";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
+import { defineConfig } from "eslint/config";
+import tseslint from "typescript-eslint";
 
 /**
  * A shared ESLint configuration for the repository.

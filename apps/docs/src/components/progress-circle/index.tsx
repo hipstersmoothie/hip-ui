@@ -3,7 +3,7 @@ import type { ProgressBarProps as AriaProgressBarProps } from "react-aria-compon
 import * as stylex from "@stylexjs/stylex";
 import { Check } from "lucide-react";
 import { use } from "react";
-import { ProgressBar as ProgressBar } from "react-aria-components";
+import { ProgressBar } from "react-aria-components";
 
 import type { Size, StyleXComponentProps } from "../theme/types";
 

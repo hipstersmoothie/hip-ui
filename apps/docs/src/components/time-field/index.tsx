@@ -1,23 +1,27 @@
+import type {
+  TimeFieldProps as AriaTimeFieldProps,
+  TimeValue,
+  ValidationResult,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use, useRef } from "react";
 import {
-  TimeFieldProps as AriaTimeFieldProps,
+  TimeField as AriaTimeField,
   DateInput,
   DateSegment,
-  TimeValue,
-  ValidationResult,
-  TimeField as AriaTimeField,
 } from "react-aria-components";
+
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
-import {
-  InputVariant,
-  InputValidationState,
-  Size,
-  StyleXComponentProps,
-} from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 
 interface TimeFieldContentProps {
@@ -53,7 +57,7 @@ function TimeFieldContent({
   return (
     <>
       <Label>{label}</Label>
-      {/* 
+      {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
       */}

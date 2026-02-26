@@ -1,20 +1,29 @@
-import type { ValidationResult } from "react-aria-components";
+import type {
+  SelectProps as AriaSelectProps,
+  PopoverProps,
+  ValidationResult,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
 import { ChevronDown } from "lucide-react";
 import { use } from "react";
 import {
-  SelectProps as AriaSelectProps,
-  Button,
-  Popover,
-  SelectValue,
-  PopoverProps,
   Select as AriaSelect,
   Autocomplete,
-  useFilter,
+  Button,
   ListLayout,
+  Popover,
+  SelectValue,
   Virtualizer,
+  useFilter,
 } from "react-aria-components";
+
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
@@ -22,12 +31,6 @@ import { ListBox, ListBoxSeparator } from "../listbox";
 import { SearchField } from "../search-field";
 import { SuffixIcon } from "../suffix-icon";
 import { spacing } from "../theme/spacing.stylex";
-import {
-  InputVariant,
-  InputValidationState,
-  Size,
-  StyleXComponentProps,
-} from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { estimatedRowHeights } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";

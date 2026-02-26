@@ -1,8 +1,11 @@
-import { SidebarLayout } from "@/components/sidebar-layout";
-import { TableOfContents, Toc } from "@/components/table-of-contents";
-import { Content } from "@/components/content";
-import { Heading1, Heading2, Heading3, Body } from "@/components/typography";
 import * as stylex from "@stylexjs/stylex";
+
+import type { Toc } from "@/components/table-of-contents";
+
+import { Content } from "@/components/content";
+import { SidebarLayout } from "@/components/sidebar-layout";
+import { TableOfContents } from "@/components/table-of-contents";
+import { Body, Heading1, Heading2, Heading3 } from "@/components/typography";
 
 const styles = stylex.create({
   root: {

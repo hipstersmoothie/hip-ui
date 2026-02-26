@@ -4,12 +4,12 @@ import { useListData } from "react-stately";
 
 import {
   Table,
-  TableHeader,
   TableBody,
-  TableColumn,
-  TableRow,
   TableCell,
+  TableColumn,
   TableDropIndicator,
+  TableHeader,
+  TableRow,
 } from "@/components/table";
 
 const styles = stylex.create({

@@ -1,9 +1,13 @@
 "use client";
+import type { LinkProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { Menu, X } from "lucide-react";
 import * as React from "react";
 import { use, useState } from "react";
-import { Link, LinkProps } from "react-aria-components";
+import { Link } from "react-aria-components";
+
+import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
@@ -12,7 +16,6 @@ import { primaryColor, uiColor } from "../theme/color.stylex";
 import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { Size, StyleXComponentProps } from "../theme/types";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({

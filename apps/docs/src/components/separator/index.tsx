@@ -1,11 +1,11 @@
+import type { SeparatorProps as AriaSeparatorProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
-import {
-  SeparatorProps as AriaSeparatorProps,
-  Separator as AriaSeparator,
-} from "react-aria-components";
+import { Separator as AriaSeparator } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import { uiColor } from "../theme/color.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   separator: {

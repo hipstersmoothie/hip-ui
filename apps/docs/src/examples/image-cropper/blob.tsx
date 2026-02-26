@@ -1,6 +1,7 @@
-import { useMemo } from "react";
-import { ImageCropper } from "@/components/image-cropper";
 import * as stylex from "@stylexjs/stylex";
+import { useMemo } from "react";
+
+import { ImageCropper } from "@/components/image-cropper";
 
 const styles = stylex.create({
   example: {
@@ -42,7 +43,7 @@ function createRainbowBlob(): Blob {
   const ab = new ArrayBuffer(byteString.length);
   const ia = new Uint8Array(ab);
   for (let i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
+    ia[i] = byteString.codePointAt(i);
   }
   return new Blob([ab], { type: mimeString });
 }

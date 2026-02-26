@@ -1,4 +1,4 @@
-import { ComponentConfig } from "../../types";
+import type { ComponentConfig } from "../../types";
 
 export const timeFieldConfig: ComponentConfig = {
   name: "time-field",

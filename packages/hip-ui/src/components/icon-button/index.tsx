@@ -1,13 +1,15 @@
 "use client";
 
+import type { ButtonProps as AriaButtonProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
-import { ButtonProps as AriaButtonProps } from "react-aria-components";
+
+import type { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 
 import { Button } from "../button";
 import { SizeContext } from "../context";
 import { spacing } from "../theme/spacing.stylex";
-import { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 import { Tooltip } from "../tooltip";
 
 const styles = stylex.create({
@@ -56,6 +58,11 @@ export const IconButton = ({
 }: IconButtonProps) => {
   const size = sizeProp || use(SizeContext);
 
+  const buttonChildren =
+    typeof children === "function"
+      ? (children as () => React.ReactNode)()
+      : children;
+
   if (!label) {
     return (
       <Button
@@ -63,7 +70,7 @@ export const IconButton = ({
         style={[styles.button as unknown as stylex.StyleXStyles, style]}
         {...props}
       >
-        {children}
+        {buttonChildren}
       </Button>
     );
   }
@@ -79,7 +86,7 @@ export const IconButton = ({
         style={[styles.button as unknown as stylex.StyleXStyles, style]}
         {...props}
       >
-        {children}
+        {buttonChildren}
       </Button>
     </Tooltip>
   );

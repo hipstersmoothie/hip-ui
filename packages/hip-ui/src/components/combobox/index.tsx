@@ -1,30 +1,34 @@
-import type { ListBoxProps, ValidationResult } from "react-aria-components";
+import type {
+  ComboBoxProps as AriaComboBoxProps,
+  ListBoxProps,
+  PopoverProps,
+  ValidationResult,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
 import { ChevronDown } from "lucide-react";
 import { use } from "react";
 import {
-  Button,
-  Popover,
-  PopoverProps,
   ComboBox as AriaComboBox,
-  ComboBoxProps as AriaComboBoxProps,
+  Button,
   Input,
-  Virtualizer,
   ListLayout,
+  Popover,
+  Virtualizer,
 } from "react-aria-components";
+
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { ListBox } from "../listbox";
 import { SuffixIcon } from "../suffix-icon";
 import { spacing } from "../theme/spacing.stylex";
-import {
-  InputVariant,
-  InputValidationState,
-  Size,
-  StyleXComponentProps,
-} from "../theme/types";
 import { useInputStyles } from "../theme/useInputStyles";
 import { estimatedRowHeights } from "../theme/useListBoxItemStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";

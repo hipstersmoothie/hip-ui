@@ -1,3 +1,6 @@
+import { capitalCase } from "change-case";
+import { use, useState } from "react";
+
 import { Button } from "@/components/button";
 import {
   Dialog,
@@ -5,20 +8,21 @@ import {
   DialogFooter,
   DialogHeader,
 } from "@/components/dialog";
-import {
+import { Flex } from "@/components/flex";
+import { IconButton } from "@/components/icon-button";
+import { Select, SelectItem } from "@/components/select";
+
+import type {
   Color,
   PrimaryColor,
-  primaryColors,
+  UiColor} from "./ThemeContext";
+
+import { ColorPreview } from "./ColorPreview";
+import {
   ThemeContext,
-  UiColor,
+  primaryColors,
   uiNames,
 } from "./ThemeContext";
-import { use, useState } from "react";
-import { Select, SelectItem } from "@/components/select";
-import { IconButton } from "@/components/icon-button";
-import { ColorPreview } from "./ColorPreview";
-import { capitalCase } from "change-case";
-import { Flex } from "@/components/flex";
 
 function ColorSelect<T extends Color>({
   color,
@@ -27,7 +31,7 @@ function ColorSelect<T extends Color>({
   onChange,
 }: {
   color: T;
-  colors: readonly T[];
+  colors: ReadonlyArray<T>;
   label: string;
   onChange: (color: T) => void;
 }) {

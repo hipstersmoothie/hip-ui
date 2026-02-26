@@ -1,5 +1,5 @@
 import { Flex } from "@/components/flex";
-import { Label, Description } from "@/components/label";
+import { Description, Label } from "@/components/label";
 import { TextField } from "@/components/text-field";
 
 export function Basic() {

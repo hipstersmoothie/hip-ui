@@ -50,12 +50,11 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      [":is([data-focused]:not([data-disabled]) *)"]:
-        uiColor.component2,
-      [":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)"]:
-        uiColor.component2,
-      [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
+      [":is([data-focused]:not([data-disabled]) *)"]: uiColor.component2,
+      [":is([data-react-aria-pressable=true]:not([data-disabled])[data-pressed=true] *)"]:
         uiColor.component3,
+      [":is([data-react-aria-pressable=true][data-hovered]:not([data-disabled]) *)"]:
+        uiColor.component2,
     },
     boxSizing: "border-box",
     color: {

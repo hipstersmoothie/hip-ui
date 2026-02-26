@@ -66,6 +66,7 @@ export const tracking = stylex.defineVars({
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const typeramp = stylex.create({
   heading1: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: {
@@ -79,13 +80,12 @@ export const typeramp = stylex.create({
       default: lineHeight["4xl"],
       [breakpoints["md"]]: lineHeight["5xl"],
     },
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   heading2: {
-    borderBottomWidth: 1,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
+    margin: 0,
     fontSize: {
       default: fontSize["3xl"],
       [breakpoints["md"]]: fontSize["4xl"],
@@ -97,11 +97,12 @@ export const typeramp = stylex.create({
       default: lineHeight["3xl"],
       [breakpoints["md"]]: lineHeight["4xl"],
     },
-    margin: 0,
-    paddingBottom: spacing["2"],
+    borderBottomWidth: 1,
     scrollMarginBlockStart: spacing["20"],
+    paddingBottom: spacing["2"],
   },
   heading3: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["2xl"] },
@@ -109,10 +110,10 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: { default: lineHeight["2xl"] },
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   heading4: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["xl"] },
@@ -120,7 +121,6 @@ export const typeramp = stylex.create({
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],
     lineHeight: { default: lineHeight["xl"] },
-    margin: 0,
     scrollMarginBlockStart: spacing["20"],
   },
   heading5: {
@@ -133,18 +133,18 @@ export const typeramp = stylex.create({
     lineHeight: { default: lineHeight["lg"] },
   },
   body: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["base"] },
     lineHeight: spacing["7"],
-    margin: 0,
   },
   smallBody: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["sm"] },
     lineHeight: { default: lineHeight["sm"] },
-    margin: 0,
   },
   label: {
     // eslint-disable-next-line @stylexjs/valid-styles
@@ -156,12 +156,12 @@ export const typeramp = stylex.create({
     lineHeight: { default: lineHeight["sm"] },
   },
   sublabel: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
     fontSize: { default: fontSize["xs"] },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["medium"],
     lineHeight: { default: lineHeight["xs"] },
-    margin: 0,
   },
 });

@@ -1,9 +1,8 @@
+import type { LinkProps as AriaLinkProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
-import {
-  LinkProps as AriaLinkProps,
-  Link as AriaLink,
-} from "react-aria-components";
+import { Link as AriaLink } from "react-aria-components";
 
 import { blue } from "../theme/colors.stylex";
 import { fontFamily, fontWeight } from "../theme/typography.stylex";
@@ -11,6 +10,10 @@ import { LinkContext } from "./link-context";
 
 const styles = stylex.create({
   link: {
+    textDecoration: {
+      default: "none",
+      ":hover": "underline",
+    },
     color: {
       default: blue.text2,
       ":visited": blue.text1,
@@ -18,10 +21,6 @@ const styles = stylex.create({
     cursor: "pointer",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],
-    textDecoration: {
-      default: "none",
-      ":hover": "underline",
-    },
   },
 });
 

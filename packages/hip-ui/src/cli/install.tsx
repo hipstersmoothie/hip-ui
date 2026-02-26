@@ -1,15 +1,20 @@
 /* eslint-disable react-refresh/only-export-components */
 
-import { Option, Select, TextInput } from "@inkjs/ui";
-import { render, Box, Text } from "ink";
+import type { Option } from "@inkjs/ui";
+
+import { Select, TextInput } from "@inkjs/ui";
+import { Box, Text, render } from "ink";
 import { exec } from "node:child_process";
 import { readFileSync, writeFileSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import path from "node:path";
 import * as React from "react";
 
-import { alertConfig } from "../components/alert/alert-config.js";
+import type { ComponentConfig } from "../types.js";
+import type { ConfigOptions } from "./config.js";
+
 import { alertDialogConfig } from "../components/alert-dialog/alert-dialog-config.js";
+import { alertConfig } from "../components/alert/alert-config.js";
 import { aspectRatioConfig } from "../components/aspect-ratio/aspect-ratio-config.js";
 import { avatarConfig } from "../components/avatar/avatar-config.js";
 import { badgeConfig } from "../components/badge/badge-config.js";
@@ -29,8 +34,8 @@ import { colorWheelConfig } from "../components/color-wheel/color-wheel-config.j
 import { comboboxConfig } from "../components/combobox/combobox-config.js";
 import { commandMenuConfig } from "../components/command-menu/command-menu-config.js";
 import { contentConfig } from "../components/content/content-config.js";
-import { copyToClipboardButtonConfig } from "../components/copy-to-clipboard-button/copy-to-clipboard-button-config.js";
 import { contextMenuConfig } from "../components/context-menu/context-menu-config.js";
+import { copyToClipboardButtonConfig } from "../components/copy-to-clipboard-button/copy-to-clipboard-button-config.js";
 import { dateFieldConfig } from "../components/date-field/date-field-config.js";
 import { datePickerConfig } from "../components/date-picker/date-picker-config.js";
 import { dateRangePickerConfig } from "../components/date-range-picker/date-range-picker-config.js";
@@ -47,7 +52,6 @@ import { formConfig } from "../components/form/form-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
 import { headerLayoutConfig } from "../components/header-layout/header-layout-config.js";
 import { hoverCardConfig } from "../components/hover-card/hover-card-config.js";
-import { sidebarLayoutConfig } from "../components/sidebar-layout/sidebar-layout-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
 import { imageCropperConfig } from "../components/image-cropper/image-cropper-config.js";
 import { kbdConfig } from "../components/kbd/kbd-config.js";
@@ -69,12 +73,13 @@ import { searchFieldConfig } from "../components/search-field/search-field-confi
 import { segmentedControlConfig } from "../components/segmented-control/segmented-control-config.js";
 import { selectConfig } from "../components/select/select-config.js";
 import { separatorConfig } from "../components/separator/separator-config.js";
+import { sidebarLayoutConfig } from "../components/sidebar-layout/sidebar-layout-config.js";
 import { sidebarConfig } from "../components/sidebar/sidebar-config.js";
 import { skeletonConfig } from "../components/skeleton/skeleton-config.js";
 import { sliderConfig } from "../components/slider/slider-config.js";
 import { switchConfig } from "../components/switch/switch-config.js";
-import { tableConfig } from "../components/table/table-config.js";
 import { tableOfContentsConfig } from "../components/table-of-contents/table-of-contents-config.js";
+import { tableConfig } from "../components/table/table-config.js";
 import { tabsConfig } from "../components/tabs/tabs-config.js";
 import { tagGroupConfig } from "../components/tag-group/tag-group-config.js";
 import { textAreaConfig } from "../components/text-area/text-area-config.js";
@@ -88,8 +93,7 @@ import { tooltipConfig } from "../components/tooltip/tooltip-config.js";
 import { treeConfig } from "../components/tree/tree-config.js";
 import { typographyConfig } from "../components/typography/typography-config.js";
 import { windowSplitterConfig } from "../components/window-splitter/window-splitter-config.js";
-import { ComponentConfig } from "../types.js";
-import { ConfigOptions, getConfig, setConfig } from "./config.js";
+import { getConfig, setConfig } from "./config.js";
 
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
@@ -219,7 +223,7 @@ function SelectSetting({
   defaultValue: string | undefined;
   onChange: (value: string) => void;
   isEditing: boolean;
-  options: Option[];
+  options: Array<Option>;
 }) {
   return (
     <Box gap={1}>
@@ -337,7 +341,7 @@ async function installDependencies(
     string
   >;
 
-  const packagesToInstall: string[] = [];
+  const packagesToInstall: Array<string> = [];
 
   for (const [packageName, version] of Object.entries(dependencies)) {
     if (packageDependencies[packageName] === version) {
@@ -435,7 +439,7 @@ export async function installComponent({
   component,
   all,
 }: {
-  component: string[];
+  component: Array<string>;
   all: boolean;
 }) {
   const componentConfigs = all

@@ -1,15 +1,20 @@
 "use client";
 
+import type {
+  FileTriggerProps as AriaFileTriggerProps,
+  ButtonProps,
+  DropItem,
+  DropZoneProps,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import {
   FileTrigger as AriaFileTrigger,
-  FileTriggerProps as AriaFileTriggerProps,
   Button,
-  ButtonProps,
-  DropItem,
   DropZone,
-  DropZoneProps,
 } from "react-aria-components";
+
+import type { StyleXComponentProps } from "../theme/types";
 
 import {
   animationDuration,
@@ -20,9 +25,8 @@ import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { StyleXComponentProps } from "../theme/types";
 
-async function getFiles(items: DropItem[]): Promise<File[]> {
+async function getFiles(items: Array<DropItem>): Promise<Array<File>> {
   return Promise.all(
     items.filter((item) => item.kind === "file").map((item) => item.getFile()),
   );
@@ -30,8 +34,6 @@ async function getFiles(items: DropItem[]): Promise<File[]> {
 
 const styles = stylex.create({
   dropZone: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     padding: spacing["4"],
     borderColor: {
       default: uiColor.border3,
@@ -46,6 +48,8 @@ const styles = stylex.create({
       ":is([data-drop-target])": "solid",
     },
     borderWidth: 2,
+
+    cornerShape: "squircle",
     overflow: "hidden",
     backgroundColor: {
       default: uiColor.bgSubtle,
@@ -78,8 +82,8 @@ interface FileDropZoneProps
   extends
     Omit<AriaFileTriggerProps, "className" | "style">,
     Pick<DropZoneProps, "isDisabled"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
-  onAddFiles?: (files: File[]) => void;
+  style?: stylex.StyleXStyles | Array<stylex.StyleXStyles>;
+  onAddFiles?: (files: Array<File>) => void;
 }
 
 export const FileDropZone = ({

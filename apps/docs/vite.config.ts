@@ -1,16 +1,20 @@
+import type { RehypeShikiOptions } from "@shikijs/rehype";
+import type { PluginOption } from "vite";
+
 import contentCollections from "@content-collections/vite";
-import browserslist from "browserslist";
 import mdx from "@mdx-js/rollup";
-import rehypeShiki, { RehypeShikiOptions } from "@shikijs/rehype";
+import rehypeShiki from "@shikijs/rehype";
 import withToc from "@stefanprobst/rehype-extract-toc";
 import withTocExport from "@stefanprobst/rehype-extract-toc/mdx";
+import stylexPlugin from "@stylexjs/unplugin";
 import { nitroV2Plugin } from "@tanstack/nitro-v2-vite-plugin";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
-import { browserslistToTargets } from "lightningcss";
+import browserslist from "browserslist";
 import { camelCase } from "change-case";
 import dedent from "dedent";
 import { glob } from "glob";
+import { browserslistToTargets } from "lightningcss";
 import MagicString from "magic-string";
 import path from "node:path";
 import docgen from "react-docgen-typescript";
@@ -18,8 +22,7 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import remarkFrontmatter from "remark-frontmatter";
 import { codeToHtml } from "shiki";
-import stylexPlugin from "@stylexjs/unplugin";
-import { defineConfig, PluginOption } from "vite";
+import { defineConfig } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
 
 function toSlug(file: string) {
@@ -31,7 +34,7 @@ function content() {
   const virtualModuleId = "virtual:content";
   const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
-  let files: string[] = [];
+  let files: Array<string> = [];
 
   async function getFiles() {
     files = await glob("src/docs/**/*.mdx");
@@ -142,7 +145,7 @@ function examples() {
   const virtualModuleId = "virtual:examples";
   const resolvedVirtualModuleId = "\0" + virtualModuleId;
 
-  let files: string[] = [];
+  let files: Array<string> = [];
 
   return {
     name: "my-plugin", // required, will show up in warnings and errors
@@ -180,7 +183,7 @@ function examples() {
 
 /** Add the example slug to the example function */
 function annotateExamples() {
-  let examples: string[] = [];
+  let examples: Array<string> = [];
 
   return {
     enforce: "pre",
@@ -239,7 +242,7 @@ function propDocs() {
       return true;
     },
   });
-  const docs: docgen.ComponentDoc[] = [];
+  const docs: Array<docgen.ComponentDoc> = [];
 
   return {
     name: "my-plugin", // required, will show up in warnings and errors
@@ -253,13 +256,15 @@ function propDocs() {
         parser.parseWithProgramProvider(files).map(async (doc) => {
           await Promise.all(
             Object.entries(doc.props).map(async ([key, p]) => {
-              doc.props[key].type.name = await highlightCode(
+              const prop = doc.props[key];
+              if (!prop) return;
+              prop.type.name = await highlightCode(
                 p.type.name,
                 "typescript",
               );
 
-              if (doc.props[key].defaultValue) {
-                const defaultValue = doc.props[key].defaultValue as {
+              if (prop.defaultValue) {
+                const defaultValue = prop.defaultValue as {
                   value: string;
                 };
                 defaultValue.value = await highlightCode(

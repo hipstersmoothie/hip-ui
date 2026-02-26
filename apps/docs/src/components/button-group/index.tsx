@@ -1,11 +1,14 @@
 "use client";
 
+import type { GroupProps } from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { useMemo } from "react";
-import { Group, GroupProps } from "react-aria-components";
+import { Group } from "react-aria-components";
+
+import type { ButtonGroupVariant, StyleXComponentProps } from "../theme/types";
 
 import { ButtonGroupContext } from "../button/context";
-import { ButtonGroupVariant, StyleXComponentProps } from "../theme/types";
 
 const styles = stylex.create({
   group: {

@@ -7,7 +7,7 @@
     "build": "vite build",
     "serve": "vite preview",
     "test": "vitest run",
-    "lint": "eslint . --max-warnings 0"
+    "lint": "oxlint ."
   },
   "dependencies": {
     "@mdx-js/react": "^3.1.1",

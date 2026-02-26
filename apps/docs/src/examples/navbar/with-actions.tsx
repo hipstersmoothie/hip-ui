@@ -1,3 +1,5 @@
+import { Bell, Search } from "lucide-react";
+
 import { Button } from "@/components/button";
 import { IconButton } from "@/components/icon-button";
 import {
@@ -7,7 +9,6 @@ import {
   NavbarLogo,
   NavbarNavigation,
 } from "@/components/navbar";
-import { Bell, Search } from "lucide-react";
 
 function Logo() {
   return (

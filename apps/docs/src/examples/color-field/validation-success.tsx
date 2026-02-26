@@ -1,5 +1,5 @@
-import { Flex } from "@/components/flex";
 import { ColorField } from "@/components/color-field";
+import { Flex } from "@/components/flex";
 
 export function ValidationSuccess() {
   return (

@@ -1,10 +1,10 @@
+import { Link } from "@/components/link";
 import {
   Sidebar,
   SidebarHeader,
   SidebarItem,
   SidebarSection,
 } from "@/components/sidebar";
-import { Link } from "@/components/link";
 
 export function WithSections() {
   return (

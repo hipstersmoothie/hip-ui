@@ -1,10 +1,10 @@
+import { Link } from "@/components/link";
 import {
   Sidebar,
   SidebarGroup,
   SidebarHeader,
   SidebarItem,
 } from "@/components/sidebar";
-import { Link } from "@/components/link";
 
 export function WithGroups() {
   return (

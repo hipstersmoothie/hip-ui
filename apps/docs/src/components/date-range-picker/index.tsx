@@ -1,31 +1,36 @@
+import type {
+  DateRangePickerProps as AriaDateRangePickerProps,
+  DateValue,
+  ValidationResult,
+} from "react-aria-components";
+
 import * as stylex from "@stylexjs/stylex";
 import { CalendarIcon } from "lucide-react";
 import { use } from "react";
 import {
   DateRangePicker as AriaDateRangePicker,
-  DateRangePickerProps as AriaDateRangePickerProps,
-  DateValue,
-  ValidationResult,
-  Group,
-  Dialog,
   Popover as AriaPopover,
   DateInput,
   DateSegment,
+  Dialog,
+  Group,
 } from "react-aria-components";
+
+import type { RangeCalendarProps } from "../range-calendar";
+import type {
+  InputValidationState,
+  InputVariant,
+  Size,
+  StyleXComponentProps,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { IconButton } from "../icon-button";
 import { Description, FieldErrorMessage, Label } from "../label";
-import { RangeCalendar, RangeCalendarProps } from "../range-calendar";
+import { RangeCalendar } from "../range-calendar";
 import { SuffixIcon } from "../suffix-icon";
 import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import {
-  InputVariant,
-  InputValidationState,
-  Size,
-  StyleXComponentProps,
-} from "../theme/types";
 import { fontSize } from "../theme/typography.stylex";
 import { useInputStyles } from "../theme/useInputStyles";
 import { usePopoverStyles } from "../theme/usePopoverStyles";

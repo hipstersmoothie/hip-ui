@@ -114,19 +114,21 @@ const styles = stylex.create({
   primary: {
     borderColor: {
       default: uiColor.border1,
-      ":has([data-hovered]):not(:has([data-invalid]))": uiColor.border2,
+      ":has(:is([data-hovered])):not(:has(:is([data-invalid])))":
+        uiColor.border2,
       ":focus": uiColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,
     backgroundColor: {
       default: uiColor.bg,
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component2,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component1,
+      ":is([data-pressed=true]):not(:disabled)": uiColor.component2,
       ":disabled": "transparent",
     },
     boxShadow: {
-      ":has([data-invalid])": `0 0 0 2px ${criticalColor.component1}`,
+      ":has(:is([data-invalid]))": `0 0 0 2px ${criticalColor.component1}`,
     },
     transitionDuration: animationDuration.fast,
     transitionProperty: "background-color",
@@ -135,12 +137,12 @@ const styles = stylex.create({
   primaryInvalid: {
     borderColor: {
       default: criticalColor.border2,
-      ":has([data-hovered])": criticalColor.border3,
+      ":has(:is([data-hovered]))": criticalColor.border3,
       ":focus": uiColor.solid1,
     },
     backgroundColor: {
       default: criticalColor.bgSubtle,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component2,
       ":disabled": "transparent",
     },
@@ -150,12 +152,12 @@ const styles = stylex.create({
   primaryWarning: {
     borderColor: {
       default: warningColor.border2,
-      ":has([data-hovered])": warningColor.border3,
+      ":has(:is([data-hovered]))": warningColor.border3,
       ":focus": uiColor.solid1,
     },
     backgroundColor: {
       default: warningColor.bgSubtle,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component2,
       ":disabled": "transparent",
     },
@@ -165,12 +167,12 @@ const styles = stylex.create({
   primaryValid: {
     borderColor: {
       default: successColor.border2,
-      ":has([data-hovered])": successColor.border3,
+      ":has(:is([data-hovered]))": successColor.border3,
       ":focus": uiColor.solid1,
     },
     backgroundColor: {
       default: successColor.bgSubtle,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component2,
       ":disabled": "transparent",
     },
@@ -180,15 +182,17 @@ const styles = stylex.create({
   secondary: {
     borderColor: {
       default: uiColor.border1,
-      ":has([data-hovered]):not(:has([data-invalid]))": uiColor.border2,
+      ":has(:is([data-hovered])):not(:has(:is([data-invalid])))":
+        uiColor.border2,
       ":focus": uiColor.border3,
     },
     borderStyle: "solid",
     borderWidth: 1,
     backgroundColor: {
       default: uiColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": uiColor.component1,
     },
     transitionDuration: animationDuration.fast,
@@ -198,24 +202,24 @@ const styles = stylex.create({
   secondaryInvalid: {
     borderColor: {
       default: criticalColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component2,
     },
     backgroundColor: {
       default: criticalColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component2,
     },
   },
   secondaryWarning: {
     borderColor: {
       default: warningColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component2,
     },
     backgroundColor: {
       default: warningColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component2,
     },
     color: warningColor.text2,
@@ -223,12 +227,12 @@ const styles = stylex.create({
   secondaryValid: {
     borderColor: {
       default: successColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component2,
     },
     backgroundColor: {
       default: successColor.component1,
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component2,
     },
     color: successColor.text2,
@@ -236,16 +240,18 @@ const styles = stylex.create({
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": "transparent",
     },
     borderStyle: "solid",
     borderWidth: 1,
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)": uiColor.component2,
-      ":is(:active,[data-pressed=true]):not(:disabled)": uiColor.component3,
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+        uiColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": "transparent",
     },
     transitionDuration: animationDuration.fast,
@@ -255,18 +261,16 @@ const styles = stylex.create({
   tertiaryInvalid: {
     borderColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        criticalColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": criticalColor.component2,
       ":disabled": "transparent",
     },
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         criticalColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        criticalColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": criticalColor.component2,
       ":disabled": "transparent",
     },
     color: criticalColor.text2,
@@ -274,18 +278,16 @@ const styles = stylex.create({
   tertiaryWarning: {
     borderColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        warningColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": warningColor.component2,
       ":disabled": "transparent",
     },
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         warningColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        warningColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": warningColor.component2,
       ":disabled": "transparent",
     },
     color: warningColor.text1,
@@ -293,18 +295,16 @@ const styles = stylex.create({
   tertiaryValid: {
     borderColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        successColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": successColor.component2,
       ":disabled": "transparent",
     },
     backgroundColor: {
       default: "transparent",
-      ":hover:not(:has(* button:hover)):not(:disabled)":
+      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
         successColor.component1,
-      ":is(:active,[data-pressed=true]):not(:disabled)":
-        successColor.component2,
+      ":is([data-pressed=true]):not(:disabled)": successColor.component2,
       ":disabled": "transparent",
     },
     color: successColor.text1,

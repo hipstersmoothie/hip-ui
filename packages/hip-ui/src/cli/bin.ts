@@ -1,4 +1,6 @@
-import { app, Command, MultiCommand } from "command-line-application";
+import type { Command, MultiCommand } from "command-line-application";
+
+import { app } from "command-line-application";
 
 import { installComponent } from "./install.js";
 
@@ -37,7 +39,7 @@ if (args?._command === "install") {
       : args.component
         ? [args.component]
         : []
-  ) as string[];
+  ) as Array<string>;
 
   void installComponent({
     component,

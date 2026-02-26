@@ -1,16 +1,17 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size } from "../theme/types";
+
 import { SizeContext } from "../context";
 import {
   animationDuration,
-  animations,
   animationTimingFunction,
+  animations,
 } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
-import { Size } from "../theme/types";
 import { ui } from "./semantic-color.stylex";
 
 const styles = stylex.create({
@@ -36,12 +37,12 @@ const styles = stylex.create({
     width: "100vw",
   },
   modal: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
+
+    cornerShape: "squircle",
     outline: "none",
     overflow: "hidden",
     boxShadow: shadow["lg"],
@@ -51,6 +52,7 @@ const styles = stylex.create({
     translate: "-50% -50%",
     left: "50%",
     maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
+    maxWidth: "90vw",
     top: "calc(var(--visual-viewport-height) / 2)",
 
     animationDuration: animationDuration.slow,
@@ -61,7 +63,6 @@ const styles = stylex.create({
     outline: "none",
     flexGrow: 1,
     minHeight: 0,
-    maxWidth: "90vw",
   },
   size: (size: Size) => ({
     width: size === "sm" ? 400 : size === "md" ? 600 : 800,

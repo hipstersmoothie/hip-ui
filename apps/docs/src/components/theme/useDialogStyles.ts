@@ -1,16 +1,17 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
+import type { Size } from "../theme/types";
+
 import { SizeContext } from "../context";
 import {
   animationDuration,
-  animations,
   animationTimingFunction,
+  animations,
 } from "../theme/animations.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
-import { Size } from "../theme/types";
 import { ui } from "./semantic-color.stylex";
 
 const styles = stylex.create({
@@ -36,12 +37,12 @@ const styles = stylex.create({
     width: "100vw",
   },
   modal: {
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
+    // eslint-disable-next-line @stylexjs/valid-styles
+    cornerShape: "squircle",
     outline: "none",
     overflow: "hidden",
     boxShadow: shadow["lg"],
