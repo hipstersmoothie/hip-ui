@@ -40,6 +40,7 @@ const styles = stylex.create({
   checkbox: {
     alignItems: "center",
     display: "flex",
+    flexShrink: 0,
     justifyContent: "center",
 
     borderRadius: {
@@ -47,7 +48,7 @@ const styles = stylex.create({
       [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderWidth: 2,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     height: spacing["4"],
     width: spacing["4"],
@@ -106,9 +107,10 @@ export interface CheckboxProps extends StyleXComponentProps<
 export function Checkbox({ children, style, ...props }: CheckboxProps) {
   return (
     <AriaCheckbox {...props} {...stylex.props(styles.wrapper, style)}>
-      {({ isIndeterminate, isSelected, isDisabled }) => (
+      {({ isIndeterminate, isSelected, isDisabled, isHovered }) => (
         <>
           <div
+            data-hovered={isHovered || undefined}
             {...stylex.props(
               styles.checkbox,
               isDisabled

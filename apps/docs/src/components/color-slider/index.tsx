@@ -55,7 +55,7 @@ const styles = stylex.create({
       default: radius["full"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     height: {
       ":is([data-size=lg] *)": spacing["6"],

@@ -26,7 +26,7 @@ const tooltipStyle = stylex.create({
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["full"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     backgroundColor: uiInverted.bg,
     boxShadow: shadow["sm"],

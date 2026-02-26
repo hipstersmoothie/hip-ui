@@ -12,16 +12,18 @@ import { Label as AriaLabel, FieldError, Text } from "react-aria-components";
 import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { uiColor } from "../theme/color.stylex";
 import { critical, ui } from "../theme/semantic-color.stylex";
 import { fontSize, fontWeight, lineHeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   label: {
+    color: uiColor.text1,
     fontWeight: fontWeight["semibold"],
 
     fontSize: {
-      ":is([data-size=lg])": fontSize["base"],
-      ":is([data-size=md])": fontSize["sm"],
+      ":is([data-size=lg])": fontSize["sm"],
+      ":is([data-size=md])": fontSize["xs"],
       ":is([data-size=sm])": fontSize["xs"],
     },
     lineHeight: {

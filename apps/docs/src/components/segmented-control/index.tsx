@@ -30,7 +30,7 @@ const styles = stylex.create({
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     gap: spacing["2"],
     alignItems: "center",
@@ -50,15 +50,15 @@ const styles = stylex.create({
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     alignItems: "center",
     backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {
       default: uiColor.text1,
+      ":is([data-hovered])": uiColor.text2,
       ":is([data-selected])": uiColor.text2,
-      ":hover": uiColor.text2,
     },
     display: "flex",
     flexGrow: 1,
@@ -87,7 +87,7 @@ const styles = stylex.create({
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     backgroundColor: uiColor.bgSubtle,
     boxShadow: shadow.sm,

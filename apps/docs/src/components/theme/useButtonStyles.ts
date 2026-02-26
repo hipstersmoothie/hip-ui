@@ -14,12 +14,7 @@ import { radius } from "./radius.stylex";
 import { critical, primary, ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
 import { spacing } from "./spacing.stylex";
-import {
-  fontFamily,
-  fontSize,
-  fontWeight,
-  lineHeight,
-} from "./typography.stylex";
+import { fontFamily, fontSize, fontWeight } from "./typography.stylex";
 
 const styles = stylex.create({
   shadow: {
@@ -27,12 +22,12 @@ const styles = stylex.create({
   },
   base: {
     borderRadius: {
-      default: radius["md"],
+      default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["full"],
     },
     borderStyle: "solid",
     borderWidth: 1,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     gap: spacing["1"],
     alignItems: "center",
@@ -64,7 +59,6 @@ const styles = stylex.create({
   },
   small: {
     fontSize: fontSize["xs"],
-    lineHeight: lineHeight["xs"],
     height: spacing["7"],
     paddingLeft: {
       default: spacing["2"],
@@ -82,7 +76,6 @@ const styles = stylex.create({
   medium: {
     gap: spacing["1.5"],
     fontSize: fontSize["sm"],
-    lineHeight: lineHeight["xs"],
     height: spacing["8"],
     paddingLeft: {
       default: spacing["3"],
@@ -92,6 +85,7 @@ const styles = stylex.create({
   },
   large: {
     gap: spacing["2"],
+    fontSize: fontSize["sm"],
     height: spacing["10"],
     paddingLeft: {
       default: spacing["4"],
@@ -99,18 +93,28 @@ const styles = stylex.create({
     },
     paddingRight: spacing["4"],
   },
+  xl: {
+    gap: spacing["2"],
+    fontSize: fontSize["lg"],
+    height: spacing["12"],
+    paddingLeft: {
+      default: spacing["5"],
+      ":has(svg+*)": spacing["4"],
+    },
+    paddingRight: spacing["5"],
+  },
   secondary: {
     borderColor: {
       default: uiColor.component1,
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
     },
   },
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
     },
   },
 
@@ -147,7 +151,7 @@ export const useButtonStyles = ({
   size: sizeProp,
 }: {
   variant?: ButtonVariant;
-  size?: Size;
+  size?: Size | "xl";
 }) => {
   const size = sizeProp || use(SizeContext);
   const group = use(ButtonGroupContext);
@@ -201,13 +205,14 @@ export const useButtonStyles = ({
     ],
     variant === "critical-outline" && [
       critical.borderInteractive,
-      critical.bgGhost,
+      critical.bgUi,
       critical.text,
       styles.shadow,
     ],
     size === "sm" && styles.small,
     size === "md" && styles.medium,
     size === "lg" && styles.large,
+    size === "xl" && styles.xl,
     group?.variant === "separate" && styles.separate,
     styles.base,
   ];

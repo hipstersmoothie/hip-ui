@@ -77,6 +77,7 @@ import { sidebarLayoutConfig } from "../components/sidebar-layout/sidebar-layout
 import { sidebarConfig } from "../components/sidebar/sidebar-config.js";
 import { skeletonConfig } from "../components/skeleton/skeleton-config.js";
 import { sliderConfig } from "../components/slider/slider-config.js";
+import { starRatingConfig } from "../components/star-rating/star-rating-config.js";
 import { switchConfig } from "../components/switch/switch-config.js";
 import { tableOfContentsConfig } from "../components/table-of-contents/table-of-contents-config.js";
 import { tableConfig } from "../components/table/table-config.js";
@@ -115,6 +116,7 @@ const COMPONENT_CONFIGS = [
   radioConfig,
   separatorConfig,
   skeletonConfig,
+  starRatingConfig,
   textAreaConfig,
   selectConfig,
   toggleButtonConfig,

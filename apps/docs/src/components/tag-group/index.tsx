@@ -80,12 +80,12 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      ":hover": uiColor.component2,
-      ":active": uiColor.component3,
+      ":is([data-hovered])": uiColor.component2,
+      ":is([data-pressed])": uiColor.component3,
     },
     color: {
       default: uiColor.text1,
-      ":hover": uiColor.text2,
+      ":is([data-hovered])": uiColor.text2,
     },
     display: "flex",
     justifyContent: "center",

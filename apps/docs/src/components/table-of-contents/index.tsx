@@ -2,6 +2,7 @@
 
 import * as stylex from "@stylexjs/stylex";
 import { createContext, use, useEffect, useState } from "react";
+import { useHover } from "react-aria";
 
 import type { StyleXComponentProps } from "../theme/types";
 
@@ -44,8 +45,8 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      ":hover::before": primaryColor.solid1,
-      ":hover": uiColor.component1,
+      ":is([data-hovered])": uiColor.component1,
+      ":is([data-hovered])::before": primaryColor.solid1,
     },
     color: {
       default: uiColor.text1,
@@ -97,11 +98,14 @@ const styles = stylex.create({
 function TocItem({ id, value, children }: TocEntry) {
   const level = use(LevelContext);
   const activeHeaderId = use(ActiveHeaderIdContext);
+  const { hoverProps, isHovered } = useHover({});
 
   return (
     <li key={id}>
       <a
         href={`#${id ?? ""}`}
+        data-hovered={isHovered || undefined}
+        {...hoverProps}
         {...stylex.props(
           styles.item,
           styles.level(level),

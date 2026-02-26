@@ -140,9 +140,10 @@ export interface RadioProps extends StyleXComponentProps<
 export function Radio({ children, style, ...props }: RadioProps) {
   return (
     <AriaRadio {...props} {...stylex.props(styles.wrapper, style)}>
-      {({ isSelected, isDisabled }) => (
+      {({ isSelected, isDisabled, isHovered }) => (
         <>
           <div
+            data-hovered={isHovered || undefined}
             {...stylex.props(
               styles.radio,
               isDisabled

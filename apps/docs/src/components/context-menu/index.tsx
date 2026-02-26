@@ -113,7 +113,6 @@ function ContextMenuTrigger({
     [overlayTriggerState, setPosition],
   );
 
-  // eslint-disable-next-line @eslint-react/no-children-count
   if (Children.count(children) !== 1) {
     throw new Error("ContextMenuTrigger must have exactly one child");
   }
@@ -121,7 +120,6 @@ function ContextMenuTrigger({
   /* eslint-disable react-hooks/refs */
   return (
     <>
-      {/* eslint-disable-next-line @eslint-react/no-clone-element */}
       {cloneElement(
         children as React.ReactElement<React.HTMLAttributes<HTMLElement>>,
         mergeProps(props, {

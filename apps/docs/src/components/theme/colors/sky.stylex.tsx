@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const sky = stylex.defineVars({
   bg: {
-    default: "light-dark(#f9feff, #f9feff)",
+    default: "light-dark(#f9feff, #0d141f)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.98 0.995 0.999), color(display-p3 0.056 0.078 0.116))",
   },
   bgSubtle: {
-    default: "light-dark(#f1fafd, #f1fafd)",
+    default: "light-dark(#f1fafd, #111a27)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.953 0.98 0.99), color(display-p3 0.075 0.101 0.149))",
   },
   component1: {
-    default: "light-dark(#e1f6fd, #e1f6fd)",
+    default: "light-dark(#e1f6fd, #112840)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.899 0.963 0.989), color(display-p3 0.089 0.154 0.244))",
   },
   component2: {
-    default: "light-dark(#d1f0fa, #d1f0fa)",
+    default: "light-dark(#d1f0fa, #113555)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.842 0.937 0.977), color(display-p3 0.106 0.207 0.323))",
   },
   component3: {
-    default: "light-dark(#bee7f5, #bee7f5)",
+    default: "light-dark(#bee7f5, #154467)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.777 0.9 0.954), color(display-p3 0.135 0.261 0.394))",
   },
   border1: {
-    default: "light-dark(#a9daed, #a9daed)",
+    default: "light-dark(#a9daed, #1b537b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.701 0.851 0.921), color(display-p3 0.17 0.322 0.469))",
   },
   border2: {
-    default: "light-dark(#8dcae3, #8dcae3)",
+    default: "light-dark(#8dcae3, #1f6692)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.604 0.785 0.879), color(display-p3 0.205 0.394 0.557))",
   },
   border3: {
-    default: "light-dark(#60b3d7, #60b3d7)",
+    default: "light-dark(#60b3d7, #197cae)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.457 0.696 0.829), color(display-p3 0.232 0.48 0.665))",
   },
@@ -47,17 +47,17 @@ export const sky = stylex.defineVars({
       "light-dark(color(display-p3 0.585 0.877 0.983), color(display-p3 0.585 0.877 0.983))",
   },
   solid2: {
-    default: "light-dark(#74daf8, #74daf8)",
+    default: "light-dark(#74daf8, #a8eeff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.555 0.845 0.959), color(display-p3 0.718 0.925 0.991))",
   },
   text1: {
-    default: "light-dark(#00749e, #00749e)",
+    default: "light-dark(#00749e, #75c7f0)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.193 0.448 0.605), color(display-p3 0.536 0.772 0.924))",
   },
   text2: {
-    default: "light-dark(#1d3e56, #1d3e56)",
+    default: "light-dark(#1d3e56, #c2f3ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.145 0.241 0.329), color(display-p3 0.799 0.947 0.993))",
   },

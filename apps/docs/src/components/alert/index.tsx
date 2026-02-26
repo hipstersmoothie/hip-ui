@@ -21,10 +21,7 @@ import {
   uiColor,
   warningColor,
 } from "../theme/color.stylex";
-import {
-  maxBreakpoints,
-  mediaQueries,
-} from "../theme/media-queries.stylex";
+import { maxBreakpoints, mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
@@ -44,7 +41,7 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     gap: spacing["2.5"],
     gridTemplateAreas: {

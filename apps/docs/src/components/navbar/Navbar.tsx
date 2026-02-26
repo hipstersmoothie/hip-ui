@@ -1,4 +1,5 @@
 "use client";
+
 import type { LinkProps } from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
@@ -93,7 +94,10 @@ const styles = stylex.create({
       ":is([data-navbar-open])": `min-content min-content min-content`,
       ":is([data-navbar-open]):has([data-navbar-action])": `min-content min-content min-content min-content`,
     },
-    rowGap: spacing["8"],
+    rowGap: {
+      default: spacing["4"],
+      [containerBreakpoints.sm]: spacing["8"],
+    },
     marginLeft: "auto",
     marginRight: "auto",
     maxWidth: "var(--page-content-max-width)",
@@ -118,8 +122,50 @@ const styles = stylex.create({
     width: "100%",
   },
   logo: {
+    "--underline-opacity": {
+      default: 0,
+      ":is([aria-current=page])": 1,
+      ":is([data-active])": 1,
+      ":is([data-status=active])": 1,
+    },
+    gap: spacing["2"],
+    textDecoration: "none",
     alignItems: "center",
+    color: {
+      default: primaryColor.text2,
+    },
+    cursor: "pointer",
     display: "flex",
+    fontFamily: fontFamily["sans"],
+    fontWeight: fontWeight["normal"],
+    position: "relative",
+    width: {
+      default: "100%",
+      [containerBreakpoints.sm]: "auto",
+    },
+  },
+  logoContent: {
+    position: "relative",
+
+    "::after": {
+      backgroundColor: "currentColor",
+      content: '""',
+      display: "block",
+      opacity: "var(--underline-opacity)",
+      pointerEvents: "none",
+      position: "absolute",
+      bottom: `calc(${spacing["1"]} * -1)`,
+      height: "2px",
+      left: 0,
+      right: 0,
+      width: "100%",
+    },
+  },
+  logoImage: {
+    display: "block",
+    objectFit: "contain",
+    height: "40px",
+    width: "auto",
   },
   separator: {
     gridArea: "separator",
@@ -128,7 +174,6 @@ const styles = stylex.create({
   },
   navigation: {
     gridArea: "navigation",
-    flex: "1",
     gap: {
       default: spacing["6"],
       [containerBreakpoints.sm]: spacing["8"],
@@ -146,6 +191,7 @@ const styles = stylex.create({
       default: "column",
       [containerBreakpoints.sm]: "row",
     },
+    flexGrow: 1,
   },
   navigationJustifyLeft: {
     justifyContent: "flex-start",
@@ -194,16 +240,26 @@ const styles = stylex.create({
       ":is([data-breadcrumb][data-current] *)": uiColor.text2,
     },
     cursor: "pointer",
-    display: "inline-flex",
+    display: {
+      default: "flex",
+      [containerBreakpoints.sm]: "inline-flex",
+    },
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["normal"],
     position: "relative",
+    width: {
+      default: "100%",
+      [containerBreakpoints.sm]: "auto",
+    },
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
       height: "1.2em",
       width: "1.2em",
     },
+  },
+  linkContent: {
+    position: "relative",
 
     "::after": {
       backgroundColor: "currentColor",
@@ -221,18 +277,62 @@ const styles = stylex.create({
   },
 });
 
+// =============================================================================
+// Mobile Menu Context
+// =============================================================================
+
+interface MobileMenuContextValue {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+  closeMenu: () => void;
+}
+
+const MobileMenuContext = React.createContext<MobileMenuContextValue | null>(
+  null,
+);
+
+function useMobileMenu() {
+  const context = use(MobileMenuContext);
+  if (!context) {
+    throw new Error("useMobileMenu must be used within Navbar");
+  }
+  return context;
+}
+
 // Define subcomponents first so they can be referenced in Navbar
 export interface NavbarLogoProps extends StyleXComponentProps<
   React.ComponentProps<"div">
-> {}
+> {
+  /**
+   * Whether the logo link is currently active.
+   */
+  isActive?: boolean;
+  /**
+   * Optional logo image source. If provided, displays the image instead of text.
+   */
+  logoSrc?: string | null;
+}
 
 /**
  * NavbarLogo component for displaying the logo in the navbar.
  */
-export const NavbarLogo = ({ style, ...props }: NavbarLogoProps) => {
+export const NavbarLogo = ({
+  style,
+  isActive,
+  logoSrc,
+  ...props
+}: NavbarLogoProps) => {
   return (
-    <div {...props} {...stylex.props(styles.logo, style)}>
-      {props.children}
+    <div
+      {...props}
+      data-active={isActive}
+      {...stylex.props(styles.logo, style)}
+    >
+      {logoSrc ? (
+        <img src={logoSrc} alt="kich" {...stylex.props(styles.logoImage)} />
+      ) : (
+        <span {...stylex.props(styles.logoContent)}>{props.children}</span>
+      )}
     </div>
   );
 };
@@ -308,12 +408,31 @@ export interface NavbarLinkProps extends StyleXComponentProps<LinkProps> {
 }
 
 export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
+  const { closeMenu } = useMobileMenu();
+
   return (
     <Link
       data-active={isActive}
       {...props}
       {...stylex.props(styles.link, style)}
-    />
+      onPress={(e) => {
+        closeMenu();
+        props.onPress?.(e);
+      }}
+      onClick={(e) => {
+        // Also handle native click events as a fallback
+        closeMenu();
+        props.onClick?.(e);
+      }}
+    >
+      <span {...stylex.props(styles.linkContent)}>
+        {typeof props.children === "function"
+          ? props.children(
+              {} as Parameters<NonNullable<typeof props.children>>[0],
+            )
+          : props.children}
+      </span>
+    </Link>
   );
 }
 
@@ -335,28 +454,68 @@ export const Navbar = ({
 }: NavbarProps) => {
   const size = sizeProp || use(SizeContext);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navRef = React.useRef<HTMLElement>(null);
+
+  const closeMenu = React.useCallback(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
+
+  const mobileMenuContextValue = React.useMemo<MobileMenuContextValue>(
+    () => ({
+      isOpen: isMobileMenuOpen,
+      setIsOpen: setIsMobileMenuOpen,
+      closeMenu,
+    }),
+    [isMobileMenuOpen, closeMenu],
+  );
+
+  // Use effect to handle click events via event delegation
+  React.useEffect(() => {
+    const nav = navRef.current;
+    if (!nav) return;
+
+    const handleClick = (e: MouseEvent) => {
+      // Close menu when any link or button inside navbar is clicked
+      // Exclude the hamburger button (it toggles the menu instead)
+      const target = e.target as HTMLElement;
+      const link = target.closest("a, button");
+      const hamburgerButton = target.closest('[aria-label="Open menu"]');
+      if (link && link !== nav && !hamburgerButton) {
+        closeMenu();
+      }
+    };
+
+    nav.addEventListener("click", handleClick);
+    return () => {
+      nav.removeEventListener("click", handleClick);
+    };
+  }, [closeMenu]);
 
   return (
     <SizeContext value={size}>
-      <div {...props} {...stylex.props(styles.wrapper, style)}>
-        <nav
-          data-navbar-open={isMobileMenuOpen || undefined}
-          {...stylex.props(styles.navbar, ui.bg, style)}
-        >
-          {children}
-          <Separator
-            style={styles.separator as unknown as stylex.StyleXStyles}
-          />
-          <IconButton
-            aria-label="Open menu"
-            variant="tertiary"
-            style={styles.hamburgerButton}
-            onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+      <MobileMenuContext value={mobileMenuContextValue}>
+        <div {...props} {...stylex.props(styles.wrapper, style)}>
+          <nav
+            ref={navRef}
+            data-navbar-open={isMobileMenuOpen || undefined}
+            {...stylex.props(styles.navbar, ui.bg, style)}
           >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </IconButton>
-        </nav>
-      </div>
+            {children}
+            <Separator
+              style={styles.separator as unknown as stylex.StyleXStyles}
+            />
+            <IconButton
+              size="lg"
+              aria-label="Open menu"
+              variant="tertiary"
+              style={styles.hamburgerButton}
+              onPress={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X /> : <Menu />}
+            </IconButton>
+          </nav>
+        </div>
+      </MobileMenuContext>
     </SizeContext>
   );
 };

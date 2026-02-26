@@ -5,22 +5,33 @@ import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { AspectRatio, AspectRatioImage } from "../aspect-ratio";
 import { SizeContext } from "../context";
+import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
+import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
+import {
+  fontFamily,
+  fontSize,
+  fontWeight,
+  lineHeight,
+} from "../theme/typography.stylex";
 
 const styles = stylex.create({
   card: {
+    borderColor: uiColor.component2,
     borderRadius: {
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+    borderStyle: "solid",
+    borderWidth: 1,
+
     cornerShape: "squircle",
     gap: "var(--card-gap)",
     overflow: "hidden",
+    boxShadow: shadow["sm"],
     display: "flex",
     flexDirection: "column",
     fontFamily: fontFamily["sans"],
@@ -56,9 +67,15 @@ const styles = stylex.create({
         'description action'
       `,
     },
-    gap: "var(--card-gap)",
+    gap: "calc(var(--card-gap) * 0.25)",
     alignItems: "center",
     display: "grid",
+  },
+  headerBorder: {
+    borderColor: uiColor.component2,
+    borderBottomStyle: "solid",
+    borderBottomWidth: 1,
+    paddingBottom: spacing["6"],
   },
   cardHeaderAction: {
     gridArea: "action",
@@ -68,6 +85,9 @@ const styles = stylex.create({
   },
   cardTitle: {
     gridArea: "title",
+    gap: spacing["3"],
+    alignItems: "center",
+    display: "flex",
     fontSize: {
       ":is([data-card-size='lg'] *)": fontSize["2xl"],
       ":is([data-card-size='md'] *)": fontSize["xl"],
@@ -82,9 +102,10 @@ const styles = stylex.create({
     fontWeight: fontWeight["normal"],
   },
   cardBody: {
-    gap: "var(--card-gap)",
+    gap: "calc(var(--card-gap) * 0.5)",
     display: "flex",
     flexDirection: "column",
+    lineHeight: lineHeight["lg"],
   },
   cardFooter: {
     gap: spacing["2"],
@@ -114,7 +135,7 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
       <div
         {...props}
         data-card-size={size}
-        {...stylex.props(styles.card, ui.bgSubtle, ui.border, ui.text, style)}
+        {...stylex.props(styles.card, ui.bg, ui.text, style)}
       />
     </SizeContext>
   );
@@ -122,13 +143,20 @@ export const Card = ({ style, size: sizeProp, ...props }: CardProps) => {
 
 export interface CardHeaderProps extends StyleXComponentProps<
   React.ComponentProps<"div">
-> {}
+> {
+  hasBorder?: boolean;
+}
 
-export const CardHeader = ({ style, ...props }: CardHeaderProps) => {
+export const CardHeader = ({ style, hasBorder, ...props }: CardHeaderProps) => {
   return (
     <div
       {...props}
-      {...stylex.props(styles.cardSection, styles.cardHeader, style)}
+      {...stylex.props(
+        styles.cardSection,
+        styles.cardHeader,
+        hasBorder && styles.headerBorder,
+        style,
+      )}
     />
   );
 };
@@ -195,19 +223,21 @@ export interface CardImageProps extends StyleXComponentProps<
   React.ComponentProps<"img">
 > {
   aspectRatio?: number;
+  imageStyle?: stylex.StyleXStyles;
+  children?: React.ReactNode;
 }
 
-export const CardImage = ({ style, aspectRatio, ...props }: CardImageProps) => {
+export const CardImage = ({
+  style,
+  aspectRatio,
+  imageStyle,
+  children,
+  ...props
+}: CardImageProps) => {
   return (
-    <AspectRatio
-      aspectRatio={aspectRatio}
-      style={[
-        styles.cardSection as unknown as stylex.StyleXStyles,
-        styles.cardImage,
-        style,
-      ]}
-    >
-      <AspectRatioImage {...props} />
+    <AspectRatio aspectRatio={aspectRatio} style={[styles.cardImage, style]}>
+      <AspectRatioImage {...props} style={imageStyle} />
+      {children}
     </AspectRatio>
   );
 };

@@ -14,7 +14,6 @@ const styles = stylex.create({
     position: "relative",
   },
   rounded: {
-    // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
     borderBottomLeftRadius: {
       default: radius["md"],

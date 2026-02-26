@@ -18,7 +18,7 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: "1px",
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     backgroundColor: uiColor.component2,
     boxShadow: `0 2px 0 1px ${uiColor.border2}`,

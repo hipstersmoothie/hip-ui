@@ -4,7 +4,6 @@ import { use } from "react";
 import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
@@ -18,27 +17,26 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
+    // eslint-disable-next-lin @stylexjs/valid-styles
+    borderRadius: radius["full"],
     borderStyle: "solid",
     borderWidth: 1,
-    // eslint-disable-next-line @stylexjs/valid-styles
-    cornerShape: "squircle",
     overflow: "hidden",
     alignItems: "center",
     display: "flex",
+    flexShrink: 0,
     fontFamily: fontFamily["sans"],
-    fontWeight: fontWeight["semibold"],
+    fontWeight: fontWeight["medium"],
     width: "fit-content",
   },
   sm: {
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
     gap: spacing["1"],
     fontSize: fontSize["xs"],
     height: spacing["5"],
-    paddingLeft: spacing["1.5"],
-    paddingRight: spacing["1.5"],
+    paddingBottom: spacing["0.5"],
+    paddingLeft: spacing["2.5"],
+    paddingRight: spacing["2.5"],
+    paddingTop: spacing["0.5"],
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
@@ -49,15 +47,13 @@ const styles = stylex.create({
     },
   },
   md: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
     gap: spacing["1.5"],
     fontSize: fontSize["sm"],
     height: spacing["6"],
-    paddingLeft: spacing["2"],
-    paddingRight: spacing["2"],
+    paddingBottom: spacing["0.5"],
+    paddingLeft: spacing["3.5"],
+    paddingRight: spacing["3.5"],
+    paddingTop: spacing["0.5"],
 
     // eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles
     ":is(*) svg": {
@@ -99,21 +95,21 @@ export function Badge({
           primary.borderDim,
           primary.text,
         ],
-        variant === "default" && [ui.bgDim, ui.borderDim, ui.text],
+        variant === "default" && [ui.bgDim, ui.borderDim, ui.textDim],
         variant === "warning" && [
           warning.bgDim,
           warning.borderDim,
-          warning.text,
+          warning.textDim,
         ],
         variant === "critical" && [
           critical.bgDim,
           critical.borderDim,
-          critical.text,
+          critical.textDim,
         ],
         variant === "success" && [
           success.bgDim,
           success.borderDim,
-          success.text,
+          success.textDim,
         ],
         style,
       )}

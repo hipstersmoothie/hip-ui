@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const mint = stylex.defineVars({
   bg: {
-    default: "light-dark(#f9fefd, #f9fefd)",
+    default: "light-dark(#f9fefd, #0e1515)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.98 0.995 0.992), color(display-p3 0.059 0.082 0.081))",
   },
   bgSubtle: {
-    default: "light-dark(#f2fbf9, #f2fbf9)",
+    default: "light-dark(#f2fbf9, #0f1b1b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.957 0.985 0.977), color(display-p3 0.068 0.104 0.105))",
   },
   component1: {
-    default: "light-dark(#ddf9f2, #ddf9f2)",
+    default: "light-dark(#ddf9f2, #092c2b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.888 0.972 0.95), color(display-p3 0.077 0.17 0.168))",
   },
   component2: {
-    default: "light-dark(#c8f4e9, #c8f4e9)",
+    default: "light-dark(#c8f4e9, #003a38)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.819 0.951 0.916), color(display-p3 0.068 0.224 0.22))",
   },
   component3: {
-    default: "light-dark(#b3ecde, #b3ecde)",
+    default: "light-dark(#b3ecde, #004744)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.747 0.918 0.873), color(display-p3 0.104 0.275 0.264))",
   },
   border1: {
-    default: "light-dark(#9ce0d0, #9ce0d0)",
+    default: "light-dark(#9ce0d0, #105650)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.668 0.87 0.818), color(display-p3 0.154 0.332 0.313))",
   },
   border2: {
-    default: "light-dark(#7ecfbd, #7ecfbd)",
+    default: "light-dark(#7ecfbd, #1e685f)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.567 0.805 0.744), color(display-p3 0.207 0.403 0.373))",
   },
   border3: {
-    default: "light-dark(#4cbba5, #4cbba5)",
+    default: "light-dark(#4cbba5, #277f70)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.42 0.724 0.649), color(display-p3 0.258 0.49 0.441))",
   },
@@ -47,17 +47,17 @@ export const mint = stylex.defineVars({
       "light-dark(color(display-p3 0.62 0.908 0.834), color(display-p3 0.62 0.908 0.834))",
   },
   solid2: {
-    default: "light-dark(#7de0cb, #7de0cb)",
+    default: "light-dark(#7de0cb, #a8f5e5)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.585 0.871 0.797), color(display-p3 0.725 0.954 0.898))",
   },
   text1: {
-    default: "light-dark(#027864, #027864)",
+    default: "light-dark(#027864, #58d5ba)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.203 0.463 0.397), color(display-p3 0.482 0.825 0.733))",
   },
   text2: {
-    default: "light-dark(#16433c, #16433c)",
+    default: "light-dark(#16433c, #c4f5e1)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.136 0.259 0.236), color(display-p3 0.807 0.955 0.887))",
   },

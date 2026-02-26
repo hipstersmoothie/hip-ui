@@ -16,15 +16,11 @@ export interface ToastContentType {
 }
 
 export const toasts = new ToastQueue<ToastContentType>({
-  // Wrap state updates in a CSS view transition.
+  // Run toast updates synchronously. Do NOT use startViewTransition here: it
+  // captures the entire page and animates elements with view-transition-name
+  // (e.g. recipe card images when hovered), causing a "loses shape" glitch when
+  // favoriting recipes. Toasts use their own React Stately animations.
   wrapUpdate(fn) {
-    if ("startViewTransition" in document) {
-      document.startViewTransition(() => {
-        // eslint-disable-next-line @eslint-react/dom/no-flush-sync
-        flushSync(fn);
-      });
-    } else {
-      fn();
-    }
+    flushSync(fn);
   },
 });

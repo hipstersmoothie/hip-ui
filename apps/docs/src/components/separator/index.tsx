@@ -11,7 +11,7 @@ const styles = stylex.create({
   separator: {
     margin: 0,
     borderWidth: 0,
-    backgroundColor: uiColor.border2,
+    backgroundColor: uiColor.component3,
     height: {
       default: "1px",
       ":is([aria-orientation=vertical])": "100%",

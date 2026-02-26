@@ -15,45 +15,45 @@ const styles = stylex.create({
   primarySelected: {
     backgroundColor: {
       default: primaryColor.solid1,
-      ":hover": primaryColor.solid2,
-      ":active": primaryColor.text1,
+      ":is([data-hovered])": primaryColor.solid2,
+      ":is([data-pressed])": primaryColor.text1,
     },
     color: "light-dark(white, black)",
   },
   secondarySelected: {
     borderColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
     backgroundColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
   },
   tertiarySelected: {
     borderColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
     backgroundColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
   },
   outlineSelected: {
     borderColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
     backgroundColor: {
       default: uiColor.border1,
-      ":hover": uiColor.border2,
-      ":active": uiColor.border3,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
   },
   sm: {
@@ -133,7 +133,6 @@ export function ToggleButton({
         toggleButtonStyles(isSelected).className || ""
       }
     >
-      {/* eslint-disable-next-line @eslint-react/no-children-map */}
       {Children.map(children, (child, index) =>
         typeof child === "string" ? (
           <span key={`${child}-${index.toString()}`}>{child}</span>

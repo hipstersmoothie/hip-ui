@@ -41,7 +41,7 @@ const styles = stylex.create({
       default: radius["lg"],
       [mediaQueries.supportsSquircle]: radius["4xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     outline: "none",
     overflow: "hidden",
@@ -52,6 +52,7 @@ const styles = stylex.create({
     translate: "-50% -50%",
     left: "50%",
     maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
+    maxWidth: "90vw",
     top: "calc(var(--visual-viewport-height) / 2)",
 
     animationDuration: animationDuration.slow,

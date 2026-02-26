@@ -10,7 +10,7 @@ import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
   root: {
-    backgroundColor: uiColor.bg,
+    backgroundColor: uiColor.bgSubtle,
     containerType: "inline-size",
     display: "flex",
     flexDirection: "column",
@@ -21,6 +21,7 @@ const styles = stylex.create({
     "--page-content-max-width": maxWidth || "1280px",
   }),
   header: {
+    backgroundColor: uiColor.bg,
     flexShrink: 0,
   },
   page: {

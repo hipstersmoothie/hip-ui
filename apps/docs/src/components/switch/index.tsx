@@ -15,7 +15,7 @@ import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
   wrapper: {
-    gap: spacing["2"],
+    gap: spacing["3"],
     alignItems: "center",
     display: "flex",
   },
@@ -26,6 +26,7 @@ const styles = stylex.create({
       ":is([data-selected=true] *)": primaryColor.solid1,
     },
     boxShadow: "inset 0 0 6px 1px rgba(0, 0, 0, 0.13)",
+    flexShrink: 0,
     opacity: {
       default: 1,
       ":is([data-disabled=true] *)": 0.5,

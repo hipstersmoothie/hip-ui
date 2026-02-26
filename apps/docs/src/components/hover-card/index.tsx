@@ -27,6 +27,7 @@ const styles = stylex.create({
     shadow: shadow.md,
   },
   content: {
+    outline: "none",
     position: "relative",
     paddingBottom: spacing["2"],
     paddingLeft: spacing["2"],
@@ -44,6 +45,9 @@ interface HoverCardInnerProps extends StyleXComponentProps<
   showDelay?: number;
   hideDelay?: number;
 }
+
+/** Ignore leave events for this long after opening to avoid spurious pointerleave from layout shifts when popover mounts */
+const IGNORE_LEAVE_AFTER_OPEN_MS = 150;
 
 function HoverCardInner({
   trigger,
@@ -66,6 +70,7 @@ function HoverCardInner({
   const popoverStyles = usePopoverStyles();
   const showTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const openedAtRef = useRef<number | null>(null);
   const { hoverProps } = useHover({
     onHoverStart: () => {
       if (showTimeoutRef.current) return;
@@ -75,10 +80,20 @@ function HoverCardInner({
       }
       showTimeoutRef.current = setTimeout(() => {
         overlayTriggerState?.open();
+        openedAtRef.current = Date.now();
         showTimeoutRef.current = null;
       }, showDelay);
     },
     onHoverEnd: () => {
+      // Ignore leave shortly after opening - popover mount can cause spurious pointerleave
+      // (e.g. from scroll lock shifting layout or DOM updates when overlay appears)
+      if (
+        openedAtRef.current &&
+        Date.now() - openedAtRef.current < IGNORE_LEAVE_AFTER_OPEN_MS
+      ) {
+        return;
+      }
+      openedAtRef.current = null;
       if (showTimeoutRef.current) {
         clearTimeout(showTimeoutRef.current);
         showTimeoutRef.current = null;

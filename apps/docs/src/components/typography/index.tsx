@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { useHover } from "react-aria";
 
 import type { StyleXComponentProps, TextVariant } from "../theme/types";
 
@@ -37,7 +38,7 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     position: "relative",
     marginBottom: spacing["8"],
@@ -87,7 +88,7 @@ const styles = stylex.create({
       default: radius["sm"],
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     fontSize: "0.95em",
     position: "relative",
@@ -113,7 +114,7 @@ const styles = stylex.create({
     opacity: {
       default: 0,
       ":is([data-focus-visible])": 1,
-      ":is([data-heading-link]:hover *)": 1,
+      ":is([data-heading-link][data-hovered] *)": 1,
     },
     transitionDuration: animationDuration.fast,
     transitionProperty: {
@@ -181,7 +182,6 @@ export const Body = ({ style, variant = "primary", ...props }: BodyProps) => {
       style: [
         variant === "secondary" && ui.textDim,
         variant === "critical" && critical.textDim,
-        styles.underline,
       ],
     }),
     [variant],
@@ -350,7 +350,6 @@ export function Pre({ style, children, ...props }: PreProps) {
   const ref = useRef<HTMLPreElement>(null);
 
   useEffect(() => {
-    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect, react-hooks/set-state-in-effect
     setTextContent(ref.current?.textContent ?? "error");
   }, [ref]);
 
@@ -418,6 +417,8 @@ export interface LinkedHeadingProps {
  * with the anchor to the clipboard.
  */
 export const LinkedHeading = ({ id, children, style }: LinkedHeadingProps) => {
+  const { hoverProps, isHovered } = useHover({});
+
   if (!id) {
     return <>{children}</>;
   }
@@ -432,7 +433,9 @@ export const LinkedHeading = ({ id, children, style }: LinkedHeadingProps) => {
       direction="row"
       gap="2"
       align="center"
-      data-heading-link={true}
+      data-heading-link
+      data-hovered={isHovered || undefined}
+      {...hoverProps}
       style={style}
     >
       <a href={`#${id}`} {...stylex.props(styles.linkedHeadingLink)}>

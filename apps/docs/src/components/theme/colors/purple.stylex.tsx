@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const purple = stylex.defineVars({
   bg: {
-    default: "light-dark(#fefcfe, #fefcfe)",
+    default: "light-dark(#fefcfe, #18111b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.995 0.988 0.996), color(display-p3 0.09 0.068 0.103))",
   },
   bgSubtle: {
-    default: "light-dark(#fbf7fe, #fbf7fe)",
+    default: "light-dark(#fbf7fe, #1e1523)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.983 0.971 0.993), color(display-p3 0.113 0.082 0.134))",
   },
   component1: {
-    default: "light-dark(#f7edfe, #f7edfe)",
+    default: "light-dark(#f7edfe, #301c3b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.963 0.931 0.989), color(display-p3 0.175 0.112 0.224))",
   },
   component2: {
-    default: "light-dark(#f2e2fc, #f2e2fc)",
+    default: "light-dark(#f2e2fc, #3d224e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.937 0.888 0.981), color(display-p3 0.224 0.137 0.297))",
   },
   component3: {
-    default: "light-dark(#ead5f9, #ead5f9)",
+    default: "light-dark(#ead5f9, #48295c)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.904 0.837 0.966), color(display-p3 0.264 0.167 0.349))",
   },
   border1: {
-    default: "light-dark(#e0c4f4, #e0c4f4)",
+    default: "light-dark(#e0c4f4, #54346b)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.86 0.774 0.942), color(display-p3 0.311 0.208 0.406))",
   },
   border2: {
-    default: "light-dark(#d1afec, #d1afec)",
+    default: "light-dark(#d1afec, #664282)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.799 0.69 0.91), color(display-p3 0.381 0.266 0.496))",
   },
   border3: {
-    default: "light-dark(#be93e4, #be93e4)",
+    default: "light-dark(#be93e4, #8457aa)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.719 0.583 0.874), color(display-p3 0.49 0.349 0.649))",
   },
@@ -47,17 +47,17 @@ export const purple = stylex.defineVars({
       "light-dark(color(display-p3 0.523 0.318 0.751), color(display-p3 0.523 0.318 0.751))",
   },
   solid2: {
-    default: "light-dark(#8347b9, #8347b9)",
+    default: "light-dark(#8347b9, #9a5cd0)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.483 0.289 0.7), color(display-p3 0.57 0.373 0.791))",
   },
   text1: {
-    default: "light-dark(#8145b5, #8145b5)",
+    default: "light-dark(#8145b5, #d19dff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.473 0.281 0.687), color(display-p3 0.8 0.62 1))",
   },
   text2: {
-    default: "light-dark(#402060, #402060)",
+    default: "light-dark(#402060, #ecd9fa)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.234 0.132 0.363), color(display-p3 0.913 0.854 0.971))",
   },

@@ -80,8 +80,8 @@ const styles = stylex.create({
   dragButtonWrapper: {
     opacity: {
       default: 0,
-      ":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)": 1,
-      ":hover": 1,
+      ":is([data-hovered])": 1,
+      ":is([data-react-aria-pressable=true][data-hovered]:not([data-disabled]) *)": 1,
     },
     position: "absolute",
     transform: "translate(-100%, -50%)",
@@ -96,7 +96,7 @@ const styles = stylex.create({
       default: radius["sm"],
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     alignItems: "center",
     display: "flex",

@@ -76,7 +76,7 @@ const styles = stylex.create({
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderWidth: 0,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     textDecoration: "none",
     alignItems: "center",
@@ -168,7 +168,6 @@ export function Sidebar({ children, style, ...props }: SidebarProps) {
     const focusActiveItem = () => {
       const activeItem =
         document.querySelector<HTMLLIElement>("[data-active=true]");
-      console.log(activeItem);
       activeItem?.scrollIntoView({ behavior: "instant" });
     };
 
@@ -314,7 +313,7 @@ export function SidebarItem({
           hoverProps,
           pressProps,
         )}
-        data-hovered={isHovered}
+        data-hovered={isHovered || undefined}
         data-pressed={isPressed}
         data-active={isActive}
         {...stylex.props(

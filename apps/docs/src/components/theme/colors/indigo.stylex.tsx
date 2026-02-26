@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const indigo = stylex.defineVars({
   bg: {
-    default: "light-dark(#fdfdfe, #fdfdfe)",
+    default: "light-dark(#fdfdfe, #11131f)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.992 0.992 0.996), color(display-p3 0.068 0.074 0.118))",
   },
   bgSubtle: {
-    default: "light-dark(#f7f9ff, #f7f9ff)",
+    default: "light-dark(#f7f9ff, #141726)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.971 0.977 0.998), color(display-p3 0.081 0.089 0.144))",
   },
   component1: {
-    default: "light-dark(#edf2fe, #edf2fe)",
+    default: "light-dark(#edf2fe, #182449)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.933 0.948 0.992), color(display-p3 0.105 0.141 0.275))",
   },
   component2: {
-    default: "light-dark(#e1e9ff, #e1e9ff)",
+    default: "light-dark(#e1e9ff, #1d2e62)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.885 0.914 1), color(display-p3 0.129 0.18 0.369))",
   },
   component3: {
-    default: "light-dark(#d2deff, #d2deff)",
+    default: "light-dark(#d2deff, #253974)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.831 0.87 1), color(display-p3 0.163 0.22 0.439))",
   },
   border1: {
-    default: "light-dark(#c1d0ff, #c1d0ff)",
+    default: "light-dark(#c1d0ff, #304384)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.767 0.814 0.995), color(display-p3 0.203 0.262 0.5))",
   },
   border2: {
-    default: "light-dark(#abbdf9, #abbdf9)",
+    default: "light-dark(#abbdf9, #3a4f97)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.685 0.74 0.957), color(display-p3 0.245 0.309 0.575))",
   },
   border3: {
-    default: "light-dark(#8da4ef, #8da4ef)",
+    default: "light-dark(#8da4ef, #435db1)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.569 0.639 0.916), color(display-p3 0.285 0.362 0.674))",
   },
@@ -47,17 +47,17 @@ export const indigo = stylex.defineVars({
       "light-dark(color(display-p3 0.276 0.384 0.837), color(display-p3 0.276 0.384 0.837))",
   },
   solid2: {
-    default: "light-dark(#3358d4, #3358d4)",
+    default: "light-dark(#3358d4, #5472e4)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.234 0.343 0.801), color(display-p3 0.354 0.445 0.866))",
   },
   text1: {
-    default: "light-dark(#3a5bc7, #3a5bc7)",
+    default: "light-dark(#3a5bc7, #9eb1ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.256 0.354 0.755), color(display-p3 0.63 0.69 1))",
   },
   text2: {
-    default: "light-dark(#1f2d5c, #1f2d5c)",
+    default: "light-dark(#1f2d5c, #d6e1ff)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.133 0.175 0.348), color(display-p3 0.848 0.881 0.99))",
   },

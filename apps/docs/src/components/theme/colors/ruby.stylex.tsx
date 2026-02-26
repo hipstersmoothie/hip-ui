@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const ruby = stylex.defineVars({
   bg: {
-    default: "light-dark(#fffcfd, #fffcfd)",
+    default: "light-dark(#fffcfd, #191113)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.998 0.989 0.992), color(display-p3 0.093 0.068 0.074))",
   },
   bgSubtle: {
-    default: "light-dark(#fff7f8, #fff7f8)",
+    default: "light-dark(#fff7f8, #1e1517)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.995 0.971 0.974), color(display-p3 0.113 0.083 0.089))",
   },
   component1: {
-    default: "light-dark(#feeaed, #feeaed)",
+    default: "light-dark(#feeaed, #3a141e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.983 0.92 0.928), color(display-p3 0.208 0.088 0.117))",
   },
   component2: {
-    default: "light-dark(#ffdce1, #ffdce1)",
+    default: "light-dark(#ffdce1, #4e1325)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.987 0.869 0.885), color(display-p3 0.279 0.092 0.147))",
   },
   component3: {
-    default: "light-dark(#ffced6, #ffced6)",
+    default: "light-dark(#ffced6, #5e1a2e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.968 0.817 0.839), color(display-p3 0.337 0.12 0.18))",
   },
   border1: {
-    default: "light-dark(#f8bfc8, #f8bfc8)",
+    default: "light-dark(#f8bfc8, #6f2539)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.937 0.758 0.786), color(display-p3 0.401 0.166 0.223))",
   },
   border2: {
-    default: "light-dark(#efacb8, #efacb8)",
+    default: "light-dark(#efacb8, #883447)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.897 0.685 0.721), color(display-p3 0.495 0.224 0.281))",
   },
   border3: {
-    default: "light-dark(#e592a3, #e592a3)",
+    default: "light-dark(#e592a3, #b3445a)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.851 0.588 0.639), color(display-p3 0.652 0.295 0.359))",
   },
@@ -47,17 +47,17 @@ export const ruby = stylex.defineVars({
       "light-dark(color(display-p3 0.83 0.323 0.408), color(display-p3 0.83 0.323 0.408))",
   },
   solid2: {
-    default: "light-dark(#dc3b5d, #dc3b5d)",
+    default: "light-dark(#dc3b5d, #ec5a72)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.795 0.286 0.375), color(display-p3 0.857 0.392 0.455))",
   },
   text1: {
-    default: "light-dark(#ca244d, #ca244d)",
+    default: "light-dark(#ca244d, #ff949d)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.728 0.211 0.311), color(display-p3 1 0.57 0.59))",
   },
   text2: {
-    default: "light-dark(#64172b, #64172b)",
+    default: "light-dark(#64172b, #fed2e1)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.36 0.115 0.171), color(display-p3 0.968 0.83 0.88))",
   },

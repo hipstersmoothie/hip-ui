@@ -16,7 +16,7 @@ const styles = stylex.create({
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     outline: "none",
     overflow: "auto",
@@ -51,7 +51,6 @@ const styles = stylex.create({
   },
 });
 
-// eslint-disable-next-line @eslint-react/no-unnecessary-use-prefix
 export function usePopoverStyles() {
   return {
     wrapper: [styles.popover, ui.bgSubtle, ui.text, ui.border],

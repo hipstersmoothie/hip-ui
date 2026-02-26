@@ -58,6 +58,11 @@ export const IconButton = ({
 }: IconButtonProps) => {
   const size = sizeProp || use(SizeContext);
 
+  const buttonChildren =
+    typeof children === "function"
+      ? (children as () => React.ReactNode)()
+      : children;
+
   if (!label) {
     return (
       <Button
@@ -65,7 +70,7 @@ export const IconButton = ({
         style={[styles.button as unknown as stylex.StyleXStyles, style]}
         {...props}
       >
-        {children}
+        {buttonChildren}
       </Button>
     );
   }
@@ -81,7 +86,7 @@ export const IconButton = ({
         style={[styles.button as unknown as stylex.StyleXStyles, style]}
         {...props}
       >
-        {children}
+        {buttonChildren}
       </Button>
     </Tooltip>
   );

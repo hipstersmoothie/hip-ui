@@ -2,42 +2,42 @@ import * as stylex from "@stylexjs/stylex";
 
 export const bronze = stylex.defineVars({
   bg: {
-    default: "light-dark(#fdfcfc, #fdfcfc)",
+    default: "light-dark(#fdfcfc, #141110)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.991 0.988 0.988), color(display-p3 0.076 0.067 0.063))",
   },
   bgSubtle: {
-    default: "light-dark(#fdf7f5, #fdf7f5)",
+    default: "light-dark(#fdf7f5, #1c1917)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.989 0.97 0.961), color(display-p3 0.106 0.097 0.093))",
   },
   component1: {
-    default: "light-dark(#f6edea, #f6edea)",
+    default: "light-dark(#f6edea, #262220)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.958 0.932 0.919), color(display-p3 0.147 0.132 0.125))",
   },
   component2: {
-    default: "light-dark(#efe4df, #efe4df)",
+    default: "light-dark(#efe4df, #302a27)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.929 0.894 0.877), color(display-p3 0.185 0.166 0.156))",
   },
   component3: {
-    default: "light-dark(#e7d9d3, #e7d9d3)",
+    default: "light-dark(#e7d9d3, #3b3330)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.898 0.853 0.832), color(display-p3 0.227 0.202 0.19))",
   },
   border1: {
-    default: "light-dark(#dfcdc5, #dfcdc5)",
+    default: "light-dark(#dfcdc5, #493e3a)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.861 0.805 0.778), color(display-p3 0.278 0.246 0.23))",
   },
   border2: {
-    default: "light-dark(#d3bcb3, #d3bcb3)",
+    default: "light-dark(#d3bcb3, #5a4c47)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.812 0.739 0.706), color(display-p3 0.343 0.302 0.281))",
   },
   border3: {
-    default: "light-dark(#c2a499, #c2a499)",
+    default: "light-dark(#c2a499, #6f5f58)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.741 0.647 0.606), color(display-p3 0.426 0.374 0.347))",
   },
@@ -47,17 +47,17 @@ export const bronze = stylex.defineVars({
       "light-dark(color(display-p3 0.611 0.507 0.455), color(display-p3 0.611 0.507 0.455))",
   },
   solid2: {
-    default: "light-dark(#957468, #957468)",
+    default: "light-dark(#957468, #ae8c7e)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.563 0.461 0.414), color(display-p3 0.66 0.556 0.504))",
   },
   text1: {
-    default: "light-dark(#7d5e54, #7d5e54)",
+    default: "light-dark(#7d5e54, #d4b3a5)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.471 0.373 0.336), color(display-p3 0.81 0.707 0.655))",
   },
   text2: {
-    default: "light-dark(#43302b, #43302b)",
+    default: "light-dark(#43302b, #ede0d9)",
     "@media (color-gamut: p3)":
       "light-dark(color(display-p3 0.251 0.191 0.172), color(display-p3 0.921 0.88 0.854))",
   },

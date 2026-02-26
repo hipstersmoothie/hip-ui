@@ -1,7 +1,7 @@
 import type { ButtonProps as AriaButtonProps } from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
-import { use, useLayoutEffect, useState } from "react";
+import { use, useLayoutEffect, useRef, useState } from "react";
 import { Button as AriaButton } from "react-aria-components";
 
 import type { Size, StyleXComponentProps } from "../theme/types";
@@ -34,7 +34,6 @@ const styles = stylex.create({
     justifyContent: "center",
     position: "relative",
 
-    // eslint-disable-next-line @stylexjs/valid-styles
     cornerShape: "squircle",
   },
   wrapperSm: {
@@ -76,10 +75,18 @@ const styles = stylex.create({
     width: "100%",
   },
   fallback: {
+    alignItems: "center",
     color: uiColor.text1,
+    display: "flex",
     fontFamily: fontFamily["sans"],
     fontWeight: fontWeight["medium"],
+    justifyContent: "center",
     lineHeight: lineHeight["none"],
+    position: "absolute",
+    bottom: 0,
+    left: 0,
+    right: 0,
+    top: 0,
   },
   fallbackSm: {
     fontSize: fontSize["sm"],
@@ -102,20 +109,21 @@ const styles = stylex.create({
     display: "inline-block",
   },
   overlay: {
+    inset: 0,
     backgroundColor: uiColor.solid2,
     opacity: {
       default: 0,
-      ":is([data-avatar-button][data-hovered] *)": 0.5,
+      ":is([data-avatar-button='true'][data-hovered='true'] *)": 0.5,
     },
     pointerEvents: "none",
     position: "absolute",
     transitionDuration: animationDuration.default,
-    transitionProperty: "opacity",
+    // Only apply transition after mount to prevent initial render animation
+    transitionProperty: {
+      default: "none",
+      ":is([data-overlay-mounted])": "opacity",
+    },
     transitionTimingFunction: animationTimingFunction.easeOut,
-    bottom: 0,
-    left: 0,
-    right: 0,
-    top: 0,
   },
 });
 
@@ -132,6 +140,109 @@ export interface AvatarProps extends StyleXComponentProps<
   size?: Size | "xl";
 }
 
+function AvatarImageWithState({
+  src,
+  alt,
+  onStateChange,
+}: {
+  src: string;
+  alt: string;
+  onStateChange: (loaded: boolean, error: boolean) => void;
+}) {
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  // Check if image is already cached/loaded
+  useLayoutEffect(() => {
+    const img = imgRef.current;
+    if (!img) return;
+
+    const handleLoad = () => {
+      onStateChange(true, false);
+    };
+
+    const handleError = () => {
+      onStateChange(false, true);
+    };
+
+    // If image is already loaded (cached), call handleLoad immediately
+    if (img.complete && img.naturalWidth > 0) {
+      handleLoad();
+    } else {
+      // Otherwise, wait for load event
+      img.addEventListener("load", handleLoad);
+      img.addEventListener("error", handleError);
+
+      return () => {
+        img.removeEventListener("load", handleLoad);
+        img.removeEventListener("error", handleError);
+      };
+    }
+  }, [src, onStateChange]);
+
+  return (
+    <img ref={imgRef} {...stylex.props(styles.image)} src={src} alt={alt} />
+  );
+}
+
+function AvatarContent({
+  src,
+  alt,
+  fallback,
+  size,
+}: {
+  src?: string;
+  alt: string;
+  fallback: React.ReactNode;
+  size: Size | "xl";
+}) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const [hasCheckedImage, setHasCheckedImage] = useState(false);
+  const overlayRef = useRef<HTMLDivElement>(null);
+
+  useLayoutEffect(() => {
+    // Enable transitions after initial render (CSS can't detect this)
+    if (overlayRef.current) overlayRef.current.dataset.overlayMounted = "";
+  }, []);
+
+  const handleStateChange = (loaded: boolean, error: boolean) => {
+    setImageLoaded(loaded);
+    setImageError(error);
+    setHasCheckedImage(true);
+  };
+
+  // Only show fallback if we've checked and the image isn't loaded or has error
+  const showFallback =
+    !src || (hasCheckedImage && (imageError || !imageLoaded));
+
+  return (
+    <>
+      {src && !imageError && (
+        <AvatarImageWithState
+          key={src}
+          src={src}
+          alt={alt}
+          onStateChange={handleStateChange}
+        />
+      )}
+      {showFallback && (
+        <div
+          {...stylex.props(
+            styles.fallback,
+            size === "sm" && styles.fallbackSm,
+            size === "md" && styles.fallbackMd,
+            size === "lg" && styles.fallbackLg,
+            size === "xl" && styles.fallbackXl,
+          )}
+        >
+          {fallback}
+        </div>
+      )}
+      <div ref={overlayRef} {...stylex.props(styles.overlay)} />
+    </>
+  );
+}
+
 export function Avatar({
   style,
   alt = "",
@@ -141,28 +252,6 @@ export function Avatar({
   ...props
 }: AvatarProps) {
   const size = sizeProp || use(SizeContext);
-  const [imageLoaded, setImageLoaded] = useState<
-    "loading" | "loaded" | "error"
-  >("loading");
-
-  useLayoutEffect(() => {
-    if (!src) return;
-
-    const onLoad = () => setImageLoaded("loaded");
-    const onError = () => setImageLoaded("error");
-
-    const image = new Image();
-
-    image.addEventListener("load", onLoad);
-    image.addEventListener("error", onError);
-
-    image.src = src;
-
-    return () => {
-      image.removeEventListener("load", onLoad);
-      image.removeEventListener("error", onError);
-    };
-  }, [src]);
 
   return (
     <div
@@ -176,23 +265,13 @@ export function Avatar({
         style,
       )}
     >
-      {imageLoaded === "loaded" && (
-        <img {...stylex.props(styles.image)} src={src} alt={alt} />
-      )}
-      {(!src || imageLoaded === "error") && (
-        <div
-          {...stylex.props(
-            styles.fallback,
-            size === "sm" && styles.fallbackSm,
-            size === "md" && styles.fallbackMd,
-            size === "lg" && styles.fallbackLg,
-            size === "xl" && styles.fallbackXl,
-          )}
-        >
-          {fallback}
-        </div>
-      )}
-      <div {...stylex.props(styles.overlay)} />
+      <AvatarContent
+        key={src}
+        src={src}
+        alt={alt}
+        fallback={fallback}
+        size={size}
+      />
     </div>
   );
 }

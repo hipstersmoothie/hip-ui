@@ -11,11 +11,15 @@ import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { ColorThumb } from "../color-area";
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { uiColor } from "../theme/color.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
+  wrapper: {
+    width: "fit-content",
+  },
   track: {
     gridArea: "track",
     borderRadius: radius.full,
@@ -33,6 +37,14 @@ const styles = stylex.create({
   thumb: {
     top: "50%",
   },
+  children: {
+    position: "absolute",
+    transform: "translate(-50%, -50%)",
+    height: "80%",
+    left: "50%",
+    top: "50%",
+    width: "80%",
+  },
 });
 
 export interface ColorWheelProps extends StyleXComponentProps<
@@ -40,12 +52,14 @@ export interface ColorWheelProps extends StyleXComponentProps<
 > {
   size?: Size;
   width: number;
+  children?: React.ReactNode;
 }
 
 export function ColorWheel({
   style,
   size: sizeProp,
   width,
+  children,
   ...props
 }: ColorWheelProps) {
   const size = sizeProp || use(SizeContext);
@@ -54,13 +68,18 @@ export function ColorWheel({
   return (
     <AriaColorWheel
       {...props}
-      {...stylex.props(style)}
+      {...stylex.props(styles.wrapper, style)}
       data-size={size}
       outerRadius={width}
       innerRadius={width - trackWidth}
     >
       <ColorWheelTrack {...stylex.props(styles.track)} />
       <ColorThumb style={styles.thumb} />
+      {Boolean(children) && (
+        <Flex style={styles.children} align="center" justify="center">
+          {children}
+        </Flex>
+      )}
     </AriaColorWheel>
   );
 }

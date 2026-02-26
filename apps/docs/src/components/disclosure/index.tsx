@@ -39,7 +39,7 @@ const styles = stylex.create({
       [mediaQueries.supportsSquircle]: radius["2xl"],
     },
     borderWidth: 0,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     gap: spacing["2"],
     alignItems: "center",

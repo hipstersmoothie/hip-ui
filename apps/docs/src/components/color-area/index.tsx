@@ -21,7 +21,7 @@ const styles = stylex.create({
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     filter: {
       ":is([data-disabled])": "grayscale(1)",
@@ -36,7 +36,7 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 2,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     boxShadow: " 0 0 0 1px black, inset 0 0 0 1px black",
     boxSizing: "border-box",

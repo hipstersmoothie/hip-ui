@@ -44,16 +44,17 @@ const styles = stylex.create({
       default: radius["md"],
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     gap: spacing["3"],
     alignItems: "center",
     backgroundColor: {
       default: "transparent",
-      [":is([data-react-aria-pressable=true]:hover:not([data-disabled]) *)"]:
-        uiColor.component2,
-      [":is([data-react-aria-pressable=true]:not([data-disabled]):active *)"]:
+      [":is([data-focused]:not([data-disabled]) *)"]: uiColor.component2,
+      [":is([data-react-aria-pressable=true]:not([data-disabled])[data-pressed=true] *)"]:
         uiColor.component3,
+      [":is([data-react-aria-pressable=true][data-hovered]:not([data-disabled]) *)"]:
+        uiColor.component2,
     },
     boxSizing: "border-box",
     color: {
@@ -70,6 +71,11 @@ const styles = stylex.create({
     paddingLeft: spacing["3"],
     paddingRight: spacing["3"],
     paddingTop: spacing["2"],
+
+    /* eslint-disable-next-line @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
+    ":is([data-variant=destructive] *) *": {
+      color: criticalColor.text1,
+    },
   },
   smItemInner: {
     gap: spacing["2"],
@@ -102,9 +108,6 @@ const styles = stylex.create({
   },
   label: {
     gap: spacing["1.5"],
-    color: {
-      [":is([data-variant=destructive] *)"]: criticalColor.text1,
-    },
     display: "flex",
     flexDirection: "column",
     flexGrow: 1,

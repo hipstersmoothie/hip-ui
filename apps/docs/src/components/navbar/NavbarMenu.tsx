@@ -42,11 +42,11 @@ const styles = stylex.create({
 
     gridTemplateAreas: {
       default: '"title"',
-      ":has([data-description])": `
+      ":has(:is([data-description]))": `
         "title"
         "description"
       `,
-      ":has([data-icon])": `
+      ":has(:is([data-icon]))": `
         "icon title"
       `,
       ":has([data-icon]):has([data-description])": `
@@ -55,7 +55,7 @@ const styles = stylex.create({
       `,
     },
     gridTemplateColumns: {
-      ":has([data-icon])": "min-content 1fr",
+      ":has(:is([data-icon]))": "min-content 1fr",
       ":has([data-icon]):has([data-description])": "min-content 1fr",
     },
   },
@@ -69,7 +69,7 @@ const styles = stylex.create({
     alignItems: "center",
     backgroundColor: {
       default: uiColor.component2,
-      [stylex.when.ancestor(":hover")]: uiColor.component1,
+      [stylex.when.ancestor(":is([data-hovered])")]: uiColor.component1,
     },
     color: uiColor.text1,
     display: "flex",
@@ -218,7 +218,7 @@ export function NavbarMenuItem({
         hoverProps,
         pressProps,
       )}
-      data-hovered={isHovered}
+      data-hovered={isHovered || undefined}
       data-pressed={isPressed}
       {...stylex.props(
         stylex.defaultMarker(),

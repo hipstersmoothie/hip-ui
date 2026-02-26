@@ -127,7 +127,7 @@ function TextFieldContent({
         />
       </div>
       <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      {errorMessage && <FieldErrorMessage>{errorMessage}</FieldErrorMessage>}
     </>
   );
 }

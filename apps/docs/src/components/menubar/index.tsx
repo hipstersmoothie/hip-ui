@@ -46,7 +46,7 @@ const styles = stylex.create({
     },
     borderStyle: "solid",
     borderWidth: 1,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     gap: spacing["1"],
     alignItems: "center",

@@ -7,7 +7,7 @@ import type {
 
 import * as stylex from "@stylexjs/stylex";
 import { Pipette } from "lucide-react";
-import { createContext, use } from "react";
+import { createContext, use, useMemo } from "react";
 import {
   ColorPicker as AriaColorPicker,
   Button,
@@ -100,11 +100,9 @@ function ColorSpaceProvider({ children }: { children: React.ReactNode }) {
     throw new Error("Color needs to be a defined value");
   }
 
-  return (
-    <ColorSpaceContext value={state.color.getColorSpace()}>
-      {children}
-    </ColorSpaceContext>
-  );
+  const colorSpace = useMemo(() => state.color.getColorSpace(), [state.color]);
+
+  return <ColorSpaceContext value={colorSpace}>{children}</ColorSpaceContext>;
 }
 
 export function ColorPicker({

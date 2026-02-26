@@ -48,7 +48,7 @@ const styles = stylex.create({
       ":is([data-drop-target])": "solid",
     },
     borderWidth: 2,
-    // eslint-disable-next-line @stylexjs/valid-styles
+
     cornerShape: "squircle",
     overflow: "hidden",
     backgroundColor: {
@@ -82,7 +82,7 @@ interface FileDropZoneProps
   extends
     Omit<AriaFileTriggerProps, "className" | "style">,
     Pick<DropZoneProps, "isDisabled"> {
-  style?: stylex.StyleXStyles | stylex.StyleXStyles[];
+  style?: stylex.StyleXStyles | Array<stylex.StyleXStyles>;
   onAddFiles?: (files: Array<File>) => void;
 }
 

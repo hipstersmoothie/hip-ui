@@ -1,0 +1,57 @@
+---
+title: Star Rating
+description: A rating component with half-star support.
+---
+
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/star-rating/basic";
+import { Interactive } from "../../../examples/star-rating/interactive";
+import { Sizes } from "../../../examples/star-rating/sizes";
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the star-rating component to your project.
+
+```bash
+pnpm hip install star-rating
+```
+
+## Props
+
+<PropDocs components={["StarRating", "StarRatingInput"]} />
+
+## Features
+
+### Interactive
+
+Use `StarRatingInput` for user-selectable ratings.
+Supports click, hover preview, and keyboard (arrow keys).
+Use `value` and `onChange` for controlled mode, or `defaultValue` for uncontrolled.
+
+<Example src={Interactive} />
+
+### Half-star support
+
+The component supports decimal ratings from 0 to 5.
+Values between 0.25 and 0.74 display a half star.
+Values of 0.75 and above round up to a full star.
+
+### Sizes
+
+The `size` prop controls the star icon size in pixels (default 16).
+Both read-only and interactive variants support custom sizes.
+
+<Example src={Sizes} />
+
+### Review count
+
+Optionally display the number of reviews next to the rating.
+
+## Related Components
+
+- [Badge](/docs/components/badge) - For status indicators
+- [Meter](/docs/components/meter) - For numeric gauges and progress
+- [ProgressBar](/docs/components/progress-bar) - For completion status
