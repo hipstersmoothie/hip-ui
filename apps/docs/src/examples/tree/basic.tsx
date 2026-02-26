@@ -19,7 +19,7 @@ const treeData = [
 export function Basic() {
   return (
     <Tree items={treeData}>
-      {function renderTreeItem(item) {
+      {(item) => {
         return (
           <TreeItem key={item.id} id={item.id} title={item.name}>
             {item.children.map((child) => (

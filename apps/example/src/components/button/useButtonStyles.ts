@@ -5,6 +5,7 @@ import { use } from "react";
 
 import type { ButtonVariant, Size } from "../types";
 
+import { animationDuration } from "../theme/animations.stylex";
 import { slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray, primary } from "../theme/semantic-color.stylex";
@@ -40,7 +41,7 @@ const styles = stylex.create({
     pointerEvents: {
       ":disabled": "none",
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "all",
     transitionTimingFunction: "ease-in-out",
     whiteSpace: "nowrap",
@@ -95,16 +96,16 @@ const styles = stylex.create({
   },
   secondary: {
     borderColor: {
-      default: slate[3],
-      ":hover": slate[4],
-      ":active": slate[5],
+      default: slate.component1,
+      ":hover": slate.component2,
+      ":active": slate.component3,
     },
   },
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":hover": slate[4],
-      ":active": slate[5],
+      ":hover": slate.component2,
+      ":active": slate.component3,
     },
   },
 
@@ -116,7 +117,7 @@ const styles = stylex.create({
     borderTopRightRadius: { ":not(:last-child)": 0 },
   },
   secondaryGroupHorizontal: {
-    borderRightColor: { ":not(:last-child)": slate[7] },
+    borderRightColor: { ":not(:last-child)": slate.border2 },
   },
   groupVertical: {
     borderBottomLeftRadius: { ":not(:last-child)": 0 },
@@ -126,7 +127,7 @@ const styles = stylex.create({
     borderTopWidth: { ":not(:first-child)": 0 },
   },
   secondaryGroupVertical: {
-    borderBottomColor: { ":not(:last-child)": slate[7] },
+    borderBottomColor: { ":not(:last-child)": slate.border2 },
   },
 });
 

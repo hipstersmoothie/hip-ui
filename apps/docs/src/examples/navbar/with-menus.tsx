@@ -22,14 +22,14 @@ const NavbarMenuItemLink = createLink(NavbarMenuItem);
 
 const styles = stylex.create({
   wrapper: {
+    margin: spacing["4"],
     borderColor: uiColor.border1,
     borderRadius: radius["lg"],
     borderStyle: "solid",
-    margin: spacing["4"],
-    containerType: "inline-size",
     borderWidth: 1,
-    height: "400px",
     overflow: "hidden",
+    containerType: "inline-size",
+    height: "400px",
     width: "90%",
   },
 });

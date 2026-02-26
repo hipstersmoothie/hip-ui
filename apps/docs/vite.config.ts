@@ -183,17 +183,17 @@ function examples() {
 
 /** Add the example slug to the example function */
 function annotateExamples() {
-  let examples: Array<string> = [];
+  let exampleFiles: Array<string> = [];
 
   return {
     enforce: "pre",
     name: "my-plugin", // required, will show up in warnings and errors
     buildStart: async () => {
-      examples = await getExamples();
+      exampleFiles = await getExamples();
     },
 
     transform(code, id) {
-      const example = examples.find((f) => id.includes(f));
+      const example = exampleFiles.find((f) => id.includes(f));
 
       if (!id.endsWith("?raw") && !id.endsWith("?shiki") && example) {
         const exportName = code.match(/export function (\w+)\(\)/)?.[1];
@@ -258,10 +258,7 @@ function propDocs() {
             Object.entries(doc.props).map(async ([key, p]) => {
               const prop = doc.props[key];
               if (!prop) return;
-              prop.type.name = await highlightCode(
-                p.type.name,
-                "typescript",
-              );
+              prop.type.name = await highlightCode(p.type.name, "typescript");
 
               if (prop.defaultValue) {
                 const defaultValue = prop.defaultValue as {

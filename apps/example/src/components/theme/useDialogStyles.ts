@@ -4,7 +4,7 @@ import { use } from "react";
 import type { Size } from "../types";
 
 import { SizeContext } from "../context";
-import { animations } from "../theme/animations.stylex";
+import { animationDuration, animations } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { gray } from "./semantic-color.stylex";
@@ -19,7 +19,7 @@ const styles = stylex.create({
     top: 0,
     width: "100vw",
 
-    animationDuration: "200ms",
+    animationDuration: animationDuration.slow,
     animationName: {
       ":is([data-entering])": animations.fadeIn,
     },
@@ -29,7 +29,7 @@ const styles = stylex.create({
       ":is([data-exiting])": 0,
     },
     transitionDuration: {
-      ":is([data-exiting])": "100ms",
+      ":is([data-exiting])": animationDuration.fast,
     },
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",
@@ -46,7 +46,7 @@ const styles = stylex.create({
     maxHeight: "calc(var(--visual-viewport-height) * 0.8)",
     top: "calc(var(--visual-viewport-height) / 2)",
 
-    animationDuration: { ":is([data-entering])": "300ms" },
+    animationDuration: { ":is([data-entering])": animationDuration.verySlow },
     animationName: { ":is([data-entering])": animations.zoomIn },
     animationTimingFunction: {
       ":is([data-entering])": "cubic-bezier(0.175, 0.885, 0.32, 1.275)",

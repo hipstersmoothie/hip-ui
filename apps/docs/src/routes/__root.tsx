@@ -6,10 +6,7 @@ import { HeadContent, Scripts, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import { useState } from "react";
 
-import type {
-  Color,
-  Theme,
-  UiColor} from "@/lib/ThemeContext";
+import type { Color, Theme, UiColor } from "@/lib/ThemeContext";
 
 import {
   ThemeContext,

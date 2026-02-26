@@ -18,6 +18,7 @@ import type { Size } from "../types";
 
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
+import { animationDuration } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -67,7 +68,7 @@ const styles = stylex.create({
     },
     position: "absolute",
     transform: "translate(-100%, -50%)",
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "opacity",
     transitionTimingFunction: "ease-in-out",
     left: 0,

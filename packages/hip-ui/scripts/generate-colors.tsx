@@ -97,6 +97,7 @@ function generateDefineVars(
   `;
 }
 
+/* eslint-disable import-x/namespace -- dynamic color key lookup required for codegen */
 async function generateColor(name: string) {
   const color = Object.values(colors[name as keyof typeof colors]);
   const colorDark = Object.values(
@@ -140,6 +141,7 @@ async function generateColor(name: string) {
     `,
   );
 }
+/* eslint-enable import-x/namespace */
 
 async function main() {
   for (const name of names) {

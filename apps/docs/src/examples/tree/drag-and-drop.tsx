@@ -3,8 +3,7 @@
 import type { DropIndicatorProps } from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
-import { useDragAndDrop } from "react-aria-components";
-import { DropIndicator } from "react-aria-components";
+import { DropIndicator, useDragAndDrop } from "react-aria-components";
 import { useTreeData } from "react-stately";
 
 import { Tree, TreeItem } from "@/components/tree";
@@ -64,6 +63,21 @@ const initialItems: Array<TreeItem> = [
   },
 ];
 
+function renderTreeItem(item: {
+  value: { id: string; name: string };
+  children?: Array<{ value: { id: string; name: string }; children?: Array<unknown> }>;
+}): React.ReactNode {
+  return (
+    <TreeItem
+      key={item.value.id}
+      id={item.value.id}
+      title={item.value.name}
+    >
+      {item.children?.map((child) => renderTreeItem(child))}
+    </TreeItem>
+  );
+}
+
 export function DragAndDrop() {
   const tree = useTreeData({
     initialItems,
@@ -109,17 +123,7 @@ export function DragAndDrop() {
       items={tree.items}
       dragAndDropHooks={dragAndDropHooks}
     >
-      {function renderTreeItem(item): React.ReactNode {
-        return (
-          <TreeItem
-            key={item.value.id}
-            id={item.value.id}
-            title={item.value.name}
-          >
-            {item.children?.map((child) => renderTreeItem(child))}
-          </TreeItem>
-        );
-      }}
+      {renderTreeItem}
     </Tree>
   );
 }

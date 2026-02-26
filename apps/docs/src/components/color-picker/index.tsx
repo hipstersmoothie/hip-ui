@@ -1,10 +1,21 @@
-import type { Color, ColorSpace, PopoverProps } from "react-aria-components";
-import type { ColorPickerProps as AriaColorPickerProps } from 'react-aria-components';
+import type {
+  ColorPickerProps as AriaColorPickerProps,
+  Color,
+  ColorSpace,
+  PopoverProps,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
 import { Pipette } from "lucide-react";
 import { createContext, use } from "react";
-import { ColorPicker as AriaColorPicker, Button, ColorPickerStateContext, Dialog, DialogTrigger, Popover } from 'react-aria-components';
+import {
+  ColorPicker as AriaColorPicker,
+  Button,
+  ColorPickerStateContext,
+  Dialog,
+  DialogTrigger,
+  Popover,
+} from "react-aria-components";
 
 import type { FlexProps } from "../flex";
 import type { Size, StyleXComponentProps } from "../theme/types";

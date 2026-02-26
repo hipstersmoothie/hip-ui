@@ -7,6 +7,7 @@ import type { ButtonVariant, Size } from "../types";
 
 import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
+import { animationDuration } from "./animations.stylex";
 import { slate } from "./colors.stylex";
 import { radius } from "./radius.stylex";
 import { critical, gray, primary } from "./semantic-color.stylex";
@@ -41,7 +42,7 @@ const styles = stylex.create({
     pointerEvents: {
       ":disabled": "none",
     },
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "all",
     transitionTimingFunction: "ease-in-out",
     whiteSpace: "nowrap",

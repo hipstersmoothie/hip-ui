@@ -419,9 +419,9 @@ function LeftSidebar() {
             selectedKeys={[currentPage.id]}
             onSelectionChange={(keys) => {
               if (keys === "all") return;
-              const page = pages.find((page) => page.id === [...keys][0]);
-              if (page) {
-                editor.setCurrentPage(page);
+              const selectedPage = pages.find((p) => p.id === [...keys][0]);
+              if (selectedPage) {
+                editor.setCurrentPage(selectedPage);
               }
             }}
           >
@@ -1361,7 +1361,7 @@ export function CanvasEditor() {
         )}
         <Tldraw
           {...stylex.props(styles.canvasArea)}
-          onMount={(editor) => setEditor(editor)}
+          onMount={(mountedEditor) => setEditor(mountedEditor)}
           components={{
             Toolbar: null,
             NavigationPanel: null,

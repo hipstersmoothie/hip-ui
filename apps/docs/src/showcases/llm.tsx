@@ -118,8 +118,8 @@ const styles = stylex.create({
     paddingTop: spacing["1"],
   },
   preview: {
-    borderColor: uiColor.border2,
     padding: spacing["4"],
+    borderColor: uiColor.border2,
     borderRadius: {
       default: radius["md"],
       "@supports (corner-shape: squircle)": radius["3xl"],

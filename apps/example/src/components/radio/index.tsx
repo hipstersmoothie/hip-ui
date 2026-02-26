@@ -16,6 +16,7 @@ import type { Size } from "../types";
 
 import { Flex } from "../flex";
 import { Description, Label } from "../label";
+import { animationDuration } from "../theme/animations.stylex";
 import { radius } from "../theme/radius.stylex";
 import { gray, primary } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -55,7 +56,7 @@ const styles = stylex.create({
     height: spacing["4"],
     width: spacing["4"],
 
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color, border-color, color",
     transitionTimingFunction: "ease-in-out",
   },
@@ -70,7 +71,7 @@ const styles = stylex.create({
     left: "50%",
     top: "50%",
 
-    animationDuration: "100ms",
+    animationDuration: animationDuration.fast,
     animationFillMode: "forwards",
     animationName: scaleIn,
     animationTimingFunction: "ease-in-out",

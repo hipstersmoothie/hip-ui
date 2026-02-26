@@ -21,8 +21,10 @@ import {
   uiColor,
   warningColor,
 } from "../theme/color.stylex";
-import { maxBreakpoints } from "../theme/media-queries.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
+import {
+  maxBreakpoints,
+  mediaQueries,
+} from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,

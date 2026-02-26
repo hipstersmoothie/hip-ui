@@ -2,6 +2,7 @@ import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
 import { SizeContext } from "../context";
+import { animationDuration } from "../theme/animations.stylex";
 import { plum, slate } from "../theme/colors.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -53,7 +54,7 @@ const styles = stylex.create({
     },
     display: "flex",
     flexGrow: 1,
-    transitionDuration: "100ms",
+    transitionDuration: animationDuration.fast,
     transitionProperty: "background-color",
     transitionTimingFunction: "ease-in-out",
     paddingBottom: spacing["2"],

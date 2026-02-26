@@ -60,8 +60,8 @@ const styles = stylex.create({
   },
   input: {
     borderWidth: 0,
-    alignItems: "center",
     outline: "none",
+    alignItems: "center",
     backgroundColor: "transparent",
     boxSizing: "border-box",
     color: {

@@ -24,6 +24,7 @@ const getData = async () => {
   return data;
 };
 
+// oxlint-disable-next-line react/only-export-components
 export const getConfig = async () => {
   return {
     render: "static",

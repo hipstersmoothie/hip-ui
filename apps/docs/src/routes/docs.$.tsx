@@ -1,26 +1,16 @@
 import type { MDXComponents } from "mdx/types";
 import type { JSX as Jsx } from "react/jsx-runtime";
 
+import * as stylex from "@stylexjs/stylex";
 import {
   createFileRoute,
   createLink,
   useLocation,
 } from "@tanstack/react-router";
-
-declare global {
-  // eslint-disable-next-line @typescript-eslint/no-namespace
-  namespace JSX {
-    type ElementClass = Jsx.ElementClass;
-    type Element = Jsx.Element;
-    type IntrinsicElements = Jsx.IntrinsicElements;
-  }
-}
-
-import * as stylex from "@stylexjs/stylex";
 import { allDocs } from "content-collections";
 import { modules, pages } from "virtual:content";
 
-import type { LinkProps} from "@/components/link";
+import type { LinkProps } from "@/components/link";
 
 import { Content } from "@/components/content";
 import { Flex } from "@/components/flex";
@@ -45,6 +35,15 @@ import {
 import { Text } from "@/components/typography/text";
 
 import { spacing } from "../components/theme/spacing.stylex";
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace JSX {
+    type ElementClass = Jsx.ElementClass;
+    type Element = Jsx.Element;
+    type IntrinsicElements = Jsx.IntrinsicElements;
+  }
+}
 
 const TypographyRouterLink = createLink(TypographyLink);
 

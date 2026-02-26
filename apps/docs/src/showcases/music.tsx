@@ -90,13 +90,13 @@ const styles = stylex.create({
     color: primaryColor.text2,
   },
   priceBox: {
+    padding: spacing["2"],
     borderColor: primaryColor.border2,
     borderRadius: {
       default: radius["sm"],
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
     borderStyle: "solid",
-    padding: spacing["2"],
     borderWidth: 1,
     cornerShape: "squircle",
     backgroundColor: primaryColor.bgSubtle,

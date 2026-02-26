@@ -1,5 +1,4 @@
 import { Content } from "@/components/content";
-import { Link } from "@/components/link";
 import {
   Sidebar,
   SidebarHeader,
@@ -8,7 +7,6 @@ import {
 } from "@/components/sidebar";
 import { SidebarLayout } from "@/components/sidebar-layout";
 import { Body, Heading1 } from "@/components/typography";
-import { Text } from "@/components/typography/text";
 
 function Logo() {
   return (

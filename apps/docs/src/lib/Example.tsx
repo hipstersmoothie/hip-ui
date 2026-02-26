@@ -22,8 +22,8 @@ const styles = stylex.create({
     marginTop: spacing["8"],
   },
   preview: {
-    alignItems: "center",
     padding: spacing["4"],
+    alignItems: "center",
     backgroundColor: uiColor.bgSubtle,
     containerType: "inline-size",
     display: "flex",
@@ -41,7 +41,6 @@ const styles = stylex.create({
     borderTopWidth: 1,
   },
   code: {
-    ":is(*) code": {},
     /* eslint-disable @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
       margin: 0,
@@ -89,7 +88,7 @@ export function Example({
             ref={ref}
             {...stylex.props(styles.code)}
             // eslint-disable-next-line @eslint-react/dom/no-dangerously-set-innerhtml
-            dangerouslySetInnerHTML={{ __html: code }}
+            dangerouslySetInnerHTML={{ __html: code ?? "" }}
           />
           <CopyToClipboardButton style={styles.copyButton} text={textContent} />
         </div>

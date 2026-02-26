@@ -83,9 +83,9 @@ export const typeramp = stylex.create({
     scrollMarginBlockStart: spacing["20"],
   },
   heading2: {
+    margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
-    margin: 0,
     fontSize: {
       default: fontSize["3xl"],
       [breakpoints["md"]]: fontSize["4xl"],
@@ -97,8 +97,8 @@ export const typeramp = stylex.create({
       default: lineHeight["3xl"],
       [breakpoints["md"]]: lineHeight["4xl"],
     },
-    borderBottomWidth: 1,
     scrollMarginBlockStart: spacing["20"],
+    borderBottomWidth: 1,
     paddingBottom: spacing["2"],
   },
   heading3: {

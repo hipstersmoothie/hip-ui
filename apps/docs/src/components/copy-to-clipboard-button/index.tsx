@@ -1,6 +1,5 @@
 "use client";
 
-import * as stylex from "@stylexjs/stylex";
 import { Copy } from "lucide-react";
 import { useRef, useState } from "react";
 

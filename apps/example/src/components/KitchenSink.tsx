@@ -31,10 +31,8 @@ import {
   Pin,
   Plus,
   Scissors,
-  Search,
   Star,
 } from "lucide-react";
-import { DialogTrigger } from "react-aria-components";
 
 import { Button } from "../components/button";
 import { ButtonGroup } from "../components/button-group";
@@ -63,7 +61,6 @@ import {
   CommandMenuItem,
   CommandMenuSection,
   CommandMenuSectionHeader,
-  CommandMenuSeparator,
 } from "./command-menu";
 import { ContextMenu } from "./context-menu";
 import { DateField } from "./date-field";
@@ -131,13 +128,13 @@ const styles = stylex.create({
   },
   contextMenuArea: {
     padding: spacing["4"],
+    borderColor: slate.border2,
     borderRadius: radius["md"],
     borderStyle: "solid",
-    borderColor: slate.border2,
-    height: "100px",
     borderWidth: 1,
-    width: "100px",
     backgroundColor: slate.component1,
+    height: "100px",
+    width: "100px",
   },
 });
 
@@ -182,7 +179,7 @@ function Buttons() {
   return (
     <Flex direction="column" gap="4">
       {buttons.map((button) => (
-        <Flex align="center" gap="2">
+        <Flex key={button} align="center" gap="2">
           <SmallBody style={[styles.buttonLabel, gray.textDim]}>
             {button}
           </SmallBody>
@@ -818,7 +815,7 @@ function BadgeExample() {
   return (
     <Flex gap="4">
       {bageVariants.map((variant) => (
-        <Flex gap="4" direction="column" style={styles.capitalize}>
+        <Flex key={variant} gap="4" direction="column" style={styles.capitalize}>
           <Badge variant={variant}>{variant}</Badge>
           <Badge variant={variant} size="md">
             {variant}
@@ -871,7 +868,7 @@ export function KitchenSink() {
       <TitleCard title="Toggle Buttons">
         <Flex direction="column" gap="4">
           {buttons.map((button) => (
-            <Flex gap="8">
+            <Flex key={button} gap="8">
               {buttonSizes.map(
                 (size) =>
                   button !== "critical" && (

@@ -10,6 +10,7 @@
   - will need a type aware eslint rule for this
 - [ ] Switch all px to rem
 - [ ] cursor pointer not working in links (and nav links)
+- [ ] use only data-hover
 
 ### Components
 

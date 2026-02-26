@@ -45,6 +45,7 @@ const showcaseDocs = allDocs.filter((doc) =>
 );
 
 // Group component docs by folder name
+// oxlint-disable-next-line eslint-plugin-unicorn(no-array-reduce
 const componentGroups = componentDocs.reduce(
   (acc, doc) => {
     // Extract folder name from path like "components/form/select" -> "form"
@@ -54,7 +55,7 @@ const componentGroups = componentDocs.reduce(
     if (!acc[folderName]) {
       acc[folderName] = [];
     }
-    acc[folderName]!.push(doc);
+    acc[folderName]?.push(doc);
     return acc;
   },
   {} as Record<string, typeof componentDocs>,
@@ -150,7 +151,7 @@ function DarkModeToggle() {
 function DocSidebar() {
   const location = useLocation();
   const matches = useMatches();
-  const match = matches.find((match) => match.pathname === location.pathname);
+  const match = matches.find((m) => m.pathname === location.pathname);
   const currentItem = flatItems.find(
     (item) =>
       match?.params &&

@@ -1,5 +1,8 @@
-import type { CalendarGridProps, DateValue } from "react-aria-components";
-import type { CalendarProps as AriaCalendarProps } from 'react-aria-components';
+import type {
+  CalendarProps as AriaCalendarProps,
+  CalendarGridProps,
+  DateValue,
+} from "react-aria-components";
 
 import * as stylex from "@stylexjs/stylex";
 

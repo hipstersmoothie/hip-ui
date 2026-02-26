@@ -15,10 +15,20 @@ const styles = stylex.create({
   },
 });
 
+function renderTreeItem(item: { id: string; name: string; children?: Array<{ id: string; name: string }> }) {
+  return (
+    <TreeItem key={item.id} id={item.id} title={item.name}>
+      {item.children?.map((child) => (
+        <TreeItem key={child.id} id={child.id} title={child.name} />
+      ))}
+    </TreeItem>
+  );
+}
+
 const treeData = Array.from({ length: 100 }, (_, i) => ({
   id: "folder" + (i + 1),
   name: "Folder " + (i + 1),
-  children: Array.from({ length: 20 }, (_, j) => ({
+  children: Array.from({ length: 20 }, (__, j) => ({
     id: "file" + (j + 1),
     name: "File " + (j + 1),
   })),
@@ -27,15 +37,7 @@ const treeData = Array.from({ length: 100 }, (_, i) => ({
 export function Virtualization() {
   return (
     <Tree items={treeData} isVirtualized style={styles.tree}>
-      {function renderTreeItem(item) {
-        return (
-          <TreeItem key={item.id} id={item.id} title={item.name}>
-            {item.children.map((child) => (
-              <TreeItem key={child.id} id={child.id} title={child.name} />
-            ))}
-          </TreeItem>
-        );
-      }}
+      {renderTreeItem}
     </Tree>
   );
 }

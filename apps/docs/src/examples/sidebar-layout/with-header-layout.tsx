@@ -14,8 +14,7 @@ import {
   SidebarSection,
 } from "@/components/sidebar";
 import { SidebarLayout } from "@/components/sidebar-layout";
-import { Heading1 } from "@/components/typography";
-import { Body } from "@/components/typography";
+import { Body, Heading1 } from "@/components/typography";
 
 function Logo() {
   return (

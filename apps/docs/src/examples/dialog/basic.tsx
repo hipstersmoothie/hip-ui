@@ -1,5 +1,3 @@
-import * as stylex from "@stylexjs/stylex";
-
 import { Button } from "@/components/button";
 import {
   Dialog,
@@ -7,7 +5,6 @@ import {
   DialogFooter,
   DialogHeader,
 } from "@/components/dialog";
-import { spacing } from "@/components/theme/spacing.stylex";
 import { Body } from "@/components/typography";
 
 export function Basic() {

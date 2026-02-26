@@ -51,10 +51,10 @@ const styles = stylex.create({
     justifyContent: "center",
   },
   previewArea: {
+    padding: spacing["4"],
     borderColor: uiColor.border2,
     borderRadius: radius["lg"],
     borderStyle: "solid",
-    padding: spacing["4"],
     borderWidth: 1,
     overflow: "hidden",
     backgroundColor: uiColor.component2,
@@ -85,6 +85,7 @@ const styles = stylex.create({
     animationDelay: animationDuration.default,
     animationDuration: duration,
     animationFillMode: "forwards",
+    // eslint-disable-next-line @stylexjs/valid-styles -- dynamic animation composition
     animationName: `${slideLeftToRight}, ${animationName as string}`,
     animationTimingFunction: timingFunction,
     backgroundColor: primaryColor.solid1,

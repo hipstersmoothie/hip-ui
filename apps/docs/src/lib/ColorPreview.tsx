@@ -14,6 +14,7 @@ const styles = stylex.create({
     width: spacing["4"],
   },
   preview: (color: Color) => ({
+    // oxlint-disable-next-line @stylexjs/valid-styles
     backgroundColor: allColors[color].solid1,
   }),
 });

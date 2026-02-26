@@ -23,9 +23,9 @@ export async function getConfig() {
   return await config.search();
 }
 
-export function setConfig(config: LilconfigResult, options: ConfigOptions) {
+export function setConfig(userConfig: LilconfigResult, options: ConfigOptions) {
   const configPath =
-    config?.filepath || path.join(process.cwd(), DEFAULT_CONFIG_PATH);
+    userConfig?.filepath || path.join(process.cwd(), DEFAULT_CONFIG_PATH);
 
   try {
     if (configPath.includes(DEFAULT_CONFIG_PATH)) {

@@ -12,17 +12,10 @@ import { Flex } from "@/components/flex";
 import { IconButton } from "@/components/icon-button";
 import { Select, SelectItem } from "@/components/select";
 
-import type {
-  Color,
-  PrimaryColor,
-  UiColor} from "./ThemeContext";
+import type { Color, PrimaryColor, UiColor } from "./ThemeContext";
 
 import { ColorPreview } from "./ColorPreview";
-import {
-  ThemeContext,
-  primaryColors,
-  uiNames,
-} from "./ThemeContext";
+import { ThemeContext, primaryColors, uiNames } from "./ThemeContext";
 
 function ColorSelect<T extends Color>({
   color,
@@ -42,13 +35,9 @@ function ColorSelect<T extends Color>({
       value={color}
       onChange={(value) => onChange(value as T)}
     >
-      {colors.map((color) => (
-        <SelectItem
-          key={color}
-          id={color}
-          prefix={<ColorPreview color={color} />}
-        >
-          {capitalCase(color)}
+      {colors.map((c) => (
+        <SelectItem key={c} id={c} prefix={<ColorPreview color={c} />}>
+          {capitalCase(c)}
         </SelectItem>
       ))}
     </Select>
