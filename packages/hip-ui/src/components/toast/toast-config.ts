@@ -2,7 +2,7 @@ import type { ComponentConfig } from "../../types";
 
 export const toastConfig: ComponentConfig = {
   name: "toast",
-  filepath: "./index.ts",
+  filepath: "./index.tsx",
   hipDependencies: [
     "../theme/spacing.stylex.tsx",
     "../theme/radius.stylex.tsx",
@@ -13,7 +13,6 @@ export const toastConfig: ComponentConfig = {
     "../icon-button/index.tsx",
     "./queue.ts",
     "./Toast.tsx",
-    "./index.tsx",
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",
