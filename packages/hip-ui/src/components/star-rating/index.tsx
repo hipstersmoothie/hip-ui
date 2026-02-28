@@ -7,7 +7,7 @@ import { mergeProps, useKeyboard, usePress } from "react-aria";
 
 import type { StyleXComponentProps } from "../theme/types";
 
-import { Flex } from "../flex";
+import { Flex, FlexProps } from "../flex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Text } from "../typography/text";
@@ -146,7 +146,7 @@ export function StarRating({
 }
 
 export interface StarRatingInputProps extends StyleXComponentProps<
-  Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "style">
 > {
   /** Current value (1–5). Use with onChange for controlled mode. */
   value?: number;
@@ -172,7 +172,6 @@ export function StarRatingInput({
   onChange,
   isDisabled = false,
   size = 16,
-  style,
   "aria-label": ariaLabel = "Rating",
   ...props
 }: StarRatingInputProps) {
@@ -240,8 +239,7 @@ export function StarRatingInput({
       aria-valuenow={value}
       aria-disabled={isDisabled}
       tabIndex={isDisabled ? undefined : 0}
-      style={style}
-      {...mergeProps(keyboardProps, props)}
+      {...mergeProps(keyboardProps, props as FlexProps)}
     >
       <div
         ref={starsRef}

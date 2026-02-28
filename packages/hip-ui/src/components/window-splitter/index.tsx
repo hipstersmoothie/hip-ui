@@ -85,7 +85,7 @@ export function PanelResizer({
   return (
     <BasePanelResizer
       {...props}
-      {...hoverProps}
+      {...(hoverProps as PanelResizerProps)}
       data-hovered={isHovered || undefined}
       {...stylex.props(styles.panelResizer, style)}
       size="1px"
