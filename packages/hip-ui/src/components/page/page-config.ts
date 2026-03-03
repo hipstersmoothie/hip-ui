@@ -2,7 +2,7 @@ import type { ComponentConfig } from "../../types";
 
 export const pageConfig: ComponentConfig = {
   name: "page",
-  filepath: "./index.ts",
+  filepath: "./index.tsx",
   hipDependencies: [
     "context.ts",
     "../theme/color.stylex.tsx",
