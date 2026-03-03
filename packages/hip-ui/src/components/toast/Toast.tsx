@@ -7,6 +7,7 @@ import type {
 
 import * as stylex from "@stylexjs/stylex";
 import { X } from "lucide-react";
+import { useEffect } from "react";
 import {
   UNSTABLE_ToastRegion as AriaToastRegion,
   Text,
@@ -18,6 +19,7 @@ import type { StyleXComponentProps } from "../theme/types";
 import type { ToastContentType } from "./queue";
 
 import { Button } from "../button";
+import { useHaptics } from "../haptics";
 import { IconButton } from "../icon-button";
 import {
   criticalColor,
@@ -115,7 +117,16 @@ const styles = stylex.create({
 });
 
 function ToastItem({ toast }: { toast: QueuedToast<ToastContentType> }) {
+  const { trigger } = useHaptics();
   const popoverStyles = usePopoverStyles();
+
+  useEffect(() => {
+    if (toast.content.variant === "success") {
+      trigger("success");
+    } else if (toast.content.variant === "critical") {
+      trigger("error");
+    }
+  }, [toast.key, toast.content.variant, trigger]);
 
   return (
     <Toast

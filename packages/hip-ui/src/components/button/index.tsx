@@ -7,6 +7,7 @@ import { Button as AriaButton } from "react-aria-components";
 
 import type { ButtonVariant, Size, StyleXComponentProps } from "../theme/types";
 
+import { useHaptics } from "../haptics";
 import { ProgressCircle } from "../progress-circle";
 import { animationDuration } from "../theme/animations.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -49,14 +50,24 @@ export const Button = ({
   size,
   isPending = false,
   isDisabled,
+  onPress,
   ...props
 }: ButtonProps) => {
+  const { trigger } = useHaptics();
   const buttonStyles = useButtonStyles({ variant, size });
   const isHref = "href" in props;
+
+  const handlePress = (e: Parameters<NonNullable<typeof onPress>>[0]) => {
+    if (variant === "primary" && !isDisabled && !isPending) {
+      trigger("impactMedium");
+    }
+    onPress?.(e);
+  };
 
   return (
     <AriaButton
       {...props}
+      onPress={handlePress}
       {...stylex.props(buttonStyles, isHref && styles.link, style)}
       data-size={size}
       data-pending={isPending || undefined}

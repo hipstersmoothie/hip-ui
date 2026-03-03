@@ -4,6 +4,10 @@ export const buttonConfig: ComponentConfig = {
   name: "button",
   filepath: "./index.tsx",
   hipDependencies: [
+    "../haptics/haptics.ts",
+    "../haptics/context.tsx",
+    "../haptics/useHaptics.ts",
+    "../haptics/index.ts",
     "../theme/color.stylex.tsx",
     "../theme/spacing.stylex.tsx",
     "../theme/radius.stylex.tsx",
@@ -47,5 +51,6 @@ export const buttonConfig: ComponentConfig = {
   ],
   dependencies: {
     "react-aria-components": "^1.13.0",
+    "web-haptics": "^0.0.6",
   },
 };

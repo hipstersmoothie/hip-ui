@@ -15,6 +15,7 @@ import {
 
 import type { StyleXComponentProps } from "../theme/types";
 
+import { useHaptics } from "../haptics";
 import { uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
@@ -70,11 +71,21 @@ export const Popover = ({
   hasArrow,
   ...popoverProps
 }: PopoverProps) => {
+  const { trigger: triggerHaptic } = useHaptics();
   const popoverStyles = usePopoverStyles();
+
+  const handleOpenChange = (open: boolean) => {
+    triggerHaptic("impactLight");
+    onOpenChange?.(open);
+  };
 
   return (
     <DialogTrigger
-      {...({ isOpen, onOpenChange, defaultOpen } as DialogTriggerProps)}
+      {...({
+        isOpen,
+        onOpenChange: handleOpenChange,
+        defaultOpen,
+      } as DialogTriggerProps)}
     >
       {trigger}
 

@@ -1,7 +1,5 @@
 "use client";
 
-import type { LinkProps as AriaLinkProps } from "react-aria-components";
-
 import * as stylex from "@stylexjs/stylex";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useRef, useState } from "react";

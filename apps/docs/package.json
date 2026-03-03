@@ -56,7 +56,8 @@
     "shiki": "^3.13.0",
     "tailwindcss": "^4.1.16",
     "tldraw": "^4.1.2",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "web-haptics": "^0.0.6"
   },
   "devDependencies": {
     "@content-collections/core": "^0.11.1",

@@ -51,6 +51,7 @@ import { flexConfig } from "../components/flex/flex-config.js";
 import { footerConfig } from "../components/footer/footer-config.js";
 import { formConfig } from "../components/form/form-config.js";
 import { gridConfig } from "../components/grid/grid-config.js";
+import { hapticsConfig } from "../components/haptics/haptics-config.js";
 import { headerLayoutConfig } from "../components/header-layout/header-layout-config.js";
 import { hoverCardConfig } from "../components/hover-card/hover-card-config.js";
 import { iconButtonConfig } from "../components/icon-button/icon-button-config.js";
@@ -152,6 +153,7 @@ const COMPONENT_CONFIGS = [
   badgeConfig,
   breadcrumbsConfig,
   gridConfig,
+  hapticsConfig,
   switchConfig,
   aspectRatioConfig,
   autocompleteConfig,

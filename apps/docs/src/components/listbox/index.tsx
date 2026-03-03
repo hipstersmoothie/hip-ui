@@ -23,6 +23,7 @@ import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
+import { useHaptics } from "../haptics";
 import { Separator } from "../separator";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -76,11 +77,32 @@ export function ListBox<T extends object>({
   style,
   variant = "default",
   isVirtualized = false,
+  onSelectionChange,
+  onAction,
   ...props
 }: ListBoxProps<T>) {
+  const { trigger } = useHaptics();
   const size = sizeProp || use(SizeContext);
+
+  const handleSelectionChange = (
+    keys: Parameters<NonNullable<typeof onSelectionChange>>[0],
+  ) => {
+    trigger("selection");
+    onSelectionChange?.(keys);
+  };
+
+  const handleAction = (key: Parameters<NonNullable<typeof onAction>>[0]) => {
+    trigger("selection");
+    onAction?.(key);
+  };
+
   const listbox = (
-    <AriaListBox {...props} {...stylex.props(styles.listBox, style)} />
+    <AriaListBox
+      {...props}
+      onSelectionChange={handleSelectionChange}
+      onAction={handleAction}
+      {...stylex.props(styles.listBox, style)}
+    />
   );
 
   return (

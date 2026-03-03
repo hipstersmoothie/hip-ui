@@ -5,6 +5,7 @@ import { Switch as AriaSwitch } from "react-aria-components";
 
 import type { StyleXComponentProps } from "../theme/types";
 
+import { useHaptics } from "../haptics";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
@@ -86,9 +87,20 @@ export type SwitchProps =
   | SwitchWithAriaLabelProps
   | SwitchWithAriaLabelledbyProps;
 
-export function Switch({ children, style, ...props }: SwitchProps) {
+export function Switch({ children, style, onChange, ...props }: SwitchProps) {
+  const { trigger } = useHaptics();
+
+  const handleChange = (isSelected: boolean) => {
+    trigger("selection");
+    onChange?.(isSelected);
+  };
+
   return (
-    <AriaSwitch {...props} {...stylex.props(styles.wrapper, style)}>
+    <AriaSwitch
+      {...props}
+      onChange={handleChange}
+      {...stylex.props(styles.wrapper, style)}
+    >
       <div {...stylex.props(styles.indicator)}>
         <div {...stylex.props(styles.thumb)} />
       </div>

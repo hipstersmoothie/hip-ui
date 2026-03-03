@@ -16,6 +16,7 @@ import {
 import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { useHaptics } from "../haptics";
 import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
 import { mediaQueries } from "../theme/media-queries.stylex";
@@ -119,15 +120,25 @@ export const SegmentedControl = ({
   children,
   style,
   size: sizeProp,
+  onSelectionChange,
   ...props
 }: SegmentedControlProps) => {
+  const { trigger } = useHaptics();
   const size = sizeProp ?? use(SizeContext);
+
+  const handleSelectionChange = (
+    keys: Parameters<NonNullable<typeof onSelectionChange>>[0],
+  ) => {
+    trigger("selection");
+    onSelectionChange?.(keys);
+  };
 
   return (
     <AriaToggleButtonGroup
       disallowEmptySelection
       selectionMode="single"
       data-size={size}
+      onSelectionChange={handleSelectionChange}
       {...props}
       {...stylex.props(styles.group, style)}
     >

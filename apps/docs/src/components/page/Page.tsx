@@ -1,7 +1,5 @@
 "use client";
 
-import type { LinkProps as AriaLinkProps } from "react-aria-components";
-
 import * as stylex from "@stylexjs/stylex";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
@@ -360,17 +358,6 @@ export const PageIcon = ({ style, ...props }: PageIconProps) => {
     />
   );
 };
-
-export interface PageBackLinkProps extends StyleXComponentProps<
-  Omit<AriaLinkProps, "children" | "href">
-> {
-  /** The route path to navigate back to. When omitted with variant="small", uses router.back(). */
-  href?: string;
-  /** Link content. Defaults to back arrow icon. */
-  children?: React.ReactNode;
-  /** Enable view transition when navigating (for shared element transitions). Only applies when href is provided. */
-  viewTransition?: boolean;
-}
 
 export interface PageTitleProps extends StyleXComponentProps<
   React.ComponentProps<"h1">

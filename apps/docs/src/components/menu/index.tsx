@@ -22,6 +22,7 @@ import {
 import type { Size, StyleXComponentProps } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { useHaptics } from "../haptics";
 import { ListBoxSeparator } from "../listbox";
 import { spacing } from "../theme/spacing.stylex";
 import { useListBoxItemStyles } from "../theme/useListBoxItemStyles";
@@ -78,17 +79,29 @@ export function Menu<T extends object>({
   placement,
   header,
   footer,
+  onAction,
   ...props
 }: MenuProps<T>) {
+  const { trigger: triggerHaptic } = useHaptics();
   const popoverStyles = usePopoverStyles();
   const size = sizeProp || use(SizeContext);
+
+  const handleOpenChange = (open: boolean) => {
+    triggerHaptic("impactLight");
+    onOpenChange?.(open);
+  };
+
+  const handleAction = (key: Parameters<NonNullable<typeof onAction>>[0]) => {
+    triggerHaptic("selection");
+    onAction?.(key);
+  };
 
   return (
     <SizeContext value={size}>
       <MenuTrigger
         defaultOpen={defaultOpen}
         isOpen={isOpen}
-        onOpenChange={onOpenChange}
+        onOpenChange={handleOpenChange}
       >
         {trigger}
         <Popover
@@ -105,7 +118,11 @@ export function Menu<T extends object>({
               <ListBoxSeparator />
             </>
           )}
-          <AriaMenu {...props} {...stylex.props(styles.menu)} />
+          <AriaMenu
+            {...props}
+            onAction={handleAction}
+            {...stylex.props(styles.menu)}
+          />
           {Boolean(footer) && (
             <>
               <ListBoxSeparator />

@@ -9,6 +9,7 @@ import { ToggleButtonGroup as AriaToggleButtonGroup } from "react-aria-component
 import type { StyleXComponentProps } from "../theme/types";
 
 import { ButtonGroupContext } from "../button/context";
+import { useHaptics } from "../haptics";
 import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
@@ -77,11 +78,20 @@ export const ToggleButtonGroup = ({
   orientation: orientationProp = "horizontal",
   variant = "grouped",
   itemsPerRow,
+  onSelectionChange,
   ...props
 }: ToggleButtonGroupProps) => {
+  const { trigger } = useHaptics();
   const groupOrientation = use(ButtonGroupContext);
   const isInGroup = groupOrientation?.orientation !== undefined;
   const orientation = groupOrientation?.orientation || orientationProp;
+
+  const handleSelectionChange = (
+    keys: Parameters<NonNullable<typeof onSelectionChange>>[0],
+  ) => {
+    trigger("selection");
+    onSelectionChange?.(keys);
+  };
 
   let stylesToApply = [];
 
@@ -109,7 +119,11 @@ export const ToggleButtonGroup = ({
 
   return (
     <ButtonGroupContext value={contextValue}>
-      <AriaToggleButtonGroup {...props} {...stylex.props(stylesToApply, style)}>
+      <AriaToggleButtonGroup
+        {...props}
+        onSelectionChange={handleSelectionChange}
+        {...stylex.props(stylesToApply, style)}
+      >
         {children}
       </AriaToggleButtonGroup>
     </ButtonGroupContext>

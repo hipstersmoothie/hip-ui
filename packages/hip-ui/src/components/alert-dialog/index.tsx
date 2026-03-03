@@ -19,6 +19,7 @@ import type { ButtonProps } from "../button";
 import type { StyleXComponentProps } from "../theme/types";
 
 import { Button } from "../button";
+import { useHaptics } from "../haptics";
 import { IconButton } from "../icon-button";
 import { spacing } from "../theme/spacing.stylex";
 import { fontSize, typeramp } from "../theme/typography.stylex";
@@ -74,13 +75,19 @@ export const AlertDialog = ({
   isOpen,
   onOpenChange,
 }: AlertDialogProps) => {
+  const { trigger: triggerHaptic } = useHaptics();
   const dialogStyles = useDialogStyles({ size: "sm" });
+
+  const handleOpenChange = (open: boolean) => {
+    triggerHaptic("impactLight");
+    onOpenChange?.(open);
+  };
 
   return (
     <DialogTrigger
       defaultOpen={defaultOpen}
       isOpen={isOpen}
-      onOpenChange={onOpenChange}
+      onOpenChange={handleOpenChange}
     >
       {trigger}
 
