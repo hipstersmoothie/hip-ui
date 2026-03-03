@@ -15,6 +15,5 @@ export const drawerConfig: ComponentConfig = {
   dependencies: {
     "react-aria-components": "^1.13.0",
     "lucide-react": "^0.545.0",
-    "@react-types/shared": "^3.32.1",
   },
 };
