@@ -10,6 +10,7 @@ import {
 } from "react";
 import { useHover } from "react-aria";
 
+import type { FlexProps } from "../flex";
 import type { StyleXComponentProps, TextVariant } from "../theme/types";
 
 import { CopyToClipboardButton } from "../copy-to-clipboard-button";
@@ -424,6 +425,7 @@ export const LinkedHeading = ({ id, children, style }: LinkedHeadingProps) => {
   }
 
   const url =
+    // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
     globalThis.window === undefined
       ? `#${id}`
       : `${globalThis.location.origin}${globalThis.location.pathname}#${id}`;
@@ -435,7 +437,7 @@ export const LinkedHeading = ({ id, children, style }: LinkedHeadingProps) => {
       align="center"
       data-heading-link
       data-hovered={isHovered || undefined}
-      {...hoverProps}
+      {...(hoverProps as FlexProps)}
       style={style}
     >
       <a href={`#${id}`} {...stylex.props(styles.linkedHeadingLink)}>

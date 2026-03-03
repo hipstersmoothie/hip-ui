@@ -1,0 +1,39 @@
+---
+title: AutocompleteInput
+description: A text input with a dropdown list of suggestions that filters as you type.
+---
+
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/autocomplete/basic";
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the AutocompleteInput component to your project.
+
+```bash
+pnpm hip install autocomplete
+```
+
+The AutocompleteInput component requires the listbox and text-field components.
+
+Install them if you have not already.
+
+```bash
+pnpm hip install autocomplete listbox text-field
+```
+
+## Props
+
+This component is built using the [React Aria Autocomplete](https://react-spectrum.adobe.com/react-aria/Autocomplete.html).
+
+<PropDocs components={["AutocompleteInput"]} />
+
+## Related Components
+
+- [ComboBox](/docs/components/form/combobox) - For selecting from a dropdown with search
+- [SearchField](/docs/components/form/search-field) - For search input with clear button
+- [TextField](/docs/components/form/text-field) - For general text input
+- [Select](/docs/components/form/select) - For dropdown selection without search

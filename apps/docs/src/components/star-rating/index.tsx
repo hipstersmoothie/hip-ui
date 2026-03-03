@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import { mergeProps, useKeyboard, usePress } from "react-aria";
 
+import type { FlexProps } from "../flex";
 import type { StyleXComponentProps } from "../theme/types";
 
 import { Flex } from "../flex";
@@ -146,7 +147,7 @@ export function StarRating({
 }
 
 export interface StarRatingInputProps extends StyleXComponentProps<
-  Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">
+  Omit<React.HTMLAttributes<HTMLDivElement>, "onChange" | "style">
 > {
   /** Current value (1–5). Use with onChange for controlled mode. */
   value?: number;
@@ -172,7 +173,6 @@ export function StarRatingInput({
   onChange,
   isDisabled = false,
   size = 16,
-  style,
   "aria-label": ariaLabel = "Rating",
   ...props
 }: StarRatingInputProps) {
@@ -240,8 +240,7 @@ export function StarRatingInput({
       aria-valuenow={value}
       aria-disabled={isDisabled}
       tabIndex={isDisabled ? undefined : 0}
-      style={style as stylex.StyleXStyles}
-      {...mergeProps(keyboardProps, props)}
+      {...mergeProps(keyboardProps, props as FlexProps)}
     >
       <div
         ref={starsRef}

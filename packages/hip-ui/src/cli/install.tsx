@@ -16,6 +16,7 @@ import type { ConfigOptions } from "./config.js";
 import { alertDialogConfig } from "../components/alert-dialog/alert-dialog-config.js";
 import { alertConfig } from "../components/alert/alert-config.js";
 import { aspectRatioConfig } from "../components/aspect-ratio/aspect-ratio-config.js";
+import { autocompleteConfig } from "../components/autocomplete/autocomplete-config.js";
 import { avatarConfig } from "../components/avatar/avatar-config.js";
 import { badgeConfig } from "../components/badge/badge-config.js";
 import { breadcrumbsConfig } from "../components/breadcrumbs/breadcrumbs-config.js";
@@ -152,6 +153,7 @@ const COMPONENT_CONFIGS = [
   gridConfig,
   switchConfig,
   aspectRatioConfig,
+  autocompleteConfig,
   colorSwatchConfig,
   fileDropZoneConfig,
   footerConfig,

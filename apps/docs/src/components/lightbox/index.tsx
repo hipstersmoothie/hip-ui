@@ -79,13 +79,13 @@ const styles = stylex.create({
     minHeight: 0,
   },
   imageWrapper: {
+    overflow: "hidden",
     alignItems: "center",
     display: "flex",
     flexGrow: 1,
     justifyContent: "center",
-    overflow: "hidden",
-    maxHeight: "100%",
     position: "relative",
+    maxHeight: "100%",
     maxWidth: "100%",
     minWidth: 0,
   },
@@ -175,32 +175,29 @@ export function Lightbox({
 
     const runAnimation = () => {
       const viewportWidth =
-        globalThis.visualViewport?.width ?? globalThis.innerWidth ?? 800;
+        globalThis.visualViewport?.width ?? globalThis.innerWidth;
       const wrapperWidth = transitionSize
         ? transitionSize.width
         : wrapper.offsetWidth || wrapper.getBoundingClientRect().width;
-      const slideDistance = Math.max(
-        viewportWidth,
-        wrapperWidth ?? viewportWidth,
-      );
+      const slideDistance = Math.max(viewportWidth, wrapperWidth);
 
       const isNext = direction === "next";
       const outKeyframes = isNext
         ? [
             { transform: "translateX(0)" },
-            { transform: `translateX(-${slideDistance}px)` },
+            { transform: `translateX(-${String(slideDistance)}px)` },
           ]
         : [
             { transform: "translateX(0)" },
-            { transform: `translateX(${slideDistance}px)` },
+            { transform: `translateX(${String(slideDistance)}px)` },
           ];
       const inKeyframes = isNext
         ? [
-            { transform: `translateX(${slideDistance}px)` },
+            { transform: `translateX(${String(slideDistance)}px)` },
             { transform: "translateX(0)" },
           ]
         : [
-            { transform: `translateX(-${slideDistance}px)` },
+            { transform: `translateX(-${String(slideDistance)}px)` },
             { transform: "translateX(0)" },
           ];
 
@@ -218,6 +215,9 @@ export function Lightbox({
         .finished.then(() => {
           setPreviousIndex(null);
           setTransitionSize(null);
+        })
+        .catch((error: unknown) => {
+          console.error(error);
         });
     };
 
@@ -339,7 +339,7 @@ export function Lightbox({
                   {previousIndex === null ? (
                     <img
                       src={currentImage}
-                      alt={`${alt} ${hasMultiple ? `${String(currentIndex + 1)} of ${String(images.length)}` : ""}`}
+                      alt={`${alt} ${String(currentIndex + 1)}`}
                       {...stylex.props(styles.image)}
                     />
                   ) : (
@@ -367,7 +367,7 @@ export function Lightbox({
                       >
                         <img
                           src={currentImage}
-                          alt={`${alt} ${hasMultiple ? `${String(currentIndex + 1)} of ${String(images.length)}` : ""}`}
+                          alt={`${alt} ${String(currentIndex + 1)}`}
                           {...stylex.props(styles.image)}
                         />
                       </div>
@@ -401,7 +401,7 @@ export function Lightbox({
               >
                 <img
                   src={currentImage}
-                  alt={`${alt}`}
+                  alt={alt}
                   {...stylex.props(styles.image)}
                 />
               </div>

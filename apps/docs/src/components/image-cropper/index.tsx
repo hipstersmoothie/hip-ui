@@ -78,7 +78,12 @@ export type CropArea = {
 export interface ImageCropperRootProps extends StyleXComponentProps<
   Omit<
     ComponentProps<typeof OriginCropper.Root>,
-    "className" | "style" | "children" | "onCropChange" | "image"
+    | "className"
+    | "style"
+    | "children"
+    | "onCropChange"
+    | "image"
+    | "aspectRatio"
   >
 > {
   /**
@@ -87,9 +92,10 @@ export interface ImageCropperRootProps extends StyleXComponentProps<
   image: string | Blob;
   /**
    * The desired width/height aspect ratio (e.g., 1, 1.5, 4/3, 16/9).
+   * Set to `null` or `undefined` for free-form cropping (no aspect ratio constraint).
    * @default 1
    */
-  aspectRatio?: number;
+  aspectRatio?: number | null;
   /**
    * Minimum padding (in pixels) between the crop area edges and the container edges.
    * @default 25
@@ -154,7 +160,7 @@ export interface ImageCropperRootProps extends StyleXComponentProps<
 export function ImageCropperRoot({
   style,
   image,
-  aspectRatio = 1,
+  aspectRatio,
   cropPadding = 25,
   minZoom = 1,
   maxZoom = 3,
@@ -177,7 +183,6 @@ export function ImageCropperRoot({
     const newUrl =
       typeof image === "string" ? image : URL.createObjectURL(image);
 
-    // eslint-disable-next-line @eslint-react/hooks-extra/no-direct-set-state-in-use-effect
     setImageUrl(newUrl);
 
     return () => {
@@ -192,17 +197,42 @@ export function ImageCropperRoot({
     return createImageUrl();
   }, [image]);
 
+  // Prepare props for OriginCropper - only include aspectRatio if it's not null/undefined
+  const cropperProps = {
+    ...props,
+    image: imageUrl,
+    cropPadding,
+    minZoom,
+    maxZoom,
+    zoomSensitivity,
+    keyboardStep,
+    zoom,
+  };
+
+  // Only add aspectRatio if it's a number (not null/undefined)
+  if (aspectRatio !== null && aspectRatio !== undefined) {
+    (
+      cropperProps as typeof cropperProps & { aspectRatio: number }
+    ).aspectRatio = aspectRatio;
+  }
+
+  const stylexProps = stylex.props(styles.root, style);
+  // Extract className and any other props, but exclude style if present to avoid CSSStyleDeclaration conflicts
+  const {
+    className,
+    style: _,
+    ...restStylexProps
+  } = stylexProps as {
+    className?: string;
+    style?: unknown;
+    [key: string]: unknown;
+  };
+
   return (
     <OriginCropper.Root
-      {...props}
-      image={imageUrl}
-      aspectRatio={aspectRatio}
-      cropPadding={cropPadding}
-      minZoom={minZoom}
-      maxZoom={maxZoom}
-      zoomSensitivity={zoomSensitivity}
-      keyboardStep={keyboardStep}
-      zoom={zoom}
+      {...cropperProps}
+      className={className}
+      {...restStylexProps}
       onCropChange={(crop) => {
         if (!crop) {
           onCropChange?.(null);
@@ -252,7 +282,6 @@ export function ImageCropperRoot({
         img.src = imageUrl;
       }}
       onZoomChange={onZoomChange}
-      {...stylex.props(styles.root, style)}
     >
       {children}
     </OriginCropper.Root>
