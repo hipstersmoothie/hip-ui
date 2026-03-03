@@ -5,9 +5,10 @@ import { Star } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import { mergeProps, useKeyboard, usePress } from "react-aria";
 
+import type { FlexProps } from "../flex";
 import type { StyleXComponentProps } from "../theme/types";
 
-import { Flex, FlexProps } from "../flex";
+import { Flex } from "../flex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Text } from "../typography/text";

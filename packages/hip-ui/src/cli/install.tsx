@@ -59,6 +59,7 @@ import { labelConfig } from "../components/label/label-config.js";
 import { lightboxConfig } from "../components/lightbox/lightbox-config.js";
 import { linkConfig } from "../components/link/link-config.js";
 import { listboxConfig } from "../components/listbox/listbox-config.js";
+import { markdownContentConfig } from "../components/markdown-content/markdown-content-config.js";
 import { menuConfig } from "../components/menu/menu-config.js";
 import { menubarConfig } from "../components/menubar/menubar-config.js";
 import { meterConfig } from "../components/meter/meter-config.js";
@@ -114,6 +115,7 @@ const COMPONENT_CONFIGS = [
   labelConfig,
   lightboxConfig,
   linkConfig,
+  markdownContentConfig,
   checkboxConfig,
   radioConfig,
   separatorConfig,

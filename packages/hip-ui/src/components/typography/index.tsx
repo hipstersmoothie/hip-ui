@@ -10,10 +10,11 @@ import {
 } from "react";
 import { useHover } from "react-aria";
 
+import type { FlexProps } from "../flex";
 import type { StyleXComponentProps, TextVariant } from "../theme/types";
 
 import { CopyToClipboardButton } from "../copy-to-clipboard-button";
-import { Flex, FlexProps } from "../flex";
+import { Flex } from "../flex";
 import { LinkContext } from "../link/link-context";
 import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
