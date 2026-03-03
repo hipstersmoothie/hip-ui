@@ -1,8 +1,9 @@
 "use client";
 
+import { useFilter } from "react-aria-components";
+
 import { AutocompleteInput } from "@/components/autocomplete";
 import { ListBoxItem } from "@/components/listbox";
-import { useFilter } from "react-aria-components";
 
 const options = [
   { id: "apple", handle: "Apple" },

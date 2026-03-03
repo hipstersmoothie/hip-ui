@@ -45,7 +45,9 @@ interface IconButtonWithAriaLabelProps extends IconBaseButtonProps {
   onTooltipOpenChange?: never;
 }
 
-type IconButtonProps = IconButtonWithLabelProps | IconButtonWithAriaLabelProps;
+export type IconButtonProps =
+  | IconButtonWithLabelProps
+  | IconButtonWithAriaLabelProps;
 
 export const IconButton = ({
   children,

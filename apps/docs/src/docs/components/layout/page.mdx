@@ -1,0 +1,62 @@
+---
+title: Page
+description: A flexible page layout component with small and large variants for headers, titles, and sticky headers/footers.
+---
+
+import { PropDocs } from "../../../lib/PropDocs";
+import { Example } from "../../../lib/Example";
+import { Basic } from "../../../examples/page/basic";
+import { LargeVariant } from "../../../examples/page/large-variant";
+import { WithIcon } from "../../../examples/page/with-icon";
+
+<Example src={Basic} />
+
+## Installation
+
+Run the following command to add the page component to your project.
+
+```bash
+pnpm hip install page
+```
+
+## Props
+
+<PropDocs
+  components={[
+    "PageRoot",
+    "PageHeader",
+    "PageBackLink",
+    "PageTitle",
+    "PageDescription",
+    "PageActions",
+    "PageIcon",
+    "PageStickyHeader",
+    "PageStickyFooter",
+  ]}
+/>
+
+## Features
+
+### Small Variant
+
+A narrow page layout (max-width 880px) for focused content like forms or detail views.
+
+<Example src={Basic} />
+
+### Large Variant
+
+A full-width page layout with support for icons, descriptions, and action buttons in the header.
+
+<Example src={LargeVariant} />
+
+### With Icon
+
+Add an icon to the large page header for visual hierarchy.
+
+<Example src={WithIcon} />
+
+## Related Components
+
+- [Flex](/docs/components/layout/flex) - For flexible layouts within page content
+- [Footer](/docs/components/navigation/footer) - For page footers
+- [Header Layout](/docs/components/navigation/header-layout) - For app-level headers
