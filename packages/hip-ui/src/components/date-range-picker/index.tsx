@@ -20,11 +20,13 @@ import type { RangeCalendarProps } from "../range-calendar";
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { RangeCalendar } from "../range-calendar";
@@ -44,6 +46,7 @@ export interface DateRangePickerProps<T extends DateValue>
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
   variant?: InputVariant;
+  labelVariant?: LabelVariant;
   validationState?: InputValidationState;
 }
 
@@ -81,6 +84,7 @@ const styles = stylex.create({
 
 interface DateRangePickerContentProps<T extends DateValue> {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -93,6 +97,7 @@ interface DateRangePickerContentProps<T extends DateValue> {
 
 function DateRangePickerContent<T extends DateValue>({
   label,
+  labelVariant,
   description,
   errorMessage,
   size,
@@ -105,13 +110,13 @@ function DateRangePickerContent<T extends DateValue>({
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: isInvalid ? "invalid" : validationState,
   });
   const popoverStyles = usePopoverStyles();
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       <Group
         data-size={size}
         {...stylex.props(inputStyles.wrapper, styles.group)}
@@ -147,8 +152,23 @@ function DateRangePickerContent<T extends DateValue>({
           validationState={validationState}
         />
       </Group>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      <Description style={inputStyles.description}>{description}</Description>
+      <FieldErrorMessage style={inputStyles.errorMessage}>
+        {errorMessage}
+      </FieldErrorMessage>
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
       <AriaPopover
         {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
       >
@@ -172,11 +192,17 @@ export function DateRangePicker<T extends DateValue>({
   weekdayStyle,
   visibleDuration,
   variant,
+  labelVariant,
   validationState,
   ...props
 }: DateRangePickerProps<T>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -188,6 +214,7 @@ export function DateRangePicker<T extends DateValue>({
         {({ isInvalid }) => (
           <DateRangePickerContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}

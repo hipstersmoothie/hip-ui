@@ -1,7 +1,12 @@
 import * as stylex from "@stylexjs/stylex";
 import { use } from "react";
 
-import type { InputValidationState, InputVariant, Size } from "../theme/types";
+import type {
+  InputValidationState,
+  InputVariant,
+  LabelVariant,
+  Size,
+} from "../theme/types";
 
 import { SizeContext } from "../context";
 import { animationDuration } from "./animations.stylex";
@@ -15,7 +20,7 @@ import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
 import { spacing } from "./spacing.stylex";
-import { fontSize, lineHeight } from "./typography.stylex";
+import { fontSize, fontWeight, lineHeight } from "./typography.stylex";
 
 const styles = stylex.create({
   field: {
@@ -122,7 +127,7 @@ const styles = stylex.create({
     borderWidth: 1,
     backgroundColor: {
       default: uiColor.bg,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         uiColor.component1,
       ":is([data-pressed=true]):not(:disabled)": uiColor.component2,
       ":disabled": "transparent",
@@ -142,7 +147,7 @@ const styles = stylex.create({
     },
     backgroundColor: {
       default: criticalColor.bgSubtle,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         criticalColor.component2,
       ":disabled": "transparent",
     },
@@ -157,7 +162,7 @@ const styles = stylex.create({
     },
     backgroundColor: {
       default: warningColor.bgSubtle,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         warningColor.component2,
       ":disabled": "transparent",
     },
@@ -172,7 +177,7 @@ const styles = stylex.create({
     },
     backgroundColor: {
       default: successColor.bgSubtle,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         successColor.component2,
       ":disabled": "transparent",
     },
@@ -190,7 +195,7 @@ const styles = stylex.create({
     borderWidth: 1,
     backgroundColor: {
       default: uiColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         uiColor.component2,
       ":is([data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": uiColor.component1,
@@ -202,24 +207,24 @@ const styles = stylex.create({
   secondaryInvalid: {
     borderColor: {
       default: criticalColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         criticalColor.component2,
     },
     backgroundColor: {
       default: criticalColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         criticalColor.component2,
     },
   },
   secondaryWarning: {
     borderColor: {
       default: warningColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         warningColor.component2,
     },
     backgroundColor: {
       default: warningColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         warningColor.component2,
     },
     color: warningColor.text2,
@@ -227,12 +232,12 @@ const styles = stylex.create({
   secondaryValid: {
     borderColor: {
       default: successColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         successColor.component2,
     },
     backgroundColor: {
       default: successColor.component1,
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         successColor.component2,
     },
     color: successColor.text2,
@@ -240,7 +245,7 @@ const styles = stylex.create({
   tertiary: {
     borderColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         uiColor.component2,
       ":is([data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": "transparent",
@@ -249,7 +254,7 @@ const styles = stylex.create({
     borderWidth: 1,
     backgroundColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         uiColor.component2,
       ":is([data-pressed=true]):not(:disabled)": uiColor.component3,
       ":disabled": "transparent",
@@ -261,14 +266,14 @@ const styles = stylex.create({
   tertiaryInvalid: {
     borderColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         criticalColor.component1,
       ":is([data-pressed=true]):not(:disabled)": criticalColor.component2,
       ":disabled": "transparent",
     },
     backgroundColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         criticalColor.component1,
       ":is([data-pressed=true]):not(:disabled)": criticalColor.component2,
       ":disabled": "transparent",
@@ -278,14 +283,14 @@ const styles = stylex.create({
   tertiaryWarning: {
     borderColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         warningColor.component1,
       ":is([data-pressed=true]):not(:disabled)": warningColor.component2,
       ":disabled": "transparent",
     },
     backgroundColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         warningColor.component1,
       ":is([data-pressed=true]):not(:disabled)": warningColor.component2,
       ":disabled": "transparent",
@@ -295,14 +300,14 @@ const styles = stylex.create({
   tertiaryValid: {
     borderColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         successColor.component1,
       ":is([data-pressed=true]):not(:disabled)": successColor.component2,
       ":disabled": "transparent",
     },
     backgroundColor: {
       default: "transparent",
-      ":is([data-hovered]):not(:has(* [data-hovered])):not(:disabled)":
+      ":is([data-hovered]:not(:has(* [data-hovered])),:has(input[data-hovered])):not(:disabled)":
         successColor.component1,
       ":is([data-pressed=true]):not(:disabled)": successColor.component2,
       ":disabled": "transparent",
@@ -340,21 +345,54 @@ const styles = stylex.create({
   wrapperSizeLg: {
     height: spacing["10"],
   },
+  horizontalLabel: {
+    gap: spacing["4"],
+    alignItems: "flex-start",
+    flexDirection: "row",
+  },
+  horizontalLabelText: {
+    flexGrow: 1,
+    minWidth: 0,
+  },
+  horizontalLabelTextSm: {
+    lineHeight: spacing["6"],
+  },
+  horizontalLabelTextMd: {
+    lineHeight: spacing["8"],
+  },
+  horizontalLabelTextLg: {
+    fontSize: fontSize["base"],
+    fontWeight: fontWeight["medium"],
+    lineHeight: spacing["10"],
+  },
+  label: {
+    paddingLeft: spacing["1"],
+    paddingRight: spacing["1"],
+  },
+  additionalText: {
+    paddingLeft: spacing["2"],
+    paddingRight: spacing["2"],
+  },
 });
 
 export function useInputStyles({
   size: sizeProp,
   variant = "primary",
+  labelVariant = "vertical",
   validationState,
 }: {
   size: Size | undefined;
   variant: InputVariant | undefined;
+  labelVariant: LabelVariant | undefined;
   validationState: InputValidationState | undefined;
 }) {
   const size = sizeProp || use(SizeContext);
 
   return {
-    field: [styles.field],
+    field: [
+      styles.field,
+      labelVariant === "horizontal" && styles.horizontalLabel,
+    ],
     wrapper: [
       styles.inputWrapper,
       ui.text,
@@ -380,6 +418,17 @@ export function useInputStyles({
       size === "md" && styles.wrapperSizeMd,
       size === "lg" && styles.wrapperSizeLg,
     ],
+    label: [
+      styles.label,
+      labelVariant === "horizontal" && [
+        styles.horizontalLabelText,
+        size === "sm" && styles.horizontalLabelTextSm,
+        size === "md" && styles.horizontalLabelTextMd,
+        size === "lg" && styles.horizontalLabelTextLg,
+      ],
+    ],
+    description: [styles.additionalText],
+    errorMessage: [styles.additionalText],
     input: [
       styles.input,
       size === "sm" && styles.inputSizeSm,

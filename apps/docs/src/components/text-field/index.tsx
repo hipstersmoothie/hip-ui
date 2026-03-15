@@ -16,11 +16,13 @@ import {
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
@@ -57,6 +59,7 @@ function PasswordToggle({
 
 interface TextFieldContentProps {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -72,6 +75,7 @@ interface TextFieldContentProps {
 
 function TextFieldContent({
   label,
+  labelVariant,
   description,
   errorMessage,
   size,
@@ -89,12 +93,12 @@ function TextFieldContent({
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: isInvalid ? "invalid" : validationState,
   });
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
@@ -126,8 +130,26 @@ function TextFieldContent({
           validationState={validationState}
         />
       </div>
-      <Description>{description}</Description>
-      {errorMessage && <FieldErrorMessage>{errorMessage}</FieldErrorMessage>}
+      <Description style={inputStyles.description}>{description}</Description>
+      {errorMessage && (
+        <FieldErrorMessage style={inputStyles.errorMessage}>
+          {errorMessage}
+        </FieldErrorMessage>
+      )}
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
     </>
   );
 }
@@ -137,6 +159,7 @@ export interface TextFieldProps
     StyleXComponentProps<Omit<AriaTextFieldProps, "isInvalid">>,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
@@ -157,13 +180,19 @@ export function TextField({
   prefix,
   suffix,
   placeholder,
+  labelVariant,
   ...props
 }: TextFieldProps) {
   const size = sizeProp || use(SizeContext);
   const [type, setType] = useState<TextFieldProps["type"]>(
     props.type || "text",
   );
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -176,6 +205,7 @@ export function TextField({
         {({ isInvalid }) => (
           <TextFieldContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}

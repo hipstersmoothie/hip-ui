@@ -11,6 +11,7 @@ export type ButtonVariant =
   | "outline"
   | "critical"
   | "critical-outline";
+export type LabelVariant = "vertical" | "horizontal";
 export type InputVariant = "primary" | "secondary" | "tertiary";
 export type InputValidationState = "valid" | "invalid" | "warning";
 export type ButtonGroupVariant = "grouped" | "separate";

@@ -31,6 +31,7 @@ import { spacing } from "../theme/spacing.stylex";
 import { lineHeight, typeramp } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { toasts } from "./queue";
+import { Flex } from "../flex";
 
 const styles = stylex.create({
   region: {
@@ -154,18 +155,19 @@ function ToastItem({ toast }: { toast: QueuedToast<ToastContentType> }) {
           {toast.content.description}
         </Text>
       </ToastContent>
-      {toast.content.action ? (
-        <Button
-          size="sm"
-          variant={toast.content.action.variant}
-          onPress={() => {
-            toast.content.action?.onPress();
-            toasts.close(toast.key);
-          }}
-        >
-          {toast.content.action.label}
-        </Button>
-      ) : (
+      <Flex direction="row" gap="1">
+        {toast.content.action && (
+          <Button
+            size="sm"
+            variant={toast.content.action.variant}
+            onPress={() => {
+              toast.content.action?.onPress();
+              toasts.close(toast.key);
+            }}
+          >
+            {toast.content.action.label}
+          </Button>
+        )}
         <IconButton
           aria-label="Close"
           size="sm"
@@ -174,7 +176,7 @@ function ToastItem({ toast }: { toast: QueuedToast<ToastContentType> }) {
         >
           <X />
         </IconButton>
-      )}
+      </Flex>
     </Toast>
   );
 }

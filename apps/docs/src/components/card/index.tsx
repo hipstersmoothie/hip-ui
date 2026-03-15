@@ -100,6 +100,7 @@ const styles = stylex.create({
     margin: 0,
     fontSize: fontSize["sm"],
     fontWeight: fontWeight["normal"],
+    lineHeight: lineHeight["sm"],
   },
   cardBody: {
     gap: "calc(var(--card-gap) * 0.5)",

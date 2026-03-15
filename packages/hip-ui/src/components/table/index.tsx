@@ -62,7 +62,6 @@ const styles = stylex.create({
     backgroundColor: uiColor.component1,
     display: "flex",
     justifyContent: "space-between",
-    height: spacing["10"],
     paddingLeft: {
       default: spacing["2"],
       ":is(:first-child > *)": spacing["2"],

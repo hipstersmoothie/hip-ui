@@ -20,11 +20,13 @@ import {
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { ListBox } from "../listbox";
 import { SuffixIcon } from "../suffix-icon";
@@ -55,6 +57,7 @@ function EmptyState() {
 
 interface ComboBoxContentProps<T extends object> {
   label?: string;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -76,6 +79,7 @@ interface ComboBoxContentProps<T extends object> {
 
 function ComboBoxContent<T extends object>({
   label,
+  labelVariant,
   description,
   errorMessage,
   size,
@@ -97,6 +101,7 @@ function ComboBoxContent<T extends object>({
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: _isInvalid ? "invalid" : validationState,
   });
   const popoverStyles = usePopoverStyles();
@@ -118,9 +123,8 @@ function ComboBoxContent<T extends object>({
     );
   }
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       <Button {...stylex.props(inputStyles.wrapper)}>
         {prefix != null && (
           <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
@@ -149,8 +153,27 @@ function ComboBoxContent<T extends object>({
           validationState={validationState}
         />
       </Button>
-      {description && <Description>{description}</Description>}
-      {errorMessage && <FieldErrorMessage>{errorMessage}</FieldErrorMessage>}
+      {description && (
+        <Description style={inputStyles.description}>{description}</Description>
+      )}
+      {errorMessage && (
+        <FieldErrorMessage style={inputStyles.errorMessage}>
+          {errorMessage}
+        </FieldErrorMessage>
+      )}
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
       <Popover
         containerPadding={8}
         shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}
@@ -187,6 +210,7 @@ export interface ComboBoxProps<T extends object>
   children: React.ReactNode | ((item: T) => React.ReactNode);
   size?: Size;
   variant?: InputVariant;
+  labelVariant?: LabelVariant;
   validationState?: InputValidationState;
   placeholder?: string;
   prefix?: React.ReactNode;
@@ -203,6 +227,7 @@ export function ComboBox<T extends object>({
   style,
   size: sizeProp,
   variant,
+  labelVariant,
   validationState,
   shouldCloseOnInteractOutside,
   shouldFlip,
@@ -216,7 +241,12 @@ export function ComboBox<T extends object>({
   ...props
 }: ComboBoxProps<T>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -228,6 +258,7 @@ export function ComboBox<T extends object>({
         {({ isInvalid }) => (
           <ComboBoxContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}

@@ -15,6 +15,10 @@ import { spacing } from "../theme/spacing.stylex";
 import { typeramp } from "../theme/typography.stylex";
 
 const styles = stylex.create({
+  labelLeft: {
+    flexGrow: 1,
+    minWidth: 0,
+  },
   wrapper: {
     gap: spacing["3"],
     alignItems: "center",
@@ -66,7 +70,9 @@ const styles = stylex.create({
 
 interface SwitchBaseProps extends StyleXComponentProps<
   Omit<AriaSwitchProps, "children">
-> {}
+> {
+  labelVariant?: "left" | "right";
+}
 
 interface SwitchWithChildrenProps extends SwitchBaseProps {
   children: React.ReactNode;
@@ -87,7 +93,13 @@ export type SwitchProps =
   | SwitchWithAriaLabelProps
   | SwitchWithAriaLabelledbyProps;
 
-export function Switch({ children, style, onChange, ...props }: SwitchProps) {
+export function Switch({
+  children,
+  style,
+  onChange,
+  labelVariant = "right",
+  ...props
+}: SwitchProps) {
   const { trigger } = useHaptics();
 
   const handleChange = (isSelected: boolean) => {
@@ -101,10 +113,15 @@ export function Switch({ children, style, onChange, ...props }: SwitchProps) {
       onChange={handleChange}
       {...stylex.props(styles.wrapper, style)}
     >
+      {children != null && labelVariant === "left" && (
+        <div {...stylex.props(typeramp.label, styles.labelLeft)}>
+          {children}
+        </div>
+      )}
       <div {...stylex.props(styles.indicator)}>
         <div {...stylex.props(styles.thumb)} />
       </div>
-      {children != null && (
+      {children != null && labelVariant === "right" && (
         <div {...stylex.props(typeramp.label)}>{children}</div>
       )}
     </AriaSwitch>

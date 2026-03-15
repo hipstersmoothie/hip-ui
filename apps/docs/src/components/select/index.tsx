@@ -21,6 +21,7 @@ import {
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
@@ -65,6 +66,7 @@ interface SelectContentProps<T extends object> {
   shouldUpdatePosition?: boolean;
   placement?: PopoverProps["placement"];
   isVirtualized?: boolean;
+  labelVariant?: "vertical" | "horizontal";
 }
 
 function SelectContent<T extends object>({
@@ -86,10 +88,12 @@ function SelectContent<T extends object>({
   shouldFlip,
   shouldUpdatePosition,
   placement,
+  labelVariant,
 }: SelectContentProps<T>) {
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: isInvalid ? "invalid" : validationState,
   });
   const popoverStyles = usePopoverStyles();
@@ -122,7 +126,7 @@ function SelectContent<T extends object>({
 
   return (
     <>
-      <Label>{label}</Label>
+      <Label style={inputStyles.label}>{label}</Label>
       <Button {...stylex.props(inputStyles.wrapper)}>
         {prefix != null && (
           <div {...stylex.props(inputStyles.addon)}>{prefix}</div>
@@ -178,6 +182,7 @@ export interface SelectProps<T extends object, M extends "single" | "multiple">
       | "placement"
     > {
   label?: string;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   items?: Iterable<T>;
@@ -204,6 +209,7 @@ export function Select<
   style,
   size: sizeProp,
   variant,
+  labelVariant,
   validationState,
   shouldCloseOnInteractOutside,
   shouldFlip,
@@ -217,7 +223,12 @@ export function Select<
   ...props
 }: SelectProps<T, M>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -246,6 +257,7 @@ export function Select<
             shouldFlip={shouldFlip}
             shouldUpdatePosition={shouldUpdatePosition}
             placement={placement}
+            labelVariant={labelVariant}
           >
             {children}
           </SelectContent>

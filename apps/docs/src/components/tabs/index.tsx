@@ -39,6 +39,7 @@ const styles = stylex.create({
   },
   tabList: {
     gap: spacing["1"],
+    overflow: "auto",
     alignItems: {
       ":is([data-orientation=horizontal])": "flex-start",
       ":is([data-orientation=vertical])": "stretch",

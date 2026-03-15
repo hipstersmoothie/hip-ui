@@ -15,17 +15,20 @@ import {
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
 import { useInputStyles } from "../theme/useInputStyles";
 
 interface DateFieldContentProps {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -38,6 +41,7 @@ interface DateFieldContentProps {
 
 function DateFieldContent({
   label,
+  labelVariant,
   description,
   errorMessage,
   size,
@@ -51,12 +55,12 @@ function DateFieldContent({
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: isInvalid ? "invalid" : validationState,
   });
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
@@ -79,8 +83,23 @@ function DateFieldContent({
           validationState={validationState}
         />
       </div>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      <Description style={inputStyles.description}>{description}</Description>
+      <FieldErrorMessage style={inputStyles.errorMessage}>
+        {errorMessage}
+      </FieldErrorMessage>
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
     </>
   );
 }
@@ -93,6 +112,7 @@ export interface DateFieldProps<
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
   variant?: InputVariant;
+  labelVariant?: LabelVariant;
   validationState?: InputValidationState;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -105,13 +125,19 @@ export function DateField<T extends DateValue>({
   style,
   size: sizeProp,
   variant,
+  labelVariant,
   validationState,
   prefix,
   suffix,
   ...props
 }: DateFieldProps<T>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -123,6 +149,7 @@ export function DateField<T extends DateValue>({
         {({ isInvalid }) => (
           <DateFieldContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}
