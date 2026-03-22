@@ -19,7 +19,7 @@ const styles = stylex.create({
   wrapper: {
     margin: spacing["4"],
     borderColor: uiColor.border1,
-    borderRadius: radius["lg"],
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
     overflow: "hidden",

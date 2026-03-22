@@ -84,10 +84,7 @@ const styles = stylex.create({
   },
   inputWrapper: {
     padding: 0,
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderWidth: 0,
 
     cornerShape: "squircle",
@@ -353,6 +350,8 @@ const styles = stylex.create({
   horizontalLabelText: {
     flexGrow: 1,
     minWidth: 0,
+    paddingLeft: 0,
+    paddingRight: 0,
   },
   horizontalLabelTextSm: {
     lineHeight: spacing["6"],

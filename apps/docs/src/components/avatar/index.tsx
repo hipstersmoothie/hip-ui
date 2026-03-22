@@ -38,7 +38,7 @@ const styles = stylex.create({
   },
   wrapperSm: {
     borderRadius: {
-      default: radius["sm"],
+      default: radius.sm,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["6"],
@@ -46,7 +46,7 @@ const styles = stylex.create({
   },
   wrapperMd: {
     borderRadius: {
-      default: radius["md"],
+      default: radius.md,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["8"],
@@ -54,7 +54,7 @@ const styles = stylex.create({
   },
   wrapperLg: {
     borderRadius: {
-      default: radius["lg"],
+      default: radius.lg,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["10"],
@@ -62,7 +62,7 @@ const styles = stylex.create({
   },
   wrapperXl: {
     borderRadius: {
-      default: radius["xl"],
+      default: radius.xl,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     height: spacing["14"],

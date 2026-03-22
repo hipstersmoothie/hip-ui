@@ -13,7 +13,7 @@ import { spacing } from "../components/theme/spacing.stylex";
 const styles = stylex.create({
   card: {
     borderRadius: {
-      default: radius["lg"],
+      default: radius.lg,
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
     cornerShape: "squircle",
@@ -44,8 +44,8 @@ const styles = stylex.create({
     /* eslint-disable @stylexjs/no-legacy-contextual-styles, @stylexjs/valid-styles */
     ":is(*) pre": {
       margin: 0,
-      borderBottomLeftRadius: radius["lg"],
-      borderBottomRightRadius: radius["lg"],
+      borderBottomLeftRadius: radius.lg,
+      borderBottomRightRadius: radius.lg,
       paddingBottom: spacing["4"],
       paddingLeft: spacing["4"],
       paddingRight: spacing["4"],

@@ -1,5 +1,5 @@
-import { Flex } from "@/components/flex";
 import { DateRangePicker } from "@/components/date-range-picker";
+import { Flex } from "@/components/flex";
 
 export function LabelVariant() {
   return (

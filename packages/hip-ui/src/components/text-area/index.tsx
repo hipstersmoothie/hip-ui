@@ -15,6 +15,7 @@ import {
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
@@ -70,6 +71,7 @@ export interface TextAreaProps
     Pick<AriaTextAreaProps, "rows">,
     Pick<InputProps, "placeholder"> {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
@@ -95,11 +97,17 @@ export function TextArea({
   autosize = true,
   variant,
   validationState,
+  labelVariant,
   ...props
 }: TextAreaProps) {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   useLayoutEffect(() => {
     const textarea = textAreaRef.current;

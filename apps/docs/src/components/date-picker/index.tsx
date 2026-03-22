@@ -18,6 +18,7 @@ import type { CalendarProps } from "../calendar";
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
@@ -25,6 +26,7 @@ import type {
 import { Calendar } from "../calendar";
 import { SizeContext } from "../context";
 import { DateField } from "../date-field";
+import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { spacing } from "../theme/spacing.stylex";
@@ -40,6 +42,7 @@ export interface DatePickerProps<T extends DateValue>
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
   variant?: InputVariant;
+  labelVariant?: LabelVariant;
   validationState?: InputValidationState;
 }
 
@@ -51,6 +54,7 @@ const styles = stylex.create({
 
 interface DatePickerContentProps<T extends DateValue> {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -63,20 +67,26 @@ interface DatePickerContentProps<T extends DateValue> {
 
 function DatePickerContent<T extends DateValue>({
   label,
+  labelVariant,
   description,
   errorMessage,
-  size: _size,
+  size,
   variant,
   validationState,
   isInvalid: _isInvalid,
   weekdayStyle,
   visibleDuration,
 }: DatePickerContentProps<T>) {
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
   const popoverStyles = usePopoverStyles();
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       <Group>
         <DateField
           variant={variant}
@@ -92,8 +102,23 @@ function DatePickerContent<T extends DateValue>({
           }
         />
       </Group>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      <Description style={inputStyles.description}>{description}</Description>
+      <FieldErrorMessage style={inputStyles.errorMessage}>
+        {errorMessage}
+      </FieldErrorMessage>
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
       <AriaPopover
         {...stylex.props(popoverStyles.wrapper, popoverStyles.animation)}
       >
@@ -117,11 +142,17 @@ export function DatePicker<T extends DateValue>({
   weekdayStyle,
   visibleDuration,
   variant,
+  labelVariant,
   validationState,
   ...props
 }: DatePickerProps<T>) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -133,6 +164,7 @@ export function DatePicker<T extends DateValue>({
         {({ isInvalid }) => (
           <DatePickerContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}

@@ -16,6 +16,7 @@ const styles = stylex.create({
   root: {
     borderColor: uiColor.border1,
     borderRadius: radius.md,
+    cornerShape: "squircle",
     borderStyle: "solid",
     borderWidth: 1,
     outline: {

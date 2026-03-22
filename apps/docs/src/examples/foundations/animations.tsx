@@ -53,7 +53,7 @@ const styles = stylex.create({
   previewArea: {
     padding: spacing["4"],
     borderColor: uiColor.border2,
-    borderRadius: radius["lg"],
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
     overflow: "hidden",
@@ -67,7 +67,7 @@ const styles = stylex.create({
     duration: string,
     timingFunction: string,
   ) => ({
-    borderRadius: radius["md"],
+    borderRadius: radius.md,
     animationDuration: duration,
     animationFillMode: "forwards",
     animationName,
@@ -81,7 +81,7 @@ const styles = stylex.create({
     duration: string,
     timingFunction: string,
   ) => ({
-    borderRadius: radius["md"],
+    borderRadius: radius.md,
     animationDelay: animationDuration.default,
     animationDuration: duration,
     animationFillMode: "forwards",

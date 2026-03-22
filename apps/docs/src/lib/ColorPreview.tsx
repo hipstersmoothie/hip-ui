@@ -8,7 +8,7 @@ import { allColors } from "./ThemeContext";
 
 const styles = stylex.create({
   dot: {
-    borderRadius: radius["full"],
+    borderRadius: radius.full,
     alignItems: "center",
     height: spacing["4"],
     width: spacing["4"],

@@ -4,7 +4,6 @@ import * as stylex from "@stylexjs/stylex";
 import type { StyleXComponentProps } from "../theme/types";
 
 import { uiColor } from "../theme/color.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, lineHeight, tracking } from "../theme/typography.stylex";
@@ -12,10 +11,7 @@ import { fontFamily, lineHeight, tracking } from "../theme/typography.stylex";
 const styles = stylex.create({
   kbd: {
     borderColor: uiColor.border2,
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.sm,
     borderStyle: "solid",
     borderWidth: "1px",
 

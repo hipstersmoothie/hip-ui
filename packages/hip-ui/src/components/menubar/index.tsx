@@ -40,10 +40,7 @@ const styles = stylex.create({
   },
   button: {
     borderColor: "transparent",
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
 

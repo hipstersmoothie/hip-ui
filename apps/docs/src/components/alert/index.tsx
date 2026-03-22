@@ -21,7 +21,7 @@ import {
   uiColor,
   warningColor,
 } from "../theme/color.stylex";
-import { maxBreakpoints, mediaQueries } from "../theme/media-queries.stylex";
+import { maxBreakpoints } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import {
   critical,
@@ -35,13 +35,9 @@ import { Text } from "../typography/text";
 
 const styles = stylex.create({
   alert: {
-    borderRadius: {
-      default: radius["lg"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
-
     cornerShape: "squircle",
     gap: spacing["2.5"],
     gridTemplateAreas: {

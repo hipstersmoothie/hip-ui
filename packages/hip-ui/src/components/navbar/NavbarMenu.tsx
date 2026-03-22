@@ -11,10 +11,7 @@ import type { StyleXComponentProps } from "../theme/types";
 import { HoverCard } from "../hover-card";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor, uiColor } from "../theme/color.stylex";
-import {
-  containerBreakpoints,
-  mediaQueries,
-} from "../theme/media-queries.stylex";
+import { containerBreakpoints } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
@@ -22,10 +19,7 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 const styles = stylex.create({
   menuItem: {
     padding: spacing["2"],
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["lg"],
-    },
+    borderRadius: radius.md,
     textDecoration: "none",
     alignItems: "center",
     backgroundColor: {
@@ -62,10 +56,7 @@ const styles = stylex.create({
   menuItemIcon: {
     gridArea: "icon",
     padding: spacing["2"],
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["lg"],
-    },
+    borderRadius: radius.md,
     alignItems: "center",
     backgroundColor: {
       default: uiColor.component2,

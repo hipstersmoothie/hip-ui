@@ -20,11 +20,13 @@ import { createPortal } from "react-dom";
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
 import { uiColor } from "../theme/color.stylex";
@@ -132,6 +134,7 @@ const styles = stylex.create({
 
 interface NumberFieldContentProps {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -146,6 +149,7 @@ interface NumberFieldContentProps {
 
 function NumberFieldContent({
   label,
+  labelVariant,
   description,
   errorMessage,
   size,
@@ -161,12 +165,12 @@ function NumberFieldContent({
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: isInvalid ? "invalid" : validationState,
   });
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
@@ -220,8 +224,23 @@ function NumberFieldContent({
           </Button>
         )}
       </NumberInputWrapper>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      <Description style={inputStyles.description}>{description}</Description>
+      <FieldErrorMessage style={inputStyles.errorMessage}>
+        {errorMessage}
+      </FieldErrorMessage>
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
     </>
   );
 }
@@ -235,6 +254,7 @@ export interface NumberFieldProps
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
   variant?: InputVariant;
+  labelVariant?: LabelVariant;
   validationState?: InputValidationState;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -248,6 +268,7 @@ export function NumberField({
   style,
   size: sizeProp,
   variant,
+  labelVariant,
   validationState,
   prefix,
   suffix,
@@ -256,7 +277,12 @@ export function NumberField({
   ...props
 }: NumberFieldProps) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -268,6 +294,7 @@ export function NumberField({
         {({ isInvalid }) => (
           <NumberFieldContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}

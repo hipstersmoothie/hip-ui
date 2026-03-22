@@ -21,10 +21,7 @@ const styles = stylex.create({
     boxShadow: shadow["xs"],
   },
   base: {
-    borderRadius: {
-      default: radius["lg"],
-      [mediaQueries.supportsSquircle]: radius["full"],
-    },
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
 

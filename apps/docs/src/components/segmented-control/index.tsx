@@ -27,10 +27,7 @@ import { spacing } from "../theme/spacing.stylex";
 const styles = stylex.create({
   group: {
     padding: spacing["1"],
-    borderRadius: {
-      default: radius["lg"],
-      [mediaQueries.supportsSquircle]: radius["4xl"],
-    },
+    borderRadius: radius.xl,
 
     cornerShape: "squircle",
     gap: spacing["2"],
@@ -46,10 +43,7 @@ const styles = stylex.create({
     },
   },
   item: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderWidth: 0,
 
     cornerShape: "squircle",
@@ -84,10 +78,7 @@ const styles = stylex.create({
     },
   },
   selectionIndicator: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
 
     cornerShape: "squircle",
     backgroundColor: uiColor.bgSubtle,

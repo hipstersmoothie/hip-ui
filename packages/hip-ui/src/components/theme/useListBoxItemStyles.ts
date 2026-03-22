@@ -40,11 +40,7 @@ const styles = stylex.create({
   md: { minHeight: spacing["9"] },
   lg: { minHeight: spacing["12"] },
   itemInner: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-
+    borderRadius: radius.lg,
     cornerShape: "squircle",
     gap: spacing["3"],
     alignItems: "center",

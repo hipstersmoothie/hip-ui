@@ -34,10 +34,7 @@ const styles = stylex.create({
       ":is([data-size=md] *)": `${spacing["3"]} ${spacing["3"]}`,
       ":is([data-size=sm] *)": `${spacing["2"]} ${spacing["2"]}`,
     },
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["2xl"],
-    },
+    borderRadius: radius.lg,
     borderWidth: 0,
 
     cornerShape: "squircle",

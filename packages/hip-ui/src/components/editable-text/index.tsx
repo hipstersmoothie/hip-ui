@@ -23,7 +23,7 @@ const focusClosestFocusableElement = () => {
 
 const styles = stylex.create({
   input: {
-    borderRadius: radius["sm"],
+    borderRadius: radius.sm,
     borderWidth: 0,
     textDecoration: "inherit",
     backgroundColor: "transparent",

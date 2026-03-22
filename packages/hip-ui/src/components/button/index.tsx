@@ -59,7 +59,7 @@ export const Button = ({
 
   const handlePress = (e: Parameters<NonNullable<typeof onPress>>[0]) => {
     if (variant === "primary" && !isDisabled && !isPending) {
-      trigger("impactMedium");
+      trigger("impactLight");
     }
     onPress?.(e);
   };

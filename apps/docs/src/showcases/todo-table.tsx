@@ -54,7 +54,7 @@ const styles = stylex.create({
   main: {
     borderColor: uiColor.border1,
     borderRadius: {
-      default: radius["lg"],
+      default: radius.lg,
       "@supports (corner-shape: squircle)": radius["2xl"],
     },
     borderStyle: "solid",

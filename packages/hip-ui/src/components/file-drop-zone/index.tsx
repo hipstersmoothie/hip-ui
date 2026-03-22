@@ -39,10 +39,7 @@ const styles = stylex.create({
       default: uiColor.border3,
       ":is([data-drop-target])": primaryColor.solid1,
     },
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderStyle: {
       default: "dashed",
       ":is([data-drop-target])": "solid",

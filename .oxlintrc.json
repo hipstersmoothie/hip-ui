@@ -23,7 +23,6 @@
     "**/dist/**",
     "**/snap/**",
     "**/vite.config.*.timestamp-*.*",
-    "eslint.config.*",
     "**/routeTree.gen.ts"
   ],
   "jsPlugins": [

@@ -412,7 +412,7 @@ export function NavbarLink({ style, isActive, ...props }: NavbarLinkProps) {
 
   return (
     <Link
-      data-active={isActive}
+      data-active={isActive || undefined}
       {...props}
       {...stylex.props(styles.link, style)}
       onPress={(e) => {

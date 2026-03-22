@@ -22,26 +22,17 @@ const styles = stylex.create({
     cornerShape: "squircle",
   },
   swatchSm: {
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.sm,
     height: spacing["4"],
     width: spacing["4"],
   },
   swatchMd: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.md,
     height: spacing["6"],
     width: spacing["6"],
   },
   swatchLg: {
-    borderRadius: {
-      default: radius["lg"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     height: spacing["8"],
     width: spacing["8"],
   },

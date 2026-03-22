@@ -16,19 +16,19 @@ const styles = stylex.create({
   rounded: {
     cornerShape: "squircle",
     borderBottomLeftRadius: {
-      default: radius["md"],
+      default: radius.md,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderBottomRightRadius: {
-      default: radius["md"],
+      default: radius.md,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderTopLeftRadius: {
-      default: radius["md"],
+      default: radius.md,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
     borderTopRightRadius: {
-      default: radius["md"],
+      default: radius.md,
       [mediaQueries.supportsSquircle]: radius["3xl"],
     },
   },

@@ -37,11 +37,7 @@ const styles = stylex.create({
     width: "100vw",
   },
   modal: {
-    borderRadius: {
-      default: radius["lg"],
-      [mediaQueries.supportsSquircle]: radius["4xl"],
-    },
-
+    borderRadius: radius.xl,
     cornerShape: "squircle",
     outline: "none",
     overflow: "hidden",

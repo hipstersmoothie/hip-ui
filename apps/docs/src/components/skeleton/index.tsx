@@ -53,11 +53,7 @@ const styles = stylex.create({
     borderRadius: radius.full,
   },
   rectangle: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["4xl"],
-    },
-
+    borderRadius: radius.xl,
     cornerShape: "squircle",
   },
   sizeSm: {

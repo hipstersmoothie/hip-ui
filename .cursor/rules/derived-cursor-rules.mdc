@@ -73,7 +73,7 @@ globs: *
 - Use console logging and debugging tools to identify and fix issues.
 - Write unit tests to ensure code quality and prevent regressions.
 - Verify that changes do not introduce new linting errors.
-- Use `pnpm eslint --fix` to automatically fix linting issues where possible.
+- Use `pnpm exec oxlint . --fix` from the repo root to automatically fix linting issues where possible.
 - When debugging StyleX styles, make sure that the StyleX properties are in the correct order.
 
 ## FINAL DOs AND DON'Ts

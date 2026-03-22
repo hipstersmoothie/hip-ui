@@ -1,5 +1,5 @@
-import { Flex } from "@/components/flex";
 import { ComboBox, ComboBoxItem } from "@/components/combobox";
+import { Flex } from "@/components/flex";
 
 const options = [
   { id: "option1", name: "Option 1" },

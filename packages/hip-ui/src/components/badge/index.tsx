@@ -18,7 +18,7 @@ import { fontFamily, fontSize, fontWeight } from "../theme/typography.stylex";
 const styles = stylex.create({
   wrapper: {
     // eslint-disable-next-lin @stylexjs/valid-styles
-    borderRadius: radius["full"],
+    borderRadius: radius.full,
     borderStyle: "solid",
     borderWidth: 1,
     overflow: "hidden",

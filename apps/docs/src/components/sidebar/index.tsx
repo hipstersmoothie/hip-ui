@@ -71,10 +71,7 @@ const styles = stylex.create({
     listStyle: "none",
   },
   sidebarItem: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderWidth: 0,
 
     cornerShape: "squircle",

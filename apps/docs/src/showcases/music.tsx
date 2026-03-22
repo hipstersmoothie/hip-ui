@@ -67,7 +67,7 @@ const styles = stylex.create({
   },
   membershipTier: {
     borderRadius: {
-      default: radius["sm"],
+      default: radius.sm,
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
     cornerShape: "squircle",
@@ -93,7 +93,7 @@ const styles = stylex.create({
     padding: spacing["2"],
     borderColor: primaryColor.border2,
     borderRadius: {
-      default: radius["sm"],
+      default: radius.sm,
       "@supports (corner-shape: squircle)": radius["3xl"],
     },
     borderStyle: "solid",

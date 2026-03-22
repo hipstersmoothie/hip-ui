@@ -54,7 +54,7 @@ const styles = stylex.create({
     display: "flex",
     justifyContent: "center",
 
-    borderRadius: radius["full"],
+    borderRadius: radius.full,
     borderWidth: 2,
     position: "relative",
     height: spacing["4"],
@@ -68,7 +68,7 @@ const styles = stylex.create({
     transitionTimingFunction: "ease-in-out",
   },
   selectionIndicator: {
-    borderRadius: radius["full"],
+    borderRadius: radius.full,
     backgroundColor: "white",
     height: spacing["2"],
     width: spacing["2"],

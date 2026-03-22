@@ -19,6 +19,7 @@ import type { StyleXComponentProps } from "../theme/types";
 import type { ToastContentType } from "./queue";
 
 import { Button } from "../button";
+import { Flex } from "../flex";
 import { useHaptics } from "../haptics";
 import { IconButton } from "../icon-button";
 import {
@@ -31,7 +32,6 @@ import { spacing } from "../theme/spacing.stylex";
 import { lineHeight, typeramp } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { toasts } from "./queue";
-import { Flex } from "../flex";
 
 const styles = stylex.create({
   region: {
@@ -148,12 +148,14 @@ function ToastItem({ toast }: { toast: QueuedToast<ToastContentType> }) {
         <Text slot="title" {...stylex.props(typeramp.body, styles.title)}>
           {toast.content.title}
         </Text>
-        <Text
-          slot="description"
-          {...stylex.props(styles.description, typeramp.label)}
-        >
-          {toast.content.description}
-        </Text>
+        {toast.content.description && (
+          <Text
+            slot="description"
+            {...stylex.props(styles.description, typeramp.label)}
+          >
+            {toast.content.description}
+          </Text>
+        )}
       </ToastContent>
       <Flex direction="row" gap="1">
         {toast.content.action && (

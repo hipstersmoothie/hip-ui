@@ -151,8 +151,10 @@ function SelectContent<T extends object>({
           validationState={validationState}
         />
       </Button>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      <Description style={inputStyles.description}>{description}</Description>
+      <FieldErrorMessage style={inputStyles.errorMessage}>
+        {errorMessage}
+      </FieldErrorMessage>
       <Popover
         containerPadding={8}
         shouldCloseOnInteractOutside={shouldCloseOnInteractOutside}

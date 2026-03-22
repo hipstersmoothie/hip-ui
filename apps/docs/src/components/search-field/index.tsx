@@ -12,11 +12,13 @@ import { SearchField as AriaSearchField, Input } from "react-aria-components";
 import type {
   InputValidationState,
   InputVariant,
+  LabelVariant,
   Size,
   StyleXComponentProps,
 } from "../theme/types";
 
 import { SizeContext } from "../context";
+import { Flex } from "../flex";
 import { IconButton } from "../icon-button";
 import { Description, FieldErrorMessage, Label } from "../label";
 import { SuffixIcon } from "../suffix-icon";
@@ -40,6 +42,7 @@ const styles = stylex.create({
 
 interface SearchFieldContentProps {
   label?: React.ReactNode;
+  labelVariant?: LabelVariant;
   description?: string;
   errorMessage?: string | ((validation: ValidationResult) => string);
   size: Size;
@@ -54,6 +57,7 @@ interface SearchFieldContentProps {
 
 function SearchFieldContent({
   label,
+  labelVariant,
   description,
   errorMessage,
   size,
@@ -69,12 +73,12 @@ function SearchFieldContent({
   const inputStyles = useInputStyles({
     size,
     variant,
+    labelVariant,
     validationState: isInvalid ? "invalid" : validationState,
   });
 
-  return (
+  const content = (
     <>
-      <Label>{label}</Label>
       {/*
         This onClick is specifically for mouse users not clicking directly on the input.
         A keyboard user would not encounter the same issue.
@@ -109,8 +113,23 @@ function SearchFieldContent({
           </div>
         )}
       </div>
-      <Description>{description}</Description>
-      <FieldErrorMessage>{errorMessage}</FieldErrorMessage>
+      <Description style={inputStyles.description}>{description}</Description>
+      <FieldErrorMessage style={inputStyles.errorMessage}>
+        {errorMessage}
+      </FieldErrorMessage>
+    </>
+  );
+
+  return (
+    <>
+      <Label style={inputStyles.label}>{label}</Label>
+      {labelVariant === "horizontal" ? (
+        <Flex direction="column" gap="2">
+          {content}
+        </Flex>
+      ) : (
+        content
+      )}
     </>
   );
 }
@@ -124,6 +143,7 @@ export interface SearchFieldProps
   errorMessage?: string | ((validation: ValidationResult) => string);
   size?: Size;
   variant?: InputVariant;
+  labelVariant?: LabelVariant;
   validationState?: InputValidationState;
   prefix?: React.ReactNode;
   suffix?: React.ReactNode;
@@ -138,6 +158,7 @@ export function SearchField({
   style,
   size: sizeProp,
   variant,
+  labelVariant,
   validationState,
   prefix = defaultPrefix,
   suffix,
@@ -145,7 +166,12 @@ export function SearchField({
   ...props
 }: SearchFieldProps) {
   const size = sizeProp || use(SizeContext);
-  const inputStyles = useInputStyles({ size, variant, validationState });
+  const inputStyles = useInputStyles({
+    size,
+    variant,
+    labelVariant,
+    validationState,
+  });
 
   return (
     <SizeContext value={size}>
@@ -157,6 +183,7 @@ export function SearchField({
         {({ isInvalid, isEmpty }) => (
           <SearchFieldContent
             label={label}
+            labelVariant={labelVariant}
             description={description}
             errorMessage={errorMessage}
             size={size}

@@ -25,6 +25,7 @@ const styles = stylex.create({
   cell: {
     padding: spacing["1"],
     borderRadius: radius.md,
+    cornerShape: "squircle",
     textDecoration: {
       ":is([data-unavailable])": "line-through",
     },
@@ -57,6 +58,9 @@ const styles = stylex.create({
     },
   },
   nonRangeCell: {
+    cornerShape: {
+      "::before": "squircle",
+    },
     borderRadius: {
       "::before": radius.md,
     },

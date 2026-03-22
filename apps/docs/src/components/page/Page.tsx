@@ -113,10 +113,7 @@ const sharedStyles = stylex.create({
   },
   icon: {
     gridArea: "icon",
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     // eslint-disable-next-line @stylexjs/valid-styles, @stylexjs/sort-keys
     cornerShape: "squircle",
     alignItems: "center",

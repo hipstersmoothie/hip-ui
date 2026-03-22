@@ -13,7 +13,7 @@
   "devDependencies": {
     "@eslint-community/eslint-plugin-eslint-comments": "^4.5.0",
     "@stylistic/eslint-plugin": "^5.6.1",
-    "@stylexjs/eslint-plugin": "^0.17.5",
+    "@stylexjs/eslint-plugin": "catalog:",
     "eslint-plugin-import-x": "^4.16.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-perfectionist": "^4.15.1",
@@ -23,8 +23,7 @@
     "oxfmt": "latest",
     "oxlint": "^1.48.0",
     "turbo": "^2.5.8",
-    "typescript": "catalog:",
-    "typescript-eslint": "^8.46.2"
+    "typescript": "catalog:"
   },
   "packageManager": "pnpm@10.18.2",
   "engines": {

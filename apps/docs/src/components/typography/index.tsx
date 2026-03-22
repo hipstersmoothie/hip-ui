@@ -18,7 +18,6 @@ import { Flex } from "../flex";
 import { LinkContext } from "../link/link-context";
 import { animationDuration } from "../theme/animations.stylex";
 import { uiColor } from "../theme/color.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { critical, ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";
@@ -33,10 +32,7 @@ const styles = stylex.create({
   pre: {
     padding: spacing["4"],
     borderColor: uiColor.border2,
-    borderRadius: {
-      default: radius["lg"],
-      "@supports (corner-shape: squircle)": radius["4xl"],
-    },
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
 
@@ -85,11 +81,7 @@ const styles = stylex.create({
     paddingLeft: spacing["1"],
   },
   inlineCode: {
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["2xl"],
-    },
-
+    borderRadius: radius.sm,
     cornerShape: "squircle",
     fontSize: "0.95em",
     position: "relative",
@@ -254,7 +246,7 @@ export const LabelText = ({
   ...props
 }: LabelTextProps) => {
   return (
-    <p
+    <div
       {...props}
       {...stylex.props(
         typeramp.label,

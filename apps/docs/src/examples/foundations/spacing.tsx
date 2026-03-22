@@ -80,7 +80,12 @@ export function Radius() {
         <Fragment key={key}>
           <div
             {...stylex.props(styles.box)}
-            style={{ height: 80, width: 80, borderRadius: value }}
+            style={{
+              height: 140,
+              width: 140,
+              borderRadius: value,
+              cornerShape: key === "full" ? "unset" : "squircle",
+            }}
           />
           <Text weight="semibold">{key}</Text>
           <VariableValue value={value} />

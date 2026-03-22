@@ -4,7 +4,6 @@ import {
   animationDuration,
   animationTimingFunction,
 } from "./animations.stylex";
-import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
@@ -12,11 +11,7 @@ import { spacing } from "./spacing.stylex";
 
 const styles = stylex.create({
   popover: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-
+    borderRadius: radius.lg,
     cornerShape: "squircle",
     outline: "none",
     overflow: "auto",

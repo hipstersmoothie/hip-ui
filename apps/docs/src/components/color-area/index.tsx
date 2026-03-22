@@ -17,11 +17,7 @@ import { spacing } from "../theme/spacing.stylex";
 
 const styles = stylex.create({
   colorArea: {
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-
+    borderRadius: radius["3xl"],
     cornerShape: "squircle",
     filter: {
       ":is([data-disabled])": "grayscale(1)",
@@ -30,10 +26,7 @@ const styles = stylex.create({
   },
   thumb: {
     borderColor: "white",
-    borderRadius: {
-      default: radius["full"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.full,
     borderStyle: "solid",
     borderWidth: 2,
 

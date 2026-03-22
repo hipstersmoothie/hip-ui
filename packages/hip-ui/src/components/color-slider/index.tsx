@@ -51,11 +51,7 @@ const styles = stylex.create({
   },
   track: {
     gridArea: "track",
-    borderRadius: {
-      default: radius["full"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-
+    borderRadius: radius.full,
     cornerShape: "squircle",
     height: {
       ":is([data-size=lg] *)": spacing["6"],

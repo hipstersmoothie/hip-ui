@@ -6,7 +6,6 @@ import type { Size, StyleXComponentProps } from "../theme/types";
 import { AspectRatio, AspectRatioImage } from "../aspect-ratio";
 import { SizeContext } from "../context";
 import { uiColor } from "../theme/color.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { shadow } from "../theme/shadow.stylex";
@@ -21,10 +20,7 @@ import {
 const styles = stylex.create({
   card: {
     borderColor: uiColor.component2,
-    borderRadius: {
-      default: radius["lg"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
 

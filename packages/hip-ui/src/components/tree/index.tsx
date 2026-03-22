@@ -92,11 +92,7 @@ const styles = stylex.create({
     top: "50%",
   },
   dragButton: {
-    borderRadius: {
-      default: radius["sm"],
-      [mediaQueries.supportsSquircle]: radius["2xl"],
-    },
-
+    borderRadius: radius.sm,
     cornerShape: "squircle",
     alignItems: "center",
     display: "flex",

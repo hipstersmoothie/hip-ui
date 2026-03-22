@@ -9,11 +9,23 @@ import remarkGfm from "remark-gfm";
 
 import type { StyleXComponentProps } from "../theme/types";
 
+import type { LinkProps } from "../link";
 import { Link } from "../link";
-import { uiColor } from "../theme/color.stylex";
-import { radius } from "../theme/radius.stylex";
 import { spacing } from "../theme/spacing.stylex";
-import { fontFamily, fontSize } from "../theme/typography.stylex";
+import {
+  Body,
+  Heading1,
+  Heading2,
+  Heading5,
+  ListItem,
+  Heading4,
+  OrderedList,
+  Blockquote,
+  InlineCode,
+  Pre,
+  UnorderedList,
+  Heading3,
+} from "../typography";
 import { Text } from "../typography/text";
 
 const styles = stylex.create({
@@ -21,50 +33,70 @@ const styles = stylex.create({
   italic: {
     fontStyle: "italic",
   },
-  paragraph: {
-    margin: 0,
+  standardMargin: {
+    marginBottom: spacing["5"],
+    marginTop: spacing["5"],
   },
-  list: {
-    margin: `${spacing["1"]} 0`,
-    paddingLeft: spacing["5"],
+  h2: {
+    marginBottom: spacing["4"],
+    marginTop: spacing["8"],
   },
-  code: {
-    borderRadius: radius["sm"],
-    backgroundColor: uiColor.component2,
-    fontFamily: fontFamily["mono"],
-    fontSize: fontSize["sm"],
-    paddingBottom: spacing["0.5"],
-    paddingLeft: spacing["1"],
-    paddingRight: spacing["1"],
-    paddingTop: spacing["0.5"],
+  h3: {
+    marginBottom: spacing["5"],
+    marginTop: spacing["8"],
+  },
+  h4: {
+    marginBottom: spacing["8"],
+    marginTop: spacing["8"],
+  },
+  h5: {
+    marginBottom: spacing["8"],
+    marginTop: spacing["8"],
   },
 });
 
-const components: Components = {
-  p: ({ children }) => (
-    <p {...stylex.props(styles.paragraph)}>
-      <Text leading="base">{children}</Text>
-    </p>
+export const components: Components = {
+  h1: ({ className: _className, style: _style, ...props }) => (
+    <Heading1 {...props} />
+  ),
+  h2: ({ className: _className, style: _style, ...props }) => (
+    <Heading2 style={styles.h2} {...props} />
+  ),
+  h3: ({ className: _className, style: _style, ...props }) => (
+    <Heading3 style={styles.h3} {...props} />
+  ),
+  h4: ({ className: _className, style: _style, ...props }) => (
+    <Heading4 style={styles.h4} {...props} />
+  ),
+  h5: ({ className: _className, style: _style, ...props }) => (
+    <Heading5 style={styles.h5} {...props} />
+  ),
+  p: ({ className: _className, style: _style, ...props }) => (
+    <Body style={styles.standardMargin} {...props} />
+  ),
+  a: ({ className: _className, style: _style, ...props }) => (
+    <Link {...(props as LinkProps)} />
+  ),
+  ul: ({ className: _className, style: _style, ...props }) => (
+    <UnorderedList {...props} />
+  ),
+  ol: ({ className: _className, style: _style, ...props }) => (
+    <OrderedList {...props} />
+  ),
+  li: ({ className: _className, style: _style, ...props }) => (
+    <ListItem {...props} />
+  ),
+  pre: ({ className: _className, style: _style, ...props }) => (
+    <Pre {...props} />
+  ),
+  code: ({ className: _className, style: _style, ...props }) => (
+    <InlineCode {...props} />
+  ),
+  blockquote: ({ className: _className, style: _style, ...props }) => (
+    <Blockquote {...props} />
   ),
   strong: ({ children }) => <Text weight="semibold">{children}</Text>,
   em: ({ children }) => <em {...stylex.props(styles.italic)}>{children}</em>,
-  a: ({ href, children }) => (
-    <Link href={href ?? "#"} target="_blank" rel="noopener noreferrer">
-      {children}
-    </Link>
-  ),
-  ul: ({ children }) => <ul {...stylex.props(styles.list)}>{children}</ul>,
-  ol: ({ children }) => <ol {...stylex.props(styles.list)}>{children}</ol>,
-  li: ({ children }) => (
-    <li>
-      <Text size="sm" variant="secondary">
-        {children}
-      </Text>
-    </li>
-  ),
-  code: ({ children }) => (
-    <code {...stylex.props(styles.code)}>{children}</code>
-  ),
 };
 
 /**

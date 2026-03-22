@@ -78,7 +78,7 @@ const styles = stylex.create({
   creditCardWrapper: {
     padding: spacing["8"],
     borderRadius: {
-      default: radius["lg"],
+      default: radius.lg,
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
     cornerShape: "squircle",
@@ -86,7 +86,7 @@ const styles = stylex.create({
   creditCard: {
     padding: spacing["4"],
     borderRadius: {
-      default: radius["lg"],
+      default: radius.lg,
       "@supports (corner-shape: squircle)": radius["4xl"],
     },
     cornerShape: "squircle",

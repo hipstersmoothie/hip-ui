@@ -84,10 +84,7 @@ const styles = stylex.create({
   },
   inputWrapper: {
     padding: 0,
-    borderRadius: {
-      default: radius["md"],
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderRadius: radius.lg,
     borderWidth: 0,
 
     cornerShape: "squircle",
