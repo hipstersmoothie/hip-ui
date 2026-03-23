@@ -7,7 +7,7 @@ import type {
 
 import * as stylex from "@stylexjs/stylex";
 import { Check } from "lucide-react";
-import { createContext, use } from "react";
+import { createContext, use, useContext, useRef } from "react";
 import {
   ListBox as AriaListBox,
   ListBoxItem as AriaListBoxItem,
@@ -83,7 +83,8 @@ export function ListBox<T extends object>({
 }: ListBoxProps<T>) {
   const { trigger } = useHaptics();
   const size = sizeProp || use(SizeContext);
-
+  const innerRef = useRef<HTMLDivElement>(null);
+  const context = useContext(ListStateContext);
   const handleSelectionChange = (
     keys: Parameters<NonNullable<typeof onSelectionChange>>[0],
   ) => {
@@ -99,8 +100,9 @@ export function ListBox<T extends object>({
   const listbox = (
     <AriaListBox
       {...props}
+      ref={innerRef}
       onSelectionChange={handleSelectionChange}
-      onAction={handleAction}
+      onAction={context ? undefined : handleAction}
       {...stylex.props(styles.listBox, style)}
     />
   );

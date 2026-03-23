@@ -27,7 +27,6 @@ import { spacing } from "../theme/spacing.stylex";
 const styles = stylex.create({
   group: {
     padding: spacing["1"],
-    borderRadius: radius.xl,
 
     cornerShape: "squircle",
     gap: spacing["2"],
@@ -42,7 +41,17 @@ const styles = stylex.create({
       ":is([data-size=sm])": spacing["7"],
     },
   },
+  small: {
+    borderRadius: radius.xl,
+  },
+  large: {
+    borderRadius: radius.lg,
+  },
   item: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     borderRadius: radius.lg,
     borderWidth: 0,
 
@@ -56,6 +65,7 @@ const styles = stylex.create({
       ":is([data-selected])": uiColor.text2,
     },
     display: "flex",
+    gap: spacing["1"],
     flexGrow: 1,
     justifyContent: "center",
     position: "relative",
@@ -131,7 +141,11 @@ export const SegmentedControl = ({
       data-size={size}
       onSelectionChange={handleSelectionChange}
       {...props}
-      {...stylex.props(styles.group, style)}
+      {...stylex.props(
+        styles.group,
+        size === "sm" ? styles.small : styles.large,
+        style,
+      )}
     >
       {children}
     </AriaToggleButtonGroup>

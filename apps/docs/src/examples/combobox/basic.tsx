@@ -12,6 +12,7 @@ export function Basic() {
       label="Choose an option"
       placeholder="Type to search..."
       items={options}
+      allowsCustomValue
     >
       {(item) => (
         <ComboBoxItem key={item.id} id={item.id}>

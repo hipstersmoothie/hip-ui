@@ -4,6 +4,7 @@ import { breakpoints } from "./media-queries.stylex";
 import { spacing } from "./spacing.stylex";
 
 export const fontFamily = stylex.defineVars({
+  title: "'Inter', sans-serif",
   sans: "'Inter', sans-serif",
   serif: "Georgia, serif",
   mono: "Monaco, monospace",
@@ -41,7 +42,7 @@ export const lineHeight = stylex.defineVars({
   none: "1",
   xs: "0.8",
   sm: "1.25",
-  base: "1.75",
+  base: "1.65",
   lg: "2",
   xl: "2.5",
   "2xl": "3",
@@ -60,9 +61,13 @@ export const tracking = stylex.defineVars({
 // eslint-disable-next-line @stylexjs/enforce-extension
 export const typeramp = stylex.create({
   heading1: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontFamily: fontFamily["sans"],
+    fontFamily: fontFamily["title"],
     fontSize: {
       default: fontSize["4xl"],
       [breakpoints.md]: fontSize["5xl"],
@@ -74,9 +79,13 @@ export const typeramp = stylex.create({
     scrollMarginBlockStart: spacing["20"],
   },
   heading2: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontFamily: fontFamily["sans"],
+    fontFamily: fontFamily["title"],
     fontSize: {
       default: fontSize["3xl"],
       [breakpoints.md]: fontSize["4xl"],
@@ -89,9 +98,13 @@ export const typeramp = stylex.create({
     borderBottomWidth: 1,
   },
   heading3: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontFamily: fontFamily["sans"],
+    fontFamily: fontFamily["title"],
     fontSize: { default: fontSize["2xl"] },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["semibold"],
@@ -100,9 +113,13 @@ export const typeramp = stylex.create({
     scrollMarginBlockStart: spacing["20"],
   },
   heading4: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontFamily: fontFamily["sans"],
+    fontFamily: fontFamily["title"],
     fontSize: { default: fontSize["xl"] },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["semibold"],
@@ -111,9 +128,13 @@ export const typeramp = stylex.create({
     scrollMarginBlockStart: spacing["20"],
   },
   heading5: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
-    fontFamily: fontFamily["sans"],
+    fontFamily: fontFamily["title"],
     fontSize: { default: fontSize["lg"] },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["semibold"],
@@ -122,6 +143,10 @@ export const typeramp = stylex.create({
     scrollMarginBlockStart: spacing["20"],
   },
   body: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
@@ -129,6 +154,10 @@ export const typeramp = stylex.create({
     lineHeight: lineHeight.base,
   },
   smallBody: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
@@ -136,6 +165,10 @@ export const typeramp = stylex.create({
     lineHeight: lineHeight.base,
   },
   label: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],
@@ -146,6 +179,10 @@ export const typeramp = stylex.create({
     lineHeight: lineHeight.sm,
   },
   sublabel: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["sans"],

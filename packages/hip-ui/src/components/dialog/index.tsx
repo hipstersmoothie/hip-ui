@@ -24,7 +24,6 @@ import { useDialogStyles } from "../theme/useDialogStyles";
 const styles = stylex.create({
   dialog: {
     overflow: "auto",
-    paddingBottom: spacing["2"],
   },
   header: {
     gap: spacing["2"],
@@ -63,10 +62,14 @@ const styles = stylex.create({
     gap: spacing["2"],
     display: "flex",
     justifyContent: "flex-end",
-    paddingBottom: spacing["2"],
+    paddingBottom: spacing["4"],
     paddingLeft: spacing["4"],
     paddingRight: spacing["4"],
     paddingTop: spacing["4"],
+    position: "sticky",
+    bottom: 0,
+    zIndex: 1,
+    backgroundColor: uiColor.bg,
 
     borderTopColor: uiColor.border1,
     borderTopStyle: "solid",

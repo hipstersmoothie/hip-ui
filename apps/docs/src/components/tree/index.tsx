@@ -22,7 +22,6 @@ import { Checkbox } from "../checkbox";
 import { SizeContext } from "../context";
 import { animationDuration } from "../theme/animations.stylex";
 import { primaryColor } from "../theme/color.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { ui } from "../theme/semantic-color.stylex";
 import { spacing } from "../theme/spacing.stylex";

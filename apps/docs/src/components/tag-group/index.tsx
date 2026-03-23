@@ -98,6 +98,14 @@ const styles = stylex.create({
     height: spacing["4"],
     width: spacing["4"],
   },
+  tagText: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
+    paddingBottom: spacing["0.5"],
+    paddingTop: spacing["0.5"],
+  },
 });
 
 interface TagGroupBaseProps<T>
@@ -154,7 +162,7 @@ export function Tag({ children, style, ...props }: TagProps) {
     >
       {({ allowsRemoving }) => (
         <>
-          {children}
+          <span {...stylex.props(styles.tagText)}>{children}</span>
           {allowsRemoving && (
             <Button slot="remove" {...stylex.props(styles.removeButton)}>
               <X size={12} />

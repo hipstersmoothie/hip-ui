@@ -9,7 +9,6 @@ import { ButtonGroupContext } from "../button/context";
 import { SizeContext } from "../context";
 import { animationDuration } from "./animations.stylex";
 import { uiColor } from "./color.stylex";
-import { mediaQueries } from "./media-queries.stylex";
 import { radius } from "./radius.stylex";
 import { critical, primary, ui } from "./semantic-color.stylex";
 import { shadow } from "./shadow.stylex";
@@ -21,6 +20,11 @@ const styles = stylex.create({
     boxShadow: shadow["xs"],
   },
   base: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
+
     borderRadius: radius.lg,
     borderStyle: "solid",
     borderWidth: 1,
@@ -102,9 +106,9 @@ const styles = stylex.create({
   },
   secondary: {
     borderColor: {
-      default: uiColor.component1,
-      ":is([data-hovered])": uiColor.component2,
-      ":is([data-pressed])": uiColor.component3,
+      default: uiColor.border1,
+      ":is([data-hovered])": uiColor.border2,
+      ":is([data-pressed])": uiColor.border3,
     },
   },
   tertiary: {

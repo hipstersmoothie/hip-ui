@@ -15,6 +15,10 @@ import { useButtonStyles } from "../theme/useButtonStyles";
 
 const styles = stylex.create({
   content: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     gap: spacing["2"],
     alignItems: "center",
     display: "flex",

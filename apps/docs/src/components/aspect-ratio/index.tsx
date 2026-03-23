@@ -2,7 +2,6 @@ import * as stylex from "@stylexjs/stylex";
 
 import type { StyleXComponentProps } from "../theme/types";
 
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 
 const styles = stylex.create({
@@ -15,22 +14,10 @@ const styles = stylex.create({
   },
   rounded: {
     cornerShape: "squircle",
-    borderBottomLeftRadius: {
-      default: radius.md,
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-    borderBottomRightRadius: {
-      default: radius.md,
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-    borderTopLeftRadius: {
-      default: radius.md,
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
-    borderTopRightRadius: {
-      default: radius.md,
-      [mediaQueries.supportsSquircle]: radius["3xl"],
-    },
+    borderBottomLeftRadius: radius.lg,
+    borderBottomRightRadius: radius.lg,
+    borderTopLeftRadius: radius.lg,
+    borderTopRightRadius: radius.lg,
   },
   imageContainer: {
     inset: 0,

@@ -51,6 +51,26 @@ const styles = stylex.create({
   header: {
     marginBottom: spacing["12"],
   },
+  defaultMargin: {
+    marginBottom: spacing["6"],
+    marginTop: spacing["6"],
+  },
+  h2: {
+    marginBottom: spacing["8"],
+    marginTop: spacing["12"],
+  },
+  h3: {
+    marginBottom: spacing["5"],
+    marginTop: spacing["8"],
+  },
+  h4: {
+    marginBottom: spacing["8"],
+    marginTop: spacing["8"],
+  },
+  h5: {
+    marginBottom: spacing["8"],
+    marginTop: spacing["8"],
+  },
 });
 
 function Link({ href, ...props }: LinkProps) {
@@ -73,48 +93,48 @@ const components: MDXComponents = {
     <Heading1 {...props} />
   ),
   h2: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id}>
+    <LinkedHeading id={props.id} style={styles.h2}>
       <Heading2 {...props} />
     </LinkedHeading>
   ),
   h3: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id}>
+    <LinkedHeading id={props.id} style={styles.h3}>
       <Heading3 {...props} />
     </LinkedHeading>
   ),
   h4: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id}>
+    <LinkedHeading id={props.id} style={styles.h4}>
       <Heading4 {...props} />
     </LinkedHeading>
   ),
   h5: ({ className: _className, style: _style, ...props }) => (
-    <LinkedHeading id={props.id}>
+    <LinkedHeading id={props.id} style={styles.h5}>
       <Heading5 {...props} />
     </LinkedHeading>
   ),
   p: ({ className: _className, style: _style, ...props }) => (
-    <Body {...props} />
+    <Body {...props} style={styles.defaultMargin} />
   ),
   a: ({ className: _className, style: _style, ...props }) => (
     <Link {...(props as LinkProps)} />
   ),
   ul: ({ className: _className, style: _style, ...props }) => (
-    <UnorderedList {...props} />
+    <UnorderedList {...props} style={styles.defaultMargin} />
   ),
   ol: ({ className: _className, style: _style, ...props }) => (
-    <OrderedList {...props} />
+    <OrderedList {...props} style={styles.defaultMargin} />
   ),
   li: ({ className: _className, style: _style, ...props }) => (
     <ListItem {...props} />
   ),
   pre: ({ className: _className, style: _style, ...props }) => (
-    <Pre {...props} />
+    <Pre {...props} style={styles.defaultMargin} />
   ),
   code: ({ className: _className, style: _style, ...props }) => (
     <InlineCode {...props} />
   ),
   blockquote: ({ className: _className, style: _style, ...props }) => (
-    <Blockquote {...props} />
+    <Blockquote {...props} style={styles.defaultMargin} />
   ),
 };
 
@@ -154,15 +174,13 @@ function RouteComponent() {
   return (
     <>
       <SidebarLayout.Page>
-        <Content>
-          <Flex direction="column" gap="4" style={styles.header}>
-            <Heading1>{doc.title}</Heading1>
-            <Text size="xl" variant="secondary">
-              {doc.description}
-            </Text>
-          </Flex>
-          <Page components={components} />
-        </Content>
+        <Flex direction="column" gap="6" style={styles.header}>
+          <Heading1>{doc.title}</Heading1>
+          <Text size="xl" variant="secondary">
+            {doc.description}
+          </Text>
+        </Flex>
+        <Page components={components} />
       </SidebarLayout.Page>
 
       {toc && (

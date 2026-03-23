@@ -14,7 +14,6 @@ import {
 } from "../theme/typography.stylex";
 import { animationDuration } from "./animations.stylex";
 import { criticalColor, primaryColor, uiColor } from "./color.stylex";
-import { mediaQueries } from "./media-queries.stylex";
 
 const styles = stylex.create({
   item: {
@@ -103,6 +102,10 @@ const styles = stylex.create({
     },
   },
   label: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     gap: spacing["1.5"],
     display: "flex",
     flexDirection: "column",
