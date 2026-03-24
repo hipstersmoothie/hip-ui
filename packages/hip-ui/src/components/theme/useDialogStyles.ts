@@ -9,7 +9,6 @@ import {
   animationTimingFunction,
   animations,
 } from "../theme/animations.stylex";
-import { mediaQueries } from "../theme/media-queries.stylex";
 import { radius } from "../theme/radius.stylex";
 import { shadow } from "../theme/shadow.stylex";
 import { ui } from "./semantic-color.stylex";
@@ -29,7 +28,10 @@ const styles = stylex.create({
       ":is([data-exiting])": animationDuration.fast,
     },
     transitionProperty: "opacity",
-    transitionTimingFunction: "ease-in-out",
+    transitionTimingFunction: {
+      default: animationTimingFunction.easeOut,
+      ":is([data-exiting])": animationTimingFunction.easeIn,
+    },
     zIndex: 100,
     height: "var(--page-height)",
     left: 0,
@@ -52,7 +54,10 @@ const styles = stylex.create({
     top: "calc(var(--visual-viewport-height) / 2)",
 
     animationDuration: animationDuration.slow,
-    animationName: { ":is([data-entering])": animations.zoomIn },
+    animationName: {
+      ":is([data-entering])": animations.zoomIn,
+      ":is([data-exiting])": animations.zoomOut,
+    },
     animationTimingFunction: animationTimingFunction.easeElasticInOut,
   },
   dialog: {

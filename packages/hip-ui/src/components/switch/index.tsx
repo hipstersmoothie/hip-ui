@@ -57,7 +57,10 @@ const styles = stylex.create({
       ":is([data-selected=true] *)": "translate(100%, -50%)",
     },
     transitionDuration: animationDuration.fast,
-    transitionProperty: "transform",
+    transitionProperty: {
+      default: "transform",
+      [mediaQueries.reducedMotion]: "none",
+    },
     transitionTimingFunction: "ease-in-out",
     height: spacing["4"],
     left: 0,

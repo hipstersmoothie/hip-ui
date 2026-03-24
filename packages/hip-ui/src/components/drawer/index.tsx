@@ -110,7 +110,10 @@ const styles = stylex.create({
       ":is([data-direction=top][data-entering])": animations.slideInTop,
       ":is([data-direction=top][data-exiting])": animations.slideOutTop,
     },
-    animationTimingFunction: animationTimingFunction.easeInOut,
+    animationTimingFunction: {
+      ":is([data-entering])": animationTimingFunction.easeOut,
+      ":is([data-exiting])": animationTimingFunction.easeIn,
+    },
   },
   dialog: {
     overflow: "auto",

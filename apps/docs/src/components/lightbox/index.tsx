@@ -29,6 +29,10 @@ import { spacing } from "../theme/spacing.stylex";
 
 const SLIDE_DURATION_MS = 250;
 
+function prefersReducedMotion() {
+  return globalThis.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
+}
+
 const styles = stylex.create({
   overlay: {
     inset: 0,
@@ -168,6 +172,11 @@ export function Lightbox({
   // Run slide animations via Web Animations API
   useLayoutEffect(() => {
     if (previousIndex === null) return;
+    if (prefersReducedMotion()) {
+      setPreviousIndex(null);
+      setTransitionSize(null);
+      return;
+    }
     const wrapper = wrapperRef.current;
     const outgoing = outgoingRef.current;
     const incoming = incomingRef.current;
@@ -237,6 +246,10 @@ export function Lightbox({
 
   const captureAndGoPrev = useCallback(() => {
     if (previousIndex !== null) return;
+    if (prefersReducedMotion()) {
+      setCurrentIndex((i) => (i <= 0 ? images.length - 1 : i - 1));
+      return;
+    }
     const wrapper = wrapperRef.current;
     if (wrapper) {
       setTransitionSize({
@@ -251,6 +264,10 @@ export function Lightbox({
 
   const captureAndGoNext = useCallback(() => {
     if (previousIndex !== null) return;
+    if (prefersReducedMotion()) {
+      setCurrentIndex((i) => (i >= images.length - 1 ? 0 : i + 1));
+      return;
+    }
     const wrapper = wrapperRef.current;
     if (wrapper) {
       setTransitionSize({

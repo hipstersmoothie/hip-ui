@@ -13,6 +13,13 @@ import {
 } from "../theme/typography.stylex";
 
 const styles = stylex.create({
+  trim: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
+  },
+
   sans: { fontFamily: fontFamily["sans"] },
   serif: { fontFamily: fontFamily["serif"] },
   mono: { fontFamily: fontFamily["mono"] },
@@ -184,7 +191,7 @@ export const Text = ({
         styles[font],
         weight && getResponsiveStyle("weight", weight),
         size && getResponsiveStyle("font", size),
-        leading && getResponsiveStyle("leading", leading),
+        leading ? getResponsiveStyle("leading", leading) : styles.trim,
         tracking && getResponsiveStyle("tracking", tracking),
         variant && styles[`variant-${variant}`],
         strikethrough && styles.strikethrough,

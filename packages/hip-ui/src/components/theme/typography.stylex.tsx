@@ -105,7 +105,7 @@ export const typeramp = stylex.create({
     margin: 0,
     // eslint-disable-next-line @stylexjs/valid-styles
     fontFamily: fontFamily["title"],
-    fontSize: { default: fontSize["2xl"] },
+    fontSize: { default: fontSize["xl"], [breakpoints.md]: fontSize["2xl"] },
     // eslint-disable-next-line @stylexjs/valid-styles
     fontWeight: fontWeight["semibold"],
     letterSpacing: tracking["tight"],

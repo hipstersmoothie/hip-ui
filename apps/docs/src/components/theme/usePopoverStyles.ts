@@ -39,9 +39,12 @@ const styles = stylex.create({
       ":is([data-exiting], [data-exiting] > *)":
         "scale(0.95) translate(var(--origin-x, 0), var(--origin-y, 0))",
     },
-    transitionDuration: animationDuration.verySlow,
+    transitionDuration: animationDuration.default,
     transitionProperty: "transform, opacity",
-    transitionTimingFunction: animationTimingFunction.easeSpring,
+    transitionTimingFunction: {
+      default: animationTimingFunction.easeOut,
+      ":is([data-exiting], [data-exiting] > *)": animationTimingFunction.easeIn,
+    },
     willChange: "transform, opacity",
   },
 });

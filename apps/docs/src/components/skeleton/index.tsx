@@ -31,7 +31,10 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/valid-styles
     animationDuration: "1.7s",
     animationIterationCount: "infinite",
-    animationName: shimmer,
+    animationName: {
+      default: shimmer,
+      [mediaQueries.reducedMotion]: "none",
+    },
     animationTimingFunction: "linear",
     backgroundImage: `linear-gradient(
       -80deg,

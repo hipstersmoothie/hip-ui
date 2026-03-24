@@ -3,8 +3,8 @@
 import * as stylex from "@stylexjs/stylex";
 import { ArrowLeft } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import type { ComponentProps, ReactNode } from "react";
 
-import type { IconButtonProps } from "../icon-button";
 import type { StyleXComponentProps } from "../theme/types";
 
 import { Flex } from "../flex";
@@ -20,6 +20,10 @@ import { shadow } from "../theme/shadow.stylex";
 import { spacing } from "../theme/spacing.stylex";
 import { Text } from "../typography/text";
 import { PageContext, usePageContext } from "./context";
+import { createLink, LinkProps } from "@tanstack/react-router";
+import { fontFamily, lineHeight } from "../theme/typography.stylex";
+
+const IconButtonLink = createLink(IconButton);
 
 const smallRootStyles = stylex.create({
   root: {
@@ -66,12 +70,22 @@ const largeHeaderStyles = stylex.create({
     gridTemplateAreas: {
       default: `
         'title actions'
-        'description actions'
       `,
+      [breakpoints.sm]: {
+        ":has([data-page-description])": `
+          'title actions'
+          'description actions'
+        `,
+      },
       ":has([data-page-icon])": `
         'icon title actions'
-        'icon description actions'
       `,
+      [breakpoints.sm]: {
+        ":has([data-page-description])": `
+          'icon title actions'
+          'icon description actions'
+        `,
+      },
     },
     alignItems: "center",
     columnGap: spacing["4"],
@@ -93,22 +107,41 @@ const largeHeaderStyles = stylex.create({
 
 const sharedStyles = stylex.create({
   smallTitle: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     flexGrow: 1,
+    fontFamily: fontFamily["title"],
     minWidth: 0,
   },
   largeTitle: {
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxEdge: "cap alphabetic",
+    // eslint-disable-next-line @stylexjs/valid-styles
+    textBoxTrim: "trim-both",
     gridArea: "title",
     flexGrow: 1,
+    fontFamily: fontFamily["title"],
     minWidth: 0,
   },
   description: {
     gridArea: "description",
+    display: {
+      default: "none",
+      [breakpoints.sm]: "block",
+    },
   },
   smallActions: {
+    gap: spacing["1"],
     flexShrink: 0,
   },
   largeActions: {
     gridArea: "actions",
+    gap: {
+      default: spacing["1"],
+      [breakpoints.sm]: spacing["2"],
+    },
     minHeight: spacing["8"],
   },
   icon: {
@@ -150,7 +183,10 @@ const stickyBaseStyles = stylex.create({
   },
   largeStickyWrapper: {
     zIndex: 100,
-    marginBottom: spacing["8"],
+    marginBottom: {
+      default: spacing["2"],
+      [breakpoints.sm]: spacing["8"],
+    },
   },
   stickyWrapperStuck: {
     backgroundColor: {
@@ -376,7 +412,7 @@ export const PageTitle = ({ style, children, ...props }: PageTitleProps) => {
   return (
     <Text
       size={
-        isSmall ? { default: "xl", sm: "2xl" } : { default: "xl", sm: "3xl" }
+        isSmall ? { default: "xl", sm: "2xl" } : { default: "2xl", sm: "3xl" }
       }
       weight="semibold"
       {...props}
@@ -408,6 +444,7 @@ export const PageDescription = ({
       size="sm"
       variant="secondary"
       weight="light"
+      data-page-description
       {...props}
       style={[sharedStyles.description, style]}
     >
@@ -430,9 +467,7 @@ export const PageActions = ({ style, ...props }: PageActionsProps) => {
     ? sharedStyles.smallActions
     : sharedStyles.largeActions;
 
-  return (
-    <Flex align="center" gap="2" {...props} style={[actionsStyles, style]} />
-  );
+  return <Flex align="center" {...props} style={[actionsStyles, style]} />;
 };
 
 export interface PageStickyHeaderProps {
@@ -578,22 +613,30 @@ export const PageStickyFooter = ({ children }: PageStickyFooterProps) => {
   );
 };
 
+export type PageBackLinkProps = LinkProps & {
+  "aria-label"?: string;
+  style?: ComponentProps<typeof IconButton>["style"];
+  children?: ReactNode;
+};
+
 /**
  * Back link component for navigating to the previous page.
  */
 export const PageBackLink = ({
   style,
   children,
-  ...props
-}: IconButtonProps) => {
+  "aria-label": ariaLabel = "Back",
+  ...linkProps
+}: PageBackLinkProps) => {
   return (
-    <IconButton
-      {...(props as React.ComponentProps<typeof IconButton>)}
+    <IconButtonLink
+      {...(linkProps as ComponentProps<typeof IconButtonLink>)}
+      aria-label={ariaLabel}
       style={style}
       variant="tertiary"
       size="lg"
     >
       {children ?? <ArrowLeft size={20} />}
-    </IconButton>
+    </IconButtonLink>
   );
 };

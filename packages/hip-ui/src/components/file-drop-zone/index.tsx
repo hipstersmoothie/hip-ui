@@ -54,6 +54,15 @@ const styles = stylex.create({
     },
     boxSizing: "border-box",
     position: "relative",
+    transitionDuration: {
+      default: animationDuration.fast,
+      [mediaQueries.reducedMotion]: "0s",
+    },
+    transitionProperty: {
+      default: "background-color, border-color",
+      [mediaQueries.reducedMotion]: "none",
+    },
+    transitionTimingFunction: animationTimingFunction.easeInOut,
 
     alignItems: "center",
     display: "flex",
