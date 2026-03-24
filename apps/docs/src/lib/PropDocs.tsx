@@ -176,12 +176,22 @@ function PropTable({ doc }: { doc: ComponentDoc }) {
 export function PropDocs({ components }: { components: Array<string> }) {
   const docs = propDocs
     .filter((doc) => components.includes(doc.displayName))
+    // oxlint-disable-next-line unicorn/no-array-reduce
+    .reduceRight((acc, doc) => {
+      if (
+        doc.displayName &&
+        !acc.some((d) => d.displayName === doc.displayName)
+      ) {
+        acc.push(doc);
+      }
+      return acc;
+    }, [] as Array<ComponentDoc>)
     .toSorted((a, b) => {
       const aIndex = components.indexOf(a.displayName);
       const bIndex = components.indexOf(b.displayName);
       return aIndex - bIndex;
     });
-  const [selected, setSelected] = useState(docs[0].displayName);
+  const [selected, setSelected] = useState(docs[0]?.displayName);
 
   return (
     <Flex direction="column" gap="6">

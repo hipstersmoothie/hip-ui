@@ -38,7 +38,7 @@ import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
   matchWidth: {
-    minWidth: "var(--trigger-width)",
+    minWidth: "max(var(--trigger-width), 180px)",
   },
   searchField: {
     paddingLeft: spacing["1"],

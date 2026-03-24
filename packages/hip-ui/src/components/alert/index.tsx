@@ -100,9 +100,12 @@ const styles = stylex.create({
   },
   content: {
     gridArea: "content",
-    gap: spacing["1"],
+    gap: spacing["3"],
     display: "flex",
     flexDirection: "column",
+  },
+  contentWithDescription: {
+    paddingTop: spacing["0.5"],
   },
   icon: {
     gridArea: "icon",
@@ -343,7 +346,12 @@ export const Alert = ({
       {displayIcon != null && (
         <div {...stylex.props(styles.icon)}>{displayIcon}</div>
       )}
-      <div {...stylex.props(styles.content)}>
+      <div
+        {...stylex.props(
+          styles.content,
+          children != null && styles.contentWithDescription,
+        )}
+      >
         {title != null && (
           <Text size="base" weight="semibold">
             {title}

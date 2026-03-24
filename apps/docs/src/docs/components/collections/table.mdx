@@ -23,21 +23,6 @@ Run the following command to add the table component to your project.
 pnpm hip install table
 ```
 
-## Props
-
-This component is built using the [React Aria Table](https://react-spectrum.adobe.com/react-aria/Table.html).
-
-<PropDocs
-  components={[
-    "Table",
-    "TableHeader",
-    "TableBody",
-    "TableColumn",
-    "TableRow",
-    "TableCell",
-  ]}
-/>
-
 ## Features
 
 ### Selection
@@ -101,9 +86,24 @@ The container must have a fixed height and `overflow: auto`.
 
 <Example src={Virtualization} />
 
+## Props
+
+This component is built using the [React Aria Table](https://react-spectrum.adobe.com/react-aria/Table.html).
+
+<PropDocs
+  components={[
+    "Table",
+    "TableHeader",
+    "TableBody",
+    "TableColumn",
+    "TableRow",
+    "TableCell",
+  ]}
+/>
+
 ## Related Components
 
-- [ListBox](/docs/components/listbox) - For selectable list data
-- [Tree](/docs/components/tree) - For hierarchical data display
-- [Card](/docs/components/card) - For displaying table data in cards
-- [Badge](/docs/components/badge) - For status indicators in table cells
+- [ListBox](/docs/components/collections/listbox) - For selectable list data
+- [Tree](/docs/components/collections/tree) - For hierarchical data display
+- [Card](/docs/components/content/card) - For displaying table data in cards
+- [Badge](/docs/components/status/badge) - For status indicators in table cells

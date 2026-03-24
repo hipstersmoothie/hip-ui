@@ -22,17 +22,17 @@ const styles = stylex.create({
     cornerShape: "squircle",
   },
   swatchSm: {
-    borderRadius: radius.sm,
+    borderRadius: radius.xs,
     height: spacing["4"],
     width: spacing["4"],
   },
   swatchMd: {
-    borderRadius: radius.md,
+    borderRadius: radius.sm,
     height: spacing["6"],
     width: spacing["6"],
   },
   swatchLg: {
-    borderRadius: radius.lg,
+    borderRadius: radius.md,
     height: spacing["8"],
     width: spacing["8"],
   },

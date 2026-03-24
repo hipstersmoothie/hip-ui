@@ -12,7 +12,6 @@ import { modules, pages } from "virtual:content";
 
 import type { LinkProps } from "@/components/link";
 
-import { Content } from "@/components/content";
 import { Flex } from "@/components/flex";
 import { Link as TypographyLink } from "@/components/link";
 import { SidebarLayout } from "@/components/sidebar-layout";
@@ -34,6 +33,7 @@ import {
 } from "@/components/typography";
 import { Text } from "@/components/typography/text";
 
+import { breakpoints } from "../components/theme/breakpoints.stylex";
 import { spacing } from "../components/theme/spacing.stylex";
 
 declare global {
@@ -50,6 +50,10 @@ const TypographyRouterLink = createLink(TypographyLink);
 const styles = stylex.create({
   header: {
     marginBottom: spacing["12"],
+    marginTop: {
+      default: spacing["6"],
+      [breakpoints.sm]: spacing["12"],
+    },
   },
   defaultMargin: {
     marginBottom: spacing["6"],
@@ -174,7 +178,7 @@ function RouteComponent() {
   return (
     <>
       <SidebarLayout.Page>
-        <Flex direction="column" gap="6" style={styles.header}>
+        <Flex direction="column" gap="8" style={styles.header}>
           <Heading1>{doc.title}</Heading1>
           <Text size="xl" variant="secondary">
             {doc.description}

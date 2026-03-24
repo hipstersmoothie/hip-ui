@@ -19,21 +19,6 @@ Run the following command to add the toast component to your project.
 pnpm hip install toast
 ```
 
-## Props
-
-This component is built using [React Aria Toast](https://react-spectrum.adobe.com/react-aria/Toast.html).
-
-<PropDocs
-  components={[
-    "ToastRegion",
-    "Toast",
-    "ToastContent",
-    "ToastTitle",
-    "ToastDescription",
-    "ToastClose",
-  ]}
-/>
-
 ## Features
 
 ### Actions
@@ -54,9 +39,24 @@ Each variant can include an icon to display alongside the title and description.
 
 <Example src={Icons} />
 
+## Props
+
+This component is built using [React Aria Toast](https://react-spectrum.adobe.com/react-aria/Toast.html).
+
+<PropDocs
+  components={[
+    "ToastRegion",
+    "Toast",
+    "ToastContent",
+    "ToastTitle",
+    "ToastDescription",
+    "ToastClose",
+  ]}
+/>
+
 ## Related Components
 
-- [Dialog](/docs/components/dialog) - For modal dialogs
-- [AlertDialog](/docs/components/alert-dialog) - For critical actions and confirmations
-- [Popover](/docs/components/popover) - For non-modal overlays
-- [Button](/docs/components/button) - For triggering toasts
+- [Dialog](/docs/components/overlays/dialog) - For modal dialogs
+- [AlertDialog](/docs/components/overlays/alert-dialog) - For critical actions and confirmations
+- [Popover](/docs/components/overlays/popover) - For non-modal overlays
+- [Button](/docs/components/buttons/button) - For triggering toasts

@@ -26,7 +26,7 @@ const styles = stylex.create({
 export function Typeramp() {
   return (
     <Flex direction="column" gap="8" style={styles.wrapper}>
-      <Flex direction="column" gap="4">
+      <Flex direction="column" gap="8">
         <LabelText>Headings</LabelText>
         <Heading1>Heading 1 - Page Title</Heading1>
         <Heading2>Heading 2 - Section Title</Heading2>
@@ -37,7 +37,7 @@ export function Typeramp() {
 
       <Separator />
 
-      <Flex direction="column" gap="4">
+      <Flex direction="column" gap="6">
         <LabelText>Body Text</LabelText>
         <Body>
           Body text for paragraphs and general content. This is the standard
@@ -51,7 +51,7 @@ export function Typeramp() {
 
       <Separator />
 
-      <Flex direction="column" gap="4">
+      <Flex direction="column" gap="6">
         <LabelText>Labels</LabelText>
         <LabelText>Form Label</LabelText>
         <SubLabel>Sub Label - Additional context or metadata</SubLabel>

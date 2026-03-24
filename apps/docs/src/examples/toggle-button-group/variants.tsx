@@ -14,14 +14,14 @@ export function Variants() {
   return (
     <Flex gap="4" justify="start" direction="column" style={styles.container}>
       <ToggleButtonGroup variant="grouped">
-        <ToggleButton>Option 1</ToggleButton>
-        <ToggleButton>Option 2</ToggleButton>
-        <ToggleButton>Option 3</ToggleButton>
+        <ToggleButton variant="secondary">Option 1</ToggleButton>
+        <ToggleButton variant="secondary">Option 2</ToggleButton>
+        <ToggleButton variant="secondary">Option 3</ToggleButton>
       </ToggleButtonGroup>
       <ToggleButtonGroup variant="separate" itemsPerRow={3}>
-        <ToggleButton>Option 1</ToggleButton>
-        <ToggleButton>Option 2</ToggleButton>
-        <ToggleButton>Option 3</ToggleButton>
+        <ToggleButton variant="tertiary">Option 1</ToggleButton>
+        <ToggleButton variant="tertiary">Option 2</ToggleButton>
+        <ToggleButton variant="tertiary">Option 3</ToggleButton>
       </ToggleButtonGroup>
     </Flex>
   );

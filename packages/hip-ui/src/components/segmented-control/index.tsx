@@ -32,7 +32,7 @@ const styles = stylex.create({
     gap: spacing["2"],
     alignItems: "center",
     backgroundColor: uiColor.component1,
-    boxShadow: "inset 0 0 10px 1px rgba(0, 0, 0, 0.1  )",
+    boxShadow: "inset 0 0 8px 0 rgba(0, 0, 0, 0.1)",
     boxSizing: "border-box",
     display: "flex",
     height: {

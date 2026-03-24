@@ -38,8 +38,7 @@ import { SmallBody } from "../typography";
 
 const styles = stylex.create({
   matchWidth: {
-    minWidth: 180,
-    width: "var(--trigger-width)",
+    minWidth: "max(var(--trigger-width), 180px)",
   },
   emptyState: {
     padding: spacing["4"],

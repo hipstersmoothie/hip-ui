@@ -32,6 +32,7 @@ import { spacing } from "../theme/spacing.stylex";
 import { lineHeight, typeramp } from "../theme/typography.stylex";
 import { usePopoverStyles } from "../theme/usePopoverStyles";
 import { toasts } from "./queue";
+import { shadow } from "../theme/shadow.stylex";
 
 const styles = stylex.create({
   region: {

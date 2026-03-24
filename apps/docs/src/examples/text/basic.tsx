@@ -17,6 +17,9 @@ export function TextExample() {
     <Flex direction="column" gap="8" style={styles.wrapper}>
       <Flex direction="column" gap="4">
         <Text font="sans" size="2xl" weight="bold">
+          Title text
+        </Text>
+        <Text font="sans" size="2xl" weight="bold">
           Sans serif text (default)
         </Text>
         <Text font="serif" size="2xl" weight="semibold">

@@ -1,3 +1,4 @@
+import { Flex } from "@/components/flex";
 import {
   Heading2,
   Heading3,
@@ -7,7 +8,7 @@ import {
 
 export function LinkedHeadingExample() {
   return (
-    <div>
+    <Flex direction="column" gap="6">
       <LinkedHeading id="section-1">
         <Heading2>Section 1</Heading2>
       </LinkedHeading>
@@ -20,6 +21,6 @@ export function LinkedHeadingExample() {
       <LinkedHeading id="detail-1-2-1">
         <Heading4>Detail 1.2.1</Heading4>
       </LinkedHeading>
-    </div>
+    </Flex>
   );
 }

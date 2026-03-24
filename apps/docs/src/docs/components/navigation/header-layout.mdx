@@ -20,20 +20,6 @@ Run the following command to add the header layout component to your project.
 pnpm hip install header-layout
 ```
 
-## Props
-
-This is a custom component built for page layouts with header, content, and footer slots.
-
-<PropDocs
-  components={[
-    "HeaderLayoutRoot",
-    "HeaderLayoutHeader",
-    "HeaderLayoutPage",
-    "HeaderLayoutFooter",
-    "HeaderLayoutHero",
-  ]}
-/>
-
 ## Features
 
 ### Basic
@@ -54,9 +40,23 @@ Add a hero section with primary color background.
 
 <Example src={WithHero} noPadding />
 
+## Props
+
+This is a custom component built for page layouts with header, content, and footer slots.
+
+<PropDocs
+  components={[
+    "HeaderLayoutRoot",
+    "HeaderLayoutHeader",
+    "HeaderLayoutPage",
+    "HeaderLayoutFooter",
+    "HeaderLayoutHero",
+  ]}
+/>
+
 ## Related Components
 
-- [Flex](/docs/components/flex) - For flexible layouts within slots
-- [Grid](/docs/components/grid) - For two-dimensional layouts within slots
-- [Navbar](/docs/components/navbar) - For navigation in the header slot
-- [Footer](/docs/components/footer) - For footer content in the footer slot
+- [Flex](/docs/components/layout/flex) - For flexible layouts within slots
+- [Grid](/docs/components/layout/grid) - For two-dimensional layouts within slots
+- [Navbar](/docs/components/navigation/navbar) - For navigation in the header slot
+- [Footer](/docs/components/navigation/footer) - For footer content in the footer slot

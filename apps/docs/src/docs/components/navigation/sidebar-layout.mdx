@@ -20,19 +20,6 @@ Run the following command to add the sidebar layout component to your project.
 pnpm hip install sidebar-layout
 ```
 
-## Props
-
-This is a custom component built for page layouts with sidebar and content slots.
-
-<PropDocs
-  components={[
-    "SidebarLayoutRoot",
-    "SidebarLayoutNavigationSidebar",
-    "SidebarLayoutPage",
-    "SidebarLayoutInconsequentialSidebar",
-  ]}
-/>
-
 ## Features
 
 ### InconsequentialSidebar
@@ -65,8 +52,21 @@ You can also wrap the sidebar layout in a header layout.
 
 <Example src={WithHeaderLayoutWrapper} noPadding />
 
+## Props
+
+This is a custom component built for page layouts with sidebar and content slots.
+
+<PropDocs
+  components={[
+    "SidebarLayoutRoot",
+    "SidebarLayoutNavigationSidebar",
+    "SidebarLayoutPage",
+    "SidebarLayoutInconsequentialSidebar",
+  ]}
+/>
+
 ## Related Components
 
-- [Flex](/docs/components/flex) - For flexible layouts within slots
-- [Grid](/docs/components/grid) - For two-dimensional layouts within slots
-- [Sidebar](/docs/components/sidebar) - For navigation in the sidebar slot
+- [Flex](/docs/components/layout/flex) - For flexible layouts within slots
+- [Grid](/docs/components/layout/grid) - For two-dimensional layouts within slots
+- [Sidebar](/docs/components/navigation/sidebar) - For navigation in the sidebar slot

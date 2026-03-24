@@ -18,6 +18,13 @@ export function FontFamilies() {
   return (
     <Flex direction="column" gap="10" style={styles.wrapper}>
       <Flex direction="column" gap="4">
+        <LabelText>Title (Inter)</LabelText>
+        <Text font="title" weight="semibold" size="2xl">
+          The quick brown fox jumps over the lazy dog
+        </Text>
+        <Text font="title">The quick brown fox jumps over the lazy dog</Text>
+      </Flex>
+      <Flex direction="column" gap="4">
         <LabelText>Sans Serif (Inter)</LabelText>
         <Text font="sans" weight="semibold" size="2xl">
           The quick brown fox jumps over the lazy dog

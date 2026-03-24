@@ -35,6 +35,7 @@ import { usePopoverStyles } from "../theme/usePopoverStyles";
 
 const styles = stylex.create({
   menu: {
+    minWidth: 180,
     paddingBottom: spacing["0.5"],
     paddingTop: spacing["0.5"],
   },

@@ -43,7 +43,7 @@ const styles = stylex.create({
   },
   menu: {
     outline: "none",
-    minWidth: "180px",
+    minWidth: 180,
     paddingBottom: spacing["0.5"],
     paddingTop: spacing["0.5"],
   },

@@ -47,7 +47,10 @@ const styles = stylex.create({
     top: spacing["2.5"],
   },
   blockquote: {
+    gap: spacing["5"],
     color: ui.textDim,
+    display: "flex",
+    flexDirection: "column",
     fontFamily: fontFamily["serif"],
     borderLeftColor: ui.borderDim,
     borderLeftStyle: "solid",
@@ -56,7 +59,9 @@ const styles = stylex.create({
     marginLeft: spacing["2"],
     marginRight: 0,
     marginTop: 0,
+    paddingBottom: spacing["2"],
     paddingLeft: spacing["4"],
+    paddingTop: spacing["2"],
   },
   unorderedList: {
     margin: 0,

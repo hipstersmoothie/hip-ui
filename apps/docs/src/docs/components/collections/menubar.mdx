@@ -19,12 +19,6 @@ Run the following command to add the menubar component to your project.
 pnpm hip install menubar
 ```
 
-## Props
-
-This a custom component that is built using React Aria's [DialogTrigger](https://react-spectrum.adobe.com/react-aria/DialogTrigger.html), [Menu](https://react-spectrum.adobe.com/react-aria/Menu.html), and [Popover](https://react-spectrum.adobe.com/react-aria/Popover.html).
-
-<PropDocs components={["Menubar", "MenubarItem"]} />
-
 ## Features
 
 ### Disabled State
@@ -39,9 +33,15 @@ The menubar component supports three sizes: `sm`, `md`, and `lg`.
 
 <Example src={Size} />
 
+## Props
+
+This a custom component that is built using React Aria's [DialogTrigger](https://react-spectrum.adobe.com/react-aria/DialogTrigger.html), [Menu](https://react-spectrum.adobe.com/react-aria/Menu.html), and [Popover](https://react-spectrum.adobe.com/react-aria/Popover.html).
+
+<PropDocs components={["Menubar", "MenubarItem"]} />
+
 ## Related Components
 
-- [Menu](/docs/components/menu) - The underlying menu component used in menubar items
-- [Popover](/docs/components/popover) - For positioning the menu popovers
-- [MenuItem](/docs/components/menu) - Menu items displayed in the menubar menus
-- [SubMenu](/docs/components/menu) - For nested submenus in menubar items
+- [Menu](/docs/components/collections/menu) - The underlying menu component used in menubar items
+- [Popover](/docs/components/overlays/popover) - For positioning the menu popovers
+- [MenuItem](/docs/components/collections/menu) - Menu items displayed in the menubar menus
+- [SubMenu](/docs/components/collections/menu) - For nested submenus in menubar items

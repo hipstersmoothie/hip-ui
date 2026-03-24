@@ -25,7 +25,7 @@ const styles = stylex.create({
     // eslint-disable-next-line @stylexjs/valid-styles
     textBoxTrim: "trim-both",
 
-    borderRadius: radius.lg,
+    borderRadius: radius.md,
     borderStyle: "solid",
     borderWidth: 1,
 
